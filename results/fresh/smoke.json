@@ -1,0 +1,3055 @@
+{
+  "schema_version": 1,
+  "fresh_run": true,
+  "historical_import": false,
+  "suite": "smoke",
+  "environment": {
+    "python": "3.12.14",
+    "architecture": "arm64",
+    "system": "Darwin",
+    "packages": {
+      "numpy": "2.3.5",
+      "torch": "2.11.0",
+      "coreai-core": "1.0.0b2",
+      "coreai-torch": "0.4.1",
+      "coremltools": "9.0"
+    },
+    "os": {
+      "returncode": 0,
+      "value": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A428",
+      "error": ""
+    },
+    "xcode": {
+      "returncode": 0,
+      "value": "Xcode 27.0\nBuild version 27A266a",
+      "error": ""
+    },
+    "sdk": {
+      "returncode": 0,
+      "value": "27.0",
+      "error": ""
+    },
+    "chip": {
+      "returncode": 0,
+      "value": "Apple M5 Pro",
+      "error": ""
+    },
+    "memory": {
+      "returncode": 0,
+      "value": "51539607552",
+      "error": ""
+    }
+  },
+  "protocol": {
+    "warmup": 10,
+    "samples_per_process": 30,
+    "processes_per_arm": 3,
+    "timing": "synchronous prediction only; FP16 copying, hashing, persistence and debug capture outside timer",
+    "MAC_counts_as_ops": 2,
+    "physical_INT8_proven": false,
+    "fixture": "synthetic Hadamard/sign/permutation; 16 distinct spatial vectors repeated 256 times",
+    "time_limit_minutes": 10
+  },
+  "source_identity": {
+    "__init__.py": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+    "__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+    "_coreai.py": "85b55ed04df7251484938c78754fdf0497c2fcdcdf404967b73bb9c4ac37c17d",
+    "_coreml.py": "fafc437d477061a86c5584d938c851409e8e018f1e192ecbfdd1beb355850ae3",
+    "cli.py": "75419fb8e6ffb7564308d4d05a6ccde7ee5133faae97d81292fe4b0a003388b0",
+    "common.py": "c19b04b6a82d586d6aab42e142da248d9e805f5c5c6f99f51a6539f4f92fd15c",
+    "controller.py": "545ed83df261bb8247e7a9cd8b4ca16a378743ed0a07ada24828356e42e2d8ba",
+    "evidence.py": "a0e86e7ab624a05bda0a8a124ee220813cc94f7da2656890fb2c9d0e3cfe6e6e",
+    "exporting.py": "cb3293233a204337cc932c93bbc67e89567de2705fbe95119d6adf67c1c5a0ce",
+    "guard.py": "804627f070644cd99aac974b7c6e1c176d9b11d3fc49fc6a8cc7400ad93d83a4",
+    "native/coreai.swift": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+    "native/coreml.swift": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+    "references/__init__.py": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+    "references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd"
+  },
+  "verification": {
+    "passed": true,
+    "meaning": "saved evidence rechecked; findings are not required to be numerically correct or execute on ANE",
+    "checked_runs": [
+      {
+        "run": "01-control-coreml-fp16-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "02-control-coreml-w8a8-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "03-control-coreai-fp16-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "04-control-coreai-w8a8-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "05-control-coreai-a8w4-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "06-control-coreai-a8w4-split32-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "07-control-coreml-group-native64",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": false
+      },
+      {
+        "run": "08-control-coreml-group-split32",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": false
+      },
+      {
+        "run": "09-control-coreai-group-native64",
+        "evidence_consistent": true,
+        "numeric_passed": false,
+        "ANE_controls": true
+      },
+      {
+        "run": "10-control-coreai-group-split32",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "11-control-coreai-qdq-equal",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "12-control-coreai-qdq-unequal",
+        "evidence_consistent": true,
+        "numeric_passed": false,
+        "ANE_controls": true
+      },
+      {
+        "run": "13-control-coreai-qdq-reverse_order",
+        "evidence_consistent": true,
+        "numeric_passed": false,
+        "ANE_controls": true
+      },
+      {
+        "run": "14-control-coreai-qdq-explicit_q",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      }
+    ],
+    "source_matches_run": true,
+    "verifier_source_identity": {
+      "__init__.py": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+      "__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "_coreai.py": "85b55ed04df7251484938c78754fdf0497c2fcdcdf404967b73bb9c4ac37c17d",
+      "_coreml.py": "fafc437d477061a86c5584d938c851409e8e018f1e192ecbfdd1beb355850ae3",
+      "cli.py": "75419fb8e6ffb7564308d4d05a6ccde7ee5133faae97d81292fe4b0a003388b0",
+      "common.py": "c19b04b6a82d586d6aab42e142da248d9e805f5c5c6f99f51a6539f4f92fd15c",
+      "controller.py": "545ed83df261bb8247e7a9cd8b4ca16a378743ed0a07ada24828356e42e2d8ba",
+      "evidence.py": "a0e86e7ab624a05bda0a8a124ee220813cc94f7da2656890fb2c9d0e3cfe6e6e",
+      "exporting.py": "cb3293233a204337cc932c93bbc67e89567de2705fbe95119d6adf67c1c5a0ce",
+      "guard.py": "804627f070644cd99aac974b7c6e1c176d9b11d3fc49fc6a8cc7400ad93d83a4",
+      "native/coreai.swift": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+      "native/coreml.swift": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+      "references/__init__.py": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+      "references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd"
+    }
+  },
+  "runs": [
+    {
+      "run": "01-control-coreml-fp16-2",
+      "case_id": "coreml-fp16-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core ML fp16",
+      "pid": 55520,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "aef90df981b08df1ffeb1cf226a2f003dbf55ff8fd05778b5541e233b4b9b0f6",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted proto/blob -> version-specific PyMIL operand walk and independent weight decode",
+        "asset_files": {
+          "Data/com.apple.CoreML/model.mlmodel": "613433bc86711b20eb039f1bc46400916c9e3fb9ad985e71439bc151369a6ab4",
+          "Data/com.apple.CoreML/weights/weight.bin": "fca8f4eff9ab4067b55d6e44992ef4c1506e16258c21e0779d65d742f4e6ed91",
+          "Manifest.json": "45b528cf4fc514b3ba1410beebbf1fe00a88c363b26c32500bb455ce610a82cb"
+        },
+        "actual_op_counts": {
+          "const": 12,
+          "conv": 2
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b",
+            "weight_op": "const"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b",
+            "weight_op": "const"
+          }
+        ],
+        "checks": [
+          "input/output shape and dtype",
+          "actual convolution/quantize counts",
+          "conv and QDQ SSA connections",
+          "weight values, signed codes, scales, zero points",
+          "group slice and add operands"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-fp16-2.npy",
+        "reference_sha256": "6be703df1bf08e81f7950b2ecc0976f5fb344c1586f97f4015a358f5f00ccb73",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "b11fba9a7269a8f036c3c08595c815a2f634432896924d052958f9cfe46b4796",
+            "numeric_mismatches": 748032,
+            "bit_mismatches": 748032,
+            "relative_L2": 0.0002607082619950251,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.9998779296875,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fd0ee45eba0b08437ba7da16d98db8dd5d6430feeacb958b2134cf2b96b86ec7",
+            "numeric_mismatches": 748032,
+            "bit_mismatches": 748032,
+            "relative_L2": 0.0002607082619950251,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.9998779296875,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "b11fba9a7269a8f036c3c08595c815a2f634432896924d052958f9cfe46b4796",
+            "numeric_mismatches": 748032,
+            "bit_mismatches": 748032,
+            "relative_L2": 0.0002607082619950251,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.9998779296875,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [
+          {
+            "operator_name": "ios18.conv",
+            "path": "main/op6",
+            "output_names": [
+              "conv_000"
+            ],
+            "preferred": "<MLNeuralEngineComputeDevice>",
+            "estimated_weight": 0.5,
+            "function": "main",
+            "supported": [
+              "<MLCPUComputeDevice>",
+              "<MLNeuralEngineComputeDevice>"
+            ]
+          },
+          {
+            "operator_name": "ios18.conv",
+            "path": "main/op13",
+            "output_names": [
+              "conv_001"
+            ],
+            "preferred": "<MLNeuralEngineComputeDevice>",
+            "estimated_weight": 0.5,
+            "function": "main",
+            "supported": [
+              "<MLCPUComputeDevice>",
+              "<MLNeuralEngineComputeDevice>"
+            ]
+          }
+        ],
+        "conv_plan_passed": true,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": null
+      },
+      "measured_records": []
+    },
+    {
+      "run": "02-control-coreml-w8a8-2",
+      "case_id": "coreml-w8a8-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core ML w8a8",
+      "pid": 55538,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "ffbec65204098a8b1856eba2718343589718fc02606b4478da227aae96d3f55f",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted proto/blob -> version-specific PyMIL operand walk and independent weight decode",
+        "asset_files": {
+          "Data/com.apple.CoreML/model.mlmodel": "f3503cc1edc4f7be8aa04bd1fa1069dbd43a6400c1ea6d3e0022c51cd18ed902",
+          "Data/com.apple.CoreML/weights/weight.bin": "e0c60621b280a90f6895689ca5ad6c497f1fd04ef80f3fe390102567d3369862",
+          "Manifest.json": "7f55f3f379daacf3b5e196e7aa2f8b24bbb96ff2d2727beefaf44bacdca86296"
+        },
+        "actual_op_counts": {
+          "const": 21,
+          "constexpr_affine_dequantize": 2,
+          "conv": 2,
+          "quantize": 1,
+          "dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b",
+            "weight_op": "constexpr_affine_dequantize"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b",
+            "weight_op": "constexpr_affine_dequantize"
+          }
+        ],
+        "checks": [
+          "input/output shape and dtype",
+          "actual convolution/quantize counts",
+          "conv and QDQ SSA connections",
+          "weight values, signed codes, scales, zero points",
+          "group slice and add operands"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-w8a8-2.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [
+          {
+            "operator_name": "ios18.conv",
+            "output_names": [
+              "conv_000"
+            ],
+            "supported": [
+              "<MLCPUComputeDevice>",
+              "<MLNeuralEngineComputeDevice>"
+            ],
+            "preferred": "<MLNeuralEngineComputeDevice>",
+            "path": "main/op6",
+            "estimated_weight": 0.5,
+            "function": "main"
+          },
+          {
+            "operator_name": "ios18.conv",
+            "output_names": [
+              "conv_001"
+            ],
+            "supported": [
+              "<MLCPUComputeDevice>",
+              "<MLNeuralEngineComputeDevice>"
+            ],
+            "preferred": "<MLNeuralEngineComputeDevice>",
+            "path": "main/op18",
+            "estimated_weight": 0.5,
+            "function": "main"
+          }
+        ],
+        "conv_plan_passed": true,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": null
+      },
+      "measured_records": [],
+      "RNE-not-gate": {
+        "reference_file": "reference-w8a8-2-rne.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "03-control-coreai-fp16-2",
+      "case_id": "coreai-fp16-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI fp16",
+      "pid": 55570,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "9adc6583304f485a7d9cb59ea146f052f20789eaed308bf1d7e2cb3231728125",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "fc7768653c22f7ffe4ea698065b55d6b9262bda6f228ee3589cc1ae4f00b946b",
+          "main.mlirb": "330ae512481b7d44a59011e682a6e8a6f1b5b1e081568df1fd00d1d99354cef8",
+          "metadata.json": "1ecbcb4b556203995424c66d06a1eba66ad4292ef074f97ca00d8824e69df9d4"
+        },
+        "actual_op_counts": {
+          "coreai.conv2d": 2
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-fp16-2.npy",
+        "reference_sha256": "6be703df1bf08e81f7950b2ecc0976f5fb344c1586f97f4015a358f5f00ccb73",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "b11fba9a7269a8f036c3c08595c815a2f634432896924d052958f9cfe46b4796",
+            "numeric_mismatches": 748032,
+            "bit_mismatches": 748032,
+            "relative_L2": 0.0002607082619950251,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.9998779296875,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fd0ee45eba0b08437ba7da16d98db8dd5d6430feeacb958b2134cf2b96b86ec7",
+            "numeric_mismatches": 748032,
+            "bit_mismatches": 748032,
+            "relative_L2": 0.0002607082619950251,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.9998779296875,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "b11fba9a7269a8f036c3c08595c815a2f634432896924d052958f9cfe46b4796",
+            "numeric_mismatches": 748032,
+            "bit_mismatches": 748032,
+            "relative_L2": 0.0002607082619950251,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.9998779296875,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": []
+    },
+    {
+      "run": "04-control-coreai-w8a8-2",
+      "case_id": "coreai-w8a8-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI w8a8",
+      "pid": 55589,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "735988e843c061abcd844f14104a7281fce785698545c4b5f30d1d84d634956e",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "211ec2de97b77f74bf371bb3e2e65eee2ac4b9a54226b535d753544b33352d7f",
+          "main.mlirb": "e1e17135a22e04ca0b7eadebf9750e812be90fd833469704103030b148c5713c",
+          "metadata.json": "3e24522aa5dd8cf34424e2939ad27aa1f7cce21f9d96c65591be710c19cd6566"
+        },
+        "actual_op_counts": {
+          "coreai.blockwise_shift_scale": 2,
+          "coreai.conv2d": 2,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-w8a8-2.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [],
+      "RNE-not-gate": {
+        "reference_file": "reference-w8a8-2-rne.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "05-control-coreai-a8w4-2",
+      "case_id": "coreai-a8w4-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55609,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "4033a625758f6035e15e40023485dd3c2107bc497e8b87e1de3b7a686ebb7f0e",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "b08f505b446c29f54fb7b08b12fb363b3c593e86885beffd49449109dfb05792",
+          "main.mlirb": "deb55fb5a19d673e27cebd5ef434412e48b99f0c190e9947267338bd62ba6e8e",
+          "metadata.json": "8554760a54f2b3756e130b5298d46bf793e030108af9f1cacb1fb220b48517fd"
+        },
+        "actual_op_counts": {
+          "coreai.lut_to_dense": 2,
+          "coreai.blockwise_shift_scale": 2,
+          "coreai.conv2d": 2,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-w8a8-2.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [],
+      "RNE-not-gate": {
+        "reference_file": "reference-w8a8-2-rne.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "06-control-coreai-a8w4-split32-2",
+      "case_id": "coreai-a8w4-split32-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55626,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "b3a3a0e1899fb9398ad4c84593261b87376467ea44cb697478cb756db7615000",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "bd69ab41237a65255c97b73d5f237064c201f3b97f83a17d15af089f126b6820",
+          "main.mlirb": "e4985e76417dd2fdfae3a09bae358db2c1ee0b9518b5f6303bfe9efacdf9b1cf",
+          "metadata.json": "4869724647dc18cad2cfbf4569b4657f59407c9098d3f9a75d31127dfd9b6c1e"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 32,
+          "coreai.lut_to_dense": 32,
+          "coreai.blockwise_shift_scale": 32,
+          "coreai.conv2d": 32,
+          "coreai.decomposable.broadcasting_add": 30,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "2a0e48f2302abf591765b988c27efb7a357356be2cd66ee05685c10d4fc3f995"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "91d89e3d5adff49c928f50dc25dbbade567ccc5ef31fb2b89ca0bb1e54679a00"
+          },
+          {
+            "conv": 2,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "791acb1b4a0bd3d71106576e1d536d9924670099ea2ba11312b088a5d5317552"
+          },
+          {
+            "conv": 3,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "8b3e51259676afc8b48042d5d0dba83d17a2b6741d03c2757224b4e215af53bc"
+          },
+          {
+            "conv": 4,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d40ee5058465814800eb6f8d77fb23b0822ff80ddbb5948e1368c63a61acbd10"
+          },
+          {
+            "conv": 5,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6328a17f444b3c88af0578c4bca322b295ce6d2a04d825640b3575d2801e5063"
+          },
+          {
+            "conv": 6,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "037560f543d07dcc8089a3f459150d6443ae7d2e71435c44d3e3b4ebc166c16d"
+          },
+          {
+            "conv": 7,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9b651ba8f07fdc1c70604827f13db349fac351b0bedc82537c9ee1487415f590"
+          },
+          {
+            "conv": 8,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "de7233dd477416e22d5f0dbd5f72b4108a41556c4ddced0e7be67e2d08a743a4"
+          },
+          {
+            "conv": 9,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "90c95592e561a307a973a6937a58d139fa3f6e5ce066831e0f42109a52f6b2e8"
+          },
+          {
+            "conv": 10,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ea324526b20b436f5d67ce4dffefa03638e8b2b455cab5c6ac0685c6d766b243"
+          },
+          {
+            "conv": 11,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "3e7884ab047e799fbe45af88db8e3a841f3e6d12a471ce3e30d79b3f396d38bb"
+          },
+          {
+            "conv": 12,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d011d70b891fff8ca1709b95e53c580f5a96010437927c620eba97b50e545aca"
+          },
+          {
+            "conv": 13,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "cea468c12d62d9e00c54eded718161951d2790b43fe89d41afbf8a7be7229ef5"
+          },
+          {
+            "conv": 14,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7e7a1c20ca0b1a70ca0309737d633cd36df1b6ad70803b1fd8ec06302eaefb27"
+          },
+          {
+            "conv": 15,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f8049e23acfe78f82019ebd7033ca815c3a454acdf9133f4f2ca6561fad29638"
+          },
+          {
+            "conv": 16,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "70c66fb96293738e900173c4556d6a35e0b165d7d99ae11df06fc15c90da5778"
+          },
+          {
+            "conv": 17,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6193557f3636276211836ce1c9cb6ea9cad47fcf5677bec7d20c08b678b9ef18"
+          },
+          {
+            "conv": 18,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "155c0bae8d2d26bc229b29169b62e3ddbb39e574cc32f32df822d810695567e1"
+          },
+          {
+            "conv": 19,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "57a80f9172e39dda4a7f0f8457c6e352977068be4596f5e40f11ee4367b53b09"
+          },
+          {
+            "conv": 20,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "46116e379961706e70a8afdd3ded3531ef7ab54dd5d7d83f7e5f0d850c102564"
+          },
+          {
+            "conv": 21,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7bd4e7fe5cd9498e8350070ca80c39982e73078081c29323fcb474231ee345b7"
+          },
+          {
+            "conv": 22,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "50cc3c8b04ed7b14a28e4bce6394a593b5480c4045b5247fe41397d3d5ca124f"
+          },
+          {
+            "conv": 23,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "96bff6dc586ee5afc4a916cd849c5fc8af304228d8c6ee86936994f9dd47208f"
+          },
+          {
+            "conv": 24,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f235a82b69ba5cdc76d67114387f6afc91e34acc7a1a0dfcbf2a06efcbbcd98c"
+          },
+          {
+            "conv": 25,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7b6f5aa767deb9112f1bfb8cf7b75b8c64988439cc0f3b83231a6ff87b500c0e"
+          },
+          {
+            "conv": 26,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ff20158c8ea61e687d4bb166429a14ea557fdb55ada22c91418c52f82565f612"
+          },
+          {
+            "conv": 27,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b6b71c9d52469fd28a510f75b7c19fc6945cff66000c232a9d9f0757cf49881a"
+          },
+          {
+            "conv": 28,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b29ed4cffd96d31f2890ef0238f91b3b68da3c7105bf7167ecb9a610926cc2a0"
+          },
+          {
+            "conv": 29,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "48badd7ae0d0a95feb074220963754504405201aad9bfba4425d7e903afd577e"
+          },
+          {
+            "conv": 30,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "c39c019e3112e50edf698552fe1eba0384101b3549f7fe17f195a5c9aaf87553"
+          },
+          {
+            "conv": 31,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9cd392b4a869b61173162b3bc1f5c8d99a3e66a103c52db25318c799771ea352"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-a8w4-split32-2.npy",
+        "reference_sha256": "035e60e26f39ec3c886530d78c0755836644d4106e06f26bd6a8865389d8b7d4",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "06289b4191f732a84e6ede0ba3c370253c72ed0be0d74f2cec67c8cded8a2136",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 1536,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": []
+    },
+    {
+      "run": "07-control-coreml-group-native64",
+      "case_id": "coreml-group-native64",
+      "source_ops": null,
+      "shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "representation": "Core ML direct signed INT4 blockwise",
+      "pid": 55648,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "31cf4a3b5a260e1b4b97277417d0c55fd2293abd0f574c1ac71673b25b4d2d87",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted proto/blob -> version-specific PyMIL operand walk and independent weight decode",
+        "asset_files": {
+          "Data/com.apple.CoreML/model.mlmodel": "1689cdb445561c01fcfb03802a5947bbacee2173e978f6a37cbf26b04d2f0b82",
+          "Data/com.apple.CoreML/weights/weight.bin": "132780eb8816fc957302f4af759492748a7db4c78f6220f1491439c2229aac92",
+          "Manifest.json": "2d21acc6c180e5c1a22d689789ac07d5142b0ff821f06edccea1c85ae9865f28"
+        },
+        "actual_op_counts": {
+          "const": 12,
+          "quantize": 1,
+          "dequantize": 1,
+          "constexpr_blockwise_shift_scale": 1,
+          "conv": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              64,
+              64,
+              1,
+              1
+            ],
+            "sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "weight_op": "constexpr_blockwise_shift_scale"
+          }
+        ],
+        "checks": [
+          "input/output shape and dtype",
+          "actual convolution/quantize counts",
+          "conv and QDQ SSA connections",
+          "weight values, signed codes, scales, zero points",
+          "group slice and add operands"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-group.npy",
+        "reference_sha256": "4a48078d94b1e3888658c5f81024ed6186bbbafe48d81510ab399ab83aa50c19",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fe648e53eae16cc5be3acd78d186356c0148c0f98b8d282a5ce5fa20ae268a40",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 266,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "every_control_has_ANE": false,
+        "conv_plan": [
+          {
+            "operator_name": "ios18.conv",
+            "supported": [
+              "<MLCPUComputeDevice>"
+            ],
+            "preferred": "<MLCPUComputeDevice>",
+            "function": "main",
+            "estimated_weight": 1,
+            "output_names": [
+              "y"
+            ],
+            "path": "main/op13"
+          }
+        ],
+        "conv_plan_passed": false,
+        "unsupported_messages": [
+          "Unsupported op 4 (ios18.conv): ANE only support per-cout/per-tensor quantization",
+          "Unsupported op 4 (ios18.conv): ANE only support per-cout/per-tensor quantization"
+        ],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": false,
+        "runtime_or_plan_passed": false,
+        "admitted": false,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": null
+      },
+      "measured_records": [],
+      "flattened-scale-hypothesis": {
+        "reference_file": "reference-group-wrong.npy",
+        "reference_sha256": "58602da62f536d2fcfca5f7ce1cabe522284948f00cab40d693120300bc6280a",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fe648e53eae16cc5be3acd78d186356c0148c0f98b8d282a5ce5fa20ae268a40",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 2187,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": false
+      }
+    },
+    {
+      "run": "08-control-coreml-group-split32",
+      "case_id": "coreml-group-split32",
+      "source_ops": null,
+      "shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "representation": "Core ML direct signed INT4 blockwise",
+      "pid": 55669,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "99ac1bfc67d71291fe5b176651294c1d20e008ac02befbf03104afc075d73d74",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted proto/blob -> version-specific PyMIL operand walk and independent weight decode",
+        "asset_files": {
+          "Data/com.apple.CoreML/model.mlmodel": "5d037c361b2760996daee0ad76bcd82a0cece44bc95e49b4712703c671c5a902",
+          "Data/com.apple.CoreML/weights/weight.bin": "24c0d8fbd3f4d6b68d2469e9dfdb6cdcb98cf8935703271c11b0f55a30daecce",
+          "Manifest.json": "c73397f7f4688912dc757a4436a938441d49c96a3c557817d37cf24e7bfe7e32"
+        },
+        "actual_op_counts": {
+          "const": 23,
+          "quantize": 1,
+          "dequantize": 1,
+          "constexpr_blockwise_shift_scale": 2,
+          "slice_by_index": 2,
+          "conv": 2,
+          "add": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              64,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d1ea76533cd8d3280876ddad589f4bcc7af233983c0d9a21f744c56a54808ea3",
+            "weight_op": "constexpr_blockwise_shift_scale"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              64,
+              32,
+              1,
+              1
+            ],
+            "sha256": "2524606cf0d8a7451cd580a9c1c9ddf2e4a8e5c5cdf4fa1d00c7414fc4de4290",
+            "weight_op": "constexpr_blockwise_shift_scale"
+          }
+        ],
+        "checks": [
+          "input/output shape and dtype",
+          "actual convolution/quantize counts",
+          "conv and QDQ SSA connections",
+          "weight values, signed codes, scales, zero points",
+          "group slice and add operands"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-group.npy",
+        "reference_sha256": "4a48078d94b1e3888658c5f81024ed6186bbbafe48d81510ab399ab83aa50c19",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fe648e53eae16cc5be3acd78d186356c0148c0f98b8d282a5ce5fa20ae268a40",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 266,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "every_control_has_ANE": false,
+        "conv_plan": [
+          {
+            "estimated_weight": 0.2,
+            "supported": [
+              "<MLCPUComputeDevice>",
+              "<MLNeuralEngineComputeDevice>"
+            ],
+            "output_names": [
+              "conv_0"
+            ],
+            "operator_name": "ios18.conv",
+            "preferred": "<MLCPUComputeDevice>",
+            "path": "main/op16",
+            "function": "main"
+          },
+          {
+            "estimated_weight": 0.2,
+            "supported": [
+              "<MLCPUComputeDevice>",
+              "<MLNeuralEngineComputeDevice>"
+            ],
+            "output_names": [
+              "conv_1"
+            ],
+            "operator_name": "ios18.conv",
+            "preferred": "<MLCPUComputeDevice>",
+            "path": "main/op26",
+            "function": "main"
+          }
+        ],
+        "conv_plan_passed": false,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": false,
+        "runtime_or_plan_passed": false,
+        "admitted": false,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": null
+      },
+      "measured_records": [],
+      "flattened-scale-hypothesis": {
+        "reference_file": "reference-group-wrong.npy",
+        "reference_sha256": "58602da62f536d2fcfca5f7ce1cabe522284948f00cab40d693120300bc6280a",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fe648e53eae16cc5be3acd78d186356c0148c0f98b8d282a5ce5fa20ae268a40",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 2187,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": false
+      }
+    },
+    {
+      "run": "09-control-coreai-group-native64",
+      "case_id": "coreai-group-native64",
+      "source_ops": null,
+      "shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55688,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "162b75262ceb12baae39d717738f2377bbccb1a3190fac490f7f53a0b3c71282",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "d962eed1aaaf63d9d9016c84e3518f4d94052d1cd70d795754b304f30b49bc1f",
+          "main.mlirb": "3d2387981ea0484b8a1e27ea47c3e9afe8dc7372158130f9a6167ac13e674630",
+          "metadata.json": "0e3c5a817ec53bcb74bdc9675ffcf189e878c6a23473f336fddc0ac1a820cbcc"
+        },
+        "actual_op_counts": {
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1,
+          "coreai.lut_to_dense": 1,
+          "coreai.blockwise_shift_scale": 1,
+          "coreai.conv2d": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              64,
+              64,
+              1,
+              1
+            ],
+            "sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-group.npy",
+        "reference_sha256": "4a48078d94b1e3888658c5f81024ed6186bbbafe48d81510ab399ab83aa50c19",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "4232d61953af02cba38bef41f1a80119c516c12c90a48976138d149dffdb1d7c",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.450246892088486,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "02d7643856902294e23200530e8e993c0e0eec9925dce059d67d5b87eb0d196e",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 2187,
+            "relative_L2": 0.450246892088486,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "4232d61953af02cba38bef41f1a80119c516c12c90a48976138d149dffdb1d7c",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.450246892088486,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": false
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": false,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": false,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [],
+      "flattened-scale-hypothesis": {
+        "reference_file": "reference-group-wrong.npy",
+        "reference_sha256": "58602da62f536d2fcfca5f7ce1cabe522284948f00cab40d693120300bc6280a",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "4232d61953af02cba38bef41f1a80119c516c12c90a48976138d149dffdb1d7c",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "02d7643856902294e23200530e8e993c0e0eec9925dce059d67d5b87eb0d196e",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 266,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "4232d61953af02cba38bef41f1a80119c516c12c90a48976138d149dffdb1d7c",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "10-control-coreai-group-split32",
+      "case_id": "coreai-group-split32",
+      "source_ops": null,
+      "shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55706,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "1ee5c4b4aa9bc5f58504dcf7923c03c16e8a41ec34f27aabea354b626c705462",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "8a7f3e23faa00fa54b4781c28cf748d123ce5f1b3fc7f08bf00f0ee753ad12f9",
+          "main.mlirb": "2cd31fb501ca610f7f4072a52c03568ecd6774a4ba5f046a853c8b3287d643f3",
+          "metadata.json": "f73fc629c7cb98bb0103aba906aeddb4ba487100736dc6875513824f5c8fe578"
+        },
+        "actual_op_counts": {
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1,
+          "coreai.slice": 2,
+          "coreai.lut_to_dense": 2,
+          "coreai.blockwise_shift_scale": 2,
+          "coreai.conv2d": 2,
+          "coreai.decomposable.broadcasting_add": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              64,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d1ea76533cd8d3280876ddad589f4bcc7af233983c0d9a21f744c56a54808ea3"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              64,
+              32,
+              1,
+              1
+            ],
+            "sha256": "2524606cf0d8a7451cd580a9c1c9ddf2e4a8e5c5cdf4fa1d00c7414fc4de4290"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-group.npy",
+        "reference_sha256": "4a48078d94b1e3888658c5f81024ed6186bbbafe48d81510ab399ab83aa50c19",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fe648e53eae16cc5be3acd78d186356c0148c0f98b8d282a5ce5fa20ae268a40",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 266,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [],
+      "flattened-scale-hypothesis": {
+        "reference_file": "reference-group-wrong.npy",
+        "reference_sha256": "58602da62f536d2fcfca5f7ce1cabe522284948f00cab40d693120300bc6280a",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "fe648e53eae16cc5be3acd78d186356c0148c0f98b8d282a5ce5fa20ae268a40",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 2187,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "e035dbd10e9eba2e0d9b89c2e3b63d35a183776d6cbdd2850f88f0fe839284a5",
+            "numeric_mismatches": 1921,
+            "bit_mismatches": 1921,
+            "relative_L2": 0.45039282932380026,
+            "max_abs": 1.0,
+            "finite": true,
+            "nonzero_fraction": 0.93505859375,
+            "limit": 0,
+            "passed": false
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": false
+      }
+    },
+    {
+      "run": "11-control-coreai-qdq-equal",
+      "case_id": "coreai-qdq-equal",
+      "source_ops": null,
+      "shape": [
+        2,
+        64,
+        1,
+        16
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        16
+      ],
+      "representation": "Core AI qdq",
+      "pid": 55725,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "5e27f065af56f37b819c38f9178e19ab8535c64fa7c286707cdceda03bb1d3c1",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "6a19b3ab19f1008e57628b59726e6dd89ec6f8d4827cccb89b2586759c4d175e",
+          "main.mlirb": "94188bc844c59821e1f86357d8703c7b3534909a06fa8d3a7f573cb1084ff967",
+          "metadata.json": "6e4fc441d1032f2d0f6265853c43f6fe7c9258bac4744aa2f5b7c546cfdf8de4"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 2,
+          "coreai.quantize": 2,
+          "coreai.dequantize": 2,
+          "coreai.decomposable.broadcasting_mul": 1
+        },
+        "weight_decodes": [],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-mul.npy",
+        "reference_sha256": "e55fa6ec23ded5901fe8aab2df5a436b55f6c3ce5a044144e14acbf6c7b13cf6",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3172c99158fe77d48d542b3263957d2b1c22854dd483e25274b99b92cb085ec9",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "3172c99158fe77d48d542b3263957d2b1c22854dd483e25274b99b92cb085ec9",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3172c99158fe77d48d542b3263957d2b1c22854dd483e25274b99b92cb085ec9",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": []
+    },
+    {
+      "run": "12-control-coreai-qdq-unequal",
+      "case_id": "coreai-qdq-unequal",
+      "source_ops": null,
+      "shape": [
+        2,
+        64,
+        1,
+        16
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        16
+      ],
+      "representation": "Core AI qdq",
+      "pid": 55742,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "abc9069eeab827b5c7c31350851754dc4d0561df79011d8a2d967a69a7e88330",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "e36ac4c4a87ecd549ea492f9cd775c4bf21c9d8f20dbbc2e54d3d2d9458062d7",
+          "main.mlirb": "261693d8f3d6e4d617ce8b02d6bdd29330ade17023128c85a8e90c26cb0bd502",
+          "metadata.json": "4dcb5e09211b3a5963fc6b9d955beedcf98197e3bafd898370205115a2db96fb"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 2,
+          "coreai.quantize": 2,
+          "coreai.dequantize": 2,
+          "coreai.decomposable.broadcasting_mul": 1
+        },
+        "weight_decodes": [],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-mul.npy",
+        "reference_sha256": "e55fa6ec23ded5901fe8aab2df5a436b55f6c3ce5a044144e14acbf6c7b13cf6",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3efa84429b1fba6bb90ecdd5a0aaaee2e1c53dc221020a1d3a5112769fb72dd1",
+            "numeric_mismatches": 1024,
+            "bit_mismatches": 1024,
+            "relative_L2": 0.75,
+            "max_abs": 12.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "3efa84429b1fba6bb90ecdd5a0aaaee2e1c53dc221020a1d3a5112769fb72dd1",
+            "numeric_mismatches": 1024,
+            "bit_mismatches": 1024,
+            "relative_L2": 0.75,
+            "max_abs": 12.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3efa84429b1fba6bb90ecdd5a0aaaee2e1c53dc221020a1d3a5112769fb72dd1",
+            "numeric_mismatches": 1024,
+            "bit_mismatches": 1024,
+            "relative_L2": 0.75,
+            "max_abs": 12.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": false
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": false
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": false,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": false,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": []
+    },
+    {
+      "run": "13-control-coreai-qdq-reverse_order",
+      "case_id": "coreai-qdq-reverse_order",
+      "source_ops": null,
+      "shape": [
+        2,
+        64,
+        1,
+        16
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        16
+      ],
+      "representation": "Core AI qdq",
+      "pid": 55764,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "dfe71800cd2b82219523030c6e8dde21b90877c5f1d109dae186db33d2bf110c",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "9d194238cf855e2d886088b41eba98f7835601b30ae72f20a5fb0c9432d2b35d",
+          "main.mlirb": "ed9d7fea18adf71f4dce432ed7fe9029acebdb6a911a40fc6124d42cd2824da6",
+          "metadata.json": "4efeaae98d0667821995f96fc724bbe9e74b200874909a9b1c4ee90adcf4e800"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 2,
+          "coreai.quantize": 2,
+          "coreai.dequantize": 2,
+          "coreai.decomposable.broadcasting_mul": 1
+        },
+        "weight_decodes": [],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-mul.npy",
+        "reference_sha256": "e55fa6ec23ded5901fe8aab2df5a436b55f6c3ce5a044144e14acbf6c7b13cf6",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "cec8830fbec6962ba9a577832581468916257d794b9dacb32388ef4d1bda8f85",
+            "numeric_mismatches": 1024,
+            "bit_mismatches": 1024,
+            "relative_L2": 3.0,
+            "max_abs": 48.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "cec8830fbec6962ba9a577832581468916257d794b9dacb32388ef4d1bda8f85",
+            "numeric_mismatches": 1024,
+            "bit_mismatches": 1024,
+            "relative_L2": 3.0,
+            "max_abs": 48.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": false
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "cec8830fbec6962ba9a577832581468916257d794b9dacb32388ef4d1bda8f85",
+            "numeric_mismatches": 1024,
+            "bit_mismatches": 1024,
+            "relative_L2": 3.0,
+            "max_abs": 48.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": false
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": false
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": false,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": false,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": []
+    },
+    {
+      "run": "14-control-coreai-qdq-explicit_q",
+      "case_id": "coreai-qdq-explicit_q",
+      "source_ops": null,
+      "shape": [
+        2,
+        64,
+        1,
+        16
+      ],
+      "output_shape": [
+        1,
+        64,
+        1,
+        16
+      ],
+      "representation": "Core AI qdq",
+      "pid": 55782,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "6f1a7fbfe2ca4e7cb26a8e3ddd897996e856841908c1a2adcfbebdb3390c1e98",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "cdd4fdeb64967831c9be1f5fed648b2f6e8ef4a347537d9b50072081a6c3cf71",
+          "main.mlirb": "b8d4b24f648f7331aac9d11c26c2c96f47f8e0cb9f9b39734b58dce890d138c8",
+          "metadata.json": "34976194d19ac6c9b99a8e03fe272116915b600f78d346e4ec77db3efd22c5ba"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 2,
+          "coreai.decomposable.broadcasting_divide": 2,
+          "coreai.round": 2,
+          "coreai.decomposable.broadcasting_maximum": 2,
+          "coreai.decomposable.broadcasting_minimum": 2,
+          "coreai.cast": 2,
+          "coreai.dequantize": 2,
+          "coreai.decomposable.broadcasting_mul": 1
+        },
+        "weight_decodes": [],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-mul.npy",
+        "reference_sha256": "e55fa6ec23ded5901fe8aab2df5a436b55f6c3ce5a044144e14acbf6c7b13cf6",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3172c99158fe77d48d542b3263957d2b1c22854dd483e25274b99b92cb085ec9",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "3172c99158fe77d48d542b3263957d2b1c22854dd483e25274b99b92cb085ec9",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3172c99158fe77d48d542b3263957d2b1c22854dd483e25274b99b92cb085ec9",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 1.0,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": []
+    }
+  ]
+}

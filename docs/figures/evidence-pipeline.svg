@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">From a frozen workload to an admitted measurement</title>
+<desc id="fig-desc">Freeze references, audit the persisted asset, then check numerical controls, resource limits and actual ANE participation. Only after all of that is a synchronous call timed. A failed admission is preserved as a finding with no benchmark timing.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="700" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">From a frozen workload to an admitted measurement</text>
+<text x="40" y="50" font-size="12" class="t-muted">each layer answers a different question, and none of them substitutes for the next</text>
+<rect x="40" y="88" width="820" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 96 v56" class="s-blue" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="110" font-size="12.5" class="t-blue b">1 · Freeze the workload and its references</text>
+<text x="56" y="129" font-size="11.5" class="t-ink">Fix shapes, weights, inputs, scales and rounding rules before any output is observed.</text>
+<text x="56" y="145" font-size="11.5" class="t-ink">Keep separate references wherever graph reduction or QDQ boundaries differ.</text>
+<path d="M450 160 L450 176" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="176" width="820" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 184 v56" class="s-blue" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="198" font-size="12.5" class="t-blue b">2 · Export, reload and audit the persisted asset</text>
+<text x="56" y="217" font-size="11.5" class="t-ink">Follow graph operands; decode weights, scales and zero points independently.</text>
+<text x="56" y="233" font-size="11.5" class="t-ink">Record source and asset hashes. An unrecognised representation fails the audit.</text>
+<path d="M450 248 v14 H171 M450 262 H729" fill="none" class="s-muted" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M171 262 L171 282" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M450 262 L450 282" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M729 262 L729 282" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="282" width="262" height="104" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 290 v88" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="304" font-size="12.5" class="t-teal b">Numerical controls</text>
+<text x="56" y="323" font-size="11.5" class="t-ink">Original · zero · negative</text>
+<text x="56" y="339" font-size="11.5" class="t-ink">Repeated original is byte-identical</text>
+<text x="56" y="355" font-size="11.5" class="t-ink">Frozen reference plus hashes</text>
+<text x="56" y="371" font-size="11.5" class="t-ink">Finite and stable outputs</text>
+<rect x="319" y="282" width="262" height="104" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M320 290 v88" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="335" y="304" font-size="12.5" class="t-teal b">Resource boundaries</text>
+<text x="335" y="323" font-size="11.5" class="t-ink">Guard the owned process tree</text>
+<text x="335" y="339" font-size="11.5" class="t-ink">Memory, disk and deadlines</text>
+<text x="335" y="355" font-size="11.5" class="t-ink">Serial suite behind a host lock</text>
+<text x="335" y="371" font-size="11.5" class="t-ink">Every check is recorded</text>
+<rect x="598" y="282" width="262" height="104" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M599 290 v88" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="614" y="304" font-size="12.5" class="t-teal b">Actual device evidence</text>
+<text x="614" y="323" font-size="11.5" class="t-ink">ANE events in all four windows</text>
+<text x="614" y="339" font-size="11.5" class="t-ink">Core ML: convolutions prefer ANE</text>
+<text x="614" y="355" font-size="11.5" class="t-ink">Core AI: loaded function and</text>
+<text x="614" y="371" font-size="11.5" class="t-ink">requested specialization</text>
+<path d="M171 386 v14 H729 v-14 M450 386 v14" fill="none" class="s-muted" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M300 400 L300 422" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M700 400 L700 422" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="422" width="500" height="86" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 430 v70" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="444" font-size="12.5" class="t-teal b">3 · Admit the synchronous timed call</text>
+<text x="56" y="463" font-size="11.5" class="t-ink">Only once the required evidence has passed.</text>
+<text x="56" y="479" font-size="11.5" class="t-ink">10 warmups, then 30 measured calls per process.</text>
+<text x="56" y="495" font-size="11.5" class="t-ink">Three fresh processes per arm; report p50 and p95.</text>
+<rect x="570" y="422" width="290" height="86" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M571 430 v70" class="s-red" stroke-width="3" stroke-linecap="round"/>
+<text x="586" y="444" font-size="12.5" class="t-red b">A failure stays a finding</text>
+<text x="586" y="463" font-size="11.5" class="t-ink">Wrong outputs, CPU choices and</text>
+<text x="586" y="479" font-size="11.5" class="t-ink">errors are all preserved.</text>
+<text x="586" y="495" font-size="11.5" class="t-ink">They are never given a benchmark time.</text>
+<path d="M450 508 L450 530" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="530" width="820" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 538 v56" class="s-blue" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="552" font-size="12.5" class="t-blue b">4 · Preserve the raw records, verify, then select metrics</text>
+<text x="56" y="571" font-size="11.5" class="t-ink">Retain controls, output hashes, duration rows and source identity.</text>
+<text x="56" y="587" font-size="11.5" class="t-ink">Copying, checking, hashing, writing and log capture all sit outside the timer.</text>
+<rect x="40" y="626" width="820" height="46" rx="8" class="tint-amber s-amber" stroke-width="1" stroke-opacity=".35"/>
+<text x="58" y="646" font-size="11.5" class="t-amber sb">ANE participation is not exclusive placement, and neither is a physical INT8 instruction count.</text>
+<text x="58" y="663" font-size="10.5" class="t-muted">A synthetic graph rate says nothing on its own about model quality, token throughput or energy.</text>
+</svg>

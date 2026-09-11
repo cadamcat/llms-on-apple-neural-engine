@@ -1,0 +1,617 @@
+{
+  "status": "本轮已关闭；设备核查、图表及最终清理完成，功率／能耗未判定。",
+  "P2_process_medians": [
+    {
+      "positions": 64,
+      "C": {
+        "positions_per_second": 6240.899541416751,
+        "outer_mean_ms": 10.254931933333333,
+        "process_range": [
+          6239.00841879448,
+          6250.958989082671
+        ]
+      },
+      "G": {
+        "positions_per_second": 18488.47100835861,
+        "outer_mean_ms": 3.4616167,
+        "process_range": [
+          18286.59273879785,
+          18619.505992309794
+        ]
+      },
+      "C_over_G": 0.3375562824311026
+    },
+    {
+      "positions": 128,
+      "C": {
+        "positions_per_second": 6257.229585138313,
+        "outer_mean_ms": 20.456337466666664,
+        "process_range": [
+          6243.268813225616,
+          6266.713081033582
+        ]
+      },
+      "G": {
+        "positions_per_second": 29769.74982378285,
+        "outer_mean_ms": 4.2996666333333335,
+        "process_range": [
+          29271.15532160009,
+          29844.897234886594
+        ]
+      },
+      "C_over_G": 0.21018750987754203
+    },
+    {
+      "positions": 256,
+      "C": {
+        "positions_per_second": 6758.034828236449,
+        "outer_mean_ms": 37.880834666666665,
+        "process_range": [
+          6756.144772390889,
+          6767.042746271495
+        ]
+      },
+      "G": {
+        "positions_per_second": 29894.410722601973,
+        "outer_mean_ms": 8.5634737,
+        "process_range": [
+          29794.965363915297,
+          30148.87502711485
+        ]
+      },
+      "C_over_G": 0.22606349029408926
+    },
+    {
+      "positions": 512,
+      "C": {
+        "positions_per_second": 6750.993398459794,
+        "outer_mean_ms": 75.84069036666668,
+        "process_range": [
+          6750.989318587338,
+          6761.655223915917
+        ]
+      },
+      "G": {
+        "positions_per_second": 31641.59030121974,
+        "outer_mean_ms": 16.181234733333334,
+        "process_range": [
+          25496.36780337796,
+          31860.606924151205
+        ]
+      },
+      "C_over_G": 0.21335822043683916
+    },
+    {
+      "positions": 1024,
+      "C": {
+        "positions_per_second": 6758.632087776233,
+        "outer_mean_ms": 151.50994856666665,
+        "process_range": [
+          6752.548689000091,
+          6764.619324849289
+        ]
+      },
+      "G": {
+        "positions_per_second": 27283.421143348674,
+        "outer_mean_ms": 37.53195006666667,
+        "process_range": [
+          26506.01422066645,
+          27294.577109954662
+        ]
+      },
+      "C_over_G": 0.24771937698963736
+    },
+    {
+      "positions": 2048,
+      "C": {
+        "positions_per_second": 6763.620113846891,
+        "outer_mean_ms": 302.7964264,
+        "process_range": [
+          6758.223043633977,
+          6775.766105854651
+        ]
+      },
+      "G": {
+        "positions_per_second": 27312.44174287627,
+        "outer_mean_ms": 74.98414163333334,
+        "process_range": [
+          26978.415264167103,
+          27366.90224019502
+        ]
+      },
+      "C_over_G": 0.24763879324744018
+    },
+    {
+      "positions": 4096,
+      "C": {
+        "positions_per_second": 6761.3480359116365,
+        "outer_mean_ms": 605.7963557333334,
+        "process_range": [
+          6759.822817071686,
+          6762.032794264295
+        ]
+      },
+      "G": {
+        "positions_per_second": 26853.5400262955,
+        "outer_mean_ms": 152.53110003333333,
+        "process_range": [
+          26741.951690815742,
+          26977.17126761309
+        ]
+      },
+      "C_over_G": 0.25178609707661614
+    }
+  ],
+  "tile_diagnostic": [
+    {
+      "round": 0,
+      "tile256_over64": 1.0750784770743602
+    },
+    {
+      "round": 1,
+      "tile256_over64": 1.0812013147145998
+    },
+    {
+      "round": 2,
+      "tile256_over64": 1.0754253309688817
+    }
+  ],
+  "saturated": [
+    {
+      "id": "SAT-0-C",
+      "engine": "C",
+      "completed": 6145,
+      "observed_completed": 6144,
+      "requests_per_second": 6.4,
+      "censored": false,
+      "platform": "approximate_platform",
+      "tail_medians": {
+        "macmon_cpu_sensor_mean_c": 59.837890625,
+        "macmon_gpu_sensor_mean_c": 58.8355655670166,
+        "fan0_rpm": 1353.0,
+        "fan1_rpm": 1460.0
+      },
+      "time_accounting": {
+        "requests": 6145,
+        "first_client_start_ns": 84930664417708,
+        "last_completion_ns": 85890712781583,
+        "span_ns": 960048363875,
+        "totals_ns": {
+          "client": 931254921406,
+          "worker_within_client": 902607902508,
+          "client_end_to_event_completion": 27071191721,
+          "between_requests": 1722250748
+        },
+        "client_fraction_of_span": 0.9700083417123047,
+        "outside_client_fraction_of_span": 0.029991658287695344,
+        "seconds_distributions": {
+          "client": {
+            "count": 6145,
+            "mean": 0.1515467732149715,
+            "p50": 0.151619875,
+            "p95": 0.15191505840000002,
+            "p99": 0.15202831348,
+            "min": 0.14643,
+            "max": 0.171756917
+          },
+          "worker_within_client": {
+            "count": 6145,
+            "mean": 0.14688493124621643,
+            "p50": 0.146980083,
+            "p95": 0.14720206660000001,
+            "p99": 0.14728572852,
+            "min": 0.141919375,
+            "max": 0.166896791
+          },
+          "client_end_to_event_completion": {
+            "count": 6145,
+            "mean": 0.004405401419202604,
+            "p50": 0.004403708,
+            "p95": 0.0044788994,
+            "p99": 0.004520083,
+            "min": 0.00422575,
+            "max": 0.005304459
+          },
+          "between_requests": {
+            "count": 6144,
+            "mean": 0.00028031424934895835,
+            "p50": 5.5583e-05,
+            "p95": 6.9e-05,
+            "p99": 0.007665539309999997,
+            "min": 2.9916e-05,
+            "max": 0.009893291
+          }
+        },
+        "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+        "limits": [
+          "Client time includes host IPC and worker response; its fraction is not device utilization.",
+          "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+          "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+          "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+        ]
+      }
+    },
+    {
+      "id": "SAT-1-G",
+      "engine": "G",
+      "completed": 22762,
+      "observed_completed": 22761,
+      "requests_per_second": 23.709375,
+      "censored": false,
+      "platform": "approximate_platform",
+      "tail_medians": {
+        "macmon_cpu_sensor_mean_c": 64.47981643676758,
+        "macmon_gpu_sensor_mean_c": 69.96466064453125,
+        "fan0_rpm": 3485.5,
+        "fan1_rpm": 3768.0
+      },
+      "time_accounting": {
+        "requests": 22762,
+        "first_client_start_ns": 86130664466916,
+        "last_completion_ns": 87090654303125,
+        "span_ns": 959989836209,
+        "totals_ns": {
+          "client": 851575322034,
+          "worker_within_client": 740668789096,
+          "client_end_to_event_completion": 99725848845,
+          "between_requests": 8688665330
+        },
+        "client_fraction_of_span": 0.8870670187476891,
+        "outside_client_fraction_of_span": 0.1129329812523109,
+        "seconds_distributions": {
+          "client": {
+            "count": 22762,
+            "mean": 0.03741214840673052,
+            "p50": 0.0373294375,
+            "p95": 0.0382501955,
+            "p99": 0.03875515013,
+            "min": 0.036439,
+            "max": 0.055628875
+          },
+          "worker_within_client": {
+            "count": 22762,
+            "mean": 0.03253970604938055,
+            "p50": 0.032457937500000006,
+            "p95": 0.033399209,
+            "p99": 0.033856104639999995,
+            "min": 0.03158475,
+            "max": 0.050523583
+          },
+          "client_end_to_event_completion": {
+            "count": 22762,
+            "mean": 0.004381242810166067,
+            "p50": 0.004372292,
+            "p95": 0.0044485398999999995,
+            "p99": 0.00449328237,
+            "min": 0.00421325,
+            "max": 0.005456792
+          },
+          "between_requests": {
+            "count": 22761,
+            "mean": 0.0003817347801063222,
+            "p50": 4.7042e-05,
+            "p95": 5.8584e-05,
+            "p99": 0.012581849600000012,
+            "min": 2.475e-05,
+            "max": 0.016908209
+          }
+        },
+        "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+        "limits": [
+          "Client time includes host IPC and worker response; its fraction is not device utilization.",
+          "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+          "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+          "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+        ]
+      }
+    },
+    {
+      "id": "SAT-2-G",
+      "engine": "G",
+      "completed": 22734,
+      "observed_completed": 22733,
+      "requests_per_second": 23.680208333333333,
+      "censored": false,
+      "platform": "approximate_platform",
+      "tail_medians": {
+        "macmon_cpu_sensor_mean_c": 66.31597137451172,
+        "macmon_gpu_sensor_mean_c": 71.97990798950195,
+        "fan0_rpm": 3116.5,
+        "fan1_rpm": 3368.0
+      },
+      "time_accounting": {
+        "requests": 22734,
+        "first_client_start_ns": 87330657702708,
+        "last_completion_ns": 88290673655666,
+        "span_ns": 960015952958,
+        "totals_ns": {
+          "client": 851646955659,
+          "worker_within_client": 740764019159,
+          "client_end_to_event_completion": 99626441858,
+          "between_requests": 8742555441
+        },
+        "client_fraction_of_span": 0.8871175036570033,
+        "outside_client_fraction_of_span": 0.11288249634299678,
+        "seconds_distributions": {
+          "client": {
+            "count": 22734,
+            "mean": 0.03746137748126155,
+            "p50": 0.0373837915,
+            "p95": 0.03843084945,
+            "p99": 0.038922063029999995,
+            "min": 0.036359583,
+            "max": 0.055441917
+          },
+          "worker_within_client": {
+            "count": 22734,
+            "mean": 0.03258397198728776,
+            "p50": 0.032502021000000006,
+            "p95": 0.033570501749999995,
+            "p99": 0.034031474359999994,
+            "min": 0.031539833,
+            "max": 0.050274792
+          },
+          "client_end_to_event_completion": {
+            "count": 22734,
+            "mean": 0.0043822662909298845,
+            "p50": 0.004373541,
+            "p95": 0.00444479135,
+            "p99": 0.0044796948100000004,
+            "min": 0.004203167,
+            "max": 0.005871208
+          },
+          "between_requests": {
+            "count": 22733,
+            "mean": 0.0003845755263713544,
+            "p50": 4.6833e-05,
+            "p95": 5.8625e-05,
+            "p99": 0.012665470440000007,
+            "min": 2.5125e-05,
+            "max": 0.017616625
+          }
+        },
+        "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+        "limits": [
+          "Client time includes host IPC and worker response; its fraction is not device utilization.",
+          "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+          "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+          "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+        ]
+      }
+    },
+    {
+      "id": "SAT-3-C",
+      "engine": "C",
+      "completed": 6132,
+      "observed_completed": 6131,
+      "requests_per_second": 6.386458333333334,
+      "censored": false,
+      "platform": "approximate_platform",
+      "tail_medians": {
+        "macmon_cpu_sensor_mean_c": 58.47677803039551,
+        "macmon_gpu_sensor_mean_c": 57.505022048950195,
+        "fan0_rpm": 1349.0,
+        "fan1_rpm": 1457.0
+      },
+      "time_accounting": {
+        "requests": 6132,
+        "first_client_start_ns": 88530662958166,
+        "last_completion_ns": 89490702344791,
+        "span_ns": 960039386625,
+        "totals_ns": {
+          "client": 931395781671,
+          "worker_within_client": 902739156695,
+          "client_end_to_event_completion": 26935308201,
+          "between_requests": 1708296753
+        },
+        "client_fraction_of_span": 0.9701641356041693,
+        "outside_client_fraction_of_span": 0.02983586439583072,
+        "seconds_distributions": {
+          "client": {
+            "count": 6132,
+            "mean": 0.15189102766976517,
+            "p50": 0.1519489585,
+            "p95": 0.1523102269,
+            "p99": 0.15247152177,
+            "min": 0.147152541,
+            "max": 0.171100709
+          },
+          "worker_within_client": {
+            "count": 6132,
+            "mean": 0.14721773592547294,
+            "p50": 0.147296521,
+            "p95": 0.1475973625,
+            "p99": 0.14771640296,
+            "min": 0.142053292,
+            "max": 0.166525958
+          },
+          "client_end_to_event_completion": {
+            "count": 6132,
+            "mean": 0.004392581246086106,
+            "p50": 0.004390896,
+            "p95": 0.004466417,
+            "p99": 0.00451735204,
+            "min": 0.004220667,
+            "max": 0.004767209
+          },
+          "between_requests": {
+            "count": 6131,
+            "mean": 0.0002786326460610015,
+            "p50": 5.5084e-05,
+            "p95": 6.84785e-05,
+            "p99": 0.0076610162,
+            "min": 3.1083e-05,
+            "max": 0.009858125
+          }
+        },
+        "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+        "limits": [
+          "Client time includes host IPC and worker response; its fraction is not device utilization.",
+          "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+          "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+          "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+        ]
+      }
+    }
+  ],
+  "saturated_C_over_G": 0.2698157998856992,
+  "P3_pairs": [
+    {
+      "group": "P3-0.25-r0",
+      "thermal_start": "matched",
+      "requests_each": 594,
+      "cpu_mean_G_minus_C": 1.1672659226239972,
+      "gpu_mean_G_minus_C": 1.846110887184203,
+      "C_platform": "approximate_platform",
+      "G_platform": "not_platform"
+    },
+    {
+      "group": "P3-0.5-r0",
+      "thermal_start": "matched",
+      "requests_each": 1187,
+      "cpu_mean_G_minus_C": 2.03482476086684,
+      "gpu_mean_G_minus_C": 3.0737814052563905,
+      "C_platform": "approximate_platform",
+      "G_platform": "not_platform"
+    },
+    {
+      "group": "P3-0.75-r0",
+      "thermal_start": "matched",
+      "requests_each": 1780,
+      "cpu_mean_G_minus_C": 1.7467026710510254,
+      "gpu_mean_G_minus_C": 3.289325979020859,
+      "C_platform": "not_platform",
+      "G_platform": "not_platform"
+    },
+    {
+      "group": "P3-0.75-r1",
+      "thermal_start": "matched",
+      "requests_each": 1780,
+      "cpu_mean_G_minus_C": 1.6846293947879474,
+      "gpu_mean_G_minus_C": 3.283609926793865,
+      "C_platform": "not_platform",
+      "G_platform": "not_platform"
+    },
+    {
+      "group": "P3-0.5-r1",
+      "thermal_start": "matched",
+      "requests_each": 1187,
+      "cpu_mean_G_minus_C": 2.2281997632905686,
+      "gpu_mean_G_minus_C": 3.2200794279668585,
+      "C_platform": "approximate_platform",
+      "G_platform": "not_platform"
+    },
+    {
+      "group": "P3-0.25-r1",
+      "thermal_start": "matched",
+      "requests_each": 594,
+      "cpu_mean_G_minus_C": 0.687198691897926,
+      "gpu_mean_G_minus_C": 1.3254483540852888,
+      "C_platform": "approximate_platform",
+      "G_platform": "approximate_platform"
+    }
+  ],
+  "thermal_start_counts": {
+    "mismatched": 5,
+    "matched": 9
+  },
+  "resources": {
+    "passed": true,
+    "samples": 23183,
+    "samples_by_phase": {
+      "preflight_or_baseline": 2,
+      "p0_memory": 1104,
+      "p1_gpu_coexistence": 7161,
+      "p2_latency": 2685,
+      "p3_matched_rate_thermal": 7159,
+      "saturated_thermal": 5072
+    },
+    "peaks": {
+      "all_owned_rss_bytes": 2597453824,
+      "component_rss_bytes": 2116239360,
+      "component_footprint_bytes": 3143864448,
+      "foreground_rss_bytes": 1851867136,
+      "foreground_footprint_bytes": 1903675360,
+      "result_bytes": 2801673014,
+      "swap_growth_mib": 0
+    },
+    "minimum_free_percent": 81,
+    "minimum_disk_bytes": 118812413952,
+    "maximum_sample_gap_seconds": 1.067132,
+    "maximum_clock_offset_change_seconds": 0.147492042,
+    "violations": [],
+    "cutoff_monotonic_ns": 89910653809625,
+    "scope": "Sampled process sums and fixed thresholds; gaps reported, not continuous memory bounds. Initial swap baseline inferred from first recorded delta; subsequent transitions independently reconstructed. External privileged footprint remains unavailable."
+  },
+  "background": {
+    "snapshots": 775,
+    "pcpu_sum_min_median_max": [
+      128.6,
+      147.1,
+      312.0
+    ]
+  },
+  "power_status": "power_energy_undetermined",
+  "power_alignment": {
+    "accepted": false,
+    "failures": [
+      "constant_origin_intersection_empty",
+      "truncated_tail",
+      "wall_clock_discontinuity"
+    ],
+    "origin_low_epoch": 1789082249.6160827,
+    "origin_high_epoch": 1789082249.5071013,
+    "samples": 18947,
+    "quantization_bin_seconds": 1,
+    "scope": "CPU+GPU+ANE estimated domains; no wall-power claim"
+  },
+  "SMC_over_1000W": [
+    {
+      "timestamp": "2026-09-11T04:57:34.744953+00:00",
+      "reported_w": 1537.404296875
+    },
+    {
+      "timestamp": "2026-09-11T05:28:34.710555+00:00",
+      "reported_w": 3203.62353515625
+    },
+    {
+      "timestamp": "2026-09-11T05:59:34.559238+00:00",
+      "reported_w": 3460.7734375
+    },
+    {
+      "timestamp": "2026-09-11T06:30:34.548561+00:00",
+      "reported_w": 3903.34375
+    },
+    {
+      "timestamp": "2026-09-11T07:01:34.333970+00:00",
+      "reported_w": 4083.2841796875
+    }
+  ],
+  "scope": "Single M5 Pro; first-layer full MLP, not complete LLM, token/context or wall energy.",
+  "environment_followup": {
+    "scope": "Post-run annotation of r4 device-phase ps snapshots only; not all eight hours and not per-process GPU utilization.",
+    "source": "results/g2-w4a16-night-20260910/night-20260911-r4/telemetry/system.jsonl",
+    "source_sha256": "6fa702a7cd8bca0686949f2d361007dc9b4b2066306cbfae41d7309129b10558",
+    "background_snapshots": 775,
+    "Ventura_present": 775,
+    "Ventura_pids": [
+      77758
+    ],
+    "Ventura_pcpu_min_median_max": [
+      4.3,
+      4.9,
+      8.6
+    ],
+    "not_established": [
+      "Continuous animation rendering in every snapshot or workload slot",
+      "Exact animation start/end intervals",
+      "Per-process GPU time, UMA bandwidth or power attributable to Ventura",
+      "Magnitude or direction of bias in ANE/GPU comparisons"
+    ],
+    "post_run_report": {
+      "date": "2026-09-11",
+      "source": "Statement recorded after G2 completion; not contemporaneous telemetry.",
+      "text": "The Mac stayed awake and the Ventura dynamic screensaver loaded automatically."
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="322" viewBox="0 0 900 322" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">Final rounding of the exact dot cannot explain this output</title>
+<desc id="fig-desc">The binary16 grid around one exact 32-term dot product. The exact value lies between two representable numbers, so any correctly rounded result must be one of those two. The recorded device output is a third value, one unit in the last place beyond the lower one. This excludes final rounding alone, not intermediate product or accumulation effects.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="322" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">Final rounding of the exact dot cannot explain this output</text>
+<text x="40" y="50" font-size="12" class="t-muted">one 32-term dot product from a real gate · the binary16 grid, zoomed to four ULP</text>
+<text x="40" y="68" font-size="10.5" class="t-muted">Qwen8B first gate · output channel 11793, token 22 · input channels 2912–2943</text>
+<text x="545" y="128" font-size="10.5" class="t-teal sb" text-anchor="middle">any correctly rounded result is one of these two</text>
+<rect x="460" y="140" width="170" height="44" rx="6" class="tint-teal" stroke="none"/>
+<path d="M120 162 L800 162" fill="none" class="s-rule" stroke-width="1"/>
+<path d="M120 155 L120 169" fill="none" class="s-muted" stroke-width="1"/>
+<path d="M290 155 L290 169" fill="none" class="s-muted" stroke-width="1"/>
+<path d="M460 155 L460 169" fill="none" class="s-muted" stroke-width="1"/>
+<path d="M630 155 L630 169" fill="none" class="s-muted" stroke-width="1"/>
+<path d="M800 155 L800 169" fill="none" class="s-muted" stroke-width="1"/>
+<text x="800" y="188" font-size="10.5" class="t-muted" text-anchor="end">representable binary16 values, 1 ULP apart</text>
+<circle cx="290" cy="162" r="7" class="f-red"/>
+<path d="M290 171 L290 196" fill="none" class="s-red" stroke-width="1"/>
+<text x="290" y="212" font-size="11.5" class="t-red b" text-anchor="middle">✗  what the ANE returned</text>
+<text x="290" y="228" font-size="10.5" class="t-muted num" text-anchor="middle">-0.05987548828125</text>
+<circle cx="460" cy="162" r="7" class="f-teal"/>
+<path d="M460 171 L460 196" fill="none" class="s-teal" stroke-width="1"/>
+<text x="460" y="212" font-size="11.5" class="t-teal b" text-anchor="middle">✓  correctly rounded</text>
+<text x="460" y="228" font-size="10.5" class="t-muted num" text-anchor="middle">-0.059844970703125</text>
+<text x="40" y="268" font-size="10.5" class="t-ink">The exact dot product is -0.059843659400939941, which sits 0.04 ULP above the lower end — indistinguishable from it here, and nowhere near a midpoint.</text>
+<text x="40" y="292" font-size="10.5" class="t-muted">Final rounding alone is ruled out; intermediate products and accumulation remain unobserved. Check the 32 published terms.</text>
+</svg>

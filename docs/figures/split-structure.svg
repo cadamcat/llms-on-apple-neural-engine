@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="726" viewBox="0 0 900 726" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">Same K512 weights, different graph boundaries</title>
+<desc id="fig-desc">A two-layer Core AI A8W4 ablation. The wide path runs one K512 convolution per layer; the split path runs sixteen contiguous K32 convolutions and a balanced fifteen-add FP16 tree per layer. One A8 QDQ separates the layers. The counts describe graph operations, not host calls.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="726" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">Same K512 weights, different graph boundaries</text>
+<text x="40" y="50" font-size="12" class="t-muted">Core AI A8W4 · input [1, 512, 64, 64] · two layers · identical initial weight values</text>
+<rect x="40" y="86" width="390" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 94 v56" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="108" font-size="12.5" class="t-teal b">Wide path</text>
+<text x="56" y="127" font-size="11.5" class="t-ink">W is 512 × 512 and every K512 input is read at once.</text>
+<text x="56" y="143" font-size="11.5" class="t-ink">One convolution produces the FP16 layer output.</text>
+<rect x="470" y="86" width="390" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M471 94 v56" class="s-amber" stroke-width="3" stroke-linecap="round"/>
+<text x="486" y="108" font-size="12.5" class="t-amber b">Split path</text>
+<text x="486" y="127" font-size="11.5" class="t-ink">The same W, partitioned along the input dimension K.</text>
+<text x="486" y="143" font-size="11.5" class="t-ink">Sixteen contiguous slices, each of width K32.</text>
+<path d="M235 158 L235 178" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M665 158 L665 178" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="178" width="390" height="86" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 186 v70" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="200" font-size="12.5" class="t-teal b">One K512 convolution</text>
+<text x="56" y="219" font-size="11.5" class="t-ink">One dot product per output and position.</text>
+<text x="56" y="235" font-size="11.5" class="t-ink">A single FP16 boundary at the layer output.</text>
+<text x="56" y="251" font-size="11.5" class="t-ink">No partial-sum addition tree at all.</text>
+<rect x="470" y="178" width="390" height="86" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M471 186 v70" class="s-amber" stroke-width="3" stroke-linecap="round"/>
+<text x="486" y="200" font-size="12.5" class="t-amber b">Sixteen K32 convolutions</text>
+<text x="486" y="219" font-size="11.5" class="t-ink">Each one produces all 512 output channels.</text>
+<text x="486" y="235" font-size="11.5" class="t-ink">An FP16 boundary on every partial result.</text>
+<text x="486" y="251" font-size="11.5" class="t-ink">The same synthetic weight scale in each piece.</text>
+<path d="M665 264 L665 284" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="470" y="284" width="390" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M471 292 v56" class="s-amber" stroke-width="3" stroke-linecap="round"/>
+<text x="486" y="306" font-size="12.5" class="t-amber b">Balanced FP16 addition tree</text>
+<text x="486" y="325" font-size="11.5" class="t-ink">Sixteen partials reduce 16 → 8 → 4 → 2 → 1.</text>
+<text x="486" y="341" font-size="11.5" class="t-ink">Fifteen adds, with an FP16 boundary at each level.</text>
+<path d="M235 264 v112" fill="none" class="s-muted" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M665 356 L665 376" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="376" width="390" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 384 v56" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="398" font-size="12.5" class="t-teal b">One inter-layer A8 QDQ</text>
+<text x="56" y="417" font-size="11.5" class="t-ink">Q8 rounding to nearest, ties away from zero.</text>
+<text x="56" y="433" font-size="11.5" class="t-ink">Scale 0.125, then dequantize back to FP16.</text>
+<rect x="470" y="376" width="390" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M471 384 v56" class="s-amber" stroke-width="3" stroke-linecap="round"/>
+<text x="486" y="398" font-size="12.5" class="t-amber b">One inter-layer A8 QDQ</text>
+<text x="486" y="417" font-size="11.5" class="t-ink">Q8 rounding to nearest, ties away from zero.</text>
+<text x="486" y="433" font-size="11.5" class="t-ink">Scale 0.125, then dequantize back to FP16.</text>
+<path d="M235 448 L235 468" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M665 448 L665 468" fill="none" class="s-muted" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="40" y="468" width="390" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 476 v56" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="490" font-size="12.5" class="t-teal b">Repeat for layer 2</text>
+<text x="56" y="509" font-size="11.5" class="t-ink">Two-layer total: 2 convolutions and 1 QDQ.</text>
+<text x="56" y="525" font-size="11.5" class="t-ink">FP16 output, with no final QDQ.</text>
+<rect x="470" y="468" width="390" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M471 476 v56" class="s-amber" stroke-width="3" stroke-linecap="round"/>
+<text x="486" y="490" font-size="12.5" class="t-amber b">Repeat for layer 2</text>
+<text x="486" y="509" font-size="11.5" class="t-ink">Two-layer total: 32 convolutions and 30 adds.</text>
+<text x="486" y="525" font-size="11.5" class="t-ink">One QDQ, FP16 output, no final QDQ.</text>
+<text x="40" y="574" font-size="11.5" class="t-ink sb">One host prediction executes either complete two-layer graph.</text>
+<text x="40" y="591" font-size="10.5" class="t-muted">The two paths therefore need separate frozen references: split partial and reduction FP16 midpoint ties use RZA.</text>
+<rect x="40" y="610" width="820" height="72" rx="8" class="f-card s-rule" stroke-width="1"/>
+<path d="M41 618 v56" class="s-blue" stroke-width="3" stroke-linecap="round"/>
+<text x="56" y="632" font-size="12.5" class="t-blue b">A separate fixture: the K64 compatibility probe</text>
+<text x="56" y="651" font-size="11.5" class="t-ink">64 output channels, two K32 groups with distinct scales, identity input and an input A8 QDQ.</text>
+<text x="56" y="667" font-size="11.5" class="t-ink">Its native-versus-split comparison is a different experiment from the K512 ablation above.</text>
+</svg>

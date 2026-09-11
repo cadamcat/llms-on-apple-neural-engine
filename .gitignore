@@ -1,0 +1,21 @@
+.venv/
+.local/
+runs/
+.cache/
+build/
+dist/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Generated data and model artifacts are never source assets.
+data/
+assets/
+*.mlmodelc/
+*.mlpackage/
+*.aimodel/
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth

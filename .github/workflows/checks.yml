@@ -1,0 +1,50 @@
+name: Portable checks
+
+# GitHub runners have no Apple Neural Engine, so nothing here executes a device
+# suite. These jobs check arithmetic, evidence identity and whether the
+# published documents still agree with the bundled records.
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install .
+
+      - name: Reference and evidence tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Recheck the ANE-versus-GPU comparison and the per-call leak
+        run: python results/historical/tests/verify_prefill.py
+
+      - name: Recheck the later native MLP follow-up
+        run: python results/historical/tests/verify_native_followup.py
+
+      - name: Recompute imported G2 service and thermal observations
+        run: python scripts/verify_g2.py
+
+      - name: Check current source identity against its documented status
+        run: python scripts/check_source_identity.py --check
+
+      - name: Recheck the execution model and the localized dot product
+        run: python results/historical/tests/verify_arithmetic.py
+
+      - name: Recompute the historical timing records
+        run: python results/historical/tests/verify_historical.py
+
+      - name: Recompute the published tables and quoted numbers
+        run: python scripts/summarize.py
+
+      - name: Check figure, source and generator identity
+        run: python scripts/render_figures.py --check
+
+      - name: Figures regenerate byte-identically
+        run: |
+          python scripts/render_figures.py --write
+          git diff --exit-code -- docs/figures

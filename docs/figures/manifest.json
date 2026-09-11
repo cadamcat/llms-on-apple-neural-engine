@@ -1,0 +1,2061 @@
+{
+  "schema_version": 2,
+  "scope": "Figures derived from the bundled evidence and the documented methods; zero new device calls.",
+  "generation": "Python standard library only; deterministic and byte-reproducible.",
+  "generator_hashes": {
+    "scripts/render_figures.py": "a2582a2829c97e9c40c65086acc62121145e19528cb0d4e6773bdc751bb72956",
+    "scripts/figures/canvas.py": "cbb97ba7f3e8f598fc16f3f9617ed77d441ab93b33600a93e1a021220950962c",
+    "scripts/figures/architecture.py": "2090108c5a556eb415b6daccf003d825733306d104b7722a4c353c0f38576515",
+    "scripts/figures/arithmetic.py": "2d02915eef2fbe58392d2a4d2380a10ec2dc4297cd0ea13687ae7b31281def58",
+    "scripts/figures/measurements.py": "1ed5f27b7e31bf76bc4d23ecdf29ab1ef384c3395c7e3831fbe6edf24e0ba350",
+    "scripts/figures/g2.py": "36cc78b59d5102121ded8df02788a8acc9a332ffc447ab7dee46c86b38237e9d",
+    "scripts/g2/evidence.py": "4efbae6e6a58803c342bc13be165a35040c987cdcbe6dad24e72aac02b880ffb",
+    "scripts/g2/thermal.py": "8225beb0eb46bc4880bfbd98a1403e52b0b7e9d7dad881d867556fd05a29416f"
+  },
+  "figures": [
+    {
+      "filename": "evidence-pipeline.svg",
+      "title": "From a frozen workload to an admitted measurement",
+      "description": "Freeze references, audit the persisted asset, then check numerical controls, resource limits and actual ANE participation. Only after all of that is a synchronous call timed. A failed admission is preserved as a finding with no benchmark timing.",
+      "sources": [
+        "docs/METHODS.md",
+        "articles/01-measuring-ane-performance.md"
+      ],
+      "semantic_checks": [
+        "Frozen reference before observation",
+        "All admission evidence precedes timing",
+        "Failed admission has no timing",
+        "Device participation does not imply physical INT8"
+      ],
+      "source_hashes": {
+        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505",
+        "articles/01-measuring-ane-performance.md": "e4222e4ef6531a6894f6d60b559f3f436ed895f5c83eccab349782d105574b08"
+      },
+      "svg_sha256": "595340b9bc50d45922250f5f0ee35eade12a8b758ef74de400a28f5a66759d5c"
+    },
+    {
+      "filename": "split-structure.svg",
+      "title": "Same K512 weights, different graph boundaries",
+      "description": "A two-layer Core AI A8W4 ablation. The wide path runs one K512 convolution per layer; the split path runs sixteen contiguous K32 convolutions and a balanced fifteen-add FP16 tree per layer. One A8 QDQ separates the layers. The counts describe graph operations, not host calls.",
+      "sources": [
+        "docs/METHODS.md",
+        "articles/02-group-quantization-and-split.md",
+        "src/ane_scope/_coreai.py",
+        "src/ane_scope/references/prepare.py"
+      ],
+      "semantic_checks": [
+        "Per-layer 16 K32 conv and 15 FP16 adds",
+        "Two-layer 32 conv and 30 adds",
+        "Exactly one inter-layer QDQ",
+        "Separate frozen references per path",
+        "K64 compatibility separate from K512 performance"
+      ],
+      "source_hashes": {
+        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505",
+        "articles/02-group-quantization-and-split.md": "d8e1e2951c0c886dd6a072fb4941f1fcfe5fc82e8a0d294136661ac7cf60ce10",
+        "src/ane_scope/_coreai.py": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
+        "src/ane_scope/references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd"
+      },
+      "svg_sha256": "92da1b6cd56318d841b81f3f2ec27519371504454f4292d1ee75ba0edb70c0f7"
+    },
+    {
+      "filename": "reproduction-workflow.svg",
+      "title": "Reproduce a run, then verify and select its evidence",
+      "description": "The public CLI prepares a locked environment, inspects it, runs one suite serially behind a resource guard into a new output directory, verifies hashes and source identity, then reports a selection for review. Fresh and historical evidence stay in separate trees.",
+      "sources": [
+        "docs/REPRODUCING.md",
+        "docs/PROVENANCE.md"
+      ],
+      "semantic_checks": [
+        "Guarded CLI only",
+        "New run directory for every suite",
+        "Verify source identity",
+        "Inspect before copying a fresh selection",
+        "Historical and fresh evidence stay separate"
+      ],
+      "source_hashes": {
+        "docs/REPRODUCING.md": "4b733bec1da573f8a79845d44ef8eab9c49a4c895c83a1d5894b51ad7a8571d3",
+        "docs/PROVENANCE.md": "c9d6a6f3ccdaa165e17eea1cf1a061b72df1253e551aac5ac019b0de72cc6bb2"
+      },
+      "svg_sha256": "4d83172e3c9ee9e36a48bfab21ac8e9472a4ac56c78b723b422be0ad6779caea"
+    },
+    {
+      "filename": "arithmetic-levels.svg",
+      "title": "Three questions behind one word: accuracy",
+      "description": "Runtime compatibility compares a device output with a frozen arithmetic reference. Quantization deviation compares the quantized pipeline with an FP16 baseline. Model quality needs a language or task evaluation. Evidence at one level cannot stand in for the next.",
+      "sources": [
+        "articles/03-arithmetic-compatibility.md",
+        "docs/METHODS.md"
+      ],
+      "semantic_checks": [
+        "Three distinct comparisons",
+        "A conceptual distinction, not a measured causal path",
+        "Changing a reference never changes a recorded output"
+      ],
+      "source_hashes": {
+        "articles/03-arithmetic-compatibility.md": "1da218175b2713ab37e77381eb3e87ae82e5f4c65904c77e4cf35d62b6379a64",
+        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505"
+      },
+      "svg_sha256": "ec14136e622237b96b152159639e8e691e36bbd89acfe32d024f38df587c1756"
+    },
+    {
+      "filename": "qdq-scale-controls.svg",
+      "title": "Exact-grid controls separate a scale error from a rounding error",
+      "description": "For the exact inputs g equals 2 and u equals 8 the target product is 16, with no midpoint tie and no saturation anywhere. Equal-scale and explicit-quantize controls have zero error; unequal scales give a relative L2 of 0.75 and reversed construction gives 3. All four cases show ANE participation in every control, which does not make them numerically correct.",
+      "sources": [
+        "results/fresh/smoke.json",
+        "docs/METHODS.md",
+        "articles/03-arithmetic-compatibility.md"
+      ],
+      "values": [
+        {
+          "case": "coreai-qdq-equal",
+          "expression": "Standard QDQ",
+          "scales_label": "2, 2",
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "every_control_has_ANE": true,
+          "source_pointer": "/runs/10/numerical/comparisons/0",
+          "placement_pointer": "/runs/10/placement/every_control_has_ANE"
+        },
+        {
+          "case": "coreai-qdq-unequal",
+          "expression": "Standard QDQ",
+          "scales_label": "0.5, 2",
+          "relative_L2": 0.75,
+          "max_abs": 12.0,
+          "every_control_has_ANE": true,
+          "source_pointer": "/runs/11/numerical/comparisons/0",
+          "placement_pointer": "/runs/11/placement/every_control_has_ANE"
+        },
+        {
+          "case": "coreai-qdq-reverse_order",
+          "expression": "Reversed branch construction",
+          "scales_label": "0.5, 2",
+          "relative_L2": 3.0,
+          "max_abs": 48.0,
+          "every_control_has_ANE": true,
+          "source_pointer": "/runs/12/numerical/comparisons/0",
+          "placement_pointer": "/runs/12/placement/every_control_has_ANE"
+        },
+        {
+          "case": "coreai-qdq-explicit_q",
+          "expression": "Explicit quantize expression",
+          "scales_label": "0.5, 2",
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "every_control_has_ANE": true,
+          "source_pointer": "/runs/13/numerical/comparisons/0",
+          "placement_pointer": "/runs/13/placement/every_control_has_ANE"
+        }
+      ],
+      "semantic_checks": [
+        "Exact grid, so no midpoint tie explains the error",
+        "Error column uses the original input",
+        "ANE column covers all four controls",
+        "ANE participation does not imply a correct output"
+      ],
+      "source_hashes": {
+        "results/fresh/smoke.json": "962f1f17c7787a880c0a901cba498bc930ca4eaa1662480484e9980bac85037c",
+        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505",
+        "articles/03-arithmetic-compatibility.md": "1da218175b2713ab37e77381eb3e87ae82e5f4c65904c77e4cf35d62b6379a64"
+      },
+      "svg_sha256": "f13690d93a4d8a7a18073d7272598afc1edf1bb3fa4c00795e68fce2f53af193"
+    },
+    {
+      "filename": "dot-outside-bracket.svg",
+      "title": "Final rounding of the exact dot cannot explain this output",
+      "description": "The binary16 grid around one exact 32-term dot product. The exact value lies between two representable numbers, so any correctly rounded result must be one of those two. The recorded device output is a third value, one unit in the last place beyond the lower one. This excludes final rounding alone, not intermediate product or accumulation effects.",
+      "sources": [
+        "results/historical/dot-localization.json",
+        "findings/fp16-dot-residual/README.md"
+      ],
+      "semantic_checks": [
+        "Exact value lies strictly between two binary16 values",
+        "The model prediction is the correctly rounded one",
+        "The recorded device output is neither",
+        "The exact value is not at a midpoint",
+        "Recomputable from published scalars without a device"
+      ],
+      "source_hashes": {
+        "results/historical/dot-localization.json": "54c1f05ad085b9edb99b5359cdf9696bab58cb5ed4db76b0f3a7c967d6543a94",
+        "findings/fp16-dot-residual/README.md": "1df48d54a4ddacc959fc9966c59ed21b9e31b2926ca6eca3425d1e2a6001c134"
+      },
+      "svg_sha256": "41f9686e01287a197e659c4c5d3ddb2392adf974902baf3618df93055fe1d7ea"
+    },
+    {
+      "filename": "throughput-by-process.svg",
+      "title": "FP16 against two quantized paths on a synthetic 128-layer chain",
+      "description": "Five configurations, each measured in three independent processes. Bars show the median process rate and labels give the full range across the three. Quantized paths reach about 35 T source-equivalent operations per second against about 18.5 for FP16. Source-equivalent operation counts do not establish physical INT8 arithmetic.",
+      "source": "results/fresh/throughput.json",
+      "source_sha256": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110",
+      "formula": "source_ops / (p50_ms * 1e9)",
+      "points": [
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "06-process1-coreml-fp16-128",
+          "case_id": "coreml-fp16-128",
+          "process_round": 1,
+          "fields": {
+            "p50_ms": "/runs/5/p50_ms",
+            "source_ops": "/runs/5/source_ops",
+            "source_equivalent_Tops": "/runs/5/source_equivalent_Tops"
+          },
+          "p50_ms": 15.1150205,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 18.185744898195804
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "15-process2-coreml-fp16-128",
+          "case_id": "coreml-fp16-128",
+          "process_round": 2,
+          "fields": {
+            "p50_ms": "/runs/14/p50_ms",
+            "source_ops": "/runs/14/source_ops",
+            "source_equivalent_Tops": "/runs/14/source_equivalent_Tops"
+          },
+          "p50_ms": 14.76775,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 18.613391135684175
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "16-process3-coreml-fp16-128",
+          "case_id": "coreml-fp16-128",
+          "process_round": 3,
+          "fields": {
+            "p50_ms": "/runs/15/p50_ms",
+            "source_ops": "/runs/15/source_ops",
+            "source_equivalent_Tops": "/runs/15/source_equivalent_Tops"
+          },
+          "p50_ms": 14.8732295,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 18.481386772388607
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "07-process1-coreml-w8a8-128",
+          "case_id": "coreml-w8a8-128",
+          "process_round": 1,
+          "fields": {
+            "p50_ms": "/runs/6/p50_ms",
+            "source_ops": "/runs/6/source_ops",
+            "source_equivalent_Tops": "/runs/6/source_equivalent_Tops"
+          },
+          "p50_ms": 8.0516665,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 34.13925638176892
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "14-process2-coreml-w8a8-128",
+          "case_id": "coreml-w8a8-128",
+          "process_round": 2,
+          "fields": {
+            "p50_ms": "/runs/13/p50_ms",
+            "source_ops": "/runs/13/source_ops",
+            "source_equivalent_Tops": "/runs/13/source_equivalent_Tops"
+          },
+          "p50_ms": 7.9340005,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 34.64556208989399
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "17-process3-coreml-w8a8-128",
+          "case_id": "coreml-w8a8-128",
+          "process_round": 3,
+          "fields": {
+            "p50_ms": "/runs/16/p50_ms",
+            "source_ops": "/runs/16/source_ops",
+            "source_equivalent_Tops": "/runs/16/source_equivalent_Tops"
+          },
+          "p50_ms": 8.0437295,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 34.17294265601547
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "08-process1-coreai-fp16-128",
+          "case_id": "coreai-fp16-128",
+          "process_round": 1,
+          "fields": {
+            "p50_ms": "/runs/7/p50_ms",
+            "source_ops": "/runs/7/source_ops",
+            "source_equivalent_Tops": "/runs/7/source_equivalent_Tops"
+          },
+          "p50_ms": 14.6620415,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 18.747587567802206
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "13-process2-coreai-fp16-128",
+          "case_id": "coreai-fp16-128",
+          "process_round": 2,
+          "fields": {
+            "p50_ms": "/runs/12/p50_ms",
+            "source_ops": "/runs/12/source_ops",
+            "source_equivalent_Tops": "/runs/12/source_equivalent_Tops"
+          },
+          "p50_ms": 14.6306245,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 18.787845108320564
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "18-process3-coreai-fp16-128",
+          "case_id": "coreai-fp16-128",
+          "process_round": 3,
+          "fields": {
+            "p50_ms": "/runs/17/p50_ms",
+            "source_ops": "/runs/17/source_ops",
+            "source_equivalent_Tops": "/runs/17/source_equivalent_Tops"
+          },
+          "p50_ms": 14.641187500000001,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 18.774290469540123
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "09-process1-coreai-w8a8-128",
+          "case_id": "coreai-w8a8-128",
+          "process_round": 1,
+          "fields": {
+            "p50_ms": "/runs/8/p50_ms",
+            "source_ops": "/runs/8/source_ops",
+            "source_equivalent_Tops": "/runs/8/source_equivalent_Tops"
+          },
+          "p50_ms": 7.8393335,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 35.06393840037549
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "12-process2-coreai-w8a8-128",
+          "case_id": "coreai-w8a8-128",
+          "process_round": 2,
+          "fields": {
+            "p50_ms": "/runs/11/p50_ms",
+            "source_ops": "/runs/11/source_ops",
+            "source_equivalent_Tops": "/runs/11/source_equivalent_Tops"
+          },
+          "p50_ms": 7.8615829999999995,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 34.96470201281345
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "19-process3-coreai-w8a8-128",
+          "case_id": "coreai-w8a8-128",
+          "process_round": 3,
+          "fields": {
+            "p50_ms": "/runs/18/p50_ms",
+            "source_ops": "/runs/18/source_ops",
+            "source_equivalent_Tops": "/runs/18/source_equivalent_Tops"
+          },
+          "p50_ms": 7.8645415,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 34.95154891661517
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "10-process1-coreai-a8w4-128",
+          "case_id": "coreai-a8w4-128",
+          "process_round": 1,
+          "fields": {
+            "p50_ms": "/runs/9/p50_ms",
+            "source_ops": "/runs/9/source_ops",
+            "source_equivalent_Tops": "/runs/9/source_equivalent_Tops"
+          },
+          "p50_ms": 7.834688,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 35.084729212445986
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "11-process2-coreai-a8w4-128",
+          "case_id": "coreai-a8w4-128",
+          "process_round": 2,
+          "fields": {
+            "p50_ms": "/runs/10/p50_ms",
+            "source_ops": "/runs/10/source_ops",
+            "source_equivalent_Tops": "/runs/10/source_equivalent_Tops"
+          },
+          "p50_ms": 7.832791500000001,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 35.09322403692221
+        },
+        {
+          "source": "results/fresh/throughput.json",
+          "run": "20-process3-coreai-a8w4-128",
+          "case_id": "coreai-a8w4-128",
+          "process_round": 3,
+          "fields": {
+            "p50_ms": "/runs/19/p50_ms",
+            "source_ops": "/runs/19/source_ops",
+            "source_equivalent_Tops": "/runs/19/source_equivalent_Tops"
+          },
+          "p50_ms": 7.837479500000001,
+          "source_ops": 274877906944,
+          "throughput_T_source_ops_per_s": 35.07223297285817
+        }
+      ],
+      "paired_ratios": [
+        {
+          "case_id": "coreml-w8a8-128",
+          "baseline": "coreml-fp16-128",
+          "process_rounds": [
+            1,
+            2,
+            3
+          ],
+          "FP16_over_quantized_p50": [
+            1.8772536716467332,
+            1.8613245612979228,
+            1.849046452892281
+          ]
+        },
+        {
+          "case_id": "coreai-w8a8-128",
+          "baseline": "coreai-fp16-128",
+          "process_rounds": [
+            1,
+            2,
+            3
+          ],
+          "FP16_over_quantized_p50": [
+            1.8703173554231365,
+            1.8610277980910461,
+            1.8616708297616589
+          ]
+        },
+        {
+          "case_id": "coreai-a8w4-128",
+          "baseline": "coreai-fp16-128",
+          "process_rounds": [
+            1,
+            2,
+            3
+          ],
+          "FP16_over_quantized_p50": [
+            1.8714263414190841,
+            1.8678684987338166,
+            1.8680989851392913
+          ]
+        }
+      ],
+      "source_hashes": {},
+      "svg_sha256": "b6d58cf432bd41e9f038ceacd448075529e382b623543858ddae8a1108bf66f3"
+    },
+    {
+      "filename": "split-latency.svg",
+      "title": "Splitting the same K512 weights into sixteen K32 convolutions",
+      "description": "Three paired rounds of a two-layer Core AI A8W4 graph. The wide path takes about 0.43 to 0.45 milliseconds and the split path about 1.76 to 1.77, a ratio near four. Lines join the two arms of one paired round, not a trend over time.",
+      "source": "results/fresh/split.json",
+      "source_sha256": "526ff38b8f6ad14ad47473aed36ce9bcecde4380ab75ac3406598e8f9204b97f",
+      "points": [
+        {
+          "source": "results/fresh/split.json",
+          "run": "03-process1-coreai-a8w4-2",
+          "case_id": "coreai-a8w4-2",
+          "process_round": 1,
+          "fields": {
+            "p50_ms": "/runs/2/p50_ms",
+            "source_ops": "/runs/2/source_ops",
+            "source_equivalent_Tops": "/runs/2/source_equivalent_Tops"
+          },
+          "p50_ms": 0.431875,
+          "source_ops": 4294967296,
+          "throughput_T_source_ops_per_s": 9.944931510274964
+        },
+        {
+          "source": "results/fresh/split.json",
+          "run": "04-process1-coreai-a8w4-split32-2",
+          "case_id": "coreai-a8w4-split32-2",
+          "process_round": 1,
+          "fields": {
+            "p50_ms": "/runs/3/p50_ms",
+            "source_ops": "/runs/3/source_ops",
+            "source_equivalent_Tops": "/runs/3/source_equivalent_Tops"
+          },
+          "p50_ms": 1.7687914999999998,
+          "source_ops": 4294967296,
+          "throughput_T_source_ops_per_s": 2.428193088897137
+        },
+        {
+          "source": "results/fresh/split.json",
+          "run": "06-process2-coreai-a8w4-2",
+          "case_id": "coreai-a8w4-2",
+          "process_round": 2,
+          "fields": {
+            "p50_ms": "/runs/5/p50_ms",
+            "source_ops": "/runs/5/source_ops",
+            "source_equivalent_Tops": "/runs/5/source_equivalent_Tops"
+          },
+          "p50_ms": 0.4369995,
+          "source_ops": 4294967296,
+          "throughput_T_source_ops_per_s": 9.828311693720474
+        },
+        {
+          "source": "results/fresh/split.json",
+          "run": "05-process2-coreai-a8w4-split32-2",
+          "case_id": "coreai-a8w4-split32-2",
+          "process_round": 2,
+          "fields": {
+            "p50_ms": "/runs/4/p50_ms",
+            "source_ops": "/runs/4/source_ops",
+            "source_equivalent_Tops": "/runs/4/source_equivalent_Tops"
+          },
+          "p50_ms": 1.7719369999999999,
+          "source_ops": 4294967296,
+          "throughput_T_source_ops_per_s": 2.4238826188515734
+        },
+        {
+          "source": "results/fresh/split.json",
+          "run": "07-process3-coreai-a8w4-2",
+          "case_id": "coreai-a8w4-2",
+          "process_round": 3,
+          "fields": {
+            "p50_ms": "/runs/6/p50_ms",
+            "source_ops": "/runs/6/source_ops",
+            "source_equivalent_Tops": "/runs/6/source_equivalent_Tops"
+          },
+          "p50_ms": 0.4455835,
+          "source_ops": 4294967296,
+          "throughput_T_source_ops_per_s": 9.638972933243712
+        },
+        {
+          "source": "results/fresh/split.json",
+          "run": "08-process3-coreai-a8w4-split32-2",
+          "case_id": "coreai-a8w4-split32-2",
+          "process_round": 3,
+          "fields": {
+            "p50_ms": "/runs/7/p50_ms",
+            "source_ops": "/runs/7/source_ops",
+            "source_equivalent_Tops": "/runs/7/source_equivalent_Tops"
+          },
+          "p50_ms": 1.763646,
+          "source_ops": 4294967296,
+          "throughput_T_source_ops_per_s": 2.435277428690338
+        }
+      ],
+      "paired_ratios": [
+        {
+          "process_round": 1,
+          "split_over_wide_p50": 4.095609840810419
+        },
+        {
+          "process_round": 2,
+          "split_over_wide_p50": 4.054780383043917
+        },
+        {
+          "process_round": 3,
+          "split_over_wide_p50": 3.9580594882889515
+        }
+      ],
+      "source_hashes": {},
+      "svg_sha256": "891ea8027cbfc92a6f36180d1bf6efac2718ef21d42f614f889b383908ec0c8a"
+    },
+    {
+      "filename": "rounding-reference.svg",
+      "title": "One recorded output, two arithmetic references",
+      "description": "The same Core AI W8A8 output has a relative L2 of about 0.000109 against the reference selected before the run, which rounds Q8 midpoints away from zero, and about 0.211 against the ties-to-even diagnostic reference. This is a change of reference, not a repair of the output.",
+      "source": "results/fresh/throughput.json",
+      "source_sha256": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110",
+      "run": "09-process1-coreai-w8a8-128",
+      "case_id": "coreai-w8a8-128",
+      "comparisons": [
+        {
+          "reference": "Q8 RZA",
+          "field": "/runs/8/numerical/comparisons/0/relative_L2",
+          "relative_L2": 0.00010854604005797441,
+          "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440",
+          "output_sha256_field": "/runs/8/numerical/comparisons/0/output_sha256",
+          "reference_sha256": "cab89153bb719bb914aaa4e4c4bbfc6de75478d6b23d9f20932453736dfeeb1e"
+        },
+        {
+          "reference": "Q8 RNE",
+          "field": "/runs/8/RNE-not-gate/comparisons/0/relative_L2",
+          "relative_L2": 0.21139617789483547,
+          "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440",
+          "output_sha256_field": "/runs/8/RNE-not-gate/comparisons/0/output_sha256",
+          "reference_sha256": "513ac55abc1c1d754a33e67dfc40318e87c0d251dca426e43af1c05df0b52080"
+        }
+      ],
+      "source_hashes": {},
+      "svg_sha256": "e515a068e4ceb80d5f752a8b5d8b48f09920ea01a05a9b7f21b110e9ed393e27"
+    },
+    {
+      "filename": "ane-vs-gpu.svg",
+      "title": "Historical Python MLP: the GPU is 2.9 to 5.1 times faster",
+      "description": "Historical Python measurement of one first-layer MLP from the same source Q4_0 weights, in positions processed per second. The GPU path runs between 2.9 and 5.1 times faster. The Neural Engine holds about 5,300 positions per second at every measured size; the GPU peaks at 1024 and falls at 4096. Later native results are separate. One process per path, and not an end-to-end prefill.",
+      "sources": [
+        "results/historical/ane-vs-gpu-prefill.json",
+        "findings/ane-vs-gpu-prefill/README.md"
+      ],
+      "points": [
+        {
+          "positions": 64,
+          "engine": "G",
+          "label": "GPU · MLX Q4",
+          "positions_per_second": 15042.011869087492,
+          "p50_outer_ms": 4.25475
+        },
+        {
+          "positions": 64,
+          "engine": "A",
+          "label": "ANE · A8W4",
+          "positions_per_second": 5235.691397386809,
+          "p50_outer_ms": 12.2237915
+        },
+        {
+          "positions": 64,
+          "engine": "C",
+          "label": "ANE · W4A16",
+          "positions_per_second": 5241.927227307164,
+          "p50_outer_ms": 12.20925
+        },
+        {
+          "positions": 1024,
+          "engine": "G",
+          "label": "GPU · MLX Q4",
+          "positions_per_second": 27621.769925330587,
+          "p50_outer_ms": 37.072208
+        },
+        {
+          "positions": 1024,
+          "engine": "A",
+          "label": "ANE · A8W4",
+          "positions_per_second": 5428.715799239569,
+          "p50_outer_ms": 188.6265625
+        },
+        {
+          "positions": 1024,
+          "engine": "C",
+          "label": "ANE · W4A16",
+          "positions_per_second": 5275.704165146542,
+          "p50_outer_ms": 194.0973125
+        },
+        {
+          "positions": 4096,
+          "engine": "G",
+          "label": "GPU · MLX Q4",
+          "positions_per_second": 23686.152716880217,
+          "p50_outer_ms": 172.9280415
+        },
+        {
+          "positions": 4096,
+          "engine": "A",
+          "label": "ANE · A8W4",
+          "positions_per_second": 5371.822212160257,
+          "p50_outer_ms": 762.4973125
+        },
+        {
+          "positions": 4096,
+          "engine": "C",
+          "label": "ANE · W4A16",
+          "positions_per_second": 5304.009488406802,
+          "p50_outer_ms": 772.245979
+        }
+      ],
+      "semantic_checks": [
+        "Bar length is positions processed per second",
+        "One timed process per path, three of nine planned",
+        "Not an end-to-end prefill",
+        "W4A16 and A8W4 are within 2% at 4096 positions"
+      ],
+      "source_hashes": {
+        "results/historical/ane-vs-gpu-prefill.json": "ae50d31ff23fa5ac89c6bb44fad75f9b53acf60c633685cb69c57424ad443e1d",
+        "findings/ane-vs-gpu-prefill/README.md": "8c054c565fdcaa66e90287c96a06e25848b9f6a176c04880cbca7d26d62bd788"
+      },
+      "svg_sha256": "cfe05cb0ed997a73548ae5e039ddd45ae7a3c084d0e46bb883d8c79895cee9a1"
+    },
+    {
+      "filename": "g2-throughput.svg",
+      "sources": [
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz",
+        "results/historical/g2-w4a16-night/environment.json",
+        "results/historical/g2-w4a16-night/expected-summary.json",
+        "results/historical/g2-w4a16-night/p0.json",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz",
+        "results/historical/g2-w4a16-night/power-status.json",
+        "results/historical/g2-w4a16-night/protocol.json",
+        "results/historical/g2-w4a16-night/provenance.json",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz",
+        "results/historical/g2-w4a16-night/slots.json",
+        "results/historical/g2-w4a16-night/thermal-starts.json",
+        "results/historical/g2-w4a16-night/thermal-windows.json",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz"
+      ],
+      "points_or_scope": [
+        {
+          "positions": 64,
+          "C": {
+            "positions_per_second": 6240.899541416751,
+            "outer_mean_ms": 10.254931933333333,
+            "process_range": [
+              6239.00841879448,
+              6250.958989082671
+            ]
+          },
+          "G": {
+            "positions_per_second": 18488.47100835861,
+            "outer_mean_ms": 3.4616167,
+            "process_range": [
+              18286.59273879785,
+              18619.505992309794
+            ]
+          },
+          "C_over_G": 0.3375562824311026
+        },
+        {
+          "positions": 128,
+          "C": {
+            "positions_per_second": 6257.229585138313,
+            "outer_mean_ms": 20.456337466666664,
+            "process_range": [
+              6243.268813225616,
+              6266.713081033582
+            ]
+          },
+          "G": {
+            "positions_per_second": 29769.74982378285,
+            "outer_mean_ms": 4.2996666333333335,
+            "process_range": [
+              29271.15532160009,
+              29844.897234886594
+            ]
+          },
+          "C_over_G": 0.21018750987754203
+        },
+        {
+          "positions": 256,
+          "C": {
+            "positions_per_second": 6758.034828236449,
+            "outer_mean_ms": 37.880834666666665,
+            "process_range": [
+              6756.144772390889,
+              6767.042746271495
+            ]
+          },
+          "G": {
+            "positions_per_second": 29894.410722601973,
+            "outer_mean_ms": 8.5634737,
+            "process_range": [
+              29794.965363915297,
+              30148.87502711485
+            ]
+          },
+          "C_over_G": 0.22606349029408926
+        },
+        {
+          "positions": 512,
+          "C": {
+            "positions_per_second": 6750.993398459794,
+            "outer_mean_ms": 75.84069036666668,
+            "process_range": [
+              6750.989318587338,
+              6761.655223915917
+            ]
+          },
+          "G": {
+            "positions_per_second": 31641.59030121974,
+            "outer_mean_ms": 16.181234733333334,
+            "process_range": [
+              25496.36780337796,
+              31860.606924151205
+            ]
+          },
+          "C_over_G": 0.21335822043683916
+        },
+        {
+          "positions": 1024,
+          "C": {
+            "positions_per_second": 6758.632087776233,
+            "outer_mean_ms": 151.50994856666665,
+            "process_range": [
+              6752.548689000091,
+              6764.619324849289
+            ]
+          },
+          "G": {
+            "positions_per_second": 27283.421143348674,
+            "outer_mean_ms": 37.53195006666667,
+            "process_range": [
+              26506.01422066645,
+              27294.577109954662
+            ]
+          },
+          "C_over_G": 0.24771937698963736
+        },
+        {
+          "positions": 2048,
+          "C": {
+            "positions_per_second": 6763.620113846891,
+            "outer_mean_ms": 302.7964264,
+            "process_range": [
+              6758.223043633977,
+              6775.766105854651
+            ]
+          },
+          "G": {
+            "positions_per_second": 27312.44174287627,
+            "outer_mean_ms": 74.98414163333334,
+            "process_range": [
+              26978.415264167103,
+              27366.90224019502
+            ]
+          },
+          "C_over_G": 0.24763879324744018
+        },
+        {
+          "positions": 4096,
+          "C": {
+            "positions_per_second": 6761.3480359116365,
+            "outer_mean_ms": 605.7963557333334,
+            "process_range": [
+              6759.822817071686,
+              6762.032794264295
+            ]
+          },
+          "G": {
+            "positions_per_second": 26853.5400262955,
+            "outer_mean_ms": 152.53110003333333,
+            "process_range": [
+              26741.951690815742,
+              26977.17126761309
+            ]
+          },
+          "C_over_G": 0.25178609707661614
+        }
+      ],
+      "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
+      "source_hashes": {
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
+        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
+        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
+        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
+        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
+        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
+        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
+        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
+        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
+        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
+      },
+      "svg_sha256": "9d961a651c8149812718a76b3b7e28ba29c052ef8d4aa92adb768d47d3d19d56"
+    },
+    {
+      "filename": "g2-load-fans.svg",
+      "sources": [
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz",
+        "results/historical/g2-w4a16-night/environment.json",
+        "results/historical/g2-w4a16-night/expected-summary.json",
+        "results/historical/g2-w4a16-night/p0.json",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz",
+        "results/historical/g2-w4a16-night/power-status.json",
+        "results/historical/g2-w4a16-night/protocol.json",
+        "results/historical/g2-w4a16-night/provenance.json",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz",
+        "results/historical/g2-w4a16-night/slots.json",
+        "results/historical/g2-w4a16-night/thermal-starts.json",
+        "results/historical/g2-w4a16-night/thermal-windows.json",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz"
+      ],
+      "points_or_scope": {
+        "blocks": [
+          {
+            "slot": "P3-0.25-r0-C",
+            "engine": "C",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 1.65,
+            "gpu_sensor_c": 52.784991250911226,
+            "fan0_rpm": 1350.394366197183,
+            "fan1_rpm": 1457.7042253521126
+          },
+          {
+            "slot": "P3-0.25-r0-G",
+            "engine": "G",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 1.65,
+            "gpu_sensor_c": 54.63110213809543,
+            "fan0_rpm": 1351.0277777777778,
+            "fan1_rpm": 1458.513888888889
+          },
+          {
+            "slot": "P3-0.5-r0-C",
+            "engine": "C",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 3.297222222222222,
+            "gpu_sensor_c": 54.66594330469767,
+            "fan0_rpm": 1350.861111111111,
+            "fan1_rpm": 1458.2222222222222
+          },
+          {
+            "slot": "P3-0.5-r0-G",
+            "engine": "G",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 3.297222222222222,
+            "gpu_sensor_c": 57.73972470995406,
+            "fan0_rpm": 1351.3661971830986,
+            "fan1_rpm": 1458.394366197183
+          },
+          {
+            "slot": "P3-0.75-r0-C",
+            "engine": "C",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 4.944444444444445,
+            "gpu_sensor_c": 56.18556759092543,
+            "fan0_rpm": 1350.5972222222222,
+            "fan1_rpm": 1458.0972222222222
+          },
+          {
+            "slot": "P3-0.75-r0-G",
+            "engine": "G",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 4.944444444444445,
+            "gpu_sensor_c": 59.47489356994629,
+            "fan0_rpm": 1352.2222222222222,
+            "fan1_rpm": 1460.9722222222222
+          },
+          {
+            "slot": "P3-0.75-r1-G",
+            "engine": "G",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 4.944444444444445,
+            "gpu_sensor_c": 59.84884310440278,
+            "fan0_rpm": 1352.4225352112676,
+            "fan1_rpm": 1462.0845070422536
+          },
+          {
+            "slot": "P3-0.75-r1-C",
+            "engine": "C",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 4.944444444444445,
+            "gpu_sensor_c": 56.56523317760892,
+            "fan0_rpm": 1350.9583333333333,
+            "fan1_rpm": 1458.7083333333333
+          },
+          {
+            "slot": "P3-0.5-r1-G",
+            "engine": "G",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 3.297222222222222,
+            "gpu_sensor_c": 58.13885264926486,
+            "fan0_rpm": 1351.8333333333333,
+            "fan1_rpm": 1459.8333333333333
+          },
+          {
+            "slot": "P3-0.5-r1-C",
+            "engine": "C",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 3.297222222222222,
+            "gpu_sensor_c": 54.918773221298004,
+            "fan0_rpm": 1350.7042253521126,
+            "fan1_rpm": 1457.4366197183099
+          },
+          {
+            "slot": "P3-0.25-r1-G",
+            "engine": "G",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 1.65,
+            "gpu_sensor_c": 54.89305337270101,
+            "fan0_rpm": 1350.875,
+            "fan1_rpm": 1458.1944444444443
+          },
+          {
+            "slot": "P3-0.25-r1-C",
+            "engine": "C",
+            "statistic": "six-minute window mean",
+            "requests_per_second": 1.65,
+            "gpu_sensor_c": 53.56760501861572,
+            "fan0_rpm": 1350.5416666666667,
+            "fan1_rpm": 1457.861111111111
+          },
+          {
+            "slot": "SAT-0-C",
+            "engine": "C",
+            "statistic": "final five-minute median",
+            "requests_per_second": 6.4,
+            "gpu_sensor_c": 58.8355655670166,
+            "fan0_rpm": 1353.0,
+            "fan1_rpm": 1460.0
+          },
+          {
+            "slot": "SAT-1-G",
+            "engine": "G",
+            "statistic": "final five-minute median",
+            "requests_per_second": 23.709375,
+            "gpu_sensor_c": 69.96466064453125,
+            "fan0_rpm": 3485.5,
+            "fan1_rpm": 3768.0
+          },
+          {
+            "slot": "SAT-2-G",
+            "engine": "G",
+            "statistic": "final five-minute median",
+            "requests_per_second": 23.680208333333333,
+            "gpu_sensor_c": 71.97990798950195,
+            "fan0_rpm": 3116.5,
+            "fan1_rpm": 3368.0
+          },
+          {
+            "slot": "SAT-3-C",
+            "engine": "C",
+            "statistic": "final five-minute median",
+            "requests_per_second": 6.386458333333334,
+            "gpu_sensor_c": 57.505022048950195,
+            "fan0_rpm": 1349.0,
+            "fan1_rpm": 1457.0
+          }
+        ],
+        "fan_floor": {
+          "blocks": 34,
+          "fan0_rpm": 1351.5,
+          "fan1_rpm": 1459.25
+        },
+        "unmeasured_gpu_requests_per_second": [
+          4.944444444444445,
+          23.680208333333333
+        ]
+      },
+      "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
+      "source_hashes": {
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
+        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
+        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
+        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
+        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
+        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
+        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
+        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
+        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
+        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
+      },
+      "svg_sha256": "878e44a2746b653ad3ae41698a2d8634d5501831ff93af940bda445394a3215d"
+    },
+    {
+      "filename": "g2-matched-rate-thermal.svg",
+      "sources": [
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz",
+        "results/historical/g2-w4a16-night/environment.json",
+        "results/historical/g2-w4a16-night/expected-summary.json",
+        "results/historical/g2-w4a16-night/p0.json",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz",
+        "results/historical/g2-w4a16-night/power-status.json",
+        "results/historical/g2-w4a16-night/protocol.json",
+        "results/historical/g2-w4a16-night/provenance.json",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz",
+        "results/historical/g2-w4a16-night/slots.json",
+        "results/historical/g2-w4a16-night/thermal-starts.json",
+        "results/historical/g2-w4a16-night/thermal-windows.json",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz"
+      ],
+      "points_or_scope": [
+        {
+          "group": "P3-0.25-r0",
+          "thermal_start": "matched",
+          "requests_each": 594,
+          "cpu_mean_G_minus_C": 1.1672659226239972,
+          "gpu_mean_G_minus_C": 1.846110887184203,
+          "C_platform": "approximate_platform",
+          "G_platform": "not_platform"
+        },
+        {
+          "group": "P3-0.5-r0",
+          "thermal_start": "matched",
+          "requests_each": 1187,
+          "cpu_mean_G_minus_C": 2.03482476086684,
+          "gpu_mean_G_minus_C": 3.0737814052563905,
+          "C_platform": "approximate_platform",
+          "G_platform": "not_platform"
+        },
+        {
+          "group": "P3-0.75-r0",
+          "thermal_start": "matched",
+          "requests_each": 1780,
+          "cpu_mean_G_minus_C": 1.7467026710510254,
+          "gpu_mean_G_minus_C": 3.289325979020859,
+          "C_platform": "not_platform",
+          "G_platform": "not_platform"
+        },
+        {
+          "group": "P3-0.75-r1",
+          "thermal_start": "matched",
+          "requests_each": 1780,
+          "cpu_mean_G_minus_C": 1.6846293947879474,
+          "gpu_mean_G_minus_C": 3.283609926793865,
+          "C_platform": "not_platform",
+          "G_platform": "not_platform"
+        },
+        {
+          "group": "P3-0.5-r1",
+          "thermal_start": "matched",
+          "requests_each": 1187,
+          "cpu_mean_G_minus_C": 2.2281997632905686,
+          "gpu_mean_G_minus_C": 3.2200794279668585,
+          "C_platform": "approximate_platform",
+          "G_platform": "not_platform"
+        },
+        {
+          "group": "P3-0.25-r1",
+          "thermal_start": "matched",
+          "requests_each": 594,
+          "cpu_mean_G_minus_C": 0.687198691897926,
+          "gpu_mean_G_minus_C": 1.3254483540852888,
+          "C_platform": "approximate_platform",
+          "G_platform": "approximate_platform"
+        }
+      ],
+      "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
+      "source_hashes": {
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
+        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
+        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
+        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
+        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
+        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
+        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
+        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
+        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
+        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
+      },
+      "svg_sha256": "c49266634404fd3ca36b2a74b0e670e0e3a7a1aff8fcfec10faac704965490a2"
+    },
+    {
+      "filename": "g2-saturated-thermal.svg",
+      "sources": [
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz",
+        "results/historical/g2-w4a16-night/environment.json",
+        "results/historical/g2-w4a16-night/expected-summary.json",
+        "results/historical/g2-w4a16-night/p0.json",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz",
+        "results/historical/g2-w4a16-night/power-status.json",
+        "results/historical/g2-w4a16-night/protocol.json",
+        "results/historical/g2-w4a16-night/provenance.json",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz",
+        "results/historical/g2-w4a16-night/slots.json",
+        "results/historical/g2-w4a16-night/thermal-starts.json",
+        "results/historical/g2-w4a16-night/thermal-windows.json",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz"
+      ],
+      "points_or_scope": [
+        {
+          "field": "macmon_cpu_sensor_mean_c",
+          "source": "sensors.jsonl.gz",
+          "blocks": [
+            "SAT-0-C",
+            "SAT-1-G",
+            "SAT-2-G",
+            "SAT-3-C"
+          ]
+        },
+        {
+          "field": "macmon_gpu_sensor_mean_c",
+          "source": "sensors.jsonl.gz",
+          "blocks": [
+            "SAT-0-C",
+            "SAT-1-G",
+            "SAT-2-G",
+            "SAT-3-C"
+          ]
+        },
+        {
+          "field": "fan0_rpm",
+          "source": "sensors.jsonl.gz",
+          "blocks": [
+            "SAT-0-C",
+            "SAT-1-G",
+            "SAT-2-G",
+            "SAT-3-C"
+          ]
+        },
+        {
+          "field": "fan1_rpm",
+          "source": "sensors.jsonl.gz",
+          "blocks": [
+            "SAT-0-C",
+            "SAT-1-G",
+            "SAT-2-G",
+            "SAT-3-C"
+          ]
+        }
+      ],
+      "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
+      "source_hashes": {
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
+        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
+        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
+        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
+        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
+        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
+        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
+        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
+        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
+        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
+      },
+      "svg_sha256": "9b0954cf7457c7b29ecb93e96cd05a715790f1d14ffb723affac5259c881ecee"
+    },
+    {
+      "filename": "g2-coexistence-tails.svg",
+      "sources": [
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz",
+        "results/historical/g2-w4a16-night/environment.json",
+        "results/historical/g2-w4a16-night/expected-summary.json",
+        "results/historical/g2-w4a16-night/p0.json",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz",
+        "results/historical/g2-w4a16-night/power-status.json",
+        "results/historical/g2-w4a16-night/protocol.json",
+        "results/historical/g2-w4a16-night/provenance.json",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz",
+        "results/historical/g2-w4a16-night/slots.json",
+        "results/historical/g2-w4a16-night/thermal-starts.json",
+        "results/historical/g2-w4a16-night/thermal-windows.json",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz"
+      ],
+      "points_or_scope": [
+        {
+          "slot": "P1-matrix_050-r0-alone",
+          "quantile": "p95",
+          "ms": 30.912036099999998,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_050-r0-C",
+          "quantile": "p95",
+          "ms": 30.7607123,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_050-r0-G",
+          "quantile": "p95",
+          "ms": 34.6358201,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_050-r0-alone",
+          "quantile": "p99",
+          "ms": 31.17702832,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_050-r0-C",
+          "quantile": "p99",
+          "ms": 31.0495182,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_050-r0-G",
+          "quantile": "p99",
+          "ms": 37.78468908,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_050-r1-alone",
+          "quantile": "p95",
+          "ms": 30.9213694,
+          "thermal_start": "matched"
+        },
+        {
+          "slot": "P1-matrix_050-r1-C",
+          "quantile": "p95",
+          "ms": 30.7705531,
+          "thermal_start": "matched"
+        },
+        {
+          "slot": "P1-matrix_050-r1-G",
+          "quantile": "p95",
+          "ms": 34.2484076,
+          "thermal_start": "matched"
+        },
+        {
+          "slot": "P1-matrix_050-r1-alone",
+          "quantile": "p99",
+          "ms": 31.14173618,
+          "thermal_start": "matched"
+        },
+        {
+          "slot": "P1-matrix_050-r1-C",
+          "quantile": "p99",
+          "ms": 31.07768752,
+          "thermal_start": "matched"
+        },
+        {
+          "slot": "P1-matrix_050-r1-G",
+          "quantile": "p99",
+          "ms": 37.5770171,
+          "thermal_start": "matched"
+        },
+        {
+          "slot": "P1-matrix_075-r0-alone",
+          "quantile": "p95",
+          "ms": 30.616520799999996,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r0-C",
+          "quantile": "p95",
+          "ms": 30.472045650000002,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r0-G",
+          "quantile": "p95",
+          "ms": 35.6985583,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r0-alone",
+          "quantile": "p99",
+          "ms": 31.13098554,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r0-C",
+          "quantile": "p99",
+          "ms": 31.048414959999995,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r0-G",
+          "quantile": "p99",
+          "ms": 37.31082888999998,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r1-alone",
+          "quantile": "p95",
+          "ms": 30.602821199999998,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r1-C",
+          "quantile": "p95",
+          "ms": 30.45329575,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r1-G",
+          "quantile": "p95",
+          "ms": 36.20089219999999,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r1-alone",
+          "quantile": "p99",
+          "ms": 31.162462859999998,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r1-C",
+          "quantile": "p99",
+          "ms": 30.976456929999994,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-matrix_075-r1-G",
+          "quantile": "p99",
+          "ms": 38.27714280999997,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r0-alone",
+          "quantile": "p95",
+          "ms": 5.20344395,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r0-C",
+          "quantile": "p95",
+          "ms": 4.578384399999996,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r0-G",
+          "quantile": "p95",
+          "ms": 8.848179399999992,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r0-alone",
+          "quantile": "p99",
+          "ms": 5.57765293,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r0-C",
+          "quantile": "p99",
+          "ms": 5.24826128,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r0-G",
+          "quantile": "p99",
+          "ms": 12.51178564,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r1-alone",
+          "quantile": "p95",
+          "ms": 5.193899,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r1-C",
+          "quantile": "p95",
+          "ms": 4.58651595,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r1-G",
+          "quantile": "p95",
+          "ms": 8.829022799999994,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r1-alone",
+          "quantile": "p99",
+          "ms": 5.562778700000001,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r1-C",
+          "quantile": "p99",
+          "ms": 5.25136239,
+          "thermal_start": "mismatched"
+        },
+        {
+          "slot": "P1-memory_050-r1-G",
+          "quantile": "p99",
+          "ms": 12.493016520000012,
+          "thermal_start": "mismatched"
+        }
+      ],
+      "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
+      "source_hashes": {
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
+        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
+        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
+        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
+        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
+        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
+        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
+        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
+        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
+        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
+      },
+      "svg_sha256": "134e73017915a20420a81cb21a2e48aa5337b6fb315dd0d0d9823d50406b2f14"
+    },
+    {
+      "filename": "g2-memory.svg",
+      "sources": [
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz",
+        "results/historical/g2-w4a16-night/environment.json",
+        "results/historical/g2-w4a16-night/expected-summary.json",
+        "results/historical/g2-w4a16-night/p0.json",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz",
+        "results/historical/g2-w4a16-night/power-status.json",
+        "results/historical/g2-w4a16-night/protocol.json",
+        "results/historical/g2-w4a16-night/provenance.json",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz",
+        "results/historical/g2-w4a16-night/slots.json",
+        "results/historical/g2-w4a16-night/thermal-starts.json",
+        "results/historical/g2-w4a16-night/thermal-windows.json",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz"
+      ],
+      "points_or_scope": {
+        "source": "resources.jsonl.gz",
+        "fields": [
+          "all_owned_rss_bytes",
+          "component_footprint_bytes"
+        ],
+        "gap_seconds": 2
+      },
+      "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
+      "source_hashes": {
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
+        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
+        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
+        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
+        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
+        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
+        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
+        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
+        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
+        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
+      },
+      "svg_sha256": "6caafd0248ef45185b2d1160308fa882a25a5ea26921d1d6974c7b469c3ccf21"
+    },
+    {
+      "filename": "g2-tile.svg",
+      "sources": [
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz",
+        "results/historical/g2-w4a16-night/environment.json",
+        "results/historical/g2-w4a16-night/expected-summary.json",
+        "results/historical/g2-w4a16-night/p0.json",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz",
+        "results/historical/g2-w4a16-night/power-status.json",
+        "results/historical/g2-w4a16-night/protocol.json",
+        "results/historical/g2-w4a16-night/provenance.json",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz",
+        "results/historical/g2-w4a16-night/slots.json",
+        "results/historical/g2-w4a16-night/thermal-starts.json",
+        "results/historical/g2-w4a16-night/thermal-windows.json",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz"
+      ],
+      "points_or_scope": [
+        {
+          "round": 0,
+          "tile64": 6286.6406796354795,
+          "tile256": 6758.632087776233,
+          "ratio": 1.0750784770743602
+        },
+        {
+          "round": 1,
+          "tile64": 6256.577043318633,
+          "tile256": 6764.619324849289,
+          "ratio": 1.0812013147145998
+        },
+        {
+          "round": 2,
+          "tile64": 6278.956329693782,
+          "tile256": 6752.548689000091,
+          "ratio": 1.0754253309688817
+        }
+      ],
+      "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
+      "source_hashes": {
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
+        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
+        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
+        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
+        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
+        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
+        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
+        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
+        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
+        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
+        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
+        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
+        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
+        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
+        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
+        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
+        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
+        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
+        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
+        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
+        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
+        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
+        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
+        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
+        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
+        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
+        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
+        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
+        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
+      },
+      "svg_sha256": "4aee7f3961fbf4c039ba5c945bc64b145dc4ac3201ce85e9acecc8e686c75891"
+    }
+  ]
+}

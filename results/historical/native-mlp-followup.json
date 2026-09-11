@@ -1,0 +1,2698 @@
+{
+  "schema_version": 1,
+  "historical_import": true,
+  "scope": "Later G1-TILE native Swift four-stage first-layer MLP with a Python controller and fixed receive buffers. C is W4A16; G is MLX W4A16. Positions are component workload, not full-model tokens.",
+  "relationship_to_prefill": "A separate later configuration and process set. Does not complete the older 3-of-9 Python-era protocol or replace its numbers.",
+  "toolchain": {
+    "xcode": "Xcode 27.0\nBuild version 27A266a",
+    "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0",
+    "system": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A428"
+  },
+  "sdk": "macOS 27.0",
+  "host_identity": {
+    "binary_sha256": "afe367daf02d2b12910727ea949cd7e69bdfad77f038066ab267e95f12ce54b7",
+    "worker_sha256": "f6f805abd519395b6305065dd9ed7596977eaa16c092eab1a38489dfd31e1310",
+    "wire_sha256": "d7a3cdab57fd8e1e1fd19f6e097b25b91ed98e0e092cff5ed610c1b2d2d651ee",
+    "GPU_source_sha256": "40e07b5de436a022cab82e8b0cdc98483712b6341247cbecdd485121f855d11d"
+  },
+  "timing_arms": {
+    "C-64": {
+      "independent_processes": 1,
+      "calls": [
+        {
+          "positions": 1024,
+          "index": 0,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 171752125,
+          "worker_ns": 166225125
+        },
+        {
+          "positions": 1024,
+          "index": 1,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 161911291,
+          "worker_ns": 157091541
+        },
+        {
+          "positions": 1024,
+          "index": 2,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 161040875,
+          "worker_ns": 156580625
+        },
+        {
+          "positions": 1024,
+          "index": 3,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 160705584,
+          "worker_ns": 156773208
+        },
+        {
+          "positions": 1024,
+          "index": 4,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 163975375,
+          "worker_ns": 160139583
+        },
+        {
+          "positions": 1024,
+          "index": 5,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 160703583,
+          "worker_ns": 156729625
+        },
+        {
+          "positions": 1024,
+          "index": 6,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 159791167,
+          "worker_ns": 156373750
+        },
+        {
+          "positions": 1024,
+          "index": 7,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 160457917,
+          "worker_ns": 156926125
+        },
+        {
+          "positions": 1024,
+          "index": 8,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 159434708,
+          "worker_ns": 155713917
+        },
+        {
+          "positions": 1024,
+          "index": 9,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 160548542,
+          "worker_ns": 156239500
+        },
+        {
+          "positions": 1024,
+          "index": 10,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 159210041,
+          "worker_ns": 155669333
+        },
+        {
+          "positions": 1024,
+          "index": 11,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 159838667,
+          "worker_ns": 156256000
+        },
+        {
+          "positions": 1024,
+          "index": 12,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 160286667,
+          "worker_ns": 156324334
+        },
+        {
+          "positions": 1024,
+          "index": 13,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 160880917,
+          "worker_ns": 156273792
+        },
+        {
+          "positions": 1024,
+          "index": 14,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 159779959,
+          "worker_ns": 155710833
+        },
+        {
+          "positions": 1024,
+          "index": 15,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 159206417,
+          "worker_ns": 155807292
+        },
+        {
+          "positions": 1024,
+          "index": 16,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 159876583,
+          "worker_ns": 156259459
+        },
+        {
+          "positions": 1024,
+          "index": 17,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 160048834,
+          "worker_ns": 155872625
+        },
+        {
+          "positions": 1024,
+          "index": 18,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 160348125,
+          "worker_ns": 156088042
+        },
+        {
+          "positions": 1024,
+          "index": 19,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 161426750,
+          "worker_ns": 157685709
+        },
+        {
+          "positions": 1024,
+          "index": 20,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 159606917,
+          "worker_ns": 156133459
+        },
+        {
+          "positions": 1024,
+          "index": 21,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 159699542,
+          "worker_ns": 155794625
+        },
+        {
+          "positions": 1024,
+          "index": 22,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 161295583,
+          "worker_ns": 157328208
+        },
+        {
+          "positions": 1024,
+          "index": 23,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 160992833,
+          "worker_ns": 156665833
+        },
+        {
+          "positions": 1024,
+          "index": 24,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 161148458,
+          "worker_ns": 156691875
+        },
+        {
+          "positions": 1024,
+          "index": 25,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 165392166,
+          "worker_ns": 161335125
+        },
+        {
+          "positions": 1024,
+          "index": 26,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 160559875,
+          "worker_ns": 156913750
+        },
+        {
+          "positions": 1024,
+          "index": 27,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 160293333,
+          "worker_ns": 156575667
+        },
+        {
+          "positions": 1024,
+          "index": 28,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 161221792,
+          "worker_ns": 156842167
+        },
+        {
+          "positions": 1024,
+          "index": 29,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 161177250,
+          "worker_ns": 156764625
+        },
+        {
+          "positions": 1024,
+          "index": 30,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 160688583,
+          "worker_ns": 156645416
+        },
+        {
+          "positions": 1024,
+          "index": 31,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 160015834,
+          "worker_ns": 156481541
+        },
+        {
+          "positions": 1024,
+          "index": 32,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 159872250,
+          "worker_ns": 156283125
+        },
+        {
+          "positions": 1024,
+          "index": 33,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 159874709,
+          "worker_ns": 155993166
+        },
+        {
+          "positions": 1024,
+          "index": 34,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 160936334,
+          "worker_ns": 156834583
+        },
+        {
+          "positions": 1024,
+          "index": 35,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 161158042,
+          "worker_ns": 156652500
+        },
+        {
+          "positions": 1024,
+          "index": 36,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 160495834,
+          "worker_ns": 156261459
+        },
+        {
+          "positions": 1024,
+          "index": 37,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 160249666,
+          "worker_ns": 156860084
+        },
+        {
+          "positions": 1024,
+          "index": 38,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 160075416,
+          "worker_ns": 156579583
+        },
+        {
+          "positions": 1024,
+          "index": 39,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 159680625,
+          "worker_ns": 156026000
+        },
+        {
+          "positions": 4096,
+          "index": 0,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 647565333,
+          "worker_ns": 627748458
+        },
+        {
+          "positions": 4096,
+          "index": 1,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 642812875,
+          "worker_ns": 626914875
+        },
+        {
+          "positions": 4096,
+          "index": 2,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 653474791,
+          "worker_ns": 638764916
+        },
+        {
+          "positions": 4096,
+          "index": 3,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 640739583,
+          "worker_ns": 626340500
+        },
+        {
+          "positions": 4096,
+          "index": 4,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 640637208,
+          "worker_ns": 626433500
+        },
+        {
+          "positions": 4096,
+          "index": 5,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 637265083,
+          "worker_ns": 622896459
+        },
+        {
+          "positions": 4096,
+          "index": 6,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 638223750,
+          "worker_ns": 623849750
+        },
+        {
+          "positions": 4096,
+          "index": 7,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 637612666,
+          "worker_ns": 623353625
+        },
+        {
+          "positions": 4096,
+          "index": 8,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 643838167,
+          "worker_ns": 628993417
+        },
+        {
+          "positions": 4096,
+          "index": 9,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 643960042,
+          "worker_ns": 629077833
+        },
+        {
+          "positions": 4096,
+          "index": 10,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 641635333,
+          "worker_ns": 624137458
+        },
+        {
+          "positions": 4096,
+          "index": 11,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 639808583,
+          "worker_ns": 623953375
+        },
+        {
+          "positions": 4096,
+          "index": 12,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 639362125,
+          "worker_ns": 624956542
+        },
+        {
+          "positions": 4096,
+          "index": 13,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 640702833,
+          "worker_ns": 626011667
+        },
+        {
+          "positions": 4096,
+          "index": 14,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 637890958,
+          "worker_ns": 623365167
+        },
+        {
+          "positions": 4096,
+          "index": 15,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 638726666,
+          "worker_ns": 624123958
+        },
+        {
+          "positions": 4096,
+          "index": 16,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 637287833,
+          "worker_ns": 622856625
+        },
+        {
+          "positions": 4096,
+          "index": 17,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 638508375,
+          "worker_ns": 623673792
+        },
+        {
+          "positions": 4096,
+          "index": 18,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 637736708,
+          "worker_ns": 622896041
+        },
+        {
+          "positions": 4096,
+          "index": 19,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 638140875,
+          "worker_ns": 623855500
+        },
+        {
+          "positions": 4096,
+          "index": 20,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 644407542,
+          "worker_ns": 626546417
+        },
+        {
+          "positions": 4096,
+          "index": 21,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 652316958,
+          "worker_ns": 635298209
+        },
+        {
+          "positions": 4096,
+          "index": 22,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 638965250,
+          "worker_ns": 624278167
+        },
+        {
+          "positions": 4096,
+          "index": 23,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 639872958,
+          "worker_ns": 625407000
+        },
+        {
+          "positions": 4096,
+          "index": 24,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 638780500,
+          "worker_ns": 624206292
+        },
+        {
+          "positions": 4096,
+          "index": 25,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 638359042,
+          "worker_ns": 623760458
+        },
+        {
+          "positions": 4096,
+          "index": 26,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 641546917,
+          "worker_ns": 626866667
+        },
+        {
+          "positions": 4096,
+          "index": 27,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 637296125,
+          "worker_ns": 622633042
+        },
+        {
+          "positions": 4096,
+          "index": 28,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 637573292,
+          "worker_ns": 622753875
+        },
+        {
+          "positions": 4096,
+          "index": 29,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 638419333,
+          "worker_ns": 623985041
+        },
+        {
+          "positions": 4096,
+          "index": 30,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 637565416,
+          "worker_ns": 623075084
+        },
+        {
+          "positions": 4096,
+          "index": 31,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 638942875,
+          "worker_ns": 624601750
+        },
+        {
+          "positions": 4096,
+          "index": 32,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 638979709,
+          "worker_ns": 624318708
+        },
+        {
+          "positions": 4096,
+          "index": 33,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 636988750,
+          "worker_ns": 622321167
+        },
+        {
+          "positions": 4096,
+          "index": 34,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 640125250,
+          "worker_ns": 625189875
+        },
+        {
+          "positions": 4096,
+          "index": 35,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 640166333,
+          "worker_ns": 625549709
+        },
+        {
+          "positions": 4096,
+          "index": 36,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 638305500,
+          "worker_ns": 623342958
+        },
+        {
+          "positions": 4096,
+          "index": 37,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 640008125,
+          "worker_ns": 625598834
+        },
+        {
+          "positions": 4096,
+          "index": 38,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 640373791,
+          "worker_ns": 625901792
+        },
+        {
+          "positions": 4096,
+          "index": 39,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 636994750,
+          "worker_ns": 622733875
+        }
+      ],
+      "reported_rows": [
+        {
+          "tokens": 1024,
+          "stage_calls_per_request_from_selected_tile": 64,
+          "warmup": 10,
+          "measurements": 30,
+          "p50_outer_ms": 160.29,
+          "p95_outer_ms": 161.36772485,
+          "p50_worker_ms": 156.4029375
+        },
+        {
+          "tokens": 4096,
+          "stage_calls_per_request_from_selected_tile": 256,
+          "warmup": 10,
+          "measurements": 30,
+          "p50_outer_ms": 638.8616875,
+          "p95_outer_ms": 643.16004795,
+          "p50_worker_ms": 624.130708
+        }
+      ]
+    },
+    "C-256": {
+      "independent_processes": 1,
+      "calls": [
+        {
+          "positions": 1024,
+          "index": 0,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 157241458,
+          "worker_ns": 152311333
+        },
+        {
+          "positions": 1024,
+          "index": 1,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 146438542,
+          "worker_ns": 142375666
+        },
+        {
+          "positions": 1024,
+          "index": 2,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145275000,
+          "worker_ns": 141765042
+        },
+        {
+          "positions": 1024,
+          "index": 3,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145660000,
+          "worker_ns": 141758250
+        },
+        {
+          "positions": 1024,
+          "index": 4,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 149283041,
+          "worker_ns": 144953667
+        },
+        {
+          "positions": 1024,
+          "index": 5,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 147199584,
+          "worker_ns": 143355958
+        },
+        {
+          "positions": 1024,
+          "index": 6,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145372334,
+          "worker_ns": 141761042
+        },
+        {
+          "positions": 1024,
+          "index": 7,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145554500,
+          "worker_ns": 141829083
+        },
+        {
+          "positions": 1024,
+          "index": 8,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145528000,
+          "worker_ns": 141535625
+        },
+        {
+          "positions": 1024,
+          "index": 9,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145453750,
+          "worker_ns": 141793750
+        },
+        {
+          "positions": 1024,
+          "index": 10,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145055000,
+          "worker_ns": 141374542
+        },
+        {
+          "positions": 1024,
+          "index": 11,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145723334,
+          "worker_ns": 141987500
+        },
+        {
+          "positions": 1024,
+          "index": 12,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 144316417,
+          "worker_ns": 140875125
+        },
+        {
+          "positions": 1024,
+          "index": 13,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145487917,
+          "worker_ns": 141630416
+        },
+        {
+          "positions": 1024,
+          "index": 14,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 144697792,
+          "worker_ns": 140814959
+        },
+        {
+          "positions": 1024,
+          "index": 15,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145513292,
+          "worker_ns": 141615583
+        },
+        {
+          "positions": 1024,
+          "index": 16,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 144965750,
+          "worker_ns": 141123209
+        },
+        {
+          "positions": 1024,
+          "index": 17,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145593500,
+          "worker_ns": 141600334
+        },
+        {
+          "positions": 1024,
+          "index": 18,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 146014042,
+          "worker_ns": 142218458
+        },
+        {
+          "positions": 1024,
+          "index": 19,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 144900167,
+          "worker_ns": 141297916
+        },
+        {
+          "positions": 1024,
+          "index": 20,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145901541,
+          "worker_ns": 142118458
+        },
+        {
+          "positions": 1024,
+          "index": 21,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145706708,
+          "worker_ns": 141749333
+        },
+        {
+          "positions": 1024,
+          "index": 22,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145308250,
+          "worker_ns": 141440333
+        },
+        {
+          "positions": 1024,
+          "index": 23,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145197250,
+          "worker_ns": 141276750
+        },
+        {
+          "positions": 1024,
+          "index": 24,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145800667,
+          "worker_ns": 142021500
+        },
+        {
+          "positions": 1024,
+          "index": 25,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 144714292,
+          "worker_ns": 140939083
+        },
+        {
+          "positions": 1024,
+          "index": 26,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 144899667,
+          "worker_ns": 141212666
+        },
+        {
+          "positions": 1024,
+          "index": 27,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145336916,
+          "worker_ns": 141337459
+        },
+        {
+          "positions": 1024,
+          "index": 28,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145174917,
+          "worker_ns": 141364958
+        },
+        {
+          "positions": 1024,
+          "index": 29,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145269667,
+          "worker_ns": 141517833
+        },
+        {
+          "positions": 1024,
+          "index": 30,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145086542,
+          "worker_ns": 141238750
+        },
+        {
+          "positions": 1024,
+          "index": 31,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 144608666,
+          "worker_ns": 141034625
+        },
+        {
+          "positions": 1024,
+          "index": 32,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145124208,
+          "worker_ns": 141091750
+        },
+        {
+          "positions": 1024,
+          "index": 33,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145704750,
+          "worker_ns": 141530833
+        },
+        {
+          "positions": 1024,
+          "index": 34,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145816084,
+          "worker_ns": 142001667
+        },
+        {
+          "positions": 1024,
+          "index": 35,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 145602708,
+          "worker_ns": 141748791
+        },
+        {
+          "positions": 1024,
+          "index": 36,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145532250,
+          "worker_ns": 141956500
+        },
+        {
+          "positions": 1024,
+          "index": 37,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+          "numerical_passed": true,
+          "outer_ns": 145110334,
+          "worker_ns": 141304459
+        },
+        {
+          "positions": 1024,
+          "index": 38,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+          "numerical_passed": true,
+          "outer_ns": 146910750,
+          "worker_ns": 143181041
+        },
+        {
+          "positions": 1024,
+          "index": 39,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e",
+          "numerical_passed": true,
+          "outer_ns": 145229125,
+          "worker_ns": 141633000
+        },
+        {
+          "positions": 4096,
+          "index": 0,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 587138458,
+          "worker_ns": 567319750
+        },
+        {
+          "positions": 4096,
+          "index": 1,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 581761167,
+          "worker_ns": 566265583
+        },
+        {
+          "positions": 4096,
+          "index": 2,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 579485834,
+          "worker_ns": 565273666
+        },
+        {
+          "positions": 4096,
+          "index": 3,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 579539416,
+          "worker_ns": 564068625
+        },
+        {
+          "positions": 4096,
+          "index": 4,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 580644375,
+          "worker_ns": 565463666
+        },
+        {
+          "positions": 4096,
+          "index": 5,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 580642708,
+          "worker_ns": 566632667
+        },
+        {
+          "positions": 4096,
+          "index": 6,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 584265125,
+          "worker_ns": 570215583
+        },
+        {
+          "positions": 4096,
+          "index": 7,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 580001208,
+          "worker_ns": 565021208
+        },
+        {
+          "positions": 4096,
+          "index": 8,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 583339000,
+          "worker_ns": 569084416
+        },
+        {
+          "positions": 4096,
+          "index": 9,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 579234125,
+          "worker_ns": 565196917
+        },
+        {
+          "positions": 4096,
+          "index": 10,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 583128084,
+          "worker_ns": 565625958
+        },
+        {
+          "positions": 4096,
+          "index": 11,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 582689458,
+          "worker_ns": 567041667
+        },
+        {
+          "positions": 4096,
+          "index": 12,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 581509959,
+          "worker_ns": 566920375
+        },
+        {
+          "positions": 4096,
+          "index": 13,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 579400667,
+          "worker_ns": 565306834
+        },
+        {
+          "positions": 4096,
+          "index": 14,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 584278917,
+          "worker_ns": 569754125
+        },
+        {
+          "positions": 4096,
+          "index": 15,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 580104333,
+          "worker_ns": 565391750
+        },
+        {
+          "positions": 4096,
+          "index": 16,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 580242125,
+          "worker_ns": 565932208
+        },
+        {
+          "positions": 4096,
+          "index": 17,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 578655208,
+          "worker_ns": 564347500
+        },
+        {
+          "positions": 4096,
+          "index": 18,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 581904667,
+          "worker_ns": 567304208
+        },
+        {
+          "positions": 4096,
+          "index": 19,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 583930167,
+          "worker_ns": 568651917
+        },
+        {
+          "positions": 4096,
+          "index": 20,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 584439125,
+          "worker_ns": 567539375
+        },
+        {
+          "positions": 4096,
+          "index": 21,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 584544292,
+          "worker_ns": 568810042
+        },
+        {
+          "positions": 4096,
+          "index": 22,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 582089375,
+          "worker_ns": 567596417
+        },
+        {
+          "positions": 4096,
+          "index": 23,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 582292375,
+          "worker_ns": 566574000
+        },
+        {
+          "positions": 4096,
+          "index": 24,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 585143041,
+          "worker_ns": 570189875
+        },
+        {
+          "positions": 4096,
+          "index": 25,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 584225209,
+          "worker_ns": 569911583
+        },
+        {
+          "positions": 4096,
+          "index": 26,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 580348042,
+          "worker_ns": 565733958
+        },
+        {
+          "positions": 4096,
+          "index": 27,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 578379333,
+          "worker_ns": 564235625
+        },
+        {
+          "positions": 4096,
+          "index": 28,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 580222250,
+          "worker_ns": 565004250
+        },
+        {
+          "positions": 4096,
+          "index": 29,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 580371375,
+          "worker_ns": 565464750
+        },
+        {
+          "positions": 4096,
+          "index": 30,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 583734292,
+          "worker_ns": 569308792
+        },
+        {
+          "positions": 4096,
+          "index": 31,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 581825667,
+          "worker_ns": 567267084
+        },
+        {
+          "positions": 4096,
+          "index": 32,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 583963750,
+          "worker_ns": 569619000
+        },
+        {
+          "positions": 4096,
+          "index": 33,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 587139625,
+          "worker_ns": 572621666
+        },
+        {
+          "positions": 4096,
+          "index": 34,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 578887291,
+          "worker_ns": 564070583
+        },
+        {
+          "positions": 4096,
+          "index": 35,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 580694000,
+          "worker_ns": 565895500
+        },
+        {
+          "positions": 4096,
+          "index": 36,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 583151834,
+          "worker_ns": 567564958
+        },
+        {
+          "positions": 4096,
+          "index": 37,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+          "numerical_passed": true,
+          "outer_ns": 579654250,
+          "worker_ns": 565364834
+        },
+        {
+          "positions": 4096,
+          "index": 38,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+          "numerical_passed": true,
+          "outer_ns": 582484750,
+          "worker_ns": 567769417
+        },
+        {
+          "positions": 4096,
+          "index": 39,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7",
+          "numerical_passed": true,
+          "outer_ns": 582667334,
+          "worker_ns": 568286833
+        }
+      ],
+      "reported_rows": [
+        {
+          "tokens": 1024,
+          "stage_calls_per_request_from_selected_tile": 16,
+          "warmup": 10,
+          "measurements": 30,
+          "p50_outer_ms": 145.2889585,
+          "p95_outer_ms": 145.96341655,
+          "p50_worker_ms": 141.479083
+        },
+        {
+          "tokens": 4096,
+          "stage_calls_per_request_from_selected_tile": 64,
+          "warmup": 10,
+          "measurements": 30,
+          "p50_outer_ms": 582.190875,
+          "p95_outer_ms": 584.8736039500001,
+          "p50_worker_ms": 567.1543755
+        }
+      ]
+    },
+    "G-0": {
+      "independent_processes": 1,
+      "calls": [
+        {
+          "positions": 1024,
+          "index": 0,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 60006958,
+          "worker_ns": 55511625
+        },
+        {
+          "positions": 1024,
+          "index": 1,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 38539375,
+          "worker_ns": 34380167
+        },
+        {
+          "positions": 1024,
+          "index": 2,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37809916,
+          "worker_ns": 33856958
+        },
+        {
+          "positions": 1024,
+          "index": 3,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37936625,
+          "worker_ns": 34478209
+        },
+        {
+          "positions": 1024,
+          "index": 4,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 36895833,
+          "worker_ns": 33432917
+        },
+        {
+          "positions": 1024,
+          "index": 5,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 38057792,
+          "worker_ns": 34518833
+        },
+        {
+          "positions": 1024,
+          "index": 6,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 38750708,
+          "worker_ns": 35265875
+        },
+        {
+          "positions": 1024,
+          "index": 7,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 38731417,
+          "worker_ns": 34965083
+        },
+        {
+          "positions": 1024,
+          "index": 8,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37564334,
+          "worker_ns": 34063250
+        },
+        {
+          "positions": 1024,
+          "index": 9,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37789334,
+          "worker_ns": 34278959
+        },
+        {
+          "positions": 1024,
+          "index": 10,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37717292,
+          "worker_ns": 34192709
+        },
+        {
+          "positions": 1024,
+          "index": 11,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 37122709,
+          "worker_ns": 33391625
+        },
+        {
+          "positions": 1024,
+          "index": 12,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37848666,
+          "worker_ns": 34204083
+        },
+        {
+          "positions": 1024,
+          "index": 13,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37263375,
+          "worker_ns": 33482708
+        },
+        {
+          "positions": 1024,
+          "index": 14,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 38697459,
+          "worker_ns": 35072500
+        },
+        {
+          "positions": 1024,
+          "index": 15,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37542041,
+          "worker_ns": 34105500
+        },
+        {
+          "positions": 1024,
+          "index": 16,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 38245667,
+          "worker_ns": 34732542
+        },
+        {
+          "positions": 1024,
+          "index": 17,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 37723375,
+          "worker_ns": 34306625
+        },
+        {
+          "positions": 1024,
+          "index": 18,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37972541,
+          "worker_ns": 34546708
+        },
+        {
+          "positions": 1024,
+          "index": 19,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37548375,
+          "worker_ns": 34118666
+        },
+        {
+          "positions": 1024,
+          "index": 20,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 37389084,
+          "worker_ns": 33717708
+        },
+        {
+          "positions": 1024,
+          "index": 21,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 38245833,
+          "worker_ns": 34633500
+        },
+        {
+          "positions": 1024,
+          "index": 22,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37669208,
+          "worker_ns": 34285583
+        },
+        {
+          "positions": 1024,
+          "index": 23,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 37636792,
+          "worker_ns": 33944125
+        },
+        {
+          "positions": 1024,
+          "index": 24,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37812625,
+          "worker_ns": 34330875
+        },
+        {
+          "positions": 1024,
+          "index": 25,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 38550334,
+          "worker_ns": 34609458
+        },
+        {
+          "positions": 1024,
+          "index": 26,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 38119625,
+          "worker_ns": 34739417
+        },
+        {
+          "positions": 1024,
+          "index": 27,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37762291,
+          "worker_ns": 34380792
+        },
+        {
+          "positions": 1024,
+          "index": 28,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37835375,
+          "worker_ns": 34548500
+        },
+        {
+          "positions": 1024,
+          "index": 29,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 37063875,
+          "worker_ns": 33786625
+        },
+        {
+          "positions": 1024,
+          "index": 30,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37477959,
+          "worker_ns": 34216250
+        },
+        {
+          "positions": 1024,
+          "index": 31,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 37579542,
+          "worker_ns": 34256250
+        },
+        {
+          "positions": 1024,
+          "index": 32,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 37092000,
+          "worker_ns": 33679917
+        },
+        {
+          "positions": 1024,
+          "index": 33,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37598125,
+          "worker_ns": 34096708
+        },
+        {
+          "positions": 1024,
+          "index": 34,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 36460041,
+          "worker_ns": 33026708
+        },
+        {
+          "positions": 1024,
+          "index": 35,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 36914917,
+          "worker_ns": 33444042
+        },
+        {
+          "positions": 1024,
+          "index": 36,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 37019458,
+          "worker_ns": 33668416
+        },
+        {
+          "positions": 1024,
+          "index": 37,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+          "numerical_passed": true,
+          "outer_ns": 38160500,
+          "worker_ns": 34425500
+        },
+        {
+          "positions": 1024,
+          "index": 38,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+          "numerical_passed": true,
+          "outer_ns": 38813792,
+          "worker_ns": 35284500
+        },
+        {
+          "positions": 1024,
+          "index": 39,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a",
+          "numerical_passed": true,
+          "outer_ns": 36916709,
+          "worker_ns": 33520833
+        },
+        {
+          "positions": 4096,
+          "index": 0,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 175523250,
+          "worker_ns": 157665875
+        },
+        {
+          "positions": 4096,
+          "index": 1,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 153839708,
+          "worker_ns": 138106041
+        },
+        {
+          "positions": 4096,
+          "index": 2,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 152510458,
+          "worker_ns": 137384375
+        },
+        {
+          "positions": 4096,
+          "index": 3,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 152771291,
+          "worker_ns": 139380583
+        },
+        {
+          "positions": 4096,
+          "index": 4,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 155191375,
+          "worker_ns": 140879917
+        },
+        {
+          "positions": 4096,
+          "index": 5,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 155910333,
+          "worker_ns": 142594459
+        },
+        {
+          "positions": 4096,
+          "index": 6,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 157102583,
+          "worker_ns": 143566167
+        },
+        {
+          "positions": 4096,
+          "index": 7,
+          "phase": "warmup",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 154808625,
+          "worker_ns": 140904500
+        },
+        {
+          "positions": 4096,
+          "index": 8,
+          "phase": "warmup",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 163952833,
+          "worker_ns": 150437375
+        },
+        {
+          "positions": 4096,
+          "index": 9,
+          "phase": "warmup",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 150343583,
+          "worker_ns": 137288625
+        },
+        {
+          "positions": 4096,
+          "index": 10,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 154114625,
+          "worker_ns": 137858916
+        },
+        {
+          "positions": 4096,
+          "index": 11,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 153738750,
+          "worker_ns": 139463167
+        },
+        {
+          "positions": 4096,
+          "index": 12,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 149680375,
+          "worker_ns": 136101333
+        },
+        {
+          "positions": 4096,
+          "index": 13,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 150654500,
+          "worker_ns": 137151375
+        },
+        {
+          "positions": 4096,
+          "index": 14,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 150833000,
+          "worker_ns": 136883125
+        },
+        {
+          "positions": 4096,
+          "index": 15,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 149900542,
+          "worker_ns": 136052542
+        },
+        {
+          "positions": 4096,
+          "index": 16,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 150155125,
+          "worker_ns": 136863000
+        },
+        {
+          "positions": 4096,
+          "index": 17,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 150559833,
+          "worker_ns": 137195250
+        },
+        {
+          "positions": 4096,
+          "index": 18,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 152213875,
+          "worker_ns": 138738167
+        },
+        {
+          "positions": 4096,
+          "index": 19,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 151380875,
+          "worker_ns": 137628208
+        },
+        {
+          "positions": 4096,
+          "index": 20,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 159664208,
+          "worker_ns": 143440542
+        },
+        {
+          "positions": 4096,
+          "index": 21,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 152277791,
+          "worker_ns": 137646250
+        },
+        {
+          "positions": 4096,
+          "index": 22,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 150327000,
+          "worker_ns": 137207500
+        },
+        {
+          "positions": 4096,
+          "index": 23,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 153366375,
+          "worker_ns": 139766541
+        },
+        {
+          "positions": 4096,
+          "index": 24,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 154107333,
+          "worker_ns": 140176125
+        },
+        {
+          "positions": 4096,
+          "index": 25,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 153451333,
+          "worker_ns": 140154458
+        },
+        {
+          "positions": 4096,
+          "index": 26,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 154583250,
+          "worker_ns": 141602750
+        },
+        {
+          "positions": 4096,
+          "index": 27,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 153599166,
+          "worker_ns": 140237125
+        },
+        {
+          "positions": 4096,
+          "index": 28,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 151689541,
+          "worker_ns": 138479042
+        },
+        {
+          "positions": 4096,
+          "index": 29,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 154232041,
+          "worker_ns": 140737458
+        },
+        {
+          "positions": 4096,
+          "index": 30,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 153835375,
+          "worker_ns": 140048833
+        },
+        {
+          "positions": 4096,
+          "index": 31,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 153383708,
+          "worker_ns": 140070875
+        },
+        {
+          "positions": 4096,
+          "index": 32,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 151635125,
+          "worker_ns": 137729417
+        },
+        {
+          "positions": 4096,
+          "index": 33,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 150307833,
+          "worker_ns": 136512458
+        },
+        {
+          "positions": 4096,
+          "index": 34,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 153327458,
+          "worker_ns": 140477000
+        },
+        {
+          "positions": 4096,
+          "index": 35,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 153744667,
+          "worker_ns": 139860000
+        },
+        {
+          "positions": 4096,
+          "index": 36,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 150538333,
+          "worker_ns": 136783916
+        },
+        {
+          "positions": 4096,
+          "index": 37,
+          "phase": "measure",
+          "input_index": 0,
+          "output_sha256": "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+          "numerical_passed": true,
+          "outer_ns": 154598792,
+          "worker_ns": 140997125
+        },
+        {
+          "positions": 4096,
+          "index": 38,
+          "phase": "measure",
+          "input_index": 1,
+          "output_sha256": "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+          "numerical_passed": true,
+          "outer_ns": 151920667,
+          "worker_ns": 138551541
+        },
+        {
+          "positions": 4096,
+          "index": 39,
+          "phase": "measure",
+          "input_index": 2,
+          "output_sha256": "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc",
+          "numerical_passed": true,
+          "outer_ns": 152054042,
+          "worker_ns": 138256750
+        }
+      ],
+      "reported_rows": [
+        {
+          "tokens": 1024,
+          "stage_calls_per_request_from_selected_tile": null,
+          "warmup": 10,
+          "measurements": 30,
+          "p50_outer_ms": 37.653,
+          "p95_outer_ms": 38.63125275,
+          "p50_worker_ms": 34.2101665
+        },
+        {
+          "tokens": 4096,
+          "stage_calls_per_request_from_selected_tile": null,
+          "warmup": 10,
+          "measurements": 30,
+          "p50_outer_ms": 152.245833,
+          "p95_outer_ms": 154.5917981,
+          "p50_worker_ms": 138.5152915
+        }
+      ]
+    }
+  },
+  "memory": {
+    "C-64": {
+      "request_positions": 4096,
+      "requests": 32,
+      "numerical_checks_passed": true,
+      "memory_gate_passed": true,
+      "long_term_residency_proven": false,
+      "growth": {
+        "worker_footprint": {
+          "delta_bytes": 2031616,
+          "bytes_per_64_position_block": 1984.0
+        },
+        "controller_footprint": {
+          "delta_bytes": 229376,
+          "bytes_per_64_position_block": 224.0
+        }
+      },
+      "checkpoints": [
+        {
+          "label": "loaded",
+          "worker_footprint": 6603496,
+          "controller_footprint": 114098776
+        },
+        {
+          "label": "1",
+          "worker_footprint": 156435320,
+          "controller_footprint": 192856712
+        },
+        {
+          "label": "4",
+          "worker_footprint": 156468088,
+          "controller_footprint": 224756384
+        },
+        {
+          "label": "8",
+          "worker_footprint": 156386168,
+          "controller_footprint": 224871072
+        },
+        {
+          "label": "16",
+          "worker_footprint": 156418936,
+          "controller_footprint": 225034912
+        },
+        {
+          "label": "32",
+          "worker_footprint": 158450552,
+          "controller_footprint": 225264288
+        },
+        {
+          "label": "drop_last",
+          "worker_footprint": 158450552,
+          "controller_footprint": 225378976
+        },
+        {
+          "label": "idle",
+          "worker_footprint": 158450552,
+          "controller_footprint": 225378976
+        }
+      ]
+    },
+    "C-256": {
+      "request_positions": 4096,
+      "requests": 32,
+      "numerical_checks_passed": true,
+      "memory_gate_passed": true,
+      "long_term_residency_proven": false,
+      "growth": {
+        "worker_footprint": {
+          "delta_bytes": 16384,
+          "bytes_per_64_position_block": 16.0
+        },
+        "controller_footprint": {
+          "delta_bytes": 114688,
+          "bytes_per_64_position_block": 112.0
+        }
+      },
+      "checkpoints": [
+        {
+          "label": "loaded",
+          "worker_footprint": 6669056,
+          "controller_footprint": 181600928
+        },
+        {
+          "label": "1",
+          "worker_footprint": 251036656,
+          "controller_footprint": 197411488
+        },
+        {
+          "label": "4",
+          "worker_footprint": 251659248,
+          "controller_footprint": 229425848
+        },
+        {
+          "label": "8",
+          "worker_footprint": 251560944,
+          "controller_footprint": 229573304
+        },
+        {
+          "label": "16",
+          "worker_footprint": 271549448,
+          "controller_footprint": 229720760
+        },
+        {
+          "label": "32",
+          "worker_footprint": 271565832,
+          "controller_footprint": 229835448
+        },
+        {
+          "label": "drop_last",
+          "worker_footprint": 271565832,
+          "controller_footprint": 229950136
+        },
+        {
+          "label": "idle",
+          "worker_footprint": 271565832,
+          "controller_footprint": 229950136
+        }
+      ]
+    },
+    "A-256": {
+      "request_positions": 4096,
+      "requests": 32,
+      "numerical_checks_passed": true,
+      "memory_gate_passed": false,
+      "long_term_residency_proven": false,
+      "growth": {
+        "worker_footprint": {
+          "delta_bytes": 30883864,
+          "bytes_per_64_position_block": 30160.0234375
+        },
+        "controller_footprint": {
+          "delta_bytes": 491544,
+          "bytes_per_64_position_block": 480.0234375
+        }
+      },
+      "checkpoints": [
+        {
+          "label": "loaded",
+          "worker_footprint": 6587112,
+          "controller_footprint": 181371528
+        },
+        {
+          "label": "1",
+          "worker_footprint": 250921920,
+          "controller_footprint": 197132936
+        },
+        {
+          "label": "4",
+          "worker_footprint": 250954688,
+          "controller_footprint": 229016224
+        },
+        {
+          "label": "8",
+          "worker_footprint": 250872768,
+          "controller_footprint": 229163680
+        },
+        {
+          "label": "16",
+          "worker_footprint": 250921920,
+          "controller_footprint": 229311136
+        },
+        {
+          "label": "32",
+          "worker_footprint": 281805784,
+          "controller_footprint": 229802680
+        },
+        {
+          "label": "drop_last",
+          "worker_footprint": 281805784,
+          "controller_footprint": 229917368
+        },
+        {
+          "label": "idle",
+          "worker_footprint": 281805784,
+          "controller_footprint": 229917368
+        }
+      ]
+    }
+  },
+  "resources": {
+    "owned_rss_peak_bytes": 1618542592,
+    "free_min_percent_during_experiments": 81,
+    "swap_min_MiB": 2.38,
+    "swap_max_MiB": 2.38,
+    "rss_sample_interval_seconds": 1,
+    "no_owned_processes_remaining": true
+  },
+  "evidence_checks_passed": true,
+  "formal_three_process_acceptance": false,
+  "long_term_residency_proven": false,
+  "power_thermal_coexistence_measured": false,
+  "sources": {
+    "results/g1-tile-20260910/review/verification.json": "ab9fa3d19fdba78f9111b445f69dd0fd677fad75db55cfdd8361a194eec3d39d",
+    "results/g1-tile-20260910/BENCH-PROTOCOL.json": "0d9d8d0dbd6ae8c14d8f1b283dc19acca47df400c8c99f9b37c23f8281171b6d",
+    "results/g1-tile-20260910/prepared.json": "cd9e42ea841d6b69810728b6d6319e6dec782a714d36ed2108275da2742ea67b",
+    "results/g1-tile-20260910/resource-closure.json": "346af042864a9831f5482d5d22ec37560832a6cc5624da90ad13e6f4de9f3a3d",
+    "results/g1-tile-20260910/throughput/C-64/calls.json": "7fbff0ed18757f213702df7e01b38a5e78f90a60942695376887469fe6818c18",
+    "results/g1-tile-20260910/throughput/C-256/calls.json": "d4f52a042217ac145e1df903b32c667271e219ae6d9ffa7a56731d877318380e",
+    "results/g1-tile-20260910/throughput/G-0/calls.json": "172cd4f60d1dd22dae524460ee6603ace4510fb0f8df75606cd37d2f88e26646",
+    "results/g1-tile-20260910/memory/C-64/verification.json": "246d62db7fdd7307c192ad93ca149fa7acb795adb21f06a9cc316ec308acbbf0",
+    "results/g1-tile-20260910/memory/C-256/verification.json": "4abf32f3b8c86452e732f109d4710f43b4f97b954351f068a363d75505bee959",
+    "results/g1-tile-20260910/memory/A-256/verification.json": "94d4f95bd7ef8f2944a8ef6dca1beacc3a5425740aa1c58fb2856aa335dfe997"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "power_energy_undetermined",
+  "scope": "Unchanged strict whole-capture acceptance. No tail trimming, prefix salvage, zero fill, clock-bin expansion or replacement by SMC power.",
+  "capture": {
+    "start_epoch_ns": 1789080987667611000,
+    "start_monotonic_ns": 60219517364125,
+    "seconds": 32400.0,
+    "pid": 75827,
+    "end_epoch_ns": 1789101691770608000,
+    "end_monotonic_ns": 80923493355083,
+    "reason": "ValueError: power capture size limit",
+    "samples": 18947,
+    "bytes": 1073742184,
+    "trailing_partial_bytes": 47804
+  },
+  "source_identity": {
+    "capture.json": {
+      "bytes": 329,
+      "sha256": "d6fcb3cfe172ac48212dadea99cc26a2b56f599752bfb4c42b16a757d86c72ca"
+    },
+    "power.plist": {
+      "bytes": 1073742184,
+      "sha256": "a220c8ba224cae9d6b09a9ad10c78793e8ce0c0b81376df17cee2150df5b9538"
+    },
+    "records.jsonl": {
+      "bytes": 2791715,
+      "sha256": "124bd5c664b6bca85ad167ba18dd4e8bb006c22daab66268d8b0fae2ac20eb66"
+    },
+    "clock.jsonl": {
+      "bytes": 1333266,
+      "sha256": "bd3124cf074bc416330600b45f1b96ba63001b9da7ad646fca171426dd21c926"
+    }
+  },
+  "alignment": {
+    "accepted": false,
+    "failures": [
+      "constant_origin_intersection_empty",
+      "truncated_tail",
+      "wall_clock_discontinuity"
+    ],
+    "origin_low_epoch": 1789082249.6160827,
+    "origin_high_epoch": 1789082249.5071013,
+    "samples": 18947,
+    "quantization_bin_seconds": 1,
+    "scope": "CPU+GPU+ANE estimated domains; no wall-power claim"
+  },
+  "epoch_monotonic_offset_bounds_seconds": [
+    1789020768.150248,
+    1789020768.2137513,
+    1789020768.2772546
+  ],
+  "matched_energy_pairs": [
+    {
+      "group_id": "P3-0.25-r0",
+      "status": "undetermined",
+      "reason": "batch_energy_or_coverage_undetermined"
+    },
+    {
+      "group_id": "P3-0.5-r0",
+      "status": "undetermined",
+      "reason": "batch_energy_or_coverage_undetermined"
+    },
+    {
+      "group_id": "P3-0.75-r0",
+      "status": "undetermined",
+      "reason": "batch_energy_or_coverage_undetermined"
+    },
+    {
+      "group_id": "P3-0.75-r1",
+      "status": "undetermined",
+      "reason": "batch_energy_or_coverage_undetermined"
+    },
+    {
+      "group_id": "P3-0.5-r1",
+      "status": "undetermined",
+      "reason": "batch_energy_or_coverage_undetermined"
+    },
+    {
+      "group_id": "P3-0.25-r1",
+      "status": "undetermined",
+      "reason": "batch_energy_or_coverage_undetermined"
+    }
+  ]
+}

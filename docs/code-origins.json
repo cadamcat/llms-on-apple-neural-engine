@@ -1,0 +1,57 @@
+[
+  {
+    "origin": "scripts/g1ic_export.py",
+    "sha256": "e00f23fa9b7cc547d5819063c4f1dfe1e9c660bb185563c459f8765c8ebe7f53",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1ic_heldout.py",
+    "sha256": "f42d9314d2c28cd188a7d3e2d0013af7ffd19e05e64615bdfc608f186d939583",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1ic_coreai_export.py",
+    "sha256": "77664ad85d3303c284d7f7a6f55256cf9eddc5e73365b9209c4d235846dc43f6",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1w4_split_math.py",
+    "sha256": "35935f0e2b494dc6492266471a844403131fbdfa5218d68a973b1932a7922a58",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1w4_split_export.py",
+    "sha256": "815ba3e1aa816999f19ddebcd9b4fbc5ae25d1078c8a2b774f38cd66a16cd40a",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1w4_asset_audit.py",
+    "sha256": "e75df81d655c610c409c43cd609ec98bed14b307f4cf8e4152d42a6a030dc106",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1v_repro.py",
+    "sha256": "6b3bfa1d1d8cf8114aa13a46887336b51d7ebdefe05698bcbdcc7f8f16800620",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1gc_export.py",
+    "sha256": "3a1057269c02bd2471b14ee6e0127f3954144f5fce37ac10e88388989d008947",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1gc_asset_audit.py",
+    "sha256": "ce208d168e8fa2360e14e865b7477298db66c36229dc5195bc352ea35d671b0a",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1gc_coreml.swift",
+    "sha256": "dc24d6e155795087e288da6ba2927ab0973896c3c0efa77eab9259df6a1ea9bd",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "scripts/g1gc_coreai.swift",
+    "sha256": "3de3ae9b47b4fa6e49fd7f53f7684fecddc86db514f7e282dd5a9c8d8a473702",
+    "origin_scope": "local research workspace, selected implementation adapted"
+  }
+]

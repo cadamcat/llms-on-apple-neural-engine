@@ -1,0 +1,26 @@
+LLMs on Apple Neural Engine
+Copyright (c) 2026 LLMs on Apple Neural Engine contributors
+
+Original project code and generated experiment records are provided under the MIT
+license in LICENSE. Adapted local research scripts are listed, with source hashes,
+in docs/code-origins.json. This repository publishes selected reproducible recipes,
+not the complete research workspace or its model data.
+
+The 512-channel / 128-layer positive-control shape is inspired by the ANEMLL
+benchmark and related maderix/ANE work. LLMs on Apple Neural Engine uses a separately generated
+Hadamard/sign/permutation fixture and explicit numerical/device controls. See:
+https://gist.github.com/Anemll/49e219448ad350ef67ff4bfdcb9ebd8c
+https://github.com/maderix/ANE
+
+Apple Core ML, Core AI, coremltools and coreai-torch supply APIs used by the
+adapters. PyTorch and NumPy supply authoring and reference arithmetic. Dependencies
+are installed separately and retain their own licenses; no dependency source,
+model weights, Apple framework binaries or compiled models are redistributed.
+Core AI private Python authoring/bytecode interfaces are version-pinned.
+
+Other named projects in docs/RELATED_WORK.md are cited as prior work. Their code
+and datasets are not included in this tree. This notice does not grant rights to
+third-party material. Check the source and license of any future imported code or
+data and add its required notice before including it.
+
+LLMs on Apple Neural Engine is an independent research project and does not imply Apple endorsement.

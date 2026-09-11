@@ -1,0 +1,49 @@
+{
+  "historical_import": true,
+  "case": "g1-group-coreml coreml-native64",
+  "source": "results/g1-group-coreml-20260910/review/coreml-native64-diagnostics.json",
+  "source_sha256": "448ed7dfe8f9539c6abeb85fdcc1fb294c14959f76d8d06c79121d3d8b312342",
+  "diagnostics": [
+    {
+      "timestamp": "2026-09-10 17:36:47.549697+0200",
+      "pid_scope": "target Core ML host PID (source diagnostic already PID-filtered)",
+      "message": "Unsupported op 4 (ios18.conv): ANE only support per-cout/per-tensor quantization"
+    },
+    {
+      "timestamp": "2026-09-10 17:36:47.578944+0200",
+      "pid_scope": "target Core ML host PID (source diagnostic already PID-filtered)",
+      "message": "Unsupported op 4 (ios18.conv): ANE only support per-cout/per-tensor quantization"
+    }
+  ],
+  "original_model_fragment_shape": {
+    "weight": [
+      15360,
+      64,
+      1,
+      1
+    ],
+    "group_scale": [
+      15360,
+      2,
+      1,
+      1
+    ],
+    "description": "Original Q4_0 first-gate fragment; retained source evidence only"
+  },
+  "new_model_shape": {
+    "input": [
+      1,
+      64,
+      1,
+      64
+    ],
+    "output": [
+      1,
+      64,
+      1,
+      64
+    ],
+    "description": "New model-free Core ML K64 probe; unrelated to a full original model"
+  },
+  "interpretation": "Historical rejection concerns the original Gemma-derived 15360-output K64 fragment. New ANE Scope model-free tests use 64 outputs and are separate experiments. No general claim about all Core ML INT4 graphs."
+}

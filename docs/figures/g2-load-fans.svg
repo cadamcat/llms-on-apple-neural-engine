@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">G2: load against temperature and fan speed</title>
+<desc id="fig-desc">Completed requests per second against GPU sensor temperature and fan 0 speed, for all six equal-rate pairs and all four saturated blocks; fan 1 values are given in the caption.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="500" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">At equal load, fans stayed at idle on both engines</text>
+<text x="40" y="50" font-size="12" class="t-muted">Temperature readings differed by a few degrees; fan speed rose only in the saturated GPU blocks</text>
+<text x="40" y="68" font-size="10.5" class="t-muted">GPU loads between 4.9 and 23.7 requests/s were not measured · one M5 Pro · first-layer MLP</text>
+<rect x="154.278" y="140" width="243.565" height="220" rx="0" class="tint-slate" stroke="none"/>
+<rect x="574.278" y="140" width="243.565" height="220" rx="0" class="tint-slate" stroke="none"/>
+<text x="90" y="126" font-size="12" class="t-ink sb">GPU sensor mean (°C)</text>
+<path d="M90 360 L415 360" fill="none" class="s-grid" stroke-width="1"/>
+<text x="81" y="364" font-size="10.5" class="t-muted" text-anchor="end">40</text>
+<path d="M90 305 L415 305" fill="none" class="s-grid" stroke-width="1"/>
+<text x="81" y="309" font-size="10.5" class="t-muted" text-anchor="end">50</text>
+<path d="M90 250 L415 250" fill="none" class="s-grid" stroke-width="1"/>
+<text x="81" y="254" font-size="10.5" class="t-muted" text-anchor="end">60</text>
+<path d="M90 195 L415 195" fill="none" class="s-grid" stroke-width="1"/>
+<text x="81" y="199" font-size="10.5" class="t-muted" text-anchor="end">70</text>
+<path d="M90 140 L415 140" fill="none" class="s-grid" stroke-width="1"/>
+<text x="81" y="144" font-size="10.5" class="t-muted" text-anchor="end">80</text>
+<text x="90" y="378" font-size="10.5" class="t-muted" text-anchor="middle">0</text>
+<text x="155" y="378" font-size="10.5" class="t-muted" text-anchor="middle">5</text>
+<text x="220" y="378" font-size="10.5" class="t-muted" text-anchor="middle">10</text>
+<text x="285" y="378" font-size="10.5" class="t-muted" text-anchor="middle">15</text>
+<text x="350" y="378" font-size="10.5" class="t-muted" text-anchor="middle">20</text>
+<text x="415" y="378" font-size="10.5" class="t-muted" text-anchor="middle">25</text>
+<text x="252.5" y="396" font-size="10.5" class="t-muted" text-anchor="middle">Completed requests/s</text>
+<text x="510" y="126" font-size="12" class="t-ink sb">Fan 0 speed (RPM)</text>
+<path d="M510 360 L835 360" fill="none" class="s-grid" stroke-width="1"/>
+<text x="501" y="364" font-size="10.5" class="t-muted" text-anchor="end">0</text>
+<path d="M510 305 L835 305" fill="none" class="s-grid" stroke-width="1"/>
+<text x="501" y="309" font-size="10.5" class="t-muted" text-anchor="end">1000</text>
+<path d="M510 250 L835 250" fill="none" class="s-grid" stroke-width="1"/>
+<text x="501" y="254" font-size="10.5" class="t-muted" text-anchor="end">2000</text>
+<path d="M510 195 L835 195" fill="none" class="s-grid" stroke-width="1"/>
+<text x="501" y="199" font-size="10.5" class="t-muted" text-anchor="end">3000</text>
+<path d="M510 140 L835 140" fill="none" class="s-grid" stroke-width="1"/>
+<text x="501" y="144" font-size="10.5" class="t-muted" text-anchor="end">4000</text>
+<text x="510" y="378" font-size="10.5" class="t-muted" text-anchor="middle">0</text>
+<text x="575" y="378" font-size="10.5" class="t-muted" text-anchor="middle">5</text>
+<text x="640" y="378" font-size="10.5" class="t-muted" text-anchor="middle">10</text>
+<text x="705" y="378" font-size="10.5" class="t-muted" text-anchor="middle">15</text>
+<text x="770" y="378" font-size="10.5" class="t-muted" text-anchor="middle">20</text>
+<text x="835" y="378" font-size="10.5" class="t-muted" text-anchor="middle">25</text>
+<text x="672.5" y="396" font-size="10.5" class="t-muted" text-anchor="middle">Completed requests/s</text>
+<text x="276.06" y="156" font-size="10.5" class="t-muted" text-anchor="middle">GPU not measured</text>
+<path d="M173.112 140 L173.112 360" fill="none" class="s-teal" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="177.112" y="352" font-size="10.5" class="t-teal">ANE maximum</text>
+<text x="696.06" y="156" font-size="10.5" class="t-muted" text-anchor="middle">GPU not measured</text>
+<path d="M593.112 140 L593.112 360" fill="none" class="s-teal" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="597.112" y="352" font-size="10.5" class="t-teal">ANE maximum</text>
+<path d="M510 285.668 L835 285.668" fill="none" class="s-muted" stroke-width="1" stroke-dasharray="2 3"/>
+<text x="835" y="279.668" font-size="10.5" class="t-muted" text-anchor="end">idle</text>
+<circle cx="111.45" cy="279.529" r="5" class="f-blue"/>
+<circle cx="531.45" cy="285.693" r="5" class="f-blue"/>
+<circle cx="132.864" cy="262.432" r="5" class="f-blue"/>
+<circle cx="552.864" cy="285.675" r="5" class="f-blue"/>
+<circle cx="154.278" cy="252.888" r="5" class="f-blue"/>
+<circle cx="574.278" cy="285.628" r="5" class="f-blue"/>
+<circle cx="154.278" cy="250.831" r="5" class="f-blue"/>
+<circle cx="574.278" cy="285.617" r="5" class="f-blue"/>
+<circle cx="132.864" cy="260.236" r="5" class="f-blue"/>
+<circle cx="552.864" cy="285.649" r="5" class="f-blue"/>
+<circle cx="111.45" cy="278.088" r="5" class="f-blue"/>
+<circle cx="531.45" cy="285.702" r="5" class="f-blue"/>
+<circle cx="398.222" cy="195.194" r="5" class="f-blue"/>
+<circle cx="818.222" cy="168.298" r="5" class="f-blue"/>
+<circle cx="397.843" cy="184.111" r="5" class="f-blue"/>
+<circle cx="817.843" cy="188.593" r="5" class="f-blue"/>
+<circle cx="111.45" cy="289.683" r="3" class="f-teal"/>
+<circle cx="531.45" cy="285.728" r="3" class="f-teal"/>
+<circle cx="132.864" cy="279.337" r="3" class="f-teal"/>
+<circle cx="552.864" cy="285.703" r="3" class="f-teal"/>
+<circle cx="154.278" cy="270.979" r="3" class="f-teal"/>
+<circle cx="574.278" cy="285.717" r="3" class="f-teal"/>
+<circle cx="154.278" cy="268.891" r="3" class="f-teal"/>
+<circle cx="574.278" cy="285.697" r="3" class="f-teal"/>
+<circle cx="132.864" cy="277.947" r="3" class="f-teal"/>
+<circle cx="552.864" cy="285.711" r="3" class="f-teal"/>
+<circle cx="111.45" cy="285.378" r="3" class="f-teal"/>
+<circle cx="531.45" cy="285.72" r="3" class="f-teal"/>
+<circle cx="173.2" cy="256.404" r="3" class="f-teal"/>
+<circle cx="593.2" cy="285.585" r="3" class="f-teal"/>
+<circle cx="173.024" cy="263.722" r="3" class="f-teal"/>
+<circle cx="593.024" cy="285.805" r="3" class="f-teal"/>
+<circle cx="395" cy="96" r="4.5" class="f-blue"/>
+<text x="408" y="100" font-size="10.5" class="t-muted">GPU</text>
+<circle cx="451.8" cy="96" r="4.5" class="f-teal"/>
+<text x="464.8" y="100" font-size="10.5" class="t-muted">ANE</text>
+<text x="40" y="430" font-size="10.5" class="t-muted">Six equal-rate pairs at 1.6–4.9 requests/s (window means, matched starts); saturated blocks at 6.4 and 23.7 (final five-minute medians, platform rule met).</text>
+<text x="40" y="446" font-size="10.5" class="t-muted">The ANE marker is drawn inside the GPU marker; dashed: median block-start fan 0 speed. CPU sensor difference at equal load: 0.7–2.2 °C.</text>
+<text x="40" y="462" font-size="10.5" class="t-muted">Fan 1 follows the same pattern: idle 1,459 RPM, 1,457–1,462 at equal load, 3,368–3,768 in saturated GPU blocks.</text>
+<text x="40" y="478" font-size="10.5" class="t-muted">Sensor means are not case temperatures; RPM is not acoustic noise. Ventura screensaver reported; energy undetermined.</text>
+</svg>

@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "method": "SHA256 of current source versus recorded run identity",
+  "device_rerun": false,
+  "semantic_equivalence_tested": false,
+  "suites": {
+    "smoke": {
+      "record": "results/fresh/smoke.json",
+      "record_sha256": "962f1f17c7787a880c0a901cba498bc930ca4eaa1662480484e9980bac85037c",
+      "current_source_matches_run": false,
+      "files": [
+        {
+          "path": "src/ane_scope/__init__.py",
+          "run_sha256": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+          "current_sha256": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/__main__.py",
+          "run_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+          "current_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/_coreai.py",
+          "run_sha256": "85b55ed04df7251484938c78754fdf0497c2fcdcdf404967b73bb9c4ac37c17d",
+          "current_sha256": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/_coreml.py",
+          "run_sha256": "fafc437d477061a86c5584d938c851409e8e018f1e192ecbfdd1beb355850ae3",
+          "current_sha256": "99f291ca3426505b33370d7a279669bc4605f97bc5aee2184f5df1dadc1e9983",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/cli.py",
+          "run_sha256": "75419fb8e6ffb7564308d4d05a6ccde7ee5133faae97d81292fe4b0a003388b0",
+          "current_sha256": "6ab94682b158be225f8dee190f3bdc6efcbd7ef0242dd5a5870b9a1aefb6dd9e",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/common.py",
+          "run_sha256": "c19b04b6a82d586d6aab42e142da248d9e805f5c5c6f99f51a6539f4f92fd15c",
+          "current_sha256": "4a9717f46aab47b5a35c767e3b6562cf5e0a5510f553348ccbc86bb60980e686",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/controller.py",
+          "run_sha256": "545ed83df261bb8247e7a9cd8b4ca16a378743ed0a07ada24828356e42e2d8ba",
+          "current_sha256": "c52a7edbe985c146f183286d5c61ad7a99782341d818d0ac265c449085240b3a",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/evidence.py",
+          "run_sha256": "a0e86e7ab624a05bda0a8a124ee220813cc94f7da2656890fb2c9d0e3cfe6e6e",
+          "current_sha256": "542330df4fa3d27deafa23c0520638ffa00485ef28024aefaf5161803c6c2550",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/exporting.py",
+          "run_sha256": "cb3293233a204337cc932c93bbc67e89567de2705fbe95119d6adf67c1c5a0ce",
+          "current_sha256": "be5f21bdcba53a5a1b788d5984350358ad3639bc4ef0c80f9d95a3dc01e1135c",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/guard.py",
+          "run_sha256": "804627f070644cd99aac974b7c6e1c176d9b11d3fc49fc6a8cc7400ad93d83a4",
+          "current_sha256": "b932ea5590ffc3d8e8ed34b350bccfc1285e607397a82820c8a708b43d4e3b55",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/native/coreai.swift",
+          "run_sha256": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+          "current_sha256": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/native/coreml.swift",
+          "run_sha256": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+          "current_sha256": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/references/__init__.py",
+          "run_sha256": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+          "current_sha256": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/references/prepare.py",
+          "run_sha256": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+          "current_sha256": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+          "matches": true
+        }
+      ]
+    },
+    "throughput": {
+      "record": "results/fresh/throughput.json",
+      "record_sha256": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110",
+      "current_source_matches_run": false,
+      "files": [
+        {
+          "path": "src/ane_scope/__init__.py",
+          "run_sha256": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+          "current_sha256": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/__main__.py",
+          "run_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+          "current_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/_coreai.py",
+          "run_sha256": "85b55ed04df7251484938c78754fdf0497c2fcdcdf404967b73bb9c4ac37c17d",
+          "current_sha256": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/_coreml.py",
+          "run_sha256": "fafc437d477061a86c5584d938c851409e8e018f1e192ecbfdd1beb355850ae3",
+          "current_sha256": "99f291ca3426505b33370d7a279669bc4605f97bc5aee2184f5df1dadc1e9983",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/cli.py",
+          "run_sha256": "75419fb8e6ffb7564308d4d05a6ccde7ee5133faae97d81292fe4b0a003388b0",
+          "current_sha256": "6ab94682b158be225f8dee190f3bdc6efcbd7ef0242dd5a5870b9a1aefb6dd9e",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/common.py",
+          "run_sha256": "c19b04b6a82d586d6aab42e142da248d9e805f5c5c6f99f51a6539f4f92fd15c",
+          "current_sha256": "4a9717f46aab47b5a35c767e3b6562cf5e0a5510f553348ccbc86bb60980e686",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/controller.py",
+          "run_sha256": "545ed83df261bb8247e7a9cd8b4ca16a378743ed0a07ada24828356e42e2d8ba",
+          "current_sha256": "c52a7edbe985c146f183286d5c61ad7a99782341d818d0ac265c449085240b3a",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/evidence.py",
+          "run_sha256": "a0e86e7ab624a05bda0a8a124ee220813cc94f7da2656890fb2c9d0e3cfe6e6e",
+          "current_sha256": "542330df4fa3d27deafa23c0520638ffa00485ef28024aefaf5161803c6c2550",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/exporting.py",
+          "run_sha256": "cb3293233a204337cc932c93bbc67e89567de2705fbe95119d6adf67c1c5a0ce",
+          "current_sha256": "be5f21bdcba53a5a1b788d5984350358ad3639bc4ef0c80f9d95a3dc01e1135c",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/guard.py",
+          "run_sha256": "804627f070644cd99aac974b7c6e1c176d9b11d3fc49fc6a8cc7400ad93d83a4",
+          "current_sha256": "b932ea5590ffc3d8e8ed34b350bccfc1285e607397a82820c8a708b43d4e3b55",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/native/coreai.swift",
+          "run_sha256": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+          "current_sha256": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/native/coreml.swift",
+          "run_sha256": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+          "current_sha256": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/references/__init__.py",
+          "run_sha256": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+          "current_sha256": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/references/prepare.py",
+          "run_sha256": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+          "current_sha256": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+          "matches": true
+        },
+        {
+          "path": "pyproject.toml",
+          "run_sha256": "a4b8e65a71af7c1906c10c5487567d7ad3c1ff6977742a89de009ca9130858c6",
+          "current_sha256": "e13aebd53bc553982eeb7ddd15ca0deab70ed6cecb50757ce53b2a39d76481c7",
+          "matches": false
+        },
+        {
+          "path": "uv.lock",
+          "run_sha256": "1da5f285355cd2b934ab8c8c75f5cdf81bf56f51b05215034d806413c9e2d77f",
+          "current_sha256": "4c13c6971f789db4645222cbf7ead040e81f601bd8c2792bb847c40ee4bc1711",
+          "matches": false
+        }
+      ]
+    },
+    "split": {
+      "record": "results/fresh/split.json",
+      "record_sha256": "526ff38b8f6ad14ad47473aed36ce9bcecde4380ab75ac3406598e8f9204b97f",
+      "current_source_matches_run": false,
+      "files": [
+        {
+          "path": "src/ane_scope/__init__.py",
+          "run_sha256": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+          "current_sha256": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/__main__.py",
+          "run_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+          "current_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/_coreai.py",
+          "run_sha256": "85b55ed04df7251484938c78754fdf0497c2fcdcdf404967b73bb9c4ac37c17d",
+          "current_sha256": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/_coreml.py",
+          "run_sha256": "fafc437d477061a86c5584d938c851409e8e018f1e192ecbfdd1beb355850ae3",
+          "current_sha256": "99f291ca3426505b33370d7a279669bc4605f97bc5aee2184f5df1dadc1e9983",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/cli.py",
+          "run_sha256": "75419fb8e6ffb7564308d4d05a6ccde7ee5133faae97d81292fe4b0a003388b0",
+          "current_sha256": "6ab94682b158be225f8dee190f3bdc6efcbd7ef0242dd5a5870b9a1aefb6dd9e",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/common.py",
+          "run_sha256": "c19b04b6a82d586d6aab42e142da248d9e805f5c5c6f99f51a6539f4f92fd15c",
+          "current_sha256": "4a9717f46aab47b5a35c767e3b6562cf5e0a5510f553348ccbc86bb60980e686",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/controller.py",
+          "run_sha256": "545ed83df261bb8247e7a9cd8b4ca16a378743ed0a07ada24828356e42e2d8ba",
+          "current_sha256": "c52a7edbe985c146f183286d5c61ad7a99782341d818d0ac265c449085240b3a",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/evidence.py",
+          "run_sha256": "a0e86e7ab624a05bda0a8a124ee220813cc94f7da2656890fb2c9d0e3cfe6e6e",
+          "current_sha256": "542330df4fa3d27deafa23c0520638ffa00485ef28024aefaf5161803c6c2550",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/exporting.py",
+          "run_sha256": "cb3293233a204337cc932c93bbc67e89567de2705fbe95119d6adf67c1c5a0ce",
+          "current_sha256": "be5f21bdcba53a5a1b788d5984350358ad3639bc4ef0c80f9d95a3dc01e1135c",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/guard.py",
+          "run_sha256": "804627f070644cd99aac974b7c6e1c176d9b11d3fc49fc6a8cc7400ad93d83a4",
+          "current_sha256": "b932ea5590ffc3d8e8ed34b350bccfc1285e607397a82820c8a708b43d4e3b55",
+          "matches": false
+        },
+        {
+          "path": "src/ane_scope/native/coreai.swift",
+          "run_sha256": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+          "current_sha256": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/native/coreml.swift",
+          "run_sha256": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+          "current_sha256": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/references/__init__.py",
+          "run_sha256": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+          "current_sha256": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+          "matches": true
+        },
+        {
+          "path": "src/ane_scope/references/prepare.py",
+          "run_sha256": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+          "current_sha256": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+          "matches": true
+        },
+        {
+          "path": "pyproject.toml",
+          "run_sha256": "a4b8e65a71af7c1906c10c5487567d7ad3c1ff6977742a89de009ca9130858c6",
+          "current_sha256": "e13aebd53bc553982eeb7ddd15ca0deab70ed6cecb50757ce53b2a39d76481c7",
+          "matches": false
+        },
+        {
+          "path": "uv.lock",
+          "run_sha256": "1da5f285355cd2b934ab8c8c75f5cdf81bf56f51b05215034d806413c9e2d77f",
+          "current_sha256": "4c13c6971f789db4645222cbf7ead040e81f601bd8c2792bb847c40ee4bc1711",
+          "matches": false
+        }
+      ]
+    }
+  }
+}

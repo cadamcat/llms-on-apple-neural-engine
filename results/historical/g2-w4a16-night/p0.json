@@ -1,0 +1,240 @@
+[
+  {
+    "engine": "C",
+    "host": {
+      "pid": 93026,
+      "requests": 527,
+      "stage_calls": 33728,
+      "placement_controls": [
+        {
+          "request_id": "control-0",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-1",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-2",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-3",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-4",
+          "observed_ANE_requests": 64
+        }
+      ],
+      "closed": true
+    },
+    "passed": true,
+    "checkpoints": [
+      {
+        "measured_requests": 0,
+        "monotonic_ns": 66610305513000,
+        "rss_bytes": 676020224,
+        "footprint_bytes": 626805928
+      },
+      {
+        "measured_requests": 32,
+        "monotonic_ns": 66630296787500,
+        "rss_bytes": 644743168,
+        "footprint_bytes": 572148880
+      },
+      {
+        "measured_requests": 64,
+        "monotonic_ns": 66650272740916,
+        "rss_bytes": 644874240,
+        "footprint_bytes": 570281104
+      },
+      {
+        "measured_requests": 128,
+        "monotonic_ns": 66690195806708,
+        "rss_bytes": 645054464,
+        "footprint_bytes": 564235408
+      },
+      {
+        "measured_requests": 256,
+        "monotonic_ns": 66770012228250,
+        "rss_bytes": 645120000,
+        "footprint_bytes": 562056336
+      },
+      {
+        "measured_requests": 512,
+        "monotonic_ns": 66929629847458,
+        "rss_bytes": 645152768,
+        "footprint_bytes": 562072720
+      }
+    ]
+  },
+  {
+    "engine": "G",
+    "host": {
+      "pid": 93858,
+      "requests": 527,
+      "stage_calls": 0,
+      "placement_controls": [],
+      "closed": true
+    },
+    "passed": true,
+    "checkpoints": [
+      {
+        "measured_requests": 0,
+        "monotonic_ns": 66932611328625,
+        "rss_bytes": 1510440960,
+        "footprint_bytes": 2518077208
+      },
+      {
+        "measured_requests": 32,
+        "monotonic_ns": 66938073113166,
+        "rss_bytes": 1447706624,
+        "footprint_bytes": 1700302568
+      },
+      {
+        "measured_requests": 64,
+        "monotonic_ns": 66943548792208,
+        "rss_bytes": 1510637568,
+        "footprint_bytes": 2518257456
+      },
+      {
+        "measured_requests": 128,
+        "monotonic_ns": 66954488867416,
+        "rss_bytes": 1510653952,
+        "footprint_bytes": 2518273840
+      },
+      {
+        "measured_requests": 256,
+        "monotonic_ns": 66976280861958,
+        "rss_bytes": 1416396800,
+        "footprint_bytes": 1668861696
+      },
+      {
+        "measured_requests": 512,
+        "monotonic_ns": 67020002395625,
+        "rss_bytes": 1416445952,
+        "footprint_bytes": 1668910848
+      }
+    ]
+  },
+  {
+    "engine": "G",
+    "host": {
+      "pid": 94086,
+      "requests": 527,
+      "stage_calls": 0,
+      "placement_controls": [],
+      "closed": true
+    },
+    "passed": true,
+    "checkpoints": [
+      {
+        "measured_requests": 0,
+        "monotonic_ns": 67023074596333,
+        "rss_bytes": 1510293504,
+        "footprint_bytes": 2517880528
+      },
+      {
+        "measured_requests": 32,
+        "monotonic_ns": 67028550450041,
+        "rss_bytes": 1510473728,
+        "footprint_bytes": 2518027960
+      },
+      {
+        "measured_requests": 64,
+        "monotonic_ns": 67034040383166,
+        "rss_bytes": 1510490112,
+        "footprint_bytes": 2518044344
+      },
+      {
+        "measured_requests": 128,
+        "monotonic_ns": 67044975506625,
+        "rss_bytes": 1510457344,
+        "footprint_bytes": 2518027984
+      },
+      {
+        "measured_requests": 256,
+        "monotonic_ns": 67066885416208,
+        "rss_bytes": 1479000064,
+        "footprint_bytes": 2486406840
+      },
+      {
+        "measured_requests": 512,
+        "monotonic_ns": 67110865896583,
+        "rss_bytes": 1479016448,
+        "footprint_bytes": 2486439632
+      }
+    ]
+  },
+  {
+    "engine": "C",
+    "host": {
+      "pid": 94322,
+      "requests": 527,
+      "stage_calls": 33728,
+      "placement_controls": [
+        {
+          "request_id": "control-0",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-1",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-2",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-3",
+          "observed_ANE_requests": 64
+        },
+        {
+          "request_id": "control-4",
+          "observed_ANE_requests": 64
+        }
+      ],
+      "closed": true
+    },
+    "passed": true,
+    "checkpoints": [
+      {
+        "measured_requests": 0,
+        "monotonic_ns": 67121200310791,
+        "rss_bytes": 676528128,
+        "footprint_bytes": 625315056
+      },
+      {
+        "measured_requests": 32,
+        "monotonic_ns": 67141204030041,
+        "rss_bytes": 645087232,
+        "footprint_bytes": 568315096
+      },
+      {
+        "measured_requests": 64,
+        "monotonic_ns": 67161182465291,
+        "rss_bytes": 645185536,
+        "footprint_bytes": 566398168
+      },
+      {
+        "measured_requests": 128,
+        "monotonic_ns": 67201160352291,
+        "rss_bytes": 645300224,
+        "footprint_bytes": 566447320
+      },
+      {
+        "measured_requests": 256,
+        "monotonic_ns": 67281004667750,
+        "rss_bytes": 645316608,
+        "footprint_bytes": 562253016
+      },
+      {
+        "measured_requests": 512,
+        "monotonic_ns": 67440603147250,
+        "rss_bytes": 645349376,
+        "footprint_bytes": 562253016
+      }
+    ]
+  }
+]

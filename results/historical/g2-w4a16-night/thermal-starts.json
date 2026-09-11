@@ -1,0 +1,561 @@
+[
+  {
+    "group_id": "P1-matrix_050-r0",
+    "status": "mismatched",
+    "failures": [
+      "macmon_cpu_sensor_mean_c",
+      "macmon_gpu_sensor_mean_c",
+      "fan0_rpm",
+      "fan1_rpm"
+    ],
+    "blocks": {
+      "P1-matrix_050-r0-alone": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.68099021911621,
+          "macmon_gpu_sensor_mean_c": 53.01171875,
+          "fan0_rpm": 1352.0,
+          "fan1_rpm": 1458.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_050-r0-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.02691078186035,
+          "macmon_gpu_sensor_mean_c": 51.33407783508301,
+          "fan0_rpm": 1721.0,
+          "fan1_rpm": 1859.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_050-r0-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 51.59787178039551,
+          "macmon_gpu_sensor_mean_c": 50.91703796386719,
+          "fan0_rpm": 1349.0,
+          "fan1_rpm": 1458.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P1-matrix_075-r0",
+    "status": "mismatched",
+    "failures": [
+      "macmon_cpu_sensor_mean_c",
+      "macmon_gpu_sensor_mean_c"
+    ],
+    "blocks": {
+      "P1-matrix_075-r0-alone": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.43576431274414,
+          "macmon_gpu_sensor_mean_c": 52.829240798950195,
+          "fan0_rpm": 1347.5,
+          "fan1_rpm": 1459.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_075-r0-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 50.48415756225586,
+          "macmon_gpu_sensor_mean_c": 49.78645896911621,
+          "fan0_rpm": 1357.0,
+          "fan1_rpm": 1461.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_075-r0-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 49.21115493774414,
+          "macmon_gpu_sensor_mean_c": 48.328125,
+          "fan0_rpm": 1399.5,
+          "fan1_rpm": 1514.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P1-memory_050-r0",
+    "status": "mismatched",
+    "failures": [
+      "macmon_cpu_sensor_mean_c",
+      "macmon_gpu_sensor_mean_c"
+    ],
+    "blocks": {
+      "P1-memory_050-r0-alone": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 51.927734375,
+          "macmon_gpu_sensor_mean_c": 51.37797546386719,
+          "fan0_rpm": 1352.5,
+          "fan1_rpm": 1457.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-memory_050-r0-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 56.00520706176758,
+          "macmon_gpu_sensor_mean_c": 55.70479965209961,
+          "fan0_rpm": 1351.0,
+          "fan1_rpm": 1457.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-memory_050-r0-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 54.61328125,
+          "macmon_gpu_sensor_mean_c": 54.2414436340332,
+          "fan0_rpm": 1506.0,
+          "fan1_rpm": 1629.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P1-memory_050-r1",
+    "status": "mismatched",
+    "failures": [
+      "fan0_rpm",
+      "fan1_rpm"
+    ],
+    "blocks": {
+      "P1-memory_050-r1-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.93706512451172,
+          "macmon_gpu_sensor_mean_c": 53.25595283508301,
+          "fan0_rpm": 1346.5,
+          "fan1_rpm": 1460.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-memory_050-r1-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.76106643676758,
+          "macmon_gpu_sensor_mean_c": 52.070499420166016,
+          "fan0_rpm": 1708.5,
+          "fan1_rpm": 1853.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-memory_050-r1-alone": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 54.17230796813965,
+          "macmon_gpu_sensor_mean_c": 53.60639762878418,
+          "fan0_rpm": 1510.5,
+          "fan1_rpm": 1627.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P1-matrix_075-r1",
+    "status": "mismatched",
+    "failures": [
+      "macmon_cpu_sensor_mean_c",
+      "macmon_gpu_sensor_mean_c",
+      "fan0_rpm",
+      "fan1_rpm"
+    ],
+    "blocks": {
+      "P1-matrix_075-r1-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 55.03298568725586,
+          "macmon_gpu_sensor_mean_c": 54.6019344329834,
+          "fan0_rpm": 1348.5,
+          "fan1_rpm": 1458.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_075-r1-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 47.83810615539551,
+          "macmon_gpu_sensor_mean_c": 47.016740798950195,
+          "fan0_rpm": 1756.0,
+          "fan1_rpm": 1899.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_075-r1-alone": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 48.64626693725586,
+          "macmon_gpu_sensor_mean_c": 47.92745399475098,
+          "fan0_rpm": 1456.0,
+          "fan1_rpm": 1567.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P1-matrix_050-r1",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "P1-matrix_050-r1-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.67686653137207,
+          "macmon_gpu_sensor_mean_c": 52.123884201049805,
+          "fan0_rpm": 1349.5,
+          "fan1_rpm": 1457.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_050-r1-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.20724678039551,
+          "macmon_gpu_sensor_mean_c": 51.37481498718262,
+          "fan0_rpm": 1360.5,
+          "fan1_rpm": 1463.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P1-matrix_050-r1-alone": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 51.712890625,
+          "macmon_gpu_sensor_mean_c": 51.0617561340332,
+          "fan0_rpm": 1397.5,
+          "fan1_rpm": 1502.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P3-0.25-r0",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "P3-0.25-r0-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.14800453186035,
+          "macmon_gpu_sensor_mean_c": 51.623884201049805,
+          "fan0_rpm": 1352.5,
+          "fan1_rpm": 1458.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P3-0.25-r0-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.54752731323242,
+          "macmon_gpu_sensor_mean_c": 51.906808853149414,
+          "fan0_rpm": 1352.0,
+          "fan1_rpm": 1458.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P3-0.5-r0",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "P3-0.5-r0-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.81358528137207,
+          "macmon_gpu_sensor_mean_c": 52.219865798950195,
+          "fan0_rpm": 1351.0,
+          "fan1_rpm": 1460.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P3-0.5-r0-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.85612106323242,
+          "macmon_gpu_sensor_mean_c": 52.3125,
+          "fan0_rpm": 1350.0,
+          "fan1_rpm": 1459.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P3-0.75-r0",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "P3-0.75-r0-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.36783790588379,
+          "macmon_gpu_sensor_mean_c": 52.871280670166016,
+          "fan0_rpm": 1351.0,
+          "fan1_rpm": 1457.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P3-0.75-r0-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.22916603088379,
+          "macmon_gpu_sensor_mean_c": 52.71744728088379,
+          "fan0_rpm": 1348.0,
+          "fan1_rpm": 1457.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P3-0.75-r1",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "P3-0.75-r1-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.76432228088379,
+          "macmon_gpu_sensor_mean_c": 53.290178298950195,
+          "fan0_rpm": 1351.5,
+          "fan1_rpm": 1457.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P3-0.75-r1-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 54.08615493774414,
+          "macmon_gpu_sensor_mean_c": 53.56473159790039,
+          "fan0_rpm": 1350.5,
+          "fan1_rpm": 1460.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P3-0.5-r1",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "P3-0.5-r1-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.47157096862793,
+          "macmon_gpu_sensor_mean_c": 52.90717887878418,
+          "fan0_rpm": 1346.0,
+          "fan1_rpm": 1457.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P3-0.5-r1-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.49544334411621,
+          "macmon_gpu_sensor_mean_c": 52.94698524475098,
+          "fan0_rpm": 1351.5,
+          "fan1_rpm": 1460.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "P3-0.25-r1",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "P3-0.25-r1-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.80121612548828,
+          "macmon_gpu_sensor_mean_c": 52.22991180419922,
+          "fan0_rpm": 1351.0,
+          "fan1_rpm": 1458.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "P3-0.25-r1-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 53.66058921813965,
+          "macmon_gpu_sensor_mean_c": 53.109933853149414,
+          "fan0_rpm": 1350.0,
+          "fan1_rpm": 1456.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "SAT-pair-0",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "SAT-0-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.61740303039551,
+          "macmon_gpu_sensor_mean_c": 52.01469421386719,
+          "fan0_rpm": 1348.5,
+          "fan1_rpm": 1456.5
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "SAT-1-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 54.03363609313965,
+          "macmon_gpu_sensor_mean_c": 53.4421501159668,
+          "fan0_rpm": 1347.5,
+          "fan1_rpm": 1458.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  },
+  {
+    "group_id": "SAT-pair-1",
+    "status": "matched",
+    "failures": [],
+    "blocks": {
+      "SAT-2-G": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.19921875,
+          "macmon_gpu_sensor_mean_c": 51.64769172668457,
+          "fan0_rpm": 1352.0,
+          "fan1_rpm": 1461.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      },
+      "SAT-3-C": {
+        "valid": true,
+        "missing": [],
+        "medians": {
+          "macmon_cpu_sensor_mean_c": 52.08832359313965,
+          "macmon_gpu_sensor_mean_c": 51.44047737121582,
+          "fan0_rpm": 1352.0,
+          "fan1_rpm": 1459.0
+        },
+        "thermal_levels": [
+          "nominal"
+        ]
+      }
+    }
+  }
+]

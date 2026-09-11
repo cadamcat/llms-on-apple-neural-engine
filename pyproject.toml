@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools==81.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llms-on-apple-neural-engine"
+version = "0.1.0.dev0"
+description = "Apple Neural Engine benchmarks and defect reproductions for quantized LLM components"
+requires-python = ">=3.12,<3.13"
+license = {file = "LICENSE"}
+authors = [{name = "LLMs on Apple Neural Engine contributors"}]
+dependencies = ["numpy==2.3.5"]
+
+[project.optional-dependencies]
+apple = [
+  "torch==2.11.0",
+  "coremltools==9.0",
+  "coreai-torch==0.4.1",
+  "coreai-core==1.0.0b2",
+]
+
+[project.scripts]
+ane-scope = "ane_scope.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ane_scope = ["native/*.swift"]

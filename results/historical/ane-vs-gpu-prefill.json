@@ -1,0 +1,202 @@
+{
+  "historical_import": true,
+  "scope": "One first-layer MLP (gate/up, GELU_tanh, product, down) from the same source Q4_0 weights, with an FP16 input and output interface. The 1024 and 4096 position cases are formed by looping saved real activations: this is NOT a full-model context or an end-to-end prefill.",
+  "implementation_caveat": "These numbers describe the current Python, 64-position chunked implementation on this host. They are not a measurement of what the accelerator can do in principle, and the planned native Swift comparison did not run.",
+  "engines": {
+    "A": {
+      "description": "Neural Engine, group-32 A8W4",
+      "rows": {
+        "1": {
+          "p50_outer_ms": 11.600521,
+          "p95_outer_ms": 11.9735106,
+          "p50_worker_ms": 11.411332999999999,
+          "effective_positions_per_second": 86.20302484690127,
+          "dense_equivalent_Top_s_worker": 0.03101253814957464
+        },
+        "64": {
+          "p50_outer_ms": 12.2237915,
+          "p95_outer_ms": 12.468731250000001,
+          "p50_worker_ms": 11.810186999999999,
+          "effective_positions_per_second": 5235.691397386809,
+          "dense_equivalent_Top_s_worker": 1.9177716322357978
+        },
+        "1024": {
+          "p50_outer_ms": 188.6265625,
+          "p95_outer_ms": 189.93445814999998,
+          "p50_worker_ms": 184.381583,
+          "effective_positions_per_second": 5428.715799239569,
+          "dense_equivalent_Top_s_worker": 1.9654233340647693
+        },
+        "4096": {
+          "p50_outer_ms": 762.4973125,
+          "p95_outer_ms": 779.42403995,
+          "p50_worker_ms": 747.018813,
+          "effective_positions_per_second": 5371.822212160257,
+          "dense_equivalent_Top_s_worker": 1.9404484026026796
+        }
+      },
+      "footprint_bytes": {
+        "after-footprint": 21698592440,
+        "idle-footprint": 21306359480,
+        "loaded-footprint": 39322416
+      },
+      "numeric_mismatches_by_stage": {
+        "gate": 0,
+        "up": 0,
+        "branch": 0,
+        "down": 0
+      }
+    },
+    "C": {
+      "description": "Neural Engine, W4A16",
+      "rows": {
+        "1": {
+          "p50_outer_ms": 12.0215005,
+          "p95_outer_ms": 12.31595625,
+          "p50_worker_ms": 11.83425,
+          "effective_positions_per_second": 83.18429134532748,
+          "dense_equivalent_Top_s_worker": 0.029904252487483362
+        },
+        "64": {
+          "p50_outer_ms": 12.20925,
+          "p95_outer_ms": 12.438597699999999,
+          "p50_worker_ms": 11.853604,
+          "effective_positions_per_second": 5241.927227307164,
+          "dense_equivalent_Top_s_worker": 1.9107472798990077
+        },
+        "1024": {
+          "p50_outer_ms": 194.0973125,
+          "p95_outer_ms": 200.47598109999998,
+          "p50_worker_ms": 190.22666650000002,
+          "effective_positions_per_second": 5275.704165146542,
+          "dense_equivalent_Top_s_worker": 1.9050318878399728
+        },
+        "4096": {
+          "p50_outer_ms": 772.245979,
+          "p95_outer_ms": 778.9328465,
+          "p50_worker_ms": 756.762833,
+          "effective_positions_per_second": 5304.009488406802,
+          "dense_equivalent_Top_s_worker": 1.9154633383006006
+        }
+      },
+      "footprint_bytes": {
+        "after-footprint": 21721366176,
+        "idle-footprint": 21308980896,
+        "loaded-footprint": 39011120
+      },
+      "numeric_mismatches_by_stage": {
+        "gate": 0,
+        "up": 0,
+        "branch": 0,
+        "down": 0
+      }
+    },
+    "G": {
+      "description": "GPU through MLX 0.32.2, Q4 weights with FP16 activations",
+      "rows": {
+        "1": {
+          "p50_outer_ms": 0.9214165000000001,
+          "p95_outer_ms": 2.2063959499999997,
+          "p50_worker_ms": 0.8381460000000001,
+          "effective_positions_per_second": 1085.2855359112843,
+          "dense_equivalent_Top_s_worker": 0.42223478964285455
+        },
+        "64": {
+          "p50_outer_ms": 4.25475,
+          "p95_outer_ms": 5.71373125,
+          "p50_worker_ms": 3.9116454999999997,
+          "effective_positions_per_second": 15042.011869087492,
+          "dense_equivalent_Top_s_worker": 5.790208136192301
+        },
+        "1024": {
+          "p50_outer_ms": 37.072208,
+          "p95_outer_ms": 38.14929785,
+          "p50_worker_ms": 32.709271,
+          "effective_positions_per_second": 27621.769925330587,
+          "dense_equivalent_Top_s_worker": 11.07905662587222
+        },
+        "4096": {
+          "p50_outer_ms": 172.9280415,
+          "p95_outer_ms": 179.9652269,
+          "p50_worker_ms": 157.299625,
+          "effective_positions_per_second": 23686.152716880217,
+          "dense_equivalent_Top_s_worker": 9.215225162806332
+        }
+      },
+      "footprint_bytes": {
+        "after-footprint": 2401289872,
+        "idle-footprint": 1518487136,
+        "loaded-footprint": 173294336
+      },
+      "numeric_mismatches_by_stage": {
+        "gate": 1.899041528374109e-05,
+        "up": 2.1921462930803655e-05,
+        "branch": 2.861404677636048e-05,
+        "down": 0.00034852196037710414
+      }
+    }
+  },
+  "ANE_over_GPU_ratios": {
+    "1": {
+      "p50_outer_ms": 12.589877650335108,
+      "p95_outer_ms": 5.426727963310484,
+      "p50_worker_ms": 13.614970422814162
+    },
+    "64": {
+      "p50_outer_ms": 2.8729752629414187,
+      "p95_outer_ms": 2.1822397141972685,
+      "p50_worker_ms": 3.0192375561640237
+    },
+    "1024": {
+      "p50_outer_ms": 5.088085460137686,
+      "p95_outer_ms": 4.978714389365884,
+      "p50_worker_ms": 5.636982340572494
+    },
+    "4096": {
+      "p50_outer_ms": 4.409332956563901,
+      "p95_outer_ms": 4.330970228949268,
+      "p50_worker_ms": 4.749018397214869
+    }
+  },
+  "completeness": {
+    "timed_processes_completed": 3,
+    "timed_processes_required": 9,
+    "samples_recomputed": true,
+    "assets_loaded_once": true,
+    "output_repeat_hashes_stable": true,
+    "stop_reason": "IOSurface growth per call; remaining repeats and the long windows were not run"
+  },
+  "gates": {
+    "speed": "Observed 1K/4K fail thresholds in first process; preregistered 3-process validation incomplete",
+    "energy": "undetermined: P2 skipped for memory safety",
+    "coexistence": "undetermined: P3 skipped for memory safety",
+    "numeric_control": "A/C saved replay exact; G max down L2 0.000348522; not model-quality approval",
+    "resident_runtime": "not qualified: unbounded IOSurface growth, long windows not run"
+  },
+  "iosurface_growth_bytes_per_call": {
+    "numpy-reuse-bytes": 1966080.0,
+    "numpy": 1966080.0,
+    "numpy-pool": 1966080.0,
+    "buffer": 1966080.0
+  },
+  "gate_output_bytes": 1966080,
+  "gate_growth_equals_output_bytes": true,
+  "external_sources": [
+    {
+      "url": "https://github.com/john-rocky/coreai-model-zoo/blob/main/models/pocket-tts/README.md",
+      "section": "The port in five Core AI bugs, item 2",
+      "claim": "Author reports Python bindings IOSurface leak per call and a bounded native Swift run without the same growth; FB24322437.",
+      "local_status": "Similar local symptom; same root cause and Swift behavior not established on this machine."
+    },
+    {
+      "url": "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmAutoreleasePools.html",
+      "claim": "Local autorelease pools can bound temporary objects in long loops; local experiment here did not remove growth."
+    }
+  ],
+  "sources": {
+    "results/g1-prefill-20260910/review/verification.json": "c60b95f4099288bb27e576b87c58701d6c47d6f23018f6f9d507c6eec1fcc9c9",
+    "results/g1-prefill-20260910/external-sources.json": "97fa4d2272e606fa77110454ce9d2b06b520422130609f65b2d811951ddc29ec",
+    "results/g1-prefill-20260910/PERF-PROTOCOL.json": "e6122b5515fbc22f3ae9341ae1363bc71bbf1c84fbca197f491eff596901cddc",
+    "results/g1-prefill-20260910/placement-ANE.json": "d8b9f6dd96c73d0b090e1a3178e31a29d4aeaf1ebc203dd35c603ccebba2f9fb"
+  }
+}

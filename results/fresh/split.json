@@ -1,0 +1,4092 @@
+{
+  "schema_version": 1,
+  "fresh_run": true,
+  "historical_import": false,
+  "suite": "split",
+  "environment": {
+    "python": "3.12.14",
+    "architecture": "arm64",
+    "system": "Darwin",
+    "packages": {
+      "numpy": "2.3.5",
+      "torch": "2.11.0",
+      "coreai-core": "1.0.0b2",
+      "coreai-torch": "0.4.1",
+      "coremltools": "9.0"
+    },
+    "os": {
+      "returncode": 0,
+      "value": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A428",
+      "error": ""
+    },
+    "xcode": {
+      "returncode": 0,
+      "value": "Xcode 27.0\nBuild version 27A266a",
+      "error": ""
+    },
+    "sdk": {
+      "returncode": 0,
+      "value": "27.0",
+      "error": ""
+    },
+    "chip": {
+      "returncode": 0,
+      "value": "Apple M5 Pro",
+      "error": ""
+    },
+    "memory": {
+      "returncode": 0,
+      "value": "51539607552",
+      "error": ""
+    }
+  },
+  "protocol": {
+    "warmup": 10,
+    "samples_per_process": 30,
+    "processes_per_arm": 3,
+    "timing": "synchronous prediction only; FP16 copying, hashing, persistence and debug capture outside timer",
+    "MAC_counts_as_ops": 2,
+    "physical_INT8_proven": false,
+    "fixture": "synthetic Hadamard/sign/permutation; 16 distinct spatial vectors repeated 256 times",
+    "time_limit_minutes": 10
+  },
+  "source_identity": {
+    "__init__.py": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+    "__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+    "_coreai.py": "85b55ed04df7251484938c78754fdf0497c2fcdcdf404967b73bb9c4ac37c17d",
+    "_coreml.py": "fafc437d477061a86c5584d938c851409e8e018f1e192ecbfdd1beb355850ae3",
+    "cli.py": "75419fb8e6ffb7564308d4d05a6ccde7ee5133faae97d81292fe4b0a003388b0",
+    "common.py": "c19b04b6a82d586d6aab42e142da248d9e805f5c5c6f99f51a6539f4f92fd15c",
+    "controller.py": "545ed83df261bb8247e7a9cd8b4ca16a378743ed0a07ada24828356e42e2d8ba",
+    "evidence.py": "a0e86e7ab624a05bda0a8a124ee220813cc94f7da2656890fb2c9d0e3cfe6e6e",
+    "exporting.py": "cb3293233a204337cc932c93bbc67e89567de2705fbe95119d6adf67c1c5a0ce",
+    "guard.py": "804627f070644cd99aac974b7c6e1c176d9b11d3fc49fc6a8cc7400ad93d83a4",
+    "native/coreai.swift": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+    "native/coreml.swift": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+    "references/__init__.py": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+    "references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+    "../../pyproject.toml": "a4b8e65a71af7c1906c10c5487567d7ad3c1ff6977742a89de009ca9130858c6",
+    "../../uv.lock": "1da5f285355cd2b934ab8c8c75f5cdf81bf56f51b05215034d806413c9e2d77f"
+  },
+  "verification": {
+    "passed": true,
+    "meaning": "saved evidence rechecked; findings are not required to be numerically correct or execute on ANE",
+    "checked_runs": [
+      {
+        "run": "01-control-coreai-a8w4-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "02-control-coreai-a8w4-split32-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "03-process1-coreai-a8w4-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "04-process1-coreai-a8w4-split32-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "05-process2-coreai-a8w4-split32-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "06-process2-coreai-a8w4-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "07-process3-coreai-a8w4-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      },
+      {
+        "run": "08-process3-coreai-a8w4-split32-2",
+        "evidence_consistent": true,
+        "numeric_passed": true,
+        "ANE_controls": true
+      }
+    ],
+    "source_matches_run": true,
+    "verifier_source_identity": {
+      "__init__.py": "b4d85b48def2629828bd987942c478ad0622cccef368bdb18273824d9eb2bc91",
+      "__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "_coreai.py": "85b55ed04df7251484938c78754fdf0497c2fcdcdf404967b73bb9c4ac37c17d",
+      "_coreml.py": "fafc437d477061a86c5584d938c851409e8e018f1e192ecbfdd1beb355850ae3",
+      "cli.py": "75419fb8e6ffb7564308d4d05a6ccde7ee5133faae97d81292fe4b0a003388b0",
+      "common.py": "c19b04b6a82d586d6aab42e142da248d9e805f5c5c6f99f51a6539f4f92fd15c",
+      "controller.py": "545ed83df261bb8247e7a9cd8b4ca16a378743ed0a07ada24828356e42e2d8ba",
+      "evidence.py": "a0e86e7ab624a05bda0a8a124ee220813cc94f7da2656890fb2c9d0e3cfe6e6e",
+      "exporting.py": "cb3293233a204337cc932c93bbc67e89567de2705fbe95119d6adf67c1c5a0ce",
+      "guard.py": "804627f070644cd99aac974b7c6e1c176d9b11d3fc49fc6a8cc7400ad93d83a4",
+      "native/coreai.swift": "874feaea352e40fd1d02d31ac94cd3cb7b4090178d6e3c4c12be6b335957fbee",
+      "native/coreml.swift": "ef9be25c50d05a2a6e22b0d33a0a5b25ae7611e1f852bf1e3e4a79a0a299ab2d",
+      "references/__init__.py": "c4238cd1cdafd11618368ba40a42dcaf76bd7fe9a2a911210dcd38ad934f3531",
+      "references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd",
+      "../../pyproject.toml": "a4b8e65a71af7c1906c10c5487567d7ad3c1ff6977742a89de009ca9130858c6",
+      "../../uv.lock": "1da5f285355cd2b934ab8c8c75f5cdf81bf56f51b05215034d806413c9e2d77f"
+    }
+  },
+  "runs": [
+    {
+      "run": "01-control-coreai-a8w4-2",
+      "case_id": "coreai-a8w4-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55247,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "cdbf31157d1de8722e1bd413ed860016ea67985c374f4dfe9004706b9b74e8dc",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "f5a0860ce9f8c8cda532a4b6237fba0cbe521822920a0698196be40e16a4b0a9",
+          "main.mlirb": "c6d35d866ae9cf1dbaa4bbd09ccd9f696a39d8d165836e9e8a5ae7d760502f4e",
+          "metadata.json": "55b05f4821e0a1019fbd993ff9a8fdcc33b180e97fc6cbd914abfe6b379d942e"
+        },
+        "actual_op_counts": {
+          "coreai.lut_to_dense": 2,
+          "coreai.blockwise_shift_scale": 2,
+          "coreai.conv2d": 2,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-w8a8-2.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [],
+      "RNE-not-gate": {
+        "reference_file": "reference-w8a8-2-rne.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "02-control-coreai-a8w4-split32-2",
+      "case_id": "coreai-a8w4-split32-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55280,
+      "benchmark_status": "not_requested",
+      "p50_ms": null,
+      "p95_ms": null,
+      "source_equivalent_Tops": null,
+      "source_records_sha256": "655e1e4f31f860e5a07aae8bb17f0810cb76fb6a7dd34db3912e2279de1e60c5",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "5d4a8f5b427ccbfec427cac50923b51336b6627d3d6439bd675bb6d400262a57",
+          "main.mlirb": "05c9eee1f9a3c20f5130c6947cea8d0129c5543f1bb6cf93e2859b0d6d8e5550",
+          "metadata.json": "9a4186bf043ef4acbcd29433809eee10315c6cdafa37be1b83f82d55c4e92579"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 32,
+          "coreai.lut_to_dense": 32,
+          "coreai.blockwise_shift_scale": 32,
+          "coreai.conv2d": 32,
+          "coreai.decomposable.broadcasting_add": 30,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "2a0e48f2302abf591765b988c27efb7a357356be2cd66ee05685c10d4fc3f995"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "91d89e3d5adff49c928f50dc25dbbade567ccc5ef31fb2b89ca0bb1e54679a00"
+          },
+          {
+            "conv": 2,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "791acb1b4a0bd3d71106576e1d536d9924670099ea2ba11312b088a5d5317552"
+          },
+          {
+            "conv": 3,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "8b3e51259676afc8b48042d5d0dba83d17a2b6741d03c2757224b4e215af53bc"
+          },
+          {
+            "conv": 4,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d40ee5058465814800eb6f8d77fb23b0822ff80ddbb5948e1368c63a61acbd10"
+          },
+          {
+            "conv": 5,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6328a17f444b3c88af0578c4bca322b295ce6d2a04d825640b3575d2801e5063"
+          },
+          {
+            "conv": 6,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "037560f543d07dcc8089a3f459150d6443ae7d2e71435c44d3e3b4ebc166c16d"
+          },
+          {
+            "conv": 7,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9b651ba8f07fdc1c70604827f13db349fac351b0bedc82537c9ee1487415f590"
+          },
+          {
+            "conv": 8,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "de7233dd477416e22d5f0dbd5f72b4108a41556c4ddced0e7be67e2d08a743a4"
+          },
+          {
+            "conv": 9,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "90c95592e561a307a973a6937a58d139fa3f6e5ce066831e0f42109a52f6b2e8"
+          },
+          {
+            "conv": 10,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ea324526b20b436f5d67ce4dffefa03638e8b2b455cab5c6ac0685c6d766b243"
+          },
+          {
+            "conv": 11,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "3e7884ab047e799fbe45af88db8e3a841f3e6d12a471ce3e30d79b3f396d38bb"
+          },
+          {
+            "conv": 12,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d011d70b891fff8ca1709b95e53c580f5a96010437927c620eba97b50e545aca"
+          },
+          {
+            "conv": 13,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "cea468c12d62d9e00c54eded718161951d2790b43fe89d41afbf8a7be7229ef5"
+          },
+          {
+            "conv": 14,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7e7a1c20ca0b1a70ca0309737d633cd36df1b6ad70803b1fd8ec06302eaefb27"
+          },
+          {
+            "conv": 15,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f8049e23acfe78f82019ebd7033ca815c3a454acdf9133f4f2ca6561fad29638"
+          },
+          {
+            "conv": 16,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "70c66fb96293738e900173c4556d6a35e0b165d7d99ae11df06fc15c90da5778"
+          },
+          {
+            "conv": 17,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6193557f3636276211836ce1c9cb6ea9cad47fcf5677bec7d20c08b678b9ef18"
+          },
+          {
+            "conv": 18,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "155c0bae8d2d26bc229b29169b62e3ddbb39e574cc32f32df822d810695567e1"
+          },
+          {
+            "conv": 19,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "57a80f9172e39dda4a7f0f8457c6e352977068be4596f5e40f11ee4367b53b09"
+          },
+          {
+            "conv": 20,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "46116e379961706e70a8afdd3ded3531ef7ab54dd5d7d83f7e5f0d850c102564"
+          },
+          {
+            "conv": 21,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7bd4e7fe5cd9498e8350070ca80c39982e73078081c29323fcb474231ee345b7"
+          },
+          {
+            "conv": 22,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "50cc3c8b04ed7b14a28e4bce6394a593b5480c4045b5247fe41397d3d5ca124f"
+          },
+          {
+            "conv": 23,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "96bff6dc586ee5afc4a916cd849c5fc8af304228d8c6ee86936994f9dd47208f"
+          },
+          {
+            "conv": 24,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f235a82b69ba5cdc76d67114387f6afc91e34acc7a1a0dfcbf2a06efcbbcd98c"
+          },
+          {
+            "conv": 25,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7b6f5aa767deb9112f1bfb8cf7b75b8c64988439cc0f3b83231a6ff87b500c0e"
+          },
+          {
+            "conv": 26,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ff20158c8ea61e687d4bb166429a14ea557fdb55ada22c91418c52f82565f612"
+          },
+          {
+            "conv": 27,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b6b71c9d52469fd28a510f75b7c19fc6945cff66000c232a9d9f0757cf49881a"
+          },
+          {
+            "conv": 28,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b29ed4cffd96d31f2890ef0238f91b3b68da3c7105bf7167ecb9a610926cc2a0"
+          },
+          {
+            "conv": 29,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "48badd7ae0d0a95feb074220963754504405201aad9bfba4425d7e903afd577e"
+          },
+          {
+            "conv": 30,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "c39c019e3112e50edf698552fe1eba0384101b3549f7fe17f195a5c9aaf87553"
+          },
+          {
+            "conv": 31,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9cd392b4a869b61173162b3bc1f5c8d99a3e66a103c52db25318c799771ea352"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-a8w4-split32-2.npy",
+        "reference_sha256": "035e60e26f39ec3c886530d78c0755836644d4106e06f26bd6a8865389d8b7d4",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "06289b4191f732a84e6ede0ba3c370253c72ed0be0d74f2cec67c8cded8a2136",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 1536,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": false,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": []
+    },
+    {
+      "run": "03-process1-coreai-a8w4-2",
+      "case_id": "coreai-a8w4-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55290,
+      "benchmark_status": "measured",
+      "p50_ms": 0.431875,
+      "p95_ms": 0.45783559999999995,
+      "source_equivalent_Tops": 9.944931510274964,
+      "source_records_sha256": "219faf072368351f31c83cd82debb37095f8a40cfe277b4a85468861172ddddc",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "f5a0860ce9f8c8cda532a4b6237fba0cbe521822920a0698196be40e16a4b0a9",
+          "main.mlirb": "c6d35d866ae9cf1dbaa4bbd09ccd9f696a39d8d165836e9e8a5ae7d760502f4e",
+          "metadata.json": "55b05f4821e0a1019fbd993ff9a8fdcc33b180e97fc6cbd914abfe6b379d942e"
+        },
+        "actual_op_counts": {
+          "coreai.lut_to_dense": 2,
+          "coreai.blockwise_shift_scale": 2,
+          "coreai.conv2d": 2,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-w8a8-2.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": true,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [
+        {
+          "index": 0,
+          "duration_ns": 433875,
+          "start_epoch_ns": 1789058086612882176,
+          "end_epoch_ns": 1789058086613316096,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 1,
+          "duration_ns": 446792,
+          "start_epoch_ns": 1789058086621594880,
+          "end_epoch_ns": 1789058086622041856,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 2,
+          "duration_ns": 407916,
+          "start_epoch_ns": 1789058086629065984,
+          "end_epoch_ns": 1789058086629474048,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 3,
+          "duration_ns": 416875,
+          "start_epoch_ns": 1789058086636528128,
+          "end_epoch_ns": 1789058086636944896,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 4,
+          "duration_ns": 454375,
+          "start_epoch_ns": 1789058086643964928,
+          "end_epoch_ns": 1789058086644420096,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 5,
+          "duration_ns": 460667,
+          "start_epoch_ns": 1789058086651545088,
+          "end_epoch_ns": 1789058086652006144,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 6,
+          "duration_ns": 403500,
+          "start_epoch_ns": 1789058086659006976,
+          "end_epoch_ns": 1789058086659410944,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 7,
+          "duration_ns": 394167,
+          "start_epoch_ns": 1789058086666507008,
+          "end_epoch_ns": 1789058086666900992,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 8,
+          "duration_ns": 388750,
+          "start_epoch_ns": 1789058086674010880,
+          "end_epoch_ns": 1789058086674399744,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 9,
+          "duration_ns": 435250,
+          "start_epoch_ns": 1789058086681426176,
+          "end_epoch_ns": 1789058086681861888,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 10,
+          "duration_ns": 462125,
+          "start_epoch_ns": 1789058086688963840,
+          "end_epoch_ns": 1789058086689425920,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 11,
+          "duration_ns": 419042,
+          "start_epoch_ns": 1789058086696478720,
+          "end_epoch_ns": 1789058086696898048,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 12,
+          "duration_ns": 418833,
+          "start_epoch_ns": 1789058086703969024,
+          "end_epoch_ns": 1789058086704388096,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 13,
+          "duration_ns": 445000,
+          "start_epoch_ns": 1789058086711409152,
+          "end_epoch_ns": 1789058086711854080,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 14,
+          "duration_ns": 416958,
+          "start_epoch_ns": 1789058086718901248,
+          "end_epoch_ns": 1789058086719318016,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 15,
+          "duration_ns": 433416,
+          "start_epoch_ns": 1789058086726476032,
+          "end_epoch_ns": 1789058086726909184,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 16,
+          "duration_ns": 432500,
+          "start_epoch_ns": 1789058086733978880,
+          "end_epoch_ns": 1789058086734412032,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 17,
+          "duration_ns": 391042,
+          "start_epoch_ns": 1789058086741533952,
+          "end_epoch_ns": 1789058086741925120,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 18,
+          "duration_ns": 400375,
+          "start_epoch_ns": 1789058086748986880,
+          "end_epoch_ns": 1789058086749387008,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 19,
+          "duration_ns": 428208,
+          "start_epoch_ns": 1789058086756487936,
+          "end_epoch_ns": 1789058086756916992,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 20,
+          "duration_ns": 447750,
+          "start_epoch_ns": 1789058086764096000,
+          "end_epoch_ns": 1789058086764544000,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 21,
+          "duration_ns": 439542,
+          "start_epoch_ns": 1789058086771659776,
+          "end_epoch_ns": 1789058086772100096,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 22,
+          "duration_ns": 431250,
+          "start_epoch_ns": 1789058086779204864,
+          "end_epoch_ns": 1789058086779636736,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 23,
+          "duration_ns": 445042,
+          "start_epoch_ns": 1789058086786740992,
+          "end_epoch_ns": 1789058086787186176,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 24,
+          "duration_ns": 440917,
+          "start_epoch_ns": 1789058086794358016,
+          "end_epoch_ns": 1789058086794798848,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 25,
+          "duration_ns": 444750,
+          "start_epoch_ns": 1789058086801958144,
+          "end_epoch_ns": 1789058086802403072,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 26,
+          "duration_ns": 443208,
+          "start_epoch_ns": 1789058086809658112,
+          "end_epoch_ns": 1789058086810102016,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 27,
+          "duration_ns": 417875,
+          "start_epoch_ns": 1789058086817244928,
+          "end_epoch_ns": 1789058086817662976,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 28,
+          "duration_ns": 397709,
+          "start_epoch_ns": 1789058086824807168,
+          "end_epoch_ns": 1789058086825203968,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 29,
+          "duration_ns": 389666,
+          "start_epoch_ns": 1789058086832377856,
+          "end_epoch_ns": 1789058086832768000,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        }
+      ],
+      "RNE-not-gate": {
+        "reference_file": "reference-w8a8-2-rne.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "04-process1-coreai-a8w4-split32-2",
+      "case_id": "coreai-a8w4-split32-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55302,
+      "benchmark_status": "measured",
+      "p50_ms": 1.7687914999999998,
+      "p95_ms": 2.2624480999999994,
+      "source_equivalent_Tops": 2.428193088897137,
+      "source_records_sha256": "190cb9be6b2c1c363de8776b803c87c041c8afd55a2ab4bb9308c5858324263c",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "5d4a8f5b427ccbfec427cac50923b51336b6627d3d6439bd675bb6d400262a57",
+          "main.mlirb": "05c9eee1f9a3c20f5130c6947cea8d0129c5543f1bb6cf93e2859b0d6d8e5550",
+          "metadata.json": "9a4186bf043ef4acbcd29433809eee10315c6cdafa37be1b83f82d55c4e92579"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 32,
+          "coreai.lut_to_dense": 32,
+          "coreai.blockwise_shift_scale": 32,
+          "coreai.conv2d": 32,
+          "coreai.decomposable.broadcasting_add": 30,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "2a0e48f2302abf591765b988c27efb7a357356be2cd66ee05685c10d4fc3f995"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "91d89e3d5adff49c928f50dc25dbbade567ccc5ef31fb2b89ca0bb1e54679a00"
+          },
+          {
+            "conv": 2,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "791acb1b4a0bd3d71106576e1d536d9924670099ea2ba11312b088a5d5317552"
+          },
+          {
+            "conv": 3,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "8b3e51259676afc8b48042d5d0dba83d17a2b6741d03c2757224b4e215af53bc"
+          },
+          {
+            "conv": 4,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d40ee5058465814800eb6f8d77fb23b0822ff80ddbb5948e1368c63a61acbd10"
+          },
+          {
+            "conv": 5,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6328a17f444b3c88af0578c4bca322b295ce6d2a04d825640b3575d2801e5063"
+          },
+          {
+            "conv": 6,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "037560f543d07dcc8089a3f459150d6443ae7d2e71435c44d3e3b4ebc166c16d"
+          },
+          {
+            "conv": 7,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9b651ba8f07fdc1c70604827f13db349fac351b0bedc82537c9ee1487415f590"
+          },
+          {
+            "conv": 8,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "de7233dd477416e22d5f0dbd5f72b4108a41556c4ddced0e7be67e2d08a743a4"
+          },
+          {
+            "conv": 9,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "90c95592e561a307a973a6937a58d139fa3f6e5ce066831e0f42109a52f6b2e8"
+          },
+          {
+            "conv": 10,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ea324526b20b436f5d67ce4dffefa03638e8b2b455cab5c6ac0685c6d766b243"
+          },
+          {
+            "conv": 11,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "3e7884ab047e799fbe45af88db8e3a841f3e6d12a471ce3e30d79b3f396d38bb"
+          },
+          {
+            "conv": 12,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d011d70b891fff8ca1709b95e53c580f5a96010437927c620eba97b50e545aca"
+          },
+          {
+            "conv": 13,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "cea468c12d62d9e00c54eded718161951d2790b43fe89d41afbf8a7be7229ef5"
+          },
+          {
+            "conv": 14,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7e7a1c20ca0b1a70ca0309737d633cd36df1b6ad70803b1fd8ec06302eaefb27"
+          },
+          {
+            "conv": 15,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f8049e23acfe78f82019ebd7033ca815c3a454acdf9133f4f2ca6561fad29638"
+          },
+          {
+            "conv": 16,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "70c66fb96293738e900173c4556d6a35e0b165d7d99ae11df06fc15c90da5778"
+          },
+          {
+            "conv": 17,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6193557f3636276211836ce1c9cb6ea9cad47fcf5677bec7d20c08b678b9ef18"
+          },
+          {
+            "conv": 18,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "155c0bae8d2d26bc229b29169b62e3ddbb39e574cc32f32df822d810695567e1"
+          },
+          {
+            "conv": 19,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "57a80f9172e39dda4a7f0f8457c6e352977068be4596f5e40f11ee4367b53b09"
+          },
+          {
+            "conv": 20,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "46116e379961706e70a8afdd3ded3531ef7ab54dd5d7d83f7e5f0d850c102564"
+          },
+          {
+            "conv": 21,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7bd4e7fe5cd9498e8350070ca80c39982e73078081c29323fcb474231ee345b7"
+          },
+          {
+            "conv": 22,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "50cc3c8b04ed7b14a28e4bce6394a593b5480c4045b5247fe41397d3d5ca124f"
+          },
+          {
+            "conv": 23,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "96bff6dc586ee5afc4a916cd849c5fc8af304228d8c6ee86936994f9dd47208f"
+          },
+          {
+            "conv": 24,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f235a82b69ba5cdc76d67114387f6afc91e34acc7a1a0dfcbf2a06efcbbcd98c"
+          },
+          {
+            "conv": 25,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7b6f5aa767deb9112f1bfb8cf7b75b8c64988439cc0f3b83231a6ff87b500c0e"
+          },
+          {
+            "conv": 26,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ff20158c8ea61e687d4bb166429a14ea557fdb55ada22c91418c52f82565f612"
+          },
+          {
+            "conv": 27,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b6b71c9d52469fd28a510f75b7c19fc6945cff66000c232a9d9f0757cf49881a"
+          },
+          {
+            "conv": 28,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b29ed4cffd96d31f2890ef0238f91b3b68da3c7105bf7167ecb9a610926cc2a0"
+          },
+          {
+            "conv": 29,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "48badd7ae0d0a95feb074220963754504405201aad9bfba4425d7e903afd577e"
+          },
+          {
+            "conv": 30,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "c39c019e3112e50edf698552fe1eba0384101b3549f7fe17f195a5c9aaf87553"
+          },
+          {
+            "conv": 31,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9cd392b4a869b61173162b3bc1f5c8d99a3e66a103c52db25318c799771ea352"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-a8w4-split32-2.npy",
+        "reference_sha256": "035e60e26f39ec3c886530d78c0755836644d4106e06f26bd6a8865389d8b7d4",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "06289b4191f732a84e6ede0ba3c370253c72ed0be0d74f2cec67c8cded8a2136",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 1536,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": true,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [
+        {
+          "index": 0,
+          "duration_ns": 1833625,
+          "start_epoch_ns": 1789058088707222016,
+          "end_epoch_ns": 1789058088709056000,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 1,
+          "duration_ns": 1797333,
+          "start_epoch_ns": 1789058088717429248,
+          "end_epoch_ns": 1789058088719226880,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 2,
+          "duration_ns": 2352917,
+          "start_epoch_ns": 1789058088726653952,
+          "end_epoch_ns": 1789058088729007104,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 3,
+          "duration_ns": 1846833,
+          "start_epoch_ns": 1789058088736558848,
+          "end_epoch_ns": 1789058088738405888,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 4,
+          "duration_ns": 1807958,
+          "start_epoch_ns": 1789058088745806080,
+          "end_epoch_ns": 1789058088747613952,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 5,
+          "duration_ns": 1806000,
+          "start_epoch_ns": 1789058088754561792,
+          "end_epoch_ns": 1789058088756368128,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 6,
+          "duration_ns": 1742417,
+          "start_epoch_ns": 1789058088763461120,
+          "end_epoch_ns": 1789058088765203968,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 7,
+          "duration_ns": 2506208,
+          "start_epoch_ns": 1789058088772302080,
+          "end_epoch_ns": 1789058088774808832,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 8,
+          "duration_ns": 1768041,
+          "start_epoch_ns": 1789058088781788928,
+          "end_epoch_ns": 1789058088783557888,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 9,
+          "duration_ns": 1769542,
+          "start_epoch_ns": 1789058088790589952,
+          "end_epoch_ns": 1789058088792360960,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 10,
+          "duration_ns": 1909584,
+          "start_epoch_ns": 1789058088799539968,
+          "end_epoch_ns": 1789058088801449984,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 11,
+          "duration_ns": 2151875,
+          "start_epoch_ns": 1789058088808506880,
+          "end_epoch_ns": 1789058088810658816,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 12,
+          "duration_ns": 1865791,
+          "start_epoch_ns": 1789058088817715200,
+          "end_epoch_ns": 1789058088819581952,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 13,
+          "duration_ns": 1734750,
+          "start_epoch_ns": 1789058088826629120,
+          "end_epoch_ns": 1789058088828364800,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 14,
+          "duration_ns": 1786375,
+          "start_epoch_ns": 1789058088835378176,
+          "end_epoch_ns": 1789058088837164800,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 15,
+          "duration_ns": 1750334,
+          "start_epoch_ns": 1789058088844171008,
+          "end_epoch_ns": 1789058088845922048,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 16,
+          "duration_ns": 1755584,
+          "start_epoch_ns": 1789058088852866048,
+          "end_epoch_ns": 1789058088854620928,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 17,
+          "duration_ns": 1775458,
+          "start_epoch_ns": 1789058088861628160,
+          "end_epoch_ns": 1789058088863404032,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 18,
+          "duration_ns": 1773250,
+          "start_epoch_ns": 1789058088870366976,
+          "end_epoch_ns": 1789058088872140800,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 19,
+          "duration_ns": 1735292,
+          "start_epoch_ns": 1789058088879111936,
+          "end_epoch_ns": 1789058088880847872,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 20,
+          "duration_ns": 1731958,
+          "start_epoch_ns": 1789058088887917056,
+          "end_epoch_ns": 1789058088889648896,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 21,
+          "duration_ns": 1743459,
+          "start_epoch_ns": 1789058088896621056,
+          "end_epoch_ns": 1789058088898364928,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 22,
+          "duration_ns": 1754958,
+          "start_epoch_ns": 1789058088905401088,
+          "end_epoch_ns": 1789058088907156992,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 23,
+          "duration_ns": 1757041,
+          "start_epoch_ns": 1789058088914219776,
+          "end_epoch_ns": 1789058088915977984,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 24,
+          "duration_ns": 1792250,
+          "start_epoch_ns": 1789058088922995968,
+          "end_epoch_ns": 1789058088924787968,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 25,
+          "duration_ns": 1734584,
+          "start_epoch_ns": 1789058088931772928,
+          "end_epoch_ns": 1789058088933507840,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 26,
+          "duration_ns": 1752500,
+          "start_epoch_ns": 1789058088940535040,
+          "end_epoch_ns": 1789058088942287872,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 27,
+          "duration_ns": 1729125,
+          "start_epoch_ns": 1789058088949372160,
+          "end_epoch_ns": 1789058088951100928,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 28,
+          "duration_ns": 1736333,
+          "start_epoch_ns": 1789058088958186240,
+          "end_epoch_ns": 1789058088959922944,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 29,
+          "duration_ns": 1733291,
+          "start_epoch_ns": 1789058088967136000,
+          "end_epoch_ns": 1789058088968870144,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        }
+      ]
+    },
+    {
+      "run": "05-process2-coreai-a8w4-split32-2",
+      "case_id": "coreai-a8w4-split32-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55311,
+      "benchmark_status": "measured",
+      "p50_ms": 1.7719369999999999,
+      "p95_ms": 2.269342,
+      "source_equivalent_Tops": 2.4238826188515734,
+      "source_records_sha256": "2dc361dd2cce61137f345a7401c503af06591235d49747300d1eff067ee6ec89",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "5d4a8f5b427ccbfec427cac50923b51336b6627d3d6439bd675bb6d400262a57",
+          "main.mlirb": "05c9eee1f9a3c20f5130c6947cea8d0129c5543f1bb6cf93e2859b0d6d8e5550",
+          "metadata.json": "9a4186bf043ef4acbcd29433809eee10315c6cdafa37be1b83f82d55c4e92579"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 32,
+          "coreai.lut_to_dense": 32,
+          "coreai.blockwise_shift_scale": 32,
+          "coreai.conv2d": 32,
+          "coreai.decomposable.broadcasting_add": 30,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "2a0e48f2302abf591765b988c27efb7a357356be2cd66ee05685c10d4fc3f995"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "91d89e3d5adff49c928f50dc25dbbade567ccc5ef31fb2b89ca0bb1e54679a00"
+          },
+          {
+            "conv": 2,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "791acb1b4a0bd3d71106576e1d536d9924670099ea2ba11312b088a5d5317552"
+          },
+          {
+            "conv": 3,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "8b3e51259676afc8b48042d5d0dba83d17a2b6741d03c2757224b4e215af53bc"
+          },
+          {
+            "conv": 4,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d40ee5058465814800eb6f8d77fb23b0822ff80ddbb5948e1368c63a61acbd10"
+          },
+          {
+            "conv": 5,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6328a17f444b3c88af0578c4bca322b295ce6d2a04d825640b3575d2801e5063"
+          },
+          {
+            "conv": 6,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "037560f543d07dcc8089a3f459150d6443ae7d2e71435c44d3e3b4ebc166c16d"
+          },
+          {
+            "conv": 7,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9b651ba8f07fdc1c70604827f13db349fac351b0bedc82537c9ee1487415f590"
+          },
+          {
+            "conv": 8,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "de7233dd477416e22d5f0dbd5f72b4108a41556c4ddced0e7be67e2d08a743a4"
+          },
+          {
+            "conv": 9,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "90c95592e561a307a973a6937a58d139fa3f6e5ce066831e0f42109a52f6b2e8"
+          },
+          {
+            "conv": 10,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ea324526b20b436f5d67ce4dffefa03638e8b2b455cab5c6ac0685c6d766b243"
+          },
+          {
+            "conv": 11,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "3e7884ab047e799fbe45af88db8e3a841f3e6d12a471ce3e30d79b3f396d38bb"
+          },
+          {
+            "conv": 12,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d011d70b891fff8ca1709b95e53c580f5a96010437927c620eba97b50e545aca"
+          },
+          {
+            "conv": 13,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "cea468c12d62d9e00c54eded718161951d2790b43fe89d41afbf8a7be7229ef5"
+          },
+          {
+            "conv": 14,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7e7a1c20ca0b1a70ca0309737d633cd36df1b6ad70803b1fd8ec06302eaefb27"
+          },
+          {
+            "conv": 15,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f8049e23acfe78f82019ebd7033ca815c3a454acdf9133f4f2ca6561fad29638"
+          },
+          {
+            "conv": 16,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "70c66fb96293738e900173c4556d6a35e0b165d7d99ae11df06fc15c90da5778"
+          },
+          {
+            "conv": 17,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6193557f3636276211836ce1c9cb6ea9cad47fcf5677bec7d20c08b678b9ef18"
+          },
+          {
+            "conv": 18,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "155c0bae8d2d26bc229b29169b62e3ddbb39e574cc32f32df822d810695567e1"
+          },
+          {
+            "conv": 19,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "57a80f9172e39dda4a7f0f8457c6e352977068be4596f5e40f11ee4367b53b09"
+          },
+          {
+            "conv": 20,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "46116e379961706e70a8afdd3ded3531ef7ab54dd5d7d83f7e5f0d850c102564"
+          },
+          {
+            "conv": 21,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7bd4e7fe5cd9498e8350070ca80c39982e73078081c29323fcb474231ee345b7"
+          },
+          {
+            "conv": 22,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "50cc3c8b04ed7b14a28e4bce6394a593b5480c4045b5247fe41397d3d5ca124f"
+          },
+          {
+            "conv": 23,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "96bff6dc586ee5afc4a916cd849c5fc8af304228d8c6ee86936994f9dd47208f"
+          },
+          {
+            "conv": 24,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f235a82b69ba5cdc76d67114387f6afc91e34acc7a1a0dfcbf2a06efcbbcd98c"
+          },
+          {
+            "conv": 25,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7b6f5aa767deb9112f1bfb8cf7b75b8c64988439cc0f3b83231a6ff87b500c0e"
+          },
+          {
+            "conv": 26,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ff20158c8ea61e687d4bb166429a14ea557fdb55ada22c91418c52f82565f612"
+          },
+          {
+            "conv": 27,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b6b71c9d52469fd28a510f75b7c19fc6945cff66000c232a9d9f0757cf49881a"
+          },
+          {
+            "conv": 28,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b29ed4cffd96d31f2890ef0238f91b3b68da3c7105bf7167ecb9a610926cc2a0"
+          },
+          {
+            "conv": 29,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "48badd7ae0d0a95feb074220963754504405201aad9bfba4425d7e903afd577e"
+          },
+          {
+            "conv": 30,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "c39c019e3112e50edf698552fe1eba0384101b3549f7fe17f195a5c9aaf87553"
+          },
+          {
+            "conv": 31,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9cd392b4a869b61173162b3bc1f5c8d99a3e66a103c52db25318c799771ea352"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-a8w4-split32-2.npy",
+        "reference_sha256": "035e60e26f39ec3c886530d78c0755836644d4106e06f26bd6a8865389d8b7d4",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "06289b4191f732a84e6ede0ba3c370253c72ed0be0d74f2cec67c8cded8a2136",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 1536,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": true,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [
+        {
+          "index": 0,
+          "duration_ns": 1964625,
+          "start_epoch_ns": 1789058090796418048,
+          "end_epoch_ns": 1789058090798383872,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 1,
+          "duration_ns": 2286625,
+          "start_epoch_ns": 1789058090806871040,
+          "end_epoch_ns": 1789058090809159168,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 2,
+          "duration_ns": 2267417,
+          "start_epoch_ns": 1789058090816707072,
+          "end_epoch_ns": 1789058090818974976,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 3,
+          "duration_ns": 2075084,
+          "start_epoch_ns": 1789058090826134016,
+          "end_epoch_ns": 1789058090828209920,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 4,
+          "duration_ns": 1723791,
+          "start_epoch_ns": 1789058090835525120,
+          "end_epoch_ns": 1789058090837249024,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 5,
+          "duration_ns": 1767959,
+          "start_epoch_ns": 1789058090844481024,
+          "end_epoch_ns": 1789058090846249984,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 6,
+          "duration_ns": 1913292,
+          "start_epoch_ns": 1789058090853383936,
+          "end_epoch_ns": 1789058090855298048,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 7,
+          "duration_ns": 1753500,
+          "start_epoch_ns": 1789058090862349056,
+          "end_epoch_ns": 1789058090864102912,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 8,
+          "duration_ns": 1985291,
+          "start_epoch_ns": 1789058090871191040,
+          "end_epoch_ns": 1789058090873177088,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 9,
+          "duration_ns": 1760375,
+          "start_epoch_ns": 1789058090880291840,
+          "end_epoch_ns": 1789058090882052864,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 10,
+          "duration_ns": 2010708,
+          "start_epoch_ns": 1789058090889186816,
+          "end_epoch_ns": 1789058090891198208,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 11,
+          "duration_ns": 1733208,
+          "start_epoch_ns": 1789058090898349056,
+          "end_epoch_ns": 1789058090900082944,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 12,
+          "duration_ns": 1750708,
+          "start_epoch_ns": 1789058090907236096,
+          "end_epoch_ns": 1789058090908987136,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 13,
+          "duration_ns": 1827750,
+          "start_epoch_ns": 1789058090916133888,
+          "end_epoch_ns": 1789058090917961984,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 14,
+          "duration_ns": 2270917,
+          "start_epoch_ns": 1789058090924954880,
+          "end_epoch_ns": 1789058090927226112,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 15,
+          "duration_ns": 1737750,
+          "start_epoch_ns": 1789058090934337024,
+          "end_epoch_ns": 1789058090936075008,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 16,
+          "duration_ns": 1734209,
+          "start_epoch_ns": 1789058090943183872,
+          "end_epoch_ns": 1789058090944918272,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 17,
+          "duration_ns": 1779792,
+          "start_epoch_ns": 1789058090952083968,
+          "end_epoch_ns": 1789058090953864192,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 18,
+          "duration_ns": 1772291,
+          "start_epoch_ns": 1789058090961048064,
+          "end_epoch_ns": 1789058090962821120,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 19,
+          "duration_ns": 1786541,
+          "start_epoch_ns": 1789058090969816064,
+          "end_epoch_ns": 1789058090971601920,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 20,
+          "duration_ns": 1771583,
+          "start_epoch_ns": 1789058090978723072,
+          "end_epoch_ns": 1789058090980495872,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 21,
+          "duration_ns": 1764459,
+          "start_epoch_ns": 1789058090987764736,
+          "end_epoch_ns": 1789058090989530112,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 22,
+          "duration_ns": 1766542,
+          "start_epoch_ns": 1789058090996732928,
+          "end_epoch_ns": 1789058090998498816,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 23,
+          "duration_ns": 1782375,
+          "start_epoch_ns": 1789058091005752064,
+          "end_epoch_ns": 1789058091007535104,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 24,
+          "duration_ns": 1784041,
+          "start_epoch_ns": 1789058091014778112,
+          "end_epoch_ns": 1789058091016561920,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 25,
+          "duration_ns": 1776333,
+          "start_epoch_ns": 1789058091023768064,
+          "end_epoch_ns": 1789058091025545216,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 26,
+          "duration_ns": 1750958,
+          "start_epoch_ns": 1789058091032659968,
+          "end_epoch_ns": 1789058091034412032,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 27,
+          "duration_ns": 1767292,
+          "start_epoch_ns": 1789058091041676032,
+          "end_epoch_ns": 1789058091043444224,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 28,
+          "duration_ns": 1745541,
+          "start_epoch_ns": 1789058091050693888,
+          "end_epoch_ns": 1789058091052440064,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 29,
+          "duration_ns": 1755459,
+          "start_epoch_ns": 1789058091059577856,
+          "end_epoch_ns": 1789058091061334016,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        }
+      ]
+    },
+    {
+      "run": "06-process2-coreai-a8w4-2",
+      "case_id": "coreai-a8w4-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55320,
+      "benchmark_status": "measured",
+      "p50_ms": 0.4369995,
+      "p95_ms": 0.45952255000000003,
+      "source_equivalent_Tops": 9.828311693720474,
+      "source_records_sha256": "ca2d89180386cfdcaadad08941e4a1324162ff295a2192ee4ce4792832303162",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "f5a0860ce9f8c8cda532a4b6237fba0cbe521822920a0698196be40e16a4b0a9",
+          "main.mlirb": "c6d35d866ae9cf1dbaa4bbd09ccd9f696a39d8d165836e9e8a5ae7d760502f4e",
+          "metadata.json": "55b05f4821e0a1019fbd993ff9a8fdcc33b180e97fc6cbd914abfe6b379d942e"
+        },
+        "actual_op_counts": {
+          "coreai.lut_to_dense": 2,
+          "coreai.blockwise_shift_scale": 2,
+          "coreai.conv2d": 2,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-w8a8-2.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": true,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [
+        {
+          "index": 0,
+          "duration_ns": 394292,
+          "start_epoch_ns": 1789058092882367232,
+          "end_epoch_ns": 1789058092882761984,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 1,
+          "duration_ns": 458125,
+          "start_epoch_ns": 1789058092891075072,
+          "end_epoch_ns": 1789058092891532800,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 2,
+          "duration_ns": 445416,
+          "start_epoch_ns": 1789058092898888192,
+          "end_epoch_ns": 1789058092899333120,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 3,
+          "duration_ns": 411000,
+          "start_epoch_ns": 1789058092906364928,
+          "end_epoch_ns": 1789058092906776064,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 4,
+          "duration_ns": 445333,
+          "start_epoch_ns": 1789058092913783040,
+          "end_epoch_ns": 1789058092914228992,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 5,
+          "duration_ns": 422291,
+          "start_epoch_ns": 1789058092921146880,
+          "end_epoch_ns": 1789058092921569792,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 6,
+          "duration_ns": 434417,
+          "start_epoch_ns": 1789058092928484864,
+          "end_epoch_ns": 1789058092928920064,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 7,
+          "duration_ns": 468083,
+          "start_epoch_ns": 1789058092935875840,
+          "end_epoch_ns": 1789058092936345088,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 8,
+          "duration_ns": 446250,
+          "start_epoch_ns": 1789058092943326976,
+          "end_epoch_ns": 1789058092943772928,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 9,
+          "duration_ns": 448333,
+          "start_epoch_ns": 1789058092950770944,
+          "end_epoch_ns": 1789058092951219968,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 10,
+          "duration_ns": 399375,
+          "start_epoch_ns": 1789058092958330112,
+          "end_epoch_ns": 1789058092958729984,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 11,
+          "duration_ns": 416500,
+          "start_epoch_ns": 1789058092965580032,
+          "end_epoch_ns": 1789058092965997056,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 12,
+          "duration_ns": 439208,
+          "start_epoch_ns": 1789058092972867840,
+          "end_epoch_ns": 1789058092973308160,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 13,
+          "duration_ns": 445250,
+          "start_epoch_ns": 1789058092980290816,
+          "end_epoch_ns": 1789058092980737024,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 14,
+          "duration_ns": 396583,
+          "start_epoch_ns": 1789058092987714048,
+          "end_epoch_ns": 1789058092988111104,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 15,
+          "duration_ns": 427500,
+          "start_epoch_ns": 1789058092995081984,
+          "end_epoch_ns": 1789058092995510016,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 16,
+          "duration_ns": 442625,
+          "start_epoch_ns": 1789058093002451968,
+          "end_epoch_ns": 1789058093002894848,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 17,
+          "duration_ns": 438666,
+          "start_epoch_ns": 1789058093009909248,
+          "end_epoch_ns": 1789058093010347776,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 18,
+          "duration_ns": 387542,
+          "start_epoch_ns": 1789058093017189888,
+          "end_epoch_ns": 1789058093017578240,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 19,
+          "duration_ns": 397375,
+          "start_epoch_ns": 1789058093024664832,
+          "end_epoch_ns": 1789058093025062144,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 20,
+          "duration_ns": 423750,
+          "start_epoch_ns": 1789058093032023808,
+          "end_epoch_ns": 1789058093032448000,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 21,
+          "duration_ns": 448459,
+          "start_epoch_ns": 1789058093039445760,
+          "end_epoch_ns": 1789058093039895040,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 22,
+          "duration_ns": 448833,
+          "start_epoch_ns": 1789058093046862080,
+          "end_epoch_ns": 1789058093047310848,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 23,
+          "duration_ns": 422291,
+          "start_epoch_ns": 1789058093054371840,
+          "end_epoch_ns": 1789058093054795008,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 24,
+          "duration_ns": 435333,
+          "start_epoch_ns": 1789058093061958912,
+          "end_epoch_ns": 1789058093062394112,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 25,
+          "duration_ns": 460666,
+          "start_epoch_ns": 1789058093069447936,
+          "end_epoch_ns": 1789058093069908992,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 26,
+          "duration_ns": 454292,
+          "start_epoch_ns": 1789058093076990976,
+          "end_epoch_ns": 1789058093077445120,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 27,
+          "duration_ns": 446625,
+          "start_epoch_ns": 1789058093084590080,
+          "end_epoch_ns": 1789058093085037056,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 28,
+          "duration_ns": 397417,
+          "start_epoch_ns": 1789058093092134912,
+          "end_epoch_ns": 1789058093092532992,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 29,
+          "duration_ns": 401583,
+          "start_epoch_ns": 1789058093099629824,
+          "end_epoch_ns": 1789058093100031744,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        }
+      ],
+      "RNE-not-gate": {
+        "reference_file": "reference-w8a8-2-rne.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "07-process3-coreai-a8w4-2",
+      "case_id": "coreai-a8w4-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55331,
+      "benchmark_status": "measured",
+      "p50_ms": 0.4455835,
+      "p95_ms": 0.47283284999999997,
+      "source_equivalent_Tops": 9.638972933243714,
+      "source_records_sha256": "8f3e30c81d06f4f6e37ca35d9bed1a3197f3af8e064aed6c6a7fd157cc72926e",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "f5a0860ce9f8c8cda532a4b6237fba0cbe521822920a0698196be40e16a4b0a9",
+          "main.mlirb": "c6d35d866ae9cf1dbaa4bbd09ccd9f696a39d8d165836e9e8a5ae7d760502f4e",
+          "metadata.json": "55b05f4821e0a1019fbd993ff9a8fdcc33b180e97fc6cbd914abfe6b379d942e"
+        },
+        "actual_op_counts": {
+          "coreai.lut_to_dense": 2,
+          "coreai.blockwise_shift_scale": 2,
+          "coreai.conv2d": 2,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "1028a6f06a848081586ae60ad9607094246d4d1fc7cddf940e4eef5ce2620b8b"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              512,
+              1,
+              1
+            ],
+            "sha256": "0301441d0bd66a33e62a4cb42c4142ee64e4718c5d4c44a82da39ab525849a5b"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-w8a8-2.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": true,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [
+        {
+          "index": 0,
+          "duration_ns": 447375,
+          "start_epoch_ns": 1789058094968829184,
+          "end_epoch_ns": 1789058094969275904,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 1,
+          "duration_ns": 475833,
+          "start_epoch_ns": 1789058094977571840,
+          "end_epoch_ns": 1789058094978047744,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 2,
+          "duration_ns": 442083,
+          "start_epoch_ns": 1789058094985226240,
+          "end_epoch_ns": 1789058094985667840,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 3,
+          "duration_ns": 430167,
+          "start_epoch_ns": 1789058094992694784,
+          "end_epoch_ns": 1789058094993125888,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 4,
+          "duration_ns": 407750,
+          "start_epoch_ns": 1789058095000148992,
+          "end_epoch_ns": 1789058095000557056,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 5,
+          "duration_ns": 439084,
+          "start_epoch_ns": 1789058095007606016,
+          "end_epoch_ns": 1789058095008046080,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 6,
+          "duration_ns": 444959,
+          "start_epoch_ns": 1789058095014977024,
+          "end_epoch_ns": 1789058095015421952,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 7,
+          "duration_ns": 463458,
+          "start_epoch_ns": 1789058095022417152,
+          "end_epoch_ns": 1789058095022881024,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 8,
+          "duration_ns": 461666,
+          "start_epoch_ns": 1789058095029838080,
+          "end_epoch_ns": 1789058095030300160,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 9,
+          "duration_ns": 443125,
+          "start_epoch_ns": 1789058095037451008,
+          "end_epoch_ns": 1789058095037894912,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 10,
+          "duration_ns": 447333,
+          "start_epoch_ns": 1789058095044934912,
+          "end_epoch_ns": 1789058095045382912,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 11,
+          "duration_ns": 463291,
+          "start_epoch_ns": 1789058095052495872,
+          "end_epoch_ns": 1789058095052960000,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 12,
+          "duration_ns": 465667,
+          "start_epoch_ns": 1789058095060286976,
+          "end_epoch_ns": 1789058095060752896,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 13,
+          "duration_ns": 447625,
+          "start_epoch_ns": 1789058095067860992,
+          "end_epoch_ns": 1789058095068308736,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 14,
+          "duration_ns": 403209,
+          "start_epoch_ns": 1789058095075320832,
+          "end_epoch_ns": 1789058095075725056,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 15,
+          "duration_ns": 392750,
+          "start_epoch_ns": 1789058095082736896,
+          "end_epoch_ns": 1789058095083129856,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 16,
+          "duration_ns": 435333,
+          "start_epoch_ns": 1789058095090226176,
+          "end_epoch_ns": 1789058095090661120,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 17,
+          "duration_ns": 481125,
+          "start_epoch_ns": 1789058095097733888,
+          "end_epoch_ns": 1789058095098215936,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 18,
+          "duration_ns": 449166,
+          "start_epoch_ns": 1789058095105350144,
+          "end_epoch_ns": 1789058095105800192,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 19,
+          "duration_ns": 433791,
+          "start_epoch_ns": 1789058095112676096,
+          "end_epoch_ns": 1789058095113110016,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 20,
+          "duration_ns": 450791,
+          "start_epoch_ns": 1789058095120121856,
+          "end_epoch_ns": 1789058095120572928,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 21,
+          "duration_ns": 454042,
+          "start_epoch_ns": 1789058095127727872,
+          "end_epoch_ns": 1789058095128182016,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 22,
+          "duration_ns": 446208,
+          "start_epoch_ns": 1789058095135247104,
+          "end_epoch_ns": 1789058095135693056,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 23,
+          "duration_ns": 469166,
+          "start_epoch_ns": 1789058095142899968,
+          "end_epoch_ns": 1789058095143370240,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 24,
+          "duration_ns": 395709,
+          "start_epoch_ns": 1789058095150473984,
+          "end_epoch_ns": 1789058095150868992,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 25,
+          "duration_ns": 411167,
+          "start_epoch_ns": 1789058095158076160,
+          "end_epoch_ns": 1789058095158488064,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 26,
+          "duration_ns": 404375,
+          "start_epoch_ns": 1789058095165620992,
+          "end_epoch_ns": 1789058095166025216,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 27,
+          "duration_ns": 439375,
+          "start_epoch_ns": 1789058095173097984,
+          "end_epoch_ns": 1789058095173538048,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 28,
+          "duration_ns": 434583,
+          "start_epoch_ns": 1789058095180659968,
+          "end_epoch_ns": 1789058095181095168,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        },
+        {
+          "index": 29,
+          "duration_ns": 451417,
+          "start_epoch_ns": 1789058095188153088,
+          "end_epoch_ns": 1789058095188603904,
+          "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        }
+      ],
+      "RNE-not-gate": {
+        "reference_file": "reference-w8a8-2-rne.npy",
+        "reference_sha256": "9e9b31b453d35cddd1673f67e7255225f99d2b89e2954ea3b0bad6a8eef87cb1",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "783f81d03ec8179e9d3cd8111ef8a4631ac757337e5c682668de96cc628a7a05",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 173824,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf",
+            "numeric_mismatches": 166656,
+            "bit_mismatches": 166656,
+            "relative_L2": 0.0001402708834698984,
+            "max_abs": 0.0009765625,
+            "finite": true,
+            "nonzero_fraction": 0.99658203125,
+            "limit": 0.01,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      }
+    },
+    {
+      "run": "08-process3-coreai-a8w4-split32-2",
+      "case_id": "coreai-a8w4-split32-2",
+      "source_ops": 4294967296,
+      "shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "output_shape": [
+        1,
+        512,
+        64,
+        64
+      ],
+      "representation": "Core AI LUT INT4 plus blockwise scales",
+      "pid": 55341,
+      "benchmark_status": "measured",
+      "p50_ms": 1.763646,
+      "p95_ms": 1.94553125,
+      "source_equivalent_Tops": 2.435277428690338,
+      "source_records_sha256": "e1cb04f914af6549d51e7daac397a0e8132212bb7369ed42b3bf1bf9879818a9",
+      "asset_audit": {
+        "passed": true,
+        "method": "persisted Core AI MLIR bytecode, version-specific internal reader, SSA walk and independent payload decode",
+        "asset_files": {
+          "main.hash": "5d4a8f5b427ccbfec427cac50923b51336b6627d3d6439bd675bb6d400262a57",
+          "main.mlirb": "05c9eee1f9a3c20f5130c6947cea8d0129c5543f1bb6cf93e2859b0d6d8e5550",
+          "metadata.json": "9a4186bf043ef4acbcd29433809eee10315c6cdafa37be1b83f82d55c4e92579"
+        },
+        "actual_op_counts": {
+          "coreai.slice": 32,
+          "coreai.lut_to_dense": 32,
+          "coreai.blockwise_shift_scale": 32,
+          "coreai.conv2d": 32,
+          "coreai.decomposable.broadcasting_add": 30,
+          "coreai.quantize": 1,
+          "coreai.dequantize": 1
+        },
+        "weight_decodes": [
+          {
+            "conv": 0,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "2a0e48f2302abf591765b988c27efb7a357356be2cd66ee05685c10d4fc3f995"
+          },
+          {
+            "conv": 1,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "91d89e3d5adff49c928f50dc25dbbade567ccc5ef31fb2b89ca0bb1e54679a00"
+          },
+          {
+            "conv": 2,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "791acb1b4a0bd3d71106576e1d536d9924670099ea2ba11312b088a5d5317552"
+          },
+          {
+            "conv": 3,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "8b3e51259676afc8b48042d5d0dba83d17a2b6741d03c2757224b4e215af53bc"
+          },
+          {
+            "conv": 4,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d40ee5058465814800eb6f8d77fb23b0822ff80ddbb5948e1368c63a61acbd10"
+          },
+          {
+            "conv": 5,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6328a17f444b3c88af0578c4bca322b295ce6d2a04d825640b3575d2801e5063"
+          },
+          {
+            "conv": 6,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "037560f543d07dcc8089a3f459150d6443ae7d2e71435c44d3e3b4ebc166c16d"
+          },
+          {
+            "conv": 7,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9b651ba8f07fdc1c70604827f13db349fac351b0bedc82537c9ee1487415f590"
+          },
+          {
+            "conv": 8,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "de7233dd477416e22d5f0dbd5f72b4108a41556c4ddced0e7be67e2d08a743a4"
+          },
+          {
+            "conv": 9,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "90c95592e561a307a973a6937a58d139fa3f6e5ce066831e0f42109a52f6b2e8"
+          },
+          {
+            "conv": 10,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ea324526b20b436f5d67ce4dffefa03638e8b2b455cab5c6ac0685c6d766b243"
+          },
+          {
+            "conv": 11,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "3e7884ab047e799fbe45af88db8e3a841f3e6d12a471ce3e30d79b3f396d38bb"
+          },
+          {
+            "conv": 12,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "d011d70b891fff8ca1709b95e53c580f5a96010437927c620eba97b50e545aca"
+          },
+          {
+            "conv": 13,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "cea468c12d62d9e00c54eded718161951d2790b43fe89d41afbf8a7be7229ef5"
+          },
+          {
+            "conv": 14,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7e7a1c20ca0b1a70ca0309737d633cd36df1b6ad70803b1fd8ec06302eaefb27"
+          },
+          {
+            "conv": 15,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f8049e23acfe78f82019ebd7033ca815c3a454acdf9133f4f2ca6561fad29638"
+          },
+          {
+            "conv": 16,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "70c66fb96293738e900173c4556d6a35e0b165d7d99ae11df06fc15c90da5778"
+          },
+          {
+            "conv": 17,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "6193557f3636276211836ce1c9cb6ea9cad47fcf5677bec7d20c08b678b9ef18"
+          },
+          {
+            "conv": 18,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "155c0bae8d2d26bc229b29169b62e3ddbb39e574cc32f32df822d810695567e1"
+          },
+          {
+            "conv": 19,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "57a80f9172e39dda4a7f0f8457c6e352977068be4596f5e40f11ee4367b53b09"
+          },
+          {
+            "conv": 20,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "46116e379961706e70a8afdd3ded3531ef7ab54dd5d7d83f7e5f0d850c102564"
+          },
+          {
+            "conv": 21,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7bd4e7fe5cd9498e8350070ca80c39982e73078081c29323fcb474231ee345b7"
+          },
+          {
+            "conv": 22,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "50cc3c8b04ed7b14a28e4bce6394a593b5480c4045b5247fe41397d3d5ca124f"
+          },
+          {
+            "conv": 23,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "96bff6dc586ee5afc4a916cd849c5fc8af304228d8c6ee86936994f9dd47208f"
+          },
+          {
+            "conv": 24,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "f235a82b69ba5cdc76d67114387f6afc91e34acc7a1a0dfcbf2a06efcbbcd98c"
+          },
+          {
+            "conv": 25,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "7b6f5aa767deb9112f1bfb8cf7b75b8c64988439cc0f3b83231a6ff87b500c0e"
+          },
+          {
+            "conv": 26,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "ff20158c8ea61e687d4bb166429a14ea557fdb55ada22c91418c52f82565f612"
+          },
+          {
+            "conv": 27,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b6b71c9d52469fd28a510f75b7c19fc6945cff66000c232a9d9f0757cf49881a"
+          },
+          {
+            "conv": 28,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "b29ed4cffd96d31f2890ef0238f91b3b68da3c7105bf7167ecb9a610926cc2a0"
+          },
+          {
+            "conv": 29,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "48badd7ae0d0a95feb074220963754504405201aad9bfba4425d7e903afd577e"
+          },
+          {
+            "conv": 30,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "c39c019e3112e50edf698552fe1eba0384101b3549f7fe17f195a5c9aaf87553"
+          },
+          {
+            "conv": 31,
+            "shape": [
+              512,
+              32,
+              1,
+              1
+            ],
+            "sha256": "9cd392b4a869b61173162b3bc1f5c8d99a3e66a103c52db25318c799771ea352"
+          }
+        ],
+        "checks": [
+          "input/output signature",
+          "actual operation counts",
+          "weight operands/codes/scales/zero",
+          "QDQ SSA and parameters",
+          "chain and split reduction SSA",
+          "multiply DQ operands/scales"
+        ]
+      },
+      "numerical": {
+        "reference_file": "reference-a8w4-split32-2.npy",
+        "reference_sha256": "035e60e26f39ec3c886530d78c0755836644d4106e06f26bd6a8865389d8b7d4",
+        "comparisons": [
+          {
+            "phase": "control_original",
+            "output_file": "control_original.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_zero",
+            "output_file": "control_zero.raw",
+            "output_sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.0,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_negative",
+            "output_file": "control_negative.raw",
+            "output_sha256": "06289b4191f732a84e6ede0ba3c370253c72ed0be0d74f2cec67c8cded8a2136",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 1536,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          },
+          {
+            "phase": "control_original_repeat",
+            "output_file": "control_original_repeat.raw",
+            "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988",
+            "numeric_mismatches": 0,
+            "bit_mismatches": 0,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "finite": true,
+            "nonzero_fraction": 0.999267578125,
+            "limit": 0,
+            "passed": true
+          }
+        ],
+        "repeat_byte_equal": true,
+        "passed": true
+      },
+      "placement": {
+        "counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "every_control_has_ANE": true,
+        "conv_plan": [],
+        "conv_plan_passed": null,
+        "unsupported_messages": [],
+        "compiler_or_fallback_messages": [],
+        "physical_INT8_proven": false,
+        "evidence_scope": "control-window participation plus Core ML preferred-device plan; no per-kernel instruction proof"
+      },
+      "admission": {
+        "numerical_passed": true,
+        "ANE_control_participation": true,
+        "runtime_or_plan_passed": true,
+        "admitted": true,
+        "benchmark_admitted": true,
+        "coreai_per_operation_mapping": "unverified"
+      },
+      "measured_records": [
+        {
+          "index": 0,
+          "duration_ns": 2063833,
+          "start_epoch_ns": 1789058097057714944,
+          "end_epoch_ns": 1789058097059779072,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 1,
+          "duration_ns": 1822750,
+          "start_epoch_ns": 1789058097068290048,
+          "end_epoch_ns": 1789058097070114048,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 2,
+          "duration_ns": 1831500,
+          "start_epoch_ns": 1789058097077664000,
+          "end_epoch_ns": 1789058097079495936,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 3,
+          "duration_ns": 1817042,
+          "start_epoch_ns": 1789058097086874112,
+          "end_epoch_ns": 1789058097088691968,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 4,
+          "duration_ns": 1779041,
+          "start_epoch_ns": 1789058097095842816,
+          "end_epoch_ns": 1789058097097622784,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 5,
+          "duration_ns": 1768042,
+          "start_epoch_ns": 1789058097104770048,
+          "end_epoch_ns": 1789058097106539008,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 6,
+          "duration_ns": 1929375,
+          "start_epoch_ns": 1789058097113606912,
+          "end_epoch_ns": 1789058097115537152,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 7,
+          "duration_ns": 1816500,
+          "start_epoch_ns": 1789058097122586112,
+          "end_epoch_ns": 1789058097124402944,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 8,
+          "duration_ns": 1734417,
+          "start_epoch_ns": 1789058097131491072,
+          "end_epoch_ns": 1789058097133225984,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 9,
+          "duration_ns": 1763667,
+          "start_epoch_ns": 1789058097140249088,
+          "end_epoch_ns": 1789058097142013184,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 10,
+          "duration_ns": 1748583,
+          "start_epoch_ns": 1789058097149099776,
+          "end_epoch_ns": 1789058097150848768,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 11,
+          "duration_ns": 1763625,
+          "start_epoch_ns": 1789058097157926144,
+          "end_epoch_ns": 1789058097159689984,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 12,
+          "duration_ns": 1773416,
+          "start_epoch_ns": 1789058097166737152,
+          "end_epoch_ns": 1789058097168510976,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 13,
+          "duration_ns": 1763084,
+          "start_epoch_ns": 1789058097175459840,
+          "end_epoch_ns": 1789058097177224192,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 14,
+          "duration_ns": 1744709,
+          "start_epoch_ns": 1789058097184345856,
+          "end_epoch_ns": 1789058097186091008,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 15,
+          "duration_ns": 1714500,
+          "start_epoch_ns": 1789058097193090816,
+          "end_epoch_ns": 1789058097194806016,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 16,
+          "duration_ns": 1759167,
+          "start_epoch_ns": 1789058097201894144,
+          "end_epoch_ns": 1789058097203652864,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 17,
+          "duration_ns": 1732084,
+          "start_epoch_ns": 1789058097210812160,
+          "end_epoch_ns": 1789058097212545024,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 18,
+          "duration_ns": 1757458,
+          "start_epoch_ns": 1789058097219580160,
+          "end_epoch_ns": 1789058097221338112,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 19,
+          "duration_ns": 1755875,
+          "start_epoch_ns": 1789058097228271104,
+          "end_epoch_ns": 1789058097230027008,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 20,
+          "duration_ns": 1761542,
+          "start_epoch_ns": 1789058097237059072,
+          "end_epoch_ns": 1789058097238821120,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 21,
+          "duration_ns": 1795583,
+          "start_epoch_ns": 1789058097245937920,
+          "end_epoch_ns": 1789058097247734016,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 22,
+          "duration_ns": 1770625,
+          "start_epoch_ns": 1789058097254981888,
+          "end_epoch_ns": 1789058097256752896,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 23,
+          "duration_ns": 1958750,
+          "start_epoch_ns": 1789058097263737088,
+          "end_epoch_ns": 1789058097265696000,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 24,
+          "duration_ns": 1737875,
+          "start_epoch_ns": 1789058097272860928,
+          "end_epoch_ns": 1789058097274599168,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 25,
+          "duration_ns": 1809042,
+          "start_epoch_ns": 1789058097281772032,
+          "end_epoch_ns": 1789058097283581952,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 26,
+          "duration_ns": 1759250,
+          "start_epoch_ns": 1789058097290797056,
+          "end_epoch_ns": 1789058097292557056,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 27,
+          "duration_ns": 1736250,
+          "start_epoch_ns": 1789058097299720960,
+          "end_epoch_ns": 1789058097301456896,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 28,
+          "duration_ns": 1768292,
+          "start_epoch_ns": 1789058097308621824,
+          "end_epoch_ns": 1789058097310391040,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        },
+        {
+          "index": 29,
+          "duration_ns": 1741291,
+          "start_epoch_ns": 1789058097317432832,
+          "end_epoch_ns": 1789058097319174912,
+          "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        }
+      ]
+    }
+  ]
+}

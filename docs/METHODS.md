@@ -1,0 +1,166 @@
+# Experimental methods
+
+![Frozen workload and persisted-asset audits precede numerical, resource and device checks; only admitted cases are timed.](figures/evidence-pipeline.svg)
+
+Five things are kept apart and never collapsed into one verdict: numerical
+correctness, serialised representation, compiler eligibility, observed device
+participation, and performance. A requested compute unit or a declared low-bit
+type is not evidence of any of the others. Incorrect outputs, CPU choices and
+incomplete evidence stay recorded as observations with no benchmark time.
+[SCOPE.md](SCOPE.md) states what the resulting numbers mean.
+
+## The fixture
+
+Every fixture is model-free and deterministic. The chain uses 512×512 signed
+Hadamard matrices, independently permuted and sign-flipped per layer with seed
+20260910. Weight scale is binary16 `0.044189453125`. A held-out input seed
+20260912 generates 16 independent spatial vectors of Q8 codes in [-8, 8],
+scaled by 0.125, tiled to 4096 positions.
+
+FP16, W8A8 and A8W4 all start from identical initial weight values; the two
+quantized formats insert an activation QDQ between layers. Their arithmetic
+references therefore differ from FP16, and a latency comparison between them is
+a representation control, not a matched-quality model evaluation.
+
+The FP16 reference uses FP32 dot products with binary16 rounding at the
+boundaries. The quantized reference uses exact bounded integer dot products,
+the declared scales, binary16 intermediate boundaries, and Q8 nearest rounding
+with ties away from zero (RZA). A separate ties-to-even (RNE) reference is kept
+for comparison and is **never** substituted after an output has been observed.
+
+## Numerical admission
+
+Every process receives four inputs: original, zero, sign-negated and repeated
+original. A linear chain or group probe must negate its output with its input;
+a multiplication probe must preserve it. References, outputs and files are all
+hashed. The repeated original output must be byte-identical, every output must
+be finite, and the zero case must be numerically zero. A non-zero positive or
+negative control under a relative-L2 gate additionally requires at least 25%
+non-zero output.
+
+Chain relative-L2 limits are 0.01 at depth 2 and 0.05 at depth 128 — inherited
+synthetic-control engineering thresholds, not universal quantization criteria.
+Exact-grid group and multiplication probes and the SplitConv profile require
+zero numerical difference, with signed-zero bit differences reported
+separately. A failing compatibility result is never admitted
+to timing.
+
+## The split profile
+
+![Two-layer wide and split graphs use the same K512 weights but different partial-sum and reduction boundaries.](figures/split-structure.svg)
+
+The split profile uses two layers of 16 contiguous K32 dot products, a balanced
+adjacent FP16 addition tree, and one inter-layer QDQ. Its reference models FP16
+midpoint ties away from zero at the partial and reduction boundaries. Wide and
+split therefore carry separate frozen references: the change in reduction and
+rounding boundaries is part of the ablation.
+
+## Serialised assets and device evidence
+
+Core ML assets are reloaded from their persisted protobuf and weight blob. The
+audit follows convolution, QDQ, slice and add operands, checks codes, scales
+and zero points, and independently materialises the weight values. Core AI
+assets are reloaded from bytecode through a version-specific internal reader;
+signed INT8 and packed four-bit palette indices are decoded independently while
+following weight and graph operands. **An unrecognised representation fails the
+audit.**
+
+The Swift Core ML host compiles the saved asset, reads the model description
+and a compute plan, and records supported and preferred devices. The Core AI
+host requests Neural Engine specialization, validates function, input and
+output names and the actual output shape and dtype, and records that
+per-operation mapping is unavailable. Its input NDArray shape and dtype are
+explicit and the persisted graph signature is audited before execution.
+
+Target-PID unified logging runs around loading and the four controls. Each
+control's window must contain a successful ANE request for timing admission.
+Core ML additionally requires every audited convolution to prefer ANE. Core AI
+admission uses control-window participation plus the requested specialization
+and the loaded function identity.
+
+## Timing and replication
+
+The full control is 128 convolutions at `[1, 512, 64, 64]`. Source work is
+`2 × depth × 512² × 4096` operations, a MAC counting as two. The wide/split
+comparison uses depth 2 and the same denominator, so an additional *graph*
+operation is not an additional *source* operation in this metric.
+
+Each timing process performs the four controls, then 10 warmups and 30 measured
+synchronous predictions. Output copying, finite checks, hashing and file writes
+all happen after the timer stops, and unified log capture is stopped before
+timing begins. The first and last timed outputs are retained, and every timed
+output hash must equal the original control. Physical footprint growth from
+warm to measured must be at most 32 MiB.
+
+Three fresh processes per arm run in forward, reverse, forward order. Reported
+values are per-process p50 and p95, paired round ratios, and the range across
+process medians — see [SCOPE.md](SCOPE.md#how-to-read-a-spread) for how to read
+that range.
+
+## Small compatibility fixtures
+
+The group fixture is signed INT4 `[64, 64, 1, 1]` with two K32 scales per row,
+alternating exact 0.125 and 0.25 scales, and an identity input. Input A8 QDQ
+uses declared per-input-channel scales. Core AI uses a four-bit INT8 LUT plus
+scale; Core ML uses direct signed INT4 blockwise scaling. These are different
+frontend representations, so their outputs and device choices do not isolate a
+single shared compiler stage. The flattened-scale reference is a separately
+generated candidate error prediction, frozen before comparison.
+
+The multiplication fixture uses inputs 2 and 8 on an exact grid, with equal
+scales (2, 2), unequal scales (0.5, 2), reversed construction order and an
+explicit quantization expression. These are minimal semantic probes, not
+comprehensive multiplication tests.
+
+The original Gemma-derived group fragment had 15360 output rows; the model-free
+probe here has 64. Device choice differs across those shapes, and each
+is reported. Historical methods and versions are in
+[HISTORICAL.md](HISTORICAL.md) and [PROVENANCE.md](PROVENANCE.md).
+
+## G2 component service protocol
+
+This imported experiment has its own protocol; the model-free synthetic fixture
+above is not its workload. The [G2 protocol record](../results/historical/g2-w4a16-night/protocol.json)
+contains the frozen phase/group definitions, source and asset identities, and
+engineering limits. [G2 scope](SCOPE.md#g2-service-observations) defines the
+interpretation boundaries.
+
+The workload is one full four-stage MLP from same-source Q4_0 weights. At N<256,
+ANE uses tile64; at larger N it uses tile256. MLX executes the whole request.
+Each P2 cell has three saved-input controls, zero and a repeated first input,
+then ten warmups and thirty measured requests. Seven sizes and a same-host
+N1024 tile diagnostic produce 45 cells in six hosts. Each cell's rate is
+N × 30 / sum(client seconds); medians are taken across hosts, not pooled calls.
+Quantiles linearly interpolate at (sample_count − 1) × q.
+
+P0 uses four fresh C/G/G/C hosts, each with 512 measured N4096 requests plus
+five controls and ten warmups. Natural checkpoints are 0/32/64/128/256/512.
+The original memory-envelope amendment and previous stopped attempts remain
+part of workspace provenance; their device samples are not mixed into r4.
+
+The service phase freezes arrival offsets from independent inference and
+foreground pilots. P1 has matrix loads at 0.5F/0.75F and a memory-access load at
+0.5F, each alone, with ANE and with GPU, in two orders: eighteen four-minute
+observation slots. P3 uses 0.25R/0.5R/0.75R, two orders, with six-minute windows.
+R is the slower inference pilot rate; each foreground uses its own F. All
+arrivals, terminal states, deadlines and drain completions are retained. The
+four saturated C/G/G/C blocks observe sixteen minutes each, without an offered
+arrival rate; request caps are checked for censoring.
+
+Thermal starts use the final thirty seconds of setup, after loading and warmup.
+The frozen group rule checks six distinct sensor samples spanning at least
+25 seconds, gaps at most ten seconds, median temperature spread at most 2°C,
+fan spread at most max(200 RPM, 10% of the lowest median), and matching covered
+thermal states. Unmatched groups remain in the results. The portable classifier
+is copied from the recorded workspace source, identified in provenance.
+
+A final five-minute window is an approximate platform only when both temperature
+OLS slopes versus actual time have magnitude ≤0.2°C/min, minute-completion
+range/mean is ≤5%, there is no thermal-state upgrade, and coverage is sufficient.
+This engineering rule does not establish equilibrium. Plot sensor gaps above
+ten seconds and resource gaps above two seconds are broken, never interpolated.
+
+G2 retained normal personal-PC background. The screensaver report is an explicit
+post-run annotation; it does not change frozen acceptance classifications.
+No display-off control was run. The whole-capture power
+acceptance failed.

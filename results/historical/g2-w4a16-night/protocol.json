@@ -1,0 +1,942 @@
+{
+  "historical_import": true,
+  "id": "g2-w4a16-night-20260911-r4",
+  "host": "Apple M5 Pro, 48 GiB, macOS 27; recorded workspace report",
+  "workload": "Gemma 4 12B first-layer full MLP; H3840/I15360; same-source Q4_0; FP16 I/O",
+  "engines": {
+    "C": "native Swift Core AI, requested neuralEngine",
+    "G": "MLX GPU"
+  },
+  "toolchain": {
+    "macos_sw_vers": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A428\n",
+    "xcode": "Xcode 27.0\nBuild version 27A266a",
+    "macosx_sdk": "27.0",
+    "python_environments": [
+      {
+        "venv": ".venv",
+        "python": "3.12.14",
+        "packages": {
+          "numpy": "2.3.5",
+          "torch": "2.11.0",
+          "coreai-torch": "0.4.1",
+          "coreai-core": "1.0.0b2",
+          "coremltools": "9.0"
+        }
+      },
+      {
+        "venv": ".venv-g1-v042",
+        "python": "3.12.14",
+        "packages": {
+          "numpy": "2.3.5",
+          "torch": "2.11.0",
+          "coreai-torch": "0.4.2",
+          "coreai-core": "1.0.0b2",
+          "coremltools": "9.0"
+        }
+      },
+      {
+        "venv": "performance/.venv",
+        "python": "3.12.14",
+        "packages": {
+          "numpy": "2.3.5",
+          "mlx": "0.32.2"
+        }
+      },
+      {
+        "venv": "reference/.venv",
+        "python": "3.12.14",
+        "packages": {
+          "numpy": "2.3.5",
+          "torch": "2.11.0"
+        }
+      }
+    ],
+    "gpu_host_environment": "performance/.venv: scripts/g2_client.py (frozen source hash) launches scripts/g2_gpu.py with it",
+    "recorded_by": "Same-day preflight package verification and Xcode recheck; OS build from the r3 attempt. The r4 run itself recorded no versions.",
+    "post_run_report": {
+      "date": "2026-09-11",
+      "source": "Statement recorded after G2 completion; not contemporaneous telemetry.",
+      "text": "The software environment matched preflight; no software changed that day."
+    }
+  },
+  "unit": "MLP positions/s, not tokens/s or complete-model context",
+  "origin_monotonic_ns": 63810653809625,
+  "phases": [
+    {
+      "id": "baseline_and_gates",
+      "budget_minutes": 20,
+      "start_ns": 63810653809625,
+      "end_ns": 65010653809625,
+      "start_local": "2026-09-11T01:56:18.824204+02:00",
+      "end_local": "2026-09-11T02:16:18.824204+02:00",
+      "status": "reused_completed_baseline"
+    },
+    {
+      "id": "p0_memory",
+      "budget_minutes": 45,
+      "start_ns": 65010653809625,
+      "end_ns": 67710653809625,
+      "start_local": "2026-09-11T02:16:18.824204+02:00",
+      "end_local": "2026-09-11T03:01:18.824204+02:00",
+      "status": "completed"
+    },
+    {
+      "id": "p1_gpu_coexistence",
+      "budget_minutes": 120,
+      "start_ns": 67710653809625,
+      "end_ns": 74910653809625,
+      "start_local": "2026-09-11T03:01:18.824204+02:00",
+      "end_local": "2026-09-11T05:01:18.824204+02:00",
+      "status": "completed"
+    },
+    {
+      "id": "p2_latency",
+      "budget_minutes": 45,
+      "start_ns": 74910653809625,
+      "end_ns": 77610653809625,
+      "start_local": "2026-09-11T05:01:18.824204+02:00",
+      "end_local": "2026-09-11T05:46:18.824204+02:00",
+      "status": "completed"
+    },
+    {
+      "id": "p3_matched_rate_thermal",
+      "budget_minutes": 120,
+      "start_ns": 77610653809625,
+      "end_ns": 84810653809625,
+      "start_local": "2026-09-11T05:46:18.824204+02:00",
+      "end_local": "2026-09-11T07:46:18.824204+02:00",
+      "status": "completed"
+    },
+    {
+      "id": "saturated_thermal",
+      "budget_minutes": 85,
+      "start_ns": 84810653809625,
+      "end_ns": 89910653809625,
+      "start_local": "2026-09-11T07:46:18.824204+02:00",
+      "end_local": "2026-09-11T09:11:18.824204+02:00",
+      "status": "completed"
+    },
+    {
+      "id": "close_and_report",
+      "budget_minutes": 45,
+      "start_ns": 89910653809625,
+      "end_ns": 92610653809625,
+      "start_local": "2026-09-11T09:11:18.824204+02:00",
+      "end_local": "2026-09-11T09:56:18.824204+02:00",
+      "status": "completed"
+    }
+  ],
+  "groups": [
+    {
+      "id": "P1-matrix_050-r0",
+      "members": [
+        "P1-matrix_050-r0-alone",
+        "P1-matrix_050-r0-C",
+        "P1-matrix_050-r0-G"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P1-matrix_075-r0",
+      "members": [
+        "P1-matrix_075-r0-alone",
+        "P1-matrix_075-r0-C",
+        "P1-matrix_075-r0-G"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P1-memory_050-r0",
+      "members": [
+        "P1-memory_050-r0-alone",
+        "P1-memory_050-r0-C",
+        "P1-memory_050-r0-G"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P1-memory_050-r1",
+      "members": [
+        "P1-memory_050-r1-G",
+        "P1-memory_050-r1-C",
+        "P1-memory_050-r1-alone"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P1-matrix_075-r1",
+      "members": [
+        "P1-matrix_075-r1-G",
+        "P1-matrix_075-r1-C",
+        "P1-matrix_075-r1-alone"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P1-matrix_050-r1",
+      "members": [
+        "P1-matrix_050-r1-G",
+        "P1-matrix_050-r1-C",
+        "P1-matrix_050-r1-alone"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P3-0.25-r0",
+      "members": [
+        "P3-0.25-r0-C",
+        "P3-0.25-r0-G"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P3-0.5-r0",
+      "members": [
+        "P3-0.5-r0-C",
+        "P3-0.5-r0-G"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P3-0.75-r0",
+      "members": [
+        "P3-0.75-r0-C",
+        "P3-0.75-r0-G"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P3-0.75-r1",
+      "members": [
+        "P3-0.75-r1-G",
+        "P3-0.75-r1-C"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P3-0.5-r1",
+      "members": [
+        "P3-0.5-r1-G",
+        "P3-0.5-r1-C"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "P3-0.25-r1",
+      "members": [
+        "P3-0.25-r1-G",
+        "P3-0.25-r1-C"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "SAT-pair-0",
+      "members": [
+        "SAT-0-C",
+        "SAT-1-G"
+      ],
+      "frozen_before_results": true
+    },
+    {
+      "id": "SAT-pair-1",
+      "members": [
+        "SAT-2-G",
+        "SAT-3-C"
+      ],
+      "frozen_before_results": true
+    }
+  ],
+  "criteria": {
+    "resource_limits": {
+      "component_process_tree_rss_gib": 4,
+      "component_summed_phys_footprint_gib": 4,
+      "foreground_process_tree_rss_gib": 2,
+      "foreground_summed_phys_footprint_gib": 2,
+      "all_owned_processes_rss_gib": 8,
+      "memory_pressure_free_min_pct": 17,
+      "swap_growth_from_phase_start_stop_mib": 256,
+      "swap_consecutive_growth_mib": 64,
+      "swap_consecutive_samples": 3,
+      "rss_swap_sample_seconds": 1,
+      "pressure_sample_seconds": 10,
+      "results_cap_gib": 8,
+      "new_model_exports_allowed": false,
+      "disk_free_floor_gib": 30,
+      "serious_thermal_stop_after_seconds": 60,
+      "critical_thermal_stop_immediately": true
+    },
+    "thermal_start": {
+      "applies_to": [
+        "p1_gpu_coexistence",
+        "p3_matched_rate_thermal",
+        "saturated_thermal"
+      ],
+      "grouping": {
+        "p1": "same foreground case and repeat: three conditions",
+        "p3": "same arrival-rate fraction and repeat: ANE/GPU pair",
+        "saturated": "fixed slot pairs (1,2) and (3,4) in the preregistered ABBA/BAAB order"
+      },
+      "group_ids_members_and_order_frozen_before_formal_results": true,
+      "posthoc_regrouping_allowed": false,
+      "window_seconds": 30,
+      "location": "final 30 seconds of existing setup, after loading/controls/warmup; no submitted workload during this window",
+      "temperature_and_fan_sample_period_seconds": 5,
+      "minimum_distinct_samples_per_field": 6,
+      "minimum_sample_span_seconds": 25,
+      "maximum_gap_seconds": 10,
+      "required_fields": [
+        "macmon_cpu_sensor_mean_c",
+        "macmon_gpu_sensor_mean_c",
+        "fan0_rpm",
+        "fan1_rpm",
+        "thermal_state"
+      ],
+      "per_block_summary": "median of valid readings in window for each temperature/fan field; preserve timestamps, trends and raw samples",
+      "temperature_group_max_minus_min_c": 2.0,
+      "fan_group_max_minus_min_rpm_floor": 200,
+      "fan_group_relative_tolerance": 0.1,
+      "fan_relative_reference": "minimum per-block median RPM in the group, per fan",
+      "thermal_state_rule": "every sample within a block has the same level, and that level matches all other members of the group; missing/unknown is not nominal",
+      "thermal_state_maximum_gap_seconds": 2,
+      "idle_power": "record available CPU+GPU+ANE estimated-domain idle power and coverage; missing power does not block start-state classification; neither equality nor baseline subtraction required",
+      "statuses": [
+        "matched",
+        "mismatched",
+        "undetermined"
+      ],
+      "classification": "insufficient data or incomplete group => undetermined; otherwise any failed criterion => mismatched; all pass => matched",
+      "failure_policy": "preserve all blocks and flags; no unbounded cooling, no setup extension, no truncating the observation window; incomplete setup is a failed slot",
+      "interpretation": "mismatched/undetermined groups cannot support equal-start thermal attribution; retain performance, service completion and raw thermal trajectories with start status attached",
+      "tolerances_are": "preregistered engineering comparison rules, not physiological comfort or sensor calibration guarantees",
+      "thermal_state_gap_includes_window_edges": true
+    },
+    "component_ladder": {
+      "positions": [
+        64,
+        128,
+        256,
+        512,
+        1024,
+        2048,
+        4096
+      ],
+      "independent_paired_rounds": 3,
+      "independent_processes_per_backend": 3,
+      "total_new_processes": 6,
+      "warmup_requests_per_point": 10,
+      "measured_requests_per_point_per_process": 30,
+      "point_orders": [
+        "forward",
+        "reverse",
+        "seeded_shuffle"
+      ],
+      "independent_unit": "process, not each timing sample",
+      "historical_3_of_9_record_unchanged": true,
+      "main_counts": {
+        "measured_requests": 1260,
+        "warmup_requests": 420,
+        "total": 1680
+      },
+      "tile_diagnostic": {
+        "positions": 1024,
+        "ane_tiles": [
+          64,
+          256
+        ],
+        "main_tile": 256,
+        "additional_tile": 64,
+        "independent_rounds": 3,
+        "warmup_requests_per_round": 10,
+        "measured_requests_per_round": 30,
+        "additional_counts": {
+          "measured_requests": 90,
+          "warmup_requests": 30,
+          "total": 120
+        },
+        "stage_calls_per_request": {
+          "64": 64,
+          "256": 16
+        },
+        "reuse_main_C256_cell": true,
+        "pair_order_by_round": [
+          "C64_then_C256",
+          "C256_then_C64",
+          "seeded_before_formal_results"
+        ],
+        "adjacent_cells": true,
+        "reported_separately": true,
+        "select_fastest_tile_after_results": false
+      },
+      "all_timing_counts": {
+        "measured_requests": 1350,
+        "warmup_requests": 450,
+        "total": 1800,
+        "excludes": "numerical admission, preparation and independent pilots; these still count toward time/memory budgets"
+      },
+      "host_policy": "one fresh host per backend per round; switch tile by bounded unload/load within that host outside request timing; no simultaneous C64/C256 residency; preserve actual PID and asset identity",
+      "budget_admission": {
+        "minutes": 45,
+        "estimate_before_formal_run": true,
+        "includes": [
+          "new-position reference checks",
+          "controls",
+          "pilots",
+          "host starts",
+          "tile switches",
+          "warmups",
+          "measurements",
+          "output checks",
+          "cleanup"
+        ],
+        "overflow_action": "do not silently reduce points, rounds or one backend; save a time-budget failure. During a hard stop preserve incomplete cells and do not label the seven-point protocol complete."
+      }
+    },
+    "arrival_sequence": {
+      "definition": "t_k=t0+k/lambda for integers k>=0 and t_k<t0+T",
+      "count": "ceil(lambda*T), evaluated once before both paired blocks; store exact sequence and IDs",
+      "drain": "pending admitted IDs only; no new arrivals; do not double count drain requests"
+    },
+    "long_sustained": {
+      "order": "ABBA or BAAB frozen before formal results",
+      "blocks": 4,
+      "slot_minutes": 20,
+      "setup_minutes": 2,
+      "continuous_load_minutes": 16,
+      "drain_recovery_minutes": 2,
+      "reserve_minutes": 5,
+      "positions": 1024,
+      "load": "one outstanding request, immediately submit the next; each backend at its own full utilization; unequal work, no equal-work energy claim"
+    },
+    "p0": {
+      "engines": [
+        "ANE_C256",
+        "GPU_W4A16"
+      ],
+      "independent_blocks_per_engine": 2,
+      "positions": 4096,
+      "checkpoints": [
+        0,
+        32,
+        64,
+        128,
+        256,
+        512
+      ],
+      "checkpoint_zero": "after five control and ten warmup requests; cumulative measured requests = 0; retain load baseline separately",
+      "retain_every_output_hash": true,
+      "memory_attribution_from_slope_allowed": false,
+      "forecast": "per metric: host observed high-water memory + 2 * maximum positive high-water-increment slope * remaining unique requests + 512 MiB <= 4 GiB",
+      "growth_unit": "bytes/full MLP request; retain bytes/64-position block and bytes/stage call only as separate diagnostics",
+      "slope_windows": "natural high-water increments between adjacent checkpoints at/above 32, plus N1024 pilot; retain signed instantaneous slopes separately",
+      "planning_safety_factor": 2,
+      "planning_headroom_mib": 512,
+      "forecast_at_every_checkpoint": true,
+      "pass_requires": [
+        "numerical equivalence to frozen per-backend reference",
+        "both full blocks finish within limits",
+        "per-metric next-block forecast within budget"
+      ],
+      "failed_long_block_action": "not_run; bounded recycled diagnostics must be separately labelled and cannot substitute for residency",
+      "order": [
+        "ANE_C256",
+        "GPU_W4A16",
+        "GPU_W4A16",
+        "ANE_C256"
+      ],
+      "slot_minutes": 10,
+      "reserve_minutes": 5,
+      "control_requests_per_block": 5,
+      "warmup_requests_per_block": 10,
+      "measured_requests_per_block": 512,
+      "total_measured_requests": 2048,
+      "total_requests_including_controls_and_warmup": 2108,
+      "controls": "three saved real inputs, zero, repeat first input; shape/stage-count checked in those same calls",
+      "resume_dispatch": "four fresh hosts serially when ready; each at most ten minutes and all before original P0 cutoff; no reuse of earlier device blocks",
+      "memory_forecast_amendment": "results/g2-w4a16-night-20260910/amendments/memory-envelope-20260911/RESUME.json"
+    }
+  },
+  "source_hashes": {
+    "scripts/g2_admit.py": "c3993bde950c801bc66fbf97408af6d192675b9eeaf92e7057ab26597d921e15",
+    "scripts/g2_arrivals.py": "d039c63cb89e1731f4e7eeab7549da80bd8badbb727f97300478f131c68ee573",
+    "scripts/g2_check_plan.py": "e959d6f63644951797b9d1f1cc84f898ba7d1fff039e25f1f2c2de17256d6f23",
+    "scripts/g2_client.py": "70e8e35e94a8eabb55452686c47a59264507a1dd49dd5e227545c555ddbbbbf5",
+    "scripts/g2_common.py": "77840ad6ae1722d14ecb3b88d9df8ebacdddc2fc73a0fc1815302b84b2c0b71f",
+    "scripts/g2_foreground.py": "c20404450739b6b4218c9a16e8bf5f633528cdf6a1413878323f26f581856c4b",
+    "scripts/g2_foreground.swift": "603ff4166a81008c4dc6b64b6fa63cfafe756df9101acc9d161bc274e5f6a8c6",
+    "scripts/g2_freeze.py": "1c79182f560e54273e1c4af4fbb980751a5d64d54d2605336da2fb1ba519888a",
+    "scripts/g2_gpu.py": "6d06a1c5271cc1ca8ae7e16a69f2c152d5e238481a35a652dc0ab3bbf9a0d4ad",
+    "scripts/g2_guard.py": "1cf12f18df248496930ed74e516ec8a2273a1758450852ea7deb3b607be651bb",
+    "scripts/g2_native.swift": "53628ea8ee76f9a88012f9908ac94b007e5b930ab45131d4081f948e121f6742",
+    "scripts/g2_night.py": "2bd8de652662523b0e09eaa3783d0253520728f1cc2bbc6b79fc284d985b9d1a",
+    "scripts/g2_overhead.py": "8ff8a706c4f1e1cf565695623e9190b574855882765c714810b65e13a84f5cd4",
+    "scripts/g2_p0.py": "a38a2efd15d0407b051d2f28bea2f549d9ec7672cc57a4186610bb61d5cda881",
+    "scripts/g2_pilot.py": "9ee027f86ee039e77e6792e3c02846c78fb4d9c2473362fa2f75cd24a946f9cc",
+    "scripts/g2_power.py": "18ee9442b1559bb939e8c98dc042caf61c752786e8d2a318eace50253d92a515",
+    "scripts/g2_power_bounded.pl": "8706f7ffe86ca496dbf1eac6e99e001075bc8fbf031a35f693ba19baddded552",
+    "scripts/g2_power_receiver.py": "fff9c2c1edb4f55295be56000884c58cf7dfe62364824f790dcedd592d68f53f",
+    "scripts/g2_prepare.py": "341f55e443e538d529c8009ee14b1fd3ac03f0e53fa8842bfa4c692c28e097ce",
+    "scripts/g2_readiness.py": "fc7a9f9ade0a58305383251b4bd79c3e40a296db68e0d99f59f7a09b8ce87237",
+    "scripts/g2_resources.py": "00f4634a86c170e007a65167b6745f52c9305dc3bfdc9e77ca80b088eb1ffdf8",
+    "scripts/g2_slot.py": "11d5be35f824732d758f72fbc4f5f5b2d5833342834160c3863cc54673700359",
+    "scripts/g2_smoke.py": "781f4ee9b0241df3fbd7bfbf2f2459ae4a406d16de0beca1cd62ad9725e4070a",
+    "scripts/g2_speed.py": "b75d58cf832cbd7befb2ca099caf9fb54fdca60ee72ce2cab9cd4134e8d53be7",
+    "scripts/g2_start_power.sh": "2ceef4a43f0f48e374b264bccc7936969269036fda9a9cde2b45d00fb2bc893d",
+    "scripts/g2_system.swift": "0d2cc5682aa6f01de7d4533b13bf929d5fde1dd2156874b649e6afba31231d42",
+    "scripts/g2_telemetry.py": "bb390c18e687eae3412a35f8a8df40d5e5c24f10b837d5b095e66a7ed5352161",
+    "scripts/g2_thermal.py": "8225beb0eb46bc4880bfbd98a1403e52b0b7e9d7dad881d867556fd05a29416f",
+    "scripts/g2_validate.py": "11875f3071f485b371d3952c74ca9f71061317af928a26be9b674ba8c6828cf2",
+    "scripts/g2_workload.py": "447defe24abae33620a1780b4233c6650ef222205c90a92f091715276f595249",
+    "scripts/g1pio_wire_fixed.py": "d7a3cdab57fd8e1e1fd19f6e097b25b91ed98e0e092cff5ed610c1b2d2d651ee"
+  },
+  "binary_hashes": {
+    "results/g2-w4a16-night-20260910/preflight/implementation-20260911/foreground-worker": "46d1205c4e21be533f5ae6bb1177376b86e20d2c3fb2d18e0fb494242fd39a09",
+    "results/g2-w4a16-night-20260910/preflight/implementation-20260911/system-sampler": "df300bb51e6804062b332ae104476ebe01fd11a941254e8a3ceb03ae12979a3c",
+    "results/g2-w4a16-night-20260910/preflight/telemetry-audit/macmon-portable/macmon": "8defa263675d5dce206557634cbad15f40934b0efe38eb85e6244ca51226aa66",
+    "results/g2-w4a16-night-20260910/preflight/implementation-20260911/bundle/native-worker": "cd1d2bcb722e0e66b61888be0dcf0570910fbc1fcd23616628af210295739c7f"
+  },
+  "asset_and_reference_identity": {
+    "status": "prepared_not_device_admitted",
+    "plan_sha256": "0f669fae41a82f33b5f1795373bb0c776a17c619bc34ada07687f5e640ae9f01",
+    "native_worker_sha256": "cd1d2bcb722e0e66b61888be0dcf0570910fbc1fcd23616628af210295739c7f",
+    "source_hashes": {
+      "scripts/g2_gpu.py": "6d06a1c5271cc1ca8ae7e16a69f2c152d5e238481a35a652dc0ab3bbf9a0d4ad",
+      "scripts/g2_resources.py": "56664624e00968a551a4c7c37f2342b49b20d62de20a03961f9a9c72935231b2",
+      "scripts/g2_system.swift": "0d2cc5682aa6f01de7d4533b13bf929d5fde1dd2156874b649e6afba31231d42",
+      "scripts/g2_client.py": "81b15c5f736557579df63e336ffc81acf7dbdda08ad46b7f2fea81626cc6b8ff",
+      "scripts/g2_thermal.py": "7aaf959217570c33988ba1e945242c6b6e0d4440a2d31e6296078fd4a0f610b5",
+      "scripts/g2_native.swift": "53628ea8ee76f9a88012f9908ac94b007e5b930ab45131d4081f948e121f6742",
+      "scripts/g2_prepare.py": "341f55e443e538d529c8009ee14b1fd3ac03f0e53fa8842bfa4c692c28e097ce",
+      "scripts/g2_check_plan.py": "6fe3b16a44e5a170134612255ecae6854272e1e7cdefa9ca2b821463f320c5c6",
+      "scripts/g2_common.py": "77840ad6ae1722d14ecb3b88d9df8ebacdddc2fc73a0fc1815302b84b2c0b71f",
+      "scripts/g2_guard.py": "d82d1d71c1fc6b33b09f63a60d7a50ad5d8c6522b68c24b843e1abbd0dab36db"
+    },
+    "historical_source_hashes": {
+      "results/g1-f/real-gate-split/artifacts/mlp.aimodel/main.mlirb": "0cf263f33dfa3f4e59a31e87dc499faee9de6b1fbc8076074a4ffa31139e9055",
+      "results/g1-f/real-gate-split/artifacts/mlp.aimodel/main.hash": "dabeb017fdc04de311fb67e7d55be0a859aa44cec0b7439ab5e232a904a833a9",
+      "results/g1-f/real-gate-split/artifacts/mlp.aimodel/metadata.json": "339740aee7763058071438a4bc4d48fd48ded43cac1418aa9765f41cfbf631d1",
+      "results/g1-f3/assets/up/artifacts/mlp.aimodel/main.mlirb": "d45b64d9d3ea926518ce2f4b27a2e8459076483d396d4254aaa28f132a49aa68",
+      "results/g1-f3/assets/up/artifacts/mlp.aimodel/main.hash": "e6ee34bb341eb8cbcf741d87992dbae691407923c9a0500e16952a830f02fbbc",
+      "results/g1-f3/assets/up/artifacts/mlp.aimodel/metadata.json": "f0658384b3efadd289d3ed5d2e60494c4fe589a777655f71ccd6377bdaf76358",
+      "results/g1-f4/assets/branch/artifacts/mlp.aimodel/main.mlirb": "622deaf312fd58fb6256f509597a3981304cf830334aef336c1b86d47e7c120a",
+      "results/g1-f4/assets/branch/artifacts/mlp.aimodel/main.hash": "ada1b6ad77c36dbb5b1f387a3b40d4f69f1c083caa0c4832b01a55b4507a29ef",
+      "results/g1-f4/assets/branch/artifacts/mlp.aimodel/metadata.json": "d1e08c8286710e2bf7c48629b5e9cf8496b33a988838678c64d085b4eff6f914",
+      "results/g1-f2/bare-down/artifacts/mlp.aimodel/main.mlirb": "e108f2dd9b9cb8c45da404585df1f4318a878b800dcf36afd73a35db21321d26",
+      "results/g1-f2/bare-down/artifacts/mlp.aimodel/main.hash": "002b39477b19a14e442217a4432aec8cf08b428c740fc5e77fb1bd719d0d16b3",
+      "results/g1-f2/bare-down/artifacts/mlp.aimodel/metadata.json": "7410e5dc53526e7f445ceb703a471e833d8b57ae8a1e06fea2bf914b62b67e2d",
+      "results/g1-tile-20260910/exports/C-gate/model.aimodel/main.mlirb": "94eb768b4bc8d2360f4136be82bee808142dee0b4c0c22ec6912b971693fe521",
+      "results/g1-tile-20260910/exports/C-gate/model.aimodel/main.hash": "81a5ef09969f7ee90e169a869b05f1a03a0677a9839194d7b1c20557e1618a39",
+      "results/g1-tile-20260910/exports/C-gate/model.aimodel/metadata.json": "aa47a6ba86371bdc92b72c02ed2cf138fa94bfc042be73a7c06b5a4d3a251020",
+      "results/g1-tile-20260910/exports/C-up/model.aimodel/main.mlirb": "9ec2bd41eae53549e17f95b4c810ca0f28bf128bf51efe5bbcc9c311f8b905a4",
+      "results/g1-tile-20260910/exports/C-up/model.aimodel/main.hash": "63a8370e01cfaad5c6352d39ae05f1a34619ecb64403795c0f381563d9202ef8",
+      "results/g1-tile-20260910/exports/C-up/model.aimodel/metadata.json": "0cc917c8574a2e66d30ae962ad67aa9e3d91e1b2b80bbcd30ddc3522bd8915ad",
+      "results/g1-tile-20260910/exports/A-branch/model.aimodel/main.mlirb": "cc4c0243d8fbb53b73347316c5028f530922249ce75afdcf5e36638d6e441b2c",
+      "results/g1-tile-20260910/exports/A-branch/model.aimodel/main.hash": "9cd4853d0b17fe62332ba20a482a8965b2d3d7ab419b7dcea81b002c607b2a08",
+      "results/g1-tile-20260910/exports/A-branch/model.aimodel/metadata.json": "a6fdddae150e881d3d7606d5b171e39bd687ed6ec1123fc4fa075f50754f9e1a",
+      "results/g1-tile-20260910/exports/C-down/model.aimodel/main.mlirb": "dd7a4e87638880cdadebd47fc1be5ec9e0242cb55ef6fce9dd0dbb26d62a2dd0",
+      "results/g1-tile-20260910/exports/C-down/model.aimodel/main.hash": "f78ef293d5d8a95844fb09afa7d990177d5abc7519fc387bcc0e30e3903aa0ef",
+      "results/g1-tile-20260910/exports/C-down/model.aimodel/metadata.json": "70740dcef6b29a5ca6cc82ada3f45d1befddf8673d7f22caa92fff212ffc4a53",
+      "results/g1-prefill-20260910/prepared/gate-packed.npy": "0dbd179db54953228161bdbc69ae6661c3977e83f7a4d247b8fa468af79bda2b",
+      "results/g1-prefill-20260910/prepared/gate-scale.npy": "538627c0b4e78bcdc5148264695d68bd078c6c18041cc6ffe8c9e32e900cdfec",
+      "results/g1-prefill-20260910/prepared/gate-bias.npy": "a7dadbe55e2c357c77d016f2a848d30313c9d5212672e2872de6a596d7a226af",
+      "results/g1-prefill-20260910/prepared/up-packed.npy": "58f8a22736d7702828bd6303faf334a4d1c27b5c0a57e7f674fb86695f8627f6",
+      "results/g1-prefill-20260910/prepared/up-scale.npy": "c5bdc0987847157c95ecb63828ac15843dfd6b9d0be2d009e24e72a341af2612",
+      "results/g1-prefill-20260910/prepared/up-bias.npy": "0664b8cca71d9f6e47c536583bf7e184012e2b10a81275f1e4a0d792a4736502",
+      "results/g1-prefill-20260910/prepared/down-packed.npy": "081cba80050f57f5105107483edab0b11b953c5f2b5b082dcaf584c44b099383",
+      "results/g1-prefill-20260910/prepared/down-scale.npy": "e44e346e926a13f80ce490fe5b8928cd84c47a3fa61e0cc432d8eff7340169a0",
+      "results/g1-prefill-20260910/prepared/down-bias.npy": "3018f4c4ee02fade6f90167a73310f8a71d84fe1652fc0887092385e098b6396",
+      "results/g1-prefill-20260910/prepared/controls.npy": "7fc52894fc79236f3233764248275d45e7c992558487acbdde9e451896d6d5d3",
+      "results/g1-prefill-20260910/prepared/inputs-1024.npy": "516ad7a77b5788318629fc675a41e5f6e39e85b7b3dddbe965cc4f9332cba0a7",
+      "results/g1-prefill-20260910/prepared/inputs-64.npy": "e39cc6d9b877633f436faeabb5f32de27f2f582f5e1f25300ceef829b352d910",
+      "results/g1-prefill-20260910/prepared/inputs-1.npy": "8acd8aded016b78f0c35001be9ea43202a8bfa0ea47942e666568327fc5a5365",
+      "results/g1-prefill-20260910/prepared/inputs-4096.npy": "646fb557befe11e5d428ec8432beac506cbc33c6851ce1ada781fa6d75045d46",
+      "results/g1-prefill-20260910/prepared/pool.npy": "f0a24f29dc5ce8648e4bd3b69376fcdc33963f7da23b603b7390a977c1e9c748",
+      "results/g1-prefill-20260910/control/C/00.npz": "7625e754942069190c7bbf94f0031b77e8a9b20a8dccfbb618a5363ab6757919",
+      "results/g1-prefill-20260910/control/C/01.npz": "142036108cdd0ac1a5e047ddf40ed03cfd890cf12339b7d98d4093723b29d14c",
+      "results/g1-prefill-20260910/control/C/02.npz": "f641984ca58342afe13f973c3762c24932d96acd20cbf831638aaa8291443627",
+      "results/g1-prefill-20260910/control/C/03.npz": "2c9b7c95ac51fec33b8a5aba055b9580b06f8aed2748b992e148dbc0a4c69a20",
+      "results/g1-prefill-20260910/control/C/04.npz": "c32839a883557acaddc42da819c90ba034dbf60b025bf4f4d72c49d89d697fbf",
+      "results/g1-prefill-20260910/control/C/05.npz": "0357e73e66d60c0bf5ba22a430a4ae9caaf3c562aa76c722fdadf83e0c184f5f",
+      "results/g1-prefill-20260910/control/C/06.npz": "4c496257c24a8aef97eebdee6e689b44865dd3e46887edc9692663bd91fc2a52",
+      "results/g1-prefill-20260910/control/C/07.npz": "2c236224976e212ce7cc4d059711e17ceada74de75ed5202ee6c2bc6ec9defa7",
+      "results/g1-prefill-20260910/control/C/08.npz": "3c678f482f6e95879d64b9ee8eb002e9f23a0503ff7902caf5f179df59e1b7b2",
+      "results/g1-prefill-20260910/control/C/09.npz": "666384a18b4a92b0b3b22a814fb5bdcadddf0bbec60e7df7df09228c5faf9e10",
+      "results/g1-prefill-20260910/control/C/10.npz": "59d21a4b71b43196ccd0beaa01052b171d37f17430df5004ef18bfcf5e372abe",
+      "results/g1-prefill-20260910/control/C/11.npz": "037f7785dea96e0cde950a23e264d63c8e7b4de1305d2f2805b56c59df7f3ab2",
+      "results/g1-prefill-20260910/control/C/12.npz": "11bf0eccb0a8501ac352eb5d4d663333a6762e43a617787ef473081945a35fe4",
+      "results/g1-prefill-20260910/control/C/13.npz": "246a1da61cfdaf8539db320e8d9156fd641d32e8fe0c389295407edce269699f",
+      "results/g1-prefill-20260910/control/C/14.npz": "22e6061c6a7af28d05c0d55d5f7bca24da187a41d367dc9031a2b80311834722",
+      "results/g1-prefill-20260910/control/C/15.npz": "6fbdea65c103f7b342886eb401884d88175055b8da9ce39f240c7912110d8921",
+      "results/g1-prefill-20260910/control/C/16.npz": "13a72a82cb84c73ee3fe40281d86cea778f5dd9e436327793a0c7645c8323797",
+      "results/g1-prefill-20260910/control/G/00.npz": "3d61b1458f01f23eaa1253a0691a527442171e783e2635959c77f68a42e43dd8",
+      "results/g1-prefill-20260910/control/G/01.npz": "dafb5a05681f6b6e56069fdeebbad584e362aecf0779dfc38fb652794ab0c966",
+      "results/g1-prefill-20260910/control/G/02.npz": "4ff1af5d48b08db62874ab1995e430c0693406bb5920a62e9f76e94932506bd4",
+      "results/g1-prefill-20260910/control/G/03.npz": "f084c40da3906f300af2bb2e77dd31a6c9dd081dba667e1154778f20ed421705",
+      "results/g1-prefill-20260910/control/G/04.npz": "6301bc2c7b0bc3dbf6b8773001f5543d33bceb036ccb3ec500b14031606c0ab7",
+      "results/g1-prefill-20260910/control/G/05.npz": "ebe4be29a9312925e596e55736c33428fb9a1f5d4516a8ee592f186f1b1ec009",
+      "results/g1-prefill-20260910/control/G/06.npz": "3ea1abf179d8326598586fd039bd2e04619b205a3a1e1568f46d58aad15a5df0",
+      "results/g1-prefill-20260910/control/G/07.npz": "dd449a3aa0fd1496f618f9f7e993113516f3d6509183c86450a4bf3f776f8ad4",
+      "results/g1-prefill-20260910/control/G/08.npz": "e7a28dfe154045df3cd74ebe2800d339dcd3139939e5ca7741eff4029ce69721",
+      "results/g1-prefill-20260910/control/G/09.npz": "c9ef2a8f50c39c049add2f7ab5f96fcc68679673bc0cfc616f63e71261d0cfb7",
+      "results/g1-prefill-20260910/control/G/10.npz": "e8807cccdaa124f1195a0796361a479c5da059087d7acab4b058916519fbacd3",
+      "results/g1-prefill-20260910/control/G/11.npz": "a80e4bc70c956a6e2c0ecfc22fab6bf883144342702c726f331718cdb6f25d0e",
+      "results/g1-prefill-20260910/control/G/12.npz": "d05e0b227369272b79cba434bf0fbadf2a6db15e505aa0e9a94d84c6a2e4cee5",
+      "results/g1-prefill-20260910/control/G/13.npz": "b7123fcf0190e5b03d3a2c63ec2b4460d74793b541fe3f9d579eccbbe374bc19",
+      "results/g1-prefill-20260910/control/G/14.npz": "75a6f094206d2b10abd684e31ffa00bb7e25ed81b0bc8896e93658c02e4ff31a",
+      "results/g1-prefill-20260910/control/G/15.npz": "5697ae4730ca8797ac457979cd6a5c27bf8333235efd374169af74d09c142d86",
+      "results/g1-prefill-20260910/control/G/16.npz": "816a408daf8c2b93f01383748f9466f8670b19aa95c193a9a30fa997ad672cfd"
+    },
+    "rows": [
+      {
+        "positions": 64,
+        "input_file": "inputs-64.npy",
+        "input_sha256": "e39cc6d9b877633f436faeabb5f32de27f2f582f5e1f25300ceef829b352d910",
+        "input_hashes": [
+          "4abcb4cfb3df04f8b63e1918e855a8432d8992f312322e0e8da6a77086033748",
+          "1912e843d10ac45effdc5a882fa24293f2127d32895cb569c70ac7be4951d004",
+          "5675e8e6c8d6536bcf9e16364561169eef4f4ba6bf379ab621f098afa154a724"
+        ],
+        "offsets": [
+          0,
+          37,
+          91
+        ],
+        "source": "results/g1-prefill-20260910/prepared/pool.npy",
+        "reference_rule": "(arange(N)+offset)%pool_size, then map saved per-position outputs",
+        "references": {
+          "C": {
+            "file": "reference-C-64.npy",
+            "sha256": "246e5d63efcd769cf71510453ef33ceca81df5cb9fccdd9d97766df2cb230117",
+            "output_hashes": [
+              "f5b88a74aa780e0fd815b981e40957510dbbb07c96d07bed669589128beb5e5f",
+              "a70bb3cb507097df56446fa3d0162f48dd79405773abe7efba45931cf96f39f2",
+              "e0a413637ee7470b8091e9eae142baad1ad7f0c340e5a45d536df9be34ca602e"
+            ],
+            "historical_same_shape_hashes": [
+              "f5b88a74aa780e0fd815b981e40957510dbbb07c96d07bed669589128beb5e5f",
+              "a70bb3cb507097df56446fa3d0162f48dd79405773abe7efba45931cf96f39f2",
+              "e0a413637ee7470b8091e9eae142baad1ad7f0c340e5a45d536df9be34ca602e"
+            ],
+            "matches_historical_same_shape": true,
+            "device_admitted": false
+          },
+          "G": {
+            "file": "reference-G-64.npy",
+            "sha256": "1cb42988cc8d4ede01c1783f97ba0f481a248d4006cce2e299744e12e7896c07",
+            "output_hashes": [
+              "da47e42ef2b3c47310c6588aee0748d9e28730087e7e54b1c8246bd07a6f4601",
+              "1cfa35dfe6410f5d6750f5b415472a8e36a63fd89ea75cbba2636d4e2ed74e36",
+              "4d66ebf7207830ba416286dfe864fb001bf0779ede49cb55147ed1133bbd2152"
+            ],
+            "historical_same_shape_hashes": [
+              "da47e42ef2b3c47310c6588aee0748d9e28730087e7e54b1c8246bd07a6f4601",
+              "1cfa35dfe6410f5d6750f5b415472a8e36a63fd89ea75cbba2636d4e2ed74e36",
+              "4d66ebf7207830ba416286dfe864fb001bf0779ede49cb55147ed1133bbd2152"
+            ],
+            "matches_historical_same_shape": true,
+            "device_admitted": false
+          }
+        }
+      },
+      {
+        "positions": 128,
+        "input_file": "inputs-128.npy",
+        "input_sha256": "8b398f5f63c53bf7ff3811f4a044dc256d7c705ec756f819cc476ba5fa5ce380",
+        "input_hashes": [
+          "f24b20ea1d3f961875b0229eb63e70fd2a1c45f541ccf7996774241654ae52a4",
+          "908f5a932251038db9dfa26aa222ab636b8d092f75bfca84dd8f7db21c5a3f93",
+          "9dada34c50e1666a7b93094e43c5723c3d1d6f50cf5de0b8f5453b3152fa819e"
+        ],
+        "offsets": [
+          0,
+          37,
+          91
+        ],
+        "source": "results/g1-prefill-20260910/prepared/pool.npy",
+        "reference_rule": "(arange(N)+offset)%pool_size, then map saved per-position outputs",
+        "references": {
+          "C": {
+            "file": "reference-C-128.npy",
+            "sha256": "6b896d7e24bec4555c41f1689dd3c9dc4a16dd33fc5ee91667af1cab091d07bf",
+            "output_hashes": [
+              "e43f665d1e5c6fd67d4860edd1e8389e69b5ebe7384cdf872f12a8d64e609418",
+              "9bb5fcb73ed664476bad6d6b17d7cd8df260dac9d33a3a456a025fe56b403418",
+              "4aaba4ef4649e40b3f8aeaa8085b5f2b13fe54913ddd4a8158a77605ce2823cb"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          },
+          "G": {
+            "file": "reference-G-128.npy",
+            "sha256": "0d53e361700b7766e86cd0fc0bb7fa4aa655a8f4f0a6f0346fdc3aa7c745b6ea",
+            "output_hashes": [
+              "093c5baaace4dee563fc90dda45645673341230c2cd95b0b69890a370353dfe5",
+              "fc0e9a673539f8ad9acbf4f01d6b568a8ba332d35c032e422f0a5dfb9510ae98",
+              "cd120453f5947c78fe1bd4359f58f522f5132278569587f0ed00e1defa686ae8"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          }
+        }
+      },
+      {
+        "positions": 256,
+        "input_file": "inputs-256.npy",
+        "input_sha256": "6cd675463bfa646bc2605c0948df128dcab64e2b7047a0d2e6aa4e8b5cf30a0c",
+        "input_hashes": [
+          "15f75512b4de665ebf5920f77a508fdee23b30644b490f5e37413dcbc4c3cf38",
+          "f0138633736aee1ee2e5c7061e4fca669ed5a7d51df13fdaa55996ad3cbe4c6a",
+          "b0f97a2d87a0953ca44023b79e6aeaf6e60e0b09f5878f838c33c3ac38e8b4cd"
+        ],
+        "offsets": [
+          0,
+          37,
+          91
+        ],
+        "source": "results/g1-prefill-20260910/prepared/pool.npy",
+        "reference_rule": "(arange(N)+offset)%pool_size, then map saved per-position outputs",
+        "references": {
+          "C": {
+            "file": "reference-C-256.npy",
+            "sha256": "5ec2d995ecf813b0e4f7eba53c3bfd549a5354d5ecdecdefdeac2175bd356403",
+            "output_hashes": [
+              "6139e2e3f74acc1cd8cd47915c01f72d9c4b06d34b98d9e13798ac645e303a93",
+              "d24a139272b3a780cfe64a8fed2fca5c845c472e44e2fba7cdf7af5a396d1914",
+              "634facd2a19afde8d66b9ea25332e2ee954d5c53a9538351de5aa4ef3aa2f476"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          },
+          "G": {
+            "file": "reference-G-256.npy",
+            "sha256": "4674ba3603bf2be05f1b514273025e60c4bd35babbe1f7b3cc64afb0228ac010",
+            "output_hashes": [
+              "89c1a7fdc35f9d6bae8c7d4cad725d790e843a7c4592366e0aae65825e1e60a3",
+              "d73020cee03f1fdf5398efa5b148f8b3f09c17d3db95db99e810e28760d0665f",
+              "3b7f384c4e8eb4270ae91ce8cef2afbd82a870e7a9e2115dd5dbb35a6ff2618c"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          }
+        }
+      },
+      {
+        "positions": 512,
+        "input_file": "inputs-512.npy",
+        "input_sha256": "66ffa8534c9df376b7956d2406a39f412f983f69849b5028d305b2511345b1aa",
+        "input_hashes": [
+          "c8a9139e8f80df080539a739f2e72735605b390f0ea8b8f718dcd7b902411338",
+          "cd84efd1335772982ff24dac546a941abf1de4402070ab85e43b498cce7d4d23",
+          "4ba1d30ab35898e270bc1d56fbcf2742f7e7e774073bb30e22457506ecbb1e31"
+        ],
+        "offsets": [
+          0,
+          37,
+          91
+        ],
+        "source": "results/g1-prefill-20260910/prepared/pool.npy",
+        "reference_rule": "(arange(N)+offset)%pool_size, then map saved per-position outputs",
+        "references": {
+          "C": {
+            "file": "reference-C-512.npy",
+            "sha256": "91ada9ca411c8c6937781d33a6cd1e10122f238eb5568ce2959ba5358be4d404",
+            "output_hashes": [
+              "95b23e1f26ee59807d7cb4ba21dcbf54a677968e05b39e3866a9155d6dd295e2",
+              "5492851eb880f965b00182aa4e0656602dcaf614f719e1b1a120d5ef0d8fa10a",
+              "bd6e4a9ba3016ba154e1ebbe9f19af17d2769de472853d015513f4232a66829a"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          },
+          "G": {
+            "file": "reference-G-512.npy",
+            "sha256": "989aeadf11aff6e2ca18e3394e118acb8237c7c94ab15f094919543658fea70c",
+            "output_hashes": [
+              "57af9d23fb36c69257a753d137eb384ab960ac6aa63c5f287905c8f1802c141d",
+              "081ed234a7daa903d1f10c0c4da474e6948b05e2adb432d513787a0b8de241dd",
+              "caad709e20fc2d318a0d25690648371005e3309d2cb19d0fc67db03e52d40474"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          }
+        }
+      },
+      {
+        "positions": 1024,
+        "input_file": "inputs-1024.npy",
+        "input_sha256": "516ad7a77b5788318629fc675a41e5f6e39e85b7b3dddbe965cc4f9332cba0a7",
+        "input_hashes": [
+          "3380959e0381a962d4f939c922130cf536cd88767292f12102115ef3c262ee1c",
+          "bf5e0faa1c74d0f2575de0ed1338d8359517a4548e06b4ee8b913fd33fc2d713",
+          "0e19f89020679411abcfa230217a2b28e1196824a94f30d8718bb7939afe81a9"
+        ],
+        "offsets": [
+          0,
+          37,
+          91
+        ],
+        "source": "results/g1-prefill-20260910/prepared/pool.npy",
+        "reference_rule": "(arange(N)+offset)%pool_size, then map saved per-position outputs",
+        "references": {
+          "C": {
+            "file": "reference-C-1024.npy",
+            "sha256": "1ed5e6eb9f93b952554a6793eb6edd7ff9873db6fa6d784f0ccd8860aabafcfe",
+            "output_hashes": [
+              "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+              "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+              "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e"
+            ],
+            "historical_same_shape_hashes": [
+              "5abb5f3f6a511a438aef5e6232863fe0b4268814ca3419aeace4baff9263a6f8",
+              "18ffce314d874ec92661f3f091394d65e3d7c41117955c5f6f03a8f1a20056be",
+              "0e1d6d530cf006b6ab9debaccd93b0fae11381fb4a029e6e77c732cb7f26571e"
+            ],
+            "matches_historical_same_shape": true,
+            "device_admitted": false
+          },
+          "G": {
+            "file": "reference-G-1024.npy",
+            "sha256": "3052bd2c2dbc4afb8e8e6255dd91e2f58fcd4beb93bbd25f88eee7bcd5a682fb",
+            "output_hashes": [
+              "cc4df9189b1317dd477215a2c94357ead7c59552ffe4d57a322274b1b7499209",
+              "f1f40a3cea06c80f06850d60c45770267bee3e0fcdc87bc94063d7d96f222fce",
+              "b0a74cbd7de5601bec9d95e8e6183a2178a260df23069b814879393286e8e8dc"
+            ],
+            "historical_same_shape_hashes": [
+              "3889d45be75dae1f7d8f89108e76a41eeb51d29613e3813b4a5c5d87eaa47a13",
+              "8c001c2b83ef26e690844a0e47678104ac602bdeed1b800d5f4fc1063a8de77e",
+              "05460d2cfcec4ee33aaa6ce47a4bf017d85c9f5730e5415f00c9f4bf16d5ae8a"
+            ],
+            "matches_historical_same_shape": false,
+            "device_admitted": false
+          }
+        }
+      },
+      {
+        "positions": 2048,
+        "input_file": "inputs-2048.npy",
+        "input_sha256": "83a9a6c870e62b75a71628bdabb6f97eed9354b8310678b6f4244a03e0fb44b3",
+        "input_hashes": [
+          "6347d7102f28a81d709c4398f2fe110934ff5f95f4fcd02d1831d81b4c714e1d",
+          "1aa560a957db2464f6e265fd16b1b27c6b3e2d86e141ec43b20492d5c0a3266b",
+          "20abc51b6ff68513bd6205bbd50a058b5e8721caefeb6b8f73384a93493a368f"
+        ],
+        "offsets": [
+          0,
+          37,
+          91
+        ],
+        "source": "results/g1-prefill-20260910/prepared/pool.npy",
+        "reference_rule": "(arange(N)+offset)%pool_size, then map saved per-position outputs",
+        "references": {
+          "C": {
+            "file": "reference-C-2048.npy",
+            "sha256": "88c937198fe94bc330d1c38001352eec06b1dcc067acedeceb4e58d20130e0f2",
+            "output_hashes": [
+              "d22310f11ab84e5d51e6f9f076be48422b8df773119e0d4e261592062760d6c4",
+              "8a941ff9b8a1b22a707e418d75e2a6a9f55e0ce2915095dd671d8fd60e570abd",
+              "8a7b35457ff20d71d5fe40c076b9cd2b9b0b404e3dcdd15ac002b2daf4082adf"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          },
+          "G": {
+            "file": "reference-G-2048.npy",
+            "sha256": "41d84b4ff2645d6e91ec3cd86a5b3c97d59d25d4b77149ff661f9ec05ae7e327",
+            "output_hashes": [
+              "045e7e082ad81ab3f23ed9b030f66c10b929768cf437b54dc9e2180214381673",
+              "fbd83be733587cc24aad44dcca434db07f1c50ef7bea02b8c10aae045a6d09a9",
+              "9c55f8762ff434c78f53448c98466c8e4e265c5732726edbceb9f470effe49cc"
+            ],
+            "historical_same_shape_hashes": null,
+            "matches_historical_same_shape": null,
+            "device_admitted": false
+          }
+        }
+      },
+      {
+        "positions": 4096,
+        "input_file": "inputs-4096.npy",
+        "input_sha256": "646fb557befe11e5d428ec8432beac506cbc33c6851ce1ada781fa6d75045d46",
+        "input_hashes": [
+          "4bf8290188d05d0e6432e76af0d05f1242261a53cab5fdac306eda56d38958f8",
+          "99ca663504adbd368ab9aabb6a9dcca06175fab94d9748b9ebafc20e600c82f4",
+          "23309a6348000ba739f24ab2495f0392e6e77a8f1b2e8477ac850b7346fe532e"
+        ],
+        "offsets": [
+          0,
+          37,
+          91
+        ],
+        "source": "results/g1-prefill-20260910/prepared/pool.npy",
+        "reference_rule": "(arange(N)+offset)%pool_size, then map saved per-position outputs",
+        "references": {
+          "C": {
+            "file": "reference-C-4096.npy",
+            "sha256": "4f7f6b98bff04ae9b3539d19f593a7817d30db210b6587ae5e593d53fe2dd1eb",
+            "output_hashes": [
+              "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+              "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+              "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7"
+            ],
+            "historical_same_shape_hashes": [
+              "becc5ccce36917f6e61f3dd16b5f5ede669b9d99c617f0a8daa706410cd089cd",
+              "e66014eaa4410e5f7dec79932103ca1937ee72b1b433bcaef0f863eca22ef07e",
+              "ac19aa94c44c26c47b9e9d9fe3c1144765d4f39cd2766ae08c4fa048a97d75d7"
+            ],
+            "matches_historical_same_shape": true,
+            "device_admitted": false
+          },
+          "G": {
+            "file": "reference-G-4096.npy",
+            "sha256": "0c501f5c7aa2c825d1fe72fcf0174d9e9867fa25ad9259f71790c29417dc02e0",
+            "output_hashes": [
+              "6a3bdfbc6b6d02a95a2c7237a3f5c4852a8065c6f44f541bd673335ecdc5f41a",
+              "a7e814ac48795698e4c532f25a5c859447bc55630c24f9506236927400138559",
+              "b1a589fdd48682a70ed2b0c8792e70830720f588aad5ec787cff6e8e5266cadf"
+            ],
+            "historical_same_shape_hashes": [
+              "4b8671843175f179d047f25dbda7ed61dffc5e0899335e453f70fa371a6b0ad4",
+              "6e217604b4bae0df500eecc0ccdd65bf02ef6c0dde2f68defedbbda3f9c24ff9",
+              "1e45d65df604202adf2687fa82a551eb8a75b4108b26d1294c0f46409d8e92fc"
+            ],
+            "matches_historical_same_shape": false,
+            "device_admitted": false
+          }
+        }
+      }
+    ],
+    "shape": [
+      "positions",
+      3840
+    ],
+    "no_new_model_export": true
+  },
+  "imported_audit": {
+    "checks": 87,
+    "passed": true,
+    "scope": "Original closed-workspace audit; not rerun by the portable verifier."
+  },
+  "closure": {
+    "passed": true,
+    "lifecycle": {
+      "passed": true,
+      "children": 44,
+      "guard_cleanup_passed": true,
+      "scope": "Recorded terminal lifecycle and cleanup evidence; fresh live-process identity check is a separate final step."
+    }
+  },
+  "reproduction": {
+    "portable": "Selected scalar records, timing and sensor recomputation",
+    "full_raw_audit": "Requires closed workspace logs and assets",
+    "device_rerun": "G2 orchestrator and model preparation not packaged in this CLI"
+  },
+  "prior_attempts": "r4 reuses the original completed 20-minute baseline only; earlier device results are not pooled.",
+  "thermal_platform": "Last five minutes: both temperature OLS slopes <=0.2 C/min in magnitude, completion range/mean <=5%, no adjacent thermal upgrade; coverage checked."
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "Post-run annotation of r4 device-phase ps snapshots only; not all eight hours and not per-process GPU utilization.",
+  "source": "results/g2-w4a16-night-20260910/night-20260911-r4/telemetry/system.jsonl",
+  "source_sha256": "6fa702a7cd8bca0686949f2d361007dc9b4b2066306cbfae41d7309129b10558",
+  "run_sha256": "656e06818dcfb35b9f2de2c8c94fdd84d1c80b3fe78ec2b8c95724371fcc1680",
+  "collector_sha256": "0bd6be59fe80feb957bf08a5db14ca87e777445ca2d5658886c6631a3db4c444",
+  "background_snapshots": 775,
+  "Ventura_present": 775,
+  "phase_total": {
+    "p0_memory": 37,
+    "p1_gpu_coexistence": 240,
+    "p2_latency": 90,
+    "p3_matched_rate_thermal": 239,
+    "saturated_thermal": 169
+  },
+  "phase_Ventura_present": {
+    "p0_memory": 37,
+    "p1_gpu_coexistence": 240,
+    "p2_latency": 90,
+    "p3_matched_rate_thermal": 239,
+    "saturated_thermal": 169
+  },
+  "Ventura_pids": [
+    77758
+  ],
+  "Ventura_pcpu_min_median_max": [
+    4.3,
+    4.9,
+    8.6
+  ],
+  "first_last_monotonic_ns": [
+    66601051011541,
+    89882926316666
+  ],
+  "not_established": [
+    "Continuous animation rendering in every snapshot or workload slot",
+    "Exact animation start/end intervals",
+    "Per-process GPU time, UMA bandwidth or power attributable to Ventura",
+    "Magnitude or direction of bias in ANE/GPU comparisons"
+  ],
+  "post_run_report": {
+    "date": "2026-09-11",
+    "source": "Statement recorded after G2 completion; not contemporaneous telemetry.",
+    "text": "The Mac stayed awake and the Ventura dynamic screensaver loaded automatically."
+  }
+}

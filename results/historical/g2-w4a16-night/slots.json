@@ -1,0 +1,3756 @@
+{
+  "P1-matrix_050-r0-alone": {
+    "passed": true,
+    "id": "P1-matrix_050-r0-alone",
+    "config": {
+      "id": "P1-matrix_050-r0-alone",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_050",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": null,
+      "foreground": "matrix",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 0,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": null,
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r0-F.json"
+    },
+    "hosts": {
+      "foreground": {
+        "pid": 95794,
+        "kind": "matrix",
+        "requests": 6069,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 6059,
+        "completed": 6059,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 6058,
+        "observation_throughput_per_second": 25.241666666666667,
+        "completed_per_minute": [
+          1514,
+          1515,
+          1515,
+          1514
+        ],
+        "response_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.027086203169499917,
+          "p50": 0.028023728,
+          "p95": 0.030912036099999998,
+          "p99": 0.03117702832,
+          "min": 0.019929058,
+          "max": 0.034876291
+        },
+        "service_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.02050089303218353,
+          "p50": 0.020445083,
+          "p95": 0.0211244327,
+          "p99": 0.02122363514,
+          "min": 0.019388959,
+          "max": 0.033183958
+        }
+      }
+    },
+    "batch_end_ns": 68010658814708,
+    "completed_input_identity": null,
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 67710653809625,
+    "window_start_ns": 67740653809625,
+    "window_end_ns": 67770653809625,
+    "observe_start_ns": 67770653809625,
+    "observe_end_ns": 68010653809625,
+    "actual_drain_end_ns": 68010658946750,
+    "drain_end_ns": 68070653809625,
+    "events_file": "P1-matrix_050-r0-alone.jsonl.gz"
+  },
+  "P1-matrix_050-r0-C": {
+    "passed": true,
+    "id": "P1-matrix_050-r0-C",
+    "config": {
+      "id": "P1-matrix_050-r0-C",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_050",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": "matrix",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 360,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r0-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r0-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 96687,
+        "requests": 807,
+        "stage_calls": 12912,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 96689,
+        "kind": "matrix",
+        "requests": 6069,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 6059,
+        "completed": 6059,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 6058,
+        "observation_throughput_per_second": 25.241666666666667,
+        "completed_per_minute": [
+          1514,
+          1515,
+          1515,
+          1514
+        ],
+        "response_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.027087409372008583,
+          "p50": 0.027913735,
+          "p95": 0.030760712300000003,
+          "p99": 0.0310495182,
+          "min": 0.019676362,
+          "max": 0.039677208
+        },
+        "service_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.020364505472025087,
+          "p50": 0.020300417,
+          "p95": 0.021014279099999998,
+          "p99": 0.02120311658,
+          "min": 0.019443333,
+          "max": 0.034748125
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          197,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.16396974810858586,
+          "p50": 0.16379524299999998,
+          "p95": 0.1700260259,
+          "p99": 0.17365537086,
+          "min": 0.155929724,
+          "max": 0.183345875
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.1588347816287879,
+          "p50": 0.1585560205,
+          "p95": 0.1620898913,
+          "p99": 0.16822902128,
+          "min": 0.154342708,
+          "max": 0.178474542
+        }
+      }
+    },
+    "batch_end_ns": 68370791714000,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 68070653809625,
+    "window_start_ns": 68100653809625,
+    "window_end_ns": 68130653809625,
+    "observe_start_ns": 68130653809625,
+    "observe_end_ns": 68370653809625,
+    "actual_drain_end_ns": 68370798021333,
+    "drain_end_ns": 68430653809625,
+    "events_file": "P1-matrix_050-r0-C.jsonl.gz"
+  },
+  "P1-matrix_050-r0-G": {
+    "passed": true,
+    "id": "P1-matrix_050-r0-G",
+    "config": {
+      "id": "P1-matrix_050-r0-G",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_050",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": "matrix",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 720,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r0-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r0-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 97583,
+        "requests": 807,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 97584,
+        "kind": "matrix",
+        "requests": 6069,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 6059,
+        "completed": 6059,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 12,
+        "deadline_violation_fraction": 0.001980524839082357,
+        "success_fraction": 1.0,
+        "observed_completed": 6059,
+        "observation_throughput_per_second": 25.245833333333334,
+        "completed_per_minute": [
+          1515,
+          1514,
+          1515,
+          1515
+        ],
+        "response_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.02801571944033669,
+          "p50": 0.028764719,
+          "p95": 0.0346358201,
+          "p99": 0.03778468908,
+          "min": 0.01987954,
+          "max": 0.041580497
+        },
+        "service_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.02130436159844859,
+          "p50": 0.020496042,
+          "p95": 0.0261085711,
+          "p99": 0.029100665000000005,
+          "min": 0.019465667,
+          "max": 0.038063375
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.07594543149242425,
+          "p50": 0.07648308749999999,
+          "p95": 0.09164696389999999,
+          "p99": 0.09435391813,
+          "min": 0.05100222,
+          "max": 0.099814467
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.07124847390025253,
+          "p50": 0.073050479,
+          "p95": 0.0832699378,
+          "p99": 0.08596589125000001,
+          "min": 0.049439334,
+          "max": 0.089774792
+        }
+      }
+    },
+    "batch_end_ns": 68730688153250,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 68430653809625,
+    "window_start_ns": 68460653809625,
+    "window_end_ns": 68490653809625,
+    "observe_start_ns": 68490653809625,
+    "observe_end_ns": 68730653809625,
+    "actual_drain_end_ns": 68730694516583,
+    "drain_end_ns": 68790653809625,
+    "events_file": "P1-matrix_050-r0-G.jsonl.gz"
+  },
+  "P1-matrix_075-r0-alone": {
+    "passed": true,
+    "id": "P1-matrix_075-r0-alone",
+    "config": {
+      "id": "P1-matrix_075-r0-alone",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_075",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": null,
+      "foreground": "matrix",
+      "foreground_fraction": 0.75,
+      "phase_offset_seconds": 1200,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": null,
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r0-F.json"
+    },
+    "hosts": {
+      "foreground": {
+        "pid": 98788,
+        "kind": "matrix",
+        "requests": 9098,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 9088,
+        "completed": 9088,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 1,
+        "deadline_violation_fraction": 0.00011003521126760564,
+        "success_fraction": 1.0,
+        "observed_completed": 9087,
+        "observation_throughput_per_second": 37.8625,
+        "completed_per_minute": [
+          2272,
+          2272,
+          2271,
+          2272
+        ],
+        "response_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.027235927086927816,
+          "p50": 0.0283599785,
+          "p95": 0.030616520799999998,
+          "p99": 0.03113098554,
+          "min": 0.019871674,
+          "max": 0.0446675
+        },
+        "service_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.02039962375066021,
+          "p50": 0.020376479,
+          "p95": 0.02113586645,
+          "p99": 0.02138704329,
+          "min": 0.019296834,
+          "max": 0.033863209
+        }
+      }
+    },
+    "batch_end_ns": 69210655063291,
+    "completed_input_identity": null,
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 68910653809625,
+    "window_start_ns": 68940653809625,
+    "window_end_ns": 68970653809625,
+    "observe_start_ns": 68970653809625,
+    "observe_end_ns": 69210653809625,
+    "actual_drain_end_ns": 69210668740750,
+    "drain_end_ns": 69270653809625,
+    "events_file": "P1-matrix_075-r0-alone.jsonl.gz"
+  },
+  "P1-matrix_075-r0-C": {
+    "passed": true,
+    "id": "P1-matrix_075-r0-C",
+    "config": {
+      "id": "P1-matrix_075-r0-C",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_075",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": "matrix",
+      "foreground_fraction": 0.75,
+      "phase_offset_seconds": 1560,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r0-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r0-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 99668,
+        "requests": 807,
+        "stage_calls": 12912,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 99671,
+        "kind": "matrix",
+        "requests": 9098,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 9088,
+        "completed": 9088,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 1,
+        "deadline_violation_fraction": 0.00011003521126760564,
+        "success_fraction": 1.0,
+        "observed_completed": 9088,
+        "observation_throughput_per_second": 37.86666666666667,
+        "completed_per_minute": [
+          2271,
+          2273,
+          2271,
+          2273
+        ],
+        "response_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.027520872587147888,
+          "p50": 0.028496197,
+          "p95": 0.03047204565,
+          "p99": 0.031048414959999996,
+          "min": 0.019676004,
+          "max": 0.041473333
+        },
+        "service_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.02036027383318662,
+          "p50": 0.020290541500000002,
+          "p95": 0.0211114545,
+          "p99": 0.02147881825,
+          "min": 0.019297875,
+          "max": 0.035281125
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          197,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.16212370878914142,
+          "p50": 0.1617920315,
+          "p95": 0.16692823215,
+          "p99": 0.16983768639,
+          "min": 0.15627852,
+          "max": 0.18558225
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.1580283941818182,
+          "p50": 0.157841979,
+          "p95": 0.15902976265000002,
+          "p99": 0.16426224184000002,
+          "min": 0.15493425,
+          "max": 0.179448917
+        }
+      }
+    },
+    "batch_end_ns": 69570785706250,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 69270653809625,
+    "window_start_ns": 69300653809625,
+    "window_end_ns": 69330653809625,
+    "observe_start_ns": 69330653809625,
+    "observe_end_ns": 69570653809625,
+    "actual_drain_end_ns": 69570792111541,
+    "drain_end_ns": 69630653809625,
+    "events_file": "P1-matrix_075-r0-C.jsonl.gz"
+  },
+  "P1-matrix_075-r0-G": {
+    "passed": true,
+    "id": "P1-matrix_075-r0-G",
+    "config": {
+      "id": "P1-matrix_075-r0-G",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_075",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": "matrix",
+      "foreground_fraction": 0.75,
+      "phase_offset_seconds": 1920,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r0-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r0-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 811,
+        "requests": 807,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 812,
+        "kind": "matrix",
+        "requests": 9098,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 9088,
+        "completed": 9088,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 3,
+        "deadline_violation_fraction": 0.0003301056338028169,
+        "success_fraction": 1.0,
+        "observed_completed": 9087,
+        "observation_throughput_per_second": 37.8625,
+        "completed_per_minute": [
+          2271,
+          2272,
+          2272,
+          2272
+        ],
+        "response_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.029220607699163733,
+          "p50": 0.029150038,
+          "p95": 0.0356985583,
+          "p99": 0.03731082888999998,
+          "min": 0.019783525,
+          "max": 0.041969416
+        },
+        "service_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.021423474305017606,
+          "p50": 0.020416,
+          "p95": 0.027287979599999998,
+          "p99": 0.029804953249999995,
+          "min": 0.019326958,
+          "max": 0.037801583
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.09815493149368687,
+          "p50": 0.0993920865,
+          "p95": 0.11786867449999999,
+          "p99": 0.12330120867000002,
+          "min": 0.05098644,
+          "max": 0.126810454
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.09406483618686869,
+          "p50": 0.09387147900000001,
+          "p95": 0.11208888354999999,
+          "p99": 0.11623459850000002,
+          "min": 0.050522125,
+          "max": 0.123935375
+        }
+      }
+    },
+    "batch_end_ns": 69930690065541,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 69630653809625,
+    "window_start_ns": 69660653809625,
+    "window_end_ns": 69690653809625,
+    "observe_start_ns": 69690653809625,
+    "observe_end_ns": 69930653809625,
+    "actual_drain_end_ns": 69930696360500,
+    "drain_end_ns": 69990653809625,
+    "events_file": "P1-matrix_075-r0-G.jsonl.gz"
+  },
+  "P1-memory_050-r0-alone": {
+    "passed": true,
+    "id": "P1-memory_050-r0-alone",
+    "config": {
+      "id": "P1-memory_050-r0-alone",
+      "phase": "p1_gpu_coexistence",
+      "case": "memory_050",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": null,
+      "foreground": "memory",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 2400,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": null,
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r0-F.json"
+    },
+    "hosts": {
+      "foreground": {
+        "pid": 2450,
+        "kind": "memory",
+        "requests": 67728,
+        "cpu_probes": 32,
+        "buffer_bytes": 402653184,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 67718,
+        "completed": 67718,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 9145,
+        "deadline_violation_fraction": 0.13504533506600905,
+        "success_fraction": 1.0,
+        "observed_completed": 67717,
+        "observation_throughput_per_second": 282.15416666666664,
+        "completed_per_minute": [
+          16929,
+          16929,
+          16930,
+          16929
+        ],
+        "response_seconds_completed_only": {
+          "count": 67718,
+          "mean": 0.0034735129742609057,
+          "p50": 0.0032797985,
+          "p95": 0.00520344395,
+          "p99": 0.00557765293,
+          "min": 0.001701057,
+          "max": 0.016568494
+        },
+        "service_seconds_completed_only": {
+          "count": 67718,
+          "mean": 0.0023005192905136006,
+          "p50": 0.001934854,
+          "p95": 0.00396492945,
+          "p99": 0.004246875,
+          "min": 0.001595459,
+          "max": 0.01067075
+        }
+      }
+    },
+    "batch_end_ns": 70410655120000,
+    "completed_input_identity": null,
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 70110653809625,
+    "window_start_ns": 70140653809625,
+    "window_end_ns": 70170653809625,
+    "observe_start_ns": 70170653809625,
+    "observe_end_ns": 70410653809625,
+    "actual_drain_end_ns": 70410655207583,
+    "drain_end_ns": 70470653809625,
+    "events_file": "P1-memory_050-r0-alone.jsonl.gz"
+  },
+  "P1-memory_050-r0-C": {
+    "passed": true,
+    "id": "P1-memory_050-r0-C",
+    "config": {
+      "id": "P1-memory_050-r0-C",
+      "phase": "p1_gpu_coexistence",
+      "case": "memory_050",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": "memory",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 2760,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r0-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r0-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 3368,
+        "requests": 807,
+        "stage_calls": 12912,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 3370,
+        "kind": "memory",
+        "requests": 67728,
+        "cpu_probes": 32,
+        "buffer_bytes": 402653184,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 67718,
+        "completed": 67718,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 3891,
+        "deadline_violation_fraction": 0.05745887356389734,
+        "success_fraction": 1.0,
+        "observed_completed": 67717,
+        "observation_throughput_per_second": 282.15416666666664,
+        "completed_per_minute": [
+          16929,
+          16929,
+          16930,
+          16929
+        ],
+        "response_seconds_completed_only": {
+          "count": 67718,
+          "mean": 0.0032730585685637496,
+          "p50": 0.0031917265,
+          "p95": 0.004578384399999995,
+          "p99": 0.00524826128,
+          "min": 0.001653417,
+          "max": 0.017836869
+        },
+        "service_seconds_completed_only": {
+          "count": 67718,
+          "mean": 0.002118636650831389,
+          "p50": 0.0019816045000000003,
+          "p95": 0.0034024669499999978,
+          "p99": 0.003956047640000001,
+          "min": 0.001597333,
+          "max": 0.010261334
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          197,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.16420514214520202,
+          "p50": 0.16410801,
+          "p95": 0.16738146685,
+          "p99": 0.17394949468999998,
+          "min": 0.157463999,
+          "max": 0.193207541
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.16357785447979797,
+          "p50": 0.16342114600000002,
+          "p95": 0.1667511337,
+          "p99": 0.17297858056,
+          "min": 0.157418459,
+          "max": 0.185076333
+        }
+      }
+    },
+    "batch_end_ns": 70770782890250,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 70470653809625,
+    "window_start_ns": 70500653809625,
+    "window_end_ns": 70530653809625,
+    "observe_start_ns": 70530653809625,
+    "observe_end_ns": 70770653809625,
+    "actual_drain_end_ns": 70770789280500,
+    "drain_end_ns": 70830653809625,
+    "events_file": "P1-memory_050-r0-C.jsonl.gz"
+  },
+  "P1-memory_050-r0-G": {
+    "passed": true,
+    "id": "P1-memory_050-r0-G",
+    "config": {
+      "id": "P1-memory_050-r0-G",
+      "phase": "p1_gpu_coexistence",
+      "case": "memory_050",
+      "repeat": 0,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": "memory",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 3120,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r0-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r0-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 4266,
+        "requests": 807,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 4268,
+        "kind": "memory",
+        "requests": 67725,
+        "cpu_probes": 32,
+        "buffer_bytes": 402653184,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 67718,
+        "completed": 67715,
+        "rejected": 3,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": false,
+        "deadline_violations": 8368,
+        "deadline_violation_fraction": 0.12357128090020379,
+        "success_fraction": 0.9999556986325645,
+        "observed_completed": 67714,
+        "observation_throughput_per_second": 282.14166666666665,
+        "completed_per_minute": [
+          16926,
+          16929,
+          16930,
+          16929
+        ],
+        "response_seconds_completed_only": {
+          "count": 67715,
+          "mean": 0.0037829026014915453,
+          "p50": 0.003203551,
+          "p95": 0.008848179399999993,
+          "p99": 0.01251178564,
+          "min": 0.001640246,
+          "max": 0.026706833
+        },
+        "service_seconds_completed_only": {
+          "count": 67715,
+          "mean": 0.0021903228877944323,
+          "p50": 0.001957792,
+          "p95": 0.0028682163999999995,
+          "p99": 0.008142079500000001,
+          "min": 0.001598792,
+          "max": 0.022021667
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.059306107470959595,
+          "p50": 0.058969874000000005,
+          "p95": 0.0619170944,
+          "p99": 0.06994451638000002,
+          "min": 0.05317567,
+          "max": 0.0769565
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.05868020453156566,
+          "p50": 0.05833972950000001,
+          "p95": 0.0612177538,
+          "p99": 0.06949033928,
+          "min": 0.05219225,
+          "max": 0.072509209
+        }
+      }
+    },
+    "batch_end_ns": 71130676759583,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 70830653809625,
+    "window_start_ns": 70860653809625,
+    "window_end_ns": 70890653809625,
+    "observe_start_ns": 70890653809625,
+    "observe_end_ns": 71130653809625,
+    "actual_drain_end_ns": 71130683218875,
+    "drain_end_ns": 71190653809625,
+    "events_file": "P1-memory_050-r0-G.jsonl.gz"
+  },
+  "P1-memory_050-r1-G": {
+    "passed": true,
+    "id": "P1-memory_050-r1-G",
+    "config": {
+      "id": "P1-memory_050-r1-G",
+      "phase": "p1_gpu_coexistence",
+      "case": "memory_050",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": "memory",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 3600,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r1-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r1-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 5509,
+        "requests": 807,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 5511,
+        "kind": "memory",
+        "requests": 67723,
+        "cpu_probes": 32,
+        "buffer_bytes": 402653184,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 67718,
+        "completed": 67713,
+        "rejected": 5,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": false,
+        "deadline_violations": 8358,
+        "deadline_violation_fraction": 0.12342360967541864,
+        "success_fraction": 0.9999261643876074,
+        "observed_completed": 67712,
+        "observation_throughput_per_second": 282.1333333333333,
+        "completed_per_minute": [
+          16924,
+          16929,
+          16930,
+          16929
+        ],
+        "response_seconds_completed_only": {
+          "count": 67713,
+          "mean": 0.003784796822441776,
+          "p50": 0.003206818,
+          "p95": 0.008829022799999994,
+          "p99": 0.012493016520000011,
+          "min": 0.001640006,
+          "max": 0.036129458
+        },
+        "service_seconds_completed_only": {
+          "count": 67713,
+          "mean": 0.002192576788844092,
+          "p50": 0.001961666,
+          "p95": 0.0028750584,
+          "p99": 0.008182908840000003,
+          "min": 0.001591334,
+          "max": 0.025018917
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.05935812798611111,
+          "p50": 0.0590144425,
+          "p95": 0.0617905866,
+          "p99": 0.06968039352,
+          "min": 0.053557503,
+          "max": 0.084940125
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.05872548272095959,
+          "p50": 0.058443603999999996,
+          "p95": 0.061281114399999996,
+          "p99": 0.06874289822000001,
+          "min": 0.052813166,
+          "max": 0.074084959
+        }
+      }
+    },
+    "batch_end_ns": 71610677141416,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 71310653809625,
+    "window_start_ns": 71340653809625,
+    "window_end_ns": 71370653809625,
+    "observe_start_ns": 71370653809625,
+    "observe_end_ns": 71610653809625,
+    "actual_drain_end_ns": 71610683403541,
+    "drain_end_ns": 71670653809625,
+    "events_file": "P1-memory_050-r1-G.jsonl.gz"
+  },
+  "P1-memory_050-r1-C": {
+    "passed": true,
+    "id": "P1-memory_050-r1-C",
+    "config": {
+      "id": "P1-memory_050-r1-C",
+      "phase": "p1_gpu_coexistence",
+      "case": "memory_050",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": "memory",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 3960,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r1-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r1-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 6387,
+        "requests": 807,
+        "stage_calls": 12912,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 6390,
+        "kind": "memory",
+        "requests": 67728,
+        "cpu_probes": 32,
+        "buffer_bytes": 402653184,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 67718,
+        "completed": 67718,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 3947,
+        "deadline_violation_fraction": 0.05828583242269411,
+        "success_fraction": 1.0,
+        "observed_completed": 67717,
+        "observation_throughput_per_second": 282.15416666666664,
+        "completed_per_minute": [
+          16929,
+          16929,
+          16930,
+          16929
+        ],
+        "response_seconds_completed_only": {
+          "count": 67718,
+          "mean": 0.0032752679384506337,
+          "p50": 0.0031875385,
+          "p95": 0.00458651595,
+          "p99": 0.00525136239,
+          "min": 0.001647902,
+          "max": 0.016417
+        },
+        "service_seconds_completed_only": {
+          "count": 67718,
+          "mean": 0.002119100827593845,
+          "p50": 0.001977416,
+          "p95": 0.0034074250999999982,
+          "p99": 0.003957148890000002,
+          "min": 0.001589875,
+          "max": 0.010028
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          197,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.16396555907954546,
+          "p50": 0.163763463,
+          "p95": 0.1672625351,
+          "p99": 0.17326380014,
+          "min": 0.158347502,
+          "max": 0.189909458
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.16334225067550506,
+          "p50": 0.16318277050000002,
+          "p95": 0.1664168545,
+          "p99": 0.17231059766,
+          "min": 0.158162625,
+          "max": 0.18284775
+        }
+      }
+    },
+    "batch_end_ns": 71970784918000,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 71670653809625,
+    "window_start_ns": 71700653809625,
+    "window_end_ns": 71730653809625,
+    "observe_start_ns": 71730653809625,
+    "observe_end_ns": 71970653809625,
+    "actual_drain_end_ns": 71970791378208,
+    "drain_end_ns": 72030653809625,
+    "events_file": "P1-memory_050-r1-C.jsonl.gz"
+  },
+  "P1-memory_050-r1-alone": {
+    "passed": true,
+    "id": "P1-memory_050-r1-alone",
+    "config": {
+      "id": "P1-memory_050-r1-alone",
+      "phase": "p1_gpu_coexistence",
+      "case": "memory_050",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": null,
+      "foreground": "memory",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 4320,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": null,
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-memory_050-r1-F.json"
+    },
+    "hosts": {
+      "foreground": {
+        "pid": 7271,
+        "kind": "memory",
+        "requests": 67726,
+        "cpu_probes": 32,
+        "buffer_bytes": 402653184,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 67718,
+        "completed": 67716,
+        "rejected": 2,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": false,
+        "deadline_violations": 9054,
+        "deadline_violation_fraction": 0.13370152692046428,
+        "success_fraction": 0.999970465755043,
+        "observed_completed": 67715,
+        "observation_throughput_per_second": 282.1458333333333,
+        "completed_per_minute": [
+          16927,
+          16929,
+          16930,
+          16929
+        ],
+        "response_seconds_completed_only": {
+          "count": 67716,
+          "mean": 0.0034678124793401854,
+          "p50": 0.003277252,
+          "p95": 0.005193899,
+          "p99": 0.005562778700000001,
+          "min": 0.001673531,
+          "max": 0.023176625
+        },
+        "service_seconds_completed_only": {
+          "count": 67716,
+          "mean": 0.0022966882415529563,
+          "p50": 0.0019331665,
+          "p95": 0.003959562749999999,
+          "p99": 0.0042404168499999995,
+          "min": 0.0016025,
+          "max": 0.012582834
+        }
+      }
+    },
+    "batch_end_ns": 72330654900083,
+    "completed_input_identity": null,
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 72030653809625,
+    "window_start_ns": 72060653809625,
+    "window_end_ns": 72090653809625,
+    "observe_start_ns": 72090653809625,
+    "observe_end_ns": 72330653809625,
+    "actual_drain_end_ns": 72330654975083,
+    "drain_end_ns": 72390653809625,
+    "events_file": "P1-memory_050-r1-alone.jsonl.gz"
+  },
+  "P1-matrix_075-r1-G": {
+    "passed": true,
+    "id": "P1-matrix_075-r1-G",
+    "config": {
+      "id": "P1-matrix_075-r1-G",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_075",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": "matrix",
+      "foreground_fraction": 0.75,
+      "phase_offset_seconds": 4800,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r1-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r1-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 8464,
+        "requests": 807,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 8465,
+        "kind": "matrix",
+        "requests": 9098,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 9088,
+        "completed": 9088,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 6,
+        "deadline_violation_fraction": 0.0006602112676056338,
+        "success_fraction": 1.0,
+        "observed_completed": 9087,
+        "observation_throughput_per_second": 37.8625,
+        "completed_per_minute": [
+          2271,
+          2272,
+          2272,
+          2272
+        ],
+        "response_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.02968894874262764,
+          "p50": 0.029536468000000003,
+          "p95": 0.036200892199999994,
+          "p99": 0.03827714280999997,
+          "min": 0.019809272,
+          "max": 0.045195208
+        },
+        "service_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.021766415069652288,
+          "p50": 0.0207770205,
+          "p95": 0.027789617099999997,
+          "p99": 0.030529141749999995,
+          "min": 0.019300458,
+          "max": 0.040546792
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.10087979623484848,
+          "p50": 0.101797852,
+          "p95": 0.11906942435,
+          "p99": 0.12503504229,
+          "min": 0.057199198,
+          "max": 0.13564665
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.09680596554292929,
+          "p50": 0.096587875,
+          "p95": 0.1142202045,
+          "p99": 0.11912116500000007,
+          "min": 0.055021541,
+          "max": 0.131935625
+        }
+      }
+    },
+    "batch_end_ns": 72810693579166,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 72510653809625,
+    "window_start_ns": 72540653809625,
+    "window_end_ns": 72570653809625,
+    "observe_start_ns": 72570653809625,
+    "observe_end_ns": 72810653809625,
+    "actual_drain_end_ns": 72810700011541,
+    "drain_end_ns": 72870653809625,
+    "events_file": "P1-matrix_075-r1-G.jsonl.gz"
+  },
+  "P1-matrix_075-r1-C": {
+    "passed": true,
+    "id": "P1-matrix_075-r1-C",
+    "config": {
+      "id": "P1-matrix_075-r1-C",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_075",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": "matrix",
+      "foreground_fraction": 0.75,
+      "phase_offset_seconds": 5160,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r1-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r1-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 9343,
+        "requests": 807,
+        "stage_calls": 12912,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 9347,
+        "kind": "matrix",
+        "requests": 9098,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 9088,
+        "completed": 9088,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 9088,
+        "observation_throughput_per_second": 37.86666666666667,
+        "completed_per_minute": [
+          2271,
+          2272,
+          2273,
+          2272
+        ],
+        "response_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.027502364904269366,
+          "p50": 0.0285093475,
+          "p95": 0.030453295749999998,
+          "p99": 0.030976456929999993,
+          "min": 0.019706432,
+          "max": 0.038828458
+        },
+        "service_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.020346357465448942,
+          "p50": 0.0202763755,
+          "p95": 0.02109285855,
+          "p99": 0.021414298129999995,
+          "min": 0.019320209,
+          "max": 0.035848958
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          197,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.16216057839015152,
+          "p50": 0.161801155,
+          "p95": 0.1670161329,
+          "p99": 0.1720174584,
+          "min": 0.155857884,
+          "max": 0.182419625
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.1581110290959596,
+          "p50": 0.157806,
+          "p95": 0.15945383559999998,
+          "p99": 0.16611768928000004,
+          "min": 0.15367425,
+          "max": 0.179679209
+        }
+      }
+    },
+    "batch_end_ns": 73170785397708,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 72870653809625,
+    "window_start_ns": 72900653809625,
+    "window_end_ns": 72930653809625,
+    "observe_start_ns": 72930653809625,
+    "observe_end_ns": 73170653809625,
+    "actual_drain_end_ns": 73170791819166,
+    "drain_end_ns": 73230653809625,
+    "events_file": "P1-matrix_075-r1-C.jsonl.gz"
+  },
+  "P1-matrix_075-r1-alone": {
+    "passed": true,
+    "id": "P1-matrix_075-r1-alone",
+    "config": {
+      "id": "P1-matrix_075-r1-alone",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_075",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": null,
+      "foreground": "matrix",
+      "foreground_fraction": 0.75,
+      "phase_offset_seconds": 5520,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": null,
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_075-r1-F.json"
+    },
+    "hosts": {
+      "foreground": {
+        "pid": 10250,
+        "kind": "matrix",
+        "requests": 9098,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 9088,
+        "completed": 9088,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 9088,
+        "observation_throughput_per_second": 37.86666666666667,
+        "completed_per_minute": [
+          2271,
+          2272,
+          2273,
+          2272
+        ],
+        "response_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.027302699449603875,
+          "p50": 0.0284149465,
+          "p95": 0.030602821199999998,
+          "p99": 0.031162462859999997,
+          "min": 0.019642642,
+          "max": 0.034256958
+        },
+        "service_seconds_completed_only": {
+          "count": 9088,
+          "mean": 0.02037644154962588,
+          "p50": 0.0203604995,
+          "p95": 0.02111651195,
+          "p99": 0.021566813289999993,
+          "min": 0.019289917,
+          "max": 0.03342325
+        }
+      }
+    },
+    "batch_end_ns": 73530653809625,
+    "completed_input_identity": null,
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 73230653809625,
+    "window_start_ns": 73260653809625,
+    "window_end_ns": 73290653809625,
+    "observe_start_ns": 73290653809625,
+    "observe_end_ns": 73530653809625,
+    "actual_drain_end_ns": 73530662586416,
+    "drain_end_ns": 73590653809625,
+    "events_file": "P1-matrix_075-r1-alone.jsonl.gz"
+  },
+  "P1-matrix_050-r1-G": {
+    "passed": true,
+    "id": "P1-matrix_050-r1-G",
+    "config": {
+      "id": "P1-matrix_050-r1-G",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_050",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": "matrix",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 6000,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r1-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r1-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 11427,
+        "requests": 807,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 11428,
+        "kind": "matrix",
+        "requests": 6069,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 6059,
+        "completed": 6059,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 11,
+        "deadline_violation_fraction": 0.0018154811024921605,
+        "success_fraction": 1.0,
+        "observed_completed": 6058,
+        "observation_throughput_per_second": 25.241666666666667,
+        "completed_per_minute": [
+          1515,
+          1514,
+          1515,
+          1514
+        ],
+        "response_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.028010148399075754,
+          "p50": 0.028754824,
+          "p95": 0.0342484076,
+          "p99": 0.0375770171,
+          "min": 0.019816481,
+          "max": 0.04150953
+        },
+        "service_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.02127771336920284,
+          "p50": 0.020507083,
+          "p95": 0.026065678899999997,
+          "p99": 0.028741889640000004,
+          "min": 0.019430666,
+          "max": 0.0389495
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.07626431433080808,
+          "p50": 0.0767187815,
+          "p95": 0.09171905105,
+          "p99": 0.09430978197,
+          "min": 0.051550732,
+          "max": 0.097524923
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.07150590950505051,
+          "p50": 0.073510396,
+          "p95": 0.08379359185,
+          "p99": 0.08596837513,
+          "min": 0.049462458,
+          "max": 0.090572583
+        }
+      }
+    },
+    "batch_end_ns": 74010695504166,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 73710653809625,
+    "window_start_ns": 73740653809625,
+    "window_end_ns": 73770653809625,
+    "observe_start_ns": 73770653809625,
+    "observe_end_ns": 74010653809625,
+    "actual_drain_end_ns": 74010701706166,
+    "drain_end_ns": 74070653809625,
+    "events_file": "P1-matrix_050-r1-G.jsonl.gz"
+  },
+  "P1-matrix_050-r1-C": {
+    "passed": true,
+    "id": "P1-matrix_050-r1-C",
+    "config": {
+      "id": "P1-matrix_050-r1-C",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_050",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": "matrix",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 6360,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r1-I.json",
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r1-F.json"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 12308,
+        "requests": 807,
+        "stage_calls": 12912,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      },
+      "foreground": {
+        "pid": 12310,
+        "kind": "matrix",
+        "requests": 6069,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 6059,
+        "completed": 6059,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 1,
+        "deadline_violation_fraction": 0.00016504373659019642,
+        "success_fraction": 1.0,
+        "observed_completed": 6058,
+        "observation_throughput_per_second": 25.241666666666667,
+        "completed_per_minute": [
+          1514,
+          1515,
+          1515,
+          1514
+        ],
+        "response_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.02708056544132695,
+          "p50": 0.027854505,
+          "p95": 0.0307705531,
+          "p99": 0.03107768752,
+          "min": 0.019730835,
+          "max": 0.043719583
+        },
+        "service_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.020346773087143093,
+          "p50": 0.020282375,
+          "p95": 0.021020024699999997,
+          "p99": 0.02119882314,
+          "min": 0.019282667,
+          "max": 0.0328175
+        }
+      },
+      "inference": {
+        "arrived": 792,
+        "completed": 792,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 791,
+        "observation_throughput_per_second": 3.2958333333333334,
+        "completed_per_minute": [
+          198,
+          198,
+          197,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.1643659700138889,
+          "p50": 0.16420313,
+          "p95": 0.17011822459999998,
+          "p99": 0.17301410828,
+          "min": 0.155673805,
+          "max": 0.189564958
+        },
+        "service_seconds_completed_only": {
+          "count": 792,
+          "mean": 0.1590725795037879,
+          "p50": 0.158749354,
+          "p95": 0.1623408894,
+          "p99": 0.16780624947,
+          "min": 0.15246375,
+          "max": 0.178714917
+        }
+      }
+    },
+    "batch_end_ns": 74370792040333,
+    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
+    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
+    "scheduled_start_ns": 74070653809625,
+    "window_start_ns": 74100653809625,
+    "window_end_ns": 74130653809625,
+    "observe_start_ns": 74130653809625,
+    "observe_end_ns": 74370653809625,
+    "actual_drain_end_ns": 74370798249583,
+    "drain_end_ns": 74430653809625,
+    "events_file": "P1-matrix_050-r1-C.jsonl.gz"
+  },
+  "P1-matrix_050-r1-alone": {
+    "passed": true,
+    "id": "P1-matrix_050-r1-alone",
+    "config": {
+      "id": "P1-matrix_050-r1-alone",
+      "phase": "p1_gpu_coexistence",
+      "case": "matrix_050",
+      "repeat": 1,
+      "mode": "arrivals",
+      "engine": null,
+      "foreground": "matrix",
+      "foreground_fraction": 0.5,
+      "phase_offset_seconds": 6720,
+      "setup_seconds": 60,
+      "observe_seconds": 240,
+      "drain_seconds": 60,
+      "inference_arrivals": null,
+      "foreground_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P1-matrix_050-r1-F.json"
+    },
+    "hosts": {
+      "foreground": {
+        "pid": 13190,
+        "kind": "matrix",
+        "requests": 6069,
+        "cpu_probes": 32,
+        "buffer_bytes": 201326592,
+        "closed": true
+      }
+    },
+    "service": {
+      "foreground": {
+        "arrived": 6059,
+        "completed": 6059,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 1,
+        "deadline_violation_fraction": 0.00016504373659019642,
+        "success_fraction": 1.0,
+        "observed_completed": 6059,
+        "observation_throughput_per_second": 25.245833333333334,
+        "completed_per_minute": [
+          1514,
+          1515,
+          1515,
+          1515
+        ],
+        "response_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.02713863255025582,
+          "p50": 0.028002867,
+          "p95": 0.0309213694,
+          "p99": 0.031141736179999997,
+          "min": 0.019900884,
+          "max": 0.044029541
+        },
+        "service_seconds_completed_only": {
+          "count": 6059,
+          "mean": 0.02049600160125433,
+          "p50": 0.020443917,
+          "p95": 0.0211117163,
+          "p99": 0.021220041420000002,
+          "min": 0.019408333,
+          "max": 0.035008416
+        }
+      }
+    },
+    "batch_end_ns": 74730653809625,
+    "completed_input_identity": null,
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 74430653809625,
+    "window_start_ns": 74460653809625,
+    "window_end_ns": 74490653809625,
+    "observe_start_ns": 74490653809625,
+    "observe_end_ns": 74730653809625,
+    "actual_drain_end_ns": 74730667749958,
+    "drain_end_ns": 74790653809625,
+    "events_file": "P1-matrix_050-r1-alone.jsonl.gz"
+  },
+  "P3-0.25-r0-C": {
+    "passed": true,
+    "id": "P3-0.25-r0-C",
+    "config": {
+      "id": "P3-0.25-r0-C",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 0,
+      "fraction": 0.25,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 0,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.25-r0-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 21021,
+        "requests": 609,
+        "stage_calls": 9744,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 594,
+        "completed": 594,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 594,
+        "observation_throughput_per_second": 1.65,
+        "completed_per_minute": [
+          99,
+          99,
+          99,
+          99,
+          99,
+          99
+        ],
+        "response_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.16632349795959597,
+          "p50": 0.16679060550000002,
+          "p95": 0.17028785995,
+          "p99": 0.17682162821000005,
+          "min": 0.15553109,
+          "max": 0.179091166
+        },
+        "service_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.15980963137878787,
+          "p50": 0.1596328125,
+          "p95": 0.1614594352,
+          "p99": 0.16837941044000002,
+          "min": 0.15226825,
+          "max": 0.171661583
+        }
+      }
+    },
+    "batch_end_ns": 78090653809625,
+    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
+    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
+    "scheduled_start_ns": 77610653809625,
+    "window_start_ns": 77700653809625,
+    "window_end_ns": 77730653809625,
+    "observe_start_ns": 77730653809625,
+    "observe_end_ns": 78090653809625,
+    "actual_drain_end_ns": 78090678879833,
+    "drain_end_ns": 78210653809625,
+    "events_file": "P3-0.25-r0-C.jsonl.gz"
+  },
+  "P3-0.25-r0-G": {
+    "passed": true,
+    "id": "P3-0.25-r0-G",
+    "config": {
+      "id": "P3-0.25-r0-G",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 0,
+      "fraction": 0.25,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 600,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.25-r0-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 22501,
+        "requests": 609,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 594,
+        "completed": 594,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 594,
+        "observation_throughput_per_second": 1.65,
+        "completed_per_minute": [
+          99,
+          99,
+          99,
+          99,
+          99,
+          99
+        ],
+        "response_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.062284553373737374,
+          "p50": 0.062976402,
+          "p95": 0.0666319556,
+          "p99": 0.07159784796000002,
+          "min": 0.053689687,
+          "max": 0.075508215
+        },
+        "service_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.055504634462962964,
+          "p50": 0.0555158955,
+          "p95": 0.058175031050000006,
+          "p99": 0.06302012869000001,
+          "min": 0.050045041,
+          "max": 0.065449333
+        }
+      }
+    },
+    "batch_end_ns": 78690653809625,
+    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
+    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
+    "scheduled_start_ns": 78210653809625,
+    "window_start_ns": 78300653809625,
+    "window_end_ns": 78330653809625,
+    "observe_start_ns": 78330653809625,
+    "observe_end_ns": 78690653809625,
+    "actual_drain_end_ns": 78690682899916,
+    "drain_end_ns": 78810653809625,
+    "events_file": "P3-0.25-r0-G.jsonl.gz"
+  },
+  "P3-0.5-r0-C": {
+    "passed": true,
+    "id": "P3-0.5-r0-C",
+    "config": {
+      "id": "P3-0.5-r0-C",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 0,
+      "fraction": 0.5,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 1200,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.5-r0-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 24001,
+        "requests": 1202,
+        "stage_calls": 19232,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1187,
+        "completed": 1187,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1187,
+        "observation_throughput_per_second": 3.297222222222222,
+        "completed_per_minute": [
+          198,
+          197,
+          198,
+          198,
+          198,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.16799662337994944,
+          "p50": 0.169224132,
+          "p95": 0.1709789594,
+          "p99": 0.17835900016,
+          "min": 0.155663793,
+          "max": 0.185256291
+        },
+        "service_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.15988344233782645,
+          "p50": 0.159695459,
+          "p95": 0.161620025,
+          "p99": 0.16897331750000003,
+          "min": 0.152074125,
+          "max": 0.175928916
+        }
+      }
+    },
+    "batch_end_ns": 79290653809625,
+    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
+    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
+    "scheduled_start_ns": 78810653809625,
+    "window_start_ns": 78900653809625,
+    "window_end_ns": 78930653809625,
+    "observe_start_ns": 78930653809625,
+    "observe_end_ns": 79290653809625,
+    "actual_drain_end_ns": 79290672413166,
+    "drain_end_ns": 79410653809625,
+    "events_file": "P3-0.5-r0-C.jsonl.gz"
+  },
+  "P3-0.5-r0-G": {
+    "passed": true,
+    "id": "P3-0.5-r0-G",
+    "config": {
+      "id": "P3-0.5-r0-G",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 0,
+      "fraction": 0.5,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 1800,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.5-r0-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 25487,
+        "requests": 1202,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1187,
+        "completed": 1187,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1187,
+        "observation_throughput_per_second": 3.297222222222222,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197,
+          198,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.06233179998483572,
+          "p50": 0.062825985,
+          "p95": 0.0668763752,
+          "p99": 0.07233395142000001,
+          "min": 0.051815697,
+          "max": 0.073655313
+        },
+        "service_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.055716217183656276,
+          "p50": 0.05579775,
+          "p95": 0.0583154499,
+          "p99": 0.06292258114,
+          "min": 0.049958666,
+          "max": 0.063933584
+        }
+      }
+    },
+    "batch_end_ns": 79890653809625,
+    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
+    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
+    "scheduled_start_ns": 79410653809625,
+    "window_start_ns": 79500653809625,
+    "window_end_ns": 79530653809625,
+    "observe_start_ns": 79530653809625,
+    "observe_end_ns": 79890653809625,
+    "actual_drain_end_ns": 79890682441541,
+    "drain_end_ns": 80010653809625,
+    "events_file": "P3-0.5-r0-G.jsonl.gz"
+  },
+  "P3-0.75-r0-C": {
+    "passed": true,
+    "id": "P3-0.75-r0-C",
+    "config": {
+      "id": "P3-0.75-r0-C",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 0,
+      "fraction": 0.75,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 2400,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.75-r0-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 26977,
+        "requests": 1795,
+        "stage_calls": 28720,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1780,
+        "completed": 1780,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1780,
+        "observation_throughput_per_second": 4.944444444444445,
+        "completed_per_minute": [
+          296,
+          297,
+          297,
+          296,
+          297,
+          297
+        ],
+        "response_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.16427248694269664,
+          "p50": 0.1652870245,
+          "p95": 0.16658047039999999,
+          "p99": 0.17210064996000002,
+          "min": 0.155457376,
+          "max": 0.183388208
+        },
+        "service_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.15628558012134833,
+          "p50": 0.1561321665,
+          "p95": 0.1568262455,
+          "p99": 0.16247704475,
+          "min": 0.151888958,
+          "max": 0.172805417
+        }
+      }
+    },
+    "batch_end_ns": 80490653809625,
+    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
+    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
+    "scheduled_start_ns": 80010653809625,
+    "window_start_ns": 80100653809625,
+    "window_end_ns": 80130653809625,
+    "observe_start_ns": 80130653809625,
+    "observe_end_ns": 80490653809625,
+    "actual_drain_end_ns": 80490668369250,
+    "drain_end_ns": 80610653809625,
+    "events_file": "P3-0.75-r0-C.jsonl.gz"
+  },
+  "P3-0.75-r0-G": {
+    "passed": true,
+    "id": "P3-0.75-r0-G",
+    "config": {
+      "id": "P3-0.75-r0-G",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 0,
+      "fraction": 0.75,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 3000,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.75-r0-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 28458,
+        "requests": 1795,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1780,
+        "completed": 1780,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1780,
+        "observation_throughput_per_second": 4.944444444444445,
+        "completed_per_minute": [
+          297,
+          297,
+          296,
+          297,
+          297,
+          296
+        ],
+        "response_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.06129010994719101,
+          "p50": 0.061571726,
+          "p95": 0.07240610475,
+          "p99": 0.07640006012,
+          "min": 0.043685942,
+          "max": 0.080268813
+        },
+        "service_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.05433312382303371,
+          "p50": 0.054945208,
+          "p95": 0.06413714969999999,
+          "p99": 0.06720477571,
+          "min": 0.041911416,
+          "max": 0.070308
+        }
+      }
+    },
+    "batch_end_ns": 81090653809625,
+    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
+    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
+    "scheduled_start_ns": 80610653809625,
+    "window_start_ns": 80700653809625,
+    "window_end_ns": 80730653809625,
+    "observe_start_ns": 80730653809625,
+    "observe_end_ns": 81090653809625,
+    "actual_drain_end_ns": 81090674482958,
+    "drain_end_ns": 81210653809625,
+    "events_file": "P3-0.75-r0-G.jsonl.gz"
+  },
+  "P3-0.75-r1-G": {
+    "passed": true,
+    "id": "P3-0.75-r1-G",
+    "config": {
+      "id": "P3-0.75-r1-G",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 1,
+      "fraction": 0.75,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 3600,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.75-r1-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 29649,
+        "requests": 1795,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1780,
+        "completed": 1780,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1780,
+        "observation_throughput_per_second": 4.944444444444445,
+        "completed_per_minute": [
+          297,
+          297,
+          296,
+          297,
+          296,
+          297
+        ],
+        "response_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.061293305333146066,
+          "p50": 0.0612411655,
+          "p95": 0.0727989542,
+          "p99": 0.07642431924,
+          "min": 0.04329336,
+          "max": 0.078742541
+        },
+        "service_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.05434441812078652,
+          "p50": 0.054841333,
+          "p95": 0.06472237085,
+          "p99": 0.068038422,
+          "min": 0.041899458,
+          "max": 0.071529625
+        }
+      }
+    },
+    "batch_end_ns": 81690653809625,
+    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
+    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
+    "scheduled_start_ns": 81210653809625,
+    "window_start_ns": 81300653809625,
+    "window_end_ns": 81330653809625,
+    "observe_start_ns": 81330653809625,
+    "observe_end_ns": 81690653809625,
+    "actual_drain_end_ns": 81690677263458,
+    "drain_end_ns": 81810653809625,
+    "events_file": "P3-0.75-r1-G.jsonl.gz"
+  },
+  "P3-0.75-r1-C": {
+    "passed": true,
+    "id": "P3-0.75-r1-C",
+    "config": {
+      "id": "P3-0.75-r1-C",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 1,
+      "fraction": 0.75,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 4200,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.75-r1-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 30516,
+        "requests": 1795,
+        "stage_calls": 28720,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1780,
+        "completed": 1780,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1780,
+        "observation_throughput_per_second": 4.944444444444445,
+        "completed_per_minute": [
+          296,
+          297,
+          297,
+          296,
+          297,
+          297
+        ],
+        "response_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.16422182616235956,
+          "p50": 0.1650950585,
+          "p95": 0.1665336562,
+          "p99": 0.17206983639,
+          "min": 0.152773292,
+          "max": 0.184464375
+        },
+        "service_seconds_completed_only": {
+          "count": 1780,
+          "mean": 0.15633703185786516,
+          "p50": 0.15620085350000001,
+          "p95": 0.1566114896,
+          "p99": 0.16244968057,
+          "min": 0.150975958,
+          "max": 0.176159584
+        }
+      }
+    },
+    "batch_end_ns": 82290653809625,
+    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
+    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
+    "scheduled_start_ns": 81810653809625,
+    "window_start_ns": 81900653809625,
+    "window_end_ns": 81930653809625,
+    "observe_start_ns": 81930653809625,
+    "observe_end_ns": 82290653809625,
+    "actual_drain_end_ns": 82290672529833,
+    "drain_end_ns": 82410653809625,
+    "events_file": "P3-0.75-r1-C.jsonl.gz"
+  },
+  "P3-0.5-r1-G": {
+    "passed": true,
+    "id": "P3-0.5-r1-G",
+    "config": {
+      "id": "P3-0.5-r1-G",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 1,
+      "fraction": 0.5,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 4800,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.5-r1-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 31378,
+        "requests": 1202,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1187,
+        "completed": 1187,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1187,
+        "observation_throughput_per_second": 3.297222222222222,
+        "completed_per_minute": [
+          198,
+          198,
+          198,
+          197,
+          198,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.06225108407413648,
+          "p50": 0.062698862,
+          "p95": 0.06666463660000001,
+          "p99": 0.07165459722000003,
+          "min": 0.052490851,
+          "max": 0.073873107
+        },
+        "service_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.055587415554338666,
+          "p50": 0.055719333,
+          "p95": 0.0571354624,
+          "p99": 0.06257404064,
+          "min": 0.049997084,
+          "max": 0.063816125
+        }
+      }
+    },
+    "batch_end_ns": 82890653809625,
+    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
+    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
+    "scheduled_start_ns": 82410653809625,
+    "window_start_ns": 82500653809625,
+    "window_end_ns": 82530653809625,
+    "observe_start_ns": 82530653809625,
+    "observe_end_ns": 82890653809625,
+    "actual_drain_end_ns": 82890666459000,
+    "drain_end_ns": 83010653809625,
+    "events_file": "P3-0.5-r1-G.jsonl.gz"
+  },
+  "P3-0.5-r1-C": {
+    "passed": true,
+    "id": "P3-0.5-r1-C",
+    "config": {
+      "id": "P3-0.5-r1-C",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 1,
+      "fraction": 0.5,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 5400,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.5-r1-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 32259,
+        "requests": 1202,
+        "stage_calls": 19232,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 1187,
+        "completed": 1187,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 1187,
+        "observation_throughput_per_second": 3.297222222222222,
+        "completed_per_minute": [
+          198,
+          198,
+          197,
+          198,
+          198,
+          198
+        ],
+        "response_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.16792095369839932,
+          "p50": 0.169323155,
+          "p95": 0.1710807993,
+          "p99": 0.17834647042000001,
+          "min": 0.154717779,
+          "max": 0.18679625
+        },
+        "service_seconds_completed_only": {
+          "count": 1187,
+          "mean": 0.1599701083285594,
+          "p50": 0.159723292,
+          "p95": 0.16225462960000003,
+          "p99": 0.16872813364000003,
+          "min": 0.15146975,
+          "max": 0.17602475
+        }
+      }
+    },
+    "batch_end_ns": 83490653809625,
+    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
+    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
+    "scheduled_start_ns": 83010653809625,
+    "window_start_ns": 83100653809625,
+    "window_end_ns": 83130653809625,
+    "observe_start_ns": 83130653809625,
+    "observe_end_ns": 83490653809625,
+    "actual_drain_end_ns": 83490668975916,
+    "drain_end_ns": 83610653809625,
+    "events_file": "P3-0.5-r1-C.jsonl.gz"
+  },
+  "P3-0.25-r1-G": {
+    "passed": true,
+    "id": "P3-0.25-r1-G",
+    "config": {
+      "id": "P3-0.25-r1-G",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 1,
+      "fraction": 0.25,
+      "mode": "arrivals",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 6000,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.25-r1-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 33140,
+        "requests": 609,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 594,
+        "completed": 594,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 594,
+        "observation_throughput_per_second": 1.65,
+        "completed_per_minute": [
+          99,
+          99,
+          99,
+          99,
+          99,
+          99
+        ],
+        "response_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.06202901070707071,
+          "p50": 0.0624538455,
+          "p95": 0.0667632943,
+          "p99": 0.07163278460000003,
+          "min": 0.053018427,
+          "max": 0.07296682
+        },
+        "service_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.05552792892087542,
+          "p50": 0.055610604,
+          "p95": 0.0583337705,
+          "p99": 0.06282787313,
+          "min": 0.050207125,
+          "max": 0.06332575
+        }
+      }
+    },
+    "batch_end_ns": 84090653809625,
+    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
+    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
+    "scheduled_start_ns": 83610653809625,
+    "window_start_ns": 83700653809625,
+    "window_end_ns": 83730653809625,
+    "observe_start_ns": 83730653809625,
+    "observe_end_ns": 84090653809625,
+    "actual_drain_end_ns": 84090677708000,
+    "drain_end_ns": 84210653809625,
+    "events_file": "P3-0.25-r1-G.jsonl.gz"
+  },
+  "P3-0.25-r1-C": {
+    "passed": true,
+    "id": "P3-0.25-r1-C",
+    "config": {
+      "id": "P3-0.25-r1-C",
+      "phase": "p3_matched_rate_thermal",
+      "repeat": 1,
+      "fraction": 0.25,
+      "mode": "arrivals",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 6600,
+      "setup_seconds": 120,
+      "observe_seconds": 360,
+      "drain_seconds": 120,
+      "inference_arrivals": "results/g2-w4a16-night-20260910/execution-20260911-r4/arrivals/P3-0.25-r1-I.json",
+      "foreground_arrivals": null
+    },
+    "hosts": {
+      "inference": {
+        "pid": 34021,
+        "requests": 609,
+        "stage_calls": 9744,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "arrived": 594,
+        "completed": 594,
+        "rejected": 0,
+        "cancelled": 0,
+        "failed": 0,
+        "all_completed": true,
+        "deadline_violations": 0,
+        "deadline_violation_fraction": 0.0,
+        "success_fraction": 1.0,
+        "observed_completed": 594,
+        "observation_throughput_per_second": 1.65,
+        "completed_per_minute": [
+          99,
+          99,
+          99,
+          99,
+          99,
+          99
+        ],
+        "response_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.16642360381818183,
+          "p50": 0.16709056649999998,
+          "p95": 0.17050509590000001,
+          "p99": 0.17758979183,
+          "min": 0.156466007,
+          "max": 0.183365041
+        },
+        "service_seconds_completed_only": {
+          "count": 594,
+          "mean": 0.15997340482996633,
+          "p50": 0.159654333,
+          "p95": 0.1616159942,
+          "p99": 0.16855680956000008,
+          "min": 0.154623792,
+          "max": 0.175756333
+        }
+      }
+    },
+    "batch_end_ns": 84690653809625,
+    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
+    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
+    "scheduled_start_ns": 84210653809625,
+    "window_start_ns": 84300653809625,
+    "window_end_ns": 84330653809625,
+    "observe_start_ns": 84330653809625,
+    "observe_end_ns": 84690653809625,
+    "actual_drain_end_ns": 84690679435250,
+    "drain_end_ns": 84810653809625,
+    "events_file": "P3-0.25-r1-C.jsonl.gz"
+  },
+  "SAT-0-C": {
+    "passed": true,
+    "id": "SAT-0-C",
+    "config": {
+      "id": "SAT-0-C",
+      "phase": "saturated_thermal",
+      "mode": "saturated",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 0,
+      "setup_seconds": 120,
+      "observe_seconds": 960,
+      "drain_seconds": 120,
+      "saturated_request_cap": 6368,
+      "cap_source": "independent pilot fastest external full request, ceiling(duration / fastest)"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 34888,
+        "requests": 6160,
+        "stage_calls": 98560,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "completed": 6145,
+        "observed_completed": 6144,
+        "request_cap": 6368,
+        "censored": false,
+        "actual_end_ns": 85890712835041,
+        "observation_throughput_per_second": 6.4,
+        "completed_per_minute": [
+          383,
+          385,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384,
+          384
+        ],
+        "outer_seconds": {
+          "count": 6145,
+          "mean": 0.1515467732149715,
+          "p50": 0.151619875,
+          "p95": 0.15191505840000002,
+          "p99": 0.15202831348,
+          "min": 0.14643,
+          "max": 0.171756917
+        },
+        "time_accounting": {
+          "requests": 6145,
+          "first_client_start_ns": 84930664417708,
+          "last_completion_ns": 85890712781583,
+          "span_ns": 960048363875,
+          "totals_ns": {
+            "client": 931254921406,
+            "worker_within_client": 902607902508,
+            "client_end_to_event_completion": 27071191721,
+            "between_requests": 1722250748
+          },
+          "client_fraction_of_span": 0.9700083417123047,
+          "outside_client_fraction_of_span": 0.029991658287695344,
+          "seconds_distributions": {
+            "client": {
+              "count": 6145,
+              "mean": 0.1515467732149715,
+              "p50": 0.151619875,
+              "p95": 0.15191505840000002,
+              "p99": 0.15202831348,
+              "min": 0.14643,
+              "max": 0.171756917
+            },
+            "worker_within_client": {
+              "count": 6145,
+              "mean": 0.14688493124621643,
+              "p50": 0.146980083,
+              "p95": 0.14720206660000001,
+              "p99": 0.14728572852,
+              "min": 0.141919375,
+              "max": 0.166896791
+            },
+            "client_end_to_event_completion": {
+              "count": 6145,
+              "mean": 0.004405401419202604,
+              "p50": 0.004403708,
+              "p95": 0.0044788994,
+              "p99": 0.004520083,
+              "min": 0.00422575,
+              "max": 0.005304459
+            },
+            "between_requests": {
+              "count": 6144,
+              "mean": 0.00028031424934895835,
+              "p50": 5.5583e-05,
+              "p95": 6.9e-05,
+              "p99": 0.007665539309999997,
+              "min": 2.9916e-05,
+              "max": 0.009893291
+            }
+          },
+          "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+          "limits": [
+            "Client time includes host IPC and worker response; its fraction is not device utilization.",
+            "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+            "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+            "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+          ]
+        }
+      }
+    },
+    "batch_end_ns": 85890712781583,
+    "completed_input_identity": "fd7c86d94c94dba09f0851f2b6f164c219f96ecfda32d3ab79265c03909fae5b",
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 84810653809625,
+    "window_start_ns": 84900653809625,
+    "window_end_ns": 84930653809625,
+    "observe_start_ns": 84930653809625,
+    "observe_end_ns": 85890653809625,
+    "actual_drain_end_ns": 85890721198958,
+    "drain_end_ns": 86010653809625,
+    "events_file": "SAT-0-C.jsonl.gz"
+  },
+  "SAT-1-G": {
+    "passed": true,
+    "id": "SAT-1-G",
+    "config": {
+      "id": "SAT-1-G",
+      "phase": "saturated_thermal",
+      "mode": "saturated",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 1200,
+      "setup_seconds": 120,
+      "observe_seconds": 960,
+      "drain_seconds": 120,
+      "saturated_request_cap": 26095,
+      "cap_source": "independent pilot fastest external full request, ceiling(duration / fastest)"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 36615,
+        "requests": 22777,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "completed": 22762,
+        "observed_completed": 22761,
+        "request_cap": 26095,
+        "censored": false,
+        "actual_end_ns": 87090654342916,
+        "observation_throughput_per_second": 23.709375,
+        "completed_per_minute": [
+          1429,
+          1428,
+          1421,
+          1428,
+          1427,
+          1424,
+          1418,
+          1421,
+          1422,
+          1420,
+          1420,
+          1422,
+          1420,
+          1421,
+          1420,
+          1420
+        ],
+        "outer_seconds": {
+          "count": 22762,
+          "mean": 0.03741214840673052,
+          "p50": 0.0373294375,
+          "p95": 0.0382501955,
+          "p99": 0.03875515013,
+          "min": 0.036439,
+          "max": 0.055628875
+        },
+        "time_accounting": {
+          "requests": 22762,
+          "first_client_start_ns": 86130664466916,
+          "last_completion_ns": 87090654303125,
+          "span_ns": 959989836209,
+          "totals_ns": {
+            "client": 851575322034,
+            "worker_within_client": 740668789096,
+            "client_end_to_event_completion": 99725848845,
+            "between_requests": 8688665330
+          },
+          "client_fraction_of_span": 0.8870670187476891,
+          "outside_client_fraction_of_span": 0.1129329812523109,
+          "seconds_distributions": {
+            "client": {
+              "count": 22762,
+              "mean": 0.03741214840673052,
+              "p50": 0.0373294375,
+              "p95": 0.0382501955,
+              "p99": 0.03875515013,
+              "min": 0.036439,
+              "max": 0.055628875
+            },
+            "worker_within_client": {
+              "count": 22762,
+              "mean": 0.03253970604938055,
+              "p50": 0.032457937500000006,
+              "p95": 0.033399209,
+              "p99": 0.033856104639999995,
+              "min": 0.03158475,
+              "max": 0.050523583
+            },
+            "client_end_to_event_completion": {
+              "count": 22762,
+              "mean": 0.004381242810166067,
+              "p50": 0.004372292,
+              "p95": 0.0044485398999999995,
+              "p99": 0.00449328237,
+              "min": 0.00421325,
+              "max": 0.005456792
+            },
+            "between_requests": {
+              "count": 22761,
+              "mean": 0.0003817347801063222,
+              "p50": 4.7042e-05,
+              "p95": 5.8584e-05,
+              "p99": 0.012581849600000012,
+              "min": 2.475e-05,
+              "max": 0.016908209
+            }
+          },
+          "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+          "limits": [
+            "Client time includes host IPC and worker response; its fraction is not device utilization.",
+            "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+            "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+            "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+          ]
+        }
+      }
+    },
+    "batch_end_ns": 87090654303125,
+    "completed_input_identity": "078deac48afa915d3dc6bba2b1f26504a1a140cd108572c0971061ca465397fc",
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 86010653809625,
+    "window_start_ns": 86100653809625,
+    "window_end_ns": 86130653809625,
+    "observe_start_ns": 86130653809625,
+    "observe_end_ns": 87090653809625,
+    "actual_drain_end_ns": 87090670003000,
+    "drain_end_ns": 87210653809625,
+    "events_file": "SAT-1-G.jsonl.gz"
+  },
+  "SAT-2-G": {
+    "passed": true,
+    "id": "SAT-2-G",
+    "config": {
+      "id": "SAT-2-G",
+      "phase": "saturated_thermal",
+      "mode": "saturated",
+      "engine": "G",
+      "foreground": null,
+      "phase_offset_seconds": 2400,
+      "setup_seconds": 120,
+      "observe_seconds": 960,
+      "drain_seconds": 120,
+      "saturated_request_cap": 26095,
+      "cap_source": "independent pilot fastest external full request, ceiling(duration / fastest)"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 38419,
+        "requests": 22749,
+        "stage_calls": 0,
+        "placement_controls": [],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "completed": 22734,
+        "observed_completed": 22733,
+        "request_cap": 26095,
+        "censored": false,
+        "actual_end_ns": 88290673699208,
+        "observation_throughput_per_second": 23.680208333333333,
+        "completed_per_minute": [
+          1429,
+          1428,
+          1426,
+          1426,
+          1430,
+          1422,
+          1421,
+          1421,
+          1419,
+          1418,
+          1419,
+          1416,
+          1418,
+          1416,
+          1412,
+          1412
+        ],
+        "outer_seconds": {
+          "count": 22734,
+          "mean": 0.03746137748126155,
+          "p50": 0.0373837915,
+          "p95": 0.03843084945,
+          "p99": 0.038922063029999995,
+          "min": 0.036359583,
+          "max": 0.055441917
+        },
+        "time_accounting": {
+          "requests": 22734,
+          "first_client_start_ns": 87330657702708,
+          "last_completion_ns": 88290673655666,
+          "span_ns": 960015952958,
+          "totals_ns": {
+            "client": 851646955659,
+            "worker_within_client": 740764019159,
+            "client_end_to_event_completion": 99626441858,
+            "between_requests": 8742555441
+          },
+          "client_fraction_of_span": 0.8871175036570033,
+          "outside_client_fraction_of_span": 0.11288249634299678,
+          "seconds_distributions": {
+            "client": {
+              "count": 22734,
+              "mean": 0.03746137748126155,
+              "p50": 0.0373837915,
+              "p95": 0.03843084945,
+              "p99": 0.038922063029999995,
+              "min": 0.036359583,
+              "max": 0.055441917
+            },
+            "worker_within_client": {
+              "count": 22734,
+              "mean": 0.03258397198728776,
+              "p50": 0.032502021000000006,
+              "p95": 0.033570501749999995,
+              "p99": 0.034031474359999994,
+              "min": 0.031539833,
+              "max": 0.050274792
+            },
+            "client_end_to_event_completion": {
+              "count": 22734,
+              "mean": 0.0043822662909298845,
+              "p50": 0.004373541,
+              "p95": 0.00444479135,
+              "p99": 0.0044796948100000004,
+              "min": 0.004203167,
+              "max": 0.005871208
+            },
+            "between_requests": {
+              "count": 22733,
+              "mean": 0.0003845755263713544,
+              "p50": 4.6833e-05,
+              "p95": 5.8625e-05,
+              "p99": 0.012665470440000007,
+              "min": 2.5125e-05,
+              "max": 0.017616625
+            }
+          },
+          "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+          "limits": [
+            "Client time includes host IPC and worker response; its fraction is not device utilization.",
+            "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+            "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+            "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+          ]
+        }
+      }
+    },
+    "batch_end_ns": 88290673655666,
+    "completed_input_identity": "4060de35512d0452c681bf06351e325552690d4f432161dcaa8b75d82a4f7640",
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 87210653809625,
+    "window_start_ns": 87300653809625,
+    "window_end_ns": 87330653809625,
+    "observe_start_ns": 87330653809625,
+    "observe_end_ns": 88290653809625,
+    "actual_drain_end_ns": 88290689323708,
+    "drain_end_ns": 88410653809625,
+    "events_file": "SAT-2-G.jsonl.gz"
+  },
+  "SAT-3-C": {
+    "passed": true,
+    "id": "SAT-3-C",
+    "config": {
+      "id": "SAT-3-C",
+      "phase": "saturated_thermal",
+      "mode": "saturated",
+      "engine": "C",
+      "foreground": null,
+      "phase_offset_seconds": 3600,
+      "setup_seconds": 120,
+      "observe_seconds": 960,
+      "drain_seconds": 120,
+      "saturated_request_cap": 6368,
+      "cap_source": "independent pilot fastest external full request, ceiling(duration / fastest)"
+    },
+    "hosts": {
+      "inference": {
+        "pid": 40255,
+        "requests": 6147,
+        "stage_calls": 98352,
+        "placement_controls": [
+          {
+            "request_id": "control-0",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-1",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-2",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-3",
+            "observed_ANE_requests": 16
+          },
+          {
+            "request_id": "control-4",
+            "observed_ANE_requests": 16
+          }
+        ],
+        "closed": true
+      }
+    },
+    "service": {
+      "inference": {
+        "completed": 6132,
+        "observed_completed": 6131,
+        "request_cap": 6368,
+        "censored": false,
+        "actual_end_ns": 89490702394750,
+        "observation_throughput_per_second": 6.386458333333334,
+        "completed_per_minute": [
+          383,
+          383,
+          384,
+          383,
+          383,
+          384,
+          383,
+          383,
+          383,
+          384,
+          383,
+          383,
+          383,
+          383,
+          383,
+          383
+        ],
+        "outer_seconds": {
+          "count": 6132,
+          "mean": 0.15189102766976517,
+          "p50": 0.1519489585,
+          "p95": 0.1523102269,
+          "p99": 0.15247152177,
+          "min": 0.147152541,
+          "max": 0.171100709
+        },
+        "time_accounting": {
+          "requests": 6132,
+          "first_client_start_ns": 88530662958166,
+          "last_completion_ns": 89490702344791,
+          "span_ns": 960039386625,
+          "totals_ns": {
+            "client": 931395781671,
+            "worker_within_client": 902739156695,
+            "client_end_to_event_completion": 26935308201,
+            "between_requests": 1708296753
+          },
+          "client_fraction_of_span": 0.9701641356041693,
+          "outside_client_fraction_of_span": 0.02983586439583072,
+          "seconds_distributions": {
+            "client": {
+              "count": 6132,
+              "mean": 0.15189102766976517,
+              "p50": 0.1519489585,
+              "p95": 0.1523102269,
+              "p99": 0.15247152177,
+              "min": 0.147152541,
+              "max": 0.171100709
+            },
+            "worker_within_client": {
+              "count": 6132,
+              "mean": 0.14721773592547294,
+              "p50": 0.147296521,
+              "p95": 0.1475973625,
+              "p99": 0.14771640296,
+              "min": 0.142053292,
+              "max": 0.166525958
+            },
+            "client_end_to_event_completion": {
+              "count": 6132,
+              "mean": 0.004392581246086106,
+              "p50": 0.004390896,
+              "p95": 0.004466417,
+              "p99": 0.00451735204,
+              "min": 0.004220667,
+              "max": 0.004767209
+            },
+            "between_requests": {
+              "count": 6131,
+              "mean": 0.0002786326460610015,
+              "p50": 5.5084e-05,
+              "p95": 6.84785e-05,
+              "p99": 0.0076610162,
+              "min": 3.1083e-05,
+              "max": 0.009858125
+            }
+          },
+          "scope": "Clock partition over first client start through last event completion, which can extend into drain. Fixed observation throughput remains a separate metric.",
+          "limits": [
+            "Client time includes host IPC and worker response; its fraction is not device utilization.",
+            "Post-client interval includes metadata assertions, output digest and finite-value validation before the event timestamp.",
+            "Between-request interval includes event logging, periodic memory forecasts and next-request preparation; these costs were not separately instrumented.",
+            "No subtraction or correction is applied to measured throughput. This partition alone cannot establish thermal throttling or the cause of a duration change."
+          ]
+        }
+      }
+    },
+    "batch_end_ns": 89490702344791,
+    "completed_input_identity": "5dc350cf43b5d4bab099df80fbee39a0e0792af761c09faa3fd01a6944abd240",
+    "inference_arrival_identity": null,
+    "scheduled_start_ns": 88410653809625,
+    "window_start_ns": 88500653809625,
+    "window_end_ns": 88530653809625,
+    "observe_start_ns": 88530653809625,
+    "observe_end_ns": 89490653809625,
+    "actual_drain_end_ns": 89490710726166,
+    "drain_end_ns": 89610653809625,
+    "events_file": "SAT-3-C.jsonl.gz"
+  }
+}

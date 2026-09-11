@@ -1,0 +1,487 @@
+{
+  "historical_import": true,
+  "scope": "A seven-level bisection of one model's first unexplained Q8 residual, down to a single 32-term dot product. The device was not repaired and no reference or quality result was changed.",
+  "target": {
+    "model": "qwen8b",
+    "document": "chinese/tokenize",
+    "output_channel": 11793,
+    "token_position": 22
+  },
+  "guards": {
+    "every_level_parent_equals_independent_add": true,
+    "every_level_add_equals_frozen_RZA_reference": true,
+    "onehot_weight_numeric_mismatches": 0
+  },
+  "bisection": [
+    {
+      "depth": 0,
+      "parent_block_range": [
+        0,
+        127
+      ],
+      "discrepant_side": "right",
+      "selected_block_range": [
+        64,
+        127
+      ],
+      "guards": {
+        "parent_vs_add": true,
+        "add_vs_RZA": true
+      },
+      "pred_left": 0.031829833984375,
+      "pred_right": -0.07867431640625,
+      "pred_parent": -0.046844482421875,
+      "parent": -0.046905517578125,
+      "left": 0.031829833984375,
+      "right": -0.0787353515625,
+      "add": -0.046905517578125
+    },
+    {
+      "depth": 1,
+      "parent_block_range": [
+        64,
+        127
+      ],
+      "discrepant_side": "left",
+      "selected_block_range": [
+        64,
+        95
+      ],
+      "guards": {
+        "parent_vs_add": true,
+        "add_vs_RZA": true
+      },
+      "pred_left": -0.097412109375,
+      "pred_right": 0.01873779296875,
+      "pred_parent": -0.07867431640625,
+      "parent": -0.0787353515625,
+      "left": -0.09747314453125,
+      "right": 0.01873779296875,
+      "add": -0.0787353515625
+    },
+    {
+      "depth": 2,
+      "parent_block_range": [
+        64,
+        95
+      ],
+      "discrepant_side": "right",
+      "selected_block_range": [
+        80,
+        95
+      ],
+      "guards": {
+        "parent_vs_add": true,
+        "add_vs_RZA": true
+      },
+      "pred_left": -0.0667724609375,
+      "pred_right": -0.0306549072265625,
+      "pred_parent": -0.097412109375,
+      "parent": -0.09747314453125,
+      "left": -0.0667724609375,
+      "right": -0.0307159423828125,
+      "add": -0.09747314453125
+    },
+    {
+      "depth": 3,
+      "parent_block_range": [
+        80,
+        95
+      ],
+      "discrepant_side": "right",
+      "selected_block_range": [
+        88,
+        95
+      ],
+      "guards": {
+        "parent_vs_add": true,
+        "add_vs_RZA": true
+      },
+      "pred_left": -0.003421783447265625,
+      "pred_right": -0.0272369384765625,
+      "pred_parent": -0.0306549072265625,
+      "parent": -0.0307159423828125,
+      "left": -0.003421783447265625,
+      "right": -0.0272979736328125,
+      "add": -0.0307159423828125
+    },
+    {
+      "depth": 4,
+      "parent_block_range": [
+        88,
+        95
+      ],
+      "discrepant_side": "left",
+      "selected_block_range": [
+        88,
+        91
+      ],
+      "guards": {
+        "parent_vs_add": true,
+        "add_vs_RZA": true
+      },
+      "pred_left": -0.044403076171875,
+      "pred_right": 0.0171661376953125,
+      "pred_parent": -0.0272369384765625,
+      "parent": -0.0272979736328125,
+      "left": -0.044464111328125,
+      "right": 0.0171661376953125,
+      "add": -0.0272979736328125
+    },
+    {
+      "depth": 5,
+      "parent_block_range": [
+        88,
+        91
+      ],
+      "discrepant_side": "right",
+      "selected_block_range": [
+        90,
+        91
+      ],
+      "guards": {
+        "parent_vs_add": true,
+        "add_vs_RZA": true
+      },
+      "pred_left": 0.0211029052734375,
+      "pred_right": -0.06549072265625,
+      "pred_parent": -0.044403076171875,
+      "parent": -0.044464111328125,
+      "left": 0.0211029052734375,
+      "right": -0.0655517578125,
+      "add": -0.044464111328125
+    },
+    {
+      "depth": 6,
+      "parent_block_range": [
+        90,
+        91
+      ],
+      "discrepant_side": "right",
+      "selected_block_range": [
+        91,
+        91
+      ],
+      "guards": {
+        "parent_vs_add": true,
+        "add_vs_RZA": true
+      },
+      "pred_left": -0.005645751953125,
+      "pred_right": -0.059844970703125,
+      "pred_parent": -0.06549072265625,
+      "parent": -0.0655517578125,
+      "left": -0.005645751953125,
+      "right": -0.05987548828125,
+      "add": -0.0655517578125
+    }
+  ],
+  "leaf": {
+    "block": 91,
+    "input_channels": [
+      2912,
+      2943
+    ],
+    "exact_dot": -0.05984365940093994,
+    "exact_integer": {
+      "numerator": -1004010,
+      "scale_exponent": -24
+    },
+    "model_prediction": -0.059844970703125,
+    "ane_actual": -0.05987548828125,
+    "not_explained_by_final_midpoint_rounding": true,
+    "terms": [
+      {
+        "input_channel": 2912,
+        "decoded_weight": 0.01495361328125,
+        "input": -0.1640625,
+        "exact_product": -0.002453327178955078
+      },
+      {
+        "input_channel": 2913,
+        "decoded_weight": -0.01495361328125,
+        "input": -0.02734375,
+        "exact_product": 0.0004088878631591797
+      },
+      {
+        "input_channel": 2914,
+        "decoded_weight": 0.0299072265625,
+        "input": 0.01953125,
+        "exact_product": 0.0005841255187988281
+      },
+      {
+        "input_channel": 2915,
+        "decoded_weight": -0.052337646484375,
+        "input": 0.09765625,
+        "exact_product": -0.005111098289489746
+      },
+      {
+        "input_channel": 2916,
+        "decoded_weight": 0.007476806640625,
+        "input": -0.0078125,
+        "exact_product": -5.841255187988281e-05
+      },
+      {
+        "input_channel": 2917,
+        "decoded_weight": 0.0,
+        "input": 0.0234375,
+        "exact_product": 0.0
+      },
+      {
+        "input_channel": 2918,
+        "decoded_weight": -0.04486083984375,
+        "input": 0.0703125,
+        "exact_product": -0.003154277801513672
+      },
+      {
+        "input_channel": 2919,
+        "decoded_weight": -0.022430419921875,
+        "input": 0.0234375,
+        "exact_product": -0.0005257129669189453
+      },
+      {
+        "input_channel": 2920,
+        "decoded_weight": 0.022430419921875,
+        "input": -0.1328125,
+        "exact_product": -0.0029790401458740234
+      },
+      {
+        "input_channel": 2921,
+        "decoded_weight": 0.007476806640625,
+        "input": 0.0390625,
+        "exact_product": 0.00029206275939941406
+      },
+      {
+        "input_channel": 2922,
+        "decoded_weight": -0.04486083984375,
+        "input": -0.02734375,
+        "exact_product": 0.001226663589477539
+      },
+      {
+        "input_channel": 2923,
+        "decoded_weight": 0.0,
+        "input": 0.0234375,
+        "exact_product": 0.0
+      },
+      {
+        "input_channel": 2924,
+        "decoded_weight": -0.01495361328125,
+        "input": 0.03125,
+        "exact_product": -0.0004673004150390625
+      },
+      {
+        "input_channel": 2925,
+        "decoded_weight": -0.04486083984375,
+        "input": 0.109375,
+        "exact_product": -0.004906654357910156
+      },
+      {
+        "input_channel": 2926,
+        "decoded_weight": -0.04486083984375,
+        "input": 0.0390625,
+        "exact_product": -0.0017523765563964844
+      },
+      {
+        "input_channel": 2927,
+        "decoded_weight": 0.007476806640625,
+        "input": 0.00390625,
+        "exact_product": 2.9206275939941406e-05
+      },
+      {
+        "input_channel": 2928,
+        "decoded_weight": 0.037384033203125,
+        "input": 0.02734375,
+        "exact_product": 0.0010222196578979492
+      },
+      {
+        "input_channel": 2929,
+        "decoded_weight": 0.037384033203125,
+        "input": 0.02734375,
+        "exact_product": 0.0010222196578979492
+      },
+      {
+        "input_channel": 2930,
+        "decoded_weight": 0.037384033203125,
+        "input": -0.06640625,
+        "exact_product": -0.0024825334548950195
+      },
+      {
+        "input_channel": 2931,
+        "decoded_weight": 0.04486083984375,
+        "input": -0.02734375,
+        "exact_product": -0.001226663589477539
+      },
+      {
+        "input_channel": 2932,
+        "decoded_weight": 0.052337646484375,
+        "input": -0.10546875,
+        "exact_product": -0.005519986152648926
+      },
+      {
+        "input_channel": 2933,
+        "decoded_weight": 0.022430419921875,
+        "input": -0.32421875,
+        "exact_product": -0.00727236270904541
+      },
+      {
+        "input_channel": 2934,
+        "decoded_weight": -0.059814453125,
+        "input": 0.234375,
+        "exact_product": -0.014019012451171875
+      },
+      {
+        "input_channel": 2935,
+        "decoded_weight": -0.007476806640625,
+        "input": -0.02734375,
+        "exact_product": 0.00020444393157958984
+      },
+      {
+        "input_channel": 2936,
+        "decoded_weight": 0.007476806640625,
+        "input": -0.03125,
+        "exact_product": -0.00023365020751953125
+      },
+      {
+        "input_channel": 2937,
+        "decoded_weight": 0.01495361328125,
+        "input": -0.09375,
+        "exact_product": -0.0014019012451171875
+      },
+      {
+        "input_channel": 2938,
+        "decoded_weight": -0.022430419921875,
+        "input": 0.05859375,
+        "exact_product": -0.0013142824172973633
+      },
+      {
+        "input_channel": 2939,
+        "decoded_weight": 0.0299072265625,
+        "input": -0.0625,
+        "exact_product": -0.00186920166015625
+      },
+      {
+        "input_channel": 2940,
+        "decoded_weight": -0.01495361328125,
+        "input": -0.03515625,
+        "exact_product": 0.0005257129669189453
+      },
+      {
+        "input_channel": 2941,
+        "decoded_weight": 0.0,
+        "input": 0.0703125,
+        "exact_product": 0.0
+      },
+      {
+        "input_channel": 2942,
+        "decoded_weight": 0.01495361328125,
+        "input": 0.01171875,
+        "exact_product": 0.00017523765563964844
+      },
+      {
+        "input_channel": 2943,
+        "decoded_weight": -0.052337646484375,
+        "input": 0.1640625,
+        "exact_product": -0.008586645126342773
+      }
+    ]
+  },
+  "counterfactual": {
+    "scope": "one coordinate; saved actual leaf value injected into unchanged reference; not a device repair",
+    "source_leaf": -0.05987548828125,
+    "trace": [
+      {
+        "depth": 6,
+        "side": "right",
+        "operands": [
+          -0.005645751953125,
+          -0.05987548828125
+        ],
+        "corrected_parent": -0.0655517578125,
+        "actual_parent": -0.0655517578125
+      },
+      {
+        "depth": 5,
+        "side": "right",
+        "operands": [
+          0.0211029052734375,
+          -0.0655517578125
+        ],
+        "corrected_parent": -0.044464111328125,
+        "actual_parent": -0.044464111328125
+      },
+      {
+        "depth": 4,
+        "side": "left",
+        "operands": [
+          -0.044464111328125,
+          0.0171661376953125
+        ],
+        "corrected_parent": -0.0272979736328125,
+        "actual_parent": -0.0272979736328125
+      },
+      {
+        "depth": 3,
+        "side": "right",
+        "operands": [
+          -0.003421783447265625,
+          -0.0272979736328125
+        ],
+        "corrected_parent": -0.0307159423828125,
+        "actual_parent": -0.0307159423828125
+      },
+      {
+        "depth": 2,
+        "side": "right",
+        "operands": [
+          -0.0667724609375,
+          -0.0307159423828125
+        ],
+        "corrected_parent": -0.09747314453125,
+        "actual_parent": -0.09747314453125
+      },
+      {
+        "depth": 1,
+        "side": "left",
+        "operands": [
+          -0.09747314453125,
+          0.01873779296875
+        ],
+        "corrected_parent": -0.0787353515625,
+        "actual_parent": -0.0787353515625
+      },
+      {
+        "depth": 0,
+        "side": "right",
+        "operands": [
+          0.031829833984375,
+          -0.0787353515625
+        ],
+        "corrected_parent": -0.046905517578125,
+        "actual_parent": -0.046905517578125
+      }
+    ],
+    "root_pre": -0.046905517578125,
+    "root_code": -2,
+    "root_matches_original_device": true,
+    "unmodified_reference_root_pre": -0.046844482421875
+  },
+  "open_hypothesis": {
+    "statement": "Two of the 32 exact products fall below the smallest normal binary16 value 2^-14, so subnormal handling before accumulation is the next candidate rule.",
+    "status": "unverified",
+    "requirement": "A pre-registered rule must explain all six deviations in this block and introduce no new ones before it counts as a mechanism."
+  },
+  "unlocalized_residuals": 12,
+  "device_calls": 89,
+  "sources": {
+    "results/g1-localize-20260910/summary.json": "f633a6c67c9499d748e4d15ecd5a285188a0dac724faf93725c932940ae67fbf",
+    "results/g1-localize-20260910/leaf/target-32-terms.json": "9bf1e735a20ab2dcc044f815acf679dfb3de7f9ef516cd008fe9e51ee240da17",
+    "results/g1-localize-20260910/leaf/single-coordinate-counterfactual.json": "6d24f81bb95e8ab682405b33ef4a0fa6425aefecfc87c69914a61213b079f05b",
+    "results/g1-localize-20260910/PROTOCOL.json": "bab3f24099fb5f4d3c119d9bf479098aa25107df750cb669eba22ac18c0d2386",
+    "results/g1-localize-20260910/depth0/decision.json": "59a150ae651089c4aec9b4c16b03e803d29e2a9471e4e210d3ae3a1a08acc87f",
+    "results/g1-localize-20260910/depth1/decision.json": "3e4ae59dadba6709dbfb8e1f155f399a32be16158ff614295e095f4b4b83dab7",
+    "results/g1-localize-20260910/depth2/decision.json": "fee44e2014c0f3a8834545927ae1ccec4731c7a3380edb47191b24f61c3cf3f9",
+    "results/g1-localize-20260910/depth3/decision.json": "0e153e7daa8d081b2776864eed0a20b36c00efeedd453977d45a62344b8531b2",
+    "results/g1-localize-20260910/depth4/decision.json": "f0829ed58062b3cce72b9f1290c5c806cc61426bb024a0c8b8204628c456430e",
+    "results/g1-localize-20260910/depth5/decision.json": "0d76dce8ba10fc8f2667f3907e3de6e0cfec30e4bcb130b01bf201f896c51ef1",
+    "results/g1-localize-20260910/depth6/decision.json": "a95d48ce1aac7978ebd9b262dffe1f2dc0db43235b66d7c2b9c6bc8e64c95298"
+  }
+}

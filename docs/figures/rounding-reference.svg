@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="324" viewBox="0 0 900 324" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">One recorded output, two arithmetic references</title>
+<desc id="fig-desc">The same Core AI W8A8 output has a relative L2 of about 0.000109 against the reference selected before the run, which rounds Q8 midpoints away from zero, and about 0.211 against the ties-to-even diagnostic reference. This is a change of reference, not a repair of the output.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="324" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">One recorded output, two arithmetic references</text>
+<text x="40" y="50" font-size="12" class="t-muted">relative L2 of one control output against two frozen references · logarithmic axis</text>
+<text x="40" y="68" font-size="10.5" class="t-muted">Apple M5 Pro · Core AI W8A8, 128 layers · round 1, original-input control</text>
+<path d="M284 96 L284 214" fill="none" class="s-grid" stroke-width="1"/>
+<path d="M378 96 L378 214" fill="none" class="s-grid" stroke-width="1"/>
+<path d="M472 96 L472 214" fill="none" class="s-grid" stroke-width="1"/>
+<path d="M566 96 L566 214" fill="none" class="s-grid" stroke-width="1"/>
+<text x="178" y="128" font-size="11.5" class="t-ink sb" text-anchor="end">Q8 RZA</text>
+<text x="178" y="143" font-size="10.5" class="t-muted" text-anchor="end">ties away from zero</text>
+<circle cx="287.348" cy="128" r="7" class="f-teal"/>
+<text x="301.348" y="132" font-size="13" class="t-teal b num">0.000109</text>
+<text x="178" y="180" font-size="11.5" class="t-ink sb" text-anchor="end">Q8 RNE</text>
+<text x="178" y="195" font-size="10.5" class="t-muted" text-anchor="end">ties to even</text>
+<circle cx="596.559" cy="180" r="7" class="f-amber"/>
+<text x="610.559" y="184" font-size="13" class="t-amber b num">0.211</text>
+<path d="M287.348 96 L287.348 214" fill="none" class="s-muted" stroke-width="1" stroke-dasharray="2 4"/>
+<path d="M596.559 96 L596.559 214" fill="none" class="s-muted" stroke-width="1" stroke-dasharray="2 4"/>
+<path d="M287.348 214 L596.559 214" fill="none" class="s-muted" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="441.953" y="208" font-size="10.5" class="t-muted" text-anchor="middle">≈ 1 950× apart</text>
+<path d="M190 240 L660 240" fill="none" class="s-rule" stroke-width="1"/>
+<text x="190" y="256" font-size="10.5" class="t-muted" text-anchor="middle">10⁻⁵</text>
+<text x="284" y="256" font-size="10.5" class="t-muted" text-anchor="middle">10⁻⁴</text>
+<text x="378" y="256" font-size="10.5" class="t-muted" text-anchor="middle">10⁻³</text>
+<text x="472" y="256" font-size="10.5" class="t-muted" text-anchor="middle">10⁻²</text>
+<text x="566" y="256" font-size="10.5" class="t-muted" text-anchor="middle">10⁻¹</text>
+<text x="660" y="256" font-size="10.5" class="t-muted" text-anchor="middle">1</text>
+<text x="40" y="288" font-size="10.5" class="t-muted">Both residuals compare the same recorded output, byte for byte (one matching SHA-256), against two different frozen references.</text>
+</svg>
