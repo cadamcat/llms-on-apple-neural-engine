@@ -31,20 +31,13 @@ and numerical evidence are therefore recorded as separate fields.
 
 ## Reproduce
 
-```sh
-.venv/bin/ane-scope run --suite compatibility --output runs/my-groups
-.venv/bin/ane-scope verify runs/my-groups
-```
-
-Each case writes `flattened-scale-hypothesis.json` beside its numerical record,
-so the control pair above is reproduced directly. Without a device, the stored
-records carry the same fields:
+The [archived reproducer](repro/README.md) contains the original exporter and Swift host, synthetic inputs and recorded outputs. Verify those outputs offline from the repository root:
 
 ```sh
-python -c "import json;d=json.load(open('results/fresh/smoke.json'));\
-r=next(x for x in d['runs'] if x['case_id']=='coreai-group-native64');\
-print(r['numerical']['comparisons'][0]['relative_L2'], r['flattened-scale-hypothesis']['passed'])"
+python findings/coreai-flattened-scale/repro/verify.py
 ```
+
+The archive README gives the environment, device commands and upstream issue status. Its small device runner has not been rerun; the bundled output belongs to the recorded smoke experiment.
 
 ## What this does not show
 

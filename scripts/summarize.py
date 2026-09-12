@@ -230,6 +230,9 @@ def claims():
             'findings/fp16-dot-residual/README.md': detail[1:3],
             'findings/coreai-flattened-scale/README.md': [detail[0],
                                                           str(native['numeric_mismatches'])],
+            'findings/coreai-flattened-scale/repro/README.md': [detail[0],
+                str(native['numeric_mismatches']),
+                str(math.prod(smoke_case('coreai-group-native64')['output_shape']))],
             'findings/split-decomposition-cost/README.md': [span(split_ratios(split), 2, '×')],
             'workarounds/README.md': [span(split_ratios(split), 2, '×'),
                                       ratio('coreai-w8a8-128'), f'{int(leak[0]):,}']}

@@ -1,0 +1,10 @@
+{
+  "files": {
+    "group_codes.npy": "4590ae03ecbd26b77eb03a10c937a629affede036365efd0a5117f9125c4558e",
+    "group_scales.npy": "173c094e1fc6e878e39b62af58d4bcd307f89f7470315c907521ec0d5c16adf4",
+    "group_input_scales.npy": "e57036ef3caed826fb009d8ca502f6de37395a19d9574927c5ec66295fac7e11",
+    "group_input.raw": "90fca671e478c0442955ebf59e432ea8abddccd315c2b722b9436a4a0f92f0a5",
+    "reference-group.npy": "4a48078d94b1e3888658c5f81024ed6186bbbafe48d81510ab399ab83aa50c19",
+    "reference-group-wrong.npy": "58602da62f536d2fcfca5f7ce1cabe522284948f00cab40d693120300bc6280a"
+  }
+}
