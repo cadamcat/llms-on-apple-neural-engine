@@ -6,7 +6,7 @@ This archive supports the [grouped-scale finding](https://github.com/cadamcat/ll
 
 ## Upstream tracking
 
-**Issue:** Not submitted; no issue number assigned. The intended repository is [apple/coreai-torch](https://github.com/apple/coreai-torch/issues). When submitted, this entry will link the issue number and any subsequent Apple Feedback reference.
+**Issue:** [apple/coreai-torch #93](https://github.com/apple/coreai-torch/issues/93), submitted on 2026-09-12. The report links the [reproduction snapshot](https://github.com/cadamcat/llms-on-apple-neural-engine/tree/ba79d22a0df214e3dcb9a1e9baeff02caaa137d1/findings/coreai-flattened-scale/repro). No Apple Feedback reference has been assigned.
 
 ## Verify the recorded output without a device
 
