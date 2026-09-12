@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">Qwen3-4B: energy per token</title>
+<desc id="fig-desc">Component energy per token on both paths, at six context sizes, with timing bounds.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="450" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">Qwen3-4B: energy per token</text>
+<text x="40" y="50" font-size="12" class="t-muted">Complete FP16 model · M5 Pro · Core AI on both paths · warmed stage blocks</text>
+<text x="40" y="68" font-size="10.5" class="t-muted">CPU + GPU + ANE software energy; the same block supplies rate and energy.</text>
+<circle cx="325" cy="94" r="4.5" class="f-blue"/>
+<text x="338" y="98" font-size="10.5" class="t-muted">GPU path</text>
+<circle cx="409.8" cy="94" r="4.5" class="f-teal"/>
+<text x="422.8" y="98" font-size="10.5" class="t-muted">ANE path</text>
+<text x="85" y="131" font-size="12" class="t-ink sb">Prefill · mJ / input token</text>
+<path d="M85 340 L400 340" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="344" font-size="10.5" class="t-muted" text-anchor="end">0</text>
+<path d="M85 304.545 L400 304.545" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="308.545" font-size="10.5" class="t-muted" text-anchor="end">10</text>
+<path d="M85 269.091 L400 269.091" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="273.091" font-size="10.5" class="t-muted" text-anchor="end">20</text>
+<path d="M85 233.636 L400 233.636" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="237.636" font-size="10.5" class="t-muted" text-anchor="end">30</text>
+<path d="M85 198.182 L400 198.182" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="202.182" font-size="10.5" class="t-muted" text-anchor="end">40</text>
+<path d="M85 162.727 L400 162.727" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="166.727" font-size="10.5" class="t-muted" text-anchor="end">50</text>
+<text x="111.25" y="358" font-size="10.5" class="t-muted" text-anchor="middle">500</text>
+<text x="163.75" y="358" font-size="10.5" class="t-muted" text-anchor="middle">1K</text>
+<text x="216.25" y="358" font-size="10.5" class="t-muted" text-anchor="middle">2K</text>
+<text x="268.75" y="358" font-size="10.5" class="t-muted" text-anchor="middle">4K</text>
+<text x="321.25" y="358" font-size="10.5" class="t-muted" text-anchor="middle">8K</text>
+<text x="373.75" y="358" font-size="10.5" class="t-muted" text-anchor="middle">16K</text>
+<text x="242.5" y="376" font-size="10.5" class="t-muted" text-anchor="middle">Input context (tokens)</text>
+<rect x="91.9" y="291.267" width="17.85" height="48.733" rx="3" class="f-blue"/>
+<text x="100.825" y="282.313" font-size="10.5" class="t-blue" text-anchor="middle">13.7</text>
+<path d="M100.825 296.866 L100.825 290.313" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M96.825 296.866 L104.825 296.866" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M96.825 290.313 L104.825 290.313" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="112.75" y="305.852" width="17.85" height="34.148" rx="3" class="f-teal"/>
+<text x="121.675" y="297.69" font-size="10.5" class="t-teal" text-anchor="middle">9.6</text>
+<path d="M121.675 306.932 L121.675 305.69" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M117.675 306.932 L125.675 306.932" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M117.675 305.69 L125.675 305.69" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="144.4" y="294.877" width="17.85" height="45.123" rx="3" class="f-blue"/>
+<text x="153.325" y="270.779" font-size="10.5" class="t-blue" text-anchor="middle">12.7</text>
+<path d="M153.325 304.192 L153.325 292.779" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M149.325 304.192 L157.325 304.192" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M149.325 292.779 L157.325 292.779" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="165.25" y="306.642" width="17.85" height="33.358" rx="3" class="f-teal"/>
+<text x="174.175" y="284.779" font-size="10.5" class="t-teal" text-anchor="middle">9.4</text>
+<path d="M174.175 309.154 L174.175 306.201" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M170.175 309.154 L178.175 309.154" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M170.175 306.201 L178.175 306.201" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="196.9" y="293.755" width="17.85" height="46.245" rx="3" class="f-blue"/>
+<text x="205.825" y="269.811" font-size="10.5" class="t-blue" text-anchor="middle">13.0</text>
+<path d="M205.825 303.878 L205.825 291.811" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M201.825 303.878 L209.825 303.878" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M201.825 291.811 L209.825 291.811" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="217.75" y="305.393" width="17.85" height="34.607" rx="3" class="f-teal"/>
+<text x="226.675" y="283.811" font-size="10.5" class="t-teal" text-anchor="middle">9.8</text>
+<path d="M226.675 307.485 L226.675 305.108" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M222.675 307.485 L230.675 307.485" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M222.675 305.108 L230.675 305.108" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="249.4" y="289.119" width="17.85" height="50.881" rx="3" class="f-blue"/>
+<text x="258.325" y="279.991" font-size="10.5" class="t-blue" text-anchor="middle">14.4</text>
+<path d="M258.325 299.102 L258.325 287.991" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M254.325 299.102 L262.325 299.102" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M254.325 287.991 L262.325 287.991" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="270.25" y="234.106" width="17.85" height="105.894" rx="3" class="f-teal"/>
+<text x="279.175" y="225.824" font-size="10.5" class="t-teal" text-anchor="middle">29.9</text>
+<path d="M279.175 235.168 L279.175 233.824" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M275.175 235.168 L283.175 235.168" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M275.175 233.824 L283.175 233.824" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="301.9" y="281.201" width="17.85" height="58.799" rx="3" class="f-blue"/>
+<text x="310.825" y="271.326" font-size="10.5" class="t-blue" text-anchor="middle">16.6</text>
+<path d="M310.825 292.904 L310.825 279.326" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M306.825 292.904 L314.825 292.904" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M306.825 279.326 L314.825 279.326" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="322.75" y="196.919" width="17.85" height="143.081" rx="3" class="f-teal"/>
+<text x="331.675" y="188.558" font-size="10.5" class="t-teal" text-anchor="middle">40.4</text>
+<path d="M331.675 198.19 L331.675 196.558" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M327.675 198.19 L335.675 198.19" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M327.675 196.558 L335.675 196.558" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="354.4" y="264.1" width="17.85" height="75.9" rx="3" class="f-blue"/>
+<text x="363.325" y="253.622" font-size="10.5" class="t-blue" text-anchor="middle">21.4</text>
+<path d="M363.325 278.636 L363.325 261.622" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M359.325 278.636 L367.325 278.636" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M359.325 261.622 L367.325 261.622" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="375.25" y="172.619" width="17.85" height="167.381" rx="3" class="f-teal"/>
+<text x="384.175" y="164.285" font-size="10.5" class="t-teal" text-anchor="middle">47.2</text>
+<path d="M384.175 174.211 L384.175 172.285" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M380.175 174.211 L388.175 174.211" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M380.175 172.285 L388.175 172.285" fill="none" class="s-ink" stroke-width="1"/>
+<text x="505" y="131" font-size="12" class="t-ink sb">Decode · Joules / output token</text>
+<path d="M505 340 L820 340" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="344" font-size="10.5" class="t-muted" text-anchor="end">0</text>
+<path d="M505 275 L820 275" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="279" font-size="10.5" class="t-muted" text-anchor="end">0.5</text>
+<path d="M505 210 L820 210" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="214" font-size="10.5" class="t-muted" text-anchor="end">1</text>
+<path d="M505 145 L820 145" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="149" font-size="10.5" class="t-muted" text-anchor="end">1.5</text>
+<text x="531.25" y="358" font-size="10.5" class="t-muted" text-anchor="middle">500</text>
+<text x="583.75" y="358" font-size="10.5" class="t-muted" text-anchor="middle">1K</text>
+<text x="636.25" y="358" font-size="10.5" class="t-muted" text-anchor="middle">2K</text>
+<text x="688.75" y="358" font-size="10.5" class="t-muted" text-anchor="middle">4K</text>
+<text x="741.25" y="358" font-size="10.5" class="t-muted" text-anchor="middle">8K</text>
+<text x="793.75" y="358" font-size="10.5" class="t-muted" text-anchor="middle">16K</text>
+<text x="662.5" y="376" font-size="10.5" class="t-muted" text-anchor="middle">Initial KV (tokens)</text>
+<rect x="511.9" y="282.75" width="17.85" height="57.25" rx="3" class="f-blue"/>
+<text x="520.825" y="256.668" font-size="10.5" class="t-blue" text-anchor="middle">0.44</text>
+<path d="M520.825 290.453 L520.825 281.371" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M516.825 290.453 L524.825 290.453" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M516.825 281.371 L524.825 281.371" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="532.75" y="279.181" width="17.85" height="60.819" rx="3" class="f-teal"/>
+<text x="541.675" y="270.668" font-size="10.5" class="t-teal" text-anchor="middle">0.47</text>
+<path d="M541.675 282.895 L541.675 278.668" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M537.675 282.895 L545.675 282.895" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M537.675 278.668 L545.675 278.668" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="564.4" y="279.821" width="17.85" height="60.179" rx="3" class="f-blue"/>
+<text x="573.325" y="255.679" font-size="10.5" class="t-blue" text-anchor="middle">0.46</text>
+<path d="M573.325 286.649 L573.325 278.858" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M569.325 286.649 L577.325 286.649" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M569.325 278.858 L577.325 278.858" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="585.25" y="278.161" width="17.85" height="61.839" rx="3" class="f-teal"/>
+<text x="594.175" y="269.679" font-size="10.5" class="t-teal" text-anchor="middle">0.48</text>
+<path d="M594.175 281.038 L594.175 277.679" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M590.175 281.038 L598.175 281.038" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M590.175 277.679 L598.175 277.679" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="616.9" y="276.69" width="17.85" height="63.31" rx="3" class="f-blue"/>
+<text x="625.825" y="267.431" font-size="10.5" class="t-blue" text-anchor="middle">0.49</text>
+<path d="M625.825 282.685 L625.825 275.431" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M621.825 282.685 L629.825 282.685" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M621.825 275.431 L629.825 275.431" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="637.75" y="190.104" width="17.85" height="149.896" rx="3" class="f-teal"/>
+<text x="646.675" y="181.582" font-size="10.5" class="t-teal" text-anchor="middle">1.15</text>
+<path d="M646.675 191.877 L646.675 189.582" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M642.675 191.877 L650.675 191.877" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M642.675 189.582 L650.675 189.582" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="669.4" y="273.676" width="17.85" height="66.324" rx="3" class="f-blue"/>
+<text x="678.325" y="264.431" font-size="10.5" class="t-blue" text-anchor="middle">0.51</text>
+<path d="M678.325 281.968 L678.325 272.431" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M674.325 281.968 L682.325 281.968" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M674.325 272.431 L682.325 272.431" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="690.25" y="192.377" width="17.85" height="147.623" rx="3" class="f-teal"/>
+<text x="699.175" y="184.069" font-size="10.5" class="t-teal" text-anchor="middle">1.14</text>
+<path d="M699.175 194.141 L699.175 192.069" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M695.175 194.141 L703.175 194.141" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M695.175 192.069 L703.175 192.069" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="721.9" y="265.118" width="17.85" height="74.882" rx="3" class="f-blue"/>
+<text x="730.825" y="256.107" font-size="10.5" class="t-blue" text-anchor="middle">0.58</text>
+<path d="M730.825 273.065 L730.825 264.107" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M726.825 273.065 L734.825 273.065" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M726.825 264.107 L734.825 264.107" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="742.75" y="191.385" width="17.85" height="148.615" rx="3" class="f-teal"/>
+<text x="751.675" y="182.993" font-size="10.5" class="t-teal" text-anchor="middle">1.14</text>
+<path d="M751.675 193.46 L751.675 190.993" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M747.675 193.46 L755.675 193.46" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M747.675 190.993 L755.675 190.993" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="774.4" y="245.214" width="17.85" height="94.786" rx="3" class="f-blue"/>
+<text x="783.325" y="235.759" font-size="10.5" class="t-blue" text-anchor="middle">0.73</text>
+<path d="M783.325 254.091 L783.325 243.759" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M779.325 254.091 L787.325 254.091" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M779.325 243.759 L787.325 243.759" fill="none" class="s-ink" stroke-width="1"/>
+<rect x="795.25" y="181.932" width="17.85" height="158.068" rx="3" class="f-teal"/>
+<text x="804.175" y="173.618" font-size="10.5" class="t-teal" text-anchor="middle">1.22</text>
+<path d="M804.175 183.734 L804.175 181.618" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M800.175 183.734 L808.175 183.734" fill="none" class="s-ink" stroke-width="1"/>
+<path d="M800.175 181.618 L808.175 181.618" fill="none" class="s-ink" stroke-width="1"/>
+<text x="40" y="405" font-size="10.5" class="t-muted">CPU + GPU + ANE software energy; no idle subtraction. Model load, warmup and recovery excluded.</text>
+<text x="40" y="421" font-size="10.5" class="t-muted">Whiskers are timing bounds on the energy window, not confidence intervals. Sensor accuracy uncalibrated.</text>
+</svg>

@@ -3,14 +3,18 @@
   "scope": "Figures derived from the bundled evidence and the documented methods; zero new device calls.",
   "generation": "Python standard library only; deterministic and byte-reproducible.",
   "generator_hashes": {
-    "scripts/render_figures.py": "a2582a2829c97e9c40c65086acc62121145e19528cb0d4e6773bdc751bb72956",
+    "scripts/render_figures.py": "601a028b89b903025021bce1b37b1bd69ad72ee5a15a2686cf06c4137cc2b351",
     "scripts/figures/canvas.py": "cbb97ba7f3e8f598fc16f3f9617ed77d441ab93b33600a93e1a021220950962c",
     "scripts/figures/architecture.py": "2090108c5a556eb415b6daccf003d825733306d104b7722a4c353c0f38576515",
     "scripts/figures/arithmetic.py": "2d02915eef2fbe58392d2a4d2380a10ec2dc4297cd0ea13687ae7b31281def58",
     "scripts/figures/measurements.py": "1ed5f27b7e31bf76bc4d23ecdf29ab1ef384c3395c7e3831fbe6edf24e0ba350",
     "scripts/figures/g2.py": "36cc78b59d5102121ded8df02788a8acc9a332ffc447ab7dee46c86b38237e9d",
     "scripts/g2/evidence.py": "4efbae6e6a58803c342bc13be165a35040c987cdcbe6dad24e72aac02b880ffb",
-    "scripts/g2/thermal.py": "8225beb0eb46bc4880bfbd98a1403e52b0b7e9d7dad881d867556fd05a29416f"
+    "scripts/g2/thermal.py": "8225beb0eb46bc4880bfbd98a1403e52b0b7e9d7dad881d867556fd05a29416f",
+    "scripts/figures/g3.py": "c4bdd32f315a0922a79cff0b1e5ed9427f27a550ca064d16380cec08960c26db",
+    "scripts/g3/evidence.py": "4ec1e5ae53a935a532890cc2f0e5661d6303d605c9e6be50974bd73d3ed22159",
+    "scripts/g3/protocol.py": "6caf0aac90c4ed10fb7f9e07ac75cba9dfcbc000a9156cd047e3cb0aa71d54ee",
+    "scripts/g3/power.py": "b9fc728f4c3fd088d9f3ed57786353d6b5c5bce5dde113ca4136f252cf33d105"
   },
   "figures": [
     {
@@ -28,7 +32,7 @@
         "Device participation does not imply physical INT8"
       ],
       "source_hashes": {
-        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505",
+        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
         "articles/01-measuring-ane-performance.md": "e4222e4ef6531a6894f6d60b559f3f436ed895f5c83eccab349782d105574b08"
       },
       "svg_sha256": "595340b9bc50d45922250f5f0ee35eade12a8b758ef74de400a28f5a66759d5c"
@@ -51,7 +55,7 @@
         "K64 compatibility separate from K512 performance"
       ],
       "source_hashes": {
-        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505",
+        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
         "articles/02-group-quantization-and-split.md": "d8e1e2951c0c886dd6a072fb4941f1fcfe5fc82e8a0d294136661ac7cf60ce10",
         "src/ane_scope/_coreai.py": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
         "src/ane_scope/references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd"
@@ -74,8 +78,8 @@
         "Historical and fresh evidence stay separate"
       ],
       "source_hashes": {
-        "docs/REPRODUCING.md": "4b733bec1da573f8a79845d44ef8eab9c49a4c895c83a1d5894b51ad7a8571d3",
-        "docs/PROVENANCE.md": "c9d6a6f3ccdaa165e17eea1cf1a061b72df1253e551aac5ac019b0de72cc6bb2"
+        "docs/REPRODUCING.md": "1e2b8ae3d2ef2012e002d5d81ad23fa8a3b729ccceecdd5aaee5f2cb989e3270",
+        "docs/PROVENANCE.md": "0faee2de3a33a7e3bb2f45259030402788716d768505c6870ed292b774d04903"
       },
       "svg_sha256": "4d83172e3c9ee9e36a48bfab21ac8e9472a4ac56c78b723b422be0ad6779caea"
     },
@@ -94,7 +98,7 @@
       ],
       "source_hashes": {
         "articles/03-arithmetic-compatibility.md": "1da218175b2713ab37e77381eb3e87ae82e5f4c65904c77e4cf35d62b6379a64",
-        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505"
+        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9"
       },
       "svg_sha256": "ec14136e622237b96b152159639e8e691e36bbd89acfe32d024f38df587c1756"
     },
@@ -157,7 +161,7 @@
       ],
       "source_hashes": {
         "results/fresh/smoke.json": "962f1f17c7787a880c0a901cba498bc930ca4eaa1662480484e9980bac85037c",
-        "docs/METHODS.md": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505",
+        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
         "articles/03-arithmetic-compatibility.md": "1da218175b2713ab37e77381eb3e87ae82e5f4c65904c77e4cf35d62b6379a64"
       },
       "svg_sha256": "f13690d93a4d8a7a18073d7272598afc1edf1bb3fa4c00795e68fce2f53af193"
@@ -2056,6 +2060,1236 @@
         "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
       },
       "svg_sha256": "4aee7f3961fbf4c039ba5c945bc64b145dc4ac3201ce85e9acecc8e686c75891"
+    },
+    {
+      "filename": "g3-speed.svg",
+      "sources": [
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "gpu",
+          "value": 2749.6184579447713
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "gpu",
+          "value": 3235.9234006087795
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "gpu",
+          "value": 3405.4849046834065
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "gpu",
+          "value": 3309.5040014321526
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "gpu",
+          "value": 2867.008967608727
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "gpu",
+          "value": 2312.7357630566207
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "ane",
+          "value": 877.8523396184589
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "ane",
+          "value": 832.3811151228763
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "ane",
+          "value": 811.9058790761826
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "ane",
+          "value": 84.88918504375866
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "ane",
+          "value": 58.75907440941591
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "ane",
+          "value": 50.892010968194356
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "gpu",
+          "value": 30.093567190067013
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "gpu",
+          "value": 30.044231255445993
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "gpu",
+          "value": 29.44715648847948
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "gpu",
+          "value": 28.5166206052927
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "gpu",
+          "value": 26.639562415240718
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "gpu",
+          "value": 21.739952248269194
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "ane",
+          "value": 13.931529096639709
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "ane",
+          "value": 13.924075975242593
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "ane",
+          "value": 3.1183858309840438
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "ane",
+          "value": 3.1176794738648113
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "ane",
+          "value": 3.120456728059555
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "ane",
+          "value": 3.1182393065717524
+        }
+      ],
+      "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
+      "source_hashes": {
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
+      },
+      "svg_sha256": "2d9bc57d27c077717c3e20c83e68c3167bfecaa997b1a568e15f6fea2ac22b1c"
+    },
+    {
+      "filename": "g3-implied.svg",
+      "sources": [
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json",
+        "results/fresh/throughput.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "gpu",
+          "tera_flops_per_second": 19.980464594414222
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "ane",
+          "tera_flops_per_second": 6.379029621433612
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "gpu",
+          "tera_flops_per_second": 23.51426349691709
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "ane",
+          "tera_flops_per_second": 6.04860698098562
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "gpu",
+          "tera_flops_per_second": 24.74640449413422
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "ane",
+          "tera_flops_per_second": 5.899820982073237
+        },
+        {
+          "reference_T_ops_per_second": 18.774290469540123,
+          "source": "results/fresh/throughput.json: coreai-fp16-128 median source_ops / p50"
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "gpu",
+          "giga_bytes_per_second": 246.58933586333353
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "ane",
+          "giga_bytes_per_second": 114.1561745008084
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "gpu",
+          "giga_bytes_per_second": 248.50649881058175
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "ane",
+          "giga_bytes_per_second": 115.17097376731358
+        }
+      ],
+      "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
+      "source_hashes": {
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f",
+        "results/fresh/throughput.json": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110"
+      },
+      "svg_sha256": "5591959e8c19e220bccb7da1d8b912cdfcd90a21b2312dc641fe9821ef03be20"
+    },
+    {
+      "filename": "g3-power.svg",
+      "sources": [
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "gpu",
+          "value": 37.79375409471772
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "gpu",
+          "value": 41.18360209790237
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "gpu",
+          "value": 44.418916736731205
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "gpu",
+          "value": 47.494858196863476
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "gpu",
+          "value": 47.54737925513492
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "gpu",
+          "value": 49.510557298414604
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "ane",
+          "value": 8.455036187553874
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "ane",
+          "value": 7.8315207922299095
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "ane",
+          "value": 7.925065918429416
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "ane",
+          "value": 2.535426412621129
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "ane",
+          "value": 2.371288376101087
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "ane",
+          "value": 2.402617830403049
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "gpu",
+          "value": 13.252803838162693
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "gpu",
+          "value": 13.90797548590608
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "gpu",
+          "value": 14.340758744947955
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "gpu",
+          "value": 14.548663589403395
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "gpu",
+          "value": 15.34469585363641
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "gpu",
+          "value": 15.85113726704703
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "ane",
+          "value": 6.517728422871364
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "ane",
+          "value": 6.623504261513669
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "ane",
+          "value": 3.595653865986285
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "ane",
+          "value": 3.5403049573477166
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "ane",
+          "value": 3.567277768354204
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "ane",
+          "value": 3.791485224536459
+        }
+      ],
+      "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
+      "source_hashes": {
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
+      },
+      "svg_sha256": "3cdd48161f916ddb71d6bbdf0732c5aedf8298cbe17075728b785c804c978df8"
+    },
+    {
+      "filename": "g3-energy.svg",
+      "sources": [
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "gpu",
+          "J_per_token": 0.013745090336266882,
+          "lower": 0.012166114583333335,
+          "upper": 0.014014416666666665
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "ane",
+          "J_per_token": 0.009631501570330936,
+          "lower": 0.009326927083333332,
+          "upper": 0.009677260416666666
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "gpu",
+          "J_per_token": 0.01272700153846486,
+          "lower": 0.01009977839543269,
+          "upper": 0.013318622295673073
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "ane",
+          "J_per_token": 0.009408575771296564,
+          "lower": 0.008700251652644233,
+          "upper": 0.009533071664663464
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "gpu",
+          "J_per_token": 0.013043345655605143,
+          "lower": 0.010188378906249998,
+          "upper": 0.013591666666666663
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "ane",
+          "J_per_token": 0.009761064826192486,
+          "lower": 0.00917076822916666,
+          "upper": 0.009841471354166662
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "gpu",
+          "J_per_token": 0.014351050240855,
+          "lower": 0.011535217285156248,
+          "upper": 0.01466925048828125
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "ane",
+          "J_per_token": 0.029867484430604063,
+          "lower": 0.02956796264648438,
+          "upper": 0.029947036743164065
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "gpu",
+          "J_per_token": 0.016584314800658802,
+          "lower": 0.013283569335937497,
+          "upper": 0.017113124302455356
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "ane",
+          "J_per_token": 0.04035612201068125,
+          "lower": 0.039997785295758974,
+          "upper": 0.04045807756696433
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "gpu",
+          "J_per_token": 0.021407788165552954,
+          "lower": 0.0173077392578125,
+          "upper": 0.022106547037760414
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "ane",
+          "J_per_token": 0.04721011775118491,
+          "lower": 0.04676112874348961,
+          "upper": 0.04730423990885418
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "gpu",
+          "J_per_token": 0.4403866033714025,
+          "lower": 0.38113281250000003,
+          "upper": 0.45099511718750007
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "ane",
+          "J_per_token": 0.4678401328138088,
+          "lower": 0.43926855468750003,
+          "upper": 0.4717880859375
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "gpu",
+          "J_per_token": 0.46291667001414916,
+          "lower": 0.41039355468750005,
+          "upper": 0.47032519531250006
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "ane",
+          "J_per_token": 0.475687167557147,
+          "lower": 0.4535546874999999,
+          "upper": 0.4793955078124999
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "gpu",
+          "J_per_token": 0.4869997804561689,
+          "lower": 0.4408837890624999,
+          "upper": 0.49668652343749997
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "ane",
+          "J_per_token": 1.1530497061204366,
+          "lower": 1.1394052734374998,
+          "upper": 1.157064453125
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "gpu",
+          "J_per_token": 0.5101818967533325,
+          "lower": 0.44639648437500007,
+          "upper": 0.5197597656249999
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "ane",
+          "J_per_token": 1.1355577079124817,
+          "lower": 1.1219931640624998,
+          "upper": 1.1379306640625
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "gpu",
+          "J_per_token": 0.5760115580899174,
+          "lower": 0.5148837890625,
+          "upper": 0.583794921875
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "ane",
+          "J_per_token": 1.1431909105730502,
+          "lower": 1.1272285156250004,
+          "upper": 1.1462060546875004
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "gpu",
+          "J_per_token": 0.7291247508746944,
+          "lower": 0.660837890625,
+          "upper": 0.74031640625
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "ane",
+          "J_per_token": 1.215905789060457,
+          "lower": 1.2020488281250015,
+          "upper": 1.2183232421875017
+        }
+      ],
+      "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
+      "source_hashes": {
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
+      },
+      "svg_sha256": "27cecec861fc904dd1ffc1161baf754316a7bc9d189dcfe2b0f227505bb454a9"
+    },
+    {
+      "filename": "g3-coverage-speed.svg",
+      "sources": [
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "gpu",
+          "value": 1133.2159564866106
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "gpu",
+          "value": 2614.6625136361417
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "gpu",
+          "value": 3030.138072857516
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "gpu",
+          "value": 3138.938349987874
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "gpu",
+          "value": 2806.2008628688104
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "gpu",
+          "value": 2310.926315466035
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "ane",
+          "value": 569.6866863481947
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "ane",
+          "value": 819.4949906616065
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "ane",
+          "value": 803.1141063188963
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "ane",
+          "value": 84.76803159373479
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "ane",
+          "value": 58.63663127244319
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "ane",
+          "value": 50.769187220556006
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "gpu",
+          "value": 30.400848700683184
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "gpu",
+          "value": 30.2277251749722
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "gpu",
+          "value": 29.79180864657626
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "gpu",
+          "value": 28.670560393821503
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "gpu",
+          "value": 26.85102400461712
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "gpu",
+          "value": 21.82194137601512
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "ane",
+          "value": 13.949931159163148
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "ane",
+          "value": 13.96366863900617
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "ane",
+          "value": 3.1206056279895136
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "ane",
+          "value": 3.121247931592233
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "ane",
+          "value": 3.1226905609056264
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "ane",
+          "value": 3.1217505090377746
+        }
+      ],
+      "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
+      "source_hashes": {
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
+      },
+      "svg_sha256": "b449491d06375e7f89663bd4f12a678a0fced1b989aeeddb1e1d42307c04b8a9"
+    },
+    {
+      "filename": "g3-decode-kv.svg",
+      "sources": [
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json"
+      ],
+      "points_or_scope": [
+        {
+          "context": 500,
+          "arm": "gpu",
+          "blocks": [
+            {
+              "start_KV": 500,
+              "end_KV": 756,
+              "rate": 29.64024642970351
+            },
+            {
+              "start_KV": 756,
+              "end_KV": 1012,
+              "rate": 30.34244171554743
+            },
+            {
+              "start_KV": 1012,
+              "end_KV": 1268,
+              "rate": 30.185199909772006
+            },
+            {
+              "start_KV": 1268,
+              "end_KV": 1524,
+              "rate": 30.216136259911025
+            }
+          ]
+        },
+        {
+          "context": 500,
+          "arm": "ane",
+          "blocks": [
+            {
+              "start_KV": 500,
+              "end_KV": 756,
+              "rate": 13.783612732816863
+            },
+            {
+              "start_KV": 756,
+              "end_KV": 1012,
+              "rate": 13.984568656700375
+            },
+            {
+              "start_KV": 1012,
+              "end_KV": 1268,
+              "rate": 13.979554691679313
+            },
+            {
+              "start_KV": 1268,
+              "end_KV": 1524,
+              "rate": 13.98050594087573
+            }
+          ]
+        },
+        {
+          "context": 1024,
+          "arm": "gpu",
+          "blocks": [
+            {
+              "start_KV": 1024,
+              "end_KV": 1280,
+              "rate": 29.69908217074768
+            },
+            {
+              "start_KV": 1280,
+              "end_KV": 1536,
+              "rate": 30.195573546349824
+            },
+            {
+              "start_KV": 1536,
+              "end_KV": 1792,
+              "rate": 30.20047675168627
+            },
+            {
+              "start_KV": 1792,
+              "end_KV": 2048,
+              "rate": 30.08743676266762
+            }
+          ]
+        },
+        {
+          "context": 1024,
+          "arm": "ane",
+          "blocks": [
+            {
+              "start_KV": 1024,
+              "end_KV": 1280,
+              "rate": 13.78196024555376
+            },
+            {
+              "start_KV": 1280,
+              "end_KV": 1536,
+              "rate": 13.951546080888567
+            },
+            {
+              "start_KV": 1536,
+              "end_KV": 1792,
+              "rate": 13.979389069981211
+            },
+            {
+              "start_KV": 1792,
+              "end_KV": 2048,
+              "rate": 13.985416456345261
+            }
+          ]
+        },
+        {
+          "context": 2048,
+          "arm": "gpu",
+          "blocks": [
+            {
+              "start_KV": 2048,
+              "end_KV": 2304,
+              "rate": 29.321937496106813
+            },
+            {
+              "start_KV": 2304,
+              "end_KV": 2560,
+              "rate": 29.72312085782216
+            },
+            {
+              "start_KV": 2560,
+              "end_KV": 2816,
+              "rate": 29.477757907703968
+            },
+            {
+              "start_KV": 2816,
+              "end_KV": 3072,
+              "rate": 29.27001622842321
+            }
+          ]
+        },
+        {
+          "context": 2048,
+          "arm": "ane",
+          "blocks": [
+            {
+              "start_KV": 2048,
+              "end_KV": 2304,
+              "rate": 3.1118250356974366
+            },
+            {
+              "start_KV": 2304,
+              "end_KV": 2560,
+              "rate": 3.120714706069306
+            },
+            {
+              "start_KV": 2560,
+              "end_KV": 2816,
+              "rate": 3.1200122222822544
+            },
+            {
+              "start_KV": 2816,
+              "end_KV": 3072,
+              "rate": 3.1210100256534226
+            }
+          ]
+        },
+        {
+          "context": 4096,
+          "arm": "gpu",
+          "blocks": [
+            {
+              "start_KV": 4096,
+              "end_KV": 4352,
+              "rate": 28.14059970537779
+            },
+            {
+              "start_KV": 4352,
+              "end_KV": 4608,
+              "rate": 28.7978622086976
+            },
+            {
+              "start_KV": 4608,
+              "end_KV": 4864,
+              "rate": 28.675199217650597
+            },
+            {
+              "start_KV": 4864,
+              "end_KV": 5120,
+              "rate": 28.46158002647758
+            }
+          ]
+        },
+        {
+          "context": 4096,
+          "arm": "ane",
+          "blocks": [
+            {
+              "start_KV": 4096,
+              "end_KV": 4352,
+              "rate": 3.1109924718793036
+            },
+            {
+              "start_KV": 4352,
+              "end_KV": 4608,
+              "rate": 3.1198263942135886
+            },
+            {
+              "start_KV": 4608,
+              "end_KV": 4864,
+              "rate": 3.119846879633988
+            },
+            {
+              "start_KV": 4864,
+              "end_KV": 5120,
+              "rate": 3.120071393924096
+            }
+          ]
+        },
+        {
+          "context": 8192,
+          "arm": "gpu",
+          "blocks": [
+            {
+              "start_KV": 8192,
+              "end_KV": 8448,
+              "rate": 26.27323995078078
+            },
+            {
+              "start_KV": 8448,
+              "end_KV": 8704,
+              "rate": 26.796835785666868
+            },
+            {
+              "start_KV": 8704,
+              "end_KV": 8960,
+              "rate": 26.76637559801546
+            },
+            {
+              "start_KV": 8960,
+              "end_KV": 9216,
+              "rate": 26.728731036283257
+            }
+          ]
+        },
+        {
+          "context": 8192,
+          "arm": "ane",
+          "blocks": [
+            {
+              "start_KV": 8192,
+              "end_KV": 8448,
+              "rate": 3.114022109083035
+            },
+            {
+              "start_KV": 8448,
+              "end_KV": 8704,
+              "rate": 3.122486195947966
+            },
+            {
+              "start_KV": 8704,
+              "end_KV": 8960,
+              "rate": 3.122371825843759
+            },
+            {
+              "start_KV": 8960,
+              "end_KV": 9216,
+              "rate": 3.1229646342563795
+            }
+          ]
+        },
+        {
+          "context": 16384,
+          "arm": "gpu",
+          "blocks": [
+            {
+              "start_KV": 16384,
+              "end_KV": 16640,
+              "rate": 21.566071456081858
+            },
+            {
+              "start_KV": 16640,
+              "end_KV": 16896,
+              "rate": 21.885293117400405
+            },
+            {
+              "start_KV": 16896,
+              "end_KV": 17152,
+              "rate": 21.840800075041304
+            },
+            {
+              "start_KV": 17152,
+              "end_KV": 17408,
+              "rate": 21.670701077666134
+            }
+          ]
+        },
+        {
+          "context": 16384,
+          "arm": "ane",
+          "blocks": [
+            {
+              "start_KV": 16384,
+              "end_KV": 16640,
+              "rate": 3.1110037852936583
+            },
+            {
+              "start_KV": 16640,
+              "end_KV": 16896,
+              "rate": 3.1210429230576917
+            },
+            {
+              "start_KV": 16896,
+              "end_KV": 17152,
+              "rate": 3.1205427305461724
+            },
+            {
+              "start_KV": 17152,
+              "end_KV": 17408,
+              "rate": 3.1203903694640744
+            }
+          ]
+        }
+      ],
+      "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
+      "source_hashes": {
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
+      },
+      "svg_sha256": "28c7dab2d94590839637868845b8bc9eb2ff57b5b262b921852ad74b51e6a3d9"
     }
   ]
 }

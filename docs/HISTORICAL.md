@@ -93,3 +93,7 @@ lose when reading old records: ANE control participation is process-and-call
 evidence, not per-operation accounting; and a preferred compute unit is plan
 evidence, not execution. See [PROVENANCE.md](PROVENANCE.md) for the per-record
 source ledger.
+
+## Complete Qwen3-4B measurements (G3)
+
+The [G3 bundle](../results/historical/g3-qwen3-4b/) adds complete-model FP16 coverage, warmed prefill/decode blocks and software component energy. Its three run identities remain separate: coverage, main stages/capture and the longer short-prefill supplement. [Provenance](PROVENANCE.md#g3-complete-model-import) · [Scope](SCOPE.md#g3-complete-model-observations) · [Recompute](REPRODUCING.md#g3-recomputation-and-device-replay).

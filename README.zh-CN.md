@@ -2,47 +2,44 @@
 
 [English](README.md) | 中文
 
-**4-bit LLM 值得从 GPU 挪到 Apple Neural Engine 上吗？在一台 M5 Pro 上，原生 ANE 路径跑同一个
-第一层 MLP，速度约为 GPU 的四分之一。它的内存在 Python 路径会泄漏的地方保持平稳；相同负载下，
-两侧的风扇都停在怠速。**
+**完整 LLM 在 Apple Neural Engine 上能跑多快，完成同样的工作需要多少能量？在一台 M5 Pro 上，Qwen3-4B FP16 通过 Core AI 分别运行于 ANE 和 GPU。<!-- claim:g3.short-contexts@g3-020 -->500–2K<!-- /claim --> 输入时，ANE prefill 的有效投影计算为 <!-- claim:g3.short-prefill-ane-tflops@g3-021 -->5.9–6.4 TFLOP/s<!-- /claim -->，每输入 token 的组件能耗低于 GPU。从 <!-- claim:g3.n.1024@g3-041 -->1K<!-- /claim --> KV 开始的 decode，按权重与 KV 单次读取模型推算为 <!-- claim:g3.decode.1024.ane-bandwidth@g3-022 -->115 GB/s<!-- /claim -->。GPU 在所有已测档位都更快。更长上下文选择固定 <!-- claim:g3.largest-graph@g3-023 -->32K<!-- /claim --> ANE 图后，速度和能耗都明显变差。**
 
 <table>
 <tr>
-<td><b><!-- claim:g2.ane-share@speed-card -->24.8%<!-- /claim --></b><br><sub>ANE 速度占 GPU 的比例，1024 位置，各三个宿主</sub></td>
-<td><b><!-- claim:g2.native-calls@calls-card -->33,728 次调用<!-- /claim --></b><br><sub>每个原生 ANE 宿主，结束时小 <!-- claim:g2.native-shrink@memory-card -->60–62 MiB<!-- /claim --></sub></td>
-<td><b><!-- claim:g2.temperature-gap@temperature-card -->1.3–3.3 °C<!-- /claim --></b><br><sub>相同负载下 GPU 推理时 GPU 传感器更高；两侧风扇都在怠速</sub></td>
-<td><b><!-- claim:arithmetic.q8-summary@arithmetic-card -->13 / 7,163,904<!-- /claim --></b><br><sub>候选算术模型未匹配的最终 Q8 输出</sub></td>
+<td><b><!-- claim:g3.prefill.500.ane-rate@g3-001 -->877.9 token/s<!-- /claim --></b><br><sub>从 <!-- claim:g3.n.500@g3-016 -->500<!-- /claim --> 输入开始的 ANE prefill；GPU 为 <!-- claim:g3.prefill.500.gpu-rate@g3-024 -->2,749.6 token/s<!-- /claim --></sub></td>
+<td><b><!-- claim:g3.prefill.2048.energy-x@g3-002 -->0.75×<!-- /claim --></b><br><sub><!-- claim:g3.n.2048@g3-017 -->2K<!-- /claim --> 输入时 prefill 的 ANE / GPU 每输入 token 能量</sub></td>
+<td><b><!-- claim:g3.decode.1024.ane-rate@g3-003 -->13.9 token/s<!-- /claim --></b><br><sub>从 <!-- claim:g3.n.1024@g3-018 -->1K<!-- /claim --> KV 开始的 ANE decode；GPU 为 <!-- claim:g3.decode.1024.gpu-rate@g3-004 -->30.0 token/s<!-- /claim --></sub></td>
+<td><b><!-- claim:g3.prefill.1024.ane-tflops@g3-025 -->6.0 TFLOP/s<!-- /claim --></b><br><sub><!-- claim:g3.n.1024@g3-026 -->1K<!-- /claim --> 输入时 ANE 的 prefill 投影算力；GPU 为 <!-- claim:g3.prefill.1024.gpu-tflops@g3-027 -->23.5 TFLOP/s<!-- /claim --></sub></td>
 </tr>
 </table>
 
-**从这里开始：** [我该用它吗？](#简短的答案) · [什么是真正能用的](workarounds/) ·
-[全部发现](findings/) · [为什么慢](#为什么慢) · [复现方法](docs/REPRODUCING.md) ·
-[这些数字的边界](docs/SCOPE.md) · [研究文章（English）](articles/README.md)
+**从这里开始：** [完整模型结果](findings/qwen3-4b-prefill-decode/) · [我该用它吗？](#简短的答案) · [什么能用](workarounds/) · [全部发现](findings/) · [复现方法](docs/REPRODUCING.md) · [研究文章（English）](articles/README.md)
 
-![G2 第一层 MLP：七档位置数下三个独立宿主的全部曲线与两侧中位数。ANE 保持在每秒约 6,760 位置，GPU 在约 18,500 到 31,600 之间。](docs/figures/g2-throughput.svg)
+![Qwen3-4B 在六档上下文中的 ANE 与 GPU 预热后 prefill、decode 吞吐。](docs/figures/g3-speed.svg)
 
-1024 位置时，ANE 路径约为 **<!-- claim:g2.ane-rate@ane-rate -->6,760 位置/s<!-- /claim -->**，MLX GPU 约 **<!-- claim:g2.gpu-rate@gpu-rate -->27,300 位置/s<!-- /claim -->**，均为每侧三个独立宿主的
-中位数。256 位置以上 ANE 曲线持平，是因为每个请求都被切成固定的 256 位置 tile；这描述的是这条
-流水线，不是硬件上限。持续服务时 ANE 为 GPU 的 **<!-- claim:g2.service-share@service-share -->27.0%<!-- /claim -->**：每个请求之后几毫秒的校验与记录两侧
-相同，在更快的一侧占比更大。
+<!-- claim:g3.n.1024@g3-005 -->1K<!-- /claim --> 输入时，<strong>ANE prefill 为 <!-- claim:g3.prefill.1024.ane-rate@g3-006 -->832.4 token/s<!-- /claim --></strong>，<strong>GPU 为 <!-- claim:g3.prefill.1024.gpu-rate@g3-007 -->3,235.9 token/s<!-- /claim --></strong>，GPU 快 <!-- claim:g3.prefill.1024.gpu-faster@g3-008 -->3.89×<!-- /claim -->。prefill 到 <!-- claim:g3.n.2048@g3-028 -->2K<!-- /claim -->、decode 到 <!-- claim:g3.n.1024@g3-029 -->1K<!-- /claim --> 都保持这个水平，之后路径选择固定 <!-- claim:g3.largest-graph@g3-019 -->32K<!-- /claim --> 图，速度明显下降；decode 切换得更早，因为它需要 KV 余量。计时包含宿主和框架工作，比较的是当前实现，不是硬件上限。
 
-![每秒完成请求数对 GPU 传感器温度与风扇 0 转速。相同负载下两侧风扇都在怠速；只有满负载 GPU 块提高了转速。](docs/figures/g2-load-fans.svg)
+![未切换图之前各档的 prefill 投影算力（TFLOP/s）与 decode 权重／KV 读取模型推算值（GB/s）。](docs/figures/g3-implied.svg)
 
-三档相同到达率下，最高 **<!-- claim:g2.equal-rate-max@equal-rate -->4.9 请求/s<!-- /claim -->**，两侧风扇都停在约 **<!-- claim:g2.fan-idle@fan-idle -->1,350 RPM<!-- /claim -->** 的怠速，而 GPU 推理时 GPU
-传感器读数高 **<!-- claim:g2.temperature-gap@temperature-detail -->1.3–3.3 °C<!-- /claim -->**。满负载时，ANE 完成 **<!-- claim:g2.ane-saturated@ane-saturated -->6.4 请求/s<!-- /claim -->**，风扇仍在怠速；GPU 完成
-**<!-- claim:g2.gpu-saturated@gpu-saturated -->23.7 请求/s<!-- /claim -->**，风扇 0 为 **<!-- claim:g2.fan-saturated@fan-saturated -->3,100–3,500 RPM<!-- /claim -->**。两者之间的 GPU 负载没有测量，GPU 风扇从哪里开始
-升高仍未知。能耗未判定：功率采集没有通过完整性与时钟检查。
+这些 token 速率可以换算成模型的有效工作速率。prefill 每个 token 要过 <!-- claim:g3.projection-parameters-cn@g3-030 -->36.3 亿<!-- /claim --> 个投影权重：<!-- claim:g3.n.1024@g3-031 -->1K<!-- /claim --> 时 ANE 为 <!-- claim:g3.prefill.1024.ane-tflops@g3-032 -->6.0 TFLOP/s<!-- /claim -->，GPU 为 <!-- claim:g3.prefill.1024.gpu-tflops@g3-033 -->23.5 TFLOP/s<!-- /claim -->。假设 decode 每步读取一次 <!-- claim:g3.weight-bytes@g3-034 -->8.04 GB<!-- /claim --> 的 FP16 权重与已有 KV，并累计块内 KV 的增长，ANE 的推算值为 <!-- claim:g3.decode.1024.ane-bandwidth@g3-035 -->115 GB/s<!-- /claim -->，GPU 为 <!-- claim:g3.decode.1024.gpu-bandwidth@g3-036 -->249 GB/s<!-- /claim -->。GPU 这个数字一直到 <!-- claim:g3.n.8192@g3-037 -->8K<!-- /claim --> 都大致平稳，与带宽主导的模型一致，但瓶颈尚未独立确认。ANE 的推算字节率较低；自身的访存限制、固定图重复工作和宿主开销仍待区分。这些是模型有效工作速率，没有测量设备计数器或 DRAM 流量；字节模型不计当前 token 的写入与固定图填充。
+
+<!-- claim:g3.short-contexts@g3-009 -->500–2K<!-- /claim --> prefill 的 ANE 每输入 token 能量为 GPU 的 <!-- claim:g3.short-prefill-energy-x@g3-010 -->0.70–0.75×<!-- /claim -->——<!-- claim:g3.n.2048@g3-038 -->2K<!-- /claim --> 时为 <strong><!-- claim:g3.prefill.2048.ane-energy@g3-039 -->0.00976 J/token<!-- /claim --></strong>，GPU 为 <strong><!-- claim:g3.prefill.2048.gpu-energy@g3-040 -->0.01304 J/token<!-- /claim --></strong>。<!-- claim:g3.long-contexts@g3-011 -->4K–16K<!-- /claim --> 则为 <!-- claim:g3.long-prefill-energy-ratio@g3-012 -->2.08–2.43×<!-- /claim -->。短上下文 decode 的每 token 能量接近；<!-- claim:g3.decode-long-contexts@g3-013 -->2K–16K<!-- /claim --> 时 ANE 为 GPU 的 <!-- claim:g3.long-decode-energy-ratio@g3-014 -->1.67–2.37×<!-- /claim -->。[每 token 能量](docs/figures/g3-energy.svg)给出每一对的数值。这些数值是观测条件下 CPU＋GPU＋ANE 的软件能量估计；图中的范围描述采样时间归属，不代表传感器精度。
+
+主曲线采用预热后的连续块，速度、平均功率和能量对应同一工作量。Prefill 包含首 token 采样；decode 从准备好的缓存开始，完成 <!-- claim:g3.decode-steps@g3-015 -->1,024<!-- /claim --> 次前向。模型加载、预热和恢复阶段不计入。[单次请求覆盖曲线](docs/figures/g3-coverage-speed.svg)另列。[方法与边界](docs/SCOPE.md#g3-complete-model-observations) · [详细文章](articles/zh/05-Qwen3-4B的Prefill、Decode与能耗.md)。
 
 ## 在什么机器上测的
 
-| 机器 | 内存 | 系统 | 工具链 |
-|---|---|---|---|
-| **Apple M5 Pro** | 48 GiB | macOS 27.0 | G2：build 26A428 · Xcode 27.0 · MLX 0.32.2（GPU 宿主）<br>新合成套件与原生后续：build 26A428 · Xcode 27.0（Swift 6.4）；套件另有 coremltools 9.0 · coreai-torch 0.4.1 · coreai-core 1.0.0b2<br>历史 Python MLP：Xcode 26.6 · MLX 0.32.2<br>历史量化版本矩阵：build 26A5425a · coreai-torch 0.4.1 与 0.4.2 |
+| 机器 | 内存 | 系统 | Xcode | 工具链 |
+|---|---|---|---|---|
+| **Apple M5 Pro** | 48 GiB | macOS 27.0 | 27.0、26.6 | Core AI · MLX 0.32.2 · coremltools 9.0 · coreai-torch 0.4.1、0.4.2 |
+
+每轮实验的版本随各自结果保存，按轮次的汇总见 [SCOPE.md](docs/SCOPE.md)。
 
 ## 简短的答案
 
 | 如果你的模型是…… | 在当前工具链上 |
 |---|---|
+| **完整 Qwen3-4B FP16** | [GPU 在已测档位均更快](findings/qwen3-4b-prefill-decode/)。短 prefill 的 ANE 组件能耗较低；当前长上下文图的每 token 能耗较高。自由续写采用相同前向次数，生成文字不保证一致 |
 | **测过的 Core ML direct signed-INT4 K64 图**，每行两个 K32 scale | 数值正确、选择 CPU。相关历史图报告 `ANE only support per-cout/per-tensor quantization`，不是所有 Q4 格式或表示的测试 |
 | **K32 拆分**为按输出通道的 scale | Core AI 小型兼容探针通过；独立合成消融[慢约 4 倍](findings/split-decomposition-cost/)，不是通用代价 |
 | **分组 4-bit 走 Core AI 原生 LUT 路径** | 接受、确有 ANE 活动，[并且算错](findings/coreai-flattened-scale/)——4096 个值里错 1921 个，且可预测 |
@@ -59,11 +56,12 @@
 
 ## 仓库里有什么
 
-四个部分，各自都能单独使用：
+完整模型与组件实验分别有自己的证据：
 
 | 部分 | 内容 |
 |---|---|
 | 🔧 **三件真正能用的事** | 让分组 4-bit 能上加速器的那个改写、修好不等 scale 乘法的那个图表达、以及本来就能加速的那种量化方案——每一件都写清了代价和边界，每一件都是能跑的用例。[workarounds/](workarounds/) |
+| 📊 **完整模型测量** | [G3](findings/qwen3-4b-prefill-decode/)测量 Qwen3-4B FP16 在各档上下文下的 prefill、decode、阶段功率与能量。 |
 | 📊 **组件对照** | [G2](findings/w4a16-service-tradeoffs/)补入原生 W4A16 七档速度、原生宿主内存、同率与满负载温度与风扇响应、GPU 前台尾延迟。[早期 A8W4/W4A16/GPU 对照](findings/ane-vs-gpu-prefill/)保留原数值控制、按 PID 证据和停止状态；不同轮次不合并。 |
 | 🐛 **可复现的缺陷** | 两个工具链失败，各有最小复现、预期错误输出和配对反向对照；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个结构性代价，三组配对进程测得。[findings/](findings/) |
 | 🔬 **一个算术模型** | 候选算术模型在两个真实模型的 7,163,904 个最终 Q8 gate 输出上留下 13 处差异——以及已经定位的一个 32 项点积，不需要任何 Apple 硬件即可从公开标量验证。[模型](findings/execution-model/) · [残差](findings/fp16-dot-residual/) |
@@ -71,7 +69,7 @@
 ## 这个仓库适合谁
 
 - 🟡 **想把推理从 GPU 挪走，正在判断值不值。**
-  → [简短的答案](#简短的答案)，然后是[服务对照](findings/w4a16-service-tradeoffs/)及其边界。
+  → [简短的答案](#简短的答案)，然后是[完整模型对照](findings/qwen3-4b-prefill-decode/)。
 - 🔴 **分组量化模型能编译却跑在 CPU 上，或者输出是乱的。**
   → 先看[能怎么办](workarounds/)，再看
   [Core ML 的约束](findings/coreml-grouped-scale-cpu/)与
@@ -84,11 +82,38 @@
 - 🧪 **想复现或推翻这些结论。** → [REPRODUCING.md](docs/REPRODUCING.md)。
   已注册陈述可从随仓库记录离线核对；历史完整数组重放仍需原资产。
 
-**状态。** 研究产物，不是受支持的产品。尚无外部复现。G2 有三个
+**状态。** 研究产物，不是受支持的产品。尚无外部复现。G3 已有完整模型速度与软件组件能量，广泛的模型质量评测仍待完成。G2 有三个
 限定条件：运行中有意外加载的动态屏保（收尾后才发现）；六个共存组中五组热起始不匹配；功率采集
 失败，能耗未判定。[G2 边界](docs/SCOPE.md#g2-service-observations) · [RESEARCH.md](docs/RESEARCH.md)
 
-## 为什么慢
+## 早期组件测量（G2）
+
+G2 测量一个原生 W4A16 MLP，GPU 基线使用 MLX。下图的单位是组件位置，不是完整模型 token。
+
+<table>
+<tr>
+<td><b><!-- claim:g2.ane-share@speed-card -->24.8%<!-- /claim --></b><br><sub>ANE 速度占 GPU 的比例，1024 位置，各三个宿主</sub></td>
+<td><b><!-- claim:g2.native-calls@calls-card -->33,728 次调用<!-- /claim --></b><br><sub>每个原生 ANE 宿主，结束时小 <!-- claim:g2.native-shrink@memory-card -->60–62 MiB<!-- /claim --></sub></td>
+<td><b><!-- claim:g2.temperature-gap@temperature-card -->1.3–3.3 °C<!-- /claim --></b><br><sub>相同负载下 GPU 推理时 GPU 传感器更高；两侧风扇都在怠速</sub></td>
+<td><b><!-- claim:arithmetic.q8-summary@arithmetic-card -->13 / 7,163,904<!-- /claim --></b><br><sub>候选算术模型未匹配的最终 Q8 输出</sub></td>
+</tr>
+</table>
+
+![G2 第一层 MLP：七档位置数下三个独立宿主的全部曲线与两侧中位数。ANE 保持在每秒约 6,760 位置，GPU 在约 18,500 到 31,600 之间。](docs/figures/g2-throughput.svg)
+
+1024 位置时，ANE 路径约为 **<!-- claim:g2.ane-rate@ane-rate -->6,760 位置/s<!-- /claim -->**，MLX GPU 约 **<!-- claim:g2.gpu-rate@gpu-rate -->27,300 位置/s<!-- /claim -->**，均为每侧三个独立宿主的
+中位数。256 位置以上 ANE 曲线持平，是因为每个请求都被切成固定的 256 位置 tile；这描述的是这条
+流水线，不是硬件上限。持续服务时 ANE 为 GPU 的 **<!-- claim:g2.service-share@service-share -->27.0%<!-- /claim -->**：每个请求之后几毫秒的校验与记录两侧
+相同，在更快的一侧占比更大。
+
+![每秒完成请求数对 GPU 传感器温度与风扇 0 转速。相同负载下两侧风扇都在怠速；只有满负载 GPU 块提高了转速。](docs/figures/g2-load-fans.svg)
+
+三档相同到达率下，最高 **<!-- claim:g2.equal-rate-max@equal-rate -->4.9 请求/s<!-- /claim -->**，两侧风扇都停在约 **<!-- claim:g2.fan-idle@fan-idle -->1,350 RPM<!-- /claim -->** 的怠速，而 GPU 推理时 GPU
+传感器读数高 **<!-- claim:g2.temperature-gap@temperature-detail -->1.3–3.3 °C<!-- /claim -->**。满负载时，ANE 完成 **<!-- claim:g2.ane-saturated@ane-saturated -->6.4 请求/s<!-- /claim -->**，风扇仍在怠速；GPU 完成
+**<!-- claim:g2.gpu-saturated@gpu-saturated -->23.7 请求/s<!-- /claim -->**，风扇 0 为 **<!-- claim:g2.fan-saturated@fan-saturated -->3,100–3,500 RPM<!-- /claim -->**。两者之间的 GPU 负载没有测量，GPU 风扇从哪里开始
+升高仍未知。能耗未判定：功率采集没有通过完整性与时钟检查。
+
+## 量化组件的约束
 
 以下约束已有实测；它们各自对真实 MLP 与 GPU 差距的贡献**没有隔离**：
 
@@ -107,7 +132,7 @@
 ## 快速开始
 
 先选要复现的结果：下方 `ane-scope run` 命令运行合成设备套件；首页 G2 的速度、内存、温度与风扇
-观察用 `python scripts/verify_g2.py` 离线重算。G2 设备重跑仍需研究工作区与模型资产。
+观察用 `python scripts/verify_g2.py` 离线重算；完整模型 G3 用 `python scripts/verify_g3.py`。G2 设备重跑仍需研究工作区与模型资产。
 [命令与结果对应表](docs/REPRODUCING.md#run) ·
 [当前源码的设备验证状态](docs/VALIDATION.md#current-checkout-versus-the-measured-source)
 
@@ -137,6 +162,7 @@ python results/historical/tests/verify_prefill.py     # ANE/GPU 比值与泄漏
 python results/historical/tests/verify_native_followup.py  # 原生后续记录
 python results/historical/tests/verify_arithmetic.py  # 执行模型与那个点积
 python results/historical/tests/verify_historical.py  # 导入的计时记录
+python scripts/verify_g3.py                          # G3 完整模型速度与组件能量
 python scripts/verify_g2.py                          # G2 请求、温度与资源统计
 python scripts/check_source_identity.py --check       # 当前源码与运行时身份
 python scripts/summarize.py                           # 已注册表格与文字数字
@@ -169,7 +195,7 @@ Git 比较要求图文件已被跟踪；尚未提交的草稿应与修改前保�
 | `src/ane_scope/native/` | Swift 预测宿主与可观测的运行时元数据 |
 | `src/ane_scope/controller.py`、`evidence.py`、`guard.py` | 准入、输出/放置检查与资源限制 |
 | `scripts/summarize.py`、`render_figures.py` | 重算已发布数字；重新生成图 |
-| `articles/` | 四篇研究文章，英文与中文互相链接 |
+| `articles/` | 研究文章，英文与中文互相链接 |
 | `docs/` | 边界、方法、来源、复现、相关工作与开放问题 |
 | `runs/` | 已忽略：本地 fixture、模型、日志、编译产物与原始输出 |
 

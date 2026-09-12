@@ -1,0 +1,20 @@
+{
+  "r4": {
+    "returncode": 2,
+    "reason": null,
+    "remaining_pids": [],
+    "passed": false
+  },
+  "r5": {
+    "returncode": 0,
+    "reason": null,
+    "remaining_pids": [],
+    "passed": true
+  },
+  "r6": {
+    "returncode": 0,
+    "reason": null,
+    "remaining_pids": [],
+    "passed": true
+  }
+}

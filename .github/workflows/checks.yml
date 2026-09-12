@@ -29,6 +29,9 @@ jobs:
       - name: Recompute imported G2 service and thermal observations
         run: python scripts/verify_g2.py
 
+      - name: Recompute G3 complete-model speed and component energy
+        run: python scripts/verify_g3.py
+
       - name: Check current source identity against its documented status
         run: python scripts/check_source_identity.py --check
 

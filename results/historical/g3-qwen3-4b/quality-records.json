@@ -1,0 +1,69 @@
+{
+  "controls": {
+    "ane-quality.json": {
+      "quality_short": {
+        "KL_ref_to_actual": 2.52740916320575e-08,
+        "top5_recall": 1.0,
+        "max_abs_error_diagnostic": 0.4271240234375,
+        "reference_argmax": 59604,
+        "actual_argmax": 59604,
+        "confident_argmax": true,
+        "passed": true,
+        "cache_passed": true,
+        "answer_passed": true
+      },
+      "reading_1024": {
+        "KL_ref_to_actual": 0.007433979597900731,
+        "top5_recall": 1.0,
+        "max_abs_error_diagnostic": 1.4375,
+        "reference_argmax": 14374,
+        "actual_argmax": 14374,
+        "confident_argmax": false,
+        "passed": true,
+        "cache_passed": true
+      }
+    },
+    "ane-reading_16384-first-output.json": {
+      "KL_ref_to_actual": 0.002017684502097573,
+      "top5_recall": 1.0,
+      "max_abs_error_diagnostic": 3.10400390625,
+      "reference_argmax": 14374,
+      "actual_argmax": 14374,
+      "confident_argmax": false,
+      "passed": true
+    },
+    "gpu-quality.json": {
+      "quality_short": {
+        "KL_ref_to_actual": 2.821390644525562e-09,
+        "top5_recall": 1.0,
+        "max_abs_error_diagnostic": 0.044921875,
+        "reference_argmax": 59604,
+        "actual_argmax": 59604,
+        "confident_argmax": true,
+        "passed": true,
+        "cache_passed": true,
+        "answer_passed": true
+      },
+      "reading_1024": {
+        "KL_ref_to_actual": 1.787133492198622e-07,
+        "top5_recall": 1.0,
+        "max_abs_error_diagnostic": 0.21875,
+        "reference_argmax": 14374,
+        "actual_argmax": 14374,
+        "confident_argmax": true,
+        "passed": true,
+        "cache_passed": true
+      }
+    },
+    "gpu-reading_16384-first-output.json": {
+      "KL_ref_to_actual": 4.614155641688254e-06,
+      "top5_recall": 1.0,
+      "max_abs_error_diagnostic": 0.125,
+      "reference_argmax": 14374,
+      "actual_argmax": 14374,
+      "confident_argmax": true,
+      "passed": true
+    }
+  },
+  "scope": "Recorded first-output and cache checks; logits and model assets are not bundled. Not a full-model quality evaluation."
+}

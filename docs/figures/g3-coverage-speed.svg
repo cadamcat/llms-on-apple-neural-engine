@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450" viewBox="0 0 900 450" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">Qwen3-4B: single-request coverage</title>
+<desc id="fig-desc">Six measured context sizes on one M5 Pro; prefill and decode shown separately.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="450" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">Qwen3-4B: single-request coverage</text>
+<text x="40" y="50" font-size="12" class="t-muted">Complete FP16 model · M5 Pro · Core AI on both paths · 32K KV capacity</text>
+<text x="40" y="68" font-size="10.5" class="t-muted">Single coverage request per point; prefill + 256 decode steps.</text>
+<path d="M320 94 L332 94" fill="none" class="s-teal" stroke-width="3" stroke-linecap="round"/>
+<text x="338" y="98" font-size="10.5" class="t-muted">ANE path</text>
+<path d="M404.8 94 L416.8 94" fill="none" class="s-blue" stroke-width="3" stroke-linecap="round"/>
+<text x="422.8" y="98" font-size="10.5" class="t-muted">GPU path</text>
+<text x="85" y="131" font-size="12" class="t-ink sb">Prefill · Input tokens/s</text>
+<path d="M85 340 L400 340" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="344" font-size="10.5" class="t-muted" text-anchor="end">0</text>
+<path d="M85 291.25 L400 291.25" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="295.25" font-size="10.5" class="t-muted" text-anchor="end">1000</text>
+<path d="M85 242.5 L400 242.5" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="246.5" font-size="10.5" class="t-muted" text-anchor="end">2000</text>
+<path d="M85 193.75 L400 193.75" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="197.75" font-size="10.5" class="t-muted" text-anchor="end">3000</text>
+<path d="M85 145 L400 145" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="149" font-size="10.5" class="t-muted" text-anchor="end">4000</text>
+<text x="85" y="358" font-size="10.5" class="t-muted" text-anchor="middle">500</text>
+<text x="148" y="358" font-size="10.5" class="t-muted" text-anchor="middle">1K</text>
+<text x="211" y="358" font-size="10.5" class="t-muted" text-anchor="middle">2K</text>
+<text x="274" y="358" font-size="10.5" class="t-muted" text-anchor="middle">4K</text>
+<text x="337" y="358" font-size="10.5" class="t-muted" text-anchor="middle">8K</text>
+<text x="400" y="358" font-size="10.5" class="t-muted" text-anchor="middle">16K</text>
+<text x="242.5" y="376" font-size="10.5" class="t-muted" text-anchor="middle">Input context (tokens)</text>
+<path d="M85 284.756 L148 212.535 L211 192.281 L274 186.977 L337 203.198 L400 227.342" fill="none" class="s-blue" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="85" cy="284.756" r="3.2" class="f-blue"/>
+<circle cx="148" cy="212.535" r="3.2" class="f-blue"/>
+<circle cx="211" cy="192.281" r="3.2" class="f-blue"/>
+<circle cx="274" cy="186.977" r="3.2" class="f-blue"/>
+<circle cx="337" cy="203.198" r="3.2" class="f-blue"/>
+<circle cx="400" cy="227.342" r="3.2" class="f-blue"/>
+<path d="M85 312.228 L148 300.05 L211 300.848 L274 335.868 L337 337.141 L400 337.525" fill="none" class="s-teal" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="85" cy="312.228" r="3.2" class="f-teal"/>
+<circle cx="148" cy="300.05" r="3.2" class="f-teal"/>
+<circle cx="211" cy="300.848" r="3.2" class="f-teal"/>
+<circle cx="274" cy="335.868" r="3.2" class="f-teal"/>
+<circle cx="337" cy="337.141" r="3.2" class="f-teal"/>
+<circle cx="400" cy="337.525" r="3.2" class="f-teal"/>
+<text x="505" y="131" font-size="12" class="t-ink sb">Decode · Output tokens/s</text>
+<path d="M505 340 L820 340" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="344" font-size="10.5" class="t-muted" text-anchor="end">0</text>
+<path d="M505 284.286 L820 284.286" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="288.286" font-size="10.5" class="t-muted" text-anchor="end">10</text>
+<path d="M505 228.571 L820 228.571" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="232.571" font-size="10.5" class="t-muted" text-anchor="end">20</text>
+<path d="M505 172.857 L820 172.857" fill="none" class="s-grid" stroke-width="1"/>
+<text x="496" y="176.857" font-size="10.5" class="t-muted" text-anchor="end">30</text>
+<text x="505" y="358" font-size="10.5" class="t-muted" text-anchor="middle">500</text>
+<text x="568" y="358" font-size="10.5" class="t-muted" text-anchor="middle">1K</text>
+<text x="631" y="358" font-size="10.5" class="t-muted" text-anchor="middle">2K</text>
+<text x="694" y="358" font-size="10.5" class="t-muted" text-anchor="middle">4K</text>
+<text x="757" y="358" font-size="10.5" class="t-muted" text-anchor="middle">8K</text>
+<text x="820" y="358" font-size="10.5" class="t-muted" text-anchor="middle">16K</text>
+<text x="662.5" y="376" font-size="10.5" class="t-muted" text-anchor="middle">Initial KV (tokens)</text>
+<path d="M505 170.624 L568 171.588 L631 174.017 L694 180.264 L757 190.401 L820 218.421" fill="none" class="s-blue" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="505" cy="170.624" r="3.2" class="f-blue"/>
+<circle cx="568" cy="171.588" r="3.2" class="f-blue"/>
+<circle cx="631" cy="174.017" r="3.2" class="f-blue"/>
+<circle cx="694" cy="180.264" r="3.2" class="f-blue"/>
+<circle cx="757" cy="190.401" r="3.2" class="f-blue"/>
+<circle cx="820" cy="218.421" r="3.2" class="f-blue"/>
+<path d="M505 262.279 L568 262.202 L631 322.614 L694 322.61 L757 322.602 L820 322.607" fill="none" class="s-teal" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="505" cy="262.279" r="3.2" class="f-teal"/>
+<circle cx="568" cy="262.202" r="3.2" class="f-teal"/>
+<circle cx="631" cy="322.614" r="3.2" class="f-teal"/>
+<circle cx="694" cy="322.61" r="3.2" class="f-teal"/>
+<circle cx="757" cy="322.602" r="3.2" class="f-teal"/>
+<circle cx="820" cy="322.607" r="3.2" class="f-teal"/>
+<text x="40" y="405" font-size="10.5" class="t-muted">ANE graphs: 256 / 2K / 32K contexts. Speed drops where the selected graph changes.</text>
+<text x="40" y="421" font-size="10.5" class="t-muted">Measured implementations, including host work. No direct hardware bandwidth measurement.</text>
+</svg>

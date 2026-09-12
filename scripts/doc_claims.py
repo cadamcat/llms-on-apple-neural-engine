@@ -134,7 +134,9 @@ def check_local_quotes(root, data):
     catalog = quantities(root, data)
     problems = []
     for name, language in DOCUMENTS.items():
-        problems.extend(check_document((Path(root) / name).read_text(), catalog, language, name=name))
+        body = (Path(root) / name).read_text()
+        body = re.sub(r'<!-- claim:g3\.[^>]+-->.*?<!-- /claim -->', '', body, flags=re.DOTALL)
+        problems.extend(check_document(body, catalog, language, name=name))
     return problems
 
 

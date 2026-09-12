@@ -2,9 +2,9 @@
 
 English | [中文](zh/README.md)
 
-Four research articles connect the experiments: when ANE accelerates quantized graphs, how representation and arithmetic constrain that acceleration, and whether a slower ANE service can leave useful room for foreground GPU work. Each article has a complete Chinese version linked below its title.
+The articles connect complete-model speed and energy with the component experiments: when ANE accelerates quantized graphs, how representation and arithmetic constrain that acceleration, and whether a slower ANE service can leave useful room for foreground GPU work. Each article has a complete Chinese version linked below its title.
 
-If you are deciding whether to move inference to ANE, start with [article 04](04-w4a16-service-tradeoffs.md). For the measurement method and quantization results, read the series in order. These are research drafts based on the bundled experiments: preparing articles 01–03 added no device runs, and article 04 uses the imported G2 overnight run.
+If you are deciding whether to move inference to ANE, start with [article 05](05-qwen3-4b-prefill-decode-energy.md). For the measurement method and quantization results, read the series in order. These are research drafts based on the bundled experiments: preparing articles 01–03 added no device runs, and article 04 uses G2, and article 05 uses the complete-model G3 measurements.
 
 ## Reading order
 
@@ -14,6 +14,7 @@ If you are deciding whether to move inference to ANE, start with [article 04](04
 | [02 · Group quantization on ANE: representation, compatibility and SplitConv cost](02-group-quantization-and-split.md) | How does preserving group scales affect execution? | Paired wide-K and K32 split measurements; correctness and device selection for native and split grouped graphs |
 | [03 · ANE arithmetic compatibility: rounding, scale errors and model quality](03-arithmetic-compatibility.md) | What does a small error value establish? | Frozen RNE/RZA references, exact-grid QDQ and a grouped-scale error prediction |
 | [04 · Is W4A16 on ANE useful? Speed, thermals and GPU coexistence](04-w4a16-service-tradeoffs.md) | Can a slower component leave useful thermal and foreground capacity? | G2 at seven sizes in three hosts per engine, equal-rate and saturated service, and all eighteen coexistence slots |
+| [05 · Qwen3-4B on ANE: prefill, decode and energy](05-qwen3-4b-prefill-decode-energy.md) | When does lower power mean lower energy for a complete LLM? | Same-model FP16 prefill and decode, warmed stage blocks and software component energy |
 
 Article 01 defines the measurement. Article 02 connects graph representation with performance, and article 03 separates the different questions called “accuracy.” Article 04 moves native W4A16 into component service, thermal response and GPU coexistence.
 
@@ -42,4 +43,4 @@ Figures use English labels in both versions, with captions and alternative text 
 
 Keep English and Chinese articles aligned when a claim changes, including its evidence, qualification and numeric registration. Check the relevant records and code first. Toolchain fixes belong in new observations. Changes to inputs, references, thresholds or graph structure define a new experiment and need a new result directory; historical records stay unchanged.
 
-Further development into a paper needs independent device replication, stronger experiments that change one factor at a time and broader input distributions. Energy, full-LLM quality and performance, and transfer across devices remain open. [Further research](../docs/RESEARCH.md).
+Further development into a paper needs independent device replication, stronger experiments that change one factor at a time and broader input distributions. G3 adds complete-model performance and software component energy. Broader model-quality evaluation, calibrated energy and transfer across devices remain open. [Further research](../docs/RESEARCH.md).

@@ -7,9 +7,7 @@ against its same-round GPU 152.25 ms at 4K. Those earlier rounds each have one t
 path; they are not pooled. G2 now adds a separate three-host, seven-size
 comparison and finite thermal/coexistence observations. [Native follow-up](../results/historical/native-mlp-followup.json).
 
-The tested implementation remains slower. What stays open is **whether it earns
-its place through lower sustained power or better GPU coexistence**, and whether
-those benefits survive a complete model and a quality-matched comparison.
+G3 now adds complete Qwen3-4B FP16 speed and software component energy. ANE saves component energy on short prefill, while the current larger-context path is slower and uses more energy per token. The next questions concern graph shape, broader quality and application behaviour. [G3 results](../findings/qwen3-4b-prefill-decode/).
 
 ![Runtime compatibility, deviation from FP16 and model quality need three separate comparisons.](figures/arithmetic-levels.svg)
 
@@ -35,15 +33,11 @@ short memory gate and must remain a separate result.
 
 | Question | The comparison | What is measured |
 |---|---|---|
-| **Does it meet the need at all?** | Same model, same inputs, quality checked first, ANE against GPU | Time to first token, sustained generation rate, tail latency, memory stability — [G2 component observations exist](../findings/w4a16-service-tradeoffs/); no full-model comparison is established |
+| **Does it meet the need at all?** | Same model, same inputs, quality checked first, ANE against GPU | Time to first token, sustained generation rate, tail latency, memory stability — [G2 component observations exist](../findings/w4a16-service-tradeoffs/); G3 provides complete-model speed over its context range; wider input and quality coverage remain open |
 | **Does it lower energy and thermal pressure?** | Equal completed work first; then equal service rate | J/request, J/token, mean power, sustained temperature and fan state — G2: at equal load fans stayed at idle on both engines; energy undetermined |
 | **Does it actually free the GPU?** | Foreground task alone, then with GPU inference, then with ANE inference | Foreground throughput or frame time — read the **p99, not the mean** — with the LLM's own response recorded alongside |
 
-The next experiment should address speed and energy together on a complete model.
-Use the same weights, precision, token input and cache policy, check outputs first,
-then let each engine complete the same work at its own speed. Report prefill time,
-mean power and joules per request together: lower power does not imply lower energy
-when execution takes longer. Equal-rate service and foreground coexistence remain
+The next shape experiment should hold model, input, precision and GPU baseline fixed while changing the ANE graph ladder. G3 already measures speed and software energy on the same work blocks. The larger-graph transition is an observed correlate; an intervention is needed to isolate its cost. Equal-rate service and foreground coexistence remain
 separate questions about background use.
 
 The objectives interact but remain distinct. Lower sustained power can still
@@ -69,12 +63,7 @@ Report service rate, energy, power and thermal behaviour together.
 The [findings](../findings/) include measured behaviour and mechanism hypotheses. Four gaps stand
 between them and a systems paper, in dependency order:
 
-0. **Validate power capture and move beyond the component.** Start with a short
-   complete-model prefill pilot including attention, KV cache and inter-layer
-   transfer. Check outputs and device placement, sampling coverage and clocks,
-   counter response and observer overhead before a longer energy run. Keep the
-   screensaver off for this comparison; a difference from G2 alone cannot isolate
-   its effect. Crossed display conditions, matched matrix-tail starts and the
+0. **Extend the complete-model evidence.** G3 has intact power capture and complete FP16 model stages. Test closer-fitting ANE graph shapes, additional independent hosts and inputs, broader output quality, estimator latency and observer overhead. A difference from G2 alone cannot isolate the screensaver effect. Crossed display conditions, matched matrix-tail starts and the
    anomalous memory-access baseline need their own controls. Native timing alone
    does not isolate hardware cost.
 1. **Cross-chip replication.** One chip, one OS, one toolchain version is the
@@ -99,7 +88,7 @@ advance that explains every deviation in the block and introduces none.
 
 The localization already reached a single 32-term dot product. Going deeper into
 that one residual buys very little now; **breadth is what is missing** — another
-chip and a complete-model baseline. G2 supplies a completed component run,
+chip and a controlled expansion of the complete-model baseline. G2 supplies a completed component run,
 with thermal/coexistence observations whose display sensitivity remains to be tested. Any proposal for a new experiment is worth
 judging on one question: which uncertain mechanism does it distinguish?
 
@@ -112,9 +101,7 @@ that preceded this package.
 The service question now has data: ANE ran at about a quarter of the GPU's
 speed; at equal load both engines kept the fans at idle while the GPU sensor read
 a few degrees warmer; and a matrix foreground showed a smaller tail penalty beside
-ANE inference. The missing energy measurement and the component-only workload now
-limit the decision most. A complete-model prefill comparison can show whether the
-slower path uses less energy for the same work. The GPU fan threshold remains open,
+ANE inference. G3 subsequently adds complete-model prefill/decode speed and software energy; its context-dependent results do not turn this component experiment into a full-model coexistence test. The GPU fan threshold remains open,
 as does whether the tail signal survives the display control, matched thermal
 starts and a CPU-only busy baseline. Normal PC background remains part of the
 target environment. The [fourth article](../articles/04-w4a16-service-tradeoffs.md)

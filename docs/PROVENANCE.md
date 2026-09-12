@@ -117,3 +117,13 @@ The screensaver note is a post-run statement, supported by process-presence snap
 undetermined after the complete strict power parse failed. Detailed limits and
 reproduction levels live in [SCOPE](SCOPE.md#g2-service-observations) and
 [REPRODUCING](REPRODUCING.md#g2-recomputation-and-device-replay).
+
+## G3 complete-model import
+
+[import_g3.py](../results/historical/import_g3.py) extracts closed r4, r5 and r6 records into [g3-qwen3-4b](../results/historical/g3-qwen3-4b/). r4 contributes single-request coverage and recorded output controls; r5 contributes the stage matrix and complete shared capture; r6 contributes the longer short-prefill pair. Request IDs are qualified by run, and r6 points to the same r5 power stream.
+
+The importer reads source request results and commands, not the analysis report. It re-serializes an explicit whitelist of original plist fields for elapsed time, timestamp, thermal state, invalid flags and component power/energy. Original frame byte ranges and hashes link the extracts to the archived capture; receipt clocks and recorded decoded values allow an independent parser check of the public fields. Unselected hardware/process fields are omitted. The public extract cannot reproduce an audit of every original telemetry channel; the all-channel audit and process closure are imported records.
+
+Inputs are token IDs from a frozen snapshot of this repository's own documentation. Input and source-document hashes are bundled; the original text snapshots, model weights, compiled assets and logits arrays are not. The model revision, asset preparation and host source identity are research-run metadata, not evidence of a new public-suite device run. Both G3 arms use Core AI; G2's MLX version does not describe G3.
+
+The [provenance manifest](../results/historical/g3-qwen3-4b/provenance.json) hashes every read source and every imported product, and lists transformations. The portable energy and token-contract code adapts the recorded research checks; origins are listed in [code-origins.json](code-origins.json). Bundle regeneration and document maintenance do not execute a device.

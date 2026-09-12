@@ -5,12 +5,12 @@ what the evidence establishes, and — kept separate — what is still only a
 hypothesis. Boundaries that apply to every number are in
 [SCOPE.md](../docs/SCOPE.md).
 
-They inform one question: **when could a 4-bit LLM earn its place on the Neural
-Engine instead of the GPU?** Component speed, thermal response and GPU coexistence have measurements;
-full-model value and energy remain open. For the other half — the three things that *do* work, with
+They inform one question: **when could an LLM earn its place on the Neural Engine instead of the GPU?** G3 adds complete-model FP16 speed and software component energy; the quantization, thermal and coexistence findings come from separate component experiments. For the other half — the three things that *do* work, with
 their prices — see [workarounds/](../workarounds/).
 
 ## The measured answer
+
+**[Qwen3-4B: prefill, decode and energy](qwen3-4b-prefill-decode/)** — Both paths use Core AI. GPU is faster across the measured contexts; ANE uses less component energy for short prefill, but more with its current long-context graph. [Complete-model scope](../docs/SCOPE.md#g3-complete-model-observations).
 
 **[W4A16 service: a quarter of the GPU's speed, flat memory, idle fans at equal load](w4a16-service-tradeoffs/)** —
 G2 measures three hosts per engine at seven sizes. Two native ANE hosts ran 33,728 stage

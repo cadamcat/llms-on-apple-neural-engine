@@ -1,9 +1,8 @@
 # Figures and their evidence
 
-Seventeen standalone SVGs: three plots from the fresh suites, nine from imported
-evidence (including seven G2 service plots), and five diagrams that explain
-documented method. No
-device experiment is run to draw any of them. Boundaries that apply to every number are in [SCOPE.md](SCOPE.md);
+Standalone SVGs cover the fresh suites, imported component and complete-model
+measurements, and diagrams of the documented methods. Drawing them runs no
+device experiment. Boundaries that apply to every number are in [SCOPE.md](SCOPE.md);
 full tables are in [MEASUREMENTS.md](MEASUREMENTS.md) and the reasoning is in
 the [articles](../articles/README.md).
 
@@ -146,3 +145,18 @@ Temperature traces break across gaps above ten seconds, resource traces above
 two seconds. Rendering does not downsample the data. The seven figures expose
 observations under the reported display condition; none converts CPU process
 percentages to GPU overhead or temperature to energy.
+
+## G3 complete-model figures
+
+The G3 figures use the same Canvas, ANE teal and GPU blue as the component plots. Each point is rebuilt from the [portable G3 request and power fields](../results/historical/g3-qwen3-4b/); the manifest lists the exact source hashes and plotted values.
+
+| Figure | What it shows |
+|---|---|
+| [g3-speed.svg](figures/g3-speed.svg) | Warmed prefill/decode block throughput, including host and request gaps |
+| [g3-power.svg](figures/g3-power.svg) | Mean CPU + GPU + ANE power over those same blocks |
+| [g3-energy.svg](figures/g3-energy.svg) | Component energy for both paths: prefill in mJ/input token, decode in J/output token, with timing-attribution bounds |
+| [g3-implied.svg](figures/g3-implied.svg) | Prefill FLOP/s over projection weights and modelled decode byte rates including KV growth; dashed line is the same-machine ANE synthetic FP16 chain |
+| [g3-coverage-speed.svg](figures/g3-coverage-speed.svg) | Separate single-request coverage with prefill and subsequent decode |
+| [g3-decode-kv.svg](figures/g3-decode-kv.svg) | Consecutive decode segments against actual KV length |
+
+Context ticks are the measured sizes; lines connect observations without claiming measurements between them. All rate and energy axes start at zero. Model loading, separate warmup and recovery are outside the main blocks. Whiskers are sample-timing bounds, not confidence intervals or calibrated sensor accuracy. The implied rates assume two FLOPs per projection weight per token and one full weight and existing-KV read per decode step, including cache growth; they exclude current-token writes and fixed-graph padding and measure no device counter. [Full scope](SCOPE.md#g3-complete-model-observations).

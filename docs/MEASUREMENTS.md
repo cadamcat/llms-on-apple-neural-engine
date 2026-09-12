@@ -114,3 +114,93 @@ Tail values are medians of the final five minutes. Saturated blocks complete une
 | P3-0.25-r1 | 594 | 0.69 / 1.33 | 1351 / 1351 | 1458 / 1458 | approximate_platform / approximate_platform |
 
 Six-minute observation means; these are not long-run equilibrium differences. All six thermal starts matched. Idle fan reference: the median block-start speed across 34 blocks is 1352 / 1459 RPM.
+
+## G3: complete Qwen3-4B FP16
+
+Warmed stage blocks on one M5 Pro. Rate, mean power and energy use the same block. Energy is CPU + GPU + ANE software component energy, without idle subtraction or recovery. [Scope](SCOPE.md#g3-complete-model-observations) · [Source bundle](../results/historical/g3-qwen3-4b/).
+
+| Stage | Input / initial KV | GPU token/s | ANE token/s | GPU / ANE speed | GPU W | ANE W | GPU J/token | ANE J/token | ANE / GPU J/token [timing bounds] |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| prefill | 500 | 2749.618 | 877.852 | 3.13× | 37.7938 | 8.4550 | 0.0137451 | 0.0096315 | 0.70072 [0.66552, 0.79543] |
+| decode | 500 | 30.094 | 13.932 | 2.16× | 13.2528 | 6.5177 | 0.4403866 | 0.4678401 | 1.06234 [0.97400, 1.23786] |
+| prefill | 1,024 | 3235.923 | 832.381 | 3.89× | 41.1836 | 7.8315 | 0.0127270 | 0.0094086 | 0.73926 [0.65324, 0.94389] |
+| decode | 1,024 | 30.044 | 13.924 | 2.16× | 13.9080 | 6.6235 | 0.4629167 | 0.4756872 | 1.02759 [0.96434, 1.16814] |
+| prefill | 2,048 | 3405.485 | 811.906 | 4.19× | 44.4189 | 7.9251 | 0.0130433 | 0.0097611 | 0.74836 [0.67473, 0.96595] |
+| decode | 2,048 | 29.447 | 3.118 | 9.44× | 14.3408 | 3.5957 | 0.4869998 | 1.1530497 | 2.36766 [2.29401, 2.62442] |
+| prefill | 4,096 | 3309.504 | 84.889 | 38.99× | 47.4949 | 2.5354 | 0.0143511 | 0.0298675 | 2.08121 [2.01564, 2.59614] |
+| decode | 4,096 | 28.517 | 3.118 | 9.15× | 14.5487 | 3.5403 | 0.5101819 | 1.1355577 | 2.22579 [2.15868, 2.54915] |
+| prefill | 8,192 | 2867.009 | 58.759 | 48.79× | 47.5474 | 2.3713 | 0.0165843 | 0.0403561 | 2.43339 [2.33726, 3.04572] |
+| decode | 8,192 | 26.640 | 3.120 | 8.54× | 15.3447 | 3.5673 | 0.5760116 | 1.1431909 | 1.98467 [1.93086, 2.22615] |
+| prefill | 16,384 | 2312.736 | 50.892 | 45.44× | 49.5106 | 2.4026 | 0.0214078 | 0.0472101 | 2.20528 [2.11526, 2.73313] |
+| decode | 16,384 | 21.740 | 3.118 | 6.97× | 15.8511 | 3.7915 | 0.7291248 | 1.2159058 | 1.66762 [1.62370, 1.84360] |
+
+### Work and component energy
+
+| Run | Stage | Context | Arm | Work tokens | Seconds | CPU J/token | GPU J/token | ANE J/token | Response accepted |
+|---|---|---:|---|---:|---:|---:|---:|---:|---|
+| r5 | prefill | 500 | ane | 23,000 | 26.411621 | 0.0007697 | 0.0021251 | 0.0063767 | True |
+| r5 | decode | 500 | ane | 1,024 | 73.502341 | 0.0552939 | 0.2628762 | 0.1496700 | True |
+| r5 | prefill | 500 | gpu | 23,000 | 8.567705 | 0.0012849 | 0.0120180 | 0.0000000 | False |
+| r5 | decode | 500 | gpu | 1,024 | 34.027206 | 0.1182465 | 0.3221401 | 0.0000000 | True |
+| r5 | prefill | 1,024 | ane | 53,248 | 63.970697 | 0.0007973 | 0.0019840 | 0.0066273 | True |
+| r5 | decode | 1,024 | ane | 1,024 | 73.541684 | 0.0593426 | 0.2650752 | 0.1512693 | True |
+| r5 | prefill | 1,024 | gpu | 53,248 | 16.455272 | 0.0009912 | 0.0117358 | 0.0000000 | True |
+| r5 | decode | 1,024 | gpu | 1,024 | 34.083082 | 0.1213154 | 0.3416013 | 0.0000000 | True |
+| r5 | prefill | 2,048 | ane | 61,440 | 75.673796 | 0.0008150 | 0.0019247 | 0.0070213 | True |
+| r5 | decode | 2,048 | ane | 1,024 | 328.375017 | 0.1703765 | 0.2648649 | 0.7178083 | True |
+| r5 | prefill | 2,048 | gpu | 61,440 | 18.041484 | 0.0008099 | 0.0122334 | 0.0000000 | True |
+| r5 | decode | 2,048 | gpu | 1,024 | 34.774156 | 0.1310949 | 0.3559048 | 0.0000000 | True |
+| r5 | prefill | 4,096 | ane | 65,536 | 772.018249 | 0.0055029 | 0.0020179 | 0.0223467 | True |
+| r5 | decode | 4,096 | ane | 1,024 | 328.449415 | 0.1517249 | 0.2614525 | 0.7223803 | True |
+| r5 | prefill | 4,096 | gpu | 65,536 | 19.802363 | 0.0007685 | 0.0135825 | 0.0000000 | True |
+| r5 | decode | 4,096 | gpu | 1,024 | 35.908883 | 0.1252920 | 0.3848899 | 0.0000000 | True |
+| r5 | prefill | 8,192 | ane | 57,344 | 975.917347 | 0.0075805 | 0.0020248 | 0.0307509 | True |
+| r5 | decode | 8,192 | ane | 1,024 | 328.157090 | 0.1505992 | 0.2617816 | 0.7308101 | True |
+| r5 | prefill | 8,192 | gpu | 57,344 | 20.001333 | 0.0008009 | 0.0157834 | 0.0000000 | True |
+| r5 | decode | 8,192 | gpu | 1,024 | 38.439070 | 0.1277435 | 0.4482680 | 0.0000000 | True |
+| r5 | prefill | 16,384 | ane | 49,152 | 965.809742 | 0.0085802 | 0.0021059 | 0.0365241 | True |
+| r5 | decode | 16,384 | ane | 1,024 | 328.390447 | 0.2035143 | 0.2625565 | 0.7498350 | True |
+| r5 | prefill | 16,384 | gpu | 49,152 | 21.252752 | 0.0007839 | 0.0206238 | 0.0000000 | True |
+| r5 | decode | 16,384 | gpu | 1,024 | 47.102219 | 0.1318422 | 0.5972826 | 0.0000000 | True |
+| r6 | prefill | 500 | ane | 96,000 | 109.357799 | 0.0008186 | 0.0022971 | 0.0065159 | True |
+| r6 | prefill | 500 | gpu | 96,000 | 34.913935 | 0.0012514 | 0.0124937 | 0.0000000 | True |
+
+Both r5 short 500-token prefill blocks are superseded by r6 in the primary pair. The original GPU block has too few interior samples for the response rule.
+
+### Single coverage requests (r4)
+
+One full request per context and engine, including prefill and 256 decode steps. These are separate from the warmed stage blocks, not cold-start measurements.
+
+| Input tokens | Arm | Prefill token/s | Decode token/s | Prefill + first token (s) |
+|---:|---|---:|---:|---:|
+| 500 | ane | 569.687 | 13.950 | 0.877675 |
+| 500 | gpu | 1133.216 | 30.401 | 0.441222 |
+| 1,024 | ane | 819.495 | 13.964 | 1.249550 |
+| 1,024 | gpu | 2614.663 | 30.228 | 0.391638 |
+| 2,048 | ane | 803.114 | 3.121 | 2.550073 |
+| 2,048 | gpu | 3030.138 | 29.792 | 0.675877 |
+| 4,096 | ane | 84.768 | 3.121 | 48.320103 |
+| 4,096 | gpu | 3138.938 | 28.671 | 1.304900 |
+| 8,192 | ane | 58.637 | 3.123 | 139.707889 |
+| 8,192 | gpu | 2806.201 | 26.851 | 2.919249 |
+| 16,384 | ane | 50.769 | 3.122 | 322.715428 |
+| 16,384 | gpu | 2310.926 | 21.822 | 7.089798 |
+
+### Implied compute and weight-read bandwidth
+
+Derived from the rates above and [model-structure.json](../results/historical/g3-qwen3-4b/model-structure.json). Prefill counts two FLOPs per projection weight per token (3,633,315,840 weights) and lists attention separately. Decode assumes every FP16 weight (8,044,936,192 bytes) and the existing KV cache are read once per step, summing the growing KV over the whole block. Current-token writes are excluded. These are useful-work rates for these implementations: they exclude padding inside a fixed graph, and no device counter or DRAM traffic was measured.
+
+| Stage | Input / initial KV | GPU | ANE | Unit | Attention adds (GPU / ANE) |
+|---|---:|---:|---:|---|---:|
+| prefill | 500 | 19.98 | 6.38 | TFLOP/s over projection weights | 0.41 / 0.13 |
+| decode | 500 | 246.6 | 114.2 | GB/s over 8,194,087,936 mean bytes per step | — |
+| prefill | 1,024 | 23.51 | 6.05 | TFLOP/s over projection weights | 0.98 / 0.25 |
+| decode | 1,024 | 248.5 | 115.2 | GB/s over 8,271,354,880 mean bytes per step | — |
+| prefill | 2,048 | 24.75 | 5.90 | TFLOP/s over projection weights | 2.06 / 0.49 |
+| decode | 2,048 | 248.0 | 26.3 | GB/s over 8,422,349,824 mean bytes per step | — |
+| prefill | 4,096 | 24.05 | 0.62 | TFLOP/s over projection weights | 4.00 / 0.10 |
+| decode | 4,096 | 248.8 | 27.2 | GB/s over 8,724,339,712 mean bytes per step | — |
+| prefill | 8,192 | 20.83 | 0.43 | TFLOP/s over projection weights | 6.93 / 0.14 |
+| decode | 8,192 | 248.5 | 29.1 | GB/s over 9,328,319,488 mean bytes per step | — |
+| prefill | 16,384 | 16.81 | 0.37 | TFLOP/s over projection weights | 11.17 / 0.25 |
+| decode | 16,384 | 229.1 | 32.9 | GB/s over 10,536,279,040 mean bytes per step | — |

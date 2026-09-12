@@ -56,6 +56,7 @@ Choose the command for the result you want to inspect:
 
 | Result | Command | Execution |
 |---|---|---|
+| G3 complete Qwen3-4B speed and component energy | `python scripts/verify_g3.py` | Recompute bundled raw request and power fields; no device |
 | G2 native W4A16 speed, memory, temperature and fans | `python scripts/verify_g2.py` | Recompute bundled observations; no device |
 | Grouped-scale and QDQ toolchain defects | `.venv/bin/ane-scope run --suite compatibility --output runs/my-compatibility` | Synthetic device probes |
 | Full compatibility smoke | `.venv/bin/ane-scope run --suite smoke --output runs/my-smoke` | Synthetic device probes |
@@ -144,6 +145,7 @@ python results/historical/tests/verify_native_followup.py
 python results/historical/tests/verify_arithmetic.py
 python results/historical/tests/verify_historical.py
 python scripts/verify_g2.py
+python scripts/verify_g3.py
 python scripts/check_source_identity.py --check
 python scripts/summarize.py
 python scripts/render_figures.py --check
@@ -210,3 +212,22 @@ A future device replay should freeze its own display conditions and verify
 what happens after the screen has been idle. Normal system background is not a
 zero-process admission requirement. Any new results belong in a new run, separate from the
 Ventura-conditioned r4 observations and their failed power acceptance.
+
+## G3 recomputation and device replay
+
+```sh
+python scripts/verify_g3.py
+python scripts/summarize.py
+python scripts/render_figures.py --check
+```
+
+These standard-library commands check the complete-model bundle without an Apple device. The first re-parses selected power plist fields, validates every request's clocks and KV work, and recomputes coverage and stage metrics. The others check published numbers and generated SVG identity. The model weights, compiled assets and original reference logits are outside the portable bundle.
+
+For a research workspace containing the closed source runs, create a new import directory explicitly:
+
+```sh
+python results/historical/import_g3.py --workspace /path/to/research-workspace --output /path/to/new-g3-bundle
+python scripts/verify_g3.py --bundle /path/to/new-g3-bundle
+```
+
+Device replay needs the fixed model revision, separately exported ANE/GPU FP16 assets, the recorded Swift host and Core AI environment, input IDs, reference controls and an authenticated software capture. Those are identified in protocol.json and provenance.json. This repository's synthetic `ane-scope run` suites do not run the full-model G3 experiment. A portable full-model device launcher is not included.

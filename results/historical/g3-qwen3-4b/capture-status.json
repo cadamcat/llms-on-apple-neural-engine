@@ -1,0 +1,58 @@
+{
+  "integrity_passed": true,
+  "capture_completed": true,
+  "cleanup_passed": true,
+  "streams": {
+    "power": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 8298,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    },
+    "thermal": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 8445,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    },
+    "aux": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 8436,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    },
+    "macmon": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 1698,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    }
+  },
+  "clock_issues": [],
+  "energy_accepted": false,
+  "status": "capture_audit_only_hardware_admission_pending"
+}

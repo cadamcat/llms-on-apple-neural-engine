@@ -1,0 +1,88 @@
+{
+  "at": "2026-09-12T01:01:28.675777+02:00",
+  "trusted": "workplans/g3-qwen3-4b-20260911/PREPARED.json",
+  "files": {
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/export.json": {
+      "bytes": 3817,
+      "sha256": "e6f9bbef1205c61804a95dc46f6c0d0b1a3b93a9954a1fa8b971b64bad9eb414",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/metadata.json": {
+      "bytes": 699,
+      "sha256": "bddd37625f8151047ebde03ce1e62930ff43e93425989fe31977d663616dcf10",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/qwen3-4b-fp16-gpu-c32768.aimodel/main.hash": {
+      "bytes": 32,
+      "sha256": "1f1f4a3f1757d0b35d292322442432a53de0f9f9ed2536fbcd8b4a2fcc5c67a0",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/qwen3-4b-fp16-gpu-c32768.aimodel/main.mlirb": {
+      "bytes": 8045688952,
+      "sha256": "7826911e3321489557b34cfdda681543fbfbd5907cc777ed850729f08fda36c9",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/qwen3-4b-fp16-gpu-c32768.aimodel/metadata.json": {
+      "bytes": 301,
+      "sha256": "fe63089229120a047003a5f2c067aa09d047a711b05dcc01c42f77a92ca691f0",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/tokenizer/chat_template.jinja": {
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/tokenizer/tokenizer.json": {
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-gpu-c32768/tokenizer/tokenizer_config.json": {
+      "bytes": 692,
+      "sha256": "1cc816812993bff176eb4f7495433b736f06fba9b6e7b05cac7b4a1780650c95",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/export.json": {
+      "bytes": 3944,
+      "sha256": "b3fbf5ba06d0b170b475c2012129e2dce1f38bb942fb686c6183312140fe8742",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/metadata.json": {
+      "bytes": 715,
+      "sha256": "0fb9a2fd86e4cc75ab8730a37faeb6a31fa3a600416c259dd310c770d940c8b9",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/qwen3-4b-fp16-ane-c32768-focused.aimodel/main.hash": {
+      "bytes": 32,
+      "sha256": "8e286b0bf5119d96cfa91745c34397e8eb20d3b41c0d47950bb9082975ed717a",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/qwen3-4b-fp16-ane-c32768-focused.aimodel/main.mlirb": {
+      "bytes": 8071869581,
+      "sha256": "8a9dc8c1de1c1d43041299a29d3e2dabe5c97ef1fc45631f81612b03016708fc",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/qwen3-4b-fp16-ane-c32768-focused.aimodel/metadata.json": {
+      "bytes": 301,
+      "sha256": "15a21b4698c80af6325aef09b4e968319a885c2dffa8f6e4b6a1ca9e700cbdb1",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/tokenizer/chat_template.jinja": {
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/tokenizer/tokenizer.json": {
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506",
+      "matched": true
+    },
+    "workplans/g3-qwen3-4b-20260911/assets/qwen3-4b-fp16-ane-c32768-focused/tokenizer/tokenizer_config.json": {
+      "bytes": 692,
+      "sha256": "1cc816812993bff176eb4f7495433b736f06fba9b6e7b05cac7b4a1780650c95",
+      "matched": true
+    }
+  },
+  "failures": [],
+  "passed": true
+}

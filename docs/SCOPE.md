@@ -5,7 +5,7 @@ link here.
 
 ## What is measured
 
-A synthetic convolution chain, exported through two Apple runtimes, executed by
+The fresh device suites measure a synthetic convolution chain, exported through two Apple runtimes, executed by
 a small Swift host, and timed around one synchronous prediction. Weights come
 from a fixed seed; no model is downloaded and none is included. Every timed
 configuration first passes numerical controls, a persisted-asset audit and
@@ -72,18 +72,25 @@ These limits distinguish the evidence sets rather than assigning one protocol to
    permuted; each code is ±1 times a shared scale, and 16 distinct spatial
    vectors are repeated across 4096 positions. That keeps a reference tractable
    and is deliberately unlike a real activation distribution.
-5. **No accepted energy result.** G2 adds finite component thermal and
+5. **G2 has no accepted energy result.** G2 adds finite component thermal and
    coexistence observations, with the conditions below. Its failed power capture
-   does not support joules or an energy-efficiency ranking.
-6. **One host, distinct run identities.** Apple M5 Pro. The fresh synthetic suites
-   use macOS 27.0 build 26A428, Xcode/SDK 27.0, coremltools 9.0, coreai-torch
-   0.4.1 and coreai-core 1.0.0b2. The historical Python MLP record used Xcode
-   26.6 / macOS SDK 26.5; its SDK blocker is not the native follow-up's status.
-   G2 ran on build 26A428 with Xcode 27.0, and its GPU host on MLX 0.32.2. These
-   come from same-day preflight records and a post-run statement that no software
-   changed that day.
-   Version and source identities belong to each run, not to a shared headline.
-   No independent host replication is included.
+   does not support joules or an energy-efficiency ranking. G3 has separate software component energy estimates, described below.
+6. **One host, distinct run identities.** Apple M5 Pro, 48 GiB, macOS 27.0. Each
+   round ran with its own versions:
+
+   | Round | macOS build | Xcode | Other |
+   |---|---|---|---|
+   | G3 complete model | 26A428 | 27.0 (27A266a) | Core AI on both paths; coreai-torch 0.4.2 for the export |
+   | G2 component service | 26A428 | 27.0 | MLX 0.32.2 on the GPU host |
+   | Fresh synthetic suites | 26A428 | 27.0 / SDK 27.0 | coremltools 9.0, coreai-torch 0.4.1, coreai-core 1.0.0b2 |
+   | Native MLP follow-up | 26A428 | 27.0 (Swift 6.4) | — |
+   | Historical Python MLP | — | 26.6 / SDK 26.5 | MLX 0.32.2; its SDK blocker is not the native follow-up's status |
+   | Historical quantization matrix | 26A5425a | — | coreai-torch 0.4.1 and 0.4.2 |
+
+   G2's versions come from same-day preflight records and a post-run statement
+   that no software changed that day. Version and source identities belong to
+   each run, not to a shared headline. No independent host replication is
+   included.
 
 Two more apply to the arithmetic findings specifically:
 
@@ -185,3 +192,19 @@ metadata, not a new device replay or physical instruction counter.
 The public records support scalar recomputation; the original 87-check device
 and asset audit remains imported evidence. Repeating it or the device protocol
 requires additional workspace assets. See [reproduction](REPRODUCING.md#g2-recomputation-and-device-replay).
+
+## G3 complete-model observations
+
+G3 measures complete Qwen3-4B FP16 on one M5 Pro through Core AI on both arms: a static-shape ANE path and a sequential GPU path. This differs from the G2 MLP comparison against MLX. The main plots use warmed stage blocks at inputs <!-- claim:g3.contexts@g3-001 -->500 / 1,024 / 2,048 / 4,096 / 8,192 / 16,384<!-- /claim -->; the ANE graph contexts are <!-- claim:g3.graph-contexts@g3-002 -->256 / 2K / 32K<!-- /claim -->. Actual graph calls are recorded, but no per-operation placement trace was collected in these blocks. The power-domain response supports activity on the requested accelerator, not exclusive execution of every operation there.
+
+Both arms use identical source weights and initial token IDs. Decode performs <!-- claim:g3.decode-steps@g3-003 -->1,024<!-- /claim --> forwards from a prepared cache, including steps after EOS. Output tokens are freely generated, not forced to match. The recorded short-answer, cache and first-output reference checks do not establish equal task quality or perplexity. Inputs come from a single family built from the repository documentation; model assets and original logits are not in the portable package.
+
+The main speed, mean power and J/token refer to the same work block, including host and request-handling time. Model load, pre-block warmup and post-block recovery are excluded. The initial single-request coverage results are separate measurements, each with <!-- claim:g3.coverage-steps@g3-004 -->256<!-- /claim --> decode forwards, and are not a cold-start benchmark. Consecutive requests or decode segments are not independent process repetitions.
+
+Energy is the CPU + GPU + ANE software component sum during the work interval, without idle subtraction. It excludes unreported domains and is not wall-input energy. Thermal starts were not matched, observer overhead was not independently isolated, and estimator accuracy and latency are uncalibrated. The plotted bounds describe sample-time attribution under the stated timing assumptions, not statistical confidence or a calibrated sensor error bar. [Energy calculation](METHODS.md#g3-complete-model-stages).
+
+The short GPU prefill block at <!-- claim:g3.n.500@g3-005 -->500<!-- /claim --> had too few interior power samples for its response rule. The primary pair uses the longer follow-up from r6, with <!-- claim:g3.supplement-count@g3-006 -->192<!-- /claim --> requests per arm and the same r5 capture. Other primary pairs come from r5. Original short blocks remain listed with their response status.
+
+The implied compute and read rates use the measured token rates and the model's structure record. Prefill counts two FLOPs per projection weight per token; attention is listed separately. Decode assumes one read of every FP16 weight and the existing KV at each step, summing the cache growth across the block. The byte model excludes current-token writes and fixed-graph padding. These are effective model-work rates, not device counters; no DRAM traffic was measured. A nearly flat modelled byte rate is consistent with bandwidth-dominated execution, but cannot identify the bottleneck or distinguish ANE memory-access limits from graph and host costs. The same-machine synthetic ANE FP16 reference uses a different graph on one fixed shape, not a hardware peak. [Calculation](METHODS.md#g3-complete-model-stages).
+
+Larger contexts select larger fixed ANE functions. The function selection and curve transitions are observed together; a controlled change of graph shapes is still needed to isolate their cost. These rates do not directly measure UMA bandwidth, and G3 FP16 does not establish a quantized-path benefit. [Article](../articles/05-qwen3-4b-prefill-decode-energy.md) · [Bundle](../results/historical/g3-qwen3-4b/).

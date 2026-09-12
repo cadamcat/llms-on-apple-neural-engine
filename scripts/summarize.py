@@ -293,13 +293,16 @@ def main():
     args = parser.parse_args()
     from g2.evidence import derive, measurements as g2_measurements, quoted_values
     g2 = derive()
-    text = measurements() + '\n' + g2_measurements(g2)
+    from g3.evidence import derive as derive_g3, measurements as g3_measurements
+    g3 = derive_g3()
+    text = measurements() + '\n' + g2_measurements(g2) + '\n' + g3_measurements(g3)
     if args.write:
         MEASUREMENTS.write_text(text)
         print(f'wrote {MEASUREMENTS.relative_to(ROOT)}')
         return
 
-    problems = check_local_quotes(ROOT, g2)
+    from g3.claims import check as check_g3_quotes
+    problems = check_local_quotes(ROOT, g2) + check_g3_quotes(ROOT, g3)
     if MEASUREMENTS.read_text() != text:
         problems.append('docs/MEASUREMENTS.md differs from the bundled records; '
                         'rerun with --write')

@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -32,7 +33,10 @@ class DocumentClaims(unittest.TestCase):
         path.write_text(body.replace(old, new, 1))
 
     def check(self, name='README.md'):
-        return check_document((self.root / name).read_text(), self.catalog,
+        # G2 and G3 have separate required-location inventories.
+        body=re.sub(r'<!-- claim:g3\.[^>]+-->.*?<!-- /claim -->', '',
+                    (self.root / name).read_text(), flags=re.DOTALL)
+        return check_document(body, self.catalog,
                               'zh' if name.endswith('zh-CN.md') else 'en', name=name)
 
     def test_sources_exist_and_both_readmes_match(self):

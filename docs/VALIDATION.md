@@ -153,3 +153,9 @@ built in a disposable directory verified the renamed metadata, command entry
 point and unchanged Python and Swift resources. The command help was loaded
 from that wheel without device execution. Historical records keep their original
 names; this rename did not rerun the device suites.
+
+## G3 complete-model import — 2026-09-12
+
+The G3 portable check validates source-field decoding, raw request/token/graph clocks, KV progression, completed work, shared-capture references and primary-pair admission. It recomputes both coverage rates and warmed-stage speed, component power, J/token and timing-attribution bounds. The original all-channel capture audit, first-output numerical checks and runtime asset identity are imported records with the [scope stated separately](SCOPE.md#g3-complete-model-observations).
+
+Disposable-bundle tests change input counts, phase clocks, power sample inventory, decoded power, work budgets and capture references. Selecting the original short GPU prefill block also fails its response check. A constant-power fixture independently checks the energy integral. Named document quantities bind each required numeric reference to the corresponding record; figures regenerate through the existing standard-library SVG canvas. Run `python scripts/verify_g3.py` and the portable checks above to check the current checkout.

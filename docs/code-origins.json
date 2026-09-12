@@ -53,5 +53,20 @@
     "origin": "scripts/g1gc_coreai.swift",
     "sha256": "3de3ae9b47b4fa6e49fd7f53f7684fecddc86db514f7e282dd5a9c8d8a473702",
     "origin_scope": "local research workspace, selected implementation adapted"
+  },
+  {
+    "origin": "workplans/g3-night-20260912-prefill-addendum-r6/scripts/g3_night_protocol.py",
+    "sha256": "998c3b324acdff79f800316b10e09cdd6c922a2869d8c9d28b7511cf410562f3",
+    "origin_scope": "closed G3 research checks; portable protocol and power parsing adapted"
+  },
+  {
+    "origin": "workplans/g3-night-20260912-prefill-addendum-r6/scripts/g3_night_measurement.py",
+    "sha256": "28715cd6f6d24583df2e7c5b370c1653709f8749a08d6b46f93b9e98253ba06c",
+    "origin_scope": "closed G3 research checks; portable protocol and power parsing adapted"
+  },
+  {
+    "origin": "workplans/g3-night-20260912-prefill-addendum-r6/scripts/g3_capture.py",
+    "sha256": "57d9f352064da3fc584681942f7e123fd4eab35fe1c61c5196a9ae609b127ff3",
+    "origin_scope": "closed G3 research checks; portable protocol and power parsing adapted"
   }
 ]

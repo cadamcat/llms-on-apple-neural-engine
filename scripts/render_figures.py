@@ -18,7 +18,9 @@ OUT = ROOT / 'docs/figures'
 GENERATOR_FILES = ['scripts/render_figures.py', 'scripts/figures/canvas.py',
                    'scripts/figures/architecture.py', 'scripts/figures/arithmetic.py',
                    'scripts/figures/measurements.py', 'scripts/figures/g2.py',
-                   'scripts/g2/evidence.py', 'scripts/g2/thermal.py']
+                   'scripts/g2/evidence.py', 'scripts/g2/thermal.py',
+                   'scripts/figures/g3.py', 'scripts/g3/evidence.py',
+                   'scripts/g3/protocol.py', 'scripts/g3/power.py']
 SVG = '{http://www.w3.org/2000/svg}'
 FORBIDDEN_TAGS = ('script', 'foreignObject', 'image', 'use')
 
@@ -51,11 +53,11 @@ def inspect_svg(path: Path) -> None:
 
 def write() -> int:
     sys.path.insert(0, str(ROOT / 'scripts'))
-    from figures import architecture, arithmetic, measurements, g2
+    from figures import architecture, arithmetic, measurements, g2, g3
 
     OUT.mkdir(parents=True, exist_ok=True)
     figures = []
-    for module in (architecture, arithmetic, measurements, g2):
+    for module in (architecture, arithmetic, measurements, g2, g3):
         for item in module.generate(ROOT, OUT):
             item['source_hashes'] = {name: sha(ROOT / name) for name in item.get('sources', [])}
             item['svg_sha256'] = sha(OUT / item['filename'])

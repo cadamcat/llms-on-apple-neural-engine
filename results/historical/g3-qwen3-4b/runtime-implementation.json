@@ -1,0 +1,8 @@
+{
+  "source": "workplans/g3-night-20260912-energy-r5/vendor/coreai-models/swift/Sources/Tools/g3-flow-host/G3Host.swift",
+  "source_sha256": "b03ada2c586d2e4e1b05dee48fede72012ae198a76a3a49515511eb26d21b9e9",
+  "engine_selection_excerpt": "        let engine=try await EngineFactory.createEngine(config:config(at:asset),\n            modelURL:asset.appendingPathComponent(bundle.modelAssetPath),\n            options:EngineOptions(variant:arm==\"ane\" ? \"static-shape\":\"coreai-sequential\",\n                                  kvCacheStrategy:.fixedSize,kvCacheSize:bundle.maxContextLength))\n",
+  "ane": "Core AI StaticShapeEngine",
+  "gpu": "Core AI CoreAISequentialEngine",
+  "scope": "Host engine selection, not exclusive per-operation device placement."
+}
