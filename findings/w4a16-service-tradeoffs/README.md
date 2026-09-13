@@ -1,7 +1,7 @@
 # W4A16 service: a quarter of the GPU's speed, flat memory, idle fans at equal load
 
 The native ANE path now has a completed component experiment behind it. On one M5 Pro it
-ran the MLP at **24.8%** of the MLX GPU's speed, and at **27.0%** under sustained service.
+ran the MLP at **0.248×** the MLX GPU's speed, and at **0.270×** under sustained service.
 Two native ANE hosts showed none of the historical Python per-call memory growth. At equal
 load both engines left the fans at idle while the GPU sensor read a few degrees warmer;
 fans rose only when the GPU ran flat out. A matrix foreground showed a smaller tail penalty
@@ -37,7 +37,7 @@ choice without identifying the hardware ceiling.
 ![Three same-host tile64/tile256 pairs.](../../docs/figures/g2-tile.svg)
 
 Sustained service gives a different ratio. At saturation the ANE completed **6.4**
-requests/s and the GPU **23.7**, putting the ANE at **27.0%**. The service loop checks,
+requests/s and the GPU **23.7**, putting ANE speed at **0.270×** the GPU speed. The service loop checks,
 hashes and logs every response — about 4.4 ms per request on both engines — and that fixed
 cost takes a larger share of the faster GPU's time. No overhead is deducted from either
 number.

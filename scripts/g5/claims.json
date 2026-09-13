@@ -1,0 +1,48 @@
+{
+  "findings/attention-product-precision/README.md": {
+    "g5-001": "g5.random.dense-l2",
+    "g5-002": "g5.random.block-l2",
+    "g5-003": "g5.random.post-pv-l2",
+    "g5-004": "g5.cpu.dense-l2",
+    "g5-005": "g5.pv.probability-span",
+    "g5-006": "g5.pv.l2",
+    "g5-007": "g5.pv.l2",
+    "g5-008": "g5.pv.scale-16-l2",
+    "g5-009": "g5.pv.scale-64-l2",
+    "g5-010": "g5.pv.scale-64-l2",
+    "g5-011": "g5.constant.full-unnormalized-l2",
+    "g5-012": "g5.constant.half-unnormalized-l2",
+    "g5-013": "g5.near-zero.kv-unrolled-l2",
+    "g5-014": "g5.near-zero.post1024-l2",
+    "g5-015": "g5.near-zero.dense-l2",
+    "g5-016": "g5.rounding.rounded-half-products-wide-sum.vs-truth",
+    "g5-017": "g5.rounding.rounded-half-products-wide-sum.vs-device",
+    "g5-018": "g5.rounding.serial-half-accumulation.vs-truth",
+    "g5-019": "g5.rounding.serial-half-accumulation.vs-device",
+    "g5-020": "g5.rounding.products-flushed-below-half-min-normal.vs-truth",
+    "g5-021": "g5.rounding.products-flushed-below-half-min-normal.vs-device",
+    "g5-022": "g5.random.dense-l2",
+    "g5-023": "g5.time.dense.resident",
+    "g5-024": "g5.time.dense.with-transfer",
+    "g5-025": "g5.time.kv-unrolled.resident",
+    "g5-026": "g5.time.kv-unrolled.with-transfer",
+    "g5-027": "g5.time.kv-streamed.resident",
+    "g5-028": "g5.time.kv-streamed.with-transfer",
+    "g5-029": "g5.speed.kv-unrolled-vs-dense.resident",
+    "g5-030": "g5.time.post4096.resident",
+    "g5-031": "g5.time.post1024.resident",
+    "g5-032": "g5.speed.b1024-vs-b4096.resident",
+    "g5-033": "g5.speed.b1024-vs-b4096.with-transfer",
+    "g5-034": "g5.transfer-ms-span",
+    "g5-035": "g5.timed-operations"
+  },
+  "findings/README.md": {
+    "g5-001": "g5.random.dense-l2",
+    "g5-002": "g5.pv.scale-64-l2",
+    "g5-003": "g5.speed.kv-unrolled-vs-dense.resident",
+    "g5-004": "g5.speed.b1024-vs-b4096.resident"
+  },
+  "docs/VALIDATION.md": {
+    "g5-001": "g5.timed-operations"
+  }
+}

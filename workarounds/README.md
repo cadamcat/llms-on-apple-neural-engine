@@ -2,14 +2,15 @@
 
 The [findings](../findings/) are mostly about what does not. This is the other
 half: three things that do run on the Neural Engine, each with its price and its
-boundary. Every one of them is a case in the test suite, so you can check it on
-your own machine.
+boundary, plus one that keeps an ANE machine's disk usable. The first three are cases
+in the test suite, so you can check them on your own machine.
 
 | Want to… | Do this | Price |
 |---|---|---|
 | Try the tested grouped-scale rewrite | [Split into per-output-channel scales](#1-split-grouped-weights-into-per-output-channel-scales) | About **4× slower** in a separate synthetic ablation |
 | Get a correct QDQ multiply | [Clamp the product, or write the quantize step explicitly](#2-fix-a-qdq-multiply) | Clamp: no measurable time; neither form makes a real QAT MLP match |
 | Just get acceleration | [Stay with per-tensor or per-output-channel 8-bit](#3-stay-with-per-tensor-or-per-output-channel-8-bit) | Not the format your checkpoint ships in; needs a deep enough chain |
+| Get back disk space that ANE model loads leave behind | [End `ANECompilerService` when it holds deleted compile inputs](#4-reclaim-disk-space-held-by-the-ane-compiler-service) | A compile request running at that moment may fail once |
 
 ---
 
@@ -84,8 +85,8 @@ return qdq(p, s_out)
 
 Quantization saturates at those bounds anyway, so the clamp never changes the QDQ's output. It restored the correct output
 in all four arms of the model-free probe, kept one ANE request per call, and cost no
-measurable time in an eight-MLP stack (0.976× against 0.977× without it). On a real
-Gemma 4 E4B QAT MLP it removed the gross error but left 6.31% for one layer and 21.6%
+measurable time in an eight-MLP stack (<!-- claim:g1w.e4b.clip-product.speed@g1w-001 -->0.976×<!-- /claim --> against <!-- claim:g1w.e4b.native.speed@g1w-002 -->0.977×<!-- /claim --> without it). On a real
+Gemma 4 E4B QAT MLP it removed the gross error but left <!-- claim:g1w.e4b.1.clip-product.l2@g1w-003 -->6.31%<!-- /claim --> for one layer and <!-- claim:g1w.e4b.8.clip-product.l2@g1w-004 -->21.6%<!-- /claim -->
 for eight repeated layers, so it is not a complete fix there.
 
 **The explicit rewrite.** Express the quantize half yourself — divide by the scale, round,
@@ -133,10 +134,10 @@ quality question this repository has not answered, and cannot answer with
 model-free fixtures.
 
 **The boundary.** The gain [depends on the chain and its weights](../findings/quantized-speedup-conditions/).
-A8W4 runs at 0.86× W4A16 speed as a single layer and 1.33× at 128 layers, so time a
+A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-005 -->0.86×<!-- /claim --> W4A16 speed as a single layer and <!-- claim:g1w.depth.both-128.speed@g1w-006 -->1.33×<!-- /claim --> at 128 layers, so time a
 deep enough graph before concluding anything. Exact zero weights make the FP16
-baseline itself 1.88× faster. A released per-channel A8W4 checkpoint, eight repeated
-Gemma 4 E4B QAT MLPs, gained nothing (0.977×).
+baseline itself <!-- claim:g1w.density.old.speed@g1w-007 -->1.88×<!-- /claim --> faster. A released per-channel A8W4 checkpoint, eight repeated
+Gemma 4 E4B QAT MLPs, gained nothing (<!-- claim:g1w.e4b.native.speed@g1w-008 -->0.977×<!-- /claim -->).
 
 **Check it:**
 
@@ -148,6 +149,53 @@ python scripts/summarize.py
 Numbers and their unit are in [MEASUREMENTS.md](../docs/MEASUREMENTS.md); what
 "source-equivalent ops/s" does and does not mean is in
 [SCOPE.md](../docs/SCOPE.md).
+
+---
+
+## 4. Reclaim disk space held by the ANE compiler service
+
+**The problem.** On the tested M5 Pro with macOS 27.0 and Qwen3-4B FP16 assets, each ANE model load left its multi-gigabyte compile input open in
+`ANECompilerService` after the loading process exits and the file is deleted. The
+space returns only when the service exits, and `du` cannot see it.
+[The finding](../findings/ane-compiler-service-disk/) has the listings and free-space readings.
+
+**Check it.** List what the service holds; `+L1` keeps deleted files and `-a` restricts
+the listing to the service:
+
+```sh
+sudo lsof -nP -a +L1 -c ANECompiler
+```
+
+**Reclaim it by hand.** When no ANE model is loading or running, end the service. It
+did not respond to SIGTERM on the observed machine, so send SIGKILL; launchd starts it
+again on the next compile request.
+
+```sh
+sudo kill -9 <PID from the listing>
+```
+
+**Or install a periodic task.** [`ane-compiler-reclaim/`](ane-compiler-reclaim/) holds a
+root LaunchDaemon that runs every five minutes and ends the service only when all of these
+hold: no `powermetrics` process, no live
+process owns an `mpsgraph-*` scratch directory or any file the service holds, and the
+deleted inputs total at least 2 GiB. It tries SIGTERM, then SIGKILL after 10 seconds, and
+logs each action with free space before and after to `/Library/Logs/ane-compiler-reclaim.log`.
+These checks reduce interference with ongoing work.
+
+```sh
+sudo sh workarounds/ane-compiler-reclaim/install.sh
+sudo ANE_RECLAIM_DRY_RUN=1 sh /usr/local/libexec/ane-compiler-reclaim.sh   # current decision
+```
+
+The installer copies the script to root-owned `/usr/local/libexec/`, because root runs
+it. To remove it: `sudo launchctl bootout system/local.ane-compiler-reclaim`, then delete
+`/Library/LaunchDaemons/local.ane-compiler-reclaim.plist` and the script.
+
+**The catch.** The checks do not reserve an idle window; a compilation starting during
+reclamation may be interrupted. While `powermetrics` is detected, reclamation is skipped,
+so a run with many ANE loads still needs disk for all of them. Only macOS 27.0 with Qwen3-4B assets has been
+observed. The decision rules are covered by dry-run tests (`tests/test_ane_compiler_reclaim.py`);
+the signalling path ran once for real, releasing the space it logged.
 
 ---
 

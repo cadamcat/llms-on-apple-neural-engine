@@ -32,7 +32,7 @@ accelerator's batch capacity.
 medians are 747.02 ms, 756.76 ms and 157.30 ms — the GPU is still 4.75× faster.
 Both sides pay the same IPC, and removing it does not close the distance.
 
-**8-bit activations showed little difference in this round.** W4A16 lands within **1.3%** of A8W4 at 4096
+**8-bit activations showed little difference in this round.** A8W4 runs at **1.013×** W4A16 speed at 4096
 positions. One process per arm does not establish equivalence or rule out an A8 benefit
 in other graphs; the same-weight W4A16 path remains a useful control.
 

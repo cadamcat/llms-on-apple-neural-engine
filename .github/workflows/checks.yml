@@ -38,6 +38,12 @@ jobs:
       - name: Recompute G5 attention timings
         run: python scripts/verify_g5.py
 
+      - name: Recompute G4 A matched-graph speed and component energy
+        run: python scripts/verify_g4a.py
+
+      - name: Recompute the disk space held by ANECompilerService
+        run: python scripts/verify_ane_compiler_disk.py
+
       - name: Recheck the recorded QDQ multiply outputs
         run: python findings/coreai-qdq-multiply-scale/repro/verify.py
 

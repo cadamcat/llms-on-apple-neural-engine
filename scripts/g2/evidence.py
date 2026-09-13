@@ -317,7 +317,7 @@ def measurements(data):
         'Ventura dynamic screensaver reported after the run; effect unquantified. '
         '[Finding](../findings/w4a16-service-tradeoffs/) · [Scope](SCOPE.md#g2-service-observations)','',
         table(['Positions','ANE positions/s','GPU positions/s','ANE / GPU'],[
-            [r['positions'],f"{r['C']['positions_per_second']:,.2f}",f"{r['G']['positions_per_second']:,.2f}",f"{100*r['C_over_G']:.2f}%"] for r in data['medians']]),'',
+            [r['positions'],f"{r['C']['positions_per_second']:,.2f}",f"{r['G']['positions_per_second']:,.2f}",f"{r['C_over_G']:.4f}×"] for r in data['medians']]),'',
         'Each rate is the median of three independent host rates; each host rate uses 30 measured calls.','',
         table(['Block','Observed / all completed','Requests/s','Tail CPU / GPU °C','Tail fan 0 / 1 RPM'],[
             [name,f"{s['service']['inference']['observed_completed']} / {s['service']['inference']['completed']}",
@@ -364,7 +364,7 @@ def quoted_values(data):
     shrink = f'{change[0]:.0f}–{change[-1]:.0f}'
     projected = f"{native[0]['projected_retained_bytes']/2**30:.1f}"
     common = [sig3(point['C']['positions_per_second']), sig3(point['G']['positions_per_second']),
-              f"{100*point['C_over_G']:.1f}%", f"{100*data['saturated_ratio']:.1f}%",
+              f"{point['C_over_G']:.3f}×", f"{data['saturated_ratio']:.3f}×",
               calls, shrink, f'{min(diffs):.1f}–{max(diffs):.1f}',
               f"{round(data['fan_floor']['fan0_rpm'], -1):,.0f}",
               f'{max(rate(s) for s in p3):.1f}', f"{statistics.mean(rate(s) for s in sat['C']):.1f}",
@@ -413,9 +413,5 @@ def quoted_values(data):
             'findings/w4a16-service-tradeoffs/README.md':common+extra,
             'articles/04-w4a16-service-tradeoffs.md':common+extra+article,
             'articles/zh/04-W4A16留在ANE上值得吗.md':common+extra+article,
-            'articles/README.md':[f'{max(rate(s) for s in p3):.1f}',
-                                   f'{statistics.mean(rate(s) for s in sat["G"]):.1f}'],
-            'articles/zh/README.md':[f'{max(rate(s) for s in p3):.1f}',
-                                         f'{statistics.mean(rate(s) for s in sat["G"]):.1f}'],
             'findings/iosurface-per-call-growth/README.md':[calls, shrink, projected],
             'findings/README.md':[calls]}

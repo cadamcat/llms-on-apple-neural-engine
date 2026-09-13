@@ -58,4 +58,6 @@ The KV plot divides each decode request into consecutive segments. It shows beha
 
 The next useful comparison changes the ANE context ladder while keeping weights, inputs and the GPU baseline fixed. If a closer-fitting graph improves both throughput and energy at long contexts, that would separate a representation cost from the broader device comparison. More independent hosts, input families and a broader quality evaluation are also needed before using these curves to predict an application's performance.
 
+**(2026-09-13)** [Article 06](06-qwen3-4b-matched-graphs.md) reports that comparison: with an ANE graph sized to each input, most of the long-context slowdown and extra energy went away, and the GPU stayed faster.
+
 G3 leaves the existing quantization results as separate experiments. It uses FP16, so it does not establish an A8W4 benefit. G2's component coexistence and fan results answer other questions. [Scope](../docs/SCOPE.md#g3-complete-model-observations) · [Portable evidence](../results/historical/g3-qwen3-4b/) · [Recompute](../docs/REPRODUCING.md#g3-recomputation-and-device-replay).

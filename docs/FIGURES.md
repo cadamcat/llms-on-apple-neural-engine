@@ -160,3 +160,17 @@ The G3 figures use the same Canvas, ANE teal and GPU blue as the component plots
 | [g3-decode-kv.svg](figures/g3-decode-kv.svg) | Consecutive decode segments against actual KV length |
 
 Context ticks are the measured sizes; lines connect observations without claiming measurements between them. All rate and energy axes start at zero. Model loading, separate warmup and recovery are outside the main blocks. Whiskers are sample-timing bounds, not confidence intervals or calibrated sensor accuracy. The implied rates assume two FLOPs per projection weight per token and one full weight and existing-KV read per decode step, including cache growth; they exclude current-token writes and fixed-graph padding and measure no device counter. [Full scope](SCOPE.md#g3-complete-model-observations).
+
+## G4 A figures
+
+The G4 A figures reuse the Canvas and colours. Their footnotes use larger type and short lines; adjacent page text carries the timing, energy and attribution limits. Every point is rebuilt from the [G4 A bundle](../results/historical/g4a-qwen3-4b/), the G3 bundle for the comparison and, for the disk figure, the [redacted disk observations](../findings/ane-compiler-service-disk/evidence/).
+
+| Figure | What it shows |
+|---|---|
+| [g4a-speed.svg](figures/g4a-speed.svg) | Prefill (log scale) and decode speed at six inputs: GPU, ANE with matched graphs, and G3's ANE on the 256 / 2K / 32K ladder (dashed; decode over its first 256 steps) |
+| [g4a-implied.svg](figures/g4a-implied.svg) | Prefill TFLOP/s split into projection and causal attention, and decode read GB/s split into weights and existing KV, for both paths at every input; dashed line is the ANE synthetic FP16 chain |
+| [g4a-energy.svg](figures/g4a-energy.svg) | Component energy per token stacked by CPU, GPU and ANE counter for both paths, with timing bounds on the total; † marks a block whose CPU median power exceeds 1.35× both neighbouring inputs |
+| [ane-compiler-disk.svg](figures/ane-compiler-disk.svg) | Free space through the G4 A run with host sessions shaded, and the release when the compiler service ended |
+
+Ticks are the measured inputs; lines connect observations without claiming values between them. Rate axes start at zero except the prefill panel of g4a-speed, which is logarithmic so the ANE curves remain readable. The implied rates exclude fixed-graph padding and current-token writes and measure no device counter. [Full scope](SCOPE.md#g4-a-matched-graph-observations).
+

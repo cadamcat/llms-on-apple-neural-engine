@@ -62,7 +62,7 @@ def quantities(root, data):
     q8 = f"{sum(row['q8_numeric_mismatches'] for row in models):,} / {sum(row['real_values'] for row in models):,}"
     bundle = 'results/historical/g2-w4a16-night/'
     return {
-        'g2.ane-share': Quantity(f"{100 * point['C_over_G']:.1f}%", '', '',
+        'g2.ane-share': Quantity(f"{point['C_over_G']:.3f}×", '', '',
                                 bundle + 'p2.jsonl.gz: N1024 median C rate / median G rate'),
         'g2.native-calls': Quantity(f"{native[0]['stage_calls']:,}", 'calls', '次调用',
                                    bundle + 'p0.json: native host.stage_calls'),
@@ -77,7 +77,7 @@ def quantities(root, data):
                                bundle + 'p2.jsonl.gz: N1024 median C positions_per_second'),
         'g2.gpu-rate': Quantity(sig3(point['G']['positions_per_second']), 'positions/s', '位置/s',
                                bundle + 'p2.jsonl.gz: N1024 median G positions_per_second'),
-        'g2.service-share': Quantity(f"{100 * data['saturated_ratio']:.1f}%", '', '',
+        'g2.service-share': Quantity(f"{data['saturated_ratio']:.3f}×", '', '',
                                     bundle + 'slots.json: SAT mean C rate / mean G rate'),
         'g2.equal-rate-max': Quantity(f'{max(equal_rates):.1f}', 'requests/s', '请求/s',
                                      bundle + 'slots.json: maximum P3 observation throughput'),
@@ -135,7 +135,8 @@ def check_local_quotes(root, data):
     problems = []
     for name, language in DOCUMENTS.items():
         body = (Path(root) / name).read_text()
-        body = re.sub(r'<!-- claim:g3\.[^>]+-->.*?<!-- /claim -->', '', body, flags=re.DOTALL)
+        # Complete-model claim families are checked by their own registries.
+        body = re.sub(r'<!-- claim:(?!g2\.|arithmetic\.)[^>]+-->.*?<!-- /claim -->', '', body, flags=re.DOTALL)
         problems.extend(check_document(body, catalog, language, name=name))
     return problems
 

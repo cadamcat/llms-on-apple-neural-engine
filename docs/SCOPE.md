@@ -73,17 +73,18 @@ These limits distinguish the evidence sets rather than assigning one protocol to
    vectors are repeated across 4096 positions. That keeps a reference tractable
    and is deliberately unlike a real activation distribution. The measured rate
    and the paired quantized ratio belong to this fixture as much as to its
-   format: at the same shapes, 73.63% exact-zero weights make FP16 1.88× faster
-   and cut the A8W4 gain over FP16 to 1.36×, and a single layer runs slower.
+   format: at the same shapes, <!-- claim:g1w.weights.zero-fraction@g1w-001 -->73.63%<!-- /claim --> exact-zero weights make FP16 <!-- claim:g1w.density.old.speed@g1w-002 -->1.88×<!-- /claim --> faster
+   and cut the A8W4 gain over FP16 to <!-- claim:g1w.codebook.full.a8-over-fp16@g1w-003 -->1.36×<!-- /claim -->, and a single layer runs slower.
    [Quantized speed-up conditions](../findings/quantized-speedup-conditions/).
 5. **G2 has no accepted energy result.** G2 adds finite component thermal and
    coexistence observations, with the conditions below. Its failed power capture
-   does not support joules or an energy-efficiency ranking. G3 has separate software component energy estimates, described below.
+   does not support joules or an energy-efficiency ranking. G3 and G4 A have separate software component energy estimates, described below.
 6. **One host, distinct run identities.** Apple M5 Pro, 48 GiB, macOS 27.0. Each
    round ran with its own versions:
 
    | Round | macOS build | Xcode | Other |
    |---|---|---|---|
+   | G4 A matched graphs | 26A428 (same-day system record) | not recorded | Core AI on both paths; ANE tiers written by coreai-core 1.0.0b2 |
    | G3 complete model | 26A428 | 27.0 (27A266a) | Core AI on both paths; coreai-torch 0.4.2 for the export |
    | G2 component service | 26A428 | 27.0 | MLX 0.32.2 on the GPU host |
    | Fresh synthetic suites | 26A428 | 27.0 / SDK 27.0 | coremltools 9.0, coreai-torch 0.4.1, coreai-core 1.0.0b2 |
@@ -213,12 +214,28 @@ The short GPU prefill block at <!-- claim:g3.n.500@g3-005 -->500<!-- /claim --> 
 
 The implied compute and read rates use the measured token rates and the model's structure record. Prefill counts two FLOPs per projection weight per token; attention is listed separately. Decode assumes one read of every FP16 weight and the existing KV at each step, summing the cache growth across the block. The byte model excludes current-token writes and fixed-graph padding. These are effective model-work rates, not device counters; no DRAM traffic was measured. A nearly flat modelled byte rate is consistent with bandwidth-dominated execution, but cannot identify the bottleneck or distinguish ANE memory-access limits from graph and host costs. The same-machine synthetic ANE FP16 reference uses a different graph on one fixed shape, not a hardware peak. [Calculation](METHODS.md#g3-complete-model-stages).
 
-Larger contexts select larger fixed ANE functions. The function selection and curve transitions are observed together; a controlled change of graph shapes is still needed to isolate their cost. These rates do not directly measure UMA bandwidth, and G3 FP16 does not establish a quantized-path benefit. [Article](../articles/05-qwen3-4b-prefill-decode-energy.md) · [Bundle](../results/historical/g3-qwen3-4b/).
+Larger contexts select larger fixed ANE functions. The function selection and curve transitions are observed together; a controlled change of graph shapes is still needed to isolate their cost. G4 A, below, is that change for the whole ladder at once; it does not separate the cost of individual graph functions. These rates do not directly measure UMA bandwidth, and G3 FP16 does not establish a quantized-path benefit. [Article](../articles/05-qwen3-4b-prefill-decode-energy.md) · [Bundle](../results/historical/g3-qwen3-4b/).
+
+## G4 A matched-graph observations
+
+G4 A measures the same complete Qwen3-4B FP16 model and inputs as G3, adapting its Swift host to one ANE graph per input: capacities <!-- claim:g4a.capacities@g4a-001 -->768 / 1,280 / 2,304 / 4,352 / 8,448 / 16,640<!-- /claim --> for inputs <!-- claim:g4a.contexts@g4a-002 -->500 / 1,024 / 2,048 / 4,096 / 8,192 / 16,384<!-- /claim -->. The GPU keeps its <!-- claim:g4a.gpu-capacity@g4a-003 -->32,768<!-- /claim -->-position asset. One boundary request per arm records graph events, and those events use only functions of the arm's capacity. The timed requests do not record graph events; they run in the same host session after the boundary request. ANE execution is supported by direct ANE requests logged from the host process in short per-tier checks before the run (none on the GPU path) and by ANE counter energy in every ANE block. That is participation evidence, not exclusive per-operation placement; the GPU counter also records energy during every ANE block.
+
+Decode is teacher-forced: each of <!-- claim:g4a.repetitions@g4a-004 -->3<!-- /claim --> requests per arm continues with the same 257 token IDs from an earlier GPU run, so both paths process the same continuation and step count at a given input size. Across sizes the continuation is fixed, but attention work grows with KV length. It measures work, not generation quality. The warmup request's first and last logits are finite for every arm, and at 1K both arms match an independent reference within the recorded thresholds; no broader quality evaluation was run. The three decode requests share one host session and are repetitions, not independent processes. The whole matrix is one run on one machine.
+
+Decode rate divides <!-- claim:g4a.decode-steps@g4a-005 -->256<!-- /claim --> steps per request by first-to-last-token time, summed over the three requests; prefill rate divides completed input tokens by a whole block of one-token requests, gaps included. Model load, warmup and the quiet periods are excluded. Energy is the CPU + GPU + ANE software component sum over those windows at a <!-- claim:g4a.primary-lag@g4a-006 -->2 s<!-- /claim --> counter lag, without idle subtraction; it is neither wall-input energy nor energy attributed to the named accelerator. Each block is admitted separately; the whole capture's audit also passed. The plotted bounds describe sample-time attribution, not sensor accuracy.
+
+Three ANE blocks have median CPU power more than 1.35× that of the neighbouring inputs on the same path: both ANE 4K blocks and the ANE 1K decode block. The disk was nearly full and diagnostic commands ran during the ANE 4K session; the cause of the 1K block's raise was not isolated. These blocks are reported as measured, with ratios without the CPU counter beside them, and were not rerun. Thermal starts were not matched.
+
+The G3 comparison uses G3's warmed prefill blocks and the first <!-- claim:g4a.decode-steps@g4a-007 -->256<!-- /claim --> steps of each G3 decode block, with energy integrated over the same steps. G3 decode was freely generated from a carried cache rather than teacher-forced; the forward work per step is the same. The GPU rates of the two runs agree within <!-- claim:g4a.vs-g3.gpu-speed@g4a-008 -->0.97–1.02×<!-- /claim -->, supporting graph capacity as a major explanation, without bounding machine-state effects on ANE. The runs did not match thermal starts or isolate every change to the host and decode protocol.
+
+The implied compute and read rates follow the G3 model, over KV N to N + 255 for decode, with causal attention at N/2 keys listed as a separate part. They exclude fixed-graph padding, including the seven padded query positions of each decode step, and current-token writes. They are model-work rates, not device counters.
+
+During the run a system service kept each ANE host's deleted compile input open; one GPU load waited at the disk gate between blocks. That wait does not overlap a measured block. [Disk finding](../findings/ane-compiler-service-disk/) · [Article](../articles/06-qwen3-4b-matched-graphs.md) · [Bundle](../results/historical/g4a-qwen3-4b/).
 
 ## G1-W and G5 component observations
 
 G1-W measures quantized speed on synthetic 1×1 convolution chains and on the first MLP of Gemma 4 E4B mobile QAT, and isolates the QDQ multiply defect with model-free graphs. G5 measures a weight-free attention graph. Neither runs a complete model or measures energy.
 
-Times are awaited `function.run` calls from a native Swift host, in two or three fresh processes per arm; ranges are process medians, not confidence intervals. An A8 graph that is faster is not evidence of a physical INT8 datapath. ANE request logs show participation per call, not per-operation placement. The E4B stack repeats one real layer eight times behind a shared RMS norm, and its inputs are synthetic control rows. Relative L2 there, and in G5, compares a device output with its own CPU or FP64 reference: it is implementation error, not model quality.
+G1-W times awaited `function.run` calls from a native Swift host. G5 times resident operations, including host output handling and, for the streamed path, K/V and mask copies between calls. The rounds use two or three fresh processes per arm; ranges are process medians, not confidence intervals. An A8 graph that is faster is not evidence of a physical INT8 datapath. ANE request logs show participation per call, not per-operation placement. The E4B stack repeats one real layer eight times behind a shared RMS norm, and its inputs are synthetic control rows. Relative L2 there, and in G5, compares a device output with its own CPU or FP64 reference: it is implementation error, not model quality.
 
 G5's inputs are synthetic uniform, random and small-constant attention; the complete-model G3 path was not re-evaluated against it. Its relative L2 values are imported scalars, while its timings, like all G1-W timings, are recomputed from per-call records. The model checkpoint, activations and FP16 attention arrays are not distributed. [Speed conditions](../findings/quantized-speedup-conditions/) · [QDQ multiply](../findings/coreai-qdq-multiply-scale/) · [Attention precision](../findings/attention-product-precision/).

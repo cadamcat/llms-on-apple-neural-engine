@@ -1,0 +1,29 @@
+{
+  "importer": "results/historical/import_g4a.py",
+  "sources": {
+    "workplans/ane-compiler-reclaim-20260913/evidence/LSOF-20260913-1335.txt": {
+      "bytes": 8411,
+      "sha256": "15a9eb30f01198dfec253e1f21b25b79b4a942a3194fcc5d218c1bce6af2bda7"
+    },
+    "workplans/ane-compiler-reclaim-20260913/evidence/LSOF-20260913-1400.txt": {
+      "bytes": 1325,
+      "sha256": "58033c5e39acf850fafe6eb845fec94fbf5b4671b4f4a15c946ccff899f086a1"
+    },
+    "workplans/ane-compiler-reclaim-20260913/evidence/DF-PS-20260913.txt": {
+      "bytes": 1889,
+      "sha256": "6c5cb9c92617fef9c67696cf2adb69fb7a0ccd67d492afe184b64a351f62df25"
+    },
+    "workplans/ane-compiler-reclaim-20260913/evidence/RECLAIM-LOG-20260913.txt": {
+      "bytes": 137,
+      "sha256": "23efbaee98135b20209e986b01a494862d548561d39dd737d4736438639149a7"
+    }
+  },
+  "products": {
+    "observations.json": "870c4e2f9a76533ceae458ad2ae021b218d65019d401d37d217704a53772e919"
+  },
+  "transformations": [
+    "Parse lsof rows from the saved terminal output; drop prompts, the wrapped command echo, inode numbers and the session user name; rewrite the per-user temporary directory as $TMPDIR.",
+    "Keep df available/used KiB and ANECompilerService PIDs at each recorded time; keep the macOS product and build version.",
+    "Keep the reclaim daemon log line unchanged."
+  ]
+}

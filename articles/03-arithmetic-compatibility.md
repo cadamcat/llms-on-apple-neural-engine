@@ -38,13 +38,13 @@ Consider symmetric Q8 with zero point 0 and scale 0.125. Quantization divides `x
 
 RZA here means rounding to the nearest value, choosing the value farther from zero at a tie. It does not mean truncation toward zero. Both rules use the same INT8 width and scale; only midpoint handling changes. Once the result enters another convolution and quantization step, that difference can propagate through a long chain.
 
-In the first historical 128-layer W8A8 control, relative L2 against the frozen RNE reference was approximately **0.232654**, so the candidate did not enter timing. Offline diagnosis then compared the same device output with a reference that preserved the FP16 boundaries and changed only the Q8 midpoint rule. Against RZA, the difference was approximately **0.000091523**.
+In the first historical <!-- claim:g1w.qdq.ties-even-mismatches@g1w-001 -->128<!-- /claim -->-layer W8A8 control, relative L2 against the frozen RNE reference was approximately **0.232654**, so the candidate did not enter timing. Offline diagnosis then compared the same device output with a reference that preserved the FP16 boundaries and changed only the Q8 midpoint rule. Against RZA, the difference was approximately **0.000091523**.
 
 **The device output was unchanged; the new arithmetic hypothesis predicted it more closely.** Selecting a reference after seeing the output does not by itself validate a new admission rule. The original run remains a failure. A subsequent experiment first froze new inputs with seed 20260912, both RNE and RZA references and the existing thresholds, then ran the held-out inputs. [Historical arithmetic evidence and source hashes](../results/historical/arithmetic-reference-evidence.json).
 
 The held-out result supported that explanation. The repository's [fresh full-shape records](../results/fresh/throughput.json) also contain both comparisons:
 
-| The same 128-layer W8A8 output | Relative L2 |
+| The same <!-- claim:g1w.qdq.ties-even-mismatches@g1w-002 -->128<!-- /claim -->-layer W8A8 output | Relative L2 |
 |---|---:|
 | Against the preselected Q8 RZA reference | 0.000109 |
 | Against the Q8 RNE diagnostic reference | 0.211 |
@@ -53,7 +53,7 @@ These values come from the fresh Core ML and Core AI records. Core AI A8W4 has t
 
 This supports the reference model on the tested path, not RZA for all ANE arithmetic. The chain reference still uses RNE for FP16 conversion, while SplitConv partial sums and additions use a separately frozen FP16 RZA reference. Relative L2 against the RZA chain reference still has a residual of 0.000109. [Reference boundaries](../docs/METHODS.md).
 
-A later single-QDQ probe covers every input rather than one chain. Fed all 63,488 finite FP16 values at unit scale, the Core AI QDQ on ANE matched ties-away-from-zero for every value; ties-to-even would have differed at 128 of them, the half-integers such as ±0.5 and ±2.5. [Imported counts](../results/historical/g1w-e4b-mobile-qat/evidence.json).
+A later single-QDQ probe covers every input rather than one chain. Fed all <!-- claim:g1w.qdq.finite-values@g1w-003 -->63,488<!-- /claim --> finite FP16 values at unit scale, the Core AI QDQ on ANE matched ties-away-from-zero for every value; ties-to-even would have differed at <!-- claim:g1w.qdq.ties-even-mismatches@g1w-004 -->128<!-- /claim --> of them, the half-integers such as ±0.5 and ±2.5. [Imported counts](../results/historical/g1w-e4b-mobile-qat/evidence.json).
 
 ![The same Core AI W8A8 output has relative L2 approximately 0.000109 against the preselected RZA reference and 0.211 against the RNE diagnostic reference.](../docs/figures/rounding-reference.svg)
 
@@ -63,7 +63,7 @@ Figure 2. The horizontal axis is logarithmic. Both points use the first fresh pr
 
 The historical held-out experiment also compared final W8A8 and FP16 outputs. Their relative L2 was approximately **0.68**, using the FP16 output norm as the denominator. This is compatible with a quantized output being close to its own RZA reference: one comparison tests the quantized computation, while the other measures its difference from FP16. [Source and denominator definition](../results/historical/arithmetic-reference-evidence.json).
 
-The 35 T ops/s positive control thus establishes a fast path that passes controls under declared quantization semantics. The 128-layer low-entropy synthetic chain contains no language task, attention, KV cache or vocabulary output. Its L2 value cannot be interpreted as a percentage loss of language ability.
+The 35 T ops/s positive control thus establishes a fast path that passes controls under declared quantization semantics. The <!-- claim:g1w.qdq.ties-even-mismatches@g1w-005 -->128<!-- /claim -->-layer low-entropy synthetic chain contains no language task, attention, KV cache or vocabulary output. Its L2 value cannot be interpreted as a percentage loss of language ability.
 
 Runtime-compatibility and model-quality thresholds therefore serve separate purposes. Revising an arithmetic explanation does not change existing KL, NLL or real-MLP quality results. A more accurate reference helps determine whether the next investigation should target execution or the quantization recipe.
 
@@ -122,7 +122,7 @@ In a [supported local environment](../docs/REPRODUCING.md), run device controls 
 .venv/bin/ane-scope report runs/article-arithmetic
 ```
 
-This suite runs the grouped and multiplication controls. To obtain a new 128-layer RNE/RZA comparison, use `--suite throughput` with another new output directory; it includes the full timing experiment. Execution is serial and resource-guarded.
+This suite runs the grouped and multiplication controls. To obtain a new <!-- claim:g1w.qdq.ties-even-mismatches@g1w-006 -->128<!-- /claim -->-layer RNE/RZA comparison, use `--suite throughput` with another new output directory; it includes the full timing experiment. Execution is serial and resource-guarded.
 
 If a future runtime fixes these behaviors, record the correct outputs as new observations. Existing errors are not results the suite must preserve in future runs. Freeze reference semantics before obtaining new device outputs; if those semantics change, register a new version and validation input while preserving the original failure. This distinguishes changes to device output, reference interpretation and the model itself.
 

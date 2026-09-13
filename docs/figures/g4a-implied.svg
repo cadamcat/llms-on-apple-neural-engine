@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="fig-title fig-desc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="fig-title">Qwen3-4B: implied compute and memory reads</title>
+<desc id="fig-desc">Model-based prefill FLOP/s and decode read GB/s from the measured rates at six inputs on both paths.</desc>
+<style>text{dominant-baseline:auto}.num{font-variant-numeric:tabular-nums}.b{font-weight:700}.sb{font-weight:600}.mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}.t-bg{fill:#fbfcfd}.f-bg{fill:#fbfcfd}.s-bg{stroke:#fbfcfd}.t-card{fill:#ffffff}.f-card{fill:#ffffff}.s-card{stroke:#ffffff}.t-rule{fill:#e3e8ef}.f-rule{fill:#e3e8ef}.s-rule{stroke:#e3e8ef}.t-grid{fill:#eef2f7}.f-grid{fill:#eef2f7}.s-grid{stroke:#eef2f7}.t-ink{fill:#1f2937}.f-ink{fill:#1f2937}.s-ink{stroke:#1f2937}.t-muted{fill:#65748b}.f-muted{fill:#65748b}.s-muted{stroke:#65748b}.t-slate{fill:#94a3b8}.f-slate{fill:#94a3b8}.s-slate{stroke:#94a3b8}.t-blue{fill:#3b7dd8}.f-blue{fill:#3b7dd8}.s-blue{stroke:#3b7dd8}.t-teal{fill:#0e8a7d}.f-teal{fill:#0e8a7d}.s-teal{stroke:#0e8a7d}.t-amber{fill:#c8791d}.f-amber{fill:#c8791d}.s-amber{stroke:#c8791d}.t-red{fill:#c0524a}.f-red{fill:#c0524a}.s-red{stroke:#c0524a}.t-plum{fill:#7c6bd6}.f-plum{fill:#7c6bd6}.s-plum{stroke:#7c6bd6}.tint-blue{fill:#eff5fd}.tint-teal{fill:#ecf8f6}.tint-amber{fill:#fdf5ea}.tint-red{fill:#fdf0ef}.tint-slate{fill:#f5f7fa}@media (prefers-color-scheme:dark){.t-bg{fill:#0d1117}.f-bg{fill:#0d1117}.s-bg{stroke:#0d1117}.t-card{fill:#161b22}.f-card{fill:#161b22}.s-card{stroke:#161b22}.t-rule{fill:#2f3742}.f-rule{fill:#2f3742}.s-rule{stroke:#2f3742}.t-grid{fill:#242c36}.f-grid{fill:#242c36}.s-grid{stroke:#242c36}.t-ink{fill:#e6edf3}.f-ink{fill:#e6edf3}.s-ink{stroke:#e6edf3}.t-muted{fill:#9aa7b6}.f-muted{fill:#9aa7b6}.s-muted{stroke:#9aa7b6}.t-slate{fill:#8492a3}.f-slate{fill:#8492a3}.s-slate{stroke:#8492a3}.t-blue{fill:#6ea8f0}.f-blue{fill:#6ea8f0}.s-blue{stroke:#6ea8f0}.t-teal{fill:#33b3a4}.f-teal{fill:#33b3a4}.s-teal{stroke:#33b3a4}.t-amber{fill:#e0a44e}.f-amber{fill:#e0a44e}.s-amber{stroke:#e0a44e}.t-red{fill:#e0776d}.f-red{fill:#e0776d}.s-red{stroke:#e0776d}.t-plum{fill:#a394ec}.f-plum{fill:#a394ec}.s-plum{stroke:#a394ec}.tint-blue{fill:#16212f}.tint-teal{fill:#10241f}.tint-amber{fill:#241a10}.tint-red{fill:#241413}.tint-slate{fill:#1b212a}}</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto-start-reverse"><path d="M0 1 L8 4.5 L0 8" fill="none" class="s-muted" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="900" height="700" class="f-bg"/>
+<text x="40" y="30" font-size="17" class="t-ink b">Qwen3-4B: implied compute and memory reads</text>
+<text x="40" y="50" font-size="12" class="t-muted">Measured token rates × model work · matched ANE graphs (G4 A) · GPU on its 32K asset</text>
+<text x="40" y="68" font-size="10.5" class="t-muted">Solid: projection FLOPs (prefill) and FP16 weight reads (decode). Lighter: causal attention and existing-KV reads.</text>
+<circle cx="45" cy="96" r="4.5" class="f-blue"/>
+<text x="58" y="100" font-size="10.5" class="t-muted">GPU</text>
+<circle cx="101.8" cy="96" r="4.5" class="f-teal"/>
+<text x="114.8" y="100" font-size="10.5" class="t-muted">ANE</text>
+<path d="M170 96 L186 96" fill="none" class="s-slate" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="194" y="100" font-size="10.5" class="t-muted">ANE synthetic FP16 chain, 18.8 T ops/s (prefill)</text>
+<text x="85" y="136" font-size="12" class="t-ink sb">Prefill · TFLOP/s</text>
+<path d="M85 325 L845 325" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="329" font-size="10.5" class="t-muted" text-anchor="end">0</text>
+<path d="M85 281.25 L845 281.25" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="285.25" font-size="10.5" class="t-muted" text-anchor="end">8</text>
+<path d="M85 237.5 L845 237.5" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="241.5" font-size="10.5" class="t-muted" text-anchor="end">16</text>
+<path d="M85 193.75 L845 193.75" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="197.75" font-size="10.5" class="t-muted" text-anchor="end">24</text>
+<path d="M85 150 L845 150" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="154" font-size="10.5" class="t-muted" text-anchor="end">32</text>
+<text x="148.333" y="343" font-size="10.5" class="t-muted" text-anchor="middle">500</text>
+<text x="275" y="343" font-size="10.5" class="t-muted" text-anchor="middle">1K</text>
+<text x="401.667" y="343" font-size="10.5" class="t-muted" text-anchor="middle">2K</text>
+<text x="528.333" y="343" font-size="10.5" class="t-muted" text-anchor="middle">4K</text>
+<text x="655" y="343" font-size="10.5" class="t-muted" text-anchor="middle">8K</text>
+<text x="781.667" y="343" font-size="10.5" class="t-muted" text-anchor="middle">16K</text>
+<text x="465" y="361" font-size="10.5" class="t-muted" text-anchor="middle">Input tokens</text>
+<rect x="111.333" y="215.337" width="34" height="109.663" rx="0" class="f-blue"/>
+<rect x="111.333" y="213.112" width="34" height="2.225" class="f-blue" fill-opacity=".42"/>
+<text x="128.333" y="208.112" font-size="10.5" class="t-blue" text-anchor="middle">20.5</text>
+<rect x="151.333" y="287.705" width="34" height="37.295" rx="0" class="f-teal"/>
+<rect x="151.333" y="286.948" width="34" height="0.757" class="f-teal" fill-opacity=".42"/>
+<text x="168.333" y="281.948" font-size="10.5" class="t-teal" text-anchor="middle">7.0</text>
+<rect x="238" y="198.745" width="34" height="126.255" rx="0" class="f-blue"/>
+<rect x="238" y="193.498" width="34" height="5.247" class="f-blue" fill-opacity=".42"/>
+<text x="255" y="188.498" font-size="10.5" class="t-blue" text-anchor="middle">24.0</text>
+<rect x="278" y="289.723" width="34" height="35.277" rx="0" class="f-teal"/>
+<rect x="278" y="288.256" width="34" height="1.466" class="f-teal" fill-opacity=".42"/>
+<text x="295" y="283.256" font-size="10.5" class="t-teal" text-anchor="middle">6.7</text>
+<rect x="364.667" y="192.151" width="34" height="132.849" rx="0" class="f-blue"/>
+<rect x="364.667" y="181.109" width="34" height="11.042" class="f-blue" fill-opacity=".42"/>
+<text x="381.667" y="176.109" font-size="10.5" class="t-blue" text-anchor="middle">26.3</text>
+<rect x="404.667" y="294.64" width="34" height="30.36" rx="0" class="f-teal"/>
+<rect x="404.667" y="292.117" width="34" height="2.523" class="f-teal" fill-opacity=".42"/>
+<text x="421.667" y="287.117" font-size="10.5" class="t-teal" text-anchor="middle">6.0</text>
+<rect x="491.333" y="197.678" width="34" height="127.322" rx="0" class="f-blue"/>
+<rect x="491.333" y="176.513" width="34" height="21.165" class="f-blue" fill-opacity=".42"/>
+<text x="508.333" y="171.513" font-size="10.5" class="t-blue" text-anchor="middle">27.2</text>
+<rect x="531.333" y="303.401" width="34" height="21.599" rx="0" class="f-teal"/>
+<rect x="531.333" y="299.81" width="34" height="3.591" class="f-teal" fill-opacity=".42"/>
+<text x="548.333" y="294.81" font-size="10.5" class="t-teal" text-anchor="middle">4.6</text>
+<rect x="618" y="213.759" width="34" height="111.241" rx="0" class="f-blue"/>
+<rect x="618" y="176.775" width="34" height="36.984" class="f-blue" fill-opacity=".42"/>
+<text x="635" y="171.775" font-size="10.5" class="t-blue" text-anchor="middle">27.1</text>
+<rect x="658" y="312.459" width="34" height="12.541" rx="0" class="f-teal"/>
+<rect x="658" y="308.29" width="34" height="4.169" class="f-teal" fill-opacity=".42"/>
+<text x="675" y="303.29" font-size="10.5" class="t-teal" text-anchor="middle">3.1</text>
+<rect x="744.667" y="235.98" width="34" height="89.02" rx="0" class="f-blue"/>
+<rect x="744.667" y="176.788" width="34" height="59.192" class="f-blue" fill-opacity=".42"/>
+<text x="761.667" y="171.788" font-size="10.5" class="t-blue" text-anchor="middle">27.1</text>
+<rect x="784.667" y="319.414" width="34" height="5.586" rx="0" class="f-teal"/>
+<rect x="784.667" y="315.7" width="34" height="3.714" class="f-teal" fill-opacity=".42"/>
+<text x="801.667" y="310.7" font-size="10.5" class="t-teal" text-anchor="middle">1.7</text>
+<path d="M85 222.328 L845 222.328" fill="none" class="s-slate" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="85" y="386" font-size="12" class="t-ink sb">Decode · modelled read GB/s</text>
+<path d="M85 575 L845 575" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="579" font-size="10.5" class="t-muted" text-anchor="end">0</text>
+<path d="M85 531.25 L845 531.25" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="535.25" font-size="10.5" class="t-muted" text-anchor="end">70</text>
+<path d="M85 487.5 L845 487.5" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="491.5" font-size="10.5" class="t-muted" text-anchor="end">140</text>
+<path d="M85 443.75 L845 443.75" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="447.75" font-size="10.5" class="t-muted" text-anchor="end">210</text>
+<path d="M85 400 L845 400" fill="none" class="s-grid" stroke-width="1"/>
+<text x="76" y="404" font-size="10.5" class="t-muted" text-anchor="end">280</text>
+<text x="148.333" y="593" font-size="10.5" class="t-muted" text-anchor="middle">500</text>
+<text x="275" y="593" font-size="10.5" class="t-muted" text-anchor="middle">1K</text>
+<text x="401.667" y="593" font-size="10.5" class="t-muted" text-anchor="middle">2K</text>
+<text x="528.333" y="593" font-size="10.5" class="t-muted" text-anchor="middle">4K</text>
+<text x="655" y="593" font-size="10.5" class="t-muted" text-anchor="middle">8K</text>
+<text x="781.667" y="593" font-size="10.5" class="t-muted" text-anchor="middle">16K</text>
+<text x="465" y="611" font-size="10.5" class="t-muted" text-anchor="middle">KV at the start of decode</text>
+<rect x="111.333" y="424.794" width="34" height="150.206" rx="0" class="f-blue"/>
+<rect x="111.333" y="423.066" width="34" height="1.728" class="f-blue" fill-opacity=".42"/>
+<text x="128.333" y="418.066" font-size="10.5" class="t-blue" text-anchor="middle">243</text>
+<rect x="151.333" y="499.451" width="34" height="75.549" rx="0" class="f-teal"/>
+<rect x="151.333" y="498.582" width="34" height="0.869" class="f-teal" fill-opacity=".42"/>
+<text x="168.333" y="493.582" font-size="10.5" class="t-teal" text-anchor="middle">122</text>
+<rect x="238" y="423.726" width="34" height="151.274" rx="0" class="f-blue"/>
+<rect x="238" y="420.533" width="34" height="3.193" class="f-blue" fill-opacity=".42"/>
+<text x="255" y="415.533" font-size="10.5" class="t-blue" text-anchor="middle">247</text>
+<rect x="278" y="501.781" width="34" height="73.219" rx="0" class="f-teal"/>
+<rect x="278" y="500.236" width="34" height="1.545" class="f-teal" fill-opacity=".42"/>
+<text x="295" y="495.236" font-size="10.5" class="t-teal" text-anchor="middle">120</text>
+<rect x="364.667" y="424.997" width="34" height="150.003" rx="0" class="f-blue"/>
+<rect x="364.667" y="419.016" width="34" height="5.981" class="f-blue" fill-opacity=".42"/>
+<text x="381.667" y="414.016" font-size="10.5" class="t-blue" text-anchor="middle">250</text>
+<rect x="404.667" y="506.124" width="34" height="68.876" rx="0" class="f-teal"/>
+<rect x="404.667" y="503.378" width="34" height="2.746" class="f-teal" fill-opacity=".42"/>
+<text x="421.667" y="498.378" font-size="10.5" class="t-teal" text-anchor="middle">115</text>
+<rect x="491.333" y="432.777" width="34" height="142.223" rx="0" class="f-blue"/>
+<rect x="491.333" y="421.768" width="34" height="11.01" class="f-blue" fill-opacity=".42"/>
+<text x="508.333" y="416.768" font-size="10.5" class="t-blue" text-anchor="middle">245</text>
+<rect x="531.333" y="522.591" width="34" height="52.409" rx="0" class="f-teal"/>
+<rect x="531.333" y="518.533" width="34" height="4.057" class="f-teal" fill-opacity=".42"/>
+<text x="548.333" y="513.533" font-size="10.5" class="t-teal" text-anchor="middle">90</text>
+<rect x="618" y="440.357" width="34" height="134.643" rx="0" class="f-blue"/>
+<rect x="618" y="419.825" width="34" height="20.532" class="f-blue" fill-opacity=".42"/>
+<text x="635" y="414.825" font-size="10.5" class="t-blue" text-anchor="middle">248</text>
+<rect x="658" y="537.424" width="34" height="37.576" rx="0" class="f-teal"/>
+<rect x="658" y="531.694" width="34" height="5.73" class="f-teal" fill-opacity=".42"/>
+<text x="675" y="526.694" font-size="10.5" class="t-teal" text-anchor="middle">69</text>
+<rect x="744.667" y="465.891" width="34" height="109.109" rx="0" class="f-blue"/>
+<rect x="744.667" y="432.871" width="34" height="33.021" class="f-blue" fill-opacity=".42"/>
+<text x="761.667" y="427.871" font-size="10.5" class="t-blue" text-anchor="middle">227</text>
+<rect x="784.667" y="546.783" width="34" height="28.217" rx="0" class="f-teal"/>
+<rect x="784.667" y="538.244" width="34" height="8.539" class="f-teal" fill-opacity=".42"/>
+<text x="801.667" y="533.244" font-size="10.5" class="t-teal" text-anchor="middle">59</text>
+<text x="40" y="642" font-size="13" class="t-muted">Prefill: projection work plus causal attention over N/2 keys on average.</text>
+<text x="40" y="661" font-size="13" class="t-muted">Decode: weights and existing KV read once per step; padding and current-token writes excluded.</text>
+<text x="40" y="680" font-size="13" class="t-muted">Model-based rates, not measured hardware compute or memory traffic.</text>
+</svg>

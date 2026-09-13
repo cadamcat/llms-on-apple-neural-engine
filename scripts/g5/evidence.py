@@ -53,6 +53,13 @@ def derive(bundle=None):
     reported = evidence['reported']
     chunked = block_means(timings['dense_vs_post_pv_b1024'])
     single = block_means(timings['post_pv_b4096_vs_b1024'])
+    recorded_blocks = reported['dense_round_block_means']
+    expected = {(r['process'], r['pair'], r['mode'], r['arm']): r['ms_per_operation']
+                for r in recorded_blocks}
+    require(len(expected) == len(recorded_blocks) and expected.keys() == chunked.keys(),
+            'g5_dense_block_inventory')
+    for key, value in chunked.items():
+        require(close(value, expected[key]), 'g5_dense_block_ms.' + '.'.join(map(str, key)))
     speed, absolute = {}, {}
     for mode in ('resident', 'with_transfer'):
         for arm in ('kv_unrolled', 'kv_streamed'):

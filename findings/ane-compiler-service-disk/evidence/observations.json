@@ -1,0 +1,343 @@
+{
+  "macos": {
+    "version": "27.0",
+    "build": "26A428"
+  },
+  "service_1720_started_local": "Thu Sep 10 08:15:13 2026",
+  "listing_1335": {
+    "command": "sudo lsof -nP +L1 | awk 'NR==1 || $7>100000000'",
+    "during": "G4 A, ANE 4K prefill block",
+    "rows": [
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 899587672,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-86054-2026-09-11_18_01_13-596989272/extend_1024_16_Bn61_I05alAFYS8Bwtqi7g_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 901893115,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-89967-2026-09-11_18_39_58-2333950044/extend_1024_16_Bn61_I05alAFYS8Bwtqi7g_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 605699843,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-17224-2026-09-12_23_59_47-3087383134/extend_33024_1_S9vpRqmGzuGGdGPAYzuiDQ_0_ANE_region_1_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7284937238,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-8425-2026-09-11_22_13_23-741009660/extend_2048_64_T1j9cb3y1kY1yNoysX3Uwg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7291427535,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-99202-2026-09-12_19_16_58-2056881249/extend_2048_64_T1j9cb3y1kY1yNoysX3Uwg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7281900088,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-11431-2026-09-12_23_21_41-3111955490/extend_1280_1_k7R31AC8Vxs1PSRvPnaYLg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273267918,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-13201-2026-09-12_23_35_07-3362252944/extend_768_1_DMFtTYgM9MhnJ3c9LLdWPQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273261313,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-13415-2026-09-12_23_37_48-2237635790/extend_1280_1_k7R31AC8Vxs1PSRvPnaYLg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273268631,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-13674-2026-09-12_23_40_09-1548024325/extend_2304_1_Bc37_fnHQP1MQ-N-0AfyuQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269671,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-13988-2026-09-12_23_42_44-1431604879/extend_4352_1_5NchLbFKlLFJl3-T8aOORQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273313117,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-14419-2026-09-12_23_45_45-2860544128/extend_8448_1_k2NTveE-5_Hu8zf_i_mcJw_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269096,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-14754-2026-09-12_23_48_25-1324555512/extend_16640_1_6Mfcay5LoeWueDTrYq8kwQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269600,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-16296-2026-09-12_23_53_45-2112480212/extend_16640_1_6Mfcay5LoeWueDTrYq8kwQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273268422,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-17850-2026-09-13_00_04_07-3143051275/extend_768_1_DMFtTYgM9MhnJ3c9LLdWPQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273261819,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-19068-2026-09-13_00_13_21-3835065257/extend_1280_1_k7R31AC8Vxs1PSRvPnaYLg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273268422,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-24561-2026-09-13_01_23_30-271043041/extend_768_1_DMFtTYgM9MhnJ3c9LLdWPQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269135,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-24662-2026-09-13_01_24_46-875540788/extend_2304_1_Bc37_fnHQP1MQ-N-0AfyuQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273270175,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-24790-2026-09-13_01_26_11-3943819899/extend_4352_1_5NchLbFKlLFJl3-T8aOORQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273313623,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-24916-2026-09-13_01_27_49-3342078711/extend_8448_1_k2NTveE-5_Hu8zf_i_mcJw_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269600,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-25085-2026-09-13_01_29_38-2314954078/extend_16640_1_6Mfcay5LoeWueDTrYq8kwQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273268422,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-26493-2026-09-13_02_15_50-4181100977/extend_768_1_DMFtTYgM9MhnJ3c9LLdWPQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273261819,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-27009-2026-09-13_02_23_10-2148757415/extend_1280_1_k7R31AC8Vxs1PSRvPnaYLg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269135,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-27180-2026-09-13_02_26_10-3931626557/extend_2304_1_Bc37_fnHQP1MQ-N-0AfyuQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273270175,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-27558-2026-09-13_02_33_09-1855446468/extend_4352_1_5NchLbFKlLFJl3-T8aOORQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273313623,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-27789-2026-09-13_02_37_15-677967740/extend_8448_1_k2NTveE-5_Hu8zf_i_mcJw_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269600,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-28322-2026-09-13_02_47_50-3775081275/extend_16640_1_6Mfcay5LoeWueDTrYq8kwQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273261819,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-41593-2026-09-13_12_08_24-3845570414/extend_1280_1_k7R31AC8Vxs1PSRvPnaYLg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269600,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-44403-2026-09-13_12_41_53-1973519231/extend_16640_1_6Mfcay5LoeWueDTrYq8kwQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 1720,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273313623,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-47489-2026-09-13_13_16_03-1006353943/extend_8448_1_k2NTveE-5_Hu8zf_i_mcJw_0_ANE_region_0_0.bc.mlir"
+      }
+    ]
+  },
+  "listing_1400": {
+    "command": "sudo lsof -nP +L1 | awk 'NR==1 || $7>100000000'",
+    "during": "G4 A, GPU 500 arm, after the service was restarted at 13:46:16",
+    "rows": [
+      {
+        "command": "ANECompil",
+        "pid": 51145,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273269135,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-51127-2026-09-13_13_46_06-2734404916/extend_2304_1_Bc37_fnHQP1MQ-N-0AfyuQ_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "ANECompil",
+        "pid": 51145,
+        "user": "root",
+        "fd": "txt",
+        "size_bytes": 7273261819,
+        "nlink": 0,
+        "name": "$TMPDIR/com.apple.MetalPerformanceShadersGraph/mpsgraph-52218-2026-09-13_13_52_09-3949863439/extend_1280_1_k7R31AC8Vxs1PSRvPnaYLg_0_ANE_region_0_0.bc.mlir"
+      },
+      {
+        "command": "g3-flow-h",
+        "pid": 53431,
+        "user": "session user",
+        "fd": "txt",
+        "size_bytes": 777912320,
+        "nlink": 0,
+        "name": "$TMPDIR/payload-a49ceb.bin"
+      },
+      {
+        "command": "g3-flow-h",
+        "pid": 53431,
+        "user": "session user",
+        "fd": "txt",
+        "size_bytes": 777912320,
+        "nlink": 0,
+        "name": "$TMPDIR/payload-4e29b1.bin"
+      }
+    ]
+  },
+  "free_space": [
+    {
+      "local_time": "13:37:56",
+      "filesystem_kib": 971298980,
+      "used_kib": 917512056,
+      "available_kib": 21732452,
+      "service_1720_running": true
+    },
+    {
+      "local_time": "13:39:13",
+      "filesystem_kib": 971298980,
+      "used_kib": 917527248,
+      "available_kib": 21717264,
+      "service_1720_running": true
+    },
+    {
+      "local_time": "13:40:28",
+      "filesystem_kib": 971298980,
+      "used_kib": 719230484,
+      "available_kib": 220014028,
+      "service_1720_running": false
+    }
+  ],
+  "reclaim_log": [
+    "2026-09-13T12:08:34Z reclaimed signals=51145:KILL held_files=3 held_bytes=21819799376 free_kib_before=174485580 free_kib_after=195793928"
+  ],
+  "scope": "One machine, one macOS build, Qwen3-4B FP16 ANE assets. The user temporary directory is written as $TMPDIR."
+}

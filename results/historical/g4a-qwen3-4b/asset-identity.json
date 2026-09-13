@@ -1,0 +1,2006 @@
+{
+  "model_source": {
+    "model": "Qwen/Qwen3-4B",
+    "config": {
+      "architectures": [
+        "Qwen3ForCausalLM"
+      ],
+      "attention_bias": false,
+      "attention_dropout": 0.0,
+      "bos_token_id": 151643,
+      "eos_token_id": 151645,
+      "head_dim": 128,
+      "hidden_act": "silu",
+      "hidden_size": 2560,
+      "initializer_range": 0.02,
+      "intermediate_size": 9728,
+      "max_position_embeddings": 40960,
+      "max_window_layers": 36,
+      "model_type": "qwen3",
+      "num_attention_heads": 32,
+      "num_hidden_layers": 36,
+      "num_key_value_heads": 8,
+      "rms_norm_eps": 1e-06,
+      "rope_scaling": null,
+      "rope_theta": 1000000,
+      "sliding_window": null,
+      "tie_word_embeddings": true,
+      "torch_dtype": "bfloat16",
+      "transformers_version": "4.51.0",
+      "use_cache": true,
+      "use_sliding_window": false,
+      "vocab_size": 151936
+    },
+    "source_headers": {
+      "model-00001-of-00003.safetensors": {
+        "header_bytes": 20000,
+        "header_sha256": "a8f45f72beda0f33ad73b7c94747c4c5bace94e3770a90810e9a23ec0a6a6abd"
+      },
+      "model-00002-of-00003.safetensors": {
+        "header_bytes": 25232,
+        "header_sha256": "55d8e8decb2976c9758e922be1274c003bf57dd8ac5f7c4a74dd91ee39fc0351"
+      },
+      "model-00003-of-00003.safetensors": {
+        "header_bytes": 552,
+        "header_sha256": "19f753c0ae5015a4f6110a351070e77ff01c59ec37dd2c12fbae4f3c7eb1a0d1"
+      }
+    },
+    "source_check": {
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "verified": [
+        "LICENSE",
+        "README.md",
+        "config.json",
+        "generation_config.json",
+        "merges.txt",
+        "model-00001-of-00003.safetensors",
+        "model-00002-of-00003.safetensors",
+        "model-00003-of-00003.safetensors",
+        "model.safetensors.index.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "vocab.json"
+      ]
+    }
+  },
+  "ane_tiers": [
+    {
+      "input_N": 500,
+      "capacity": 768,
+      "tier": {
+        "capacity": 768,
+        "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
+        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_768_1",
+          "extend_768_64",
+          "extend_768_8",
+          "prompt_opt_768_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_1",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_1",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_1",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_33024_1",
+          "extend_33024_64",
+          "extend_33024_8",
+          "extend_4352_1",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_8448_1",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_33024_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "prompt_opt_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_1": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_768_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_768_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "main_bytes": 8065771929,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g4-c768",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g4-c768.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 768,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-12T23:18:56.112236+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "23f2a64cc426aa5c920825f9b77a8345717117b38742e267c340ebb4d095a7d6",
+      "main_hash": "24a138760a1b2e9145c94e609f50ccb96b88af48b4f006b4f441dc8f92faefa9",
+      "main_hash_file_sha256": "799d3151b13d996c9e43dcb2efe65848f138331ecd0835db4a7acdc05275fe59",
+      "main_mlirb_bytes": 8065771929,
+      "compile_receipt": {
+        "complete": true,
+        "inference_executed": false,
+        "preferred_compute": "neuralEngine",
+        "functions": [
+          "load_embeddings",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "gather_embeddings_1",
+          "prompt_opt_768_64",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_768_1"
+        ]
+      }
+    },
+    {
+      "input_N": 1024,
+      "capacity": 1280,
+      "tier": {
+        "capacity": 1280,
+        "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
+        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_1280_1",
+          "extend_1280_64",
+          "extend_1280_8",
+          "prompt_opt_1280_64"
+        ],
+        "removed_graphs": [
+          "extend_16640_1",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_1",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_33024_1",
+          "extend_33024_64",
+          "extend_33024_8",
+          "extend_4352_1",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_1",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_1",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_33024_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_1280_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "extend_1280_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "prompt_opt_1280_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_1": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_1280_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "main_bytes": 8065763485,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g4-c1280",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g4-c1280.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 1280,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-12T23:18:56.112236+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "0e78e8cb0b32844880fd86b5a508d718a4e0f22f681e749725bd0066ac12f08f",
+      "main_hash": "be59307b3994a6c81140a6ef3b7708eefa9f105af948a6266d8e56a3e16f7993",
+      "main_hash_file_sha256": "aba10c0088e95bf85e0ceb73b828bc5fd9f407f954014fb440e88760e56d8c17",
+      "main_mlirb_bytes": 8065763485,
+      "compile_receipt": {
+        "complete": true,
+        "inference_executed": false,
+        "preferred_compute": "neuralEngine",
+        "functions": [
+          "load_embeddings",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "gather_embeddings_1",
+          "prompt_opt_1280_64",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_1280_1"
+        ]
+      }
+    },
+    {
+      "input_N": 2048,
+      "capacity": 2304,
+      "tier": {
+        "capacity": 2304,
+        "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
+        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_2304_1",
+          "extend_2304_64",
+          "extend_2304_8",
+          "prompt_opt_2304_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_1",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_1",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_33024_1",
+          "extend_33024_64",
+          "extend_33024_8",
+          "extend_4352_1",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_1",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_1",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_33024_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_2304_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "prompt_opt_2304_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_2304_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_1": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_2304_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "main_bytes": 8065771549,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g4-c2304",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g4-c2304.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 2304,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-12T23:18:56.112236+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "e1234aa24b2994ec3627a0ee1411b9d569489fcd7afc3e1a4563dad25ea8569c",
+      "main_hash": "7222e6bcbc6d26555d208e81a8d178e8113a3e906fa41881e27e9d38ffd24baf",
+      "main_hash_file_sha256": "05df47595e4c5dac88d8949568124b7466dde6d3f0cb7f134a827e35366bc8f5",
+      "main_mlirb_bytes": 8065771549,
+      "compile_receipt": {
+        "complete": true,
+        "inference_executed": false,
+        "preferred_compute": "neuralEngine",
+        "functions": [
+          "load_embeddings",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "gather_embeddings_1",
+          "prompt_opt_2304_64",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_2304_1"
+        ]
+      }
+    },
+    {
+      "input_N": 4096,
+      "capacity": 4352,
+      "tier": {
+        "capacity": 4352,
+        "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
+        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_4352_1",
+          "extend_4352_64",
+          "extend_4352_8",
+          "prompt_opt_4352_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_1",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_1",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_1",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_33024_1",
+          "extend_33024_64",
+          "extend_33024_8",
+          "extend_768_1",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_1",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_33024_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "extend_4352_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "extend_4352_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_4352_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "prompt_opt_4352_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_1": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "main_bytes": 8065772685,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g4-c4352",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g4-c4352.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 4352,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-12T23:18:56.112236+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "b00d6af084c198b31bf63bb857bba74cd833509ed4996757c8acea86703cb9f0",
+      "main_hash": "c111814646ee9695fedc7a13e34e5265de4083e0262c5e12b70bdb27ba255b95",
+      "main_hash_file_sha256": "4c33998a3beafda064fdb402700b7d18ec39621e7ec3254a917000f87712b1c4",
+      "main_mlirb_bytes": 8065772685,
+      "compile_receipt": {
+        "complete": true,
+        "inference_executed": false,
+        "preferred_compute": "neuralEngine",
+        "functions": [
+          "load_embeddings",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "gather_embeddings_1",
+          "prompt_opt_4352_64",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_4352_1"
+        ]
+      }
+    },
+    {
+      "input_N": 8192,
+      "capacity": 8448,
+      "tier": {
+        "capacity": 8448,
+        "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
+        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_8448_1",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_8448_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_1",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_1",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_1",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_33024_1",
+          "extend_33024_64",
+          "extend_33024_8",
+          "extend_4352_1",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_1",
+          "extend_768_64",
+          "extend_768_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_33024_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64"
+        ],
+        "functions": {
+          "gather_embeddings_1": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ]
+            ]
+          },
+          "prompt_opt_8448_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "extend_8448_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_8448_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_8448_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "main_bytes": 8065822445,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g4-c8448",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g4-c8448.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 8448,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-12T23:18:56.112236+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "0a5184c5c252e3971b69f4685a030d336d9a06caa216cd8a157afedcfb360baa",
+      "main_hash": "a0e2ab2b8431c05585e874d2cb449c31e78d80781bfbeda33983c78f257e400d",
+      "main_hash_file_sha256": "8befece51aec958d86367fce4fb1061d7c1b10336efbef23965cd2578a16ab91",
+      "main_mlirb_bytes": 8065822445,
+      "compile_receipt": {
+        "complete": true,
+        "inference_executed": false,
+        "preferred_compute": "neuralEngine",
+        "functions": [
+          "load_embeddings",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "gather_embeddings_1",
+          "prompt_opt_8448_64",
+          "extend_8448_64",
+          "extend_8448_8",
+          "extend_8448_1"
+        ]
+      }
+    },
+    {
+      "input_N": 16384,
+      "capacity": 16640,
+      "tier": {
+        "capacity": 16640,
+        "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
+        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_16640_1",
+          "extend_16640_64",
+          "extend_16640_8",
+          "prompt_opt_16640_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_1",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_2304_1",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_33024_1",
+          "extend_33024_64",
+          "extend_33024_8",
+          "extend_4352_1",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_1",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_1",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_33024_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "prompt_opt_16640_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_16640_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "extend_16640_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_1": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_16640_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "main_bytes": 8065770897,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g4-c16640",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g4-c16640.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 16640,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-12T23:18:56.112236+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "4c2161312178846ae0836378f97258c1d33a64266595ea72ab8e97f3198c3ca4",
+      "main_hash": "3f15e6d0632f6b4eb4bb0e2dc99cc4bd246d8b532d8c38188da7e9377e24426e",
+      "main_hash_file_sha256": "8c821f25c4dc0f689beabf39c91595e18c1a72ac0ffeb767afac564f29f35785",
+      "main_mlirb_bytes": 8065770897,
+      "compile_receipt": {
+        "complete": true,
+        "inference_executed": false,
+        "preferred_compute": "neuralEngine",
+        "functions": [
+          "load_embeddings",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "gather_embeddings_1",
+          "prompt_opt_16640_64",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_16640_1"
+        ]
+      }
+    }
+  ],
+  "ane_stride_basis": 33024,
+  "gpu": {
+    "capacity": 32768,
+    "export": {
+      "arm": "gpu",
+      "source": {
+        "model": "Qwen/Qwen3-4B",
+        "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "files": [
+          {
+            "name": "LICENSE",
+            "bytes": 11343,
+            "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/LICENSE"
+          },
+          {
+            "name": "README.md",
+            "bytes": 16857,
+            "sha256": "71add1cd091c309b1cb1a6b943f2476eb2b004124b3bd1d32dcd0b24cc1abc47",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/README.md"
+          },
+          {
+            "name": "config.json",
+            "bytes": 726,
+            "sha256": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/config.json"
+          },
+          {
+            "name": "generation_config.json",
+            "bytes": 239,
+            "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json"
+          },
+          {
+            "name": "merges.txt",
+            "bytes": 1671853,
+            "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/merges.txt"
+          },
+          {
+            "name": "model-00001-of-00003.safetensors",
+            "bytes": 3957900840,
+            "sha256": "328a91d3122359d5547f9d79521205bc0a46e1f79a792dfe650e99fc2d651223",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model-00001-of-00003.safetensors"
+          },
+          {
+            "name": "model-00002-of-00003.safetensors",
+            "bytes": 3987450520,
+            "sha256": "6cd087b316306a68c562436b5492edbcf6e16c6dba3a1308279caa5a58e21ca5",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model-00002-of-00003.safetensors"
+          },
+          {
+            "name": "model-00003-of-00003.safetensors",
+            "bytes": 99630640,
+            "sha256": "e4bf436957184f4eeb86a80e9db394503f1f56446b2e6b7edeac5b81470f4ca1",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model-00003-of-00003.safetensors"
+          },
+          {
+            "name": "model.safetensors.index.json",
+            "bytes": 32819,
+            "sha256": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json"
+          },
+          {
+            "name": "tokenizer.json",
+            "bytes": 11422654,
+            "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer.json"
+          },
+          {
+            "name": "tokenizer_config.json",
+            "bytes": 9732,
+            "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json"
+          },
+          {
+            "name": "vocab.json",
+            "bytes": 2776833,
+            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+            "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json"
+          }
+        ],
+        "complete": true
+      },
+      "compute_precision": "float16",
+      "compression": "none",
+      "embedding_quantization": false,
+      "layers": 36,
+      "max_context_length": 32768,
+      "device_run": false
+    },
+    "export_sha256": "e6f9bbef1205c61804a95dc46f6c0d0b1a3b93a9954a1fa8b971b64bad9eb414",
+    "main_hash": "7826911e3321489557b34cfdda681543fbfbd5907cc777ed850729f08fda36c9"
+  },
+  "flow_admissions": {
+    "workplans/g4-cplus256-20260912/flow-checks/q8-short-c768-20260913/FLOW-CHECK.json": {
+      "capacity": 768,
+      "arm": "ane",
+      "passed": true,
+      "formal_benchmark": false,
+      "quality": {
+        "short-q8": {
+          "KL_ref_to_actual": 2.52740916320575e-08,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.4271240234375,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": true,
+          "passed": true
+        }
+      },
+      "placement": {
+        "short-q8": {
+          "target_PID_ANE_direct_request_log_rows": 15
+        }
+      },
+      "load_seconds": 0.35946908401092514
+    },
+    "workplans/g4-cplus256-20260912/flow-checks/q8-short-c2304-20260913/FLOW-CHECK.json": {
+      "capacity": 2304,
+      "arm": "ane",
+      "passed": true,
+      "formal_benchmark": false,
+      "quality": {
+        "short-q8": {
+          "KL_ref_to_actual": 2.52740916320575e-08,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.4271240234375,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": true,
+          "passed": true
+        }
+      },
+      "placement": {
+        "short-q8": {
+          "target_PID_ANE_direct_request_log_rows": 15
+        }
+      },
+      "load_seconds": 0.25689037502161227
+    },
+    "workplans/g4-cplus256-20260912/flow-checks/q8-short-c4352-20260913/FLOW-CHECK.json": {
+      "capacity": 4352,
+      "arm": "ane",
+      "passed": true,
+      "formal_benchmark": false,
+      "quality": {
+        "short-q8": {
+          "KL_ref_to_actual": 2.52740916320575e-08,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.4271240234375,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": true,
+          "passed": true
+        }
+      },
+      "placement": {
+        "short-q8": {
+          "target_PID_ANE_direct_request_log_rows": 15
+        }
+      },
+      "load_seconds": 0.25069124999572523
+    },
+    "workplans/g4-cplus256-20260912/flow-checks/q8-short-c8448-20260913/FLOW-CHECK.json": {
+      "capacity": 8448,
+      "arm": "ane",
+      "passed": true,
+      "formal_benchmark": false,
+      "quality": {
+        "short-q8": {
+          "KL_ref_to_actual": 2.52740916320575e-08,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.4271240234375,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": true,
+          "passed": true
+        }
+      },
+      "placement": {
+        "short-q8": {
+          "target_PID_ANE_direct_request_log_rows": 15
+        }
+      },
+      "load_seconds": 0.3541318330098875
+    },
+    "workplans/g4-cplus256-20260912/flow-checks/q8-short-c16640-20260913/FLOW-CHECK.json": {
+      "capacity": 16640,
+      "arm": "ane",
+      "passed": true,
+      "formal_benchmark": false,
+      "quality": {
+        "short-q8": {
+          "KL_ref_to_actual": 2.52740916320575e-08,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.4271240234375,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": true,
+          "passed": true
+        }
+      },
+      "placement": {
+        "short-q8": {
+          "target_PID_ANE_direct_request_log_rows": 15
+        }
+      },
+      "load_seconds": 0.26488754199817777
+    },
+    "workplans/g4-cplus256-20260912/flow-checks/c1280-q8-r2/FLOW-CHECK.json": {
+      "capacity": 1280,
+      "arm": "ane",
+      "passed": true,
+      "formal_benchmark": false,
+      "quality": {
+        "short-q8": {
+          "KL_ref_to_actual": 2.52740916320575e-08,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.4271240234375,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": true,
+          "passed": true
+        },
+        "boundary-q8": {
+          "KL_ref_to_actual": 0.007433979597900731,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 1.4375,
+          "reference_argmax": 14374,
+          "actual_argmax": 14374,
+          "confident_argmax": false,
+          "passed": true
+        }
+      },
+      "placement": {
+        "short-q8": {
+          "target_PID_ANE_direct_request_log_rows": 16
+        },
+        "boundary-q8": {
+          "target_PID_ANE_direct_request_log_rows": 2115
+        }
+      },
+      "load_seconds": 0.5753077089902945
+    },
+    "workplans/g4-cplus256-20260912/flow-checks/gpu-c1280-q8-r2/FLOW-CHECK.json": {
+      "capacity": 1280,
+      "arm": "gpu",
+      "passed": true,
+      "formal_benchmark": false,
+      "quality": {
+        "short-q8": {
+          "KL_ref_to_actual": 2.821390644525562e-09,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.044921875,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": true,
+          "passed": true
+        },
+        "boundary-q8": {
+          "KL_ref_to_actual": 1.787133492198622e-07,
+          "top5_recall": 1.0,
+          "max_abs_error_diagnostic": 0.21875,
+          "reference_argmax": 14374,
+          "actual_argmax": 14374,
+          "confident_argmax": true,
+          "passed": true
+        }
+      },
+      "placement": {
+        "short-q8": {
+          "target_PID_ANE_direct_request_log_rows": 0
+        },
+        "boundary-q8": {
+          "target_PID_ANE_direct_request_log_rows": 0
+        }
+      },
+      "load_seconds": 45.43624316700152
+    }
+  },
+  "scope": "Asset identity by recorded hashes and graph inventories; bytecode payloads were not rehashed at launch and are not bundled."
+}

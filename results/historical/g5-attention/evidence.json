@@ -223,6 +223,638 @@
       "resident": 1.009133134333002,
       "with_transfer": 0.9804025102162883
     },
+    "dense_round_block_means": [
+      {
+        "process": 0,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6302375975359342
+      },
+      {
+        "process": 0,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.223862328542095
+      },
+      {
+        "process": 0,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.345523232032854
+      },
+      {
+        "process": 0,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.53480159137577
+      },
+      {
+        "process": 0,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.689073412731007
+      },
+      {
+        "process": 0,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.092287562628336
+      },
+      {
+        "process": 0,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6242854743326487
+      },
+      {
+        "process": 0,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.21900429158111
+      },
+      {
+        "process": 0,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.3409189055441475
+      },
+      {
+        "process": 0,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.56036883778234
+      },
+      {
+        "process": 0,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.741219478439424
+      },
+      {
+        "process": 0,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.186655303901437
+      },
+      {
+        "process": 0,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6378257145790556
+      },
+      {
+        "process": 0,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.227169560574948
+      },
+      {
+        "process": 0,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.359218523613963
+      },
+      {
+        "process": 0,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.597699275154003
+      },
+      {
+        "process": 0,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.690995363449693
+      },
+      {
+        "process": 0,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.11620875359343
+      },
+      {
+        "process": 0,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.633297751540041
+      },
+      {
+        "process": 0,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.279370490759753
+      },
+      {
+        "process": 0,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.3484365893223815
+      },
+      {
+        "process": 0,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.57646141889117
+      },
+      {
+        "process": 0,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.74572186858316
+      },
+      {
+        "process": 0,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.067749940451744
+      },
+      {
+        "process": 0,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6355892464065709
+      },
+      {
+        "process": 0,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.23604039835729
+      },
+      {
+        "process": 0,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.3312688234086245
+      },
+      {
+        "process": 0,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 10.252512390143737
+      },
+      {
+        "process": 0,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 14.676998893223818
+      },
+      {
+        "process": 0,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.202010930184805
+      },
+      {
+        "process": 1,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.667269772073922
+      },
+      {
+        "process": 1,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.872545328542095
+      },
+      {
+        "process": 1,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.438302022587268
+      },
+      {
+        "process": 1,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.944276533880904
+      },
+      {
+        "process": 1,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 14.32366163449692
+      },
+      {
+        "process": 1,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.559639874743326
+      },
+      {
+        "process": 1,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6197078172484598
+      },
+      {
+        "process": 1,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.303454583162218
+      },
+      {
+        "process": 1,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.326222158110883
+      },
+      {
+        "process": 1,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.417829462012321
+      },
+      {
+        "process": 1,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.655665281314167
+      },
+      {
+        "process": 1,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 11.904835468172484
+      },
+      {
+        "process": 1,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6185899055441477
+      },
+      {
+        "process": 1,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.220287217659138
+      },
+      {
+        "process": 1,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.32429544147844
+      },
+      {
+        "process": 1,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.284715084188912
+      },
+      {
+        "process": 1,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 14.021490492813141
+      },
+      {
+        "process": 1,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.292907525667351
+      },
+      {
+        "process": 1,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6897857577002053
+      },
+      {
+        "process": 1,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.44211011909651
+      },
+      {
+        "process": 1,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.328405299794661
+      },
+      {
+        "process": 1,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.735620989733059
+      },
+      {
+        "process": 1,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 14.70269540862423
+      },
+      {
+        "process": 1,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.901858663244354
+      },
+      {
+        "process": 1,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.640031503080082
+      },
+      {
+        "process": 1,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.30646271047228
+      },
+      {
+        "process": 1,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.445533542094456
+      },
+      {
+        "process": 1,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.454015932238192
+      },
+      {
+        "process": 1,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 14.078782369609858
+      },
+      {
+        "process": 1,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.166805168377824
+      },
+      {
+        "process": 2,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6328401991786448
+      },
+      {
+        "process": 2,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.283565782340862
+      },
+      {
+        "process": 2,
+        "pair": 0,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.340535751540042
+      },
+      {
+        "process": 2,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.238696455852157
+      },
+      {
+        "process": 2,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.728069316221767
+      },
+      {
+        "process": 2,
+        "pair": 0,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 11.932872702258727
+      },
+      {
+        "process": 2,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6428620020533882
+      },
+      {
+        "process": 2,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.3590930862423
+      },
+      {
+        "process": 2,
+        "pair": 1,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.344233147843942
+      },
+      {
+        "process": 2,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.2605785174538
+      },
+      {
+        "process": 2,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.841492648870636
+      },
+      {
+        "process": 2,
+        "pair": 1,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 11.899846260780288
+      },
+      {
+        "process": 2,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6341372689938398
+      },
+      {
+        "process": 2,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.601534579055441
+      },
+      {
+        "process": 2,
+        "pair": 2,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.35832427926078
+      },
+      {
+        "process": 2,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.943874907597536
+      },
+      {
+        "process": 2,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 14.05877975359343
+      },
+      {
+        "process": 2,
+        "pair": 2,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.059869443531827
+      },
+      {
+        "process": 2,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.660276864476386
+      },
+      {
+        "process": 2,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.753377724845997
+      },
+      {
+        "process": 2,
+        "pair": 3,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.344953377823408
+      },
+      {
+        "process": 2,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.303293706365503
+      },
+      {
+        "process": 2,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.71154979671458
+      },
+      {
+        "process": 2,
+        "pair": 3,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.178869681724846
+      },
+      {
+        "process": 2,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "dense",
+        "ms_per_operation": 1.6233160287474333
+      },
+      {
+        "process": 2,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "kv_streamed",
+        "ms_per_operation": 11.352251794661191
+      },
+      {
+        "process": 2,
+        "pair": 4,
+        "mode": "resident",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 4.334349256673511
+      },
+      {
+        "process": 2,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "dense",
+        "ms_per_operation": 9.334032340862423
+      },
+      {
+        "process": 2,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "kv_streamed",
+        "ms_per_operation": 13.734359305954825
+      },
+      {
+        "process": 2,
+        "pair": 4,
+        "mode": "with_transfer",
+        "arm": "kv_unrolled",
+        "ms_per_operation": 12.014032431211499
+      }
+    ],
     "absolute_ms": {
       "resident": {
         "post4096": 4.39677545945946,

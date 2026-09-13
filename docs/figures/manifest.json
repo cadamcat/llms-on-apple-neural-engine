@@ -3,18 +3,23 @@
   "scope": "Figures derived from the bundled evidence and the documented methods; zero new device calls.",
   "generation": "Python standard library only; deterministic and byte-reproducible.",
   "generator_hashes": {
-    "scripts/render_figures.py": "601a028b89b903025021bce1b37b1bd69ad72ee5a15a2686cf06c4137cc2b351",
+    "scripts/render_figures.py": "93f768e094c1226660ab80b6171ddbabd5813a8a954dcd8c37dc81d2db9a4021",
     "scripts/figures/canvas.py": "cbb97ba7f3e8f598fc16f3f9617ed77d441ab93b33600a93e1a021220950962c",
     "scripts/figures/architecture.py": "2090108c5a556eb415b6daccf003d825733306d104b7722a4c353c0f38576515",
     "scripts/figures/arithmetic.py": "2d02915eef2fbe58392d2a4d2380a10ec2dc4297cd0ea13687ae7b31281def58",
     "scripts/figures/measurements.py": "1ed5f27b7e31bf76bc4d23ecdf29ab1ef384c3395c7e3831fbe6edf24e0ba350",
     "scripts/figures/g2.py": "36cc78b59d5102121ded8df02788a8acc9a332ffc447ab7dee46c86b38237e9d",
-    "scripts/g2/evidence.py": "4efbae6e6a58803c342bc13be165a35040c987cdcbe6dad24e72aac02b880ffb",
+    "scripts/g2/evidence.py": "557784922a0d9f8cfa27cd74dbb69ca4139f2b79553ca2f0e59d1b40c1b657e4",
     "scripts/g2/thermal.py": "8225beb0eb46bc4880bfbd98a1403e52b0b7e9d7dad881d867556fd05a29416f",
     "scripts/figures/g3.py": "c4bdd32f315a0922a79cff0b1e5ed9427f27a550ca064d16380cec08960c26db",
     "scripts/g3/evidence.py": "4ec1e5ae53a935a532890cc2f0e5661d6303d605c9e6be50974bd73d3ed22159",
     "scripts/g3/protocol.py": "6caf0aac90c4ed10fb7f9e07ac75cba9dfcbc000a9156cd047e3cb0aa71d54ee",
-    "scripts/g3/power.py": "b9fc728f4c3fd088d9f3ed57786353d6b5c5bce5dde113ca4136f252cf33d105"
+    "scripts/g3/power.py": "b9fc728f4c3fd088d9f3ed57786353d6b5c5bce5dde113ca4136f252cf33d105",
+    "scripts/figures/g4a.py": "3795b6f1181ec74bd87bcb56ec5d853f9a6d7913a90f9dba33c7b606394f22e9",
+    "scripts/g4a/evidence.py": "fdc11a0dca04402454612dec4efcb910f6e39e0ee2c86f12fff6ee9db3f5c586",
+    "scripts/g4a/protocol.py": "3faca85f8d88220c55772a85141a079c34254c51db0d0e305830f6913e70ceb9",
+    "scripts/g4a/power.py": "1b484a997a96fd49f04765edcbd9348d6a9f2458c1dc4886a9b32cf295328f4f",
+    "scripts/g4a/disk.py": "64f271543c35a810ddcbab9612bc330684f797615a4e2b05923ca3b630c6155a"
   },
   "figures": [
     {
@@ -32,8 +37,8 @@
         "Device participation does not imply physical INT8"
       ],
       "source_hashes": {
-        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
-        "articles/01-measuring-ane-performance.md": "6566ea89a4c97c999ecb812df369dd2deafb08fdbed426338f89088833434c37"
+        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292",
+        "articles/01-measuring-ane-performance.md": "0f59a8afd9e88341cd619d9e7672883328c656eb78b8f843d18052eb1e527cba"
       },
       "svg_sha256": "595340b9bc50d45922250f5f0ee35eade12a8b758ef74de400a28f5a66759d5c"
     },
@@ -55,7 +60,7 @@
         "K64 compatibility separate from K512 performance"
       ],
       "source_hashes": {
-        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
+        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292",
         "articles/02-group-quantization-and-split.md": "d8e1e2951c0c886dd6a072fb4941f1fcfe5fc82e8a0d294136661ac7cf60ce10",
         "src/ane_scope/_coreai.py": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
         "src/ane_scope/references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd"
@@ -78,8 +83,8 @@
         "Historical and fresh evidence stay separate"
       ],
       "source_hashes": {
-        "docs/REPRODUCING.md": "5dba99f93bd4b86defddaf59dc2cc63f47de969023d617a7883a2daba683f287",
-        "docs/PROVENANCE.md": "0232b988c9b002c8ea11559e9f70b54c403695d4ff439309c1891b11e439766f"
+        "docs/REPRODUCING.md": "f1d7cc3dded5b42667e5d0732c2f100c51a404a9e1188092c4d22ac03be24cdb",
+        "docs/PROVENANCE.md": "052960f7fa492069e5e844585bdb75f33a6594b911e10227ab040d7a649da3f3"
       },
       "svg_sha256": "4d83172e3c9ee9e36a48bfab21ac8e9472a4ac56c78b723b422be0ad6779caea"
     },
@@ -97,8 +102,8 @@
         "Changing a reference never changes a recorded output"
       ],
       "source_hashes": {
-        "articles/03-arithmetic-compatibility.md": "55cadcd0ed08408c1545bc613837e558b9c374ec9f2e5bc804bb19373912e5d2",
-        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9"
+        "articles/03-arithmetic-compatibility.md": "bc9e95ab0d0b746b579289849317799e89db3f68a3ff438f1e8a26d48eb3ae2d",
+        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292"
       },
       "svg_sha256": "ec14136e622237b96b152159639e8e691e36bbd89acfe32d024f38df587c1756"
     },
@@ -161,8 +166,8 @@
       ],
       "source_hashes": {
         "results/fresh/smoke.json": "962f1f17c7787a880c0a901cba498bc930ca4eaa1662480484e9980bac85037c",
-        "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
-        "articles/03-arithmetic-compatibility.md": "55cadcd0ed08408c1545bc613837e558b9c374ec9f2e5bc804bb19373912e5d2"
+        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292",
+        "articles/03-arithmetic-compatibility.md": "bc9e95ab0d0b746b579289849317799e89db3f68a3ff438f1e8a26d48eb3ae2d"
       },
       "svg_sha256": "f13690d93a4d8a7a18073d7272598afc1edf1bb3fa4c00795e68fce2f53af193"
     },
@@ -672,7 +677,7 @@
       ],
       "source_hashes": {
         "results/historical/ane-vs-gpu-prefill.json": "ae50d31ff23fa5ac89c6bb44fad75f9b53acf60c633685cb69c57424ad443e1d",
-        "findings/ane-vs-gpu-prefill/README.md": "8c054c565fdcaa66e90287c96a06e25848b9f6a176c04880cbca7d26d62bd788"
+        "findings/ane-vs-gpu-prefill/README.md": "d12f6039e15f5599e45ee178513f83a76be5b55f66eecab90c1ec93b911eea21"
       },
       "svg_sha256": "cfe05cb0ed997a73548ae5e039ddd45ae7a3c084d0e46bb883d8c79895cee9a1"
     },
@@ -3290,6 +3295,1004 @@
         "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
       },
       "svg_sha256": "28c7dab2d94590839637868845b8bc9eb2ff57b5b262b921852ad74b51e6a3d9"
+    },
+    {
+      "filename": "g4a-speed.svg",
+      "sources": [
+        "results/historical/g4a-qwen3-4b/arms.json",
+        "results/historical/g4a-qwen3-4b/asset-identity.json",
+        "results/historical/g4a-qwen3-4b/capture-status.json",
+        "results/historical/g4a-qwen3-4b/closures.json",
+        "results/historical/g4a-qwen3-4b/disk.json",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/protocol.json",
+        "results/historical/g4a-qwen3-4b/provenance.json",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json",
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "series": "gpu",
+          "rate": 2759.5478148027564
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "series": "gpu",
+          "rate": 3177.082360848854
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "series": "gpu",
+          "rate": 3343.0112388821863
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "series": "gpu",
+          "rate": 3203.9258582559473
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "series": "gpu",
+          "rate": 2799.2669382163294
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "series": "gpu",
+          "rate": 2240.0853977868323
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "series": "ane",
+          "rate": 938.49415577039
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "series": "ane",
+          "rate": 887.7199780338766
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "series": "ane",
+          "rate": 763.9704232458068
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "series": "ane",
+          "rate": 543.5215996128236
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "series": "ane",
+          "rate": 315.5702033356808
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "series": "ane",
+          "rate": 140.56082191525056
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "series": "g3_ane",
+          "rate": 877.8523396184589
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "series": "g3_ane",
+          "rate": 832.3811151228763
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "series": "g3_ane",
+          "rate": 811.9058790761826
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "series": "g3_ane",
+          "rate": 84.88918504375866
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "series": "g3_ane",
+          "rate": 58.75907440941591
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "series": "g3_ane",
+          "rate": 50.892010968194356
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "series": "gpu",
+          "rate": 29.87347295675905
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "series": "gpu",
+          "rate": 30.085902155132402
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "series": "gpu",
+          "rate": 29.83299480766534
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "series": "gpu",
+          "rate": 28.285621942755547
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "series": "gpu",
+          "rate": 26.778253882114594
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "series": "gpu",
+          "rate": 21.699842467055092
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "series": "ane",
+          "rate": 15.025375129374984
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "series": "ane",
+          "rate": 14.561948123585974
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "series": "ane",
+          "rate": 13.698160889460064
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "series": "ane",
+          "rate": 10.423336576678874
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "series": "ane",
+          "rate": 7.473287688628505
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "series": "ane",
+          "rate": 5.611801101325164
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "series": "g3_ane",
+          "rate": 13.783612732816863
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "series": "g3_ane",
+          "rate": 13.78196024555376
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "series": "g3_ane",
+          "rate": 3.1118250356974366
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "series": "g3_ane",
+          "rate": 3.1109924718793036
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "series": "g3_ane",
+          "rate": 3.114022109083035
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "series": "g3_ane",
+          "rate": 3.1110037852936583
+        }
+      ],
+      "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
+      "source_hashes": {
+        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
+        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
+        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
+        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
+        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
+        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
+        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
+      },
+      "svg_sha256": "d11edac8de0c214a363bdd2862f9e69ac8b0141286117782e79da50cbbc06aff"
+    },
+    {
+      "filename": "g4a-implied.svg",
+      "sources": [
+        "results/historical/g4a-qwen3-4b/arms.json",
+        "results/historical/g4a-qwen3-4b/asset-identity.json",
+        "results/historical/g4a-qwen3-4b/capture-status.json",
+        "results/historical/g4a-qwen3-4b/closures.json",
+        "results/historical/g4a-qwen3-4b/disk.json",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/protocol.json",
+        "results/historical/g4a-qwen3-4b/provenance.json",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json",
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json",
+        "results/fresh/throughput.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "gpu",
+          "projection_TFLOP_per_second": 20.052617573520486,
+          "attention_TFLOP_per_second": 0.4069118825795553
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "ane",
+          "projection_TFLOP_per_second": 6.819691363815971,
+          "attention_TFLOP_per_second": 0.13838659423327862
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "gpu",
+          "projection_TFLOP_per_second": 23.086687333313474,
+          "attention_TFLOP_per_second": 0.959446746319521
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "ane",
+          "projection_TFLOP_per_second": 6.4507341153498725,
+          "attention_TFLOP_per_second": 0.26808245674181286
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "gpu",
+          "projection_TFLOP_per_second": 24.292431375057344,
+          "attention_TFLOP_per_second": 2.0191111792255456
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "ane",
+          "projection_TFLOP_per_second": 5.551491680140988,
+          "attention_TFLOP_per_second": 0.4614226851026276
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "gpu",
+          "projection_TFLOP_per_second": 23.281749141973854,
+          "attention_TFLOP_per_second": 3.87021284438007
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "ane",
+          "projection_TFLOP_per_second": 3.94957127451082,
+          "attention_TFLOP_per_second": 0.6565521079706298
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "gpu",
+          "projection_TFLOP_per_second": 20.341241814019384,
+          "attention_TFLOP_per_second": 6.762802473232418
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "ane",
+          "projection_TFLOP_per_second": 2.2931324368230994,
+          "attention_TFLOP_per_second": 0.7623920828918357
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "gpu",
+          "projection_TFLOP_per_second": 16.277875517463197,
+          "attention_TFLOP_per_second": 10.823730214209295
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "ane",
+          "projection_TFLOP_per_second": 1.021403721496198,
+          "attention_TFLOP_per_second": 0.6791671498779913
+        },
+        {
+          "reference_T_ops_per_second": 18.774290469540123,
+          "source": "results/fresh/throughput.json: coreai-fp16-128 median source_ops / p50"
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "gpu",
+          "weight_GB_per_second": 240.3301837705641,
+          "kv_GB_per_second": 2.7641518247656935
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "ane",
+          "weight_GB_per_second": 120.87818417668548,
+          "kv_GB_per_second": 1.3902775262108913
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "gpu",
+          "weight_GB_per_second": 242.03916311679546,
+          "kv_GB_per_second": 5.108453326597565
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "ane",
+          "weight_GB_per_second": 117.14994348546328,
+          "kv_GB_per_second": 2.4725544858219846
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "gpu",
+          "weight_GB_per_second": 240.00453964393498,
+          "kv_GB_per_second": 9.570142156172224
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "ane",
+          "weight_GB_per_second": 110.20083030345617,
+          "kv_GB_per_second": 4.394240264358844
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "gpu",
+          "weight_GB_per_second": 227.55602368050344,
+          "kv_GB_per_second": 17.615731400328027
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "ane",
+          "weight_GB_per_second": 83.85507766712126,
+          "kv_GB_per_second": 6.491449889332085
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "gpu",
+          "weight_GB_per_second": 215.4293438147882,
+          "kv_GB_per_second": 32.85049587384765
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "ane",
+          "weight_GB_per_second": 60.12212259947549,
+          "kv_GB_per_second": 9.167931839773141
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "gpu",
+          "weight_GB_per_second": 174.57384802391007,
+          "kv_GB_per_second": 52.833034896228696
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "ane",
+          "weight_GB_per_second": 45.14658178235627,
+          "kv_GB_per_second": 13.66316294079732
+        }
+      ],
+      "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
+      "source_hashes": {
+        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
+        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
+        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
+        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
+        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
+        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
+        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f",
+        "results/fresh/throughput.json": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110"
+      },
+      "svg_sha256": "81cb153e245555f07dca2802302bd0c5ccd3f1c24d4090c0a4780e596ac12fd4"
+    },
+    {
+      "filename": "g4a-energy.svg",
+      "sources": [
+        "results/historical/g4a-qwen3-4b/arms.json",
+        "results/historical/g4a-qwen3-4b/asset-identity.json",
+        "results/historical/g4a-qwen3-4b/capture-status.json",
+        "results/historical/g4a-qwen3-4b/closures.json",
+        "results/historical/g4a-qwen3-4b/disk.json",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/protocol.json",
+        "results/historical/g4a-qwen3-4b/provenance.json",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json",
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json"
+      ],
+      "points_or_scope": [
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "gpu",
+          "cpu": 0.0012281466910641888,
+          "gpu": 0.012507909995254108,
+          "ane": 0.0,
+          "lower": 0.01162855384615385,
+          "upper": 0.014035661538461542,
+          "cpu_median_W": 3.458805,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 500,
+          "arm": "ane",
+          "cpu": 0.0007735109923699865,
+          "gpu": 0.0022720232081969616,
+          "ane": 0.0064031503103911215,
+          "lower": 0.008993276923076924,
+          "upper": 0.009522153846153845,
+          "cpu_median_W": 0.627039,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "gpu",
+          "cpu": 0.001183052090267291,
+          "gpu": 0.012147213609333988,
+          "ane": 0.0,
+          "lower": 0.011625585937500002,
+          "upper": 0.013642024739583333,
+          "cpu_median_W": 3.63665,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 1024,
+          "arm": "ane",
+          "cpu": 0.00082562032326692,
+          "gpu": 0.0020328582097705124,
+          "ane": 0.006615691340863171,
+          "lower": 0.009158506944444443,
+          "upper": 0.009528352864583332,
+          "cpu_median_W": 0.610374,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "gpu",
+          "cpu": 0.0007566688719849968,
+          "gpu": 0.012098042550124541,
+          "ane": 0.0,
+          "lower": 0.011624165482954547,
+          "upper": 0.013093377130681821,
+          "cpu_median_W": 2.5297349999999996,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 2048,
+          "arm": "ane",
+          "cpu": 0.0009056539687193581,
+          "gpu": 0.0019463196640478824,
+          "ane": 0.007337568297132273,
+          "lower": 0.009930424360795456,
+          "upper": 0.010234170809659096,
+          "cpu_median_W": 0.599044,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "gpu",
+          "cpu": 0.0006697545156939658,
+          "gpu": 0.012748639308487146,
+          "ane": 0.0,
+          "lower": 0.01218991268382353,
+          "upper": 0.013615227194393382,
+          "cpu_median_W": 2.14888,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 4096,
+          "arm": "ane",
+          "cpu": 0.0026212894858352563,
+          "gpu": 0.00230291272084901,
+          "ane": 0.00917232805925099,
+          "lower": 0.01380462287454043,
+          "upper": 0.0142115119485294,
+          "cpu_median_W": 1.17082,
+          "cpu_flag": true
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "gpu",
+          "cpu": 0.0007609941833487126,
+          "gpu": 0.015290450555816293,
+          "ane": 0.0,
+          "lower": 0.014843017578124998,
+          "upper": 0.016339208984375,
+          "cpu_median_W": 1.983845,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 8192,
+          "arm": "ane",
+          "cpu": 0.0014606773271759817,
+          "gpu": 0.0018577003586654056,
+          "ane": 0.013598412682724695,
+          "lower": 0.0167611328125,
+          "upper": 0.016948006184895833,
+          "cpu_median_W": 0.396375,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "gpu",
+          "cpu": 0.0009244641475994593,
+          "gpu": 0.019837401207059364,
+          "ane": 0.0,
+          "lower": 0.01922915213448661,
+          "upper": 0.021044494628906254,
+          "cpu_median_W": 1.8013599999999999,
+          "cpu_flag": false
+        },
+        {
+          "mode": "prefill",
+          "context": 16384,
+          "arm": "ane",
+          "cpu": 0.0029610556960516505,
+          "gpu": 0.0018612242500190398,
+          "ane": 0.02091533176242486,
+          "lower": 0.025613150460379455,
+          "upper": 0.025766470772879448,
+          "cpu_median_W": 0.352401,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "gpu",
+          "cpu": 0.13004774572114067,
+          "gpu": 0.34199713530004416,
+          "ane": 0.0,
+          "lower": 0.2286653645833334,
+          "upper": 0.5145520833333332,
+          "cpu_median_W": 3.8448,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 500,
+          "arm": "ane",
+          "cpu": 0.05544603871543228,
+          "gpu": 0.2621287400803288,
+          "ane": 0.1348222145248351,
+          "lower": 0.33764453125,
+          "upper": 0.4764960937499998,
+          "cpu_median_W": 0.745633,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "gpu",
+          "cpu": 0.11423029325044542,
+          "gpu": 0.3511571919775159,
+          "ane": 0.0,
+          "lower": 0.20190624999999998,
+          "upper": 0.5166953124999999,
+          "cpu_median_W": 3.4523,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 1024,
+          "arm": "ane",
+          "cpu": 0.09375528259223727,
+          "gpu": 0.2749311783897045,
+          "ane": 0.14527714298521435,
+          "lower": 0.37528776041666684,
+          "upper": 0.5635234375000001,
+          "cpu_median_W": 1.117,
+          "cpu_flag": true
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "gpu",
+          "cpu": 0.11377006393690438,
+          "gpu": 0.3869447241789519,
+          "ane": 0.0,
+          "lower": 0.24413802083333327,
+          "upper": 0.5836015625000001,
+          "cpu_median_W": 3.421285,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 2048,
+          "arm": "ane",
+          "cpu": 0.06877270436429699,
+          "gpu": 0.2594383661549072,
+          "ane": 0.1618581552964908,
+          "lower": 0.37913281250000014,
+          "upper": 0.5687200520833334,
+          "cpu_median_W": 0.769192,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "gpu",
+          "cpu": 0.13581350419424895,
+          "gpu": 0.4319531674537643,
+          "ane": 0.0,
+          "lower": 0.25794791666666667,
+          "upper": 0.7765247395833333,
+          "cpu_median_W": 3.8006100000000003,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 4096,
+          "arm": "ane",
+          "cpu": 0.15711106995970417,
+          "gpu": 0.288431920911599,
+          "ane": 0.22323971364567416,
+          "lower": 0.5247343750000001,
+          "upper": 0.792287760416667,
+          "cpu_median_W": 1.3938599999999999,
+          "cpu_flag": true
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "gpu",
+          "cpu": 0.12261113437250408,
+          "gpu": 0.4990507637333201,
+          "ane": 0.0,
+          "lower": 0.27728125,
+          "upper": 1.0080208333333334,
+          "cpu_median_W": 3.22425,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 8192,
+          "arm": "ane",
+          "cpu": 0.07575425191302716,
+          "gpu": 0.26433656901723207,
+          "ane": 0.3622638048949025,
+          "lower": 0.6118020833333334,
+          "upper": 0.7716354166666665,
+          "cpu_median_W": 0.543806,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "gpu",
+          "cpu": 0.13266740254148102,
+          "gpu": 0.6548908655209286,
+          "ane": 0.0,
+          "lower": 0.4825403645833333,
+          "upper": 1.410984375,
+          "cpu_median_W": 2.7699350000000003,
+          "cpu_flag": false
+        },
+        {
+          "mode": "decode",
+          "context": 16384,
+          "arm": "ane",
+          "cpu": 0.09868933695547517,
+          "gpu": 0.2576420345886914,
+          "ane": 0.4407743222949141,
+          "lower": 0.7266210937500003,
+          "upper": 0.8567278645833337,
+          "cpu_median_W": 0.469779,
+          "cpu_flag": false
+        }
+      ],
+      "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
+      "source_hashes": {
+        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
+        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
+        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
+        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
+        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
+        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
+        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
+      },
+      "svg_sha256": "c494215ae692f9c4520efab672ef8e5aa1946fa5d291209d357f116efe94abf5"
+    },
+    {
+      "filename": "ane-compiler-disk.svg",
+      "sources": [
+        "results/historical/g4a-qwen3-4b/arms.json",
+        "results/historical/g4a-qwen3-4b/asset-identity.json",
+        "results/historical/g4a-qwen3-4b/capture-status.json",
+        "results/historical/g4a-qwen3-4b/closures.json",
+        "results/historical/g4a-qwen3-4b/disk.json",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/protocol.json",
+        "results/historical/g4a-qwen3-4b/provenance.json",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json",
+        "results/historical/g3-qwen3-4b/asset-identity.json",
+        "results/historical/g3-qwen3-4b/blocks.json",
+        "results/historical/g3-qwen3-4b/capture-status.json",
+        "results/historical/g3-qwen3-4b/closures.json",
+        "results/historical/g3-qwen3-4b/input-identity.json",
+        "results/historical/g3-qwen3-4b/inputs.json",
+        "results/historical/g3-qwen3-4b/model-structure.json",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz",
+        "results/historical/g3-qwen3-4b/protocol.json",
+        "results/historical/g3-qwen3-4b/provenance.json",
+        "results/historical/g3-qwen3-4b/quality-records.json",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json",
+        "findings/ane-compiler-service-disk/evidence/observations.json",
+        "findings/ane-compiler-service-disk/evidence/provenance.json"
+      ],
+      "points_or_scope": {
+        "observer_rows": 1020,
+        "host_windows": [
+          {
+            "input_N": 16384,
+            "arm": "ane",
+            "host_started_monotonic_s": 275344.761162166,
+            "host_ended_monotonic_s": 276978.059493666
+          },
+          {
+            "input_N": 16384,
+            "arm": "gpu",
+            "host_started_monotonic_s": 276978.196046291,
+            "host_ended_monotonic_s": 277210.262934458
+          },
+          {
+            "input_N": 8192,
+            "arm": "gpu",
+            "host_started_monotonic_s": 277210.424776666,
+            "host_ended_monotonic_s": 277394.015266166
+          },
+          {
+            "input_N": 8192,
+            "arm": "ane",
+            "host_started_monotonic_s": 277394.179332583,
+            "host_ended_monotonic_s": 278170.089328833
+          },
+          {
+            "input_N": 4096,
+            "arm": "ane",
+            "host_started_monotonic_s": 278170.264157583,
+            "host_ended_monotonic_s": 278700.851299916
+          },
+          {
+            "input_N": 4096,
+            "arm": "gpu",
+            "host_started_monotonic_s": 278852.197265,
+            "host_ended_monotonic_s": 279034.766866166
+          },
+          {
+            "input_N": 2048,
+            "arm": "gpu",
+            "host_started_monotonic_s": 279034.916366791,
+            "host_ended_monotonic_s": 279197.408538416
+          },
+          {
+            "input_N": 2048,
+            "arm": "ane",
+            "host_started_monotonic_s": 279197.571691958,
+            "host_ended_monotonic_s": 279560.087241333
+          },
+          {
+            "input_N": 1024,
+            "arm": "ane",
+            "host_started_monotonic_s": 279560.199903625,
+            "host_ended_monotonic_s": 279865.88787125
+          },
+          {
+            "input_N": 1024,
+            "arm": "gpu",
+            "host_started_monotonic_s": 279866.000009291,
+            "host_ended_monotonic_s": 280031.440776625
+          },
+          {
+            "input_N": 500,
+            "arm": "gpu",
+            "host_started_monotonic_s": 280031.614692958,
+            "host_ended_monotonic_s": 280177.886158333
+          },
+          {
+            "input_N": 500,
+            "arm": "ane",
+            "host_started_monotonic_s": 280178.002004208,
+            "host_ended_monotonic_s": 280439.040159
+          }
+        ],
+        "released_GiB": 189.0960464477539
+      },
+      "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
+      "source_hashes": {
+        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
+        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
+        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
+        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
+        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
+        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
+        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
+        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
+        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
+        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
+        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
+        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
+        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
+        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
+        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
+        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
+        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
+        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
+        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
+        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
+        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
+        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
+        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
+        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f",
+        "findings/ane-compiler-service-disk/evidence/observations.json": "870c4e2f9a76533ceae458ad2ae021b218d65019d401d37d217704a53772e919",
+        "findings/ane-compiler-service-disk/evidence/provenance.json": "f83bdb6217d2c0d19afbcd1a004e99cf5f8f2e31244688d9e3d559aa57e4e616"
+      },
+      "svg_sha256": "bc0213e8e9366217926f77c30a3ef36750b2d486cbf4d92c86b9c42cb6205981"
     }
   ]
 }

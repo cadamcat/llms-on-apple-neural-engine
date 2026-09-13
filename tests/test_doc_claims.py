@@ -34,7 +34,7 @@ class DocumentClaims(unittest.TestCase):
 
     def check(self, name='README.md'):
         # G2 and G3 have separate required-location inventories.
-        body=re.sub(r'<!-- claim:g3\.[^>]+-->.*?<!-- /claim -->', '',
+        body=re.sub(r'<!-- claim:(?!g2\.|arithmetic\.)[^>]+-->.*?<!-- /claim -->', '',
                     (self.root / name).read_text(), flags=re.DOTALL)
         return check_document(body, self.catalog,
                               'zh' if name.endswith('zh-CN.md') else 'en', name=name)

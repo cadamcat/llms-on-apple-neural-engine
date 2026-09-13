@@ -6,50 +6,59 @@ A weight-free attention graph with Qwen3-like proportions (32 query heads, 8 key
 
 | Expression on ANE | Relative L2, three seeds |
 |---|---:|
-| Dense: softmax, then `P @ V` | 5.22–5.42% |
-| 1,024-key blocks, same expression | 1.01–1.02% |
-| 1,024-key blocks, `exp(S − m) @ V` before normalizing | 0.106–0.113% |
+| Dense: softmax, then `P @ V` | <!-- claim:g5.random.dense-l2@g5-001 -->5.22–5.42%<!-- /claim --> |
+| 1,024-key blocks, same expression | <!-- claim:g5.random.block-l2@g5-002 -->1.01–1.02%<!-- /claim --> |
+| 1,024-key blocks, `exp(S − m) @ V` before normalizing | <!-- claim:g5.random.post-pv-l2@g5-003 -->0.106–0.113%<!-- /claim --> |
 
-The same dense expression evaluated in FP16 by PyTorch on the CPU is 0.031% from the reference (seed 0), so the dense error is not a necessary consequence of FP16 arithmetic.
+The same dense expression evaluated in FP16 by PyTorch on the CPU is <!-- claim:g5.cpu.dense-l2@g5-004 -->0.031%<!-- /claim --> from the reference (seed 0), so the dense error is not a necessary consequence of FP16 arithmetic.
 
 ## It is in the product of probabilities and values
 
-A graph containing only `P @ V` and layout operations, with a uniform `P` whose nonzero entries are 0.000244–0.000248, is **3.95%** from its reference. Its output is byte-identical to the dense graph run with zero Q and K. Scaling the operands changes the error:
+A graph containing only `P @ V` and layout operations, with a uniform `P` whose nonzero entries are <!-- claim:g5.pv.probability-span@g5-005 -->0.000244–0.000248<!-- /claim -->, is **<!-- claim:g5.pv.l2@g5-006 -->3.95%<!-- /claim -->** from its reference. Its output is byte-identical to the dense graph run with zero Q and K. Scaling the operands changes the error:
 
 | `P` fed to the same graph | Relative L2 |
 |---|---:|
-| `P`, as computed | 3.95% |
-| 16 × `P`, output divided by 16 on the CPU | 0.22% |
-| 64 × `P`, output divided by 64 on the CPU | 0.060% |
-| 64 × `P`, output divided by 64 inside the graph | 0.060% |
+| `P`, as computed | <!-- claim:g5.pv.l2@g5-007 -->3.95%<!-- /claim --> |
+| 16 × `P`, output divided by 16 on the CPU | <!-- claim:g5.pv.scale-16-l2@g5-008 -->0.22%<!-- /claim --> |
+| 64 × `P`, output divided by 64 on the CPU | <!-- claim:g5.pv.scale-64-l2@g5-009 -->0.060%<!-- /claim --> |
+| 64 × `P`, output divided by 64 inside the graph | <!-- claim:g5.pv.scale-64-l2@g5-010 -->0.060%<!-- /claim --> |
 
-With V set to the FP16 constants 0.0005 and 0.00025, the normalized product returns **all zeros**. Multiplying unnormalized weights first and dividing afterwards gives 0.67% and 2.37%.
+With V set to the FP16 constants 0.0005 and 0.00025, the normalized product returns **all zeros**. Multiplying unnormalized weights first and dividing afterwards gives <!-- claim:g5.constant.full-unnormalized-l2@g5-011 -->0.67%<!-- /claim --> and <!-- claim:g5.constant.half-unnormalized-l2@g5-012 -->2.37%<!-- /claim -->.
 
-The expression that passes the random seeds also depends on magnitude. Halving that constant V puts it at 2.38% as a single 4,096-key block and 2.36% in 1,024-key blocks. A dense graph with `P` scaled by 512 reaches 3.15%.
+The expression that passes the random seeds also depends on magnitude. Halving that constant V puts it at <!-- claim:g5.near-zero.kv-unrolled-l2@g5-013 -->2.38%<!-- /claim --> as a single 4,096-key block and <!-- claim:g5.near-zero.post1024-l2@g5-014 -->2.36%<!-- /claim --> in 1,024-key blocks. A dense graph with `P` scaled by 512 reaches <!-- claim:g5.near-zero.dense-l2@g5-015 -->3.15%<!-- /claim -->.
 
 Three simple FP16 models were applied to the isolated product's first query. None reproduces the device output:
 
 | Model | From the exact result | From the ANE output |
 |---|---:|---:|
-| Round each product to FP16, sum wide | 0.030% | 4.04% |
-| Round each product, accumulate serially in FP16 | 0.89% | 4.19% |
-| Drop products below the smallest normal FP16 | 17.7% | 18.2% |
+| Round each product to FP16, sum wide | <!-- claim:g5.rounding.rounded-half-products-wide-sum.vs-truth@g5-016 -->0.030%<!-- /claim --> | <!-- claim:g5.rounding.rounded-half-products-wide-sum.vs-device@g5-017 -->4.04%<!-- /claim --> |
+| Round each product, accumulate serially in FP16 | <!-- claim:g5.rounding.serial-half-accumulation.vs-truth@g5-018 -->0.89%<!-- /claim --> | <!-- claim:g5.rounding.serial-half-accumulation.vs-device@g5-019 -->4.19%<!-- /claim --> |
+| Drop products below the smallest normal FP16 | <!-- claim:g5.rounding.products-flushed-below-half-min-normal.vs-truth@g5-020 -->17.7%<!-- /claim --> | <!-- claim:g5.rounding.products-flushed-below-half-min-normal.vs-device@g5-021 -->18.2%<!-- /claim --> |
 
 Together with [the dot product outside its binary16 bracket](../fp16-dot-residual/), this is a second product-and-sum result that these rounding models do not explain, here at 4,096 terms and with operands in the range attention probabilities take.
 
 ## Chunking did not buy speed
 
-The accurate block expression costs more time than the inaccurate dense graph. Three processes, five pairs each; milliseconds per operation.
+Holding the expression fixed separates the effect of block size from the precision change. The same expression, multiplying unnormalized weights by V before dividing, ran as one 4,096-key block and as 1,024-key blocks inside one graph:
 
-| Path | Kernel call only (ms) | With layout conversion and readback (ms) |
+| Block size | Resident operation (ms) |
+|---|---:|
+| 4,096 keys | <!-- claim:g5.time.post4096.resident@g5-030 -->4.40<!-- /claim --> |
+| 1,024 keys | <!-- claim:g5.time.post1024.resident@g5-031 -->4.35<!-- /claim --> |
+
+The paired speed of the 1,024-key blocks is **<!-- claim:g5.speed.b1024-vs-b4096.resident@g5-032 -->1.009×<!-- /claim -->** that of the 4,096-key block for the resident operation and **<!-- claim:g5.speed.b1024-vs-b4096.with-transfer@g5-033 -->0.980×<!-- /claim -->** including layout conversion and readback. Smaller blocks gave no useful speed gain in this comparison. Resident timing includes the awaited Core AI calls and host output handling.
+
+An earlier round compared the dense expression with the block expression that passes the random-seed precision screen. It measures the cost of that rewrite as well as blocking. Three processes, five pairs each; milliseconds per operation. The four-call path also copies K/V blocks and masks inside the resident window.
+
+| Path | Resident operation (ms) | With layout conversion and readback (ms) |
 |---|---:|---:|
-| Dense (5.22–5.42% error) | 1.63 | 9.53 |
-| 1,024-key blocks, one graph | 4.34 | 12.12 |
-| 1,024-key blocks, four calls | 11.30 | 13.75 |
+| Dense (<!-- claim:g5.random.dense-l2@g5-022 -->5.22–5.42%<!-- /claim --> error) | <!-- claim:g5.time.dense.resident@g5-023 -->1.63<!-- /claim --> | <!-- claim:g5.time.dense.with-transfer@g5-024 -->9.53<!-- /claim --> |
+| 1,024-key blocks, one graph | <!-- claim:g5.time.kv-unrolled.resident@g5-025 -->4.34<!-- /claim --> | <!-- claim:g5.time.kv-unrolled.with-transfer@g5-026 -->12.12<!-- /claim --> |
+| 1,024-key blocks, four calls | <!-- claim:g5.time.kv-streamed.resident@g5-027 -->11.30<!-- /claim --> | <!-- claim:g5.time.kv-streamed.with-transfer@g5-028 -->13.75<!-- /claim --> |
 
-Paired, the single-graph block path runs at **0.376×** the dense graph's speed for the kernel call. In a later round the same accurate expression as one 4,096-key block and as 1,024-key blocks ran at 4.40 and 4.35 ms: blocks gain **1.009×** on the kernel call and **0.980×** including transfer. Host-side layout conversion and copying add 7.6–8.1 ms to each single-graph path, more than the kernel call itself.
+Paired, the single-graph block path runs at **<!-- claim:g5.speed.kv-unrolled-vs-dense.resident@g5-029 -->0.376×<!-- /claim -->** the dense graph's speed for the resident operation. Host-side layout conversion and copying add <!-- claim:g5.transfer-ms-span@g5-034 -->7.6–8.1<!-- /claim --> ms to each single-graph path, more than the resident operation itself.
 
-At 4,096 keys, blocking attention inside one graph gave no speed gain. It was not tested at the 32K graph capacity where [the complete-model path](../qwen3-4b-prefill-decode/) slows sharply.
+At 4,096 keys, blocking attention inside one graph gave no speed gain. It was not tested at the 32K graph capacity where [the complete-model path](../qwen3-4b-prefill-decode/) slows sharply. With graphs sized to each input, [most of that slowdown went away](../qwen3-4b-graph-capacity/); attention precision was not measured in that run.
 
 ## Reproduce
 
@@ -57,7 +66,7 @@ At 4,096 keys, blocking attention inside one graph gave no speed gain. It was no
 python scripts/verify_g5.py
 ```
 
-This recomputes every timing above from 54,930 bundled operations and checks the paired speeds against the summaries recorded at close. The relative L2 values are imported scalars; the FP16 inputs and outputs stay with the research workspace.
+This recomputes every timing above from <!-- claim:g5.timed-operations@g5-035 -->54,930<!-- /claim --> bundled operations and checks the paired speeds against the summaries recorded at close. The relative L2 values are imported scalars; the FP16 inputs and outputs stay with the research workspace.
 
 ## What this does not show
 

@@ -134,6 +134,15 @@ The [provenance manifest](../results/historical/g3-qwen3-4b/provenance.json) has
 
 The probe records are the raw FP16 outputs, saved graph text and per-call ANE request counts of the executed package. `host.swift` is byte-identical to that package; `export.py` and `run.py` were reformatted, with identical parsed syntax trees, and the executed files' hashes are recorded.
 
-[import_g5.py](../results/historical/import_g5.py) writes [g5-attention](../results/historical/g5-attention/): per-operation timings for both speed rounds, and relative L2, row maximum and maximum absolute error per case. Replayed cases are collapsed after checking that they agree. FP16 inputs, device outputs and exported graphs stay in the research workspace.
+[import_g5.py](../results/historical/import_g5.py) writes [g5-attention](../results/historical/g5-attention/): per-operation timings for both speed rounds, the first round's recorded per-block means, the later round's absolute medians, both rounds' paired speed medians, and relative L2, row maximum and maximum absolute error per case. Replayed cases are collapsed after checking that they agree. FP16 inputs, device outputs and exported graphs stay in the research workspace.
 
 Both importers refuse an existing output directory and regenerate byte-identical bundles from the same sources. Each `provenance.json` hashes every source read and every product.
+
+## G4 A import
+
+[import_g4a.py](../results/historical/import_g4a.py) reads one closed run and writes [g4a-qwen3-4b](../results/historical/g4a-qwen3-4b/). It refuses a run that did not close in one attempt, a host that did not exit cleanly, a capture whose audit failed, and mismatches in the selected identity files frozen at launch: ANE metadata and main.hash, the GPU export record, and the host sources and binaries. Compiled bytecode payloads are not rehashed; their recorded hashes, sizes and graph inventories are retained. Request results and commands are kept for every boundary, full and prefill request; the boundary request's input IDs are checked against the recorded inputs and dropped, and no logits are kept. Inputs are the same token IDs as G3, identified by hash against the G3 bundle, which the recomputation requires.
+
+Asset identity keeps each ANE tier's graph inventory, native model hash, compile receipt and short flow check, and the GPU asset's export record. Runtime identity keeps the host's engine-selection excerpt, the hashes of the host binaries and the diff of the three Swift sources from the G3 host. Power frames are reduced to the same whitelist as G3. The run's recorded summary travels with the bundle so the verifier can compare. Disk fields from the load gate and the observer are kept with host start and end times; process IDs and command lines are dropped.
+
+With `--leak-output` the importer also writes the [disk observations](../findings/ane-compiler-service-disk/evidence/) from saved terminal output: lsof rows are parsed and the per-user temporary directory is rewritten as `$TMPDIR`; the prompt, inode numbers and session user name are removed, and the importer refuses output that still contains that name or a personal path. `provenance.json` hashes every source and product in both outputs.
+

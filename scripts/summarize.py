@@ -204,6 +204,8 @@ def claims():
     leak = sorted(set(prefill['iosurface_growth_bytes_per_call'].values()))
     assert len(leak) == 1, 'the diagnostic variants no longer agree'
     gpu_gap = [f'{ratios[p]["p50_outer_ms"]:.2f}' for p in ('4096', '1024')]
+    activation_speed = (prefill['engines']['C']['rows']['4096']['p50_outer_ms']
+                        / prefill['engines']['A']['rows']['4096']['p50_outer_ms'])
 
     headline = [
         *gpu_gap,                                      # ANE against the GPU, 4K then 1K
@@ -236,6 +238,10 @@ def claims():
             'findings/split-decomposition-cost/README.md': [span(split_ratios(split), 2, '×')],
             'workarounds/README.md': [span(split_ratios(split), 2, '×'),
                                       ratio('coreai-w8a8-128'), f'{int(leak[0]):,}']}
+
+    for name in ('README.md', 'README.zh-CN.md', 'findings/README.md',
+                 'findings/ane-vs-gpu-prefill/README.md'):
+        registered[name].append(f'{activation_speed:.3f}×')
 
     # Both languages quote the same records. Reuse the numeric-token checks;
     # examples explaining arithmetic are distinct from measured result values.
@@ -278,7 +284,7 @@ def claims():
             ('01-measuring-ane-performance', '01-如何验证ANE的量化加速', first),
             ('02-group-quantization-and-split', '02-分组量化如何改变ANE的执行图', second),
             ('03-arithmetic-compatibility', '03-ANE算术兼容性', third),
-            ('README', 'README', [str(residuals), f'{max(r["tops"] for r in a8w4):.0f}'])]:
+            ('README', 'README', [f'{max(r["tops"] for r in a8w4):.0f}'])]:
         for name in (f'articles/{stem}.md', f'articles/zh/{zh_name}.md'):
             registered[name] = list(dict.fromkeys(values))
     environment = load('results/historical/g2-w4a16-night/environment.json')
@@ -301,15 +307,23 @@ def main():
     from g1w.evidence import derive as derive_g1w, measurements as g1w_measurements, quoted_values as g1w_quotes
     from g5.evidence import derive as derive_g5, measurements as g5_measurements, quoted_values as g5_quotes
     g1w, g5 = derive_g1w(), derive_g5()
+    from g4a.evidence import derive as derive_g4a, measurements as g4a_measurements
+    g4a = derive_g4a()
     text = (measurements() + '\n' + g2_measurements(g2) + '\n' + g3_measurements(g3) + '\n'
-            + g1w_measurements(g1w) + '\n' + g5_measurements(g5))
+            + g1w_measurements(g1w) + '\n' + g5_measurements(g5) + '\n' + g4a_measurements(g4a))
     if args.write:
         MEASUREMENTS.write_text(text)
         print(f'wrote {MEASUREMENTS.relative_to(ROOT)}')
         return
 
     from g3.claims import check as check_g3_quotes
-    problems = check_local_quotes(ROOT, g2) + check_g3_quotes(ROOT, g3)
+    from g4a.claims import check as check_g4a_quotes
+    from component_claims import check as check_component_quotes
+    from g1w.claims import quantities as g1w_quantities
+    from g5.claims import quantities as g5_quantities
+    problems = (check_local_quotes(ROOT, g2) + check_g3_quotes(ROOT, g3) + check_g4a_quotes(ROOT, g4a)
+                + check_component_quotes(ROOT, 'g1w', g1w_quantities(g1w))
+                + check_component_quotes(ROOT, 'g5', g5_quantities(g5)))
     if MEASUREMENTS.read_text() != text:
         problems.append('docs/MEASUREMENTS.md differs from the bundled records; '
                         'rerun with --write')

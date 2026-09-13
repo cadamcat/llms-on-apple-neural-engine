@@ -109,6 +109,11 @@ def reported(read):
                                    for mode, arms in v2['comparison'].items()},
         'post_pv_b4096_vs_b1024': {mode: v4['comparisons'][mode]['post4096_over_post1024']['median']
                                    for mode in v4['comparisons']},
+        'dense_round_block_means': [
+            {'process': process['process'], 'pair': pair['pair'], 'mode': pair['mode'],
+             'arm': arm, 'ms_per_operation': value}
+            for process in v2['processes'] for pair in process['pairs']
+            for arm, value in sorted(pair['ms_per_operation'].items())],
         'absolute_ms': {mode: {arm: block['median_block_mean_ms'] for arm, block in arms.items()}
                         for mode, arms in v4['absolute_ms'].items()},
     }

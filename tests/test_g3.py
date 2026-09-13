@@ -117,6 +117,10 @@ class G3Evidence(unittest.TestCase):
         self.assertAlmostEqual(result['domains']['components']['estimate_J'], 30)
 
 
+# The G3 finding page keeps its G3 references after the README moved to G4 A.
+DOCUMENT = 'findings/qwen3-4b-prefill-decode/README.md'
+
+
 class G3DocumentClaims(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -134,12 +138,12 @@ class G3DocumentClaims(unittest.TestCase):
 
     def first_reference(self):
         """The registry decides which reference these tests tamper with."""
-        registry = json.loads((self.root / 'scripts/g3/claims.json').read_text())['README.md']
+        registry = json.loads((self.root / 'scripts/g3/claims.json').read_text())[DOCUMENT]
         location = sorted(registry)[0]
         return location, registry[location], f'<!-- claim:{registry[location]}@{location} -->'
 
     def test_one_wrong_reference_fails_with_other_references_correct(self):
-        p = self.root / 'README.md'
+        p = self.root / DOCUMENT
         body = p.read_text()
         location, claim, marker = self.first_reference()
         start = body.index(marker) + len(marker)
@@ -149,11 +153,11 @@ class G3DocumentClaims(unittest.TestCase):
         self.assertTrue(any(f'{claim}@{location}: expected' in e for e in errors), errors)
 
     def test_deleted_reference_fails_by_location(self):
-        p = self.root / 'README.md'
+        p = self.root / DOCUMENT
         location, claim, marker = self.first_reference()
         p.write_text(p.read_text().replace(marker, '', 1))
         errors = check_quotes(self.root, self.data)
-        self.assertIn(f'README.md: missing claim {claim}@{location}', errors)
+        self.assertIn(f'{DOCUMENT}: missing claim {claim}@{location}', errors)
 
     def test_synthetic_reference_reads_its_source(self):
         p = self.root / 'results/fresh/throughput.json'

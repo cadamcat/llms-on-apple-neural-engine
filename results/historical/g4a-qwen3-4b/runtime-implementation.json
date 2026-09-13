@@ -1,0 +1,80 @@
+{
+  "source": "workplans/g4-cplus256-20260912/vendor/coreai-models/swift/Sources/Tools/g3-flow-host/G3Host.swift",
+  "engine_selection_excerpt": "        let engine=try await EngineFactory.createEngine(config:config(at:asset),\n            modelURL:asset.appendingPathComponent(bundle.modelAssetPath),\n            options:EngineOptions(variant:arm==\"ane\" ? \"static-shape\":\"coreai-sequential\",\n                                  kvCacheStrategy:.fixedSize,kvCacheSize:bundle.maxContextLength))\n",
+  "ane": "Core AI StaticShapeEngine",
+  "gpu": "Core AI CoreAISequentialEngine",
+  "changes_from_g3_host": {
+    "vendor/coreai-models/swift/Sources/Tools/g3-flow-host/G3Host.swift": {
+      "g4_sha256": "c2ef74ace686849efe1809d37c2c799632f2e1db66463497b7500500a27c5ba7",
+      "lines_changed_from_g3": 16,
+      "diff": [
+        "+    var graph_capacity: Int?",
+        "+    var decode_query: Int?",
+        "-        guard engine.supportsLogits, bundle.maxContextLength==32768 else { throw HostError.invalid(\"model contract\") }",
+        "-        if let ane=engine as? StaticShapeEngine { try ane.g3PreloadFunctions() }",
+        "+        guard engine.supportsLogits, (arm == \"gpu\" ? bundle.maxContextLength == 32768 : [768,1280,2304,4352,8448,16640].contains(bundle.maxContextLength)) else { throw HostError.invalid(\"model contract\") }",
+        "+        // G4 loads only the functions selected by the request, before timing.",
+        "-                !ids.isEmpty, ids.count+count<=bundle.maxContextLength,",
+        "+                !ids.isEmpty, ids.count+count-1 <= (command.graph_capacity ?? 0),",
+        "+                (command.graph_capacity ?? 0) <= bundle.maxContextLength,",
+        "+                [768,1280,2304,4352,8448,16640,33024].contains(command.graph_capacity ?? 0),",
+        "+                [1,8].contains(command.decode_query ?? 0),",
+        "+            if let ane = engine as? StaticShapeEngine {",
+        "+                try ane.g4Configure(capacity: command.graph_capacity!, decodeQuery: command.decode_query!,",
+        "+                    decodeStart: mode == \"decode\" ? engine.processedTokenCount : ids.count)",
+        "+            }",
+        "+            _ = G3Telemetry.drain()"
+      ]
+    },
+    "vendor/coreai-models/swift/Sources/CoreAILanguageModels/InferenceEngines/CoreAIStaticShapeEngine.swift": {
+      "g4_sha256": "81ab8167dcb8fb78bd3e635c26f706248d6bb60150684e9d46a673f2248af23c",
+      "lines_changed_from_g3": 31,
+      "diff": [
+        "+    public private(set) var g4GraphCapacity: Int?",
+        "+    private var g4DecodeQuery: Int = 8",
+        "+    private var g4DecodeStart: Int = 0",
+        "+",
+        "+    public func g4Configure(capacity: Int, decodeQuery: Int, decodeStart: Int) throws {",
+        "+        guard [1,8].contains(decodeQuery), capacity <= config.maxContextLength else {",
+        "+            throw InferenceRuntimeError.invalidState(\"G4 capacity/query\")",
+        "+        }",
+        "+        let names = [\"gather_embeddings_64\", \"gather_embeddings_\\(decodeQuery)\",",
+        "+            \"prompt_opt_\\(capacity)_64\", \"extend_\\(capacity)_64\", \"extend_\\(capacity)_\\(decodeQuery)\"]",
+        "+        // One bundle contains one capacity. Keep its function handles alive",
+        "+        // across query switches; delegates can share a compiled ANE program.",
+        "+        for name in names { _ = try loadFunction(named: name) }",
+        "+        g4GraphCapacity = capacity",
+        "+        g4DecodeQuery = decodeQuery",
+        "+        g4DecodeStart = decodeStart",
+        "+    }",
+        "+",
+        "-            return keyDesc.shape.max() ?? config.maxContextLength",
+        "+            // KV layout is [layers, 1, KV channels, 1, capacity].",
+        "+            // For the 768 bucket the channel axis (1024) is larger than capacity.",
+        "+            return keyDesc.shape.last ?? config.maxContextLength",
+        "+        if let capacity = g4GraphCapacity {",
+        "+            let query = currentPosition >= g4DecodeStart ? g4DecodeQuery : 64",
+        "+            guard currentPosition + min(query, numInputTokens) <= capacity else {",
+        "+                throw InferenceRuntimeError.invalidState(\"G4 KV exceeds graph capacity\")",
+        "+            }",
+        "+            return isPrefill ? \"prompt_opt_\\(capacity)_64\" : \"extend_\\(capacity)_\\(query)\"",
+        "+        }",
+        "-                    Swift.max(0, engine.config.maxContextLength - input.count)",
+        "+                    Swift.max(0, (engine.g4GraphCapacity ?? engine.config.maxContextLength) - input.count + 1)"
+      ]
+    },
+    "vendor/coreai-models/swift/Sources/CoreAILanguageModels/InferenceEngines/CoreAISequentialEngine.swift": {
+      "g4_sha256": "c0144ba5ad76fc5ead4ec9f589e6f15b7b6635478026df4b930df334a60a89ab",
+      "lines_changed_from_g3": 2,
+      "diff": [
+        "-                    Swift.max(0, engine.config.maxContextLength - input.count)",
+        "+                    Swift.max(0, engine.config.maxContextLength - input.count + 1)"
+      ]
+    }
+  },
+  "host_sha256": {
+    "ane": "63f8a2c3c36bf604365467f11120b36250007fb2681b1b50895bfb6d7fc9d40e",
+    "gpu": "63f8a2c3c36bf604365467f11120b36250007fb2681b1b50895bfb6d7fc9d40e"
+  },
+  "scope": "Host engine selection and the G4 fixed-capacity additions; not exclusive per-operation device placement."
+}

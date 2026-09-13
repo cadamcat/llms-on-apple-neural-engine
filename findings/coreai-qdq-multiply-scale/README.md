@@ -10,10 +10,10 @@ y = Q_out(a × Q_1/16(b))        Q_s(x) = s × clamp(round(x / s), −128, 127)
 
 | Output scale | Correct output | ANE output | ANE output with a product clamp |
 |---|---:|---:|---:|
-| 1/16 | 1 | 1 | 1 |
-| 1/8 | 1 | 2 | 1 |
-| 1/4 | 1 | 4 | 1 |
-| 1/2 | 1 | 8 | 1 |
+| <!-- claim:g1w.probe.s16.scale@g1w-012 -->1/16<!-- /claim --> | <!-- claim:g1w.probe.s16.reference@g1w-013 -->1<!-- /claim --> | <!-- claim:g1w.probe.s16.observed@g1w-014 -->1<!-- /claim --> | <!-- claim:g1w.probe.s16-clip.observed@g1w-015 -->1<!-- /claim --> |
+| <!-- claim:g1w.probe.s8.scale@g1w-016 -->1/8<!-- /claim --> | <!-- claim:g1w.probe.s8.reference@g1w-017 -->1<!-- /claim --> | <!-- claim:g1w.probe.s8.observed@g1w-018 -->2<!-- /claim --> | <!-- claim:g1w.probe.s8-clip.observed@g1w-019 -->1<!-- /claim --> |
+| <!-- claim:g1w.probe.s4.scale@g1w-020 -->1/4<!-- /claim --> | <!-- claim:g1w.probe.s4.reference@g1w-021 -->1<!-- /claim --> | <!-- claim:g1w.probe.s4.observed@g1w-022 -->4<!-- /claim --> | <!-- claim:g1w.probe.s4-clip.observed@g1w-023 -->1<!-- /claim --> |
+| <!-- claim:g1w.probe.s2.scale@g1w-024 -->1/2<!-- /claim --> | <!-- claim:g1w.probe.s2.reference@g1w-025 -->1<!-- /claim --> | <!-- claim:g1w.probe.s2.observed@g1w-026 -->8<!-- /claim --> | <!-- claim:g1w.probe.s2-clip.observed@g1w-027 -->1<!-- /claim --> |
 
 Every one of the 1,024 output values takes the value shown. Each call made one successful ANE request, the zero input returned zero, and the repeated input returned the same bytes. The clamp limits the product to `[−128 × output scale, 127 × output scale]`. The true product 1 lies inside every interval, so the clamp changes nothing mathematically.
 
@@ -32,11 +32,11 @@ The first MLP of [Gemma 4 E4B mobile QAT](https://huggingface.co/google/gemma-4-
 
 | Graph | One MLP | Eight repeated MLPs |
 |---|---:|---:|
-| W4A16 | 0.21% | 0.38% |
-| A8W4 as exported | 339% | 509% |
-| A8W4 with the product clamp | 6.31% | 21.6% |
+| W4A16 | <!-- claim:g1w.e4b.1.bare.l2@g1w-001 -->0.21%<!-- /claim --> | <!-- claim:g1w.e4b.8.bare.l2@g1w-002 -->0.38%<!-- /claim --> |
+| A8W4 as exported | <!-- claim:g1w.e4b.1.native.l2@g1w-003 -->339%<!-- /claim --> | <!-- claim:g1w.e4b.8.native.l2@g1w-004 -->509%<!-- /claim --> |
+| A8W4 with the product clamp | <!-- claim:g1w.e4b.1.clip-product.l2@g1w-005 -->6.31%<!-- /claim --> | <!-- claim:g1w.e4b.8.clip-product.l2@g1w-006 -->21.6%<!-- /claim --> |
 
-The clamp removes the gross error but does not make the A8 graph match; its single-layer residual is still above the 5% screen these tests used. The eight-layer stack repeats the first MLP behind a shared RMS norm, so it is not eight real layers, and none of these values is a model-quality measurement. The clamp adds no measurable time: across eight repeated MLPs the exported A8W4 graph runs at **0.977×** W4A16 speed and the clamped graph at **0.976×**. Neither accelerates; [the speed conditions](../quantized-speedup-conditions/) cover why.
+The clamp removes the gross error but does not make the A8 graph match; its single-layer residual is still above the 5% screen these tests used. The eight-layer stack repeats the first MLP behind a shared RMS norm, so it is not eight real layers, and none of these values is a model-quality measurement. The clamp adds no measurable time: across eight repeated MLPs the exported A8W4 graph runs at **<!-- claim:g1w.e4b.native.speed@g1w-007 -->0.977×<!-- /claim -->** W4A16 speed and the clamped graph at **<!-- claim:g1w.e4b.clip-product.speed@g1w-008 -->0.976×<!-- /claim -->**. Neither accelerates; [the speed conditions](../quantized-speedup-conditions/) cover why.
 
 ## The explicit-quantize workaround has a boundary
 
@@ -53,11 +53,11 @@ The clamp removes the gross error but does not make the A8 graph match; its sing
 
 The target-process log reads `Compiler internal error: Error: MLIR MPS to ANEC conversion failed (default/nonbonded phase)`, then `Full compile with ANE as preferred device failed. Falling back to full compile on GPU.` The fallback outputs match the CPU reference exactly, so a numerical check alone passes them. Search the log for `Falling back`; a case-sensitive search for `fallback` misses the line.
 
-Splitting the E4B MLP so the FP32 correction runs outside the compressed convolutions avoids the fallback. Across eight repeated MLPs, the split graphs run at **0.163–0.165×** W4A16 speed with 17 function calls per eight-layer pass, and remain 22% from the reference.
+Splitting the E4B MLP so the FP32 correction runs outside the compressed convolutions avoids the fallback. Across eight repeated MLPs, the split graphs run at **<!-- claim:g1w.e4b.coarse-speed-span@g1w-009 -->0.163–0.165×<!-- /claim -->** W4A16 speed with <!-- claim:g1w.e4b.coarse-calls@g1w-010 -->17<!-- /claim --> function calls per eight-layer pass, and remain 22% from the reference.
 
 ## GELU returns a nonzero value at zero
 
-A single-operator graph, found while isolating the multiply: Core AI's GELU returns **−0.0007538795** for a zero input in both `approximate='tanh'` and `approximate='none'`. An explicit FP16 formula returns zero. The multiply probe contains no GELU, so this offset is a separate defect.
+A single-operator graph, found while isolating the multiply: Core AI's GELU returns **<!-- claim:g1w.gelu.zero-output@g1w-011 -->−0.0007538795<!-- /claim -->** for a zero input in both `approximate='tanh'` and `approximate='none'`. An explicit FP16 formula returns zero. The multiply probe contains no GELU, so this offset is a separate defect.
 
 ## Reproduce
 

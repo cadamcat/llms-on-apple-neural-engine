@@ -33,11 +33,11 @@ short memory gate and must remain a separate result.
 
 | Question | The comparison | What is measured |
 |---|---|---|
-| **Does it meet the need at all?** | Same model, same inputs, quality checked first, ANE against GPU | Time to first token, sustained generation rate, tail latency, memory stability — [G2 component observations exist](../findings/w4a16-service-tradeoffs/); G3 provides complete-model speed over its context range; wider input and quality coverage remain open |
+| **Does it meet the need at all?** | Same model, same inputs, quality checked first, ANE against GPU | Time to first token, sustained generation rate, tail latency, memory stability — [G2 component observations exist](../findings/w4a16-service-tradeoffs/); G3 and G4 A provide complete-model speed over their input range; wider input and quality coverage remain open |
 | **Does it lower energy and thermal pressure?** | Equal completed work first; then equal service rate | J/request, J/token, mean power, sustained temperature and fan state — G2: at equal load fans stayed at idle on both engines; energy undetermined |
 | **Does it actually free the GPU?** | Foreground task alone, then with GPU inference, then with ANE inference | Foreground throughput or frame time — read the **p99, not the mean** — with the LLM's own response recorded alongside |
 
-The next shape experiment should hold model, input, precision and GPU baseline fixed while changing the ANE graph ladder. G3 already measures speed and software energy on the same work blocks. The larger-graph transition is an observed correlate; an intervention is needed to isolate its cost. Equal-rate service and foreground coexistence remain
+G4 A held model, input, precision and GPU baseline fixed and gave each input a matched ANE graph: most of G3's long-input penalty went away and the GPU stayed faster ([finding](../findings/qwen3-4b-graph-capacity/)). Two questions follow from it. ANE still slows with context more than its modelled work explains; a one-token decode query on the same graphs would test whether the seven padded query positions per step are the cause. The system GPU counter records a large share of the component energy during ANE-path decode; its process and operation sources are unassigned. Equal-rate service and foreground coexistence remain
 separate questions about background use.
 
 The objectives interact but remain distinct. Lower sustained power can still
@@ -63,7 +63,7 @@ Report service rate, energy, power and thermal behaviour together.
 The [findings](../findings/) include measured behaviour and mechanism hypotheses. Four gaps stand
 between them and a systems paper, in dependency order:
 
-0. **Extend the complete-model evidence.** G3 has intact power capture and complete FP16 model stages. Test closer-fitting ANE graph shapes, additional independent hosts and inputs, broader output quality, estimator latency and observer overhead. A difference from G2 alone cannot isolate the screensaver effect. Crossed display conditions, matched matrix-tail starts and the
+0. **Extend the complete-model evidence.** G3 and G4 A have intact power capture and complete FP16 model stages, the latter with matched ANE graphs. Test the decode query width and quantized decode weights on those graphs, additional independent hosts and inputs, broader output quality, estimator latency and observer overhead. A difference from G2 alone cannot isolate the screensaver effect. Crossed display conditions, matched matrix-tail starts and the
    anomalous memory-access baseline need their own controls. Native timing alone
    does not isolate hardware cost.
 1. **Cross-chip replication.** One chip, one OS, one toolchain version is the
@@ -126,4 +126,6 @@ G5 found that [small attention products lose precision](../findings/attention-pr
 on the tested path, and that blocking attention inside one 4,096-key graph gives no
 speed gain. Whether real attention distributions reach the failing range, and how
 graph capacity rather than attention arithmetic drives the complete-model slowdown,
-are open. Measuring the complete model at fixed graph capacities would test the second.
+are open. G4 A measured the complete model at matched graph capacities: most of the observed slowdown went away, though the comparison did not isolate every change between runs. The remaining slowdown has not been attributed to attention arithmetic.
+
+Running ANE experiments exposed an operational question: [ANECompilerService retained deleted compile inputs](../findings/ane-compiler-service-disk/) until it exited on the tested machine and assets. A minimal reproduction with a small model, a Core ML load and another macOS build would show how general it is; that is a precondition for reporting it upstream.

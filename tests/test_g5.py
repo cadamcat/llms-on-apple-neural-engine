@@ -50,6 +50,20 @@ class G5Evidence(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'g5_block_speed.resident'):
             derive(self.bundle)
 
+    def test_uniform_timing_scale_fails_absolute_accounting(self):
+        def double(value):
+            for block in value['dense_vs_post_pv_b1024']:
+                block['operation_ns'] = [2 * n for n in block['operation_ns']]
+        self.change('timings.json.gz', double)
+        with self.assertRaisesRegex(ValueError, 'g5_dense_block_ms'):
+            derive(self.bundle)
+
+    def test_recorded_block_mean_fails_by_name(self):
+        self.change('evidence.json', lambda v: v['reported']['dense_round_block_means'][0]
+                    .__setitem__('ms_per_operation', 999))
+        with self.assertRaisesRegex(ValueError, 'g5_dense_block_ms'):
+            derive(self.bundle)
+
     def test_duplicated_block_fails(self):
         self.change('timings.json.gz', lambda v: v['dense_vs_post_pv_b1024'].append(v['dense_vs_post_pv_b1024'][0]))
         with self.assertRaisesRegex(ValueError, 'g5_duplicate_block'):

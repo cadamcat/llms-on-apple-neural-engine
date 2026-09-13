@@ -56,6 +56,8 @@ Choose the command for the result you want to inspect:
 
 | Result | Command | Execution |
 |---|---|---|
+| G4 A complete Qwen3-4B with matched ANE graphs | `python scripts/verify_g4a.py` | Recompute bundled request, power and disk fields; no device |
+| Disk space held by the ANE compiler service | `python scripts/verify_ane_compiler_disk.py` | Recompute redacted observations; no device |
 | G3 complete Qwen3-4B speed and component energy | `python scripts/verify_g3.py` | Recompute bundled raw request and power fields; no device |
 | G2 native W4A16 speed, memory, temperature and fans | `python scripts/verify_g2.py` | Recompute bundled observations; no device |
 | Grouped-scale and QDQ toolchain defects | `.venv/bin/ane-scope run --suite compatibility --output runs/my-compatibility` | Synthetic device probes |
@@ -107,7 +109,10 @@ prevents concurrent benchmark suites. Ctrl-C terminates owned children. No
 power collector, `sudo` or system change is involved.
 
 Sampling can miss a transient peak, and compiler or runtime services outside
-the child tree are not fully counted. The free-percentage metric is the value
+the child tree are not fully counted. On the tested M5 Pro, macOS 27.0 build 26A428 and Qwen3-4B FP16 assets,
+`ANECompilerService` retained deleted compile inputs until it exited. Free space fell across
+repeated loads even when every owned process has closed; see
+[the finding](../findings/ane-compiler-service-disk/). The free-percentage metric is the value
 printed by `memory_pressure -Q`, not a direct free-byte count. These are
 conservative experiment boundaries, not claims about total model memory.
 
@@ -234,6 +239,26 @@ python scripts/verify_g3.py --bundle /path/to/new-g3-bundle
 ```
 
 Device replay needs the fixed model revision, separately exported ANE/GPU FP16 assets, the recorded Swift host and Core AI environment, input IDs, reference controls and an authenticated software capture. Those are identified in protocol.json and provenance.json. This repository's synthetic `ane-scope run` suites do not run the full-model G3 experiment. A portable full-model device launcher is not included.
+
+## G4 A recomputation
+
+```sh
+python scripts/verify_g4a.py
+python scripts/verify_ane_compiler_disk.py
+python scripts/summarize.py
+python scripts/render_figures.py --check
+```
+
+The first checks every request's clocks, KV contract and configured query, and walks the boundary requests' graph events. It compares request statistics and each block's rate, energy bounds, normalization and admission with the recorded summary; it also recomputes the G3 comparison from the G3 bundle. The second recomputes the disk observations. Neither needs a device.
+
+To rebuild from a research workspace containing the closed run, write new directories:
+
+```sh
+python results/historical/import_g4a.py --workspace /path/to/research-workspace --output /path/to/new-g4a --leak-output /path/to/new-disk-evidence
+python scripts/verify_g4a.py --bundle /path/to/new-g4a
+```
+
+Device replay needs the six ANE tier assets and the GPU asset identified in asset-identity.json, the recorded Swift host, a sudo-authenticated power capture and enough free disk for every ANE load in the run. A portable launcher is not included.
 
 ## G1-W and G5 recomputation
 

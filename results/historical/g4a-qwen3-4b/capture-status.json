@@ -1,0 +1,74 @@
+{
+  "integrity_passed": true,
+  "capture_completed": true,
+  "cleanup_passed": true,
+  "streams": {
+    "power": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 5004,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    },
+    "thermal": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 5088,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    },
+    "aux": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 5084,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    },
+    "macmon": {
+      "integrity_passed": true,
+      "failures": [],
+      "samples": 1021,
+      "energy_accepted": false,
+      "pending": [
+        "domain_response",
+        "sample_endpoint_alignment",
+        "counter_update_delay",
+        "observer_overhead"
+      ]
+    }
+  },
+  "clock_issues": [],
+  "energy_accepted": false,
+  "simulation": false,
+  "source_close": {
+    "sampler_pid": 44389,
+    "reason": "requested_complete_frame",
+    "finish_requested": 1,
+    "simulation": false,
+    "frames": 5004,
+    "outside_interval_buffer_bytes": 2276,
+    "exit": 0,
+    "sampler_termination_requested": 1,
+    "sampler_reaped": 1,
+    "sampler_wait_status": 0
+  },
+  "closure_issues": [],
+  "status": "capture_audit_only_hardware_admission_pending",
+  "returncode": 0,
+  "last_power_receipt_ns": 280459403893458
+}

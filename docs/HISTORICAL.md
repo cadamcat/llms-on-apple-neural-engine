@@ -101,3 +101,8 @@ The [G3 bundle](../results/historical/g3-qwen3-4b/) adds complete-model FP16 cov
 ## Quantized speed conditions and attention precision (G1-W, G5)
 
 The [G1-W bundle](../results/historical/g1w-e4b-mobile-qat/) holds per-call timings for synthetic depth, weight and scale variations and for eight repeated Gemma 4 E4B QAT MLPs, with the E4B numerical results as scalars. The [G5 bundle](../results/historical/g5-attention/) holds weight-free attention timings and relative L2 values. [Provenance](PROVENANCE.md#g1-w-and-g5-imports) · [Scope](SCOPE.md#g1-w-and-g5-component-observations) · [Recompute](REPRODUCING.md#g1-w-and-g5-recomputation).
+
+## Matched ANE graphs (G4 A)
+
+The [G4 A bundle](../results/historical/g4a-qwen3-4b/) holds one run of the complete model with an ANE graph sized to each of six inputs: request results and per-token clocks, boundary graph events, selected power fields, the recorded summary and the load-gate disk readings. The disk-space observations it prompted are a separate [evidence set](../findings/ane-compiler-service-disk/evidence/). [Provenance](PROVENANCE.md#g4-a-import) · [Scope](SCOPE.md#g4-a-matched-graph-observations) · [Recompute](REPRODUCING.md#g4-a-recomputation).
+

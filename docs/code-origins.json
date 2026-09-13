@@ -83,5 +83,30 @@
     "origin": "workplans/g1-w-e4b-mobile-qat-20260911/numerics-r1/reproducer/host.swift",
     "sha256": "7b44142be1955613299047f9d5daa92483dcd0c1b3eaffaf7064547651ee3a1d",
     "origin_scope": "closed G1-W QDQ multiply reproducer; host copied unchanged, exporter and runner reformatted with identical syntax trees"
+  },
+  {
+    "origin": "workplans/g4-ready-20260913/run.py",
+    "sha256": "38311fb82f42cf987c24478090f96cfd29f3b9b596af3c952d344f6d1ec0da6e",
+    "origin_scope": "closed G4 A research runner; block windows, union energy integration and admission adapted"
+  },
+  {
+    "origin": "workplans/g4-ready-20260913/energy.py",
+    "sha256": "b7454327ed7540f54d67832bf016b2a1e41d0f0f78040a0056fe344745ac63ad",
+    "origin_scope": "closed G4 A research runner; block windows, union energy integration and admission adapted"
+  },
+  {
+    "origin": "workplans/g4-cplus256-20260912/g4_protocol.py",
+    "sha256": "a57e7718f54dac79e610e8f27a85594d4724db925021250604c03dc91667b9de",
+    "origin_scope": "closed G4 fixed-capacity request contract; adapted"
+  },
+  {
+    "origin": "workplans/ane-compiler-reclaim-20260913/ane-compiler-reclaim.sh",
+    "sha256": "247ee1783751c80a0d0996ab27b194dc40645cf0bfb9ded2d127ad9863dd87a5",
+    "origin_scope": "local reclaim daemon; copied unchanged with its plist and installer"
+  },
+  {
+    "origin": "workplans/ane-compiler-reclaim-20260913/test_reclaim.py",
+    "sha256": "f2b69647156c3344169201c72bc8c90172e866f36c4c5a2182037844811d8d32",
+    "origin_scope": "local dry-run tests; adapted to the redacted listing"
   }
 ]
