@@ -33,7 +33,7 @@
       ],
       "source_hashes": {
         "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
-        "articles/01-measuring-ane-performance.md": "e4222e4ef6531a6894f6d60b559f3f436ed895f5c83eccab349782d105574b08"
+        "articles/01-measuring-ane-performance.md": "6566ea89a4c97c999ecb812df369dd2deafb08fdbed426338f89088833434c37"
       },
       "svg_sha256": "595340b9bc50d45922250f5f0ee35eade12a8b758ef74de400a28f5a66759d5c"
     },
@@ -78,8 +78,8 @@
         "Historical and fresh evidence stay separate"
       ],
       "source_hashes": {
-        "docs/REPRODUCING.md": "1e2b8ae3d2ef2012e002d5d81ad23fa8a3b729ccceecdd5aaee5f2cb989e3270",
-        "docs/PROVENANCE.md": "0faee2de3a33a7e3bb2f45259030402788716d768505c6870ed292b774d04903"
+        "docs/REPRODUCING.md": "5dba99f93bd4b86defddaf59dc2cc63f47de969023d617a7883a2daba683f287",
+        "docs/PROVENANCE.md": "0232b988c9b002c8ea11559e9f70b54c403695d4ff439309c1891b11e439766f"
       },
       "svg_sha256": "4d83172e3c9ee9e36a48bfab21ac8e9472a4ac56c78b723b422be0ad6779caea"
     },
@@ -97,7 +97,7 @@
         "Changing a reference never changes a recorded output"
       ],
       "source_hashes": {
-        "articles/03-arithmetic-compatibility.md": "1da218175b2713ab37e77381eb3e87ae82e5f4c65904c77e4cf35d62b6379a64",
+        "articles/03-arithmetic-compatibility.md": "55cadcd0ed08408c1545bc613837e558b9c374ec9f2e5bc804bb19373912e5d2",
         "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9"
       },
       "svg_sha256": "ec14136e622237b96b152159639e8e691e36bbd89acfe32d024f38df587c1756"
@@ -162,7 +162,7 @@
       "source_hashes": {
         "results/fresh/smoke.json": "962f1f17c7787a880c0a901cba498bc930ca4eaa1662480484e9980bac85037c",
         "docs/METHODS.md": "4ddb8ccffb585118f88265abd1942ebfd2293d77fdf09e7f6b9848ebff4c5dd9",
-        "articles/03-arithmetic-compatibility.md": "1da218175b2713ab37e77381eb3e87ae82e5f4c65904c77e4cf35d62b6379a64"
+        "articles/03-arithmetic-compatibility.md": "55cadcd0ed08408c1545bc613837e558b9c374ec9f2e5bc804bb19373912e5d2"
       },
       "svg_sha256": "f13690d93a4d8a7a18073d7272598afc1edf1bb3fa4c00795e68fce2f53af193"
     },
@@ -183,7 +183,7 @@
       ],
       "source_hashes": {
         "results/historical/dot-localization.json": "54c1f05ad085b9edb99b5359cdf9696bab58cb5ed4db76b0f3a7c967d6543a94",
-        "findings/fp16-dot-residual/README.md": "1df48d54a4ddacc959fc9966c59ed21b9e31b2926ca6eca3425d1e2a6001c134"
+        "findings/fp16-dot-residual/README.md": "4d6fc08ba1e0ffb809ce35faa368c4edca75b7f1c1d43642256b85d191bec8df"
       },
       "svg_sha256": "41f9686e01287a197e659c4c5d3ddb2392adf974902baf3618df93055fe1d7ea"
     },

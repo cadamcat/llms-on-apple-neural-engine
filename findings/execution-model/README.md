@@ -15,7 +15,10 @@ For each group of 32 input channels:
 
 Step 3 is the part that is not obvious. The declared arithmetic and the
 documented behaviour of the surrounding framework both suggest ties-to-even;
-the tested outputs are better predicted by the ties-away model.
+the tested outputs are better predicted by the ties-away model. A later probe
+of a single Core AI QDQ on ANE, fed all 63,488 finite FP16 values at unit scale,
+matched ties-away at every value; ties-to-even would have differed at 128 half-integers.
+[Imported counts](../../results/historical/g1w-e4b-mobile-qat/evidence.json).
 
 ## What it predicts
 

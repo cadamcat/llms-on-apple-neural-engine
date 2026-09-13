@@ -53,6 +53,8 @@ relative_L2(actual, reference) = ||actual − reference||₂ / ||reference||₂
 
 这个结果支持的是特定路径上的参考模型。它没有证明 ANE 上所有算术都使用 RZA：本卷积链参考仍保留 FP16 转换的 RNE 边界，SplitConv 的部分和及加法则使用另行冻结的 FP16 RZA 参考。对 RZA 参考仍有 0.000109 的剩余偏差。[方法中的参考边界](../../docs/METHODS.md)
 
+之后的单个 QDQ 探针覆盖了全部输入，而不只是一条链。单位 scale 下输入全部 63,488 个有限 FP16 值，ANE 上的 Core AI QDQ 与“中点远离零”逐值一致；若按“中点取偶”，其中 128 个值会不同，即 ±0.5、±2.5 这类半整数。[导入的计数](../../results/historical/g1w-e4b-mobile-qat/evidence.json)
+
 ![同一 Core AI W8A8 输出相对于事先选择的 RZA 参考为约 0.000109，相对于 RNE 对照为约 0.211。](../../docs/figures/rounding-reference.svg)
 
 图 2：横轴为对数尺度。两个点来自新测第一进程的同一原输入输出，输出哈希一致；它们是两个参考下的差异，不是修复前后的性能或质量变化。[来源字段](../../docs/figures/manifest.json)。
@@ -83,6 +85,8 @@ relative_L2(actual, reference) = ||actual − reference||₂ / ||reference||₂
 `reverse_order` 改变的是两条 QDQ 分支的构造顺序；目标仍是同一个 `g × u`。`explicit_q` 把量化部分写成显式的除法、round、clamp 与整数转换，反量化仍保留。其当前控制通过，说明改变表达可以绕过这个最小例子的错误；它是否适用于更广输入、是否有性能代价，都没有在这里得到验证。[图生成代码](../../src/ane_scope/_coreai.py)、[四组实测](../../results/fresh/smoke.json)
 
 这些结果足以把问题缩小到具体的表达与执行路径。特别是，它们无法由前面的 Q8 中点差异解释。分支构造顺序会改变误差，也值得后续检查编译优化和 scale 处理。但我们没有内部编译器追踪，不能把“错误依赖 scale 与图表达”直接写成某一段内部代码复用了错误参数。
+
+之后的探针给出了逐值规律。`unequal` 与 `reverse_order` 的输出都是全等数组，记录中的哈希确定其值为 4 和 64；两者都等于两个整数码（均为 4）用同一个分支的 scale 反量化：先构造 `g` 时是 0.5，先构造 `u` 时是 2。另一个无模型探针在全 1 输入上计算 `Q_out(a × Q_1/16(b))`，输出 scale 从 1/16 升到 1/2 时依次返回 1、2、4、8，即 `b` 的整数码用输出 scale 反量化。把乘积裁剪到输出 QDQ 的范围后，各组都恢复为 1。“一个分支用了另一个 QDQ 的 scale”这一替换预测了两个探针中的每个错值，但它仍是从输出推断的。[这项发现](../../findings/coreai-qdq-multiply-scale/)补充了触发它的已发布 QAT 检查点，以及两种改写各自的边界。
 
 ANE 请求只证明这些调用包含 ANE 参与；它没有进一步证明错误发生在具体哪个物理运算单元。历史 0.4.1/0.4.2 隔离对照另存于[版本矩阵](../../results/historical/quantization-expected-results.json)及[来源说明](../../results/historical/quantization-provenance.json)，新套件本轮只运行 0.4.1，不能把历史环境当成一次新的版本测试。
 

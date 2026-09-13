@@ -110,3 +110,20 @@ separates measured responses from remaining hypotheses.
 A8W4 remains a paused Open Question. Reopen it for a relevant upstream change,
 a new representation that passes existing controls, or a test that distinguishes
 arithmetic mechanisms. G2 provides no new A8 repair evidence.
+
+## What G1-W and G5 change
+
+G1-W tested a released per-channel A8W4 checkpoint, Gemma 4 E4B mobile QAT. Its
+first MLP is numerically wrong through [a QDQ multiply that uses another QDQ's
+scale](../findings/coreai-qdq-multiply-scale/), and eight repeated copies gain no
+speed with or without the clamp that removes the gross error. Precision fixes that
+split the graph avoid a compile failure but run several times slower. On synthetic
+chains the [A8 gain needs depth and depends on exact-zero weights](../findings/quantized-speedup-conditions/).
+Open: why a call of E4B size gains nothing when a synthetic chain of equal work
+does. Weight count per layer, the gated multiply and the shape are not yet separated.
+
+G5 found that [small attention products lose precision](../findings/attention-product-precision/)
+on the tested path, and that blocking attention inside one 4,096-key graph gives no
+speed gain. Whether real attention distributions reach the failing range, and how
+graph capacity rather than attention arithmetic drives the complete-model slowdown,
+are open. Measuring the complete model at fixed graph capacities would test the second.

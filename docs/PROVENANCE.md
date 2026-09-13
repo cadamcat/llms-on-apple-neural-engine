@@ -127,3 +127,13 @@ The importer reads source request results and commands, not the analysis report.
 Inputs are token IDs from a frozen snapshot of this repository's own documentation. Input and source-document hashes are bundled; the original text snapshots, model weights, compiled assets and logits arrays are not. The model revision, asset preparation and host source identity are research-run metadata, not evidence of a new public-suite device run. Both G3 arms use Core AI; G2's MLX version does not describe G3.
 
 The [provenance manifest](../results/historical/g3-qwen3-4b/provenance.json) hashes every read source and every imported product, and lists transformations. The portable energy and token-contract code adapts the recorded research checks; origins are listed in [code-origins.json](code-origins.json). Bundle regeneration and document maintenance do not execute a device.
+
+## G1-W and G5 imports
+
+[import_g1w.py](../results/historical/import_g1w.py) reads the closed G1-W rounds and writes [g1w-e4b-mobile-qat](../results/historical/g1w-e4b-mobile-qat/) plus the QDQ probe records in [the finding's reproduction](../findings/coreai-qdq-multiply-scale/repro/recorded/). Timings keep every measured call's duration for the zero-weight, depth, codebook, scale and E4B rounds; warmup, control and output hashes are dropped. Numerical results are copied as scalar fields: E4B relative L2 per graph, compile-fallback cases, the GELU zero control and the unit-scale QDQ rounding counts. Unified-log messages are reduced to the compile-error and fallback lines, without source-file prefixes or temporary paths. The summaries recorded when each round closed travel alongside, so the verifier checks its recomputation against them.
+
+The probe records are the raw FP16 outputs, saved graph text and per-call ANE request counts of the executed package. `host.swift` is byte-identical to that package; `export.py` and `run.py` were reformatted, with identical parsed syntax trees, and the executed files' hashes are recorded.
+
+[import_g5.py](../results/historical/import_g5.py) writes [g5-attention](../results/historical/g5-attention/): per-operation timings for both speed rounds, and relative L2, row maximum and maximum absolute error per case. Replayed cases are collapsed after checking that they agree. FP16 inputs, device outputs and exported graphs stay in the research workspace.
+
+Both importers refuse an existing output directory and regenerate byte-identical bundles from the same sources. Each `provenance.json` hashes every source read and every product.

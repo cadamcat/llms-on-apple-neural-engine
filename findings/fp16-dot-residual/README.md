@@ -79,6 +79,10 @@ residuals in [the execution model](../execution-model/). It is a consistency
 check on saved data, not a runtime repair, and the other 12 residuals have not
 each been localized.
 
+A 4,096-term product of attention probabilities and values shows a larger,
+scale-dependent residual that simple FP16 rounding models also fail to reproduce:
+[attention product precision](../attention-product-precision/).
+
 ## Open hypothesis — not a mechanism
 
 Two of the 32 exact products fall below 2⁻¹⁴, the smallest normal binary16

@@ -8,8 +8,8 @@ your own machine.
 | Want to… | Do this | Price |
 |---|---|---|
 | Try the tested grouped-scale rewrite | [Split into per-output-channel scales](#1-split-grouped-weights-into-per-output-channel-scales) | About **4× slower** in a separate synthetic ablation |
-| Get a correct QDQ multiply with unequal scales | [Write the quantize step explicitly](#2-write-the-quantize-step-explicitly) | Unknown — verified on one exact-grid probe only |
-| Just get acceleration | [Stay with per-tensor or per-output-channel 8-bit](#3-stay-with-per-tensor-or-per-output-channel-8-bit) | Not the format your checkpoint ships in |
+| Get a correct QDQ multiply | [Clamp the product, or write the quantize step explicitly](#2-fix-a-qdq-multiply) | Clamp: no measurable time; neither form makes a real QAT MLP match |
+| Just get acceleration | [Stay with per-tensor or per-output-channel 8-bit](#3-stay-with-per-tensor-or-per-output-channel-8-bit) | Not the format your checkpoint ships in; needs a deep enough chain |
 
 ---
 
@@ -64,15 +64,31 @@ the per-PID ANE event windows. The exporter that builds both shapes is in
 
 ---
 
-## 2. Write the quantize step explicitly
+## 2. Fix a QDQ multiply
 
 **The problem.** On an exact grid with no midpoint tie and no saturation, a
 standard QDQ multiplication returns the wrong product as soon as the two branches
 carry different scales — relative L2 **0.75**, maximum absolute error **12**, on a
 target of 16. Merely reversing the order in which the two branches are built
 changes the error to 3.0. All of these show ANE participation in every control.
+The wrong values fit [one rule](../findings/coreai-qdq-multiply-scale/): a branch is
+dequantized with another QDQ's scale.
 
-**The rewrite.** Express the quantize half yourself — divide by the scale, round,
+**The cheaper rewrite: clamp the product.** When the product feeds another QDQ, clamp it
+to that QDQ's representable range before quantizing:
+
+```python
+p = (a * qdq(b, s_in)).clamp(min=-128 * s_out, max=127 * s_out)
+return qdq(p, s_out)
+```
+
+Quantization saturates at those bounds anyway, so the clamp never changes the QDQ's output. It restored the correct output
+in all four arms of the model-free probe, kept one ANE request per call, and cost no
+measurable time in an eight-MLP stack (0.976× against 0.977× without it). On a real
+Gemma 4 E4B QAT MLP it removed the gross error but left 6.31% for one layer and 21.6%
+for eight repeated layers, so it is not a complete fix there.
+
+**The explicit rewrite.** Express the quantize half yourself — divide by the scale, round,
 clamp, cast to integer — and keep the dequantize as it was:
 
 ```python
@@ -90,6 +106,12 @@ scale pairs, saturation boundaries or larger graphs is **not tested**, and neith
 is its performance — the probe is not timed. Treat it as a lead worth trying on
 your own case, not a general fix.
 
+**Keep the division in FP16 before compressed weights.** An FP32 division, cast back to
+FP16 and fed to a W4 or W8 convolution, makes ANE compilation fail and runs the whole
+graph on the GPU, with output that still passes a numerical check. Look for
+`Falling back to full compile on GPU` in the target-process log.
+[The fallback table](../findings/coreai-qdq-multiply-scale/#the-explicit-quantize-workaround-has-a-boundary).
+
 **Check it:** the same `compatibility` suite. Compare `coreai-qdq-explicit_q`
 against `coreai-qdq-unequal` and `coreai-qdq-reverse_order`; the four graph
 expressions are in [`_coreai.py`](../src/ane_scope/_coreai.py) under `Multiply`.
@@ -99,7 +121,7 @@ expressions are in [`_coreai.py`](../src/ane_scope/_coreai.py) under `Multiply`.
 ## 3. Stay with per-tensor or per-output-channel 8-bit
 
 **What works.** A quantization scheme the compiler already accepts — one scale
-per tensor or per output channel — accelerates, and does so reliably. On a
+per tensor or per output channel — accelerates on a long enough chain. On a
 controlled 128-layer chain, Core AI W8A8 runs **1.86–1.87×** faster than its FP16
 baseline. Core ML also accelerates, with every audited convolution preferring the
 Neural Engine; both runtimes show ANE participation in every control window.
@@ -109,6 +131,12 @@ this accelerator at all". It does. The problem is that it is not the format your
 4-bit checkpoint ships in, so getting there means requantizing — which is a model
 quality question this repository has not answered, and cannot answer with
 model-free fixtures.
+
+**The boundary.** The gain [depends on the chain and its weights](../findings/quantized-speedup-conditions/).
+A8W4 runs at 0.86× W4A16 speed as a single layer and 1.33× at 128 layers, so time a
+deep enough graph before concluding anything. Exact zero weights make the FP16
+baseline itself 1.88× faster. A released per-channel A8W4 checkpoint, eight repeated
+Gemma 4 E4B QAT MLPs, gained nothing (0.977×).
 
 **Check it:**
 

@@ -97,3 +97,7 @@ source ledger.
 ## Complete Qwen3-4B measurements (G3)
 
 The [G3 bundle](../results/historical/g3-qwen3-4b/) adds complete-model FP16 coverage, warmed prefill/decode blocks and software component energy. Its three run identities remain separate: coverage, main stages/capture and the longer short-prefill supplement. [Provenance](PROVENANCE.md#g3-complete-model-import) · [Scope](SCOPE.md#g3-complete-model-observations) · [Recompute](REPRODUCING.md#g3-recomputation-and-device-replay).
+
+## Quantized speed conditions and attention precision (G1-W, G5)
+
+The [G1-W bundle](../results/historical/g1w-e4b-mobile-qat/) holds per-call timings for synthetic depth, weight and scale variations and for eight repeated Gemma 4 E4B QAT MLPs, with the E4B numerical results as scalars. The [G5 bundle](../results/historical/g5-attention/) holds weight-free attention timings and relative L2 values. [Provenance](PROVENANCE.md#g1-w-and-g5-imports) · [Scope](SCOPE.md#g1-w-and-g5-component-observations) · [Recompute](REPRODUCING.md#g1-w-and-g5-recomputation).

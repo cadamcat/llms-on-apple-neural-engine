@@ -1,0 +1,137 @@
+{
+  "environment": {
+    "chip": "Apple M5 Pro",
+    "macOS": "27.0",
+    "build": "26A428",
+    "xcode": "27.0 (27A266a)",
+    "coreai_torch": "0.4.1",
+    "torch": "2.11.0",
+    "numpy": "2.3.5"
+  },
+  "executed_package_sha256": {
+    "run.py": "d2565286227950a446e34153fe8e1b599820dea2be7187b2932d8fa45c377496",
+    "export.py": "e8d2f279211b81999e85f79d1e0923fb1ac76abc4927618373d64dbf1a38ba8a",
+    "host.swift": "7b44142be1955613299047f9d5daa92483dcd0c1b3eaffaf7064547651ee3a1d"
+  },
+  "input": "all-ones FP16, shape [1,32,1,64]; a = channels 0-15, b = channels 16-31",
+  "controls": [
+    "original",
+    "zero",
+    "original repeated"
+  ],
+  "input_scale": 0.0625,
+  "arms": {
+    "s16": {
+      "output_scale": 0.0625,
+      "product_clamp": false,
+      "output_sha256": [
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    },
+    "s16_clip": {
+      "output_scale": 0.0625,
+      "product_clamp": true,
+      "output_sha256": [
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    },
+    "s8": {
+      "output_scale": 0.125,
+      "product_clamp": false,
+      "output_sha256": [
+        "ccc9922ed938ecf8ebb076d0c52131b05bd86d96dcfe228d894d1b9d0cf3deba",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "ccc9922ed938ecf8ebb076d0c52131b05bd86d96dcfe228d894d1b9d0cf3deba"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    },
+    "s8_clip": {
+      "output_scale": 0.125,
+      "product_clamp": true,
+      "output_sha256": [
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    },
+    "s4": {
+      "output_scale": 0.25,
+      "product_clamp": false,
+      "output_sha256": [
+        "3efa84429b1fba6bb90ecdd5a0aaaee2e1c53dc221020a1d3a5112769fb72dd1",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "3efa84429b1fba6bb90ecdd5a0aaaee2e1c53dc221020a1d3a5112769fb72dd1"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    },
+    "s4_clip": {
+      "output_scale": 0.25,
+      "product_clamp": true,
+      "output_sha256": [
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    },
+    "s2": {
+      "output_scale": 0.5,
+      "product_clamp": false,
+      "output_sha256": [
+        "dcd7dca80c7ce55d4e65a2ca536d1bf7c630658c2c8d98951a2c8df204dc9f3b",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "dcd7dca80c7ce55d4e65a2ca536d1bf7c630658c2c8d98951a2c8df204dc9f3b"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    },
+    "s2_clip": {
+      "output_scale": 0.5,
+      "product_clamp": true,
+      "output_sha256": [
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8",
+        "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "c02234fb476b3e4817612e727ce439fa7030fc9c3566b4a761dccac7febedba8"
+      ],
+      "ane_requests_per_call": [
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

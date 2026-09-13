@@ -204,3 +204,89 @@ Derived from the rates above and [model-structure.json](../results/historical/g3
 | decode | 8,192 | 248.5 | 29.1 | GB/s over 9,328,319,488 mean bytes per step | — |
 | prefill | 16,384 | 16.81 | 0.37 | TFLOP/s over projection weights | 11.17 / 0.25 |
 | decode | 16,384 | 229.1 | 32.9 | GB/s over 10,536,279,040 mean bytes per step | — |
+
+## G1-W quantized speed conditions
+
+API latency of awaited `function.run`. Synthetic layers are 512 → 512 1×1 convolutions over 4,096 positions. p50 is the mean of two process medians; speed is the geometric mean of the paired W4A16/A8W4 ratios. [Finding](../findings/quantized-speedup-conditions/).
+
+| Graph | W4A16 p50 (ms) | A8W4 p50 (ms) | A8W4 speed vs W4A16 |
+|---|---:|---:|---:|
+| 1 layer, QDQ at both ends and between layers | 0.3457 | 0.3997 | 0.8648× |
+| 2 layers, QDQ at both ends and between layers | 0.4474 | 0.4840 | 0.9245× |
+| 8 layers, QDQ at both ends and between layers | 0.8345 | 0.7388 | 1.1294× |
+| 32 layers, QDQ at both ends and between layers | 2.2547 | 1.7811 | 1.2659× |
+| 128 layers, QDQ at both ends and between layers | 7.7991 | 5.8745 | 1.3276× |
+| 128 layers, interlayer QDQ only | 7.7991 | 5.8093 | 1.3425× |
+| 128 layers, interlayer and input QDQ | 7.7991 | 5.8336 | 1.3369× |
+| 128 layers, interlayer and output QDQ | 7.7991 | 6.0730 | 1.2851× |
+
+Least-squares lines over depth: W4A16 0.05838 ms/layer + 0.3398 ms; A8W4 0.04290 ms/layer + 0.3884 ms.
+
+| 128-layer scale | A8W4 speed vs W4A16 |
+|---|---:|
+| scalar | 1.3428× |
+| equal | 1.3634× |
+| varied | 1.3125× |
+
+| 128-layer weights | FP16 p50 (ms) | A8W4 speed vs FP16 | W4A16 speed vs FP16 | A8W4 speed vs W4A16 |
+|---|---:|---:|---:|---:|
+| dense ±1 codes | 14.2867 | 1.8878× | 1.0021× | 1.8837× |
+| sixteen codes, 73.63% zeros | 7.6715 | 1.3645× | 1.0129× | 1.3471× |
+
+FP16 only, three processes per weight set; ratio is the median of same-round time ratios.
+
+| FP16 weights | Exact zeros | Median process p50 (ms) | Time vs sparse |
+|---|---:|---:|---:|
+| dense ±1 codes | 0.0000% | 14.7729 | 1.8796× |
+| dense ±1, rows shuffled | 0.0000% | 14.7456 | 1.8797× |
+| sixteen codes | 73.6328% | 7.8546 | 1.0000× |
+| sixteen codes, channels permuted | 73.6328% | 7.8424 | 0.9994× |
+| zeros set to ±2^-14 | 0.0000% | 14.7438 | 1.8759× |
+| zeros set to ±scale/16 | 0.0000% | 14.7350 | 1.8760× |
+
+Gemma 4 E4B mobile QAT first MLP, 64 positions, three processes. Pipeline time is the median of process medians of block medians; speed is the median of per-process ratios. Relative L2 is against each graph's CPU reference; "ordinary" is positions 6–63.
+
+| Graph | Function calls | Pipeline (ms) | Speed vs W4A16 | L2 one MLP, all / ordinary | L2 eight MLPs, all / ordinary |
+|---|---:|---:|---:|---:|---:|
+| bare | 1 | 4.2426 | 1.0000× | 0.0867% / 0.2059% | 0.3808% / 0.3788% |
+| native | 1 | 4.3435 | 0.9768× | 165.2814% / 339.1609% | 511.8175% / 509.4819% |
+| clip_product | 1 | 4.3447 | 0.9765× | 3.0791% / 6.3056% | 21.6947% / 21.6163% |
+| split_w4 | 64 | 31.6319 | 0.1341× | 2.1429% / 4.6207% | 22.3299% / 22.3341% |
+| split_a8 | 64 | 31.8515 | 0.1332× | 2.1906% / 4.6952% | 22.1498% / 22.1344% |
+| split_coarse_w4 | 17 | 25.7728 | 0.1646× | 2.1429% / 4.6207% | 22.3299% / 22.3341% |
+| split_coarse_a8 | 17 | 26.0732 | 0.1628× | 2.1906% / 4.6952% | 22.1498% / 22.1344% |
+
+## G5 weight-free attention
+
+Q64 over 4,096 keys, 32 query and 8 key-value heads of size 128. Times are the median of block-mean ms per operation over three processes; speeds are medians of paired block ratios. Relative L2 values are imported. [Finding](../findings/attention-product-precision/).
+
+| Path | Resident (ms) | With layout conversion and readback (ms) | Speed vs reference path, resident / with transfer |
+|---|---:|---:|---:|
+| dense softmax → P @ V | 1.6341 | 9.5348 | — |
+| post-PV, 1,024-key blocks, one graph | 4.3442 | 12.1162 | 0.3756× / 0.7845× vs dense |
+| post-PV, 1,024-key blocks, four calls | 11.3035 | 13.7457 | 0.1447× / 0.6897× vs dense |
+| post-PV, one 4,096-key block (later round) | 4.3968 | 12.0390 | — |
+| post-PV, 1,024-key blocks (later round) | 4.3515 | 12.4042 | 1.0091× / 0.9804× vs one block |
+
+| Numerical case | Relative L2 |
+|---|---:|
+| dense, seeds 0–2 | 5.3389%, 5.2193%, 5.4239% |
+| kv_streamed, seeds 0–2 | 1.0149%, 1.0154%, 1.0247% |
+| kv_unrolled, seeds 0–2 | 1.0144%, 1.0150%, 1.0241% |
+| post_pv_kv_streamed, seeds 0–2 | 0.1114%, 0.1098%, 0.1131% |
+| post_pv_kv_unrolled, seeds 0–2 | 0.1065%, 0.1057%, 0.1078% |
+| isolated P @ V, uniform P | 3.9503% |
+| P × 1, divided on the CPU | 3.9503% |
+| P × 16, divided on the CPU | 0.2236% |
+| P × 64, divided on the CPU | 0.0596% |
+| constant V, weighted_value/full-normalized | 100.0000% |
+| constant V, weighted_value/full-unnormalized | 0.6675% |
+| constant V, weighted_value/half-normalized | 100.0000% |
+| constant V, weighted_value/half-unnormalized | 2.3712% |
+| constant V, device_normalize/full-normalized | 100.0000% |
+| constant V, device_normalize/full-unnormalized | 0.6561% |
+| constant V, device_normalize/half-normalized | 100.0000% |
+| constant V, device_normalize/half-unnormalized | 2.3832% |
+| V = 0.00025, dense, P × 512 | 3.1529% |
+| V = 0.00025, post-PV, one 4,096-key block | 2.3832% |
+| V = 0.00025, post-PV, 1,024-key blocks | 2.3554% |

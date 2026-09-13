@@ -71,7 +71,11 @@ These limits distinguish the evidence sets rather than assigning one protocol to
 4. **The synthetic suites are not distributional benchmarks.** Their weights are Hadamard, sign-flipped and
    permuted; each code is ±1 times a shared scale, and 16 distinct spatial
    vectors are repeated across 4096 positions. That keeps a reference tractable
-   and is deliberately unlike a real activation distribution.
+   and is deliberately unlike a real activation distribution. The measured rate
+   and the paired quantized ratio belong to this fixture as much as to its
+   format: at the same shapes, 73.63% exact-zero weights make FP16 1.88× faster
+   and cut the A8W4 gain over FP16 to 1.36×, and a single layer runs slower.
+   [Quantized speed-up conditions](../findings/quantized-speedup-conditions/).
 5. **G2 has no accepted energy result.** G2 adds finite component thermal and
    coexistence observations, with the conditions below. Its failed power capture
    does not support joules or an energy-efficiency ranking. G3 has separate software component energy estimates, described below.
@@ -86,6 +90,8 @@ These limits distinguish the evidence sets rather than assigning one protocol to
    | Native MLP follow-up | 26A428 | 27.0 (Swift 6.4) | — |
    | Historical Python MLP | — | 26.6 / SDK 26.5 | MLX 0.32.2; its SDK blocker is not the native follow-up's status |
    | Historical quantization matrix | 26A5425a | — | coreai-torch 0.4.1 and 0.4.2 |
+   | G1-W quantized speed and QDQ probes | 26A428 | 27.0 (27A266a) | coreai-torch 0.4.1, Torch 2.11.0 |
+   | G5 weight-free attention | not recorded | not recorded | coreai-torch 0.4.2, Torch 2.9.0 |
 
    G2's versions come from same-day preflight records and a post-run statement
    that no software changed that day. Version and source identities belong to
@@ -208,3 +214,11 @@ The short GPU prefill block at <!-- claim:g3.n.500@g3-005 -->500<!-- /claim --> 
 The implied compute and read rates use the measured token rates and the model's structure record. Prefill counts two FLOPs per projection weight per token; attention is listed separately. Decode assumes one read of every FP16 weight and the existing KV at each step, summing the cache growth across the block. The byte model excludes current-token writes and fixed-graph padding. These are effective model-work rates, not device counters; no DRAM traffic was measured. A nearly flat modelled byte rate is consistent with bandwidth-dominated execution, but cannot identify the bottleneck or distinguish ANE memory-access limits from graph and host costs. The same-machine synthetic ANE FP16 reference uses a different graph on one fixed shape, not a hardware peak. [Calculation](METHODS.md#g3-complete-model-stages).
 
 Larger contexts select larger fixed ANE functions. The function selection and curve transitions are observed together; a controlled change of graph shapes is still needed to isolate their cost. These rates do not directly measure UMA bandwidth, and G3 FP16 does not establish a quantized-path benefit. [Article](../articles/05-qwen3-4b-prefill-decode-energy.md) · [Bundle](../results/historical/g3-qwen3-4b/).
+
+## G1-W and G5 component observations
+
+G1-W measures quantized speed on synthetic 1×1 convolution chains and on the first MLP of Gemma 4 E4B mobile QAT, and isolates the QDQ multiply defect with model-free graphs. G5 measures a weight-free attention graph. Neither runs a complete model or measures energy.
+
+Times are awaited `function.run` calls from a native Swift host, in two or three fresh processes per arm; ranges are process medians, not confidence intervals. An A8 graph that is faster is not evidence of a physical INT8 datapath. ANE request logs show participation per call, not per-operation placement. The E4B stack repeats one real layer eight times behind a shared RMS norm, and its inputs are synthetic control rows. Relative L2 there, and in G5, compares a device output with its own CPU or FP64 reference: it is implementation error, not model quality.
+
+G5's inputs are synthetic uniform, random and small-constant attention; the complete-model G3 path was not re-evaluated against it. Its relative L2 values are imported scalars, while its timings, like all G1-W timings, are recomputed from per-call records. The model checkpoint, activations and FP16 attention arrays are not distributed. [Speed conditions](../findings/quantized-speedup-conditions/) · [QDQ multiply](../findings/coreai-qdq-multiply-scale/) · [Attention precision](../findings/attention-product-precision/).

@@ -1,0 +1,32 @@
+{
+  "importer": "results/historical/import_g5.py",
+  "sources": {
+    "workplans/g5-independent-review-20260912/CPU-EXPRESSION.json": "d02d0ac029cf4f887d5ddf9063f01243b697ed1073ccc3ce6190f0cd7e3b93b3",
+    "workplans/g5-independent-review-20260912/RESULT.json": "c6a76d5a5beb9312eff144ec906b39744109ee0c2d37a282018a3de109261add",
+    "workplans/g5-long-context-attention-20260912/CONFIG.json": "59e394133e62ecb8f4b11c2bbcddedcd002b92724b8e024ac00bbaea33afe4c8",
+    "workplans/g5-long-context-attention-20260912/runs/p2-q64-analysis-r2/RESULT.json": "6912e4214ec5fdea7d73bf31a406fab6c2dbefdc8de9db011db05ed549e6ff4d",
+    "workplans/g5-long-context-attention-20260912/runs/post-pv-bench-process0-r1/host/TIMINGS.json": "35016ea42daf9cd048cdcfaa364e3f61d6f5ae928e011eb9936af4e0f6b662f7",
+    "workplans/g5-long-context-attention-20260912/runs/post-pv-bench-process1-r1/host/TIMINGS.json": "9837f954c3dba40a7c856b9358d3758ee6ae9b1ae4e072c59569ac6e7e1781ed",
+    "workplans/g5-long-context-attention-20260912/runs/post-pv-bench-process2-r1/host/TIMINGS.json": "36c6e824acb3c167313ca6cba04edd69613face4b57b9762d11e365afeb4cfa9",
+    "workplans/g5-long-context-attention-20260912/runs/post-pv-q64-analysis-r1/RESULT.json": "6c03618c14c011e2afb97739471627b07ee29148dc7e3eccb28802351a362e90",
+    "workplans/g5-long-context-attention-20260912/runs/post-pv-speed-summary-r1/RESULT.json": "f36ae9aa5b8f4cfca6f3a513f97e736f1dae21c93d9014d33d505fa674850088",
+    "workplans/g5-long-context-attention-20260912/runs/pv-inverse-analysis-r1/RESULT.json": "b4fa3e03fa1af7170d37840a4f8cdb3ee0d89713a6a80ad320beb953d64a8ae8",
+    "workplans/g5-long-context-attention-20260912/runs/pv-scale-analysis-r1/RESULT.json": "60480faa2ff22e3618ffbeb706d4e0861ee857408931c1dfe170237ae48fc891",
+    "workplans/g5-long-context-attention-20260912/runs/v3-amplitude-analysis-r1/RESULT.json": "1126bb8885d31a023b60c5e3d720665abeafbef05a6fdee66d65acf6bb8e4d96",
+    "workplans/g5-long-context-attention-20260912/runs/v3-post4096-export-r1/kv_unrolled/ASSET.json": "dcbbd2a5077146c5876e94530c4c06c48bfdfc28dff24d897ecde33a680153ed",
+    "workplans/g5-long-context-attention-20260912/runs/v4-base-bench-process0-r1/host/TIMINGS.json": "149a7164d0f99e64ff4ca824a905df6e3a164a516a34095b1f97cc2f8fd73a9a",
+    "workplans/g5-long-context-attention-20260912/runs/v4-base-bench-process1-r1/host/TIMINGS.json": "955ac3a3c31c88424938dbb0c58e0968b5c0912be84f45ef02177f05dd7d1bdb",
+    "workplans/g5-long-context-attention-20260912/runs/v4-base-bench-process2-r1/host/TIMINGS.json": "e6e2980a1a282ff1c7e38577dddd51358356bdb8e60c114e358cffa9cf08fdf8",
+    "workplans/g5-long-context-attention-20260912/runs/v4-base-speed-summary-r1/RESULT.json": "832b9377f523d57a4d2546052f1357163f68ba6f788c4bcac8643888b3f27969",
+    "workplans/g5-long-context-attention-20260912/runs/v4-pv-analysis-r1/RESULT.json": "faee8e9a1733034e425c6d997898e865cce880a26ab59db3bd1f5f7670d63b0b"
+  },
+  "products": {
+    "evidence.json": "5fe204c15d53d0ad836f677416f4d7adc12df0a9851b4ec55f3a9e77ede7a279",
+    "timings.json.gz": "9c80b2356be021ce3abd70132cf7c4a557f4e98680ed9c1d3a3a53ab0965307e"
+  },
+  "transformations": [
+    "relative L2, row maximum and maximum absolute error copied per case; arrays omitted",
+    "replayed rows collapsed after checking that they agree",
+    "per-operation durations kept for every timed block; output files omitted"
+  ]
+}

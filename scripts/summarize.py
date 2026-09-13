@@ -298,7 +298,11 @@ def main():
     g2 = derive()
     from g3.evidence import derive as derive_g3, measurements as g3_measurements
     g3 = derive_g3()
-    text = measurements() + '\n' + g2_measurements(g2) + '\n' + g3_measurements(g3)
+    from g1w.evidence import derive as derive_g1w, measurements as g1w_measurements, quoted_values as g1w_quotes
+    from g5.evidence import derive as derive_g5, measurements as g5_measurements, quoted_values as g5_quotes
+    g1w, g5 = derive_g1w(), derive_g5()
+    text = (measurements() + '\n' + g2_measurements(g2) + '\n' + g3_measurements(g3) + '\n'
+            + g1w_measurements(g1w) + '\n' + g5_measurements(g5))
     if args.write:
         MEASUREMENTS.write_text(text)
         print(f'wrote {MEASUREMENTS.relative_to(ROOT)}')
@@ -310,8 +314,9 @@ def main():
         problems.append('docs/MEASUREMENTS.md differs from the bundled records; '
                         'rerun with --write')
     registered = claims()
-    for name, values in quoted_values(g2).items():
-        registered.setdefault(name, []).extend(values)
+    for quotes in (quoted_values(g2), g1w_quotes(g1w), g5_quotes(g5)):
+        for name, values in quotes.items():
+            registered.setdefault(name, []).extend(values)
     for name, required in registered.items():
         body = (ROOT / name).read_text()
         for value in required:

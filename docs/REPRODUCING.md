@@ -146,6 +146,9 @@ python results/historical/tests/verify_arithmetic.py
 python results/historical/tests/verify_historical.py
 python scripts/verify_g2.py
 python scripts/verify_g3.py
+python scripts/verify_g1w.py
+python scripts/verify_g5.py
+python findings/coreai-qdq-multiply-scale/repro/verify.py
 python scripts/check_source_identity.py --check
 python scripts/summarize.py
 python scripts/render_figures.py --check
@@ -231,3 +234,22 @@ python scripts/verify_g3.py --bundle /path/to/new-g3-bundle
 ```
 
 Device replay needs the fixed model revision, separately exported ANE/GPU FP16 assets, the recorded Swift host and Core AI environment, input IDs, reference controls and an authenticated software capture. Those are identified in protocol.json and provenance.json. This repository's synthetic `ane-scope run` suites do not run the full-model G3 experiment. A portable full-model device launcher is not included.
+
+## G1-W and G5 recomputation
+
+```sh
+python scripts/verify_g1w.py
+python scripts/verify_g5.py
+python findings/coreai-qdq-multiply-scale/repro/verify.py
+```
+
+The first two recompute every timing, paired speed and fitted line from the bundled calls and check them against the summaries recorded when each round closed; relative L2 values are imported scalars. The third checks the QDQ probe's raw outputs against its hashes, controls and the scale-substitution rule. None needs a device or third-party package.
+
+The QDQ probe runs on a Mac without a model: see [its reproduction](../findings/coreai-qdq-multiply-scale/repro/README.md). The E4B graphs need the fixed checkpoint revision and the research workspace's exporters, and G5 needs its FP16 attention inputs; neither is in this repository. To rebuild the bundles from a workspace, write new directories:
+
+```sh
+python results/historical/import_g1w.py --source-root /path/to/research-workspace --output /path/to/new-g1w --probe-output /path/to/new-probe-records
+python results/historical/import_g5.py --source-root /path/to/research-workspace --output /path/to/new-g5
+python scripts/verify_g1w.py --bundle /path/to/new-g1w
+python scripts/verify_g5.py --bundle /path/to/new-g5
+```

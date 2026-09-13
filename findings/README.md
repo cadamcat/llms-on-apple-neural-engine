@@ -50,6 +50,10 @@ value, with a matched negative control.
 **[The rewrite that is accepted runs about 4× slower](split-decomposition-cost/)**
 — a separate synthetic ablation, not a causal account of the real MLP/GPU gap.
 
+**[A QDQ multiply dequantizes with another QDQ's scale](coreai-qdq-multiply-scale/)** — a model-free probe returns 2, 4 and 8 where the answer is 1, matching one scale-substitution rule that also predicts the older exact-grid probe. The first MLP of a released Gemma 4 E4B QAT checkpoint is 339% off; a product clamp avoids the gross error. The same page records a compile failure that moves a whole graph to the GPU, and a GELU that is nonzero at zero.
+
+**[A8 speed-ups need depth and depend on the weights](quantized-speedup-conditions/)** — A8W4 runs at 0.86× W4A16 speed as one layer and 1.33× as 128. Exact zero weights make FP16 itself 1.88× faster, which shrinks a quantized ratio measured against it. Eight repeated E4B QAT MLPs gain nothing: 0.977×.
+
 ## What a candidate arithmetic model predicts
 
 **[An execution model for group-quantized matmul](execution-model/)** — a
@@ -59,6 +63,8 @@ models, with 13 numeric exceptions. Before QDQ, E2B has 16 residuals and Qwen8B 
 **[One of those exceptions is a dot product outside its own binary16 bracket](fp16-dot-residual/)**
 — which rules out changing only the exact dot product's final rounding. Checkable
 from 32 published scalars, with no Apple hardware.
+
+**[Small attention products lose precision](attention-product-precision/)** — a weight-free 4,096-key attention graph is 5.22–5.42% from its FP64 reference, localized to `P @ V` with operands near 2.4e-4. Scaling P by 64 cuts the error to 0.060%. An accurate block expression runs at 0.376× the dense graph's speed, and blocking inside one graph gains 1.009×.
 
 ## Status
 
@@ -72,6 +78,9 @@ from 32 published scalars, with no Apple hardware.
 | [Decomposition runs ~4× slower](split-decomposition-cost/) | Measured, cause not isolated | Yes — recompute from stored per-call rows |
 | [Execution model](execution-model/) | Two models: 13 final Q8 residuals; more before QDQ | Recompute published counts; full arrays are not distributed |
 | [Dot product outside the bracket](fp16-dot-residual/) | Localized; mechanism unproven | Yes — 32 published terms |
+| [QDQ multiply scale](coreai-qdq-multiply-scale/) | Reproduced model-free; substitution rule predicts both probes; mechanism unobserved | Yes — raw probe outputs; a device run needs no model |
+| [Quantized speed-up conditions](quantized-speedup-conditions/) | Measured on synthetic chains and one repeated E4B MLP; causes not isolated | Yes — recompute from stored per-call timings |
+| [Attention product precision](attention-product-precision/) | Localized to `P @ V`; synthetic inputs only | Timings yes; relative L2 values are imported scalars |
 
 ## What is not claimed
 

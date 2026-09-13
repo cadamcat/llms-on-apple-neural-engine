@@ -53,6 +53,8 @@ These values come from the fresh Core ML and Core AI records. Core AI A8W4 has t
 
 This supports the reference model on the tested path, not RZA for all ANE arithmetic. The chain reference still uses RNE for FP16 conversion, while SplitConv partial sums and additions use a separately frozen FP16 RZA reference. Relative L2 against the RZA chain reference still has a residual of 0.000109. [Reference boundaries](../docs/METHODS.md).
 
+A later single-QDQ probe covers every input rather than one chain. Fed all 63,488 finite FP16 values at unit scale, the Core AI QDQ on ANE matched ties-away-from-zero for every value; ties-to-even would have differed at 128 of them, the half-integers such as ±0.5 and ±2.5. [Imported counts](../results/historical/g1w-e4b-mobile-qat/evidence.json).
+
 ![The same Core AI W8A8 output has relative L2 approximately 0.000109 against the preselected RZA reference and 0.211 against the RNE diagnostic reference.](../docs/figures/rounding-reference.svg)
 
 Figure 2. The horizontal axis is logarithmic. Both points use the first fresh process's original-input output, with matching hashes. They compare references; they do not measure a before/after change in performance or quality. [Source fields](../docs/figures/manifest.json).
@@ -83,6 +85,8 @@ The fresh suite runs original, zero, negative and repeat controls for each expre
 `reverse_order` changes the construction order of the two QDQ branches, keeping the intended `g × u` computation. `explicit_q` expresses quantization as explicit divide, round, clamp and integer-conversion operations, while retaining dequantization. Its controls pass in this minimal case, showing that a different expression can avoid the error. Broader input coverage and performance costs were not tested here. [Graph generation](../src/ane_scope/_coreai.py) and [four measured cases](../results/fresh/smoke.json).
 
 The results narrow the discrepancy to particular expressions and execution paths. Q8 midpoint rounding cannot explain it. Sensitivity to branch construction order motivates investigating compiler transformations and scale handling, but without an internal trace we cannot identify a specific implementation that reused the wrong parameter.
+
+A later probe gives the error a value-level rule. The `unequal` and `reverse_order` outputs are all-equal arrays whose recorded hashes identify them as 4 and 64. Each equals the two codes, both 4, dequantized with a single branch's scale: 0.5 when `g` is built first, 2 when `u` is. A second model-free probe computes `Q_out(a × Q_1/16(b))` on an all-ones input and returns 1, 2, 4 and 8 as the output scale rises from 1/16 to 1/2, which is `b`'s code dequantized with the output scale. Clamping the product to the output QDQ's range restores 1 in every arm. One substitution, a branch dequantized with another QDQ's scale, predicts every wrong value in both probes. It is still inferred from outputs. [The finding](../findings/coreai-qdq-multiply-scale/) adds a released QAT checkpoint that triggers it, and the limits of both rewrites.
 
 ANE requests establish participation in these calls, not which physical unit produced the error. Historical isolated 0.4.1/0.4.2 comparisons are in the [version matrix](../results/historical/quantization-expected-results.json) and [provenance](../results/historical/quantization-provenance.json). The fresh suite tested only 0.4.1.
 

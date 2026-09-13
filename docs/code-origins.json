@@ -68,5 +68,20 @@
     "origin": "workplans/g3-night-20260912-prefill-addendum-r6/scripts/g3_capture.py",
     "sha256": "57d9f352064da3fc584681942f7e123fd4eab35fe1c61c5196a9ae609b127ff3",
     "origin_scope": "closed G3 research checks; portable protocol and power parsing adapted"
+  },
+  {
+    "origin": "workplans/g1-w-e4b-mobile-qat-20260911/numerics-r1/reproducer/export.py",
+    "sha256": "e8d2f279211b81999e85f79d1e0923fb1ac76abc4927618373d64dbf1a38ba8a",
+    "origin_scope": "closed G1-W QDQ multiply reproducer; host copied unchanged, exporter and runner reformatted with identical syntax trees"
+  },
+  {
+    "origin": "workplans/g1-w-e4b-mobile-qat-20260911/numerics-r1/reproducer/run.py",
+    "sha256": "d2565286227950a446e34153fe8e1b599820dea2be7187b2932d8fa45c377496",
+    "origin_scope": "closed G1-W QDQ multiply reproducer; host copied unchanged, exporter and runner reformatted with identical syntax trees"
+  },
+  {
+    "origin": "workplans/g1-w-e4b-mobile-qat-20260911/numerics-r1/reproducer/host.swift",
+    "sha256": "7b44142be1955613299047f9d5daa92483dcd0c1b3eaffaf7064547651ee3a1d",
+    "origin_scope": "closed G1-W QDQ multiply reproducer; host copied unchanged, exporter and runner reformatted with identical syntax trees"
   }
 ]

@@ -32,6 +32,15 @@ jobs:
       - name: Recompute G3 complete-model speed and component energy
         run: python scripts/verify_g3.py
 
+      - name: Recompute G1-W quantized speed conditions and the E4B QAT MLP
+        run: python scripts/verify_g1w.py
+
+      - name: Recompute G5 attention timings
+        run: python scripts/verify_g5.py
+
+      - name: Recheck the recorded QDQ multiply outputs
+        run: python findings/coreai-qdq-multiply-scale/repro/verify.py
+
       - name: Check current source identity against its documented status
         run: python scripts/check_source_identity.py --check
 

@@ -46,7 +46,8 @@
 | **原生 ANE 宿主上的 W4A16 服务** | [约为 GPU 速度的四分之一](findings/w4a16-service-tradeoffs/)。相同负载下两侧风扇都在怠速；矩阵前台在 ANE 同跑时尾延迟代价更小。能耗未判定 |
 | **常驻执行** | 历史 Python gate 每调用保留 1,966,080 字节；两个原生 G2 宿主各做了 33,728 次 stage 调用，结束时小 60–62 MiB；[无限期常驻未测](findings/iosurface-per-call-growth/) |
 | **W4A16 对比 A8W4** | 历史 4K 配对[相差 1.3%](findings/ane-vs-gpu-prefill/)，未建立 A8 速度收益；G2 只测试 W4A16 |
-| **测过的 W8A8 合成控制** | 可加速——Core AI 受控 128 层链相对自身 FP16 基线为 **1.86–1.87×** |
+| **测过的 W8A8 合成控制** | 可加速——Core AI 受控 128 层链相对自身 FP16 基线为 **1.86–1.87×**。[收益需要层数，也取决于权重](findings/quantized-speedup-conditions/)：A8W4 单层时速度为 W4A16 的 0.86×，128 层时 1.33×；精确零权重让 FP16 本身快 1.88× |
+| **Gemma 4 E4B mobile QAT A8W4** 走 Core AI，首层 MLP | [算错，而且不更快](findings/quantized-speedup-conditions/#a-released-qat-checkpoint)。QDQ 乘法[用了另一个 QDQ 的 scale](findings/coreai-qdq-multiply-scale/)：单个 MLP 偏差 339%。加乘积裁剪后，重复八个 MLP 仍偏差 21.6%，速度为 W4A16 的 0.976× |
 
 早期轮次作为独立记录保留。历史 Python MLP 中，64 位置时 GPU 快 **2.87×**，1024 时 **5.09×**，
 4096 时 **4.41×**，每侧单进程且提前停止；之后原生 C256 在 4096 位置为 582.19 ms，同轮 GPU 为
@@ -60,10 +61,10 @@
 
 | 部分 | 内容 |
 |---|---|
-| 🔧 **三件真正能用的事** | 让分组 4-bit 能上加速器的那个改写、修好不等 scale 乘法的那个图表达、以及本来就能加速的那种量化方案——每一件都写清了代价和边界，每一件都是能跑的用例。[workarounds/](workarounds/) |
+| 🔧 **三件真正能用的事** | 让分组 4-bit 能上加速器的那个改写、修好 QDQ 乘法的图表达、以及链足够深时能加速的那种量化方案——每一件都写清了代价和边界，每一件都是能跑的用例。[workarounds/](workarounds/) |
 | 📊 **完整模型测量** | [G3](findings/qwen3-4b-prefill-decode/)测量 Qwen3-4B FP16 在各档上下文下的 prefill、decode、阶段功率与能量。 |
 | 📊 **组件对照** | [G2](findings/w4a16-service-tradeoffs/)补入原生 W4A16 七档速度、原生宿主内存、同率与满负载温度与风扇响应、GPU 前台尾延迟。[早期 A8W4/W4A16/GPU 对照](findings/ane-vs-gpu-prefill/)保留原数值控制、按 PID 证据和停止状态；不同轮次不合并。 |
-| 🐛 **可复现的缺陷** | 两个工具链失败，各有最小复现、预期错误输出和配对反向对照；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个结构性代价，三组配对进程测得。[findings/](findings/) |
+| 🐛 **可复现的缺陷** | 三个工具链失败，各有最小复现、预期错误输出和配对反向对照，其中一个是 QDQ 乘法取了另一个 QDQ 的 scale；一个让整图静默转到 GPU 的编译失败；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个结构性代价，三组配对进程测得。[findings/](findings/) |
 | 🔬 **一个算术模型** | 候选算术模型在两个真实模型的 7,163,904 个最终 Q8 gate 输出上留下 13 处差异——以及已经定位的一个 32 项点积，不需要任何 Apple 硬件即可从公开标量验证。[模型](findings/execution-model/) · [残差](findings/fp16-dot-residual/) |
 
 ## 这个仓库适合谁
@@ -78,7 +79,7 @@
   → 历史 Python 绑定每次调用保留 [1.875 MiB](findings/iosurface-per-call-growth/)，页面里有无效的缓解尝试和外部报告；
   两个原生 Swift 宿主各做了 33,728 次 stage 调用，没有出现这种增长。
 - 🔬 **在调量化数值，分不清是舍入差异还是 bug。**
-  → [执行模型](findings/execution-model/)与[那个残差](findings/fp16-dot-residual/)。
+  → [执行模型](findings/execution-model/)、[那个残差](findings/fp16-dot-residual/)与[注意力小乘积的精度](findings/attention-product-precision/)。
 - 🧪 **想复现或推翻这些结论。** → [REPRODUCING.md](docs/REPRODUCING.md)。
   已注册陈述可从随仓库记录离线核对；历史完整数组重放仍需原资产。
 
@@ -125,9 +126,14 @@ G2 测量一个原生 W4A16 MLP，GPU 基线使用 MLX。下图的单位是组�
    倍率与 MLP 差距相近，不证明原因相同。[→](findings/split-decomposition-cost/)
 4. **A8 尚未显示稳定速度优势。** 历史 4K 对照相差 1.3%；后续原生轮次独立保留，
    不合并估计。[→](findings/ane-vs-gpu-prefill/)
+   重复八个 Gemma 4 E4B QAT MLP 时速度为 W4A16 的 0.977×；合成链要有层数才有收益：
+   单层 0.86×，128 层 1.33×。[→](findings/quantized-speedup-conditions/)
 5. **候选算术模型仍有残差。** 最终 Q8 有 13 处，QDQ 前更多。一个已定位点积落在
    精确值的两个 binary16 邻居之外，仅改变最终舍入无法解释；中间乘法与累加仍未观测。
    [→](findings/fp16-dot-residual/)
+6. **QDQ 乘法用了另一个 QDQ 的 scale 反量化。** 无模型探针在正确答案为 1 时返回 2、4、8，
+   一个已发布的 QAT MLP 偏差 339%。加一个不改变真值的乘积裁剪即可避开。
+   [→](findings/coreai-qdq-multiply-scale/)
 
 ## 快速开始
 
@@ -164,6 +170,9 @@ python results/historical/tests/verify_arithmetic.py  # 执行模型与那个点
 python results/historical/tests/verify_historical.py  # 导入的计时记录
 python scripts/verify_g3.py                          # G3 完整模型速度与组件能量
 python scripts/verify_g2.py                          # G2 请求、温度与资源统计
+python scripts/verify_g1w.py                         # 量化加速条件与 E4B QAT MLP
+python scripts/verify_g5.py                          # 注意力精度与分块计时
+python findings/coreai-qdq-multiply-scale/repro/verify.py  # QDQ 乘法输出
 python scripts/check_source_identity.py --check       # 当前源码与运行时身份
 python scripts/summarize.py                           # 已注册表格与文字数字
 python scripts/render_figures.py --check              # 图、来源与生成器身份

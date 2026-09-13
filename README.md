@@ -46,7 +46,8 @@ Every round records the versions it ran with; [SCOPE.md](docs/SCOPE.md) lists th
 | **W4A16 served from the native ANE host** | [About a quarter of the GPU's speed](findings/w4a16-service-tradeoffs/). At equal load the fans stay at idle on both engines; a matrix foreground shows a smaller tail penalty beside ANE inference. Energy undetermined |
 | **Resident execution** | The historical Python gate retained 1,966,080 bytes per call. Two native G2 hosts ran 33,728 stage calls each and ended 60–62 MiB smaller; [indefinite residency is untested](findings/iosurface-per-call-growth/) |
 | **W4A16 versus A8W4** | Historical 4K pair: [within 1.3%](findings/ane-vs-gpu-prefill/), without an established A8 speed benefit. G2 tests W4A16 only |
-| **The tested W8A8 synthetic control** | Accelerates — Core AI is **1.86–1.87×** over its FP16 baseline on the controlled 128-layer chain |
+| **The tested W8A8 synthetic control** | Accelerates — Core AI is **1.86–1.87×** over its FP16 baseline on the controlled 128-layer chain. [The gain needs depth and depends on the weights](findings/quantized-speedup-conditions/): A8W4 runs at 0.86× W4A16 speed as one layer and 1.33× as 128; exact zero weights make FP16 itself 1.88× faster |
+| **Gemma 4 E4B mobile QAT A8W4** through Core AI, first MLP | [Wrong, and not faster](findings/quantized-speedup-conditions/#a-released-qat-checkpoint). A QDQ multiply [uses another QDQ's scale](findings/coreai-qdq-multiply-scale/): 339% off in one MLP. With a product clamp, eight repeated MLPs are 21.6% off and run at 0.976× W4A16 speed |
 
 Earlier rounds stay separate records. The historical Python MLP measured the GPU **2.87×**
 faster at 64 positions, **5.09×** at 1024 and **4.41×** at 4096, with one timed process per
@@ -62,10 +63,10 @@ The complete-model comparison and the component experiments have separate eviden
 
 | Part | What it is |
 |---|---|
-| 🔧 **Three things that do work** | The rewrite that gets grouped 4-bit onto the accelerator at all, the graph expression that fixes an unequal-scale multiply, and the quantization scheme that simply accelerates — each with its price and its boundary written down, and each a case you can run. [workarounds/](workarounds/) |
+| 🔧 **Three things that do work** | The rewrite that gets grouped 4-bit onto the accelerator at all, the graph expressions that fix a QDQ multiply, and the quantization scheme that accelerates on a deep enough chain — each with its price and its boundary written down, and each a case you can run. [workarounds/](workarounds/) |
 | 📊 **Complete-model measurements** | [G3](findings/qwen3-4b-prefill-decode/) measures Qwen3-4B FP16 prefill, decode, stage power and energy over the context range. |
 | 📊 **Component comparisons** | [G2](findings/w4a16-service-tradeoffs/) measures seven-size native W4A16 speed, native host memory, equal-rate and saturated temperature and fan response, and GPU foreground tails. The [earlier A8W4/W4A16/GPU comparison](findings/ane-vs-gpu-prefill/) retains its numerical controls, per-PID evidence and early stop. Separate rounds, not pooled estimates. |
-| 🐛 **Reproducible defects** | Two toolchain failures with minimal reproductions, expected wrong outputs and matched negative controls; one memory leak with four failed mitigations and an external corroboration; one structural cost measured in three paired process rounds. [findings/](findings/) |
+| 🐛 **Reproducible defects** | Three toolchain failures with minimal reproductions, expected wrong outputs and matched negative controls, including a QDQ multiply that takes another QDQ's scale; a compile failure that silently moves a whole graph to the GPU; one memory leak with four failed mitigations and an external corroboration; one structural cost measured in three paired process rounds. [findings/](findings/) |
 | 🔬 **An arithmetic model** | A candidate arithmetic model checked against 7,163,904 final Q8 gate outputs from two real models, with 13 Q8 mismatches — and one localized 32-term dot product it cannot explain, checkable from published scalars with no Apple hardware. [The model](findings/execution-model/) · [the residual](findings/fp16-dot-residual/) |
 
 ## Who this is for
@@ -82,8 +83,9 @@ The complete-model comparison and the component experiments have separate eviden
   with what did not fix it and who else has reported it; two native Swift hosts ran 33,728
   stage calls each without that growth.
 - 🔬 **You are debugging quantized numerics and cannot tell a rounding difference from a
-  bug.** → [the execution model](findings/execution-model/) and
-  [the residual](findings/fp16-dot-residual/).
+  bug.** → [the execution model](findings/execution-model/),
+  [the residual](findings/fp16-dot-residual/) and
+  [small attention products](findings/attention-product-precision/).
 - 🧪 **You want to reproduce or refute this.** → [REPRODUCING.md](docs/REPRODUCING.md).
   The bundled records support offline checks of the registered claims; full historical
   array replay still needs the original assets.
@@ -139,10 +141,15 @@ has **not** been isolated:
    gap does not establish a shared cause. [→](findings/split-decomposition-cost/)
 4. **A8 did not show a stable speed advantage.** The historical 4K comparison differs by
    1.3%; the later native run is a separate observation, not a pooled estimate. [→](findings/ane-vs-gpu-prefill/)
+   Eight repeated Gemma 4 E4B QAT MLPs run at 0.977× W4A16 speed, while synthetic chains need
+   depth for any gain: 0.86× at one layer, 1.33× at 128. [→](findings/quantized-speedup-conditions/)
 5. **A candidate arithmetic model leaves residuals.** It misses 13 final Q8 outputs,
    with more differences before QDQ. One localized dot lies outside the binary16
    neighbours of its exact value: changing only the final rounding cannot explain it.
    Intermediate multiplication and accumulation remain unobserved. [→](findings/fp16-dot-residual/)
+6. **A QDQ multiply dequantizes with another QDQ's scale.** A model-free probe returns 2, 4
+   and 8 where the answer is 1, and a released QAT MLP is 339% off. A product clamp that leaves
+   the true value unchanged avoids it. [→](findings/coreai-qdq-multiply-scale/)
 
 ## Quick start
 
@@ -182,6 +189,9 @@ python results/historical/tests/verify_arithmetic.py  # the execution model and 
 python results/historical/tests/verify_historical.py  # imported timing records
 python scripts/verify_g3.py                          # G3 complete-model speed and component energy
 python scripts/verify_g2.py                          # G2 event, thermal and resource accounting
+python scripts/verify_g1w.py                         # quantized speed conditions and the E4B QAT MLP
+python scripts/verify_g5.py                          # attention precision and chunking timings
+python findings/coreai-qdq-multiply-scale/repro/verify.py  # the QDQ multiply outputs
 python scripts/check_source_identity.py --check       # current source versus run identity
 python scripts/summarize.py                           # registered tables and prose claims
 python scripts/render_figures.py --check              # figure, source and generator identity
