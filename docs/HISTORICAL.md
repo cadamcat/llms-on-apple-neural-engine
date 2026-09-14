@@ -106,3 +106,7 @@ The [G1-W bundle](../results/historical/g1w-e4b-mobile-qat/) holds per-call timi
 
 The [G4 A bundle](../results/historical/g4a-qwen3-4b/) holds one run of the complete model with an ANE graph sized to each of six inputs: request results and per-token clocks, boundary graph events, selected power fields, the recorded summary and the load-gate disk readings. The disk-space observations it prompted are a separate [evidence set](../findings/ane-compiler-service-disk/evidence/). [Provenance](PROVENANCE.md#g4-a-import) · [Scope](SCOPE.md#g4-a-matched-graph-observations) · [Recompute](REPRODUCING.md#g4-a-recomputation).
 
+## Query width, W4 and repeat (G6)
+
+The [G6 bundle](../results/historical/g6-qwen3-4b/) holds one night: FP16 decode with two query widths on six matched graphs, the upstream iOS 4-bit palettized preset at two inputs, a repeat of every G4 A arm and two idle captures, with request results, boundary graph events, selected power fields of four captures, admission-log placement counts, the recorded summary and disk readings. [Provenance](PROVENANCE.md#g6-import) · [Scope](SCOPE.md#g6-decode-query-w4-and-repeat) · [Recompute](REPRODUCING.md#g6-recomputation).
+

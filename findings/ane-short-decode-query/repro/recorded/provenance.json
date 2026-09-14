@@ -1,0 +1,151 @@
+{
+  "importer": "results/historical/import_short_query.py",
+  "sources": {
+    "workplans/g6-night-20260913/q1-diagnosis/c1280-n1024-r1/PROBE.json": {
+      "bytes": 1298,
+      "sha256": "66e754ae73033486852230c640bf0abb40aee94335d94f65112e19e8078dd3f8"
+    },
+    "workplans/g4-cplus256-20260912/tiers/qwen3-4b-fp16-ane-g4-c1280/TIER.json": {
+      "bytes": 4970,
+      "sha256": "849719f229d4b22e1020c78761f280c55cae4f05587a038209aed10332ca3906"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/c1280-n1024-r1/q8-log.ndjson": {
+      "bytes": 311544,
+      "sha256": "b53820001c659e7c4520823331c20b0eab2bfdc660e869636586fb80b36735a7"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/c1280-n1024-r1/q8/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/c1280-n1024-r1/q1-log.ndjson": {
+      "bytes": 341280,
+      "sha256": "7cc55c134cea64382c146d499afb9b12ce4e44d4c9e3f6d667af548fd9ed7414"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/c1280-n1024-r1/q1/stderr.log": {
+      "bytes": 735,
+      "sha256": "647c47821c58a6b8cf277ac50c3f58a5c2889b3523cd3502a947c3339d8c8b2b"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-8-64-t8-r2/PROBE.json": {
+      "bytes": 1171,
+      "sha256": "207be1cbfdbe6f5fe368667bfd002d08e3c2a2e6e755b1a9d2cd70decfe7d824"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/assets/l1-c768-q1-8-64-t8/G6-Q1-EXPORT.json": {
+      "bytes": 4146,
+      "sha256": "b2ae0921e6b07a0a6bede6fecd5143c54c4d1fa22ab4b20022175b7c259650ba"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-8-64-t8-r2/q8-log.ndjson": {
+      "bytes": 204060,
+      "sha256": "47190c9209a2b12eb26605082683363a297e5c81e597ab30cb13df7d64bc579e"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-8-64-t8-r2/q8/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-8-64-t8-r2/q1-log.ndjson": {
+      "bytes": 195958,
+      "sha256": "c8ea11791d71dd59a69f3fd79ef4b791f652e303d725c5eb06674b1d7f2d761f"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-8-64-t8-r2/q1/stderr.log": {
+      "bytes": 733,
+      "sha256": "85672a1cc7b9712372eccb4a431c770e5a8d74e61224adf06e3e3fc16622cdad"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-64-t8-r1/PROBE.json": {
+      "bytes": 480,
+      "sha256": "7e0d10a12e56c69931972cdc05b430a467c66fa3f3d00e865b6f4c44ba5bc1e5"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/assets/l1-c768-q1-64-t8/G6-Q1-EXPORT.json": {
+      "bytes": 3122,
+      "sha256": "58df87df731a120dbee92badf3dbed7466d8ad8f961c96223f5a974d2e2aac6f"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-64-t8-r1/q1-log.ndjson": {
+      "bytes": 154368,
+      "sha256": "a9c5686d2a0ce1c630880a8d2d3c1fe3a7b7a2a0bb0d9d6706bdcb524b2e535a"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q1-64-t8-r1/q1/stderr.log": {
+      "bytes": 733,
+      "sha256": "c17a9cbbd6567bf026df16b344b68d8a27929edb91a533c2e4efe31df9e5863a"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q4/PROBE.json": {
+      "bytes": 2642,
+      "sha256": "4fe5e296044dcf0a8b07fd02e1e272af356f45615f7e44cb70a3c59a33f0957b"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/assets/l1-c768-q1-2-4-8-64-t8/G6-Q1-EXPORT.json": {
+      "bytes": 6194,
+      "sha256": "b7851fb9ddd88c4293afbbf88d58952403045df21baa9e080a93c5350c7c99dd"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q4/q8-log.ndjson": {
+      "bytes": 157815,
+      "sha256": "c8e45a7b8aec377d8a0ef9a2d6b99bec8e14e2265454e09ebbcceaa78003b251"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q4/q8/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q4/q4-log.ndjson": {
+      "bytes": 229030,
+      "sha256": "75d03a37d32c7192751a27d69337a3b9131dbb683e4341ec0945b0ce080b7cec"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q4/q4/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q2/PROBE.json": {
+      "bytes": 1243,
+      "sha256": "45a2af5956a7a045425226bdd2ad2c3d76f493378f63b9cd85546993cfd3e230"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q2/q8-log.ndjson": {
+      "bytes": 205593,
+      "sha256": "4eacda2e98aa6ca8c511530f3fb6186260cc2a18cbe61d65f067728f2eecf2ea"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q2/q8/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q2/q2-log.ndjson": {
+      "bytes": 223796,
+      "sha256": "eb20af325f4a27a35ea529221f5d257430e07e796a91f29e7416cb8acb3fa0f0"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/l1-c768-q12483-t8-q8-q2/q2/stderr.log": {
+      "bytes": 733,
+      "sha256": "20e3f435879c219f9172acd959072fab3d6b4039858810edade4495547813426"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/assets/l1-c768-q1-8-64-t1.log": {
+      "bytes": 11829,
+      "sha256": "21b1eaa15bf3160b9c39ea76f6076d978448a82a2ffecc158525a6237f2c9f43"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/host-src/swift/Sources/Tools/g3-flow-host/G3Host.swift": {
+      "bytes": 10229,
+      "sha256": "dadb613e0ea7e9da62e5999bc1c2cbfdfccf7442c87729f38102a9917517f905"
+    },
+    "workplans/g4-cplus256-20260912/vendor/coreai-models/swift/Sources/Tools/g3-flow-host/G3Host.swift": {
+      "bytes": 10225,
+      "sha256": "c2ef74ace686849efe1809d37c2c799632f2e1db66463497b7500500a27c5ba7"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/host-src/swift/Sources/CoreAILanguageModels/InferenceEngines/CoreAIStaticShapeEngine.swift": {
+      "bytes": 35320,
+      "sha256": "a16f260fcf51e028bf4559baf3c281c611c5f2781d3abce3a6e777aeea16e4fa"
+    },
+    "workplans/g4-cplus256-20260912/vendor/coreai-models/swift/Sources/CoreAILanguageModels/InferenceEngines/CoreAIStaticShapeEngine.swift": {
+      "bytes": 35316,
+      "sha256": "81ab8167dcb8fb78bd3e635c26f706248d6bb60150684e9d46a673f2248af23c"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/export_small.py": {
+      "bytes": 5335,
+      "sha256": "90d1e607423fc65d5040ef77bd7a1d553fcfe9a895781b7e0d8ae68c68c819d9"
+    },
+    "workplans/g6-night-20260913/q1-diagnosis/q1_probe.py": {
+      "bytes": 6603,
+      "sha256": "4ef50bf55c47ef601262ffb52a095ea7be4963a473f0041c07277ea268b82505"
+    }
+  },
+  "products": {
+    "observations.json": "862acf74a5fcbd558f772c646b2f5278014a594f6419b6ff9645de0ecd4d93ad"
+  },
+  "transformations": [
+    "Keep each probe query result, host return code and same-history comparison; drop logits paths and the host argv.",
+    "Reduce each host unified log to direct ANE request successes, failure status lines and loaded function names.",
+    "Parse the MPSGraph assertion error code, inference count and failure count from each host stderr.",
+    "Keep the torch.export constraint violation line from the query-1 trace export log.",
+    "Keep the two-line query allow-list diff between the G4 A host sources and the diagnostic host sources."
+  ]
+}

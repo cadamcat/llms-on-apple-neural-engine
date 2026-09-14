@@ -1,0 +1,175 @@
+{
+  "run": {
+    "status": "closed",
+    "stop_reason": null,
+    "failed_segments": []
+  },
+  "terminal": {
+    "status": "closed",
+    "returncode": 0,
+    "cleanup_pending": [],
+    "cleanup_errors": []
+  },
+  "hosts": {
+    "query-fp16-16384": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "query-fp16-8192": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "query-fp16-4096": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "query-w4-4096": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "query-fp16-2048": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "query-w4-1024": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "query-fp16-1024": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "query-fp16-500": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-gpu-16384": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-ane-16384": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-ane-8192": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-gpu-8192": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-gpu-4096": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-ane-4096": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-ane-2048": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-gpu-2048": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-gpu-1024": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-ane-1024": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-ane-500": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    },
+    "arm-gpu-500": {
+      "host": {
+        "returncode": 0,
+        "closed": true
+      },
+      "reason": "target_exit",
+      "cleanup_error": null
+    }
+  }
+}

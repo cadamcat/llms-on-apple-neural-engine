@@ -2,7 +2,7 @@
 
 English | [中文](README.zh-CN.md)
 
-**How fast can a complete LLM run on the Apple Neural Engine, and what does it cost in energy? On one M5 Pro, Qwen3-4B FP16 runs on both ANE and GPU through Core AI, with an ANE graph sized to each input. The GPU is faster at every tested input from <!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim -->: <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim --> in decode and <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim --> in prefill. For <!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill, ANE uses <!-- claim:g4a.short-prefill-energy-x@g4a-005 -->0.69–0.79×<!-- /claim --> the GPU's component energy per input token; in decode it uses <!-- claim:g4a.decode-energy-x@g4a-006 -->0.96–1.18×<!-- /claim --> as much. Sizing the graph to the input is what keeps ANE usable on long inputs: against the earlier 256 / 2K / 32K graphs, ANE decode is <!-- claim:g4a.vs-g3.long-decode-speed@g4a-007 -->1.80–4.40×<!-- /claim --> faster from <!-- claim:g4a.n.2048@g4a-008 -->2K<!-- /claim --> and prefill <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-009 -->2.76–6.40×<!-- /claim --> faster from <!-- claim:g4a.n.4096@g4a-010 -->4K<!-- /claim -->.**
+**How fast can a complete LLM run on the Apple Neural Engine, and what does it cost in energy? On one M5 Pro, Qwen3-4B FP16 runs on both ANE and GPU through Core AI, with an ANE graph sized to each input. The GPU is faster at every tested input from <!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim -->: <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim --> in decode and <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim --> in prefill. For <!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill, ANE uses <!-- claim:g6.two-run.short-prefill-energy-x@g6-001 -->0.68–0.81×<!-- /claim --> the GPU's component energy per input token across two runs; in decode it uses <!-- claim:g6.two-run.decode-energy-x@g6-002 -->0.86–1.18×<!-- /claim --> as much. Sizing the graph to the input is what keeps ANE usable on long inputs: against the earlier 256 / 2K / 32K graphs, ANE decode is <!-- claim:g4a.vs-g3.long-decode-speed@g4a-007 -->1.80–4.40×<!-- /claim --> faster from <!-- claim:g4a.n.2048@g4a-008 -->2K<!-- /claim --> and prefill <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-009 -->2.76–6.40×<!-- /claim --> faster from <!-- claim:g4a.n.4096@g4a-010 -->4K<!-- /claim -->.**
 
 <table>
 <tr>
@@ -27,9 +27,11 @@ The token rates can be expressed as model work. Each prefill token passes <!-- c
 
 ![Component energy per token by CPU, GPU and ANE counter at six inputs, GPU path and ANE path side by side.](docs/figures/g4a-energy.svg)
 
-For <!-- claim:g4a.short-contexts@g4a-041 -->500–2K<!-- /claim --> prefill, ANE spends <!-- claim:g4a.short-prefill-energy-x@g4a-042 -->0.69–0.79×<!-- /claim --> the GPU's energy per input token; at <!-- claim:g4a.long-contexts@g4a-043 -->4K–16K<!-- /claim --> it spends <!-- claim:g4a.long-prefill-energy-x@g4a-044 -->1.05–1.24×<!-- /claim --> as much. Decode is <!-- claim:g4a.decode-energy-x@g4a-045 -->0.96–1.18×<!-- /claim -->. During ANE-path decode, <!-- claim:g4a.ane-arm-gpu-decode-share@g4a-046 -->32–58%<!-- /claim --> of the component energy is recorded by the system GPU counter; its process and operation sources are unassigned. These are CPU + GPU + ANE software energy estimates without idle subtraction, admitted block by block; the CPU counter was raised by other activity during the ANE <!-- claim:g4a.n.4096@g4a-047 -->4K<!-- /claim --> blocks. The † marks elevated CPU power relative to neighbouring inputs. Whiskers describe sample-timing bounds, not sensor accuracy; these are not wall-power measurements.
+Across G4 A and G6, <!-- claim:g6.short-contexts@g6-005 -->500–2K<!-- /claim --> prefill on ANE uses <!-- claim:g6.two-run.short-prefill-energy-x@g6-006 -->0.68–0.81×<!-- /claim --> the GPU's component energy per input token; <!-- claim:g6.long-contexts@g6-007 -->4K–16K<!-- /claim --> prefill spans <!-- claim:g6.two-run.long-prefill-energy-x@g6-008 -->0.90–1.33×<!-- /claim --> and decode <!-- claim:g6.two-run.decode-energy-x@g6-009 -->0.86–1.18×<!-- /claim -->. These ranges combine the tested input lengths and two runs; the chart shows G4 A. [Paired results](findings/qwen3-4b-graph-capacity/#repeat-and-decode-query-width) show the change at each input.
 
-[Method and scope](docs/SCOPE.md#g4-a-matched-graph-observations) · [Detailed article](articles/06-qwen3-4b-matched-graphs.md) · [The earlier 256 / 2K / 32K results](findings/qwen3-4b-prefill-decode/)
+In the plotted G4 A run, during ANE-path decode, <!-- claim:g4a.ane-arm-gpu-decode-share@g4a-046 -->32–58%<!-- /claim --> of the component energy is recorded by the system GPU counter; its process and operation sources are unassigned. These are CPU + GPU + ANE software energy estimates without idle subtraction, admitted block by block; the CPU counter was raised by other activity during the ANE <!-- claim:g4a.n.4096@g4a-047 -->4K<!-- /claim --> blocks. The † marks elevated CPU power relative to neighbouring inputs. Whiskers describe sample-timing bounds, not sensor accuracy; these are not wall-power measurements.
+
+[Method and scope](docs/SCOPE.md#g4-a-matched-graph-observations) · [Repeat and query width](findings/qwen3-4b-graph-capacity/#repeat-and-decode-query-width) · [Detailed article](articles/06-qwen3-4b-matched-graphs.md) · [The earlier 256 / 2K / 32K results](findings/qwen3-4b-prefill-decode/)
 
 ## Measured on
 
@@ -44,7 +46,9 @@ Every round records the versions it ran with; [SCOPE.md](docs/SCOPE.md) lists th
 | If your model is… | On this toolchain, today |
 |---|---|
 | **Complete Qwen3-4B FP16** | [GPU is faster at every tested input](findings/qwen3-4b-graph-capacity/), even with an ANE graph sized to each input. ANE saves component energy on short prefill; decode energy per token is close. On a [graph ladder that jumps to 32K](findings/qwen3-4b-prefill-decode/), long inputs are much slower and costlier on ANE |
+| **The tested Qwen3 static-shape exports with added one- or two-position decode functions** | [The ANE request fails](findings/ane-short-decode-query/) with `0xe00002c2` and the host aborts; four- and eight-position controls run. Four positions instead of eight left Qwen3-4B decode speed at <!-- claim:g6.q4-q8-speed@g6-014 -->1.001–1.008×<!-- /claim --> |
 | **Several ANE model loads in a row** | [The ANE compiler service can keep each deleted compile input open](findings/ane-compiler-service-disk/): one run held <!-- claim:g4a.disk.held@g4a-050 -->178.4 GiB<!-- /claim --> until the service exited. [Reclaim it](workarounds/#4-reclaim-disk-space-held-by-the-ane-compiler-service) |
+| **Qwen3-4B with the iOS 4-bit palettized preset** through Core AI, ANE preferred | [The ANE compile fails and the model runs on the GPU](findings/coreai-palettized-weights-gpu/), with no error to the host; its checked first output passes the CPU reference built from the exported codes: <!-- claim:g6.w4.decode.1024.rate@g6-015 -->2.87 token/s<!-- /claim --> decode from <!-- claim:g6.n.1024@g6-016 -->1K<!-- /claim -->, while FP16 on ANE is <!-- claim:g6.w4.fp16-faster-decode@g6-017 -->5.1–8.1×<!-- /claim --> faster |
 | **The tested direct signed-INT4 Core ML K64 graph**, with two K32 scales per row | Numerically correct, CPU-selected. A related historical graph reports `ANE only support per-cout/per-tensor quantization`; this is not a test of every Q4 format or representation |
 | **K32 decomposition** into per-output-channel scales | Core AI passes the small compatibility probe. A separate synthetic ablation is [about 4× slower](findings/split-decomposition-cost/); that is not a universal cost |
 | **Grouped 4-bit through Core AI's native LUT path** | Accepted, shows real ANE activity, and [returns the wrong answer](findings/coreai-flattened-scale/) — 1921 of 4096 values, predictably |
@@ -69,9 +73,9 @@ The complete-model comparison and the component experiments have separate eviden
 | Part | What it is |
 |---|---|
 | 🔧 **Four things that do work** | The rewrite that gets grouped 4-bit onto the accelerator at all, the graph expressions that fix a QDQ multiply, the quantization scheme that accelerates on a deep enough chain, and reclaiming disk space the ANE compiler service keeps — each with its price and its boundary written down. [workarounds/](workarounds/) |
-| 📊 **Complete-model measurements** | [G4 A](findings/qwen3-4b-graph-capacity/) measures Qwen3-4B FP16 prefill, decode and component energy with an ANE graph sized to each of six inputs; [G3](findings/qwen3-4b-prefill-decode/) measures the same model on a 256 / 2K / 32K graph ladder. |
+| 📊 **Complete-model measurements** | [G4 A](findings/qwen3-4b-graph-capacity/) measures Qwen3-4B FP16 prefill, decode and component energy with an ANE graph sized to each of six inputs, and G6 repeats every arm and halves the decode query width; [G3](findings/qwen3-4b-prefill-decode/) measures the same model on a 256 / 2K / 32K graph ladder. |
 | 📊 **Component comparisons** | [G2](findings/w4a16-service-tradeoffs/) measures seven-size native W4A16 speed, native host memory, equal-rate and saturated temperature and fan response, and GPU foreground tails. The [earlier A8W4/W4A16/GPU comparison](findings/ane-vs-gpu-prefill/) retains its numerical controls, per-PID evidence and early stop. Separate rounds, not pooled estimates. |
-| 🐛 **Reproducible defects** | Three toolchain failures with minimal reproductions, expected wrong outputs and matched negative controls, including a QDQ multiply that takes another QDQ's scale; a compile failure that silently moves a whole graph to the GPU; one memory leak with four failed mitigations and an external corroboration; a system compiler service that keeps deleted compile inputs open; one structural cost measured in three paired process rounds. [findings/](findings/) |
+| 🐛 **Reproducible defects** | Three toolchain failures with minimal reproductions, expected wrong outputs and matched negative controls, including a QDQ multiply that takes another QDQ's scale; a compile failure that silently moves a whole graph to the GPU; one memory leak with four failed mitigations and an external corroboration; a system compiler service that keeps deleted compile inputs open; a decode query shape that ANE rejects at one and two positions; a palettized 4-bit preset whose ANE compile fails without an error to the host; one structural cost measured in three paired process rounds. [findings/](findings/) |
 | 🔬 **An arithmetic model** | A candidate arithmetic model checked against 7,163,904 final Q8 gate outputs from two real models, with 13 Q8 mismatches — and one localized 32-term dot product it cannot explain, checkable from published scalars with no Apple hardware. [The model](findings/execution-model/) · [the residual](findings/fp16-dot-residual/) |
 
 ## Who this is for
@@ -99,7 +103,7 @@ The complete-model comparison and the component experiments have separate eviden
   array replay still needs the original assets.
 
 **Status.** A research artifact, not a supported product. No external replication
-yet. G3 and G4 A add complete-model speed and software component energy; broad model-quality evaluation remains open. Three conditions qualify G2: an animated
+yet; G6 repeated every G4 A arm in new host sessions on the same machine. G3, G4 A and G6 add complete-model speed and software component energy; broad model-quality evaluation remains open. Three conditions qualify G2: an animated
 screensaver was running, found after the run; five of six coexistence groups had unmatched
 thermal starts; and the power capture failed, so energy is undetermined.
 [G2 scope](docs/SCOPE.md#g2-service-observations) · [RESEARCH.md](docs/RESEARCH.md)
@@ -162,7 +166,7 @@ has **not** been isolated:
 ## Quick start
 
 Choose the result to reproduce: the `ane-scope run` commands below execute synthetic
-device suites. Recompute the complete-model results with `python scripts/verify_g4a.py` and `python scripts/verify_g3.py`, and G2 speed, memory, temperature and fan observations with
+device suites. Recompute the complete-model results with `python scripts/verify_g4a.py`, `python scripts/verify_g6.py` and `python scripts/verify_g3.py`, and G2 speed, memory, temperature and fan observations with
 `python scripts/verify_g2.py`; G2 device replay still needs the research workspace and
 model assets. [Commands by result](docs/REPRODUCING.md#run) ·
 [current-source device validation](docs/VALIDATION.md#current-checkout-versus-the-measured-source).
@@ -196,7 +200,10 @@ python results/historical/tests/verify_native_followup.py  # native follow-up re
 python results/historical/tests/verify_arithmetic.py  # the execution model and the dot product
 python results/historical/tests/verify_historical.py  # imported timing records
 python scripts/verify_g4a.py                         # G4 A matched-graph speed and component energy
+python scripts/verify_g6.py                          # G6 decode query width, W4 and the G4 A repeat
 python scripts/verify_ane_compiler_disk.py           # disk space held by the ANE compiler service
+python findings/ane-short-decode-query/repro/verify.py  # one- and two-position decode queries
+python findings/coreai-palettized-weights-gpu/repro/verify.py  # palettized preset placement
 python scripts/verify_g3.py                          # G3 complete-model speed and component energy
 python scripts/verify_g2.py                          # G2 event, thermal and resource accounting
 python scripts/verify_g1w.py                         # quantized speed conditions and the E4B QAT MLP
@@ -228,7 +235,7 @@ complete SVG inventory and bytes against a copy saved before editing.
 |---|---|
 | `workarounds/` | The four things that do work, with their price and their boundary |
 | `findings/` | One directory per finding: symptom, repro, evidence, and what is still a hypothesis |
-| `results/historical/` | Imported records — historical comparisons, arithmetic evidence and separate G2 service / G3 and G4 A complete-model bundles |
+| `results/historical/` | Imported records — historical comparisons, arithmetic evidence and separate G2 service / G3, G4 A and G6 complete-model bundles |
 | `results/fresh/` | Every measured call from the three device suites in this package |
 | `src/ane_scope/_coreml.py`, `_coreai.py` | Export adapters and persisted graph/weight audits |
 | `src/ane_scope/references/` | Deterministic fixtures and explicit arithmetic references |
@@ -273,7 +280,7 @@ complete SVG inventory and bytes against a copy saved before editing.
 
 ## What would change the answer
 
-G4 A answered the question G3 left open: a graph sized to the input removes most of ANE's long-input penalty, but not the GPU's lead. The next runs keep the model, inputs and matched graphs fixed and change one thing at a time: a one-token decode query, and W4A16 weights for decode. Where the GPU energy on the ANE path comes from is open. Replication on a second Apple chip, hours of residency in one host and a broader quality evaluation would test whether the result transfers and lasts.
+G4 A answered the question G3 left open: a graph sized to the input removes most of ANE's long-input penalty, but not the GPU's lead. G6 then changed one thing at a time on the same graphs. A four-position decode query instead of eight ran at <!-- claim:g6.q4-q8-speed@g6-010 -->1.001–1.008×<!-- /claim --> the speed, so narrowing the logical query brought little speed benefit on these graphs; the cost of compiled padding and the benefit of narrower queries remain unmeasured; a one- or two-position query [does not execute](findings/ane-short-decode-query/). The upstream iOS 4-bit palettized preset ran entirely on the GPU, at <!-- claim:g6.w4.decode.1024.rate@g6-011 -->2.87 token/s<!-- /claim --> for <!-- claim:g6.n.1024@g6-012 -->1K<!-- /claim --> decode, so decode with 4-bit weights on ANE is still unmeasured. The GPU energy on the ANE path stays at <!-- claim:g6.decode-gpu-energy@g6-013 -->0.257–0.265 J/token<!-- /claim --> with either query width; its source is open. Replication on a second Apple chip, hours of residency in one host and a broader quality evaluation would test whether the result transfers and lasts.
 
 Further service experiments can test where the GPU's fans start rising between 4.9 and
 23.7 requests/s, first covering 4.9 to about 6.4 requests/s, and whether the matrix-foreground

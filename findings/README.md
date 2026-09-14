@@ -10,7 +10,7 @@ their prices — see [workarounds/](../workarounds/).
 
 ## The measured answer
 
-**[Qwen3-4B with an ANE graph sized to each input](qwen3-4b-graph-capacity/)** — Both paths use Core AI. The GPU is faster at every input, <!-- claim:g4a.decode-gpu-faster@g4a-001 -->2.0–3.9×<!-- /claim --> in decode and <!-- claim:g4a.prefill-gpu-faster@g4a-002 -->2.9–15.9×<!-- /claim --> in prefill. ANE uses <!-- claim:g4a.short-prefill-energy-x@g4a-003 -->0.69–0.79×<!-- /claim --> the GPU's component energy for <!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill; decode energy is close. Against the earlier graph ladder, ANE decode is <!-- claim:g4a.vs-g3.long-decode-speed@g4a-005 -->1.80–4.40×<!-- /claim --> faster from <!-- claim:g4a.n.2048@g4a-006 -->2K<!-- /claim -->. [Scope](../docs/SCOPE.md#g4-a-matched-graph-observations).
+**[Qwen3-4B with an ANE graph sized to each input](qwen3-4b-graph-capacity/)** — Both paths use Core AI. The GPU is faster at every input, <!-- claim:g4a.decode-gpu-faster@g4a-001 -->2.0–3.9×<!-- /claim --> in decode and <!-- claim:g4a.prefill-gpu-faster@g4a-002 -->2.9–15.9×<!-- /claim --> in prefill. ANE uses <!-- claim:g4a.short-prefill-energy-x@g4a-003 -->0.69–0.79×<!-- /claim --> the GPU's component energy for <!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill; decode energy is close. A repeat in new host sessions runs at <!-- claim:g6.repeat.speed@g6-001 -->0.97–1.02×<!-- /claim --> the original speed; across both runs short-prefill ANE energy stays at <!-- claim:g6.two-run.short-prefill-energy-x@g6-002 -->0.68–0.81×<!-- /claim -->. Against the earlier graph ladder, ANE decode is <!-- claim:g4a.vs-g3.long-decode-speed@g4a-005 -->1.80–4.40×<!-- /claim --> faster from <!-- claim:g4a.n.2048@g4a-006 -->2K<!-- /claim -->. [Scope](../docs/SCOPE.md#g4-a-matched-graph-observations).
 
 **[Qwen3-4B on a 256 / 2K / 32K graph ladder](qwen3-4b-prefill-decode/)** — The earlier complete-model run. GPU is faster across the measured contexts; ANE uses less component energy for short prefill, but more once it selects the 32K graph. [Complete-model scope](../docs/SCOPE.md#g3-complete-model-observations).
 
@@ -52,6 +52,8 @@ value, with a matched negative control.
 **[The rewrite that is accepted runs about 4× slower](split-decomposition-cost/)**
 — a separate synthetic ablation, not a causal account of the real MLP/GPU gap.
 
+**[Core AI runs the iOS 4-bit palettized Qwen3-4B preset on the GPU](coreai-palettized-weights-gpu/)** — with ANE preferred, the bundle passes ANE validation, its ANE compile fails, and it runs on the GPU with correct outputs and no error to the host. A matched FP16 bundle compiles and makes ANE requests; the palettized one makes none. On the complete model, FP16 on ANE decodes <!-- claim:g6.w4.fp16-faster-decode@g6-003 -->5.1–8.1×<!-- /claim --> faster.
+
 **[A QDQ multiply dequantizes with another QDQ's scale](coreai-qdq-multiply-scale/)** — a model-free probe returns 2, 4 and 8 where the answer is 1, matching one scale-substitution rule that also predicts the older exact-grid probe. The first MLP of a released Gemma 4 E4B QAT checkpoint is <!-- claim:g1w.e4b.1.native.l2@g1w-001 -->339%<!-- /claim --> off; a product clamp avoids the gross error. The same page records a compile failure that moves a whole graph to the GPU, and a GELU that is nonzero at zero.
 
 **[A8 speed-ups need depth and depend on the weights](quantized-speedup-conditions/)** — A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-002 -->0.86×<!-- /claim --> W4A16 speed as one layer and <!-- claim:g1w.depth.both-128.speed@g1w-003 -->1.33×<!-- /claim --> as 128. Exact zero weights make FP16 itself <!-- claim:g1w.density.old.speed@g1w-004 -->1.88×<!-- /claim --> faster, which shrinks a quantized ratio measured against it. Eight repeated E4B QAT MLPs gain nothing: <!-- claim:g1w.e4b.native.speed@g1w-005 -->0.977×<!-- /claim -->.
@@ -68,6 +70,8 @@ from 32 published scalars, with no Apple hardware.
 
 ## Running ANE models
 
+**[One- and two-position decode queries fail on ANE](ane-short-decode-query/)** — a static-shape Qwen3-4B export with a one-position decode function fails on its first ANE request with `0xe00002c2`, in the full model and in one layer, with or without an eight-position function in the bundle. Two positions fail too; four and eight run and return the same logits. The widths are outside the exporter's default set.
+
 **[ANECompilerService keeps deleted ANE compile inputs open](ane-compiler-service-disk/)** — every ANE model load leaves its compile input allocated until the service exits: <!-- claim:g4a.disk.held-files@g4a-007 -->29<!-- /claim --> files, <!-- claim:g4a.disk.held@g4a-008 -->178.4 GiB<!-- /claim -->, on one machine; ending the service released <!-- claim:g4a.disk.released@g4a-009 -->189.1 GiB<!-- /claim -->. [Workaround](../workarounds/#4-reclaim-disk-space-held-by-the-ane-compiler-service).
 
 ## Precision
@@ -78,7 +82,7 @@ from 32 published scalars, with no Apple hardware.
 
 | Finding | Status | Reproduce without a device? |
 |---|---|---|
-| [Matched ANE graphs](qwen3-4b-graph-capacity/) | One run, six inputs, both paths; 24 energy blocks admitted; CPU counter raised in three ANE blocks | Yes — recompute from per-token clocks and power fields |
+| [Matched ANE graphs](qwen3-4b-graph-capacity/) | Two runs, six inputs, both paths; all 48 energy blocks admitted; energy ratios move between runs; decode query width 4 versus 8 unchanged in speed | Yes — recompute from per-token clocks and power fields |
 | [Graph ladder](qwen3-4b-prefill-decode/) | One warmed matrix plus coverage requests; long-context graph selection mapped, cost not isolated | Same |
 | [ANE compiler service disk](ane-compiler-service-disk/) | Observed on one machine and macOS build; minimal reproduction pending | Recompute the listed sizes and free-space changes |
 | [Native W4A16 service](w4a16-service-tradeoffs/) | Completed component run; equal-load fans identical; coexistence signal from one matched group; energy undetermined | Recompute all selected service and sensor scalars; device rerun needs workspace assets |
@@ -89,6 +93,8 @@ from 32 published scalars, with no Apple hardware.
 | [Decomposition runs ~4× slower](split-decomposition-cost/) | Measured, cause not isolated | Yes — recompute from stored per-call rows |
 | [Execution model](execution-model/) | Two models: 13 final Q8 residuals; more before QDQ | Recompute published counts; full arrays are not distributed |
 | [Dot product outside the bracket](fp16-dot-residual/) | Localized; mechanism unproven | Yes — 32 published terms |
+| [Short decode queries](ane-short-decode-query/) | Reproduced in 36 and 1 layers; failing operator not located; width 3 untested | Recorded outcomes yes; a device run needs the model source and exporter |
+| [Palettized preset on the GPU](coreai-palettized-weights-gpu/) | One preset, one-layer matched pair plus the complete model at two inputs; rejected operation unknown | Recorded logs and G6 blocks yes; a device run needs the model source |
 | [QDQ multiply scale](coreai-qdq-multiply-scale/) | Reproduced model-free; substitution rule predicts both probes; mechanism unobserved | Yes — raw probe outputs; a device run needs no model |
 | [Quantized speed-up conditions](quantized-speedup-conditions/) | Measured on synthetic chains and one repeated E4B MLP; causes not isolated | Yes — recompute from stored per-call timings |
 | [Attention product precision](attention-product-precision/) | Localized to `P @ V`; synthetic inputs only | Timings yes; relative L2 values are imported scalars |

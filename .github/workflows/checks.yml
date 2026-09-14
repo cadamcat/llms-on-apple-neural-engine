@@ -41,11 +41,20 @@ jobs:
       - name: Recompute G4 A matched-graph speed and component energy
         run: python scripts/verify_g4a.py
 
+      - name: Recompute G6 decode query width, W4 and the G4 A repeat
+        run: python scripts/verify_g6.py
+
       - name: Recompute the disk space held by ANECompilerService
         run: python scripts/verify_ane_compiler_disk.py
 
       - name: Recheck the recorded QDQ multiply outputs
         run: python findings/coreai-qdq-multiply-scale/repro/verify.py
+
+      - name: Recheck the recorded short decode query outcomes
+        run: python findings/ane-short-decode-query/repro/verify.py
+
+      - name: Recheck the recorded palettized placement pair
+        run: python findings/coreai-palettized-weights-gpu/repro/verify.py
 
       - name: Check current source identity against its documented status
         run: python scripts/check_source_identity.py --check

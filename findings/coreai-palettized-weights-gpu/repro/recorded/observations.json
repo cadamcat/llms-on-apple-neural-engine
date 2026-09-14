@@ -1,0 +1,270 @@
+{
+  "pair": {
+    "fp16": {
+      "export": {
+        "layers": 1,
+        "capacities": [
+          1280
+        ],
+        "max_context_length": 1280,
+        "compression": "none",
+        "queries": [
+          4,
+          8,
+          64
+        ],
+        "trace_query": 8,
+        "environment": {
+          "coreai-core": "1.0.0b2",
+          "coreai-torch": "0.4.2",
+          "torch": "2.9.0",
+          "transformers": "5.12.1"
+        },
+        "source_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "functions": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "gather_embeddings_4",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_1280_64"
+        ]
+      },
+      "same_host": true,
+      "queries_in_order": [
+        8,
+        4
+      ],
+      "input": "quality_short",
+      "log_from_before_host_start": {
+        "ane_direct_request_success_rows": 8,
+        "metal_shader_compile_rows": 0,
+        "key_lines": [
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Derived delegate options: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          },
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Setting delegate options to: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          },
+          {
+            "subsystem": "com.apple.anec",
+            "message": "Start of mlir<anec> Validation"
+          },
+          {
+            "subsystem": "com.apple.anec",
+            "message": "End of mlir<anec> Validation"
+          },
+          {
+            "subsystem": "com.apple.ane",
+            "message": "[proxy compileModel:...] returned success=1 : attr=<private> : cacheURLIdentifier=(null) : error=(null)"
+          },
+          {
+            "subsystem": "com.apple.ane",
+            "message": "[proxy loadModel:...] returned success=1 : attr=<private> : error=(null)"
+          },
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Derived delegate options: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          },
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Setting delegate options to: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          },
+          {
+            "subsystem": "com.apple.ane",
+            "message": "[proxy loadModel:...] returned success=1 : attr=<private> : error=(null)"
+          }
+        ]
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_1280_64",
+            "extend_1280_8"
+          ],
+          "final_KV": 27,
+          "same_ids_as_first_query": null,
+          "same_history_vs_first_query": null,
+          "host_returncode": null
+        },
+        "4": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_1280_4",
+            "extend_1280_64"
+          ],
+          "final_KV": 27,
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 117014,
+              "actual_argmax": 117014,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 117014,
+              "actual_argmax": 117014,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_returncode": 0
+        }
+      }
+    },
+    "w4": {
+      "export": {
+        "layers": 1,
+        "capacities": [
+          1280
+        ],
+        "max_context_length": 1280,
+        "compression": "4bit_weight_palettized_group32",
+        "queries": [
+          4,
+          8,
+          64
+        ],
+        "trace_query": 8,
+        "environment": {
+          "coreai-core": "1.0.0b2",
+          "coreai-torch": "0.4.2",
+          "torch": "2.9.0",
+          "transformers": "5.12.1"
+        },
+        "source_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "functions": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "gather_embeddings_4",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_1280_64"
+        ]
+      },
+      "same_host": true,
+      "queries_in_order": [
+        8,
+        4
+      ],
+      "input": "quality_short",
+      "log_from_before_host_start": {
+        "ane_direct_request_success_rows": 0,
+        "metal_shader_compile_rows": 6,
+        "key_lines": [
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Derived delegate options: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          },
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Setting delegate options to: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          },
+          {
+            "subsystem": "com.apple.anec",
+            "message": "Start of mlir<anec> Validation"
+          },
+          {
+            "subsystem": "com.apple.anec",
+            "message": "End of mlir<anec> Validation"
+          },
+          {
+            "subsystem": "com.apple.ane",
+            "message": "[proxy compileModel:...] returned success=0 : attr=<private> : cacheURLIdentifier=(null) : error=Error Domain=com.apple.appleneuralengine.compiler Code=1 UserInfo={NSLocalizedDescription=<private>, NSUnderlyingError=0x… {Error Domain=com.apple.appleneuralengine.compiler Code=22 UserInfo={NSLocalizedDescription=<private>}}}"
+          },
+          {
+            "subsystem": "com.apple.metalperformanceshadersgraph",
+            "message": "MetalPerformanceShadersGraph/mpsgraph/MetalPerformanceShadersGraph/Core/Files/MPSGraphANEUtils.mm:993: ANE compilation failed! Error = <private>"
+          },
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Derived delegate options: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          },
+          {
+            "subsystem": "com.apple.coreai",
+            "message": "Setting delegate options to: \"{streaming=\"preferredDevice=NeuralEngine\"}\""
+          }
+        ]
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_1280_64",
+            "extend_1280_8"
+          ],
+          "final_KV": 27,
+          "same_ids_as_first_query": null,
+          "same_history_vs_first_query": null,
+          "host_returncode": null
+        },
+        "4": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_1280_4",
+            "extend_1280_64"
+          ],
+          "final_KV": 27,
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 117014,
+              "actual_argmax": 117014,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 117014,
+              "actual_argmax": 117014,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_returncode": 0
+        }
+      }
+    }
+  },
+  "procedure": "Fresh bundles from the same exporter, one host per bundle; the unified log was streamed by process name from three seconds before the host started until three seconds after it closed. Each host ran two greedy decode steps with query 8, then query 4, capturing logits.",
+  "scope": "One M5 Pro, macOS 27.0 (26A428), coreai-models 7304c47, coreai-torch 0.4.2. Log lines are filtered to compile, load, validation and delegate messages; pointer values and build paths are removed."
+}

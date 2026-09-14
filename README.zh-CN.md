@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-**完整 LLM 在 Apple Neural Engine 上能跑多快，完成同样的工作需要多少能量？在一台 M5 Pro 上，Qwen3-4B FP16 通过 Core AI 分别运行于 ANE 和 GPU，ANE 为每档输入使用容量匹配的固定图。<!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim --> 的每档输入都是 GPU 更快：decode 快 <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim -->，prefill 快 <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim -->。<!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill 时，ANE 每输入 token 的组件能量为 GPU 的 <!-- claim:g4a.short-prefill-energy-x@g4a-005 -->0.69–0.79×<!-- /claim -->；decode 为 <!-- claim:g4a.decode-energy-x@g4a-006 -->0.96–1.18×<!-- /claim -->。长输入下 ANE 还能用，靠的是图容量与输入匹配：与此前 256 / 2K / 32K 三档图相比，从 <!-- claim:g4a.n.2048@g4a-007 -->2K<!-- /claim --> 起 ANE decode 快 <!-- claim:g4a.vs-g3.long-decode-speed@g4a-008 -->1.80–4.40×<!-- /claim -->，从 <!-- claim:g4a.n.4096@g4a-009 -->4K<!-- /claim --> 起 prefill 快 <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-010 -->2.76–6.40×<!-- /claim -->。**
+**完整 LLM 在 Apple Neural Engine 上能跑多快，完成同样的工作需要多少能量？在一台 M5 Pro 上，Qwen3-4B FP16 通过 Core AI 分别运行于 ANE 和 GPU，ANE 为每档输入使用容量匹配的固定图。<!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim --> 的每档输入都是 GPU 更快：decode 快 <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim -->，prefill 快 <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim -->。<!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill 时，两次运行中 ANE 每输入 token 的组件能量为 GPU 的 <!-- claim:g6.two-run.short-prefill-energy-x@g6-001 -->0.68–0.81×<!-- /claim -->；decode 为 <!-- claim:g6.two-run.decode-energy-x@g6-002 -->0.86–1.18×<!-- /claim -->。长输入下 ANE 还能用，靠的是图容量与输入匹配：与此前 256 / 2K / 32K 三档图相比，从 <!-- claim:g4a.n.2048@g4a-007 -->2K<!-- /claim --> 起 ANE decode 快 <!-- claim:g4a.vs-g3.long-decode-speed@g4a-008 -->1.80–4.40×<!-- /claim -->，从 <!-- claim:g4a.n.4096@g4a-009 -->4K<!-- /claim --> 起 prefill 快 <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-010 -->2.76–6.40×<!-- /claim -->。**
 
 <table>
 <tr>
@@ -19,7 +19,7 @@
 
 每侧每档输入各用一个宿主会话：预热一次，<!-- claim:g4a.repetitions@g4a-048 -->3<!-- /claim --> 次强制续写、各 <!-- claim:g4a.decode-steps@g4a-049 -->256<!-- /claim --> 步 decode 的请求，再做一组只输出 1 个 token 的 prefill 请求。模型加载、预热和静置不计入；速度来自逐 token 时钟。G3 对照使用等长的起始 decode 窗口计算速度与能量。
 
-<!-- claim:g4a.n.1024@g4a-022 -->1K<!-- /claim --> 输入时，<strong>ANE prefill 为 <!-- claim:g4a.prefill.1024.ane-rate@g4a-023 -->887.7 token/s<!-- /claim --></strong>，<strong>GPU 为 <!-- claim:g4a.prefill.1024.gpu-rate@g4a-024 -->3,177.1 token/s<!-- /claim --></strong>，GPU 快 <!-- claim:g4a.prefill.1024.gpu-faster@g4a-025 -->3.58×<!-- /claim -->。输入越长 ANE 降得越多，到 <!-- claim:g4a.n.16384@g4a-026 -->16K<!-- /claim --> 时 GPU 的 prefill 快 <!-- claim:g4a.prefill.16384.gpu-faster@g4a-027 -->15.94×<!-- /claim -->，decode 快 <!-- claim:g4a.decode.16384.gpu-faster@g4a-028 -->3.87×<!-- /claim -->。虚线是此前那次运行，ANE 在 256 / 2K / 32K 三档图中选择：从 <!-- claim:g4a.n.2048@g4a-029 -->2K<!-- /claim --> 开始的 decode 在那里为 <!-- claim:g4a.g3.decode.2048.ane-rate@g4a-030 -->3.11 token/s<!-- /claim -->，这里为 <!-- claim:g4a.decode.2048.ane-rate@g4a-031 -->13.70 token/s<!-- /claim -->。两次使用相同的权重与输入，并在同一宿主实现基础上作了适配，GPU 速度相差在 <!-- claim:g4a.vs-g3.gpu-speed@g4a-032 -->0.97–1.02×<!-- /claim --> 之内。计时包含宿主和框架工作，比较的是当前实现，不是硬件上限。
+<!-- claim:g4a.n.1024@g4a-022 -->1K<!-- /claim --> 输入时，<strong>ANE prefill 为 <!-- claim:g4a.prefill.1024.ane-rate@g4a-023 -->887.7 token/s<!-- /claim --></strong>，<strong>GPU 为 <!-- claim:g4a.prefill.1024.gpu-rate@g4a-024 -->3,177.1 token/s<!-- /claim --></strong>，GPU 快 <!-- claim:g4a.prefill.1024.gpu-faster@g4a-025 -->3.58×<!-- /claim -->。输入越长 ANE 降得越多，到 <!-- claim:g4a.n.16384@g4a-026 -->16K<!-- /claim --> 时 GPU 的 prefill 快 <!-- claim:g4a.prefill.16384.gpu-faster@g4a-027 -->15.94×<!-- /claim -->，decode 快 <!-- claim:g4a.decode.16384.gpu-faster@g4a-028 -->3.87×<!-- /claim -->。虚线是此前那次运行，ANE 在 256 / 2K / 32K 三档图中选择：从 <!-- claim:g4a.n.2048@g4a-029 -->2K<!-- /claim --> 开始的 decode 在那里为 <!-- claim:g4a.g3.decode.2048.ane-rate@g4a-030 -->3.11 token/s<!-- /claim -->，这里为 <!-- claim:g4a.decode.2048.ane-rate@g4a-031 -->13.70 token/s<!-- /claim -->。两次使用相同的权重与输入，并在同一宿主实现基础上作了适配，本轮 GPU 速度为 G3 的 <!-- claim:g4a.vs-g3.gpu-speed@g4a-032 -->0.97–1.02×<!-- /claim -->。计时包含宿主和框架工作，比较的是当前实现，不是硬件上限。
 
 ![六档输入下两侧的 prefill 推算算力（TFLOP/s）与 decode 推算读取速率（GB/s），分为投影与注意力、权重与 KV 两部分。](docs/figures/g4a-implied.svg)
 
@@ -27,7 +27,9 @@
 
 ![六档输入下每 token 组件能量，按 CPU、GPU、ANE 计数器分段，GPU 路径与 ANE 路径并排。](docs/figures/g4a-energy.svg)
 
-<!-- claim:g4a.short-contexts@g4a-041 -->500–2K<!-- /claim --> prefill 时，ANE 每输入 token 能量为 GPU 的 <!-- claim:g4a.short-prefill-energy-x@g4a-042 -->0.69–0.79×<!-- /claim -->；<!-- claim:g4a.long-contexts@g4a-043 -->4K–16K<!-- /claim --> 时为 <!-- claim:g4a.long-prefill-energy-x@g4a-044 -->1.05–1.24×<!-- /claim -->。decode 为 <!-- claim:g4a.decode-energy-x@g4a-045 -->0.96–1.18×<!-- /claim -->。ANE 路径的 decode 窗口内，组件能量有 <!-- claim:g4a.ane-arm-gpu-decode-share@g4a-046 -->32–58%<!-- /claim --> 记在整机 GPU 计数器上，尚未归属到具体进程或算子。这些是不扣空载、逐块验收的 CPU＋GPU＋ANE 软件能量估计；ANE <!-- claim:g4a.n.4096@g4a-047 -->4K<!-- /claim --> 两个块运行期间 CPU 计数器被其他活动抬高。† 标记 CPU 功率高于相邻档的块。须线描述采样时间边界，不代表传感器精度；这些不是整机输入电量。
+汇总 G4 A 与 G6 的各输入测点，<!-- claim:g6.short-contexts@g6-005 -->500–2K<!-- /claim --> prefill 的 ANE 每输入 token 组件能量为 GPU 的 <!-- claim:g6.two-run.short-prefill-energy-x@g6-006 -->0.68–0.81×<!-- /claim -->，<!-- claim:g6.long-contexts@g6-007 -->4K–16K<!-- /claim --> prefill 为 <!-- claim:g6.two-run.long-prefill-energy-x@g6-008 -->0.90–1.33×<!-- /claim -->，decode 为 <!-- claim:g6.two-run.decode-energy-x@g6-009 -->0.86–1.18×<!-- /claim -->。这些范围包含不同输入长度和两次运行；图中展示 G4 A。[配对结果](findings/qwen3-4b-graph-capacity/#repeat-and-decode-query-width)列出同输入的跨轮变化。
+
+图中 G4 A 的 ANE 路径 decode 窗口内，组件能量有 <!-- claim:g4a.ane-arm-gpu-decode-share@g4a-046 -->32–58%<!-- /claim --> 记在整机 GPU 计数器上，尚未归属到具体进程或算子。这些是不扣空载、逐块验收的 CPU＋GPU＋ANE 软件能量估计；ANE <!-- claim:g4a.n.4096@g4a-047 -->4K<!-- /claim --> 两个块运行期间 CPU 计数器被其他活动抬高。† 标记 CPU 功率高于相邻档的块。须线描述采样时间边界，不代表传感器精度；这些不是整机输入电量。
 
 [方法与边界](docs/SCOPE.md#g4-a-matched-graph-observations) · [详细文章](articles/zh/06-按输入匹配的ANE固定图.md) · [此前 256 / 2K / 32K 三档图的结果](findings/qwen3-4b-prefill-decode/)
 
@@ -44,7 +46,9 @@
 | 如果你的模型是…… | 在当前工具链上 |
 |---|---|
 | **完整 Qwen3-4B FP16** | [GPU 在每档已测输入都更快](findings/qwen3-4b-graph-capacity/)，ANE 用上按输入匹配的图也一样。短 prefill 的 ANE 组件能耗较低；decode 每 token 能量接近。在[直接跳到 32K 的三档图](findings/qwen3-4b-prefill-decode/)上，长输入在 ANE 上慢得多，也更耗能 |
+| **本次新增 1 或 2 个位置 decode 函数的 Qwen3 静态图** | [ANE 请求失败](findings/ane-short-decode-query/)，返回 `0xe00002c2` 后宿主退出；4 和 8 个位置的对照可以运行。Qwen3-4B 用 4 个位置代替 8 个，decode 速度为原来的 <!-- claim:g6.q4-q8-speed@g6-014 -->1.001–1.008×<!-- /claim --> |
 | **连续多次加载 ANE 模型** | [ANE 编译服务可能一直开着每个已删除的编译输入](findings/ane-compiler-service-disk/)：一次运行中被占住 <!-- claim:g4a.disk.held@g4a-050 -->178.4 GiB<!-- /claim -->，直到服务退出才释放。[回收方法](workarounds/#4-reclaim-disk-space-held-by-the-ane-compiler-service) |
+| **使用 iOS 4-bit palettization 预设的 Qwen3-4B**，经 Core AI、首选 ANE | [ANE 编译失败，模型改在 GPU 上运行](findings/coreai-palettized-weights-gpu/)，宿主收不到错误，检查的首输出通过导出码对应的 CPU 参考：<!-- claim:g6.n.1024@g6-015 -->1K<!-- /claim --> decode 为 <!-- claim:g6.w4.decode.1024.rate@g6-016 -->2.87 token/s<!-- /claim -->，ANE 上的 FP16 快 <!-- claim:g6.w4.fp16-faster-decode@g6-017 -->5.1–8.1×<!-- /claim --> |
 | **测过的 Core ML direct signed-INT4 K64 图**，每行两个 K32 scale | 数值正确、选择 CPU。相关历史图报告 `ANE only support per-cout/per-tensor quantization`，不是所有 Q4 格式或表示的测试 |
 | **K32 拆分**为按输出通道的 scale | Core AI 小型兼容探针通过；独立合成消融[慢约 4 倍](findings/split-decomposition-cost/)，不是通用代价 |
 | **分组 4-bit 走 Core AI 原生 LUT 路径** | 接受、确有 ANE 活动，[并且算错](findings/coreai-flattened-scale/)——4096 个值里错 1921 个，且可预测 |
@@ -67,9 +71,9 @@
 | 部分 | 内容 |
 |---|---|
 | 🔧 **四件真正能用的事** | 让分组 4-bit 能上加速器的那个改写、修好 QDQ 乘法的图表达、链足够深时能加速的那种量化方案，以及回收 ANE 编译服务占住的磁盘空间——每一件都写清了代价和边界。[workarounds/](workarounds/) |
-| 📊 **完整模型测量** | [G4 A](findings/qwen3-4b-graph-capacity/)测量 Qwen3-4B FP16 在六档输入、各用匹配容量 ANE 图时的 prefill、decode 与组件能量；[G3](findings/qwen3-4b-prefill-decode/)测量同一模型在 256 / 2K / 32K 三档图上的表现。 |
+| 📊 **完整模型测量** | [G4 A](findings/qwen3-4b-graph-capacity/)测量 Qwen3-4B FP16 在六档输入、各用匹配容量 ANE 图时的 prefill、decode 与组件能量，G6 重复全部测点并把 decode 查询宽度减半；[G3](findings/qwen3-4b-prefill-decode/)测量同一模型在 256 / 2K / 32K 三档图上的表现。 |
 | 📊 **组件对照** | [G2](findings/w4a16-service-tradeoffs/)补入原生 W4A16 七档速度、原生宿主内存、同率与满负载温度与风扇响应、GPU 前台尾延迟。[早期 A8W4/W4A16/GPU 对照](findings/ane-vs-gpu-prefill/)保留原数值控制、按 PID 证据和停止状态；不同轮次不合并。 |
-| 🐛 **可复现的缺陷** | 三个工具链失败，各有最小复现、预期错误输出和配对反向对照，其中一个是 QDQ 乘法取了另一个 QDQ 的 scale；一个让整图静默转到 GPU 的编译失败；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个一直开着已删除编译输入的系统编译服务；一个结构性代价，三组配对进程测得。[findings/](findings/) |
+| 🐛 **可复现的缺陷** | 三个工具链失败，各有最小复现、预期错误输出和配对反向对照，其中一个是 QDQ 乘法取了另一个 QDQ 的 scale；一个让整图静默转到 GPU 的编译失败；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个一直开着已删除编译输入的系统编译服务；一个 ANE 在 1 和 2 个位置时拒绝的 decode 查询形状；一个 ANE 编译失败却不向宿主报错的 4-bit palettization 预设；一个结构性代价，三组配对进程测得。[findings/](findings/) |
 | 🔬 **一个算术模型** | 候选算术模型在两个真实模型的 7,163,904 个最终 Q8 gate 输出上留下 13 处差异——以及已经定位的一个 32 项点积，不需要任何 Apple 硬件即可从公开标量验证。[模型](findings/execution-model/) · [残差](findings/fp16-dot-residual/) |
 
 ## 这个仓库适合谁
@@ -90,7 +94,7 @@
 - 🧪 **想复现或推翻这些结论。** → [REPRODUCING.md](docs/REPRODUCING.md)。
   已注册陈述可从随仓库记录离线核对；历史完整数组重放仍需原资产。
 
-**状态。** 研究产物，不是受支持的产品。尚无外部复现。G3 与 G4 A 已有完整模型速度与软件组件能量，广泛的模型质量评测仍待完成。G2 有三个
+**状态。** 研究产物，不是受支持的产品。尚无外部复现；G6 在同一台机器的新宿主会话中重复了 G4 A 的全部测点。G3、G4 A 与 G6 已有完整模型速度与软件组件能量，广泛的模型质量评测仍待完成。G2 有三个
 限定条件：运行中有意外加载的动态屏保（收尾后才发现）；六个共存组中五组热起始不匹配；功率采集
 失败，能耗未判定。[G2 边界](docs/SCOPE.md#g2-service-observations) · [RESEARCH.md](docs/RESEARCH.md)
 
@@ -145,7 +149,7 @@ G2 测量一个原生 W4A16 MLP，GPU 基线使用 MLX。下图的单位是组�
 ## 快速开始
 
 先选要复现的结果：下方 `ane-scope run` 命令运行合成设备套件；首页 G2 的速度、内存、温度与风扇
-观察用 `python scripts/verify_g2.py` 离线重算；完整模型用 `python scripts/verify_g4a.py` 与 `python scripts/verify_g3.py`。G2 设备重跑仍需研究工作区与模型资产。
+观察用 `python scripts/verify_g2.py` 离线重算；完整模型用 `python scripts/verify_g4a.py`、`python scripts/verify_g6.py` 与 `python scripts/verify_g3.py`。G2 设备重跑仍需研究工作区与模型资产。
 [命令与结果对应表](docs/REPRODUCING.md#run) ·
 [当前源码的设备验证状态](docs/VALIDATION.md#current-checkout-versus-the-measured-source)
 
@@ -176,7 +180,10 @@ python results/historical/tests/verify_native_followup.py  # 原生后续记录
 python results/historical/tests/verify_arithmetic.py  # 执行模型与那个点积
 python results/historical/tests/verify_historical.py  # 导入的计时记录
 python scripts/verify_g4a.py                         # G4 A 匹配容量图的速度与组件能量
+python scripts/verify_g6.py                          # G6 decode 查询宽度、W4 与 G4 A 重复
 python scripts/verify_ane_compiler_disk.py           # ANE 编译服务占住的磁盘空间
+python findings/ane-short-decode-query/repro/verify.py  # 1 和 2 个位置的 decode 查询
+python findings/coreai-palettized-weights-gpu/repro/verify.py  # palettization 预设的执行设备
 python scripts/verify_g3.py                          # G3 完整模型速度与组件能量
 python scripts/verify_g2.py                          # G2 请求、温度与资源统计
 python scripts/verify_g1w.py                         # 量化加速条件与 E4B QAT MLP
@@ -206,7 +213,7 @@ Git 比较要求图文件已被跟踪；尚未提交的草稿应与修改前保�
 |---|---|
 | `workarounds/` | 四件真正能用的事，含各自的代价与边界 |
 | `findings/` | 每个发现一个目录：症状、复现、证据，以及哪些仍是假说 |
-| `results/historical/` | 导入记录——历史对照、算术证据，以及独立的 G2 服务、G3 与 G4 A 完整模型数据包 |
+| `results/historical/` | 导入记录——历史对照、算术证据，以及独立的 G2 服务、G3、G4 A 与 G6 完整模型数据包 |
 | `results/fresh/` | 本包三个设备套件的每一次测量调用 |
 | `src/ane_scope/_coreml.py`、`_coreai.py` | 导出适配器与持久化图/权重审计 |
 | `src/ane_scope/references/` | 确定性 fixture 与显式算术参考 |
@@ -242,7 +249,7 @@ Git 比较要求图文件已被跟踪；尚未提交的草稿应与修改前保�
 
 ## 什么会改变这个答案
 
-G4 A 回答了 G3 留下的问题：与输入匹配的图消除了 ANE 在长输入上的大部分劣势，但 GPU 仍然领先。接下来保持模型、输入和匹配容量图不变，每次只改一处：decode 查询宽度改为 1 个 token，以及 decode 改用 W4A16 权重。ANE 路径上的 GPU 能量来自哪里仍待查明。在第二颗 Apple 芯片上复现、在同一宿主中常驻数小时，以及更广的质量评测，可以检验结果能否迁移和持续。
+G4 A 回答了 G3 留下的问题：与输入匹配的图消除了 ANE 在长输入上的大部分劣势，但 GPU 仍然领先。G6 在同一组图上每次只改一处。decode 查询从 8 个位置减到 4 个，速度为原来的 <!-- claim:g6.q4-q8-speed@g6-010 -->1.001–1.008×<!-- /claim -->，在这组图上缩窄逻辑查询未带来明显速度收益；编译后填充工作的成本及更窄查询的收益仍未确定；1 或 2 个位置的查询[无法执行](findings/ane-short-decode-query/)。上游 iOS 4-bit palettization 预设整图在 GPU 上执行，<!-- claim:g6.n.1024@g6-011 -->1K<!-- /claim --> decode 为 <!-- claim:g6.w4.decode.1024.rate@g6-012 -->2.87 token/s<!-- /claim -->，ANE 上的 4-bit 权重 decode 仍未测到。ANE 路径上的 GPU 能量在两种查询宽度下都是 <!-- claim:g6.decode-gpu-energy@g6-013 -->0.257–0.265 J/token<!-- /claim -->，来源仍待查明。在第二颗 Apple 芯片上复现、在同一宿主中常驻数小时，以及更广的质量评测，可以检验结果能否迁移和持续。
 
 后续服务实验再测 GPU 风扇在 4.9 到 23.7 请求/s 之间从哪里开始升高，先覆盖 4.9 到约 6.4 请求/s；以及矩阵前台的尾延迟优势在关闭动画、匹配热起始并加入只占 CPU 的忙等基线后是否仍然存在。[RESEARCH.md](docs/RESEARCH.md) · [RELATED_WORK.md](docs/RELATED_WORK.md)
 

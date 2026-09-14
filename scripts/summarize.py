@@ -7,6 +7,7 @@ Without --write this checks the generated tables without changing them.
 """
 
 import argparse
+import importlib.util
 import json
 import math
 import re
@@ -287,6 +288,18 @@ def claims():
             ('README', 'README', [f'{max(r["tops"] for r in a8w4):.0f}'])]:
         for name in (f'articles/{stem}.md', f'articles/zh/{zh_name}.md'):
             registered[name] = list(dict.fromkeys(values))
+    spec = importlib.util.spec_from_file_location('short_query_verify', ROOT / 'findings/ane-short-decode-query/repro/verify.py')
+    short_query = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(short_query)
+    _, rows = short_query.outcomes()
+    registered['findings/ane-short-decode-query/README.md'] = sorted(
+        {str(r['ane_requests_before_failure']) for r in rows if r['ane_requests_before_failure']})
+    spec = importlib.util.spec_from_file_location('palettized_verify', ROOT / 'findings/coreai-palettized-weights-gpu/repro/verify.py')
+    palettized = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(palettized)
+    rows = palettized.placement()
+    registered['findings/coreai-palettized-weights-gpu/README.md'] = [
+        str(rows['fp16']['ane_requests']), str(rows['w4']['metal_shader_compiles'])]
     environment = load('results/historical/g2-w4a16-night/environment.json')
     for name in ('articles/04-w4a16-service-tradeoffs.md',
                  'articles/zh/04-W4A16留在ANE上值得吗.md'):
@@ -309,8 +322,10 @@ def main():
     g1w, g5 = derive_g1w(), derive_g5()
     from g4a.evidence import derive as derive_g4a, measurements as g4a_measurements
     g4a = derive_g4a()
+    from g6.evidence import derive as derive_g6, measurements as g6_measurements
+    g6 = derive_g6()
     text = (measurements() + '\n' + g2_measurements(g2) + '\n' + g3_measurements(g3) + '\n'
-            + g1w_measurements(g1w) + '\n' + g5_measurements(g5) + '\n' + g4a_measurements(g4a))
+            + g1w_measurements(g1w) + '\n' + g5_measurements(g5) + '\n' + g4a_measurements(g4a) + '\n' + g6_measurements(g6))
     if args.write:
         MEASUREMENTS.write_text(text)
         print(f'wrote {MEASUREMENTS.relative_to(ROOT)}')
@@ -321,9 +336,11 @@ def main():
     from component_claims import check as check_component_quotes
     from g1w.claims import quantities as g1w_quantities
     from g5.claims import quantities as g5_quantities
+    from g6.claims import quantities as g6_quantities
     problems = (check_local_quotes(ROOT, g2) + check_g3_quotes(ROOT, g3) + check_g4a_quotes(ROOT, g4a)
                 + check_component_quotes(ROOT, 'g1w', g1w_quantities(g1w))
-                + check_component_quotes(ROOT, 'g5', g5_quantities(g5)))
+                + check_component_quotes(ROOT, 'g5', g5_quantities(g5))
+                + check_component_quotes(ROOT, 'g6', g6_quantities(g6)))
     if MEASUREMENTS.read_text() != text:
         problems.append('docs/MEASUREMENTS.md differs from the bundled records; '
                         'rerun with --write')

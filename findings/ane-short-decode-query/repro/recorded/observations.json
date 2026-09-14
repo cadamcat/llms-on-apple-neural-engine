@@ -1,0 +1,1027 @@
+{
+  "cases": [
+    {
+      "case": "c1280-n1024-r1",
+      "varies": "36 layers, G4 A tier; 1,024-token input; fresh host per query",
+      "asset": {
+        "layers": 36,
+        "trace_query": 8,
+        "functions": [
+          "extend_1280_1",
+          "extend_1280_64",
+          "extend_1280_8",
+          "gather_embeddings_1",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_1280_64"
+        ],
+        "decode_signatures": {
+          "extend_1280_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "extend_1280_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "extend_1280_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          }
+        },
+        "capacity": 1280
+      },
+      "input": "reading_1024",
+      "input_tokens": 1024,
+      "queries_in_order": [
+        8,
+        1
+      ],
+      "decode_steps_requested": 2,
+      "host": "G4 A host, query allow-list [1, 8]",
+      "environment": null,
+      "results": {
+        "8": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            14374,
+            21517,
+            315
+          ],
+          "graphs": [
+            "extend_1280_64",
+            "extend_1280_8",
+            "prompt_opt_1280_64"
+          ],
+          "final_KV": 1026,
+          "host_returncode": 0,
+          "log": {
+            "ane_direct_request_success_rows": 21,
+            "failure_status_lines": [],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_8",
+              "prompt_opt_1280_64",
+              "extend_1280_64",
+              "extend_1280_8"
+            ]
+          },
+          "mpsgraph_assertion": null
+        },
+        "1": {
+          "passed": false,
+          "error": "RuntimeError:host_eof",
+          "ids": null,
+          "graphs": null,
+          "final_KV": null,
+          "host_returncode": 130,
+          "log": {
+            "ane_direct_request_success_rows": 19,
+            "failure_status_lines": [
+              "ANE_ProgramSendRequest:1029 status=e00002c2",
+              "ANEProgramProcessRequestDirect() Failed with status=0x2 : statusType=0x9"
+            ],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_1",
+              "prompt_opt_1280_64",
+              "extend_1280_64",
+              "extend_1280_1"
+            ]
+          },
+          "mpsgraph_assertion": {
+            "error_code": -19,
+            "inference_count": 19,
+            "failure_count": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "l1-c768-q1-8-64-t8-r2",
+      "varies": "1 layer; functions for queries 1, 8 and 64",
+      "asset": {
+        "layers": 1,
+        "trace_query": 8,
+        "functions": [
+          "extend_768_1",
+          "extend_768_64",
+          "extend_768_8",
+          "gather_embeddings_1",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_768_64"
+        ],
+        "decode_signatures": {
+          "extend_768_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          }
+        },
+        "capacity": 768
+      },
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries_in_order": [
+        8,
+        1
+      ],
+      "decode_steps_requested": 2,
+      "host": "G4 A host, query allow-list [1, 8]",
+      "environment": {
+        "coreai-core": "1.0.0b2",
+        "coreai-torch": "0.4.2",
+        "torch": "2.9.0",
+        "transformers": "5.12.1"
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_768_64",
+            "extend_768_8"
+          ],
+          "final_KV": 28,
+          "host_returncode": 0,
+          "log": {
+            "ane_direct_request_success_rows": 6,
+            "failure_status_lines": [],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_8",
+              "prompt_opt_768_64",
+              "extend_768_64",
+              "extend_768_8"
+            ]
+          },
+          "mpsgraph_assertion": null
+        },
+        "1": {
+          "passed": false,
+          "error": "RuntimeError:host_eof",
+          "ids": null,
+          "graphs": null,
+          "final_KV": null,
+          "host_returncode": 130,
+          "log": {
+            "ane_direct_request_success_rows": 2,
+            "failure_status_lines": [
+              "ANE_ProgramSendRequest:1029 status=e00002c2",
+              "ANEProgramProcessRequestDirect() Failed with status=0x2 : statusType=0x9"
+            ],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_1",
+              "prompt_opt_768_64",
+              "extend_768_64",
+              "extend_768_1"
+            ]
+          },
+          "mpsgraph_assertion": {
+            "error_code": -19,
+            "inference_count": 2,
+            "failure_count": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "l1-c768-q1-64-t8-r1",
+      "varies": "1 layer; no query-8 function in the bundle",
+      "asset": {
+        "layers": 1,
+        "trace_query": 8,
+        "functions": [
+          "extend_768_1",
+          "extend_768_64",
+          "gather_embeddings_1",
+          "gather_embeddings_64",
+          "load_embeddings",
+          "prompt_opt_768_64"
+        ],
+        "decode_signatures": {
+          "extend_768_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          }
+        },
+        "capacity": 768
+      },
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries_in_order": [
+        1
+      ],
+      "decode_steps_requested": 2,
+      "host": "G4 A host, query allow-list [1, 8]",
+      "environment": {
+        "coreai-core": "1.0.0b2",
+        "coreai-torch": "0.4.2",
+        "torch": "2.9.0",
+        "transformers": "5.12.1"
+      },
+      "results": {
+        "1": {
+          "passed": false,
+          "error": "RuntimeError:host_eof",
+          "ids": null,
+          "graphs": null,
+          "final_KV": null,
+          "host_returncode": 130,
+          "log": {
+            "ane_direct_request_success_rows": 3,
+            "failure_status_lines": [
+              "ANE_ProgramSendRequest:1029 status=e00002c2",
+              "ANEProgramProcessRequestDirect() Failed with status=0x2 : statusType=0x9"
+            ],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_1",
+              "prompt_opt_768_64",
+              "extend_768_64",
+              "extend_768_1"
+            ]
+          },
+          "mpsgraph_assertion": {
+            "error_code": -19,
+            "inference_count": 2,
+            "failure_count": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "l1-c768-q12483-t8-q8-q4",
+      "varies": "1 layer; functions for queries 1, 2, 4, 8 and 64",
+      "asset": {
+        "layers": 1,
+        "trace_query": 8,
+        "functions": [
+          "extend_768_1",
+          "extend_768_2",
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "gather_embeddings_1",
+          "gather_embeddings_2",
+          "gather_embeddings_4",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_768_64"
+        ],
+        "decode_signatures": {
+          "extend_768_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_2": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 2 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 2)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 2)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 2 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          }
+        },
+        "capacity": 768
+      },
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries_in_order": [
+        8,
+        4
+      ],
+      "decode_steps_requested": 2,
+      "host": "diagnostic host, query allow-list [1, 2, 4, 8]",
+      "environment": {
+        "coreai-core": "1.0.0b2",
+        "coreai-torch": "0.4.2",
+        "torch": "2.9.0",
+        "transformers": "5.12.1"
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_768_64",
+            "extend_768_8"
+          ],
+          "final_KV": 28,
+          "host_returncode": 0,
+          "log": {
+            "ane_direct_request_success_rows": 6,
+            "failure_status_lines": [],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_8",
+              "prompt_opt_768_64",
+              "extend_768_64",
+              "extend_768_8"
+            ]
+          },
+          "mpsgraph_assertion": null
+        },
+        "4": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_768_4",
+            "extend_768_64"
+          ],
+          "final_KV": 28,
+          "host_returncode": 0,
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 117014,
+              "actual_argmax": 117014,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 117014,
+              "actual_argmax": 117014,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 117014,
+              "actual_argmax": 117014,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "log": {
+            "ane_direct_request_success_rows": 6,
+            "failure_status_lines": [],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_4",
+              "prompt_opt_768_64",
+              "extend_768_64",
+              "extend_768_4"
+            ]
+          },
+          "mpsgraph_assertion": null
+        }
+      }
+    },
+    {
+      "case": "l1-c768-q12483-t8-q8-q2",
+      "varies": "1 layer; functions for queries 1, 2, 4, 8 and 64",
+      "asset": {
+        "layers": 1,
+        "trace_query": 8,
+        "functions": [
+          "extend_768_1",
+          "extend_768_2",
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "gather_embeddings_1",
+          "gather_embeddings_2",
+          "gather_embeddings_4",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_768_64"
+        ],
+        "decode_signatures": {
+          "extend_768_1": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 1 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 1)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 1)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 1 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_2": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 2 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 2)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 2)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 2 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          }
+        },
+        "capacity": 768
+      },
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries_in_order": [
+        8,
+        2
+      ],
+      "decode_steps_requested": 2,
+      "host": "diagnostic host, query allow-list [1, 2, 4, 8]",
+      "environment": {
+        "coreai-core": "1.0.0b2",
+        "coreai-torch": "0.4.2",
+        "torch": "2.9.0",
+        "transformers": "5.12.1"
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "error": null,
+          "ids": [
+            117014,
+            117014,
+            117014
+          ],
+          "graphs": [
+            "extend_768_64",
+            "extend_768_8"
+          ],
+          "final_KV": 28,
+          "host_returncode": 0,
+          "log": {
+            "ane_direct_request_success_rows": 6,
+            "failure_status_lines": [],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_8",
+              "prompt_opt_768_64",
+              "extend_768_64",
+              "extend_768_8"
+            ]
+          },
+          "mpsgraph_assertion": null
+        },
+        "2": {
+          "passed": false,
+          "error": "RuntimeError:host_eof",
+          "ids": null,
+          "graphs": null,
+          "final_KV": null,
+          "host_returncode": 130,
+          "log": {
+            "ane_direct_request_success_rows": 2,
+            "failure_status_lines": [
+              "ANE_ProgramSendRequest:1029 status=e00002c2",
+              "ANEProgramProcessRequestDirect() Failed with status=0x2 : statusType=0x9"
+            ],
+            "loaded_functions": [
+              "gather_embeddings_64",
+              "gather_embeddings_2",
+              "prompt_opt_768_64",
+              "extend_768_64",
+              "extend_768_2"
+            ]
+          },
+          "mpsgraph_assertion": {
+            "error_code": -19,
+            "inference_count": 2,
+            "failure_count": 0
+          }
+        }
+      }
+    }
+  ],
+  "trace_query_1_export": {
+    "command_options": "--queries 1 8 64 --trace-query 1 --layers 1 --capacities 768",
+    "torch_export_error": "- You marked seq_len as dynamic but your code specialized it to be a constant (1). If you're using mark_dynamic, either remove it or use maybe_mark_dynamic. If you're using Dim.DYNAMIC, replace it with either Dim.STATIC or Dim.AUTO."
+  },
+  "host_query_allow_list_diff": {
+    "swift/Sources/Tools/g3-flow-host/G3Host.swift": [
+      "-                [1,8].contains(command.decode_query ?? 0),",
+      "+                [1,2,4,8].contains(command.decode_query ?? 0),"
+    ],
+    "swift/Sources/CoreAILanguageModels/InferenceEngines/CoreAIStaticShapeEngine.swift": [
+      "-        guard [1,8].contains(decodeQuery), capacity <= config.maxContextLength else {",
+      "+        guard [1,2,4,8].contains(decodeQuery), capacity <= config.maxContextLength else {"
+    ]
+  },
+  "scripts_sha256_at_import": {
+    "export_small.py": "90d1e607423fc65d5040ef77bd7a1d553fcfe9a895781b7e0d8ae68c68c819d9",
+    "q1_probe.py": "4ef50bf55c47ef601262ffb52a095ea7be4963a473f0041c07277ea268b82505"
+  },
+  "upstream_default_query_lengths": [
+    8,
+    16,
+    64
+  ],
+  "scope": "One M5 Pro, macOS 27.0 (26A428), coreai-models 7304c47, coreai-torch 0.4.2. Unified-log rows are filtered to each host PID after the host reported ready; only counts, status lines and loaded function names are kept."
+}

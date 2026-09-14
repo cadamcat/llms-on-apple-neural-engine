@@ -1,0 +1,7904 @@
+{
+  "tiers": [
+    {
+      "weights": "fp16",
+      "capacity": 768,
+      "tier": {
+        "capacity": 768,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
+        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "prompt_opt_768_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_4",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_4",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_8448_4",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "prompt_opt_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "extend_768_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "extend_768_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_768_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 768 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_768_64",
+          "extend_768_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_768_64"
+        ],
+        "main_bytes": 8065519675,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g6-q4-c768",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g6-q4-c768.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 768,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-13T18:47:25.432869+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "9dd59a9c193068aa91bcfb04e85a02a09ea9548bac7159dd37899fc16810e408",
+      "main_hash": "326a82845644c36443b328440aee2ac07368cc9e6991c8e6b762b66730727c1f",
+      "main_hash_file_sha256": "9b14ddac9a4cc8e4a0748e12808991107b5f533a06e41a274e55740dd8770f6f",
+      "main_mlirb_bytes": 8065519675
+    },
+    {
+      "weights": "fp16",
+      "capacity": 1280,
+      "tier": {
+        "capacity": 1280,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
+        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "prompt_opt_1280_64"
+        ],
+        "removed_graphs": [
+          "extend_16640_4",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_4",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_4",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "extend_1280_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "prompt_opt_1280_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_1280_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_1280_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_1280_64",
+          "extend_1280_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_1280_64"
+        ],
+        "main_bytes": 8065500559,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g6-q4-c1280",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g6-q4-c1280.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 1280,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-13T18:47:25.432869+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "8c85f520046c9c579055f2292e6c3dbe75f599c5cbafea4357f33af745b39ac6",
+      "main_hash": "47192ab6436f11d4c17c7a4f9d10feacb74c692aea6738e40d64bd39c9fc3e41",
+      "main_hash_file_sha256": "570f145a377f012bc66a6b3f62759e9f258ed987de5d9bdce5584d12f1648fd3",
+      "main_mlirb_bytes": 8065500559
+    },
+    {
+      "weights": "fp16",
+      "capacity": 2304,
+      "tier": {
+        "capacity": 2304,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
+        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_2304_4",
+          "extend_2304_64",
+          "extend_2304_8",
+          "prompt_opt_2304_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_4",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_4",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "extend_2304_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_2304_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "prompt_opt_2304_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_2304_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 2304 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_2304_64",
+          "extend_2304_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_2304_64"
+        ],
+        "main_bytes": 8065517663,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g6-q4-c2304",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g6-q4-c2304.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 2304,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-13T18:47:25.432869+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "ef725c89d842841f353bcf83663d384944dc996f69faee545dcbd1643ba04618",
+      "main_hash": "8880156c3ffa359bec16ca5530bd83d718b3a1402b88756c55e2cfa71b8e6add",
+      "main_hash_file_sha256": "c7feab3e0aeaf1943daec6ee119481bb91abfad603bd002038cf51c308cf4fc3",
+      "main_mlirb_bytes": 8065517663
+    },
+    {
+      "weights": "fp16",
+      "capacity": 4352,
+      "tier": {
+        "capacity": 4352,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
+        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "prompt_opt_4352_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_4",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_4",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_4",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "extend_4352_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_4352_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "prompt_opt_4352_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_4352_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_4352_64",
+          "extend_4352_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_4352_64"
+        ],
+        "main_bytes": 8065520063,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g6-q4-c4352",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g6-q4-c4352.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 4352,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-13T18:47:25.432869+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "bad0b99d120b683ff873f1c6dee28f2a5c4e0dc110156a40adbcec49644e295a",
+      "main_hash": "7483bcfc2f7c22e038ead3acb6d1a225a0c9bcc9ff3806a11f039b1c543b99e4",
+      "main_hash_file_sha256": "a173404f7afd07d07f5a9fac985de40d5bbe1a2f9b4ed5d1fd8afcba8f6c0371",
+      "main_mlirb_bytes": 8065520063
+    },
+    {
+      "weights": "fp16",
+      "capacity": 8448,
+      "tier": {
+        "capacity": 8448,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
+        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_8448_4",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_8448_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_16640_4",
+          "extend_16640_64",
+          "extend_16640_8",
+          "extend_2304_4",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_16640_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64"
+        ],
+        "functions": {
+          "extend_8448_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_8448_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_8448_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "prompt_opt_8448_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 8448 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_8448_64",
+          "extend_8448_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_8448_64"
+        ],
+        "main_bytes": 8065520287,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g6-q4-c8448",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g6-q4-c8448.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 8448,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-13T18:47:25.432869+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "8ac39415b3ef74262cad407710e0da66f14725b0cf06f70e352f1dcc2903270b",
+      "main_hash": "d2f3a1d86c58d94e5748991766f4b76c302d2c994f07ca042519c8534e51c0e7",
+      "main_hash_file_sha256": "0dd051af6f5034b4f4865b01fed1d8e280043dd33f75048079ba0dcd1be2d64a",
+      "main_mlirb_bytes": 8065520287
+    },
+    {
+      "weights": "fp16",
+      "capacity": 16640,
+      "tier": {
+        "capacity": 16640,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
+        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_16640_4",
+          "extend_16640_64",
+          "extend_16640_8",
+          "prompt_opt_16640_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "extend_2304_4",
+          "extend_2304_64",
+          "extend_2304_8",
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "extend_768_4",
+          "extend_768_64",
+          "extend_768_8",
+          "extend_8448_4",
+          "extend_8448_64",
+          "extend_8448_8",
+          "prompt_opt_1280_64",
+          "prompt_opt_2304_64",
+          "prompt_opt_4352_64",
+          "prompt_opt_768_64",
+          "prompt_opt_8448_64"
+        ],
+        "functions": {
+          "extend_16640_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_16640_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "extend_16640_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "prompt_opt_16640_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 16640 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_16640_64",
+          "extend_16640_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_16640_64"
+        ],
+        "main_bytes": 8065518595,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-fp16-ane-g6-q4-c16640",
+        "assets": {
+          "main": "qwen3-4b-fp16-ane-g6-q4-c16640.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 16640,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": null,
+        "compilation": {
+          "date": "2026-09-13T18:47:25.432869+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "97f4decbd5152be2336febe6fe0e5964ba3df30778029b7245ba50c4dcfd4a31",
+      "main_hash": "47940f884903f017bec62fb553bae6c972171a2a7fb01a139a3d2d381c3901bc",
+      "main_hash_file_sha256": "98048bddf2858be6eef147b5c16290b85b77218b5da44aa6b938d76d223e175c",
+      "main_mlirb_bytes": 8065518595
+    },
+    {
+      "weights": "w4",
+      "capacity": 1280,
+      "tier": {
+        "capacity": 1280,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-w4g32-ane-g6-canonical/qwen3-4b-w4g32-ane-g6-canonical.aimodel",
+        "family": "w4",
+        "source_main_hash": "8cf3948340798f9ba60bc856fa99696f84789872602937fe82d1ca56dd4b1b5f",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "prompt_opt_1280_64"
+        ],
+        "removed_graphs": [
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "prompt_opt_4352_64"
+        ],
+        "functions": {
+          "extend_1280_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_1280_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          },
+          "prompt_opt_1280_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_1280_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 1280 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_1280_64",
+          "extend_1280_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_1280_64"
+        ],
+        "main_bytes": 2616739131,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-w4g32-ane-g6-c1280",
+        "assets": {
+          "main": "qwen3-4b-w4g32-ane-g6-c1280.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 1280,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": "4bit_weight_palettized_group32",
+        "compilation": {
+          "date": "2026-09-13T19:00:22.469541+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "e7635d207b7f8bf412f07b6eefd705c54b6ffaa902059aa7a43bce6ce9a1dc67",
+      "main_hash": "c4f9c22b1c47693c626a51124aadc772b8661e16f746dd15ed05eabc91c07700",
+      "main_hash_file_sha256": "9cbaffd4c8b736bcc70a598d97a617a4986b5e8e3dc4152ceb31415d72911fe0",
+      "main_mlirb_bytes": 2616739131
+    },
+    {
+      "weights": "w4",
+      "capacity": 4352,
+      "tier": {
+        "capacity": 4352,
+        "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-w4g32-ane-g6-canonical/qwen3-4b-w4g32-ane-g6-canonical.aimodel",
+        "family": "w4",
+        "source_main_hash": "8cf3948340798f9ba60bc856fa99696f84789872602937fe82d1ca56dd4b1b5f",
+        "kept_graphs_unchanged_before_serialization": [
+          "extend_4352_4",
+          "extend_4352_64",
+          "extend_4352_8",
+          "prompt_opt_4352_64"
+        ],
+        "removed_graphs": [
+          "extend_1280_4",
+          "extend_1280_64",
+          "extend_1280_8",
+          "prompt_opt_1280_64"
+        ],
+        "functions": {
+          "gather_embeddings_4": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_4352_4": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 4 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 4)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 4)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 4 × 151936)"
+              ]
+            ]
+          },
+          "prompt_opt_4352_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16)"
+              ]
+            ]
+          },
+          "gather_embeddings_64": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ]
+            ]
+          },
+          "load_embeddings": {
+            "inputs": [],
+            "outputs": [
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ]
+          },
+          "extend_4352_8": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 8)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 8 × 151936)"
+              ]
+            ]
+          },
+          "extend_4352_64": {
+            "inputs": [
+              [
+                "transformer_input",
+                "NDArray (Float16, 1 × 64 × 1 × 2560)"
+              ],
+              [
+                "position_ids",
+                "NDArray (UInt16, 1 × 64)"
+              ],
+              [
+                "in_step",
+                "NDArray (Int32, 1)"
+              ],
+              [
+                "causal_mask",
+                "NDArray (Float16, 1 × 4352 × 1 × 64)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "out_logits",
+                "NDArray (Float16, 1 × 1 × 64 × 151936)"
+              ]
+            ]
+          },
+          "gather_embeddings_8": {
+            "inputs": [
+              [
+                "in_new_token_ids",
+                "NDArray (Int32, 1 × 8)"
+              ],
+              [
+                "embedding_table",
+                "NDArray (Float16, 151936 × 1 × 2560)"
+              ]
+            ],
+            "outputs": [
+              [
+                "gathered_embeddings",
+                "NDArray (Float16, 1 × 8 × 1 × 2560)"
+              ]
+            ]
+          }
+        },
+        "signatures_equal_to_G4_A": [
+          "extend_4352_64",
+          "extend_4352_8",
+          "gather_embeddings_64",
+          "gather_embeddings_8",
+          "load_embeddings",
+          "prompt_opt_4352_64"
+        ],
+        "main_bytes": 2616746971,
+        "compiled": false,
+        "numerics_verified": false
+      },
+      "metadata": {
+        "metadata_version": "0.2",
+        "kind": "llm",
+        "name": "qwen3-4b-w4g32-ane-g6-c4352",
+        "assets": {
+          "main": "qwen3-4b-w4g32-ane-g6-c4352.aimodel"
+        },
+        "language": {
+          "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+          "vocab_size": 151936,
+          "max_context_length": 4352,
+          "embedded_tokenizer": true,
+          "function_map": {
+            "main": [
+              "main"
+            ]
+          }
+        },
+        "source": {
+          "model_definition": "torch",
+          "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+        },
+        "compression": "4bit_weight_palettized_group32",
+        "compilation": {
+          "date": "2026-09-13T19:00:22.469541+02:00",
+          "targets": []
+        }
+      },
+      "metadata_sha256": "d5cdc0e48b144f64d55b6bd5e595dadd0be31a9e4fe0e9ec6252e4cd3d853359",
+      "main_hash": "8330b8c297316a0c66bb6af61c873beefbe4f1d5e9e778eec3e92c65b1a59e3d",
+      "main_hash_file_sha256": "a1982f20210120c8d3aa8ad06c76161142f7cc88ebe79e85e7923bcd95fa14f9",
+      "main_mlirb_bytes": 2616746971
+    }
+  ],
+  "w4_preset": {
+    "exporter_compression": "coreai-models IOS_PRESETS 4bit_weight_palettized_group32",
+    "n_bits": 4,
+    "granularity": "per_grouped_channel",
+    "axis": 0,
+    "group_size": 32,
+    "embedding": "float16 (disable_embedding_quantization)",
+    "activations_and_kv": "float16",
+    "canonical_metadata": {
+      "metadata_version": "0.2",
+      "kind": "llm",
+      "name": "qwen3-4b-w4g32-ane-g6-canonical",
+      "assets": {
+        "main": "qwen3-4b-w4g32-ane-g6-canonical.aimodel"
+      },
+      "language": {
+        "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+        "vocab_size": 151936,
+        "max_context_length": 33024,
+        "embedded_tokenizer": true,
+        "function_map": {
+          "main": [
+            "main"
+          ]
+        }
+      },
+      "source": {
+        "model_definition": "torch",
+        "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+      },
+      "compression": "4bit_weight_palettized_group32",
+      "compilation": {
+        "date": "2026-09-13T19:00:22.469541+02:00",
+        "targets": []
+      }
+    }
+  },
+  "w4_codes": {
+    "count": 252,
+    "modules": {
+      "model.layers.0.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.0.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.0.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.0.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.0.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.0.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.0.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.1.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.1.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.1.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.1.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.1.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.1.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.1.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.2.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.2.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.2.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.2.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.2.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.2.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.2.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.3.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.3.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.3.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.3.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.3.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.3.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.3.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.4.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.4.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.4.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.4.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.4.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.4.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.4.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.5.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.5.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.5.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.5.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.5.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.5.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.5.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.6.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.6.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.6.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.6.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.6.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.6.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.6.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.7.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.7.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.7.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.7.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.7.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.7.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.7.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.8.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.8.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.8.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.8.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.8.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.8.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.8.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.9.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.9.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.9.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.9.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.9.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.9.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.9.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.10.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.10.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.10.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.10.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.10.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.10.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.10.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.11.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.11.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.11.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.11.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.11.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.11.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.11.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.12.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.12.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.12.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.12.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.12.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.12.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.12.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.13.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.13.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.13.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.13.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.13.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.13.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.13.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.14.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.14.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.14.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.14.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.14.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.14.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.14.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.15.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.15.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.15.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.15.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.15.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.15.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.15.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.16.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.16.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.16.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.16.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.16.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.16.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.16.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.17.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.17.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.17.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.17.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.17.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.17.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.17.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.18.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.18.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.18.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.18.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.18.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.18.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.18.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.19.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.19.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.19.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.19.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.19.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.19.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.19.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.20.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.20.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.20.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.20.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.20.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.20.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.20.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.21.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.21.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.21.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.21.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.21.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.21.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.21.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.22.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.22.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.22.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.22.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.22.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.22.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.22.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.23.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.23.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.23.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.23.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.23.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.23.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.23.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.24.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.24.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.24.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.24.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.24.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.24.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.24.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.25.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.25.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.25.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.25.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.25.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.25.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.25.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.26.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.26.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.26.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.26.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.26.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.26.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.26.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.27.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.27.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.27.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.27.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.27.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.27.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.27.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.28.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.28.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.28.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.28.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.28.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.28.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.28.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.29.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.29.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.29.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.29.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.29.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.29.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.29.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.30.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.30.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.30.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.30.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.30.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.30.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.30.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.31.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.31.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.31.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.31.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.31.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.31.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.31.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.32.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.32.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.32.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.32.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.32.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.32.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.32.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.33.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.33.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.33.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.33.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.33.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.33.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.33.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.34.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.34.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.34.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.34.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.34.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.34.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.34.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.35.self_attn.q_proj.weight": {
+        "indices_shape": [
+          4096,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          128,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.35.self_attn.k_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.35.self_attn.v_proj.weight": {
+        "indices_shape": [
+          1024,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          32,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.35.self_attn.o_proj.weight": {
+        "indices_shape": [
+          2560,
+          4096,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.35.mlp.gate_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.35.mlp.up_proj.weight": {
+        "indices_shape": [
+          9728,
+          2560,
+          1,
+          1
+        ],
+        "lut_shape": [
+          304,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      },
+      "model.layers.35.mlp.down_proj.weight": {
+        "indices_shape": [
+          2560,
+          9728,
+          1,
+          1
+        ],
+        "lut_shape": [
+          80,
+          1,
+          1,
+          1,
+          16,
+          1
+        ],
+        "group_size": 32,
+        "vector_axis": 0,
+        "max_index": 15
+      }
+    },
+    "inventory_sha256": "dc4771d772e15f9be45912e1bf77b7da30bbe41556462f22a3919d6f471ba490"
+  },
+  "w4_reference": {
+    "reference": "HF CPU FP16 SDPA with exported W4 codes dequantized (252 projections)",
+    "codes": "workplans/g6-night-20260913/assets/qwen3-4b-w4g32-ane-g6-canonical-codes",
+    "codes_inventory_sha256": "dc4771d772e15f9be45912e1bf77b7da30bbe41556462f22a3919d6f471ba490",
+    "source": "workplans/g3-qwen3-4b-20260911/model-source",
+    "cases": {
+      "quality_short": {
+        "input_tokens": 26,
+        "logits_file": "quality_short.npy",
+        "argmax": 59604,
+        "fp16_argmax": 59604,
+        "w4_vs_fp16_reference": {
+          "KL_ref_to_actual": 0.00011521370301208569,
+          "top5_recall": 0.8,
+          "max_abs_error_diagnostic": 14.84375,
+          "reference_argmax": 59604,
+          "actual_argmax": 59604,
+          "confident_argmax": false,
+          "passed": true
+        }
+      },
+      "reading_1024": {
+        "input_tokens": 1024,
+        "logits_file": "reading_1024.npy",
+        "argmax": 334,
+        "fp16_argmax": 14374,
+        "w4_vs_fp16_reference": {
+          "KL_ref_to_actual": 0.26369522340767326,
+          "top5_recall": 0.6,
+          "max_abs_error_diagnostic": 14.15625,
+          "reference_argmax": 14374,
+          "actual_argmax": 334,
+          "confident_argmax": false,
+          "passed": false
+        }
+      }
+    },
+    "weight_rel_l2": {
+      "min": 0.09993851184844971,
+      "median": 0.10793983936309814,
+      "max": 0.12147056311368942
+    },
+    "scope": "Reference for conversion, compile and ANE execution of these codes; the W4-vs-FP16 comparison is the quantization difference, not a quality evaluation."
+  },
+  "fp16_canonical_metadata": {
+    "metadata_version": "0.2",
+    "kind": "llm",
+    "name": "qwen3-4b-fp16-ane-g6-q4-canonical",
+    "assets": {
+      "main": "qwen3-4b-fp16-ane-g6-q4-canonical.aimodel"
+    },
+    "language": {
+      "tokenizer": "workplans/g3-qwen3-4b-20260911/model-source",
+      "vocab_size": 151936,
+      "max_context_length": 33024,
+      "embedded_tokenizer": true,
+      "function_map": {
+        "main": [
+          "main"
+        ]
+      }
+    },
+    "source": {
+      "model_definition": "torch",
+      "hf_model_id": "workplans/g3-qwen3-4b-20260911/model-source"
+    },
+    "compression": null,
+    "compilation": {
+      "date": "2026-09-13T18:47:25.432869+02:00",
+      "targets": []
+    }
+  },
+  "admissions": {
+    "q4-c1280-reading_1024": {
+      "capacity": 1280,
+      "input": "reading_1024",
+      "input_tokens": 1024,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": null,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-fp16-ane-g6-q4-c1280",
+      "placement_logs": {
+        "q4-log.ndjson": {
+          "ane_direct_request_success_rows": 21,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_4",
+            "prompt_opt_1280_64",
+            "extend_1280_64",
+            "extend_1280_4"
+          ]
+        },
+        "q8-log.ndjson": {
+          "ane_direct_request_success_rows": 21,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_1280_64",
+            "extend_1280_64",
+            "extend_1280_8"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 1026,
+          "ids": [
+            14374,
+            21517,
+            315
+          ],
+          "graphs": [
+            "extend_1280_64",
+            "extend_1280_8",
+            "prompt_opt_1280_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 0.007433979597900731,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 1.4375,
+            "reference_argmax": 14374,
+            "actual_argmax": 14374,
+            "confident_argmax": false,
+            "passed": true
+          },
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 1026,
+          "ids": [
+            14374,
+            21517,
+            315
+          ],
+          "graphs": [
+            "extend_1280_4",
+            "extend_1280_64",
+            "prompt_opt_1280_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 0.007433979597900731,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 1.4375,
+            "reference_argmax": 14374,
+            "actual_argmax": 14374,
+            "confident_argmax": false,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 14374,
+              "actual_argmax": 14374,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 21517,
+              "actual_argmax": 21517,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 315,
+              "actual_argmax": 315,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    },
+    "q4-c768-quality_short": {
+      "capacity": 768,
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": null,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-fp16-ane-g6-q4-c768",
+      "placement_logs": {
+        "q4-log.ndjson": {
+          "ane_direct_request_success_rows": 6,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_4",
+            "prompt_opt_768_64",
+            "extend_768_64",
+            "extend_768_4"
+          ]
+        },
+        "q8-log.ndjson": {
+          "ane_direct_request_success_rows": 6,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_768_64",
+            "extend_768_64",
+            "extend_768_8"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_768_64",
+            "extend_768_8"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_768_4",
+            "extend_768_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 59604,
+              "actual_argmax": 59604,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    },
+    "q4-c2304-quality_short-switch": {
+      "capacity": 2304,
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": true,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-fp16-ane-g6-q4-c2304",
+      "placement_logs": {
+        "switch-log.ndjson": {
+          "ane_direct_request_success_rows": 12,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_2304_64",
+            "extend_2304_64",
+            "extend_2304_8",
+            "gather_embeddings_4",
+            "extend_2304_4"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_2304_64",
+            "extend_2304_8"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_2304_4",
+            "extend_2304_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 59604,
+              "actual_argmax": 59604,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    },
+    "q4-c4352-quality_short-switch": {
+      "capacity": 4352,
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": true,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-fp16-ane-g6-q4-c4352",
+      "placement_logs": {
+        "switch-log.ndjson": {
+          "ane_direct_request_success_rows": 12,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_4352_64",
+            "extend_4352_64",
+            "extend_4352_8",
+            "gather_embeddings_4",
+            "extend_4352_4"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_4352_64",
+            "extend_4352_8"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_4352_4",
+            "extend_4352_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 59604,
+              "actual_argmax": 59604,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    },
+    "q4-c8448-quality_short-switch": {
+      "capacity": 8448,
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": true,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-fp16-ane-g6-q4-c8448",
+      "placement_logs": {
+        "switch-log.ndjson": {
+          "ane_direct_request_success_rows": 12,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_8448_64",
+            "extend_8448_64",
+            "extend_8448_8",
+            "gather_embeddings_4",
+            "extend_8448_4"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_8448_64",
+            "extend_8448_8"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_8448_4",
+            "extend_8448_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 59604,
+              "actual_argmax": 59604,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    },
+    "q4-c16640-quality_short-switch": {
+      "capacity": 16640,
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": true,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-fp16-ane-g6-q4-c16640",
+      "placement_logs": {
+        "switch-log.ndjson": {
+          "ane_direct_request_success_rows": 12,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 0,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_16640_64",
+            "extend_16640_64",
+            "extend_16640_8",
+            "gather_embeddings_4",
+            "extend_16640_4"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_16640_64",
+            "extend_16640_8"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_16640_4",
+            "extend_16640_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 2.52740916320575e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.4271240234375,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 59604,
+              "actual_argmax": 59604,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    },
+    "w4-c1280-reading_1024-switch": {
+      "capacity": 1280,
+      "input": "reading_1024",
+      "input_tokens": 1024,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": true,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-w4g32-ane-g6-c1280",
+      "placement_logs": {
+        "switch-log.ndjson": {
+          "ane_direct_request_success_rows": 0,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 259,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_1280_64",
+            "extend_1280_64",
+            "extend_1280_8",
+            "gather_embeddings_4",
+            "extend_1280_4"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 1026,
+          "ids": [
+            334,
+            19237,
+            315
+          ],
+          "graphs": [
+            "extend_1280_64",
+            "extend_1280_8",
+            "prompt_opt_1280_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 3.7224622147993e-05,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.15234375,
+            "reference_argmax": 334,
+            "actual_argmax": 334,
+            "confident_argmax": true,
+            "passed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 1026,
+          "ids": [
+            334,
+            19237,
+            315
+          ],
+          "graphs": [
+            "extend_1280_4",
+            "extend_1280_64",
+            "prompt_opt_1280_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 3.7224622147993e-05,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.15234375,
+            "reference_argmax": 334,
+            "actual_argmax": 334,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 334,
+              "actual_argmax": 334,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 3.59934679181994e-07,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.05859375,
+              "reference_argmax": 19237,
+              "actual_argmax": 19237,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 3.34595096187252e-06,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.046875,
+              "reference_argmax": 315,
+              "actual_argmax": 315,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    },
+    "w4-c4352-quality_short-switch": {
+      "capacity": 4352,
+      "input": "quality_short",
+      "input_tokens": 26,
+      "queries": [
+        8,
+        4
+      ],
+      "outputs": 3,
+      "same_host": true,
+      "truncated": false,
+      "asset": "workplans/g6-night-20260913/tiers/qwen3-4b-w4g32-ane-g6-c4352",
+      "placement_logs": {
+        "switch-log.ndjson": {
+          "ane_direct_request_success_rows": 0,
+          "ane_request_failure_rows": 0,
+          "metal_shader_compile_rows": 8,
+          "loaded_functions": [
+            "gather_embeddings_64",
+            "gather_embeddings_8",
+            "prompt_opt_4352_64",
+            "extend_4352_64",
+            "extend_4352_8",
+            "gather_embeddings_4",
+            "extend_4352_4"
+          ]
+        }
+      },
+      "results": {
+        "8": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_4352_64",
+            "extend_4352_8"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 3.0054492107651916e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.0625,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          }
+        },
+        "4": {
+          "passed": true,
+          "final_KV": 28,
+          "ids": [
+            59604,
+            151645,
+            151645
+          ],
+          "graphs": [
+            "extend_4352_4",
+            "extend_4352_64"
+          ],
+          "first_output_reference": {
+            "KL_ref_to_actual": 3.0054492107651916e-08,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.0625,
+            "reference_argmax": 59604,
+            "actual_argmax": 59604,
+            "confident_argmax": true,
+            "passed": true
+          },
+          "same_ids_as_first_query": true,
+          "same_history_vs_first_query": [
+            {
+              "KL_ref_to_actual": 0.0,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0,
+              "reference_argmax": 59604,
+              "actual_argmax": 59604,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 8.385086140654797e-09,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.0234375,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            },
+            {
+              "KL_ref_to_actual": 5.218868318187247e-07,
+              "top5_recall": 1.0,
+              "max_abs_error_diagnostic": 0.03125,
+              "reference_argmax": 151645,
+              "actual_argmax": 151645,
+              "confident_argmax": true,
+              "passed": true
+            }
+          ],
+          "host_closed": {
+            "returncode": 0,
+            "closed": true
+          }
+        }
+      }
+    }
+  },
+  "scope": "Asset identity by recorded hashes, graph inventories and W4 code shapes; model payloads, codes and logs are not bundled. Placement is counted from unified-log rows filtered to each admission host PID after the host reported ready."
+}

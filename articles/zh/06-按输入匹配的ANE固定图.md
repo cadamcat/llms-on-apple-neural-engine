@@ -26,7 +26,7 @@ decode 使用强制续写：每次请求都接同一组 257 个 token ID，取�
 
 虚线是 G3。从 <!-- claim:g4a.n.2048@g4a-022 -->2K<!-- /claim --> 开始的 decode 越过 G3 的 2K 图，在 32K 图上为 <!-- claim:g4a.g3.decode.2048.ane-rate@g4a-023 -->3.11 token/s<!-- /claim -->；换成匹配容量的图后为 <!-- claim:g4a.decode.2048.ane-rate@g4a-024 -->13.70 token/s<!-- /claim -->，快 <!-- claim:g4a.vs-g3.decode.2048.speed@g4a-025 -->4.40×<!-- /claim -->。<!-- claim:g4a.n.4096@g4a-026 -->4K<!-- /claim --> 的 prefill 在 G3 中进入 32K 图，为 <!-- claim:g4a.g3.prefill.4096.ane-rate@g4a-027 -->84.9 token/s<!-- /claim -->；现在为 <!-- claim:g4a.prefill.4096.ane-rate@g4a-028 -->543.5 token/s<!-- /claim -->。从 <!-- claim:g4a.n.2048@g4a-029 -->2K<!-- /claim --> 起，decode 快 <!-- claim:g4a.vs-g3.long-decode-speed@g4a-030 -->1.80–4.40×<!-- /claim -->，每 token 能量为原来的 <!-- claim:g4a.vs-g3.long-decode-energy@g4a-031 -->0.42–0.68×<!-- /claim -->；从 <!-- claim:g4a.n.4096@g4a-032 -->4K<!-- /claim --> 起，prefill 快 <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-033 -->2.76–6.40×<!-- /claim -->，能量为原来的 <!-- claim:g4a.vs-g3.long-prefill-energy@g4a-034 -->0.42–0.55×<!-- /claim -->。
 
-G3 原本就能放进 2K 图的地方变化不大：<!-- claim:g4a.n.500@g4a-035 -->500<!-- /claim --> 和 <!-- claim:g4a.n.1024@g4a-036 -->1K<!-- /claim --> 的 decode 快 <!-- claim:g4a.vs-g3.short-decode-speed@g4a-037 -->1.06–1.09×<!-- /claim -->；<!-- claim:g4a.n.2048@g4a-038 -->2K<!-- /claim --> 的 prefill 速度为 G3 2K prompt 图的 <!-- claim:g4a.vs-g3.prefill.2048.speed@g4a-039 -->0.94×<!-- /claim -->。两次运行的 GPU 速度相差在 <!-- claim:g4a.vs-g3.gpu-speed@g4a-040 -->0.97–1.02×<!-- /claim --> 之内，支持图容量是主要解释。两轮没有匹配热起始，也没有隔离 ANE 路径上的其他变化。
+G3 原本就能放进 2K 图的地方变化不大：<!-- claim:g4a.n.500@g4a-035 -->500<!-- /claim --> 和 <!-- claim:g4a.n.1024@g4a-036 -->1K<!-- /claim --> 的 decode 快 <!-- claim:g4a.vs-g3.short-decode-speed@g4a-037 -->1.06–1.09×<!-- /claim -->；<!-- claim:g4a.n.2048@g4a-038 -->2K<!-- /claim --> 的 prefill 速度为 G3 2K prompt 图的 <!-- claim:g4a.vs-g3.prefill.2048.speed@g4a-039 -->0.94×<!-- /claim -->。本轮 GPU 速度为 G3 的 <!-- claim:g4a.vs-g3.gpu-speed@g4a-040 -->0.97–1.02×<!-- /claim -->，支持图容量是主要解释。两轮没有匹配热起始，也没有隔离 ANE 路径上的其他变化。
 
 匹配容量图消除了已观察到的长输入减速中的大部分；这组对照没有把图阶梯与两轮之间的所有其他变化逐一隔离。剩下的是随上下文变慢，匹配容量的图没有消除它，GPU 上也没有同等程度的变化。
 
@@ -40,7 +40,11 @@ prefill 每个 token 要过 <!-- claim:g4a.projection-parameters-cn@g4a-041 -->3
 
 decode 也是这样分开的。如果每一步读取一次 <!-- claim:g4a.weight-bytes@g4a-045 -->8.04 GB<!-- /claim --> 的 FP16 权重和已有 KV，GPU 的推算读取速率从 <!-- claim:g4a.n.500@g4a-046 -->500<!-- /claim --> 到 <!-- claim:g4a.n.16384@g4a-047 -->16K<!-- /claim --> 都在 <!-- claim:g4a.gpu-read-span@g4a-048 -->227–250 GB/s<!-- /claim --> 之间：每秒 token 变少，但每个 token 要读的 KV 变多。受带宽限制的 decode 会呈现这种形态，但这并不证明瓶颈就在带宽。ANE 的推算速率在 <!-- claim:g4a.ane-read-span@g4a-049 -->59–122 GB/s<!-- /claim --> 之间下降。
 
-也就是说，在 ANE 上，每 token 的代价随上下文增长得比投影工作、因果注意力或 KV 读取所能解释的更快。一个候选原因在图本身：每一步 decode 计算 8 个查询位置，其中只有 1 个是真实 token，因此随 KV 增长的注意力也要为另外 7 个填充位置计算。其他候选是 ANE 上注意力每 FLOP 的代价高于投影，以及每一步的宿主工作。这些都尚未区分。在同样的图上把 decode 查询改为 1 个 token，可以去掉填充位置而不改变容量；如果那时 ANE decode 随上下文变慢的幅度不超过 GPU，主要代价就是填充位置的注意力。
+也就是说，在 ANE 上，每 token 的代价随上下文增长得比投影工作、因果注意力或 KV 读取所能解释的更快。一个候选原因在图本身：每一步 decode 计算 8 个查询位置，其中只有 1 个是真实 token，因此随 KV 增长的注意力也要为另外 7 个填充位置计算。其他候选是 ANE 上注意力每 FLOP 的代价高于投影，以及每一步的宿主工作。这些都尚未区分。
+
+G6 检验了第一个候选。1 个位置的查询在这套工具链上无法在 ANE 执行（[finding](../../findings/ane-short-decode-query/)），因此同一组档位增加了 4 个位置的 decode 函数，去掉 7 个填充位置中的 4 个，容量不变。每档输入的 ANE decode 速度都是 8 个位置时的 <!-- claim:g6.q4-q8-speed@g6-001 -->1.001–1.008×<!-- /claim -->。这次缩窄未带来明显速度收益，但编译后的工作量未必与逻辑查询宽度同比减少。填充工作的成本及更窄查询的收益仍未确定。
+
+各输入的 CPU＋GPU＋ANE 总组件能量为 Q8 的 <!-- claim:g6.q4-q8-components-energy@g6-013 -->0.84–1.02×<!-- /claim -->，并非每档都下降。
 
 ## 5. 能量
 
@@ -48,7 +52,7 @@ decode 也是这样分开的。如果每一步读取一次 <!-- claim:g4a.weight
 
 柱状图为 CPU＋GPU＋ANE 的软件组件能量，不扣空载。须线描述采样时间边界，不代表传感器精度；这里没有测量整机输入电量。† 标记 CPU 功率高于相邻档的块，受影响的块见下文。
 
-<!-- claim:g4a.short-contexts@g4a-050 -->500–2K<!-- /claim --> prefill 时，ANE 每输入 token 能量为 GPU 的 <!-- claim:g4a.short-prefill-energy-x@g4a-051 -->0.69–0.79×<!-- /claim -->。<!-- claim:g4a.long-contexts@g4a-052 -->4K–16K<!-- /claim --> 时为 <!-- claim:g4a.long-prefill-energy-x@g4a-053 -->1.05–1.24×<!-- /claim -->：匹配容量的图把长输入 prefill 从 G3 约两倍的能耗拉回到与 GPU 接近，但没有低于 GPU。decode 为 <!-- claim:g4a.decode-energy-x@g4a-054 -->0.96–1.18×<!-- /claim -->；去掉 CPU 计数器后为 <!-- claim:g4a.decode-energy-x-without-cpu@g4a-055 -->1.07–1.26×<!-- /claim -->，因为 ANE 路径的 CPU 功耗更低。
+<!-- claim:g4a.short-contexts@g4a-050 -->500–2K<!-- /claim --> prefill 时，ANE 每输入 token 能量为 GPU 的 <!-- claim:g4a.short-prefill-energy-x@g4a-051 -->0.69–0.79×<!-- /claim -->。<!-- claim:g4a.long-contexts@g4a-052 -->4K–16K<!-- /claim --> 时为 <!-- claim:g4a.long-prefill-energy-x@g4a-053 -->1.05–1.24×<!-- /claim -->：匹配容量的图把长输入 prefill 从 G3 约两倍的能耗拉回到与 GPU 接近。decode 为 <!-- claim:g4a.decode-energy-x@g4a-054 -->0.96–1.18×<!-- /claim -->；去掉 CPU 计数器后为 <!-- claim:g4a.decode-energy-x-without-cpu@g4a-055 -->1.07–1.26×<!-- /claim -->，因为 ANE 路径的 CPU 功耗更低。G6 在新宿主会话中重复了全部测点：重复运行的速度为首次的 <!-- claim:g6.repeat.speed@g6-002 -->0.97–1.02×<!-- /claim -->，decode 每 token 能量却为第一次的 <!-- claim:g6.repeat.decode-energy@g6-003 -->0.89–1.15×<!-- /claim -->。汇总两次运行的各输入测点，<!-- claim:g6.short-contexts@g6-004 -->500–2K<!-- /claim --> prefill 仍为 <!-- claim:g6.two-run.short-prefill-energy-x@g6-005 -->0.68–0.81×<!-- /claim -->，<!-- claim:g6.long-contexts@g6-006 -->4K–16K<!-- /claim --> prefill 为 <!-- claim:g6.two-run.long-prefill-energy-x@g6-007 -->0.90–1.33×<!-- /claim -->，decode 为 <!-- claim:g6.two-run.decode-energy-x@g6-008 -->0.86–1.18×<!-- /claim -->；这些是跨输入、跨运行的观测范围，不能作为固定输入下未来波动的边界。
 
 ANE 路径的 decode 窗口内，整机 GPU 计数器每 decode token 记录 <!-- claim:g4a.ane-arm-gpu-decode-energy@g4a-056 -->0.26–0.29 J/token<!-- /claim -->，占该路径 decode 能量的 <!-- claim:g4a.ane-arm-gpu-decode-share@g4a-057 -->32–58%<!-- /claim -->；ANE 计数器记录 <!-- claim:g4a.ane-arm-ane-decode-energy@g4a-058 -->0.13–0.44 J/token<!-- /claim -->。decode 变慢近三倍，这部分计数器能量按 token 归一后仍接近。但它尚未归属到具体进程或模型算子。随 token 执行的 GPU 工作是一种假设；可用等价实现替换疑似算子，检查 GPU 计数器能量是否下降，以检验这项归因。
 
@@ -62,6 +66,6 @@ ANE 路径的 decode 窗口内，整机 GPU 计数器每 decode token 记录 <!-
 
 ## 7. 接下来测什么
 
-下一轮保持这些图不变，每次只改一处：decode 查询改为 1 个 token，检验第 4 节的注意力解释；decode 改用 W4A16 权重，检验每步读取的字节变少后，ANE 是否能获得带宽模型预测的收益。把 GPU 计数器能量归属到具体进程和算子后，才能选择要测试移除的工作。在用这些曲线预测应用表现之前，还需要独立进程重复、第二颗芯片和质量评测。
+G6 保持这些图不变，每次只改一处。4 个位置的 decode 查询检验了第 4 节的第一个候选，但尚未隔离编译后填充工作的成本。4-bit decode 权重没有在 ANE 上测到：上游 iOS 4-bit palettization 预设整图在 GPU 上执行，<!-- claim:g6.n.1024@g6-009 -->1K<!-- /claim --> decode 为 <!-- claim:g6.w4.decode.1024.rate@g6-010 -->2.87 token/s<!-- /claim -->，ANE 上的 FP16 快 <!-- claim:g6.w4.fp16-faster-decode@g6-011 -->5.1–8.1×<!-- /claim -->；每步读取字节变少能否让 ANE 受益，还需要一种能在 ANE 上执行的 4-bit 表示。ANE 路径上的 GPU 计数器能量在两种查询宽度下都是 <!-- claim:g6.decode-gpu-energy@g6-012 -->0.257–0.265 J/token<!-- /claim -->；把它归属到具体进程和算子后，才能选择要测试移除的工作。在用这些曲线预测应用表现之前，还需要第二颗芯片和质量评测。
 
 [边界](../../docs/SCOPE.md#g4-a-matched-graph-observations) · [可移植证据](../../results/historical/g4a-qwen3-4b/) · [精确数值](../../docs/MEASUREMENTS.md#g4-a-qwen3-4b-fp16-with-matched-fixed-ane-graphs) · [重算方法](../../docs/REPRODUCING.md#g4-a-recomputation)

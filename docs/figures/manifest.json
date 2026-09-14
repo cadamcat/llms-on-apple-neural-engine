@@ -37,7 +37,7 @@
         "Device participation does not imply physical INT8"
       ],
       "source_hashes": {
-        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292",
+        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f",
         "articles/01-measuring-ane-performance.md": "0f59a8afd9e88341cd619d9e7672883328c656eb78b8f843d18052eb1e527cba"
       },
       "svg_sha256": "595340b9bc50d45922250f5f0ee35eade12a8b758ef74de400a28f5a66759d5c"
@@ -60,7 +60,7 @@
         "K64 compatibility separate from K512 performance"
       ],
       "source_hashes": {
-        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292",
+        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f",
         "articles/02-group-quantization-and-split.md": "d8e1e2951c0c886dd6a072fb4941f1fcfe5fc82e8a0d294136661ac7cf60ce10",
         "src/ane_scope/_coreai.py": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
         "src/ane_scope/references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd"
@@ -83,8 +83,8 @@
         "Historical and fresh evidence stay separate"
       ],
       "source_hashes": {
-        "docs/REPRODUCING.md": "f1d7cc3dded5b42667e5d0732c2f100c51a404a9e1188092c4d22ac03be24cdb",
-        "docs/PROVENANCE.md": "052960f7fa492069e5e844585bdb75f33a6594b911e10227ab040d7a649da3f3"
+        "docs/REPRODUCING.md": "898118dc01119e47f735e9d46a75230f2692240a883adf90fe650c7405436f00",
+        "docs/PROVENANCE.md": "d20589c346b25d2a22458c2f1989e70763cb0f23e6bc59ebc11f8a1e4f9d1f55"
       },
       "svg_sha256": "4d83172e3c9ee9e36a48bfab21ac8e9472a4ac56c78b723b422be0ad6779caea"
     },
@@ -103,7 +103,7 @@
       ],
       "source_hashes": {
         "articles/03-arithmetic-compatibility.md": "bc9e95ab0d0b746b579289849317799e89db3f68a3ff438f1e8a26d48eb3ae2d",
-        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292"
+        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f"
       },
       "svg_sha256": "ec14136e622237b96b152159639e8e691e36bbd89acfe32d024f38df587c1756"
     },
@@ -166,7 +166,7 @@
       ],
       "source_hashes": {
         "results/fresh/smoke.json": "962f1f17c7787a880c0a901cba498bc930ca4eaa1662480484e9980bac85037c",
-        "docs/METHODS.md": "3acb7bd2460938a28e73adbc068fdc541ed12621ab914746511b7a172b8cb292",
+        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f",
         "articles/03-arithmetic-compatibility.md": "bc9e95ab0d0b746b579289849317799e89db3f68a3ff438f1e8a26d48eb3ae2d"
       },
       "svg_sha256": "f13690d93a4d8a7a18073d7272598afc1edf1bb3fa4c00795e68fce2f53af193"

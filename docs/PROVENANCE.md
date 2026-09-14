@@ -146,3 +146,14 @@ Asset identity keeps each ANE tier's graph inventory, native model hash, compile
 
 With `--leak-output` the importer also writes the [disk observations](../findings/ane-compiler-service-disk/evidence/) from saved terminal output: lsof rows are parsed and the per-user temporary directory is rewritten as `$TMPDIR`; the prompt, inode numbers and session user name are removed, and the importer refuses output that still contains that name or a personal path. `provenance.json` hashes every source and product in both outputs.
 
+## G6 import
+
+[import_g6.py](../results/historical/import_g6.py) reads one closed night and writes [g6-qwen3-4b](../results/historical/g6-qwen3-4b/). It refuses a run whose controller did not close without failed segments, a terminal with more than one attempt, a run configuration or launch record that differs from the frozen preparation, a host that did not exit cleanly, a capture whose audit failed and mismatches in identity files frozen at launch: tier metadata and main.hash, the W4 code inventory, the W4 reference summary, both host sources and binaries. Request results and commands are kept for every request of every query session and repeat arm; input IDs are checked and dropped, and no logits are kept. W4 codes are reduced to per-projection shapes, group size and maximum index; the admission logs are reduced to counts of direct ANE requests, request failures and Metal shader compilations. Power frames of all four captures use the G4 A whitelist, tagged by capture. Load-gate, observer and reclaim-wait disk fields are kept; process IDs and command lines are dropped.
+
+## Short decode query import
+
+[import_short_query.py](../results/historical/import_short_query.py) writes the [recorded outcomes](../findings/ane-short-decode-query/repro/recorded/) of five diagnostic probe runs. For each width it keeps the probe result, host return code and same-history comparison; the host's unified log is reduced to direct ANE request successes, failure status lines and loaded function names, and the MPSGraph assertion to its error code and counts. It keeps the decode functions' input signatures, the `torch.export` constraint line of the width-1 trace export and the two-line host allow-list diff. The archived export and probe scripts are checked against the hashes recorded at import.
+
+## Palettized placement import
+
+[import_palettized_placement.py](../results/historical/import_palettized_placement.py) writes the [recorded pair](../findings/coreai-palettized-weights-gpu/repro/recorded/) from two one-layer bundles. It keeps each export record and probe result; each process-name log stream is reduced to direct ANE request and Metal shader-compile counts plus its validation, compile, load, compile-failure and delegate-option lines, with pointer values and build paths removed.

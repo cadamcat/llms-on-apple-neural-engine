@@ -389,3 +389,84 @@ Recorded by the load gate before each host started, in run order. The change is 
 | 10 | 1,024 | gpu | 180.9 | 196.7 | 0 | +0.0 |
 | 11 | 500 | gpu | 180.9 | 204.4 | 0 | -0.0 |
 | 12 | 500 | ane | 180.9 | 204.4 | 0 | — |
+
+## G6: decode query width, W4 palettization and a G4 A repeat
+
+One night on the G4 A inputs and energy rules. FP16 decode runs with query 8 and query 4 in one ANE host per input; the upstream iOS 4-bit palettized preset runs at 1K and 4K; every G4 A arm is repeated in a new host with the arm order reversed. [Scope](SCOPE.md#g6-decode-query-w4-and-repeat) · [Source bundle](../results/historical/g6-qwen3-4b/).
+
+### FP16 decode, query 8 and query 4
+
+| Input N | ANE capacity | First query | Q8 token/s | Q4 token/s | Q4 / Q8 speed | Q8 ANE J/token | Q4 ANE J/token | Q8 GPU J/token | Q4 GPU J/token | Q4 / Q8 components J/token |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 500 | 768 | Q4 | 15.039 | 15.144 | 1.0070 | 0.1357 | 0.1169 | 0.2628 | 0.2630 | 0.965 |
+| 1,024 | 1,280 | Q8 | 14.678 | 14.734 | 1.0038 | 0.1450 | 0.1264 | 0.2586 | 0.2604 | 0.894 |
+| 2,048 | 2,304 | Q8 | 13.758 | 13.828 | 1.0051 | 0.1624 | 0.1403 | 0.2571 | 0.2571 | 0.947 |
+| 4,096 | 4,352 | Q8 | 10.517 | 10.571 | 1.0051 | 0.2226 | 0.1992 | 0.2645 | 0.2632 | 0.843 |
+| 8,192 | 8,448 | Q4 | 7.478 | 7.487 | 1.0011 | 0.3595 | 0.3328 | 0.2636 | 0.2636 | 0.943 |
+| 16,384 | 16,640 | Q8 | 5.615 | 5.659 | 1.0080 | 0.4406 | 0.4026 | 0.2615 | 0.2640 | 1.023 |
+
+### W4 palettized weights (executed on the GPU)
+
+No ANE direct request at admission and no ANE counter energy in any block; energy admission fails its ANE response rule, so the J/token columns are not admitted comparisons.
+
+| Input N | Stage | W4 token/s | FP16 ANE token/s | FP16 / W4 speed | W4 CPU J/token | W4 GPU J/token | W4 ANE J/token |
+|---:|---|---:|---:|---:|---:|---:|---:|
+| 1,024 | decode Q8 | 2.867 | 14.678 | 5.12× | 1.2838 | 5.1034 | 0.0000 |
+| 1,024 | decode Q4 | 2.875 | 14.734 | 5.12× | 1.2126 | 5.1358 | 0.0000 |
+| 1,024 | prefill | 170.332 | 884.281 | 5.19× | 0.0212 | 0.0912 | 0.0000 |
+| 4,096 | decode Q8 | 1.293 | 10.517 | 8.13× | 2.0611 | 11.6422 | 0.0000 |
+| 4,096 | decode Q4 | 1.310 | 10.571 | 8.07× | 1.9473 | 11.5074 | 0.0000 |
+| 4,096 | prefill | 78.675 | 547.627 | 6.96× | 0.0333 | 0.1973 | 0.0000 |
+
+### G4 A repeat
+
+Same assets, hosts and protocol as G4 A in new host sessions, arm order reversed at every input. Ratios are repeat / G4 A.
+
+| Stage | Input N | Arm | Repeat token/s | Speed vs G4 A | Repeat J/token | Energy vs G4 A |
+|---|---:|---|---:|---:|---:|---:|
+| decode | 500 | ane | 15.018 | 0.999 | 0.443778 | 0.981 |
+| decode | 500 | gpu | 30.249 | 1.013 | 0.478843 | 1.014 |
+| decode | 1,024 | ane | 14.697 | 1.009 | 0.458120 | 0.891 |
+| decode | 1,024 | gpu | 30.075 | 1.000 | 0.533736 | 1.147 |
+| decode | 2,048 | ane | 13.772 | 1.005 | 0.464661 | 0.948 |
+| decode | 2,048 | gpu | 29.820 | 1.000 | 0.487787 | 0.974 |
+| decode | 4,096 | ane | 10.520 | 1.009 | 0.606851 | 0.907 |
+| decode | 4,096 | gpu | 28.814 | 1.019 | 0.535750 | 0.944 |
+| decode | 8,192 | ane | 7.476 | 1.000 | 0.734887 | 1.046 |
+| decode | 8,192 | gpu | 26.599 | 0.993 | 0.624857 | 1.005 |
+| decode | 16,384 | ane | 5.615 | 1.001 | 0.844734 | 1.060 |
+| decode | 16,384 | gpu | 21.633 | 0.997 | 0.826697 | 1.050 |
+| prefill | 500 | ane | 940.020 | 1.002 | 0.009325 | 0.987 |
+| prefill | 500 | gpu | 2749.464 | 0.996 | 0.013696 | 0.997 |
+| prefill | 1,024 | ane | 884.281 | 0.996 | 0.009850 | 1.040 |
+| prefill | 1,024 | gpu | 3234.748 | 1.018 | 0.012937 | 0.971 |
+| prefill | 2,048 | ane | 763.784 | 1.000 | 0.010463 | 1.027 |
+| prefill | 2,048 | gpu | 3367.320 | 1.007 | 0.012976 | 1.009 |
+| prefill | 4,096 | ane | 547.627 | 1.008 | 0.012210 | 0.866 |
+| prefill | 4,096 | gpu | 3220.626 | 1.005 | 0.013548 | 1.010 |
+| prefill | 8,192 | ane | 316.300 | 1.002 | 0.017286 | 1.022 |
+| prefill | 8,192 | gpu | 2708.842 | 0.968 | 0.015730 | 0.980 |
+| prefill | 16,384 | ane | 140.585 | 1.000 | 0.026037 | 1.012 |
+| prefill | 16,384 | gpu | 2213.865 | 0.988 | 0.019519 | 0.940 |
+
+| Stage | Input N | GPU / ANE speed, G4 A | GPU / ANE speed, repeat | ANE / GPU J/token, G4 A | ANE / GPU J/token, repeat |
+|---|---:|---:|---:|---:|---:|
+| prefill | 500 | 2.94× | 2.92× | 0.688 | 0.681 |
+| decode | 500 | 1.99× | 2.01× | 0.958 | 0.927 |
+| prefill | 1,024 | 3.58× | 3.66× | 0.711 | 0.761 |
+| decode | 1,024 | 2.07× | 2.05× | 1.104 | 0.858 |
+| prefill | 2,048 | 4.38× | 4.41× | 0.793 | 0.806 |
+| decode | 2,048 | 2.18× | 2.17× | 0.979 | 0.953 |
+| prefill | 4,096 | 5.89× | 5.88× | 1.051 | 0.901 |
+| decode | 4,096 | 2.71× | 2.74× | 1.178 | 1.133 |
+| prefill | 8,192 | 8.87× | 8.56× | 1.054 | 1.099 |
+| decode | 8,192 | 3.58× | 3.56× | 1.130 | 1.176 |
+| prefill | 16,384 | 15.94× | 15.75× | 1.240 | 1.334 |
+| decode | 16,384 | 3.87× | 3.85× | 1.012 | 1.022 |
+
+### Idle captures
+
+| Segment | Seconds | CPU W | GPU W | ANE W | Components W |
+|---|---:|---:|---:|---:|---:|
+| idle-start | 600 | 0.796 | 0.075 | 0.000 | 0.871 |
+| idle-end | 600 | 0.314 | 0.001 | 0.000 | 0.315 |

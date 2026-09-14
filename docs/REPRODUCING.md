@@ -57,6 +57,7 @@ Choose the command for the result you want to inspect:
 | Result | Command | Execution |
 |---|---|---|
 | G4 A complete Qwen3-4B with matched ANE graphs | `python scripts/verify_g4a.py` | Recompute bundled request, power and disk fields; no device |
+| G6 decode query width, W4 palettization and the G4 A repeat | `python scripts/verify_g6.py` | Recompute bundled request and power fields and admission-log counts; no device |
 | Disk space held by the ANE compiler service | `python scripts/verify_ane_compiler_disk.py` | Recompute redacted observations; no device |
 | G3 complete Qwen3-4B speed and component energy | `python scripts/verify_g3.py` | Recompute bundled raw request and power fields; no device |
 | G2 native W4A16 speed, memory, temperature and fans | `python scripts/verify_g2.py` | Recompute bundled observations; no device |
@@ -154,6 +155,8 @@ python scripts/verify_g3.py
 python scripts/verify_g1w.py
 python scripts/verify_g5.py
 python findings/coreai-qdq-multiply-scale/repro/verify.py
+python findings/ane-short-decode-query/repro/verify.py
+python findings/coreai-palettized-weights-gpu/repro/verify.py
 python scripts/check_source_identity.py --check
 python scripts/summarize.py
 python scripts/render_figures.py --check
@@ -259,6 +262,26 @@ python scripts/verify_g4a.py --bundle /path/to/new-g4a
 ```
 
 Device replay needs the six ANE tier assets and the GPU asset identified in asset-identity.json, the recorded Swift host, a sudo-authenticated power capture and enough free disk for every ANE load in the run. A portable launcher is not included.
+
+## G6 recomputation
+
+```sh
+python scripts/verify_g6.py
+python scripts/summarize.py
+```
+
+The verifier checks every request's clocks, KV contract and query width, the boundary graph events, the admission-log placement counts and each block's rate, energy and admission against the recorded summary, and divides the repeat blocks by G4 A recomputed from its bundle. It needs no device.
+
+To rebuild from a research workspace containing the closed run:
+
+```sh
+python results/historical/import_g6.py --workspace /path/to/research-workspace --output /path/to/new-g6
+python scripts/verify_g6.py --bundle /path/to/new-g6
+```
+
+Device replay needs the G6 FP16 and W4 tiers and the W4 codes identified in asset-identity.json, the G4 A assets, both host binaries and a sudo-authenticated power capture. A portable launcher is not included.
+
+The short decode query outcomes are checked with `python findings/ane-short-decode-query/repro/verify.py`; the device steps and archived scripts are in [its reproduction](../findings/ane-short-decode-query/repro/README.md). Rebuild the recorded outcomes from a research workspace with `python results/historical/import_short_query.py --workspace /path/to/research-workspace --output /path/to/new-recorded`. The palettized placement pair is checked with `python findings/coreai-palettized-weights-gpu/repro/verify.py` and rebuilt with `python results/historical/import_palettized_placement.py`; its device steps are in [that reproduction](../findings/coreai-palettized-weights-gpu/repro/README.md).
 
 ## G1-W and G5 recomputation
 

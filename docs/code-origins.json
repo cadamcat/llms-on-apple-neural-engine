@@ -108,5 +108,10 @@
     "origin": "workplans/ane-compiler-reclaim-20260913/test_reclaim.py",
     "sha256": "f2b69647156c3344169201c72bc8c90172e866f36c4c5a2182037844811d8d32",
     "origin_scope": "local dry-run tests; adapted to the redacted listing"
+  },
+  {
+    "origin": "workplans/g6-night-20260913/run_g6.py",
+    "sha256": "cc8b4a07d835816802df28c71922144ce57e411c861b4f54e37fb14a07c29a6d",
+    "origin_scope": "closed G6 night runner; query-session block windows, per-capture admission, repeat ratios and idle power adapted"
   }
 ]

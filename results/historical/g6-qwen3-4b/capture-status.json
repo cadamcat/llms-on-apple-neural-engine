@@ -1,0 +1,298 @@
+{
+  "monitor-1": {
+    "integrity_passed": true,
+    "capture_completed": true,
+    "cleanup_passed": true,
+    "streams": {
+      "power": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 6549,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "thermal": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 6648,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "aux": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 6642,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "macmon": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 1337,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      }
+    },
+    "clock_issues": [],
+    "energy_accepted": false,
+    "simulation": false,
+    "source_close": {
+      "reason": "requested_complete_frame",
+      "sampler_termination_requested": 1,
+      "sampler_wait_status": 0,
+      "frames": 6549,
+      "exit": 0,
+      "simulation": false,
+      "sampler_reaped": 1,
+      "outside_interval_buffer_bytes": 3477,
+      "finish_requested": 1,
+      "sampler_pid": 87067
+    },
+    "closure_issues": [],
+    "status": "capture_audit_only_hardware_admission_pending",
+    "returncode": 0,
+    "last_power_receipt_ns": 324279521732083
+  },
+  "monitor-2": {
+    "integrity_passed": true,
+    "capture_completed": true,
+    "cleanup_passed": true,
+    "streams": {
+      "power": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 2025,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "thermal": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 2057,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "aux": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 2055,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "macmon": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 413,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      }
+    },
+    "clock_issues": [],
+    "energy_accepted": false,
+    "simulation": false,
+    "source_close": {
+      "simulation": false,
+      "reason": "requested_complete_frame",
+      "sampler_pid": 92883,
+      "sampler_termination_requested": 1,
+      "sampler_wait_status": 0,
+      "frames": 2025,
+      "exit": 0,
+      "outside_interval_buffer_bytes": 4767,
+      "sampler_reaped": 1,
+      "finish_requested": 1
+    },
+    "closure_issues": [],
+    "status": "capture_audit_only_hardware_admission_pending",
+    "returncode": 0,
+    "last_power_receipt_ns": 326846084291125
+  },
+  "monitor-3": {
+    "integrity_passed": true,
+    "capture_completed": true,
+    "cleanup_passed": true,
+    "streams": {
+      "power": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 3396,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "thermal": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 3446,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "aux": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 3443,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "macmon": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 693,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      }
+    },
+    "clock_issues": [],
+    "energy_accepted": false,
+    "simulation": false,
+    "source_close": {
+      "simulation": false,
+      "exit": 0,
+      "sampler_termination_requested": 1,
+      "sampler_pid": 94729,
+      "sampler_wait_status": 0,
+      "sampler_reaped": 1,
+      "outside_interval_buffer_bytes": 1866,
+      "finish_requested": 1,
+      "frames": 3396,
+      "reason": "requested_complete_frame"
+    },
+    "closure_issues": [],
+    "status": "capture_audit_only_hardware_admission_pending",
+    "returncode": 0,
+    "last_power_receipt_ns": 330807732569625
+  },
+  "monitor-4": {
+    "integrity_passed": true,
+    "capture_completed": true,
+    "cleanup_passed": true,
+    "streams": {
+      "power": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 1804,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "thermal": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 1846,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "aux": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 1843,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      },
+      "macmon": {
+        "integrity_passed": true,
+        "failures": [],
+        "samples": 370,
+        "energy_accepted": false,
+        "pending": [
+          "domain_response",
+          "sample_endpoint_alignment",
+          "counter_update_delay",
+          "observer_overhead"
+        ]
+      }
+    },
+    "clock_issues": [],
+    "energy_accepted": false,
+    "simulation": false,
+    "source_close": {
+      "sampler_reaped": 1,
+      "simulation": false,
+      "sampler_termination_requested": 1,
+      "sampler_wait_status": 0,
+      "sampler_pid": 97656,
+      "outside_interval_buffer_bytes": 3348,
+      "finish_requested": 1,
+      "reason": "requested_complete_frame",
+      "frames": 1804,
+      "exit": 0
+    },
+    "closure_issues": [],
+    "status": "capture_audit_only_hardware_admission_pending",
+    "returncode": 0,
+    "last_power_receipt_ns": 332944019213083
+  }
+}

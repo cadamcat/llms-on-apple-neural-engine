@@ -1,0 +1,1660 @@
+{
+  "query_sessions": [
+    {
+      "id": "query-fp16-16384",
+      "weights": "fp16",
+      "input_N": 16384,
+      "capacity": 16640,
+      "queries": [
+        8,
+        4
+      ],
+      "prefill": false,
+      "monitor": "monitor-1",
+      "requests": {
+        "boundary": [
+          "boundary-q8",
+          "boundary-q4"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ]
+      },
+      "warmup": {
+        "8": {
+          "final_KV": 16640,
+          "decode_graphs": [
+            "extend_16640_8"
+          ],
+          "last_logits_finite": true
+        },
+        "4": {
+          "final_KV": 16640,
+          "decode_graphs": [
+            "extend_16640_4"
+          ],
+          "last_logits_finite": true
+        }
+      },
+      "prefill_decode_query": null
+    },
+    {
+      "id": "query-fp16-8192",
+      "weights": "fp16",
+      "input_N": 8192,
+      "capacity": 8448,
+      "queries": [
+        4,
+        8
+      ],
+      "prefill": false,
+      "monitor": "monitor-1",
+      "requests": {
+        "boundary": [
+          "boundary-q4",
+          "boundary-q8"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ]
+      },
+      "warmup": {
+        "4": {
+          "final_KV": 8448,
+          "decode_graphs": [
+            "extend_8448_4"
+          ],
+          "last_logits_finite": true
+        },
+        "8": {
+          "final_KV": 8448,
+          "decode_graphs": [
+            "extend_8448_8"
+          ],
+          "last_logits_finite": true
+        }
+      },
+      "prefill_decode_query": null
+    },
+    {
+      "id": "query-fp16-4096",
+      "weights": "fp16",
+      "input_N": 4096,
+      "capacity": 4352,
+      "queries": [
+        8,
+        4
+      ],
+      "prefill": false,
+      "monitor": "monitor-1",
+      "requests": {
+        "boundary": [
+          "boundary-q8",
+          "boundary-q4"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ]
+      },
+      "warmup": {
+        "8": {
+          "final_KV": 4352,
+          "decode_graphs": [
+            "extend_4352_8"
+          ],
+          "last_logits_finite": true
+        },
+        "4": {
+          "final_KV": 4352,
+          "decode_graphs": [
+            "extend_4352_4"
+          ],
+          "last_logits_finite": true
+        }
+      },
+      "prefill_decode_query": null
+    },
+    {
+      "id": "query-w4-4096",
+      "weights": "w4",
+      "input_N": 4096,
+      "capacity": 4352,
+      "queries": [
+        4,
+        8
+      ],
+      "prefill": true,
+      "monitor": "monitor-1",
+      "requests": {
+        "boundary": [
+          "boundary-q4",
+          "boundary-q8"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033"
+        ]
+      },
+      "warmup": {
+        "4": {
+          "final_KV": 4352,
+          "decode_graphs": [
+            "extend_4352_4"
+          ],
+          "last_logits_finite": true
+        },
+        "8": {
+          "final_KV": 4352,
+          "decode_graphs": [
+            "extend_4352_8"
+          ],
+          "last_logits_finite": true
+        }
+      },
+      "prefill_decode_query": 4
+    },
+    {
+      "id": "query-fp16-2048",
+      "weights": "fp16",
+      "input_N": 2048,
+      "capacity": 2304,
+      "queries": [
+        8,
+        4
+      ],
+      "prefill": false,
+      "monitor": "monitor-2",
+      "requests": {
+        "boundary": [
+          "boundary-q8",
+          "boundary-q4"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ]
+      },
+      "warmup": {
+        "8": {
+          "final_KV": 2304,
+          "decode_graphs": [
+            "extend_2304_8"
+          ],
+          "last_logits_finite": true
+        },
+        "4": {
+          "final_KV": 2304,
+          "decode_graphs": [
+            "extend_2304_4"
+          ],
+          "last_logits_finite": true
+        }
+      },
+      "prefill_decode_query": null
+    },
+    {
+      "id": "query-w4-1024",
+      "weights": "w4",
+      "input_N": 1024,
+      "capacity": 1280,
+      "queries": [
+        4,
+        8
+      ],
+      "prefill": true,
+      "monitor": "monitor-2",
+      "requests": {
+        "boundary": [
+          "boundary-q4",
+          "boundary-q8"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033",
+          "p0034",
+          "p0035",
+          "p0036",
+          "p0037",
+          "p0038",
+          "p0039",
+          "p0040",
+          "p0041",
+          "p0042",
+          "p0043",
+          "p0044",
+          "p0045",
+          "p0046",
+          "p0047",
+          "p0048",
+          "p0049",
+          "p0050",
+          "p0051",
+          "p0052",
+          "p0053",
+          "p0054",
+          "p0055",
+          "p0056",
+          "p0057",
+          "p0058",
+          "p0059",
+          "p0060",
+          "p0061",
+          "p0062",
+          "p0063",
+          "p0064",
+          "p0065",
+          "p0066",
+          "p0067",
+          "p0068",
+          "p0069",
+          "p0070",
+          "p0071",
+          "p0072",
+          "p0073",
+          "p0074",
+          "p0075",
+          "p0076",
+          "p0077",
+          "p0078",
+          "p0079",
+          "p0080",
+          "p0081",
+          "p0082",
+          "p0083",
+          "p0084",
+          "p0085",
+          "p0086",
+          "p0087",
+          "p0088",
+          "p0089"
+        ]
+      },
+      "warmup": {
+        "4": {
+          "final_KV": 1280,
+          "decode_graphs": [
+            "extend_1280_4"
+          ],
+          "last_logits_finite": true,
+          "reference_1k": {
+            "KL_ref_to_actual": 3.7224622147993e-05,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.15234375,
+            "reference_argmax": 334,
+            "actual_argmax": 334,
+            "confident_argmax": true,
+            "passed": true
+          }
+        },
+        "8": {
+          "final_KV": 1280,
+          "decode_graphs": [
+            "extend_1280_8"
+          ],
+          "last_logits_finite": true,
+          "reference_1k": {
+            "KL_ref_to_actual": 3.7224622147993e-05,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 0.15234375,
+            "reference_argmax": 334,
+            "actual_argmax": 334,
+            "confident_argmax": true,
+            "passed": true
+          }
+        }
+      },
+      "prefill_decode_query": 4
+    },
+    {
+      "id": "query-fp16-1024",
+      "weights": "fp16",
+      "input_N": 1024,
+      "capacity": 1280,
+      "queries": [
+        8,
+        4
+      ],
+      "prefill": false,
+      "monitor": "monitor-2",
+      "requests": {
+        "boundary": [
+          "boundary-q8",
+          "boundary-q4"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ]
+      },
+      "warmup": {
+        "8": {
+          "final_KV": 1280,
+          "decode_graphs": [
+            "extend_1280_8"
+          ],
+          "last_logits_finite": true,
+          "reference_1k": {
+            "KL_ref_to_actual": 0.007433979597900731,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 1.4375,
+            "reference_argmax": 14374,
+            "actual_argmax": 14374,
+            "confident_argmax": false,
+            "passed": true
+          }
+        },
+        "4": {
+          "final_KV": 1280,
+          "decode_graphs": [
+            "extend_1280_4"
+          ],
+          "last_logits_finite": true,
+          "reference_1k": {
+            "KL_ref_to_actual": 0.007433979597900731,
+            "top5_recall": 1.0,
+            "max_abs_error_diagnostic": 1.4375,
+            "reference_argmax": 14374,
+            "actual_argmax": 14374,
+            "confident_argmax": false,
+            "passed": true
+          }
+        }
+      },
+      "prefill_decode_query": null
+    },
+    {
+      "id": "query-fp16-500",
+      "weights": "fp16",
+      "input_N": 500,
+      "capacity": 768,
+      "queries": [
+        4,
+        8
+      ],
+      "prefill": false,
+      "monitor": "monitor-2",
+      "requests": {
+        "boundary": [
+          "boundary-q4",
+          "boundary-q8"
+        ],
+        "decode_q4": [
+          "q4-r0000",
+          "q4-r0001",
+          "q4-r0002"
+        ],
+        "decode_q8": [
+          "q8-r0000",
+          "q8-r0001",
+          "q8-r0002"
+        ]
+      },
+      "warmup": {
+        "4": {
+          "final_KV": 756,
+          "decode_graphs": [
+            "extend_768_4"
+          ],
+          "last_logits_finite": true
+        },
+        "8": {
+          "final_KV": 756,
+          "decode_graphs": [
+            "extend_768_8"
+          ],
+          "last_logits_finite": true
+        }
+      },
+      "prefill_decode_query": null
+    }
+  ],
+  "repeat_arms": [
+    {
+      "id": "arm-gpu-16384",
+      "input_N": 16384,
+      "arm": "gpu",
+      "capacity": 16640,
+      "monitor": "monitor-3",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 7
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 20.265481583,
+          "prefill_seconds": 8.467403166,
+          "prefill_tokens_per_second": 1934.9497926103593,
+          "decode_seconds": 11.798032417,
+          "decode_tokens_per_second": 21.698533361471778
+        },
+        "final_KV": 16640,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-ane-16384",
+      "input_N": 16384,
+      "arm": "ane",
+      "capacity": 16640,
+      "monitor": "monitor-3",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 7
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 165.649940459,
+          "prefill_seconds": 120.043361209,
+          "prefill_tokens_per_second": 136.48401573390504,
+          "decode_seconds": 45.606540916,
+          "decode_tokens_per_second": 5.613229919618576
+        },
+        "final_KV": 16640,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-ane-8192",
+      "input_N": 8192,
+      "arm": "ane",
+      "capacity": 8448,
+      "monitor": "monitor-3",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 15
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 60.40328975,
+          "prefill_seconds": 26.163173375,
+          "prefill_tokens_per_second": 313.11186462678097,
+          "decode_seconds": 34.240075917,
+          "decode_tokens_per_second": 7.4766189368434635
+        },
+        "final_KV": 8448,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-gpu-8192",
+      "input_N": 8192,
+      "arm": "gpu",
+      "capacity": 8448,
+      "monitor": "monitor-3",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 15
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 12.981275917,
+          "prefill_seconds": 3.312135459,
+          "prefill_tokens_per_second": 2473.328793887352,
+          "decode_seconds": 9.669097833,
+          "decode_tokens_per_second": 26.476099882482178
+        },
+        "final_KV": 8448,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-gpu-4096",
+      "input_N": 4096,
+      "arm": "gpu",
+      "capacity": 4352,
+      "monitor": "monitor-3",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 34
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 11.199030666,
+          "prefill_seconds": 2.084563583,
+          "prefill_tokens_per_second": 1964.9196759473468,
+          "decode_seconds": 9.114428542,
+          "decode_tokens_per_second": 28.087334145013255
+        },
+        "final_KV": 4352,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-ane-4096",
+      "input_N": 4096,
+      "arm": "ane",
+      "capacity": 4352,
+      "monitor": "monitor-3",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 34
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 32.263502792,
+          "prefill_seconds": 7.962719584,
+          "prefill_tokens_per_second": 514.3971173153395,
+          "decode_seconds": 24.300724166,
+          "decode_tokens_per_second": 10.534665479565364
+        },
+        "final_KV": 4352,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-ane-2048",
+      "input_N": 2048,
+      "arm": "ane",
+      "capacity": 2304,
+      "monitor": "monitor-4",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033",
+          "p0034",
+          "p0035",
+          "p0036",
+          "p0037",
+          "p0038",
+          "p0039",
+          "p0040",
+          "p0041",
+          "p0042",
+          "p0043",
+          "p0044",
+          "p0045",
+          "p0046",
+          "p0047",
+          "p0048",
+          "p0049",
+          "p0050",
+          "p0051",
+          "p0052",
+          "p0053",
+          "p0054"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 55
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 21.562851167,
+          "prefill_seconds": 2.962066875,
+          "prefill_tokens_per_second": 691.4091026388458,
+          "decode_seconds": 18.6007455,
+          "decode_tokens_per_second": 13.762889234735244
+        },
+        "final_KV": 2304,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-gpu-2048",
+      "input_N": 2048,
+      "arm": "gpu",
+      "capacity": 2304,
+      "monitor": "monitor-4",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033",
+          "p0034",
+          "p0035",
+          "p0036",
+          "p0037",
+          "p0038",
+          "p0039",
+          "p0040",
+          "p0041",
+          "p0042",
+          "p0043",
+          "p0044",
+          "p0045",
+          "p0046",
+          "p0047",
+          "p0048",
+          "p0049",
+          "p0050",
+          "p0051",
+          "p0052",
+          "p0053",
+          "p0054"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 55
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 10.072153,
+          "prefill_seconds": 1.324897,
+          "prefill_tokens_per_second": 1545.7805399212166,
+          "decode_seconds": 8.747214375,
+          "decode_tokens_per_second": 29.266460043743926
+        },
+        "final_KV": 2304,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-gpu-1024",
+      "input_N": 1024,
+      "arm": "gpu",
+      "capacity": 1280,
+      "monitor": "monitor-4",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033",
+          "p0034",
+          "p0035",
+          "p0036",
+          "p0037",
+          "p0038",
+          "p0039",
+          "p0040",
+          "p0041",
+          "p0042",
+          "p0043",
+          "p0044",
+          "p0045",
+          "p0046",
+          "p0047",
+          "p0048",
+          "p0049",
+          "p0050",
+          "p0051",
+          "p0052",
+          "p0053",
+          "p0054",
+          "p0055",
+          "p0056",
+          "p0057",
+          "p0058",
+          "p0059",
+          "p0060",
+          "p0061",
+          "p0062",
+          "p0063",
+          "p0064",
+          "p0065",
+          "p0066",
+          "p0067",
+          "p0068",
+          "p0069",
+          "p0070",
+          "p0071",
+          "p0072",
+          "p0073",
+          "p0074",
+          "p0075",
+          "p0076",
+          "p0077",
+          "p0078",
+          "p0079",
+          "p0080",
+          "p0081",
+          "p0082",
+          "p0083",
+          "p0084",
+          "p0085",
+          "p0086",
+          "p0087",
+          "p0088",
+          "p0089"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 90
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 9.26695275,
+          "prefill_seconds": 0.750436667,
+          "prefill_tokens_per_second": 1364.5388678749089,
+          "decode_seconds": 8.516474542,
+          "decode_tokens_per_second": 30.05938651463182
+        },
+        "final_KV": 1280,
+        "last_logits_finite": true
+      },
+      "reference_1k": {
+        "KL_ref_to_actual": 1.787133492198622e-07,
+        "top5_recall": 1.0,
+        "max_abs_error_diagnostic": 0.21875,
+        "reference_argmax": 14374,
+        "actual_argmax": 14374,
+        "confident_argmax": true,
+        "passed": true
+      }
+    },
+    {
+      "id": "arm-ane-1024",
+      "input_N": 1024,
+      "arm": "ane",
+      "capacity": 1280,
+      "monitor": "monitor-4",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033",
+          "p0034",
+          "p0035",
+          "p0036",
+          "p0037",
+          "p0038",
+          "p0039",
+          "p0040",
+          "p0041",
+          "p0042",
+          "p0043",
+          "p0044",
+          "p0045",
+          "p0046",
+          "p0047",
+          "p0048",
+          "p0049",
+          "p0050",
+          "p0051",
+          "p0052",
+          "p0053",
+          "p0054",
+          "p0055",
+          "p0056",
+          "p0057",
+          "p0058",
+          "p0059",
+          "p0060",
+          "p0061",
+          "p0062",
+          "p0063",
+          "p0064",
+          "p0065",
+          "p0066",
+          "p0067",
+          "p0068",
+          "p0069",
+          "p0070",
+          "p0071",
+          "p0072",
+          "p0073",
+          "p0074",
+          "p0075",
+          "p0076",
+          "p0077",
+          "p0078",
+          "p0079",
+          "p0080",
+          "p0081",
+          "p0082",
+          "p0083",
+          "p0084",
+          "p0085",
+          "p0086",
+          "p0087",
+          "p0088",
+          "p0089"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 90
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 18.838195,
+          "prefill_seconds": 1.39827875,
+          "prefill_tokens_per_second": 732.328943710258,
+          "decode_seconds": 17.439877958,
+          "decode_tokens_per_second": 14.67900180359737
+        },
+        "final_KV": 1280,
+        "last_logits_finite": true
+      },
+      "reference_1k": {
+        "KL_ref_to_actual": 0.007433979597900731,
+        "top5_recall": 1.0,
+        "max_abs_error_diagnostic": 1.4375,
+        "reference_argmax": 14374,
+        "actual_argmax": 14374,
+        "confident_argmax": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "arm-ane-500",
+      "input_N": 500,
+      "arm": "ane",
+      "capacity": 768,
+      "monitor": "monitor-4",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033",
+          "p0034",
+          "p0035",
+          "p0036",
+          "p0037",
+          "p0038",
+          "p0039",
+          "p0040",
+          "p0041",
+          "p0042",
+          "p0043",
+          "p0044",
+          "p0045",
+          "p0046",
+          "p0047",
+          "p0048",
+          "p0049",
+          "p0050",
+          "p0051",
+          "p0052",
+          "p0053",
+          "p0054",
+          "p0055",
+          "p0056",
+          "p0057",
+          "p0058",
+          "p0059",
+          "p0060",
+          "p0061",
+          "p0062",
+          "p0063",
+          "p0064",
+          "p0065",
+          "p0066",
+          "p0067",
+          "p0068",
+          "p0069",
+          "p0070",
+          "p0071",
+          "p0072",
+          "p0073",
+          "p0074",
+          "p0075",
+          "p0076",
+          "p0077",
+          "p0078",
+          "p0079",
+          "p0080",
+          "p0081",
+          "p0082",
+          "p0083",
+          "p0084",
+          "p0085",
+          "p0086",
+          "p0087",
+          "p0088",
+          "p0089",
+          "p0090",
+          "p0091",
+          "p0092",
+          "p0093",
+          "p0094",
+          "p0095",
+          "p0096",
+          "p0097",
+          "p0098",
+          "p0099",
+          "p0100",
+          "p0101",
+          "p0102",
+          "p0103",
+          "p0104",
+          "p0105",
+          "p0106",
+          "p0107",
+          "p0108",
+          "p0109",
+          "p0110",
+          "p0111",
+          "p0112",
+          "p0113",
+          "p0114",
+          "p0115",
+          "p0116",
+          "p0117",
+          "p0118",
+          "p0119",
+          "p0120",
+          "p0121",
+          "p0122",
+          "p0123",
+          "p0124",
+          "p0125",
+          "p0126",
+          "p0127",
+          "p0128",
+          "p0129"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 130
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 17.813587542,
+          "prefill_seconds": 0.734551667,
+          "prefill_tokens_per_second": 680.6873123602891,
+          "decode_seconds": 17.078995541,
+          "decode_tokens_per_second": 14.98917189745989
+        },
+        "final_KV": 756,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    },
+    {
+      "id": "arm-gpu-500",
+      "input_N": 500,
+      "arm": "gpu",
+      "capacity": 768,
+      "monitor": "monitor-4",
+      "requests": {
+        "boundary": [
+          "boundary"
+        ],
+        "full": [
+          "r0000",
+          "r0001",
+          "r0002"
+        ],
+        "prefill": [
+          "p0000",
+          "p0001",
+          "p0002",
+          "p0003",
+          "p0004",
+          "p0005",
+          "p0006",
+          "p0007",
+          "p0008",
+          "p0009",
+          "p0010",
+          "p0011",
+          "p0012",
+          "p0013",
+          "p0014",
+          "p0015",
+          "p0016",
+          "p0017",
+          "p0018",
+          "p0019",
+          "p0020",
+          "p0021",
+          "p0022",
+          "p0023",
+          "p0024",
+          "p0025",
+          "p0026",
+          "p0027",
+          "p0028",
+          "p0029",
+          "p0030",
+          "p0031",
+          "p0032",
+          "p0033",
+          "p0034",
+          "p0035",
+          "p0036",
+          "p0037",
+          "p0038",
+          "p0039",
+          "p0040",
+          "p0041",
+          "p0042",
+          "p0043",
+          "p0044",
+          "p0045",
+          "p0046",
+          "p0047",
+          "p0048",
+          "p0049",
+          "p0050",
+          "p0051",
+          "p0052",
+          "p0053",
+          "p0054",
+          "p0055",
+          "p0056",
+          "p0057",
+          "p0058",
+          "p0059",
+          "p0060",
+          "p0061",
+          "p0062",
+          "p0063",
+          "p0064",
+          "p0065",
+          "p0066",
+          "p0067",
+          "p0068",
+          "p0069",
+          "p0070",
+          "p0071",
+          "p0072",
+          "p0073",
+          "p0074",
+          "p0075",
+          "p0076",
+          "p0077",
+          "p0078",
+          "p0079",
+          "p0080",
+          "p0081",
+          "p0082",
+          "p0083",
+          "p0084",
+          "p0085",
+          "p0086",
+          "p0087",
+          "p0088",
+          "p0089",
+          "p0090",
+          "p0091",
+          "p0092",
+          "p0093",
+          "p0094",
+          "p0095",
+          "p0096",
+          "p0097",
+          "p0098",
+          "p0099",
+          "p0100",
+          "p0101",
+          "p0102",
+          "p0103",
+          "p0104",
+          "p0105",
+          "p0106",
+          "p0107",
+          "p0108",
+          "p0109",
+          "p0110",
+          "p0111",
+          "p0112",
+          "p0113",
+          "p0114",
+          "p0115",
+          "p0116",
+          "p0117",
+          "p0118",
+          "p0119",
+          "p0120",
+          "p0121",
+          "p0122",
+          "p0123",
+          "p0124",
+          "p0125",
+          "p0126",
+          "p0127",
+          "p0128",
+          "p0129"
+        ]
+      },
+      "counts": {
+        "full": 3,
+        "prefill": 130
+      },
+      "warmup": {
+        "protocol": {
+          "passed": true,
+          "request_seconds": 9.718552666,
+          "prefill_seconds": 1.153868125,
+          "prefill_tokens_per_second": 433.32508210156163,
+          "decode_seconds": 8.564642291,
+          "decode_tokens_per_second": 29.890331820280807
+        },
+        "final_KV": 756,
+        "last_logits_finite": true
+      },
+      "reference_1k": null
+    }
+  ],
+  "idle": [
+    {
+      "id": "idle-start",
+      "seconds": 600,
+      "monitor": "monitor-1",
+      "window_ns": [
+        317577574201625,
+        318177579234625
+      ]
+    },
+    {
+      "id": "idle-end",
+      "seconds": 600,
+      "monitor": "monitor-4",
+      "window_ns": [
+        332323311310291,
+        332923318401791
+      ]
+    }
+  ]
+}
