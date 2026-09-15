@@ -67,6 +67,15 @@ class G7Evidence(unittest.TestCase):
         with self.fails('g7_placement_rule:r1-mlp-n1024-coreai-w4a16'):
             derive(self.bundle, ROOT)
 
+    def test_control_request_inventory(self):
+        for length in (0, 5, 7):
+            with self.subTest(length=length):
+                def edit(value):
+                    value['gate-n64-coreai-fp16_from_w4_codes']['admission']['placement']['requests_per_control'] = [1] * length
+                self.change('configs.json', edit)
+                with self.fails('g7_control_inventory:gate-n64-coreai-fp16_from_w4_codes'):
+                    derive(self.bundle, ROOT)
+
     def test_coreml_operation_on_cpu(self):
         def edit(value):
             plan = value['gate-n1024-coreml-w4a16']['admission']['placement']['compute_plan']

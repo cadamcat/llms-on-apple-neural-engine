@@ -62,7 +62,9 @@ def admitted(name, asset, record, limits):
     plan = placement['compute_plan']
     # The run's rule: a successful ANE request in every control call, no compile or fallback failure line and,
     # for Core ML, the expected number of projection convolutions, each preferring the Neural Engine.
-    ane = all(r >= 1 for r in placement['requests_per_control']) and not placement['failures']
+    requests = placement['requests_per_control']
+    require(len(requests) == 6 and all(type(r) is int and r >= 0 for r in requests), 'g7_control_inventory:' + name)
+    ane = all(r >= 1 for r in requests) and not placement['failures']
     if asset['runtime'] == 'coreml':
         conv = [p for p in plan if p['operator'].split('.')[-1] == 'conv']
         expected = asset['depth'] if asset['workload'] == 'synthetic' else 1 if asset['workload'] == 'gate' else 3

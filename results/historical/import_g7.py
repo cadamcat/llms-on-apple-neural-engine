@@ -91,7 +91,8 @@ def extract(workspace, output):
         raise ValueError('launch_record_changed')
     frozen = {portable(reader, path): digest for path, digest in launch['files'].items()}
     for path, digest in launch['files'].items():
-        if hashlib.sha256(Path(path).read_bytes()).hexdigest() != digest:
+        # Workspace files must still be the launch copies; this repository's scripts keep evolving under Git.
+        if not portable(reader, path).startswith('ane-scope/') and hashlib.sha256(Path(path).read_bytes()).hexdigest() != digest:
             raise ValueError('launch_identity:' + portable(reader, path))
 
     # Every prepared configuration, admitted or not, with its asset audit.

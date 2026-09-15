@@ -49,6 +49,39 @@ class QdqCoreML(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'qdq_coreml_ane_requests:s4-cpuAndNeuralEngine'):
             verify.outputs(self.copy)
 
+    def test_graph_dequantize_scale(self):
+        path = self.copy / 'graphs/s2.mil'
+        path.write_text(path.read_text().replace(
+            'dequantize(input=%quantize_2, scale=0.0625',
+            'dequantize(input=%quantize_2, scale=0.5'))
+        with self.assertRaisesRegex(ValueError, 'qdq_coreml_graph:s2'):
+            verify.outputs(self.copy)
+
+    def test_graph_qdq_connection(self):
+        path = self.copy / 'graphs/s2.mil'
+        path.write_text(path.read_text().replace(
+            'dequantize(input=%quantize_3,', 'dequantize(input=%quantize_2,'))
+        with self.assertRaisesRegex(ValueError, 'qdq_coreml_graph:s2'):
+            verify.outputs(self.copy)
+
+    def test_graph_bypasses_product(self):
+        path = self.copy / 'graphs/s2.mil'
+        path.write_text(path.read_text().replace('quantize(input=%mul_0,', 'quantize(input=%slice_by_index_0,'))
+        with self.assertRaisesRegex(ValueError, 'qdq_coreml_graph:s2'):
+            verify.outputs(self.copy)
+
+    def test_graph_clamp_bounds(self):
+        path = self.copy / 'graphs/s2_clip.mil'
+        path.write_text(path.read_text().replace('alpha=-64.0', 'alpha=0.0'))
+        with self.assertRaisesRegex(ValueError, 'qdq_coreml_graph:s2_clip'):
+            verify.outputs(self.copy)
+
+    def test_graph_variable_names(self):
+        # The graph's connections matter; generated symbol names do not.
+        path = self.copy / 'graphs/s2.mil'
+        path.write_text(path.read_text().replace('quantize_2', 'quantize_renamed'))
+        verify.outputs(self.copy)
+
     def test_graph_without_clamp(self):
         path = self.copy / 'graphs/s2_clip.mil'
         path.write_text('\n'.join(line for line in path.read_text().splitlines() if '= clip(' not in line))

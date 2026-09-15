@@ -50,6 +50,8 @@ def quantities(data):
     add('mlp.a8.l2', span([100 * v for v in mlp_a8], 0, '%'), source='configs.json')
     clamp = [c['admission']['numeric']['comparisons']['original']['ordinary']['relative_l2'] for c in configs.values() if c['asset']['clip']]
     add('mlp.clamp.l2', span([100 * v for v in clamp], 1, '%'), source='configs.json')
+    add('mlp.clamp.configs', len(clamp), source='configs.json')
+    add('mlp.clamp.positions', span([c['asset']['positions'] for c in configs.values() if c['asset']['clip']], 0), source='configs.json')
     add('mlp.a8.configs', len(mlp_a8), source='configs.json')
     add('mlp.a8.admitted', sum(1 for name, c in configs.items() if c['asset']['workload'] == 'mlp' and c['asset']['format'] in
                                 ('w8a8_same_codes', 'a8w4_int8_lut') and data['admission'][name]), source='configs.json')

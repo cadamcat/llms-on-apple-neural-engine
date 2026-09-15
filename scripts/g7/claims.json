@@ -51,7 +51,9 @@
     "g7-050": "g7.qdq.s2.ane.benchmark",
     "g7-051": "g7.qdq.small-runs",
     "g7-052": "g7.mlp.a8.l2",
-    "g7-053": "g7.mlp.clamp.l2"
+    "g7-053": "g7.mlp.clamp.l2",
+    "g7-110": "g7.mlp.clamp.configs",
+    "g7-111": "g7.mlp.clamp.positions"
   },
   "findings/coreml-coreai-same-codes/README.md": {
     "g7-001": "g7.gate.positions-64",
@@ -89,7 +91,9 @@
     "g7-033": "g7.blocks",
     "g7-034": "g7.calls",
     "g7-035": "g7.power-samples",
-    "g7-036": "g7.captures"
+    "g7-036": "g7.captures",
+    "g7-108": "g7.mlp.clamp.configs",
+    "g7-109": "g7.mlp.clamp.positions"
   },
   "findings/quantized-speedup-conditions/README.md": {
     "g7-054": "g7.rate.gate.64.coreai.fp16",

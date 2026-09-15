@@ -23,6 +23,53 @@ def qdq(x, scale):
     return code * scale
 
 
+def check_graph(graph, s_in, s_out, clamped, shape, name):
+    """Follow the persisted probe's dataflow; generated variable names are immaterial."""
+    error = 'qdq_coreml_graph:' + name
+    statements = re.findall(r'^\s*%(\w+): .+ = (\w+)\((.*)\)$', graph, re.MULTILINE)
+    counts = collections.Counter(op for _, op, _ in statements)
+    expected = {'slice_by_index': 2, 'quantize': 2, 'dequantize': 2, 'mul': 1, 'identity': 1}
+    if clamped:
+        expected['clip'] = 1
+    require(counts == expected and len({key for key, _, _ in statements}) == len(statements), error)
+    nodes = {'%' + key: (op, dict(re.findall(r'(\w+)=(.*?)(?=,\s*\w+=|$)', args)))
+             for key, op, args in statements}
+
+    def node(key, op):
+        actual, args = nodes[key]
+        require(actual == op, error)
+        return args
+
+    def qdq(output, scale):
+        dq = node(output, 'dequantize')
+        q = node(dq['input'], 'quantize')
+        require(float(dq['scale']) == float(q['scale']) == scale and
+                float(q.get('zero_point', '0')) == float(dq.get('zero_point', '0')) == 0 and
+                q['output_dtype'] == '"int8"', error)
+        return q['input']
+
+    try:
+        input_name = '%' + re.search(r'main\[\w+\]\(%(\w+):', graph)[1]
+        output = re.findall(r'} -> \((%\w+)\)', graph)
+        require(len(output) == 1, error)
+        product = qdq(node(output[0], 'identity')['x'], s_out)
+        if clamped:
+            clip = node(product, 'clip')
+            require(float(clip['alpha']) == -128 * s_out and float(clip['beta']) == 127 * s_out, error)
+            product = clip['x']
+        multiply = node(product, 'mul')
+        operands = [multiply['x'], multiply['y']]
+        a = next(key for key in operands if nodes[key][0] == 'slice_by_index')
+        b = qdq(next(key for key in operands if nodes[key][0] == 'dequantize'), s_in)
+        half = shape[1] // 2
+        for key, begin, end in ((a, [0, 0, 0, 0], [shape[0], half, *shape[2:]]),
+                                (b, [0, half, 0, 0], shape)):
+            part = node(key, 'slice_by_index')
+            require(part['x'] == input_name and json.loads(part['begin']) == begin and json.loads(part['end']) == end, error)
+    except (KeyError, IndexError, TypeError, ValueError, StopIteration) as exc:
+        raise ValueError(error) from exc
+
+
 def outputs(recorded=RECORDED):
     record = json.loads((recorded / 'results.json').read_text())
     size = 2 * math.prod(record['output_shape'])
@@ -32,10 +79,7 @@ def outputs(recorded=RECORDED):
         s_out = spec['output_scale']
         require(spec['product_clamp'] == arm.endswith('_clip'), 'qdq_coreml_clamp_flag:' + arm)
         graph = (recorded / 'graphs' / f'{arm}.mil').read_text()
-        ops = collections.Counter(re.findall(r'= (\w+)\(', graph))
-        scales = sorted(float(v) for v in re.findall(r'= quantize\(input=%\w+, scale=([0-9.]+)', graph))
-        require(ops['quantize'] == ops['dequantize'] == 2 and ops['mul'] == 1 and ops['clip'] == int(spec['product_clamp'])
-                and ops['conv'] == 0 and scales == sorted([s_in, s_out]), 'qdq_coreml_graph:' + arm)
+        check_graph(graph, s_in, s_out, spec['product_clamp'], record['shape'], arm)
         reference = {k: qdq(a * qdq(b, s_in), s_out) for k, (a, b) in PAIRS.items()}
         # The Core AI rule: the b branch's integer code dequantized with the output scale.
         substitution = {k: qdq(a * round(b / s_in) * s_out, s_out) for k, (a, b) in PAIRS.items()}
