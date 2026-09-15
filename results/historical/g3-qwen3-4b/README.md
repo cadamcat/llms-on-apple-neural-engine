@@ -5,14 +5,14 @@ This imported bundle supports offline recomputation of complete-model prefill/de
 | File | Content |
 |---|---|
 | `protocol.json` | Model/revision, precision, contexts, work budgets, source identities and timing assumptions |
-| `inputs.json`, `input-identity.json` | Initial token IDs and hashes of source documentation |
+| `inputs.json`, `input-identity.json` | Initial token IDs and the source documentation they came from |
 | `requests.jsonl.gz` | Complete request results and commands, qualified by run and host |
 | `blocks.json` | Stage work inventories and capture references |
-| `power.jsonl.gz` | Selected original plist fields, receipt anchors, recorded decoding and raw-frame hashes |
+| `power.jsonl.gz` | Selected original plist fields, receipt anchors and recorded decoding |
 | `quality-records.json` | Recorded first-output and cache controls; no portable logits replay |
-| `asset-identity.json`, `runtime-implementation.json` | Recorded asset hashes and the host's engine-selection excerpt |
+| `asset-identity.json`, `runtime-implementation.json` | Recorded asset sizes and checks, and the host's engine-selection excerpt |
 | `capture-status.json`, `closures.json` | Original all-channel integrity and process-closure records |
-| `provenance.json` | Source/product hashes and transformations |
+| `provenance.json` | Sources and transformations |
 
 r4 supplies the single-request coverage curves. r5 supplies the warmed stage matrix and shared power capture. r6 supplies the longer short-prefill pair. Original short blocks remain in the bundle; the primary pair selection and its response requirement are checked by the recomputation code.
 

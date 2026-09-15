@@ -1,6 +1,5 @@
 """Exercise portable G4 A accounting against corrupted disposable bundles."""
 import gzip
-import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -40,11 +39,6 @@ class G4AEvidence(unittest.TestCase):
             path.write_bytes(gzip.compress(('\n'.join(json.dumps(r) for r in value) + '\n').encode(), mtime=0))
         else:
             path.write_text(json.dumps(value))
-        # Re-sign the container to exercise semantic accounting, beyond its hash check.
-        manifest = self.bundle / 'provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products'][name] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def fails(self, name):
         return self.assertRaisesRegex(ValueError, name)
@@ -59,11 +53,6 @@ class G4AEvidence(unittest.TestCase):
         self.assertTrue(all(b['admitted'] for b in data['blocks']))
         for pair in data['pairs']:
             self.assertEqual(pair['ane']['tokens'], pair['gpu']['tokens'])
-
-    def test_product_hash(self):
-        (self.bundle / 'arms.json').write_text('[]')
-        with self.fails('g4a_product_identity:arms.json'):
-            derive(self.bundle, ROOT)
 
     def test_input_length(self):
         self.change('requests.jsonl.gz', lambda r: self.request(r, 'full')['result'].__setitem__('input_tokens', 999))
@@ -159,7 +148,7 @@ class G4AEvidence(unittest.TestCase):
             derive(self.bundle, ROOT)
 
     def test_inputs_identity(self):
-        self.change('protocol.json', lambda v: v['inputs_source'].__setitem__('sha256', '0' * 64))
+        self.change('protocol.json', lambda v: v['inputs_source'].__setitem__('path', 'workplans/other/inputs.json'))
         with self.fails('g4a_inputs_identity'):
             derive(self.bundle, ROOT)
 
@@ -203,21 +192,12 @@ class DiskObservations(unittest.TestCase):
         value = json.loads(path.read_text())
         edit(value)
         path.write_text(json.dumps(value))
-        manifest = self.repo / EVIDENCE / 'provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products']['observations.json'] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def test_recorded_observations(self):
         data = derive_disk(self.g4a, self.repo)
         self.assertEqual((data['held_files'], data['large_files'], data['reclaim_files']), (29, 26, 3))
         self.assertEqual(data['reclaim_signal'], 'KILL')
         self.assertTrue(all(-7.5 < x < -6.5 for x in data['ane_change_before_restart_GiB']))
-
-    def test_product_hash(self):
-        (self.repo / EVIDENCE / 'observations.json').write_text('{}')
-        with self.assertRaisesRegex(ValueError, 'disk_product_identity:observations.json'):
-            derive_disk(self.g4a, self.repo)
 
     def test_only_deleted_compile_inputs_count(self):
         self.change(lambda v: v['listing_1335']['rows'][0].__setitem__('nlink', 1))

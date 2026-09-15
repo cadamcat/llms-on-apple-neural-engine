@@ -68,7 +68,7 @@ energy claim follows from any of it.
 ## Evidence
 
 - [cross-model-validation.json](../../results/historical/cross-model-validation.json)
-  — per-model counts, the 13 residual coordinates, and source hashes
+  — per-model counts, the 13 residual coordinates, and source paths
 - [verify_arithmetic.py](../../results/historical/tests/verify_arithmetic.py)
   — the recomputation, standard library only
 - The frozen ties-away reference in

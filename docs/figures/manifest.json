@@ -1,26 +1,7 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "scope": "Figures derived from the bundled evidence and the documented methods; zero new device calls.",
   "generation": "Python standard library only; deterministic and byte-reproducible.",
-  "generator_hashes": {
-    "scripts/render_figures.py": "93f768e094c1226660ab80b6171ddbabd5813a8a954dcd8c37dc81d2db9a4021",
-    "scripts/figures/canvas.py": "cbb97ba7f3e8f598fc16f3f9617ed77d441ab93b33600a93e1a021220950962c",
-    "scripts/figures/architecture.py": "2090108c5a556eb415b6daccf003d825733306d104b7722a4c353c0f38576515",
-    "scripts/figures/arithmetic.py": "2d02915eef2fbe58392d2a4d2380a10ec2dc4297cd0ea13687ae7b31281def58",
-    "scripts/figures/measurements.py": "1ed5f27b7e31bf76bc4d23ecdf29ab1ef384c3395c7e3831fbe6edf24e0ba350",
-    "scripts/figures/g2.py": "36cc78b59d5102121ded8df02788a8acc9a332ffc447ab7dee46c86b38237e9d",
-    "scripts/g2/evidence.py": "557784922a0d9f8cfa27cd74dbb69ca4139f2b79553ca2f0e59d1b40c1b657e4",
-    "scripts/g2/thermal.py": "8225beb0eb46bc4880bfbd98a1403e52b0b7e9d7dad881d867556fd05a29416f",
-    "scripts/figures/g3.py": "c4bdd32f315a0922a79cff0b1e5ed9427f27a550ca064d16380cec08960c26db",
-    "scripts/g3/evidence.py": "4ec1e5ae53a935a532890cc2f0e5661d6303d605c9e6be50974bd73d3ed22159",
-    "scripts/g3/protocol.py": "6caf0aac90c4ed10fb7f9e07ac75cba9dfcbc000a9156cd047e3cb0aa71d54ee",
-    "scripts/g3/power.py": "b9fc728f4c3fd088d9f3ed57786353d6b5c5bce5dde113ca4136f252cf33d105",
-    "scripts/figures/g4a.py": "3795b6f1181ec74bd87bcb56ec5d853f9a6d7913a90f9dba33c7b606394f22e9",
-    "scripts/g4a/evidence.py": "fdc11a0dca04402454612dec4efcb910f6e39e0ee2c86f12fff6ee9db3f5c586",
-    "scripts/g4a/protocol.py": "3faca85f8d88220c55772a85141a079c34254c51db0d0e305830f6913e70ceb9",
-    "scripts/g4a/power.py": "1b484a997a96fd49f04765edcbd9348d6a9f2458c1dc4886a9b32cf295328f4f",
-    "scripts/g4a/disk.py": "64f271543c35a810ddcbab9612bc330684f797615a4e2b05923ca3b630c6155a"
-  },
   "figures": [
     {
       "filename": "evidence-pipeline.svg",
@@ -35,12 +16,7 @@
         "All admission evidence precedes timing",
         "Failed admission has no timing",
         "Device participation does not imply physical INT8"
-      ],
-      "source_hashes": {
-        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f",
-        "articles/01-measuring-ane-performance.md": "0f59a8afd9e88341cd619d9e7672883328c656eb78b8f843d18052eb1e527cba"
-      },
-      "svg_sha256": "595340b9bc50d45922250f5f0ee35eade12a8b758ef74de400a28f5a66759d5c"
+      ]
     },
     {
       "filename": "split-structure.svg",
@@ -58,14 +34,7 @@
         "Exactly one inter-layer QDQ",
         "Separate frozen references per path",
         "K64 compatibility separate from K512 performance"
-      ],
-      "source_hashes": {
-        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f",
-        "articles/02-group-quantization-and-split.md": "d8e1e2951c0c886dd6a072fb4941f1fcfe5fc82e8a0d294136661ac7cf60ce10",
-        "src/ane_scope/_coreai.py": "98e9419447beeea54ac1dfb5bd51cb7fd67f3807d084d0ff0f23cbaaea8fae7e",
-        "src/ane_scope/references/prepare.py": "f42960568bec55449efced2dd0d3313031d91c1290f9bad20aafedb271814efd"
-      },
-      "svg_sha256": "92da1b6cd56318d841b81f3f2ec27519371504454f4292d1ee75ba0edb70c0f7"
+      ]
     },
     {
       "filename": "reproduction-workflow.svg",
@@ -81,12 +50,7 @@
         "Verify source identity",
         "Inspect before copying a fresh selection",
         "Historical and fresh evidence stay separate"
-      ],
-      "source_hashes": {
-        "docs/REPRODUCING.md": "898118dc01119e47f735e9d46a75230f2692240a883adf90fe650c7405436f00",
-        "docs/PROVENANCE.md": "d20589c346b25d2a22458c2f1989e70763cb0f23e6bc59ebc11f8a1e4f9d1f55"
-      },
-      "svg_sha256": "4d83172e3c9ee9e36a48bfab21ac8e9472a4ac56c78b723b422be0ad6779caea"
+      ]
     },
     {
       "filename": "arithmetic-levels.svg",
@@ -100,12 +64,7 @@
         "Three distinct comparisons",
         "A conceptual distinction, not a measured causal path",
         "Changing a reference never changes a recorded output"
-      ],
-      "source_hashes": {
-        "articles/03-arithmetic-compatibility.md": "bc9e95ab0d0b746b579289849317799e89db3f68a3ff438f1e8a26d48eb3ae2d",
-        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f"
-      },
-      "svg_sha256": "ec14136e622237b96b152159639e8e691e36bbd89acfe32d024f38df587c1756"
+      ]
     },
     {
       "filename": "qdq-scale-controls.svg",
@@ -163,13 +122,7 @@
         "Error column uses the original input",
         "ANE column covers all four controls",
         "ANE participation does not imply a correct output"
-      ],
-      "source_hashes": {
-        "results/fresh/smoke.json": "962f1f17c7787a880c0a901cba498bc930ca4eaa1662480484e9980bac85037c",
-        "docs/METHODS.md": "cc603de0d8262c3bb9f5d5b094ceb779f742dabcf327971a0ad0993ffb95496f",
-        "articles/03-arithmetic-compatibility.md": "bc9e95ab0d0b746b579289849317799e89db3f68a3ff438f1e8a26d48eb3ae2d"
-      },
-      "svg_sha256": "f13690d93a4d8a7a18073d7272598afc1edf1bb3fa4c00795e68fce2f53af193"
+      ]
     },
     {
       "filename": "dot-outside-bracket.svg",
@@ -185,19 +138,13 @@
         "The recorded device output is neither",
         "The exact value is not at a midpoint",
         "Recomputable from published scalars without a device"
-      ],
-      "source_hashes": {
-        "results/historical/dot-localization.json": "54c1f05ad085b9edb99b5359cdf9696bab58cb5ed4db76b0f3a7c967d6543a94",
-        "findings/fp16-dot-residual/README.md": "4d6fc08ba1e0ffb809ce35faa368c4edca75b7f1c1d43642256b85d191bec8df"
-      },
-      "svg_sha256": "41f9686e01287a197e659c4c5d3ddb2392adf974902baf3618df93055fe1d7ea"
+      ]
     },
     {
       "filename": "throughput-by-process.svg",
       "title": "FP16 against two quantized paths on a synthetic 128-layer chain",
       "description": "Five configurations, each measured in three independent processes. Bars show the median process rate and labels give the full range across the three. Quantized paths reach about 35 T source-equivalent operations per second against about 18.5 for FP16. Source-equivalent operation counts do not establish physical INT8 arithmetic.",
       "source": "results/fresh/throughput.json",
-      "source_sha256": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110",
       "formula": "source_ops / (p50_ms * 1e9)",
       "points": [
         {
@@ -454,16 +401,13 @@
             1.8680989851392913
           ]
         }
-      ],
-      "source_hashes": {},
-      "svg_sha256": "b6d58cf432bd41e9f038ceacd448075529e382b623543858ddae8a1108bf66f3"
+      ]
     },
     {
       "filename": "split-latency.svg",
       "title": "Splitting the same K512 weights into sixteen K32 convolutions",
       "description": "Three paired rounds of a two-layer Core AI A8W4 graph. The wide path takes about 0.43 to 0.45 milliseconds and the split path about 1.76 to 1.77, a ratio near four. Lines join the two arms of one paired round, not a trend over time.",
       "source": "results/fresh/split.json",
-      "source_sha256": "526ff38b8f6ad14ad47473aed36ce9bcecde4380ab75ac3406598e8f9204b97f",
       "points": [
         {
           "source": "results/fresh/split.json",
@@ -563,16 +507,13 @@
           "process_round": 3,
           "split_over_wide_p50": 3.9580594882889515
         }
-      ],
-      "source_hashes": {},
-      "svg_sha256": "891ea8027cbfc92a6f36180d1bf6efac2718ef21d42f614f889b383908ec0c8a"
+      ]
     },
     {
       "filename": "rounding-reference.svg",
       "title": "One recorded output, two arithmetic references",
       "description": "The same Core AI W8A8 output has a relative L2 of about 0.000109 against the reference selected before the run, which rounds Q8 midpoints away from zero, and about 0.211 against the ties-to-even diagnostic reference. This is a change of reference, not a repair of the output.",
       "source": "results/fresh/throughput.json",
-      "source_sha256": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110",
       "run": "09-process1-coreai-w8a8-128",
       "case_id": "coreai-w8a8-128",
       "comparisons": [
@@ -581,20 +522,16 @@
           "field": "/runs/8/numerical/comparisons/0/relative_L2",
           "relative_L2": 0.00010854604005797441,
           "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440",
-          "output_sha256_field": "/runs/8/numerical/comparisons/0/output_sha256",
-          "reference_sha256": "cab89153bb719bb914aaa4e4c4bbfc6de75478d6b23d9f20932453736dfeeb1e"
+          "output_sha256_field": "/runs/8/numerical/comparisons/0/output_sha256"
         },
         {
           "reference": "Q8 RNE",
           "field": "/runs/8/RNE-not-gate/comparisons/0/relative_L2",
           "relative_L2": 0.21139617789483547,
           "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440",
-          "output_sha256_field": "/runs/8/RNE-not-gate/comparisons/0/output_sha256",
-          "reference_sha256": "513ac55abc1c1d754a33e67dfc40318e87c0d251dca426e43af1c05df0b52080"
+          "output_sha256_field": "/runs/8/RNE-not-gate/comparisons/0/output_sha256"
         }
-      ],
-      "source_hashes": {},
-      "svg_sha256": "e515a068e4ceb80d5f752a8b5d8b48f09920ea01a05a9b7f21b110e9ed393e27"
+      ]
     },
     {
       "filename": "ane-vs-gpu.svg",
@@ -674,12 +611,7 @@
         "One timed process per path, three of nine planned",
         "Not an end-to-end prefill",
         "W4A16 and A8W4 are within 2% at 4096 positions"
-      ],
-      "source_hashes": {
-        "results/historical/ane-vs-gpu-prefill.json": "ae50d31ff23fa5ac89c6bb44fad75f9b53acf60c633685cb69c57424ad443e1d",
-        "findings/ane-vs-gpu-prefill/README.md": "d12f6039e15f5599e45ee178513f83a76be5b55f66eecab90c1ec93b911eea21"
-      },
-      "svg_sha256": "cfe05cb0ed997a73548ae5e039ddd45ae7a3c084d0e46bb883d8c79895cee9a1"
+      ]
     },
     {
       "filename": "g2-throughput.svg",
@@ -876,58 +808,7 @@
         }
       ],
       "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
-      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
-      "source_hashes": {
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
-        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
-        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
-        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
-        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
-        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
-        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
-        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
-        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
-        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
-        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
-        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
-        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
-        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
-        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
-        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
-        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
-        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
-        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
-      },
-      "svg_sha256": "9d961a651c8149812718a76b3b7e28ba29c052ef8d4aa92adb768d47d3d19d56"
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined."
     },
     {
       "filename": "g2-load-fans.svg",
@@ -1139,58 +1020,7 @@
         ]
       },
       "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
-      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
-      "source_hashes": {
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
-        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
-        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
-        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
-        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
-        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
-        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
-        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
-        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
-        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
-        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
-        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
-        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
-        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
-        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
-        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
-        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
-        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
-        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
-      },
-      "svg_sha256": "878e44a2746b653ad3ae41698a2d8634d5501831ff93af940bda445394a3215d"
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined."
     },
     {
       "filename": "g2-matched-rate-thermal.svg",
@@ -1301,58 +1131,7 @@
         }
       ],
       "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
-      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
-      "source_hashes": {
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
-        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
-        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
-        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
-        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
-        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
-        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
-        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
-        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
-        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
-        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
-        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
-        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
-        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
-        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
-        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
-        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
-        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
-        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
-      },
-      "svg_sha256": "c49266634404fd3ca36b2a74b0e670e0e3a7a1aff8fcfec10faac704965490a2"
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined."
     },
     {
       "filename": "g2-saturated-thermal.svg",
@@ -1449,58 +1228,7 @@
         }
       ],
       "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
-      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
-      "source_hashes": {
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
-        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
-        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
-        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
-        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
-        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
-        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
-        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
-        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
-        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
-        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
-        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
-        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
-        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
-        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
-        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
-        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
-        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
-        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
-      },
-      "svg_sha256": "9b0954cf7457c7b29ecb93e96cd05a715790f1d14ffb723affac5259c881ecee"
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined."
     },
     {
       "filename": "g2-coexistence-tails.svg",
@@ -1773,58 +1501,7 @@
         }
       ],
       "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
-      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
-      "source_hashes": {
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
-        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
-        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
-        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
-        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
-        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
-        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
-        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
-        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
-        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
-        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
-        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
-        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
-        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
-        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
-        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
-        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
-        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
-        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
-      },
-      "svg_sha256": "134e73017915a20420a81cb21a2e48aa5337b6fb315dd0d0d9823d50406b2f14"
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined."
     },
     {
       "filename": "g2-memory.svg",
@@ -1887,58 +1564,7 @@
         "gap_seconds": 2
       },
       "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
-      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
-      "source_hashes": {
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
-        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
-        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
-        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
-        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
-        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
-        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
-        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
-        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
-        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
-        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
-        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
-        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
-        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
-        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
-        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
-        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
-        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
-        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
-      },
-      "svg_sha256": "6caafd0248ef45185b2d1160308fa882a25a5ea26921d1d6974c7b469c3ccf21"
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined."
     },
     {
       "filename": "g2-tile.svg",
@@ -2013,58 +1639,7 @@
         }
       ],
       "generation": "Standard-library Canvas; values checked by scripts/g2/evidence.py; no device calls.",
-      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined.",
-      "source_hashes": {
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-C.jsonl.gz": "b7b952b498b4066a4a31803e28f3b6eed6c1b153652ef2d56811a0a0f26bfcee",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-G.jsonl.gz": "eb5fcd5f2d966dbee38e922de7bb39f88fa6de6284eb13feef49a60c440127e8",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r0-alone.jsonl.gz": "bd1b0e0c16c9cceef3097255c11c94c8519d905bcce56db7d98f58a86b6774ba",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-C.jsonl.gz": "79612cbaa047b9311bb57b6f51cce1532e93658d4ffc536c52d5fdbc3d5e55e5",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-G.jsonl.gz": "3bb8e5a7c3be2cdfe51b25a3521af32b4a73dbd9fd4937e3faa8260c964b36dd",
-        "results/historical/g2-w4a16-night/P1-matrix_050-r1-alone.jsonl.gz": "4b9ae1742caa9114592e467b5d2b1d45058685d95eef19a4316bb7755d90706f",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-C.jsonl.gz": "0672b040c6d1e0ded91934e9fa965359ecfb23ea4aed4b0680a50fa278347893",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-G.jsonl.gz": "18e1ec1cae47216acb7840a469aa74bb2f03e433d51457e98ca368d36ae1a03d",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r0-alone.jsonl.gz": "3f600412f4dc1e9ec11006eb8be1230a5e3b297217ec757d88ed1b7a2ec4e226",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-C.jsonl.gz": "e67edc88515f42a7e680db198595900f733d17b13ac068c1a11371d28dce17e2",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-G.jsonl.gz": "f795cf703b97bb9c7c55baf01b11b3fd552a6681fbecb17febcf1eb010cacfd1",
-        "results/historical/g2-w4a16-night/P1-matrix_075-r1-alone.jsonl.gz": "31ec25086376df205f3f5afad0f95034e293f4d8f11326b588f2eaeb3f9db347",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-C.jsonl.gz": "8733513b7886306b515569c0b991d13a42e8f6150c6bb386cbe42cef2c5ae95e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-G.jsonl.gz": "0166b6f3a2270f38b02b09eb5f80c19f102c34f5177a832a38ded22733a92f0e",
-        "results/historical/g2-w4a16-night/P1-memory_050-r0-alone.jsonl.gz": "f0624ec52f705e292d1f25f4ac3709a3b902b3691392ffe31d91d11a8b59597c",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-C.jsonl.gz": "e4d88b8b10cb400acb97b92e56ab554f06108aafcba22e1b1d67a83cf47d1a56",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-G.jsonl.gz": "13289db611f76c9f12489e4fe849d92dcb380ff376076becda84176da99968aa",
-        "results/historical/g2-w4a16-night/P1-memory_050-r1-alone.jsonl.gz": "bcdcece9b3aad9af9f25ecc67ad29c1f9dacc515625349801c92105a90c59e45",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-C.jsonl.gz": "6dafd1f41100be987c4068ad9cf798bb56056ba64d6b534dce391ef118289bf4",
-        "results/historical/g2-w4a16-night/P3-0.25-r0-G.jsonl.gz": "f51f53dca097cb15365c4b2d9d4f6254815ab6e44c7ca1a5ed5c9701358cacbc",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-C.jsonl.gz": "13d481c149f20eb6c603fbc81cd8695651182ef7c8dd71893eae048ac589a077",
-        "results/historical/g2-w4a16-night/P3-0.25-r1-G.jsonl.gz": "514a8611ec8bde243e325141899884345427d6e78c792f7fb20387d6030bb9ac",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-C.jsonl.gz": "3b01c98bbab48a3261835352b2eda19b70b57e5d792e51260e19bfb34224ef63",
-        "results/historical/g2-w4a16-night/P3-0.5-r0-G.jsonl.gz": "ecfa351b8c7e81f7f826454eb427488ae85b3ac657838c8fb3625e6459316337",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-C.jsonl.gz": "17c800fd955e8410c433e3b2d2ad4a1f902bef5cb1b348d63d11c77f0a860404",
-        "results/historical/g2-w4a16-night/P3-0.5-r1-G.jsonl.gz": "f18a3db933d712ef613b959b77fccfc6e2d9594df4c46030a7a2398a3b2bfb86",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-C.jsonl.gz": "a0b04c402e6b3d5558cb933c57d5a4cbd269ecbb54acc0dfd4d16d2ce769d6aa",
-        "results/historical/g2-w4a16-night/P3-0.75-r0-G.jsonl.gz": "3c1ab5ad164d5d23adc2cc6e2e5a60e7b3d20439adfc6e85986a75c2925d0365",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-C.jsonl.gz": "aa15d3449904ac56360e50f07d7fea0136bd7216bad3d6d76878f7671b55a491",
-        "results/historical/g2-w4a16-night/P3-0.75-r1-G.jsonl.gz": "155d3e204fa833a7dcd36a6b98dd13ae73b0545562c4785d227125fb30100519",
-        "results/historical/g2-w4a16-night/SAT-0-C.jsonl.gz": "b484690b0ccea1882b9d52891eb43ecdc6718e3a2dfca36e3c7610fdd5e7ff7b",
-        "results/historical/g2-w4a16-night/SAT-1-G.jsonl.gz": "1f43624d0ae98a40ce1fc439ba94e497b40067edd6bbaecae585c91bdfaf53e1",
-        "results/historical/g2-w4a16-night/SAT-2-G.jsonl.gz": "3271ae7d05219548aa39f2035e37035f05d735b90116d92ec9f68d2d4caa9666",
-        "results/historical/g2-w4a16-night/SAT-3-C.jsonl.gz": "a1311ea8af0ecea7fea7aaccd3227b048e6b5fd15f47e6320b7b825bd9211261",
-        "results/historical/g2-w4a16-night/arrivals.jsonl.gz": "d7e8ac3518c933787196bf1a1356aa9dbbdeb0e5988b18acc70bc49f9fdfd301",
-        "results/historical/g2-w4a16-night/environment.json": "7ea09364f477172bd98a6c87f353aaf1b269d9eb06cb426ba1173ef56c5ed2f3",
-        "results/historical/g2-w4a16-night/expected-summary.json": "5aca23b29ab027cfd017d488cac8ac8acf6287954271612f66b4e0f61f029be5",
-        "results/historical/g2-w4a16-night/p0.json": "81819d0d37a7041f74d7637395d3b5147271f1c485169cc5d19b0ad5222e3308",
-        "results/historical/g2-w4a16-night/p2.jsonl.gz": "96bb3b60a61d5a1036ca71de47bb385d3d4c65cc02d3a8dd193f57f29ecab4f4",
-        "results/historical/g2-w4a16-night/power-status.json": "e3de30d3b0cbcac8c3daab9b7400eb09d5c96392d3668b961af998081c92ef2b",
-        "results/historical/g2-w4a16-night/protocol.json": "bc3386fc35eb865267edfb52fd00aa2c93b6fe6dbb12e628c1b7f9382463e26b",
-        "results/historical/g2-w4a16-night/provenance.json": "9a2eb27499d82963a54595c514093641d84aea5d3eea30ad694f490166924cff",
-        "results/historical/g2-w4a16-night/resources.jsonl.gz": "f55ffca73a2c140ff9efc85b762fb615b3e0ec20bd09ba472a697ac8382dc984",
-        "results/historical/g2-w4a16-night/sensors.jsonl.gz": "cd9c12a8afa4eef85295741cfe2a529f5b948ba244e6f166791dc2fd605601fb",
-        "results/historical/g2-w4a16-night/slots.json": "d6319c6261411f60f6099ec898b5dd56a210d919f5800ca39ea5fcc90e5400a4",
-        "results/historical/g2-w4a16-night/thermal-starts.json": "b64227220024bd73126224e3fde3496e0b5ae3f3e48c24986dcd5af4954698fb",
-        "results/historical/g2-w4a16-night/thermal-windows.json": "84c8235fbc2b3a2d72efb4b19f7b52b2a853f0593829fd014b5e3b497866e583",
-        "results/historical/g2-w4a16-night/thermal.jsonl.gz": "636f0dc5f54677c7d941d1546edf0ff29d880d8264922f81fbea1c0f02b8a226"
-      },
-      "svg_sha256": "4aee7f3961fbf4c039ba5c945bc64b145dc4ac3201ce85e9acecc8e686c75891"
+      "scope": "One M5 Pro, one first-layer MLP, r4 only; Ventura dynamic screensaver reported; energy undetermined."
     },
     {
       "filename": "g3-speed.svg",
@@ -2230,23 +1805,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
-      "source_hashes": {
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
-      },
-      "svg_sha256": "2d9bc57d27c077717c3e20c83e68c3167bfecaa997b1a568e15f6fea2ac22b1c"
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy."
     },
     {
       "filename": "g3-implied.svg",
@@ -2333,24 +1892,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
-      "source_hashes": {
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f",
-        "results/fresh/throughput.json": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110"
-      },
-      "svg_sha256": "5591959e8c19e220bccb7da1d8b912cdfcd90a21b2312dc641fe9821ef03be20"
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy."
     },
     {
       "filename": "g3-power.svg",
@@ -2516,23 +2058,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
-      "source_hashes": {
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
-      },
-      "svg_sha256": "3cdd48161f916ddb71d6bbdf0732c5aedf8298cbe17075728b785c804c978df8"
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy."
     },
     {
       "filename": "g3-energy.svg",
@@ -2746,23 +2272,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
-      "source_hashes": {
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
-      },
-      "svg_sha256": "27cecec861fc904dd1ffc1161baf754316a7bc9d189dcfe2b0f227505bb454a9"
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy."
     },
     {
       "filename": "g3-coverage-speed.svg",
@@ -2928,23 +2438,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
-      "source_hashes": {
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
-      },
-      "svg_sha256": "b449491d06375e7f89663bd4f12a678a0fced1b989aeeddb1e1d42307c04b8a9"
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy."
     },
     {
       "filename": "g3-decode-kv.svg",
@@ -3278,23 +2772,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; raw G3 request and power-field recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy.",
-      "source_hashes": {
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
-      },
-      "svg_sha256": "28c7dab2d94590839637868845b8bc9eb2ff57b5b262b921852ad74b51e6a3d9"
+      "scope": "Qwen3-4B FP16 on one M5 Pro. Two Core AI implementations; software component energy."
     },
     {
       "filename": "g4a-speed.svg",
@@ -3543,34 +3021,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
-      "source_hashes": {
-        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
-        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
-        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
-        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
-        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
-        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
-        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
-        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
-        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
-        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
-        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
-      },
-      "svg_sha256": "d11edac8de0c214a363bdd2862f9e69ac8b0141286117782e79da50cbbc06aff"
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy."
     },
     {
       "filename": "g4a-implied.svg",
@@ -3776,35 +3227,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
-      "source_hashes": {
-        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
-        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
-        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
-        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
-        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
-        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
-        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
-        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
-        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
-        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
-        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f",
-        "results/fresh/throughput.json": "ad1b1a64ca34a58619b1fba406efd7cf79604c3e7fbebab9a7dacccb58227110"
-      },
-      "svg_sha256": "81cb153e245555f07dca2802302bd0c5ccd3f1c24d4090c0a4780e596ac12fd4"
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy."
     },
     {
       "filename": "g4a-energy.svg",
@@ -4125,34 +3548,7 @@
         }
       ],
       "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
-      "source_hashes": {
-        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
-        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
-        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
-        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
-        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
-        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
-        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
-        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
-        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
-        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
-        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f"
-      },
-      "svg_sha256": "c494215ae692f9c4520efab672ef8e5aa1946fa5d291209d357f116efe94abf5"
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy."
     },
     {
       "filename": "ane-compiler-disk.svg",
@@ -4263,36 +3659,7 @@
         "released_GiB": 189.0960464477539
       },
       "generation": "Shared standard-library Canvas; G4 A request, power and disk recomputation.",
-      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy.",
-      "source_hashes": {
-        "results/historical/g4a-qwen3-4b/arms.json": "29e3b86d99c823ec654da2f5592545adc4b7be65e1aa581c78870a11aa0148bc",
-        "results/historical/g4a-qwen3-4b/asset-identity.json": "1451542c23ea190a0ffc1cf882bfe0538feeadca4b1575af32f6060b0d98dd1f",
-        "results/historical/g4a-qwen3-4b/capture-status.json": "576ea7ba1ef342728f0486168d7f200ca3a0106d5e21fcdb6c6f267d6aed74fb",
-        "results/historical/g4a-qwen3-4b/closures.json": "8bbbe3b09b2b30a8a2ced01f0496b507be2f5de2b9767b73eaafbbcbbdab9503",
-        "results/historical/g4a-qwen3-4b/disk.json": "44ec0f0b3bb9118c476cf2a0ec80231d7f6d20e220fa0ebdba4583b8d2425493",
-        "results/historical/g4a-qwen3-4b/power.jsonl.gz": "4c6795e6decb659db9b6aa8ff4d0a2fd81bc823ce074a9c5522a80a395774874",
-        "results/historical/g4a-qwen3-4b/protocol.json": "994bcb50e8c1bf05e78518e5b8dadbc349720cd6eafede909ce5ba028c021266",
-        "results/historical/g4a-qwen3-4b/provenance.json": "1901394201d0bb763fb6ef0762f3bbb620c5f1a76d4c2eff4fe578e1f8dbe2af",
-        "results/historical/g4a-qwen3-4b/requests.jsonl.gz": "47c053753425992bb6c3026e89533924f176714be4ebeed48ba9ed921693f3f1",
-        "results/historical/g4a-qwen3-4b/runtime-implementation.json": "31afaf04a4ff1d91a5dd74252ec5ba985c685c1bd04a386bd3a8fad7beb24abe",
-        "results/historical/g4a-qwen3-4b/summary-recorded.json": "54e0d7b7008ccf55883a24d0a1e1e51eb2aad24d924350a0a422fd5a97041c2c",
-        "results/historical/g3-qwen3-4b/asset-identity.json": "d436592ccd1a461bf3caa633a5b45d1d0503fb37e77b9bc5296435e4bdc35952",
-        "results/historical/g3-qwen3-4b/blocks.json": "6fbad326efb1eff0aedb3bca4394a2ede06a47f25adfd7750c1ba3b958afdf84",
-        "results/historical/g3-qwen3-4b/capture-status.json": "4fb899c61a33e9e4c16c2078576c872fd0bda1d4489a07e1209c8fb09e5f3b01",
-        "results/historical/g3-qwen3-4b/closures.json": "d0d3f5718af3283fbe1aad43fe561f282235f1fdb2fae810274d32d9a2a79ec5",
-        "results/historical/g3-qwen3-4b/input-identity.json": "471d56a522f66fba04d7f28056ecb96e90363e4d9fa4ba115fcada83104c7617",
-        "results/historical/g3-qwen3-4b/inputs.json": "b029d424d3d14a77417c8939f7d3e94a38225cb5bee5352b0289b145599ac9b3",
-        "results/historical/g3-qwen3-4b/model-structure.json": "02edccf0ace16bf0f559453684f1a05475e9d2e0488dab3935148c291b8daafa",
-        "results/historical/g3-qwen3-4b/power.jsonl.gz": "777ebc011b3abadaacef26d40cd73b82cc15e6b8c97163a0598bb946f9e88340",
-        "results/historical/g3-qwen3-4b/protocol.json": "c7c7542e72cc8521be0b5d06f453d4d7bb892b807c5d54a62a545c8ae9efb32d",
-        "results/historical/g3-qwen3-4b/provenance.json": "9efdab78938f90ec3c2af270f5f257f810eb3e38601c0139c3aa0c5c3affce90",
-        "results/historical/g3-qwen3-4b/quality-records.json": "65cf9ae4ba0cee1dd4e73ae1cd1347dd815289c0d71a763a4444033d54fd8e8d",
-        "results/historical/g3-qwen3-4b/requests.jsonl.gz": "3bd007f1f965ba07fccf40059d96172121818775b52ccf93f3bb6f5484436751",
-        "results/historical/g3-qwen3-4b/runtime-implementation.json": "105ce9c637987a842923189d5c18ce215d646618eac80f938213edda4edd483f",
-        "findings/ane-compiler-service-disk/evidence/observations.json": "870c4e2f9a76533ceae458ad2ae021b218d65019d401d37d217704a53772e919",
-        "findings/ane-compiler-service-disk/evidence/provenance.json": "f83bdb6217d2c0d19afbcd1a004e99cf5f8f2e31244688d9e3d559aa57e4e616"
-      },
-      "svg_sha256": "bc0213e8e9366217926f77c30a3ef36750b2d486cbf4d92c86b9c42cb6205981"
+      "scope": "Qwen3-4B FP16 on one M5 Pro; matched ANE graphs against the GPU and the G3 ladder; software component energy."
     }
   ]
 }

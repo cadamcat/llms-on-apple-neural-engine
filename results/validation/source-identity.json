@@ -187,7 +187,7 @@
         {
           "path": "pyproject.toml",
           "run_sha256": "a4b8e65a71af7c1906c10c5487567d7ad3c1ff6977742a89de009ca9130858c6",
-          "current_sha256": "e13aebd53bc553982eeb7ddd15ca0deab70ed6cecb50757ce53b2a39d76481c7",
+          "current_sha256": "ea87792b4f552961ef4165197048ae3648c144d23a2641c76fea922d2f038364",
           "matches": false
         },
         {
@@ -290,7 +290,7 @@
         {
           "path": "pyproject.toml",
           "run_sha256": "a4b8e65a71af7c1906c10c5487567d7ad3c1ff6977742a89de009ca9130858c6",
-          "current_sha256": "e13aebd53bc553982eeb7ddd15ca0deab70ed6cecb50757ce53b2a39d76481c7",
+          "current_sha256": "ea87792b4f552961ef4165197048ae3648c144d23a2641c76fea922d2f038364",
           "matches": false
         },
         {

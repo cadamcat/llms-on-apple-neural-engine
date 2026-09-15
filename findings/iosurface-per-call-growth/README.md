@@ -60,11 +60,10 @@ states a native Swift entry point does not show the same growth, and filed
 FB24322437.
 
 **That is someone else's report on someone else's model.** The same root cause
-has not been established. The original SDK blocker is historical: later local
-G1-HOST / PIO / TILE work introduced a persistent native Swift pipeline and
-bounded its growth. [Follow-up evidence](../../results/historical/native-mlp-followup.json).
+has not been established. The original SDK blocker is historical: later native
+work introduced a persistent Swift pipeline and bounded its growth. [Follow-up evidence](../../results/historical/native-mlp-followup.json).
 
-In G1-TILE, C64 and C256 passed their short memory gates. For C256, the natural
+In the native tiled-asset round, C64 and C256 passed their short memory gates. For C256, the natural
 16→32 window of 4K requests grew by **16,384 bytes** in Swift and **114,688 bytes**
 in the Python controller. A256 failed its separate gate. These are new observations,
 not a repair of the old Python measurements and not proof of indefinite stability.

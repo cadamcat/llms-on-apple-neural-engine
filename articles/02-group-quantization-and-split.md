@@ -2,7 +2,7 @@
 
 English | [中文](zh/02-分组量化如何改变ANE的执行图.md)
 
-Article draft · 2026-09-10 · [Series index](README.md)
+2026-09-10 · [Series index](README.md)
 
 Group scales determine decoded weight values, but also constrain how a graph can be expressed, whether a compiler accepts it and what execution costs. A small compatibility probe and a separate performance ablation with the same weights expose different parts of this relationship.
 

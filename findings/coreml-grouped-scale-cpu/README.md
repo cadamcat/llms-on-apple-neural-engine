@@ -64,7 +64,7 @@ graph, at this shape, on this toolchain, was not selected.
 ## Evidence
 
 - [coreml-native-k64-rejection.json](../../results/historical/coreml-native-k64-rejection.json)
-  — the two diagnostics with timestamps, PID scope, both shapes and the source hash
+  — the two diagnostics with timestamps, PID scope, both shapes and the source path
 - [smoke.json](../../results/fresh/smoke.json) — `coreml-group-*` plans and
   placement windows
 - [The exporter and its persisted-asset audit](../../src/ane_scope/_coreml.py)

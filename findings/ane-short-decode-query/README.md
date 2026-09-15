@@ -44,4 +44,4 @@ The [recorded outcomes](repro/recorded/) are checked offline:
 python findings/ane-short-decode-query/repro/verify.py
 ```
 
-The verifier checks every case's function inventory, host return code, ANE request and failure log counts, MPSGraph assertion and same-logits comparison, and the archived scripts' hashes. The [repro README](repro/README.md) gives the export and device commands; they need the pinned Qwen3-4B source, the coreai-models checkout and its Swift host.
+The verifier checks every case's function inventory, host return code, ANE request and failure log counts, MPSGraph assertion and same-logits comparison. The [repro README](repro/README.md) gives the export and device commands; they need the pinned Qwen3-4B source, the coreai-models checkout and its Swift host.

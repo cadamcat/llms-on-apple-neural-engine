@@ -193,10 +193,10 @@
       "claim": "Local autorelease pools can bound temporary objects in long loops; local experiment here did not remove growth."
     }
   ],
-  "sources": {
-    "results/g1-prefill-20260910/review/verification.json": "c60b95f4099288bb27e576b87c58701d6c47d6f23018f6f9d507c6eec1fcc9c9",
-    "results/g1-prefill-20260910/external-sources.json": "97fa4d2272e606fa77110454ce9d2b06b520422130609f65b2d811951ddc29ec",
-    "results/g1-prefill-20260910/PERF-PROTOCOL.json": "e6122b5515fbc22f3ae9341ae1363bc71bbf1c84fbca197f491eff596901cddc",
-    "results/g1-prefill-20260910/placement-ANE.json": "d8b9f6dd96c73d0b090e1a3178e31a29d4aeaf1ebc203dd35c603ccebba2f9fb"
-  }
+  "sources": [
+    "results/g1-prefill-20260910/PERF-PROTOCOL.json",
+    "results/g1-prefill-20260910/external-sources.json",
+    "results/g1-prefill-20260910/placement-ANE.json",
+    "results/g1-prefill-20260910/review/verification.json"
+  ]
 }

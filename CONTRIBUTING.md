@@ -30,8 +30,8 @@ it, and start a new case instead. Updating a figure is not permission to change
 a reference or a historical result either.
 
 Do not add model weights, compiled assets, full system logs, personal absolute
-paths, credentials or user data. Use relative provenance paths and SHA-256
-hashes.
+paths, credentials or user data. Use relative provenance paths; add a hash only
+where a check compares it and the hashed bytes cannot be published.
 
 Keep the **device suites model-free and reference-checkable** — that is what lets
 anyone run them. Real-model results belong here as imported derived scalars, the
@@ -47,7 +47,7 @@ If you changed a published number, regenerate with
 `python scripts/summarize.py --write`; if you changed a figure generator or a
 document a figure cites, regenerate with
 `python scripts/render_figures.py --write` and review the result. Include the
-commands you ran, the source hashes, the validation scope and the limitations
+commands you ran, the validation scope and the limitations
 in the change description, including any checks not run.
 
 Key README quantities use `<!-- claim:SOURCE@LOCATION -->value unit<!-- /claim -->`

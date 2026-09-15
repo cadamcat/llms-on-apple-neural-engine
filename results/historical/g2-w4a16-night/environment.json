@@ -1,9 +1,6 @@
 {
   "scope": "Post-run annotation of r4 device-phase ps snapshots only; not all eight hours and not per-process GPU utilization.",
   "source": "results/g2-w4a16-night-20260910/night-20260911-r4/telemetry/system.jsonl",
-  "source_sha256": "6fa702a7cd8bca0686949f2d361007dc9b4b2066306cbfae41d7309129b10558",
-  "run_sha256": "656e06818dcfb35b9f2de2c8c94fdd84d1c80b3fe78ec2b8c95724371fcc1680",
-  "collector_sha256": "0bd6be59fe80feb957bf08a5db14ca87e777445ca2d5658886c6631a3db4c444",
   "background_snapshots": 775,
   "Ventura_present": 775,
   "phase_total": {

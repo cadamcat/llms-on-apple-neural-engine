@@ -471,17 +471,17 @@
   },
   "unlocalized_residuals": 12,
   "device_calls": 89,
-  "sources": {
-    "results/g1-localize-20260910/summary.json": "f633a6c67c9499d748e4d15ecd5a285188a0dac724faf93725c932940ae67fbf",
-    "results/g1-localize-20260910/leaf/target-32-terms.json": "9bf1e735a20ab2dcc044f815acf679dfb3de7f9ef516cd008fe9e51ee240da17",
-    "results/g1-localize-20260910/leaf/single-coordinate-counterfactual.json": "6d24f81bb95e8ab682405b33ef4a0fa6425aefecfc87c69914a61213b079f05b",
-    "results/g1-localize-20260910/PROTOCOL.json": "bab3f24099fb5f4d3c119d9bf479098aa25107df750cb669eba22ac18c0d2386",
-    "results/g1-localize-20260910/depth0/decision.json": "59a150ae651089c4aec9b4c16b03e803d29e2a9471e4e210d3ae3a1a08acc87f",
-    "results/g1-localize-20260910/depth1/decision.json": "3e4ae59dadba6709dbfb8e1f155f399a32be16158ff614295e095f4b4b83dab7",
-    "results/g1-localize-20260910/depth2/decision.json": "fee44e2014c0f3a8834545927ae1ccec4731c7a3380edb47191b24f61c3cf3f9",
-    "results/g1-localize-20260910/depth3/decision.json": "0e153e7daa8d081b2776864eed0a20b36c00efeedd453977d45a62344b8531b2",
-    "results/g1-localize-20260910/depth4/decision.json": "f0829ed58062b3cce72b9f1290c5c806cc61426bb024a0c8b8204628c456430e",
-    "results/g1-localize-20260910/depth5/decision.json": "0d76dce8ba10fc8f2667f3907e3de6e0cfec30e4bcb130b01bf201f896c51ef1",
-    "results/g1-localize-20260910/depth6/decision.json": "a95d48ce1aac7978ebd9b262dffe1f2dc0db43235b66d7c2b9c6bc8e64c95298"
-  }
+  "sources": [
+    "results/g1-localize-20260910/PROTOCOL.json",
+    "results/g1-localize-20260910/depth0/decision.json",
+    "results/g1-localize-20260910/depth1/decision.json",
+    "results/g1-localize-20260910/depth2/decision.json",
+    "results/g1-localize-20260910/depth3/decision.json",
+    "results/g1-localize-20260910/depth4/decision.json",
+    "results/g1-localize-20260910/depth5/decision.json",
+    "results/g1-localize-20260910/depth6/decision.json",
+    "results/g1-localize-20260910/leaf/single-coordinate-counterfactual.json",
+    "results/g1-localize-20260910/leaf/target-32-terms.json",
+    "results/g1-localize-20260910/summary.json"
+  ]
 }

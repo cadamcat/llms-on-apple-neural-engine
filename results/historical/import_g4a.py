@@ -28,8 +28,7 @@ class Reader:
         if not path.is_absolute():
             path = self.workspace / path
         data = path.read_bytes()
-        self.sources[path.resolve().relative_to(self.workspace).as_posix()] = {
-            'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+        self.sources[path.resolve().relative_to(self.workspace).as_posix()] = {'bytes': len(data)}
         return data
 
     def json(self, path):
@@ -50,6 +49,18 @@ class Reader:
         return value
 
 
+HASH_KEY = re.compile(r'(sha256|_hash$|^hash$|hashes$)')
+
+
+def without_hashes(value):
+    """Copy a source record without its hash fields; nothing public checks them."""
+    if isinstance(value, dict):
+        return {k: without_hashes(v) for k, v in value.items() if not HASH_KEY.search(k)}
+    if isinstance(value, list):
+        return [without_hashes(v) for v in value]
+    return value
+
+
 class Writer:
     def __init__(self, reader, output):
         self.reader = reader
@@ -68,15 +79,12 @@ class Writer:
                                              allow_nan=False) + '\n').encode())
 
     def provenance(self, transformations):
-        products = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-                    for p in sorted(self.output.iterdir())}
         self.dump('provenance.json', {'importer': 'results/historical/import_g4a.py',
-            'sources': self.reader.sources, 'products': products,
-            'transformations': transformations})
+            'sources': sorted(self.reader.sources), 'transformations': transformations})
 
 
 def launch_hash(launch, reader, path):
-    """The file read now must be the file frozen at launch."""
+    """The file read now must be the file frozen at launch; the hash is checked here and not published."""
     absolute = str(reader.workspace / path)
     digest = hashlib.sha256(reader.raw(path)).hexdigest()
     if launch['files'].get(absolute) != digest:
@@ -105,7 +113,6 @@ def power_frames(reader, power):
             fields['processor']['invalid'] = processor['invalid']
         yield {'index': row['index'], 'receipt': row['receipt'],
                'source': {k: row[k] for k in ('file', 'byte_start', 'byte_end')},
-               'source_frame_sha256': hashlib.sha256(frame).hexdigest(),
                'plist_fields': plistlib.dumps(fields, sort_keys=True).decode(),
                'recorded_decoded': row['decoded']}
 
@@ -131,7 +138,7 @@ def extract(workspace, output):
         with (reader.workspace / MODEL_SOURCE / name).open('rb') as stream:
             length = int.from_bytes(stream.read(8), 'little')
             raw = stream.read(length)
-        headers[name] = {'header_bytes': length, 'header_sha256': hashlib.sha256(raw).hexdigest()}
+        headers[name] = {'header_bytes': length}
 
     active = reader.json(Path(TIERS) / 'ACTIVE-ASSETS.json')
     tiers = []
@@ -145,11 +152,10 @@ def extract(workspace, output):
                 or compiled['inference_executed']
                 or reader.raw(model / 'main.hash').hex() != listed['native_main_hash']):
             raise ValueError(f'tier_identity:{c}')
-        tiers.append({'input_N': n, 'capacity': c, 'tier': tier,
+        launch_hash(launch, reader, (base / 'metadata.json').as_posix())
+        launch_hash(launch, reader, (model / 'main.hash').as_posix())
+        tiers.append({'input_N': n, 'capacity': c, 'tier': {k: v for k, v in tier.items() if k != 'source_main_hash'},
             'metadata': reader.json(base / 'metadata.json'),
-            'metadata_sha256': launch_hash(launch, reader, (base / 'metadata.json').as_posix()),
-            'main_hash': reader.raw(model / 'main.hash').hex(),
-            'main_hash_file_sha256': launch_hash(launch, reader, (model / 'main.hash').as_posix()),
             'main_mlirb_bytes': launch['asset_stats'][str(reader.workspace / model / 'main.mlirb')][0],
             'compile_receipt': {k: compiled[k] for k in ('complete', 'inference_executed', 'preferred_compute')} |
                 {'functions': [r['name'] for r in compiled['records']]}})
@@ -167,11 +173,9 @@ def extract(workspace, output):
                          'source_check': reader.json(Path(TIERS) / 'SOURCE-CHECK.json')},
         'ane_tiers': tiers,
         'ane_stride_basis': active['ANE_stride_basis'],
-        'gpu': {'capacity': 32768, 'export': reader.json(gpu / 'export.json'),
-                'export_sha256': launch_hash(launch, reader, (gpu / 'export.json').as_posix()),
-                'main_hash': reader.raw(gpu / f'{gpu.name}.aimodel/main.hash').hex()},
+        'gpu': {'capacity': 32768, 'export': without_hashes(reader.json(gpu / 'export.json'))},
         'flow_admissions': admissions,
-        'scope': 'Asset identity by recorded hashes and graph inventories; bytecode payloads were not rehashed at launch and are not bundled.'})
+        'scope': 'Asset identity by graph inventories and compile receipts, with launch-frozen files checked at import; bytecode payloads are not bundled.'})
 
     host = Path(TIERS) / HOST_SWIFT
     host_source = reader.raw(host).decode()
@@ -186,8 +190,8 @@ def extract(workspace, output):
         old = reader.raw(Path(G3_PREP) / relative).decode().splitlines()
         diff = [line for line in difflib.unified_diff(old, new, lineterm='', n=0)
                 if line[:1] in '+-' and not line.startswith(('+++', '---'))]
-        changes[relative] = {'g4_sha256': launch_hash(launch, reader, f'{TIERS}/{relative}'),
-                             'lines_changed_from_g3': len(diff), 'diff': diff}
+        launch_hash(launch, reader, f'{TIERS}/{relative}')
+        changes[relative] = {'lines_changed_from_g3': len(diff), 'diff': diff}
     writer.dump('runtime-implementation.json', {
         'source': f'{TIERS}/{HOST_SWIFT}', 'engine_selection_excerpt': selection,
         'ane': 'Core AI StaticShapeEngine', 'gpu': 'Core AI CoreAISequentialEngine',
@@ -280,13 +284,12 @@ def extract(workspace, output):
                           **reader.sources[reader.relative(config['inputs'])]},
         'machine': {'chip': 'Apple M5 Pro', 'memory_GiB': 48},
         'runtimes': {'ane': 'Core AI StaticShapeEngine', 'gpu': 'Core AI CoreAISequentialEngine'},
-        'runtime_sources': {reader.relative(k): v for k, v in launch['files'].items()},
         'scope': 'One host session per arm: boundary warmup, three teacher-forced full requests, one prefill block; per-block component energy admission. No exclusive per-operation placement or direct memory-bandwidth measurement.'})
     writer.provenance([
         'Strip the workspace prefix; refuse any remaining personal or temporary-directory path.',
         'Retain every boundary, full and prefill request result with its command; drop input_ids after checking them against the recorded input IDs; no logits.',
-        'Retain per-tier graph inventories, recorded asset hashes, compile receipts and short ANE flow admissions; no model payloads.',
-        'Re-serialize only elapsed time, timestamp, thermal state, invalid flags and CPU/GPU/ANE power/energy fields from each plist frame; retain frame ranges, hashes, receipts and recorded decoded values.',
+        'Retain per-tier graph inventories, compile receipts and short ANE flow admissions; check launch-frozen files against their launch hashes without publishing them; no model payloads.',
+        'Re-serialize only elapsed time, timestamp, thermal state, invalid flags and CPU/GPU/ANE power/energy fields from each plist frame; retain frame ranges, receipts and recorded decoded values.',
         'Retain the recorded summary so recomputation can be compared with what the run wrote.',
         'Retain load-gate and observer disk fields and host start/end times; drop process IDs and argv.'])
 

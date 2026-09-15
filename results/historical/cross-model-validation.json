@@ -268,9 +268,9 @@
       "actual_at_boundary": true
     }
   ],
-  "sources": {
-    "results/g1-generalize-20260910/summary.json": "66b5a160f318bb6448082c08a4a726103b89bbb4a231bbace7c274b60669e0d8",
-    "results/g1-generalize-20260910/q8-residual-details.json": "7d318ca16b40874b970a104ccbbd4abf7200012cc77b7c83e589380a0023be26",
-    "results/g1-generalize-20260910/PROTOCOL.json": "609ab2f746dc1f453a0349c3684233d8c7f164f76546f098e45da1a7a8370591"
-  }
+  "sources": [
+    "results/g1-generalize-20260910/PROTOCOL.json",
+    "results/g1-generalize-20260910/q8-residual-details.json",
+    "results/g1-generalize-20260910/summary.json"
+  ]
 }

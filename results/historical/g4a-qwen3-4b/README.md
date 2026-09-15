@@ -7,15 +7,15 @@ This imported bundle supports offline recomputation of one run: prefill and deco
 | `protocol.json` | Inputs, capacities, continuation IDs, repetitions, prefill counts, timing and admission settings, source identities |
 | `requests.jsonl.gz` | Every boundary, full and prefill request result with its command, by input and path |
 | `arms.json` | Request order per session, warmup and 1K reference checks |
-| `power.jsonl.gz` | Selected original plist fields, receipt anchors, recorded decoding and raw-frame hashes |
+| `power.jsonl.gz` | Selected original plist fields, receipt anchors and recorded decoding |
 | `summary-recorded.json` | The summary the runner wrote, for comparison with the recomputation |
-| `asset-identity.json` | Tier graph inventories, native model hashes, compile receipts, short ANE and GPU flow checks, GPU export record, model source configuration |
+| `asset-identity.json` | Tier graph inventories, compile receipts, short ANE and GPU flow checks, GPU export record, model source configuration |
 | `runtime-implementation.json` | Host engine selection, host binary hashes and the Swift changes from the G3 host |
 | `capture-status.json`, `closures.json` | Capture audit, run, terminal and per-host closure |
 | `disk.json` | Load-gate and observer free-space readings with host session times |
-| `provenance.json` | Source and product hashes and transformations |
+| `provenance.json` | Sources and transformations |
 
-Input token IDs and the model structure are read from the [G3 bundle](../g3-qwen3-4b/); the recomputation checks their hashes.
+Input token IDs and the model structure are read from the [G3 bundle](../g3-qwen3-4b/); the recomputation requires the input file among the G3 sources.
 
 ```sh
 python scripts/verify_g4a.py

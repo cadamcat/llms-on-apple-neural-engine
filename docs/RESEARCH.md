@@ -18,8 +18,8 @@ and what matters is steady state. That fits what the accelerator is plausibly
 good at — sustained low-power execution of a fixed graph — rather than peak
 throughput.
 
-The historical Python entry point showed output-sized IOSurface growth. Native
-G1-HOST / PIO / TILE work subsequently changed the host and persistent pipeline;
+The historical Python entry point showed output-sized IOSurface growth. Later
+native work replaced the host and the persistent pipeline;
 C64/C256 passed bounded memory checks. For C256, the natural 16→32 window of 4K
 requests grew by 16,384 Swift bytes and 114,688 Python-controller bytes. That
 advances the entry point, not the long-term claim. The later
@@ -107,18 +107,18 @@ starts and a CPU-only busy baseline. Normal PC background remains part of the
 target environment. The [fourth article](../articles/04-w4a16-service-tradeoffs.md)
 separates measured responses from remaining hypotheses.
 
-A8W4 remains a paused Open Question. Reopen it for a relevant upstream change,
-a new representation that passes existing controls, or a test that distinguishes
-arithmetic mechanisms. G2 provides no new A8 repair evidence.
+A8W4 was paused after G2 until a relevant upstream change, a new representation
+that passes existing controls, or a test that distinguishes arithmetic mechanisms.
+[G7](#what-g7-changes) reopened it with a second runtime.
 
 ## What G1-W and G5 change
 
 G1-W tested a released per-channel A8W4 checkpoint, Gemma 4 E4B mobile QAT. Its
 first MLP is numerically wrong through [a QDQ multiply that uses another QDQ's
-scale](../findings/coreai-qdq-multiply-scale/), and eight repeated copies gain no
+scale on the Neural Engine](../findings/coreai-qdq-multiply-scale/), and eight repeated copies gain no
 speed with or without the clamp that removes the gross error. Precision fixes that
 split the graph avoid a compile failure but run several times slower. On synthetic
-chains the [A8 gain needs depth and depends on exact-zero weights](../findings/quantized-speedup-conditions/).
+chains the [A8 gain depends on work per call and on exact-zero weights](../findings/quantized-speedup-conditions/).
 Open: why a call of E4B size gains nothing when a synthetic chain of equal work
 does. Weight count per layer, the gated multiply and the shape are not yet separated.
 
@@ -129,3 +129,21 @@ graph capacity rather than attention arithmetic drives the complete-model slowdo
 are open. G4 A measured the complete model at matched graph capacities: most of the observed slowdown went away, though the comparison did not isolate every change between runs. The remaining slowdown has not been attributed to attention arithmetic.
 
 Running ANE experiments exposed an operational question: [ANECompilerService retained deleted compile inputs](../findings/ane-compiler-service-disk/) until it exited on the tested machine and assets. A minimal reproduction with a small model, a Core ML load and another macOS build would show how general it is; that is a precondition for reporting it upstream.
+
+## What G7 changes
+
+G7 built the first E4B gate and MLP from the same codes in Core ML and Core AI.
+The runtime does not explain the earlier missing A8W4 gains: FP16 and W8A8 run
+at nearly the same speed in both, and [Core AI's four-bit path is the faster
+one](../findings/coreml-coreai-same-codes/). A single real gate through Core AI
+[gains from A8 at 1024 positions and not at 64](../findings/quantized-speedup-conditions/#positions-per-call-on-a-real-projection),
+so the call's positions matter as well as its depth. The full MLP's A8 graphs
+are wrong in both runtimes, and a Core ML version of the model-free probe shows
+the [QDQ multiply defect](../findings/coreai-qdq-multiply-scale/#core-ml-returns-the-same-values)
+on the Neural Engine, so it lies below the frontends.
+
+Open: where Core ML's four-bit palette graph spends its time while the ANE counter
+reads a quarter of Core AI's power; whether another Core ML four-bit form avoids
+it; a correct A8 MLP, which needs a multiply that both frontends compile correctly
+or a clamp that meets the screen; how the A8 gain grows between 64 and 1024
+positions; and why Core ML's 128-layer A8W4 chain misses its reference.

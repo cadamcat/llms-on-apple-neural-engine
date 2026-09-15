@@ -1,0 +1,139 @@
+{
+  "historical_import": true,
+  "date": "2026-09-15",
+  "machine": {
+    "chip": "Apple M5 Pro",
+    "memory_GiB": 48
+  },
+  "model": "google/gemma-4-E4B-it-qat-mobile-ct",
+  "revision": "3624117cf04528e099519f93839f0f0b7a18913d",
+  "weights": {
+    "gate_proj": {
+      "shape": [
+        10240,
+        2560
+      ],
+      "parameters": 26214400,
+      "scale_shape": [
+        10240,
+        1
+      ],
+      "scale_dtype": "<f4"
+    },
+    "up_proj": {
+      "shape": [
+        10240,
+        2560
+      ],
+      "parameters": 26214400,
+      "scale_shape": [
+        10240,
+        1
+      ],
+      "scale_dtype": "<f4"
+    },
+    "down_proj": {
+      "shape": [
+        2560,
+        10240
+      ],
+      "parameters": 26214400,
+      "scale_shape": [
+        2560,
+        1
+      ],
+      "scale_dtype": "<f4"
+    }
+  },
+  "software": {
+    "numpy": "2.3.5",
+    "torch": "2.11.0",
+    "coreai-core": "1.0.0b2",
+    "coreai-torch": "0.4.1",
+    "coremltools": "9.0",
+    "macOS": "27.0 (26A428)",
+    "xcode": "27.0"
+  },
+  "formats": {
+    "fp16_from_w4_codes": "the same four-bit codes decoded to FP16 constants; FP16 activations",
+    "w4a16": "four-bit indices, INT8 palette, per-output-channel FP16 scale; FP16 activations",
+    "w8a8_same_codes": "the same codes stored as INT8 with the same scale; static per-tensor A8 QDQ at each projection",
+    "a8w4_int8_lut": "the W4A16 weight representation with the W8A8 activation QDQ"
+  },
+  "workloads": {
+    "gate": "gate_proj as a 1×1 convolution, 2560 → 10240",
+    "mlp": "down(gelu_tanh(gate(x)) * up(x)), no attention, residual or normalization",
+    "synthetic": "the K512 128-layer 1×1 convolution chain over 64×64 positions, Core ML only"
+  },
+  "references": {
+    "n64": {
+      "positions": 64,
+      "seeds": [
+        2026091401,
+        2026091402,
+        2026091403
+      ],
+      "matmul": "FP16 decoded weights, FP32 GEMM, FP16 output",
+      "qdq": "exact ratio of FP16 value and scale; nearest ties away, signed int8 saturation",
+      "gelu": "float32 tanh approximation, then FP16",
+      "scope": "synthetic controls and independently generated RMS-1 benchmark inputs, not text activations"
+    },
+    "n1024": {
+      "positions": 1024,
+      "seeds": [
+        2026091401,
+        2026091402,
+        2026091403
+      ],
+      "matmul": "FP16 decoded weights, FP32 GEMM, FP16 output",
+      "qdq": "exact ratio of FP16 value and scale; nearest ties away, signed int8 saturation",
+      "gelu": "float32 tanh approximation, then FP16",
+      "scope": "synthetic controls and independently generated RMS-1 benchmark inputs, not text activations"
+    }
+  },
+  "numeric_relative_L2_limits": {
+    "real_fp16_or_w4a16": 0.005,
+    "real_a8": 0.05,
+    "synthetic_depth2": 0.01,
+    "synthetic_depth128": 0.05
+  },
+  "ordinary_rows": "rows 6 onward; rows 0-5 are the boundary controls",
+  "rounds": 3,
+  "benchmark_seeds": [
+    2026091401,
+    2026091402,
+    2026091403
+  ],
+  "block_seconds": {
+    "real": 120,
+    "synthetic": 60
+  },
+  "warm_seconds": 5,
+  "minimum_warm_calls": 10,
+  "quiet_seconds": 25,
+  "order": "per round sorted by workload, positions, format and runtime; odd rounds reversed; one new host per block",
+  "energy": {
+    "lags_ns": [
+      0,
+      1000000000,
+      2000000000,
+      5000000000
+    ],
+    "primary_lag": "2",
+    "interior_margin_seconds": 15,
+    "response_arm": "ane",
+    "power_domains": [
+      "cpu",
+      "gpu",
+      "ane"
+    ],
+    "idle_baseline_subtracted": false
+  },
+  "host": {
+    "source": "workplans/g7-coreml-a8w4-20260914/host.swift",
+    "coreml_compute_units": "cpuAndNeuralEngine",
+    "coreai_preferred_compute_unit": "neuralEngine",
+    "timing": "synchronous MLModel.prediction or awaited function.run per call; API start and end clocks"
+  },
+  "scope": "Real E4B weights with seeded RMS-normalized synthetic activations. Per-block wall-clock speed and software component energy; no model quality, attention, KV cache or exclusive per-operation placement."
+}

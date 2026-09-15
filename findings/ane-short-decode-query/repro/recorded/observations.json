@@ -1014,10 +1014,6 @@
       "+        guard [1,2,4,8].contains(decodeQuery), capacity <= config.maxContextLength else {"
     ]
   },
-  "scripts_sha256_at_import": {
-    "export_small.py": "90d1e607423fc65d5040ef77bd7a1d553fcfe9a895781b7e0d8ae68c68c819d9",
-    "q1_probe.py": "4ef50bf55c47ef601262ffb52a095ea7be4963a473f0041c07277ea268b82505"
-  },
   "upstream_default_query_lengths": [
     8,
     16,

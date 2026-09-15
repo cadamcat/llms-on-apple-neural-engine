@@ -7,15 +7,15 @@ This imported bundle supports offline recomputation of one night on one M5 Pro, 
 | `protocol.json` | Segment list by capture, continuation IDs, repetitions, prefill counts, timing, admission and reclaim settings, source identities |
 | `requests.jsonl.gz` | Every boundary, full and prefill request result with its command, by segment |
 | `sessions.json` | Request order per query session and repeat arm, query order, warmup and 1K reference checks, idle windows |
-| `power.jsonl.gz` | Selected original plist fields per capture, receipt anchors, recorded decoding and raw-frame hashes |
+| `power.jsonl.gz` | Selected original plist fields per capture, receipt anchors and recorded decoding |
 | `summary-recorded.json` | The summary the runner wrote, for comparison with the recomputation |
-| `asset-identity.json` | Tier graph inventories and hashes, W4 preset and code shapes, the dequantized-code reference summary, admission results with ANE-request and Metal-compile log counts |
-| `runtime-implementation.json` | Host binary hashes and the two-line query allow-list change from the G4 A host |
+| `asset-identity.json` | Tier graph inventories, W4 preset, code shapes and inventory hash, the dequantized-code reference summary, admission results with ANE-request and Metal-compile log counts |
+| `runtime-implementation.json` | The G4 A host launch hashes used by the repeat arms and the two-line query allow-list change from the G4 A host |
 | `capture-status.json`, `closures.json` | Audit of each capture, run, terminal and per-host closure |
 | `disk.json` | Load-gate and observer free-space readings, reclaim waits between captures, host session times |
-| `provenance.json` | Source and product hashes and transformations |
+| `provenance.json` | Sources and transformations |
 
-Input token IDs and the model structure are read from the [G3 bundle](../g3-qwen3-4b/); the repeat ratios read the [G4 A bundle](../g4a-qwen3-4b/). The recomputation checks their hashes.
+Input token IDs and the model structure are read from the [G3 bundle](../g3-qwen3-4b/); the repeat ratios read the [G4 A bundle](../g4a-qwen3-4b/). The recomputation requires the input file among the G3 sources and the repeat host hashes to equal G4 A's.
 
 ```sh
 python scripts/verify_g6.py

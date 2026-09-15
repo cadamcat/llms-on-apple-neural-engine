@@ -74,6 +74,6 @@ The inputs are synthetic: uniform and random attention, and constant values chos
 
 ## Evidence
 
-- [g5-attention/evidence.json](../../results/historical/g5-attention/evidence.json) — every relative L2 above; source hashes are in `provenance.json`
+- [g5-attention/evidence.json](../../results/historical/g5-attention/evidence.json) — every relative L2 above; sources are listed in `provenance.json`
 - [g5-attention/timings.json.gz](../../results/historical/g5-attention/) — per-operation timings
 - [PROVENANCE.md](../../docs/PROVENANCE.md#g1-w-and-g5-imports) — sources and transformations

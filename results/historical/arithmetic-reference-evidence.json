@@ -6,7 +6,6 @@
   "sources": [
     {
       "source_relative": "results/g1-int8-control-20260910/review/verification.json",
-      "source_sha256": "de70b00dca9057d22de73563b3dd9b3f3f8a9e21ee4c5a5783bb7a571d75645b",
       "fields": [
         {
           "json_pointer": "/runs/12/run",
@@ -40,7 +39,6 @@
     },
     {
       "source_relative": "results/g1-int8-control-20260910/review/rounding-diagnostic/result.json",
-      "source_sha256": "89d96cded3b1d929cc3073d7a274cc5988d4daca2541602f69075ec428fe8b82",
       "fields": [
         {
           "json_pointer": "/scope",
@@ -73,17 +71,10 @@
       ]
     },
     {
-      "source_relative": "results/g1-int8-control-20260910/AMENDMENT-RZA.md",
-      "source_sha256": "9a3ec3e4a15be61cd035552bb254f3903e8e4aa052413a240259064996d4a700",
-      "verbatim_excerpts": [
-        "2026-09-10，在任何seed20260912设备输出产生前登记。",
-        "本补充是新输入、独立进程的确认，不把原失败重分类为通过。",
-        "生成并保存两类参考及摘要后才启动设备。"
-      ]
+      "source_relative": "results/g1-int8-control-20260910/AMENDMENT-RZA.md"
     },
     {
       "source_relative": "results/g1-int8-control-20260910/runs/coreai-heldout-w8a8-128/RNE-comparison-not-gate.json",
-      "source_sha256": "b75cc5a04db1b423bc73737bd004834ba616bcbb0cbfaa00ac7958970689c83f",
       "fields": [
         {
           "json_pointer": "/relative_L2",
@@ -97,7 +88,6 @@
     },
     {
       "source_relative": "results/g1-int8-control-20260910/review/derived-metrics.json",
-      "source_sha256": "d48b47890b4f2f9e1968e2f48cf5d12b2b2a7efed4af5f6eb88a2038e2353626",
       "fields": [
         {
           "json_pointer": "/W8A8_vs_FP16_output_relative_L2_not_gate",
@@ -111,7 +101,6 @@
     },
     {
       "source_relative": "results/g1-int8-control-20260910/data/manifest.json",
-      "source_sha256": "a0af28a0fe8d0aad2e5358c1cf378e5971c5a7343677b5180d92105f654b957b",
       "fields": [
         {
           "json_pointer": "/environment",
@@ -161,12 +150,10 @@
     "recorded_relative_L2": 0.6835218497252507,
     "matches_at_absolute_tolerance": 1e-12,
     "actual": {
-      "source_relative": "results/g1-int8-control-20260910/runs/coreai-heldout-w8a8-128/control_original.raw",
-      "sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+      "source_relative": "results/g1-int8-control-20260910/runs/coreai-heldout-w8a8-128/control_original.raw"
     },
     "reference": {
-      "source_relative": "results/g1-int8-control-20260910/runs/coreai-heldout-fp16-128/control_original.raw",
-      "sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+      "source_relative": "results/g1-int8-control-20260910/runs/coreai-heldout-fp16-128/control_original.raw"
     }
   }
 }

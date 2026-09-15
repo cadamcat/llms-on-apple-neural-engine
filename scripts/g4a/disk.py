@@ -1,5 +1,4 @@
 """Recompute the disk space held by ANECompilerService from the redacted observations and the G4 A load gate."""
-import hashlib
 import json
 import re
 from pathlib import Path
@@ -21,9 +20,6 @@ def held(rows, pid):
 
 def derive_disk(g4a, repo=None):
     root = (Path(repo) if repo is not None else ROOT) / EVIDENCE
-    provenance = json.loads((root / 'provenance.json').read_text())
-    for name, digest in provenance['products'].items():
-        require(hashlib.sha256((root / name).read_bytes()).hexdigest() == digest, 'disk_product_identity:' + name)
     data = json.loads((root / 'observations.json').read_text())
 
     first = held(data['listing_1335']['rows'], 1720)

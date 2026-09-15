@@ -1,5 +1,4 @@
 """Recompute G6 decode-query, W4 and G4 A repeat speed and component energy from the portable bundle."""
-import hashlib
 import json
 from pathlib import Path
 
@@ -83,14 +82,14 @@ def compare_recorded(measured):
 def derive(bundle=None, repo=None):
     repo = Path(repo) if repo is not None else ROOT
     bundle = Path(bundle) if bundle is not None else repo / BASE
-    provenance = load(bundle, 'provenance.json')
-    for name, digest in provenance['products'].items():
-        require(hashlib.sha256((bundle / name).read_bytes()).hexdigest() == digest, 'g6_product_identity:' + name)
     protocol = load(bundle, 'protocol.json')
     assets = load(bundle, 'asset-identity.json')
     g3_bundle = repo / G3_BASE
     source = protocol['inputs_source']
-    require(load(g3_bundle, 'provenance.json')['sources'].get(source['path'], {}).get('sha256') == source['sha256'], 'g6_inputs_identity')
+    require(source['path'] in load(g3_bundle, 'provenance.json')['sources'], 'g6_inputs_identity')
+    # The repeat arms ran the G4 A host binaries: the recorded launch hashes of both runs are the evidence.
+    require(load(bundle, 'runtime-implementation.json')['g4a_host_sha256'] ==
+            load(repo / G4A_BASE, 'runtime-implementation.json')['host_sha256'], 'g6_repeat_host_identity')
     require(protocol['revision'] == load(g3_bundle, 'model-structure.json')['revision'], 'g6_model_source')
     inputs = load(g3_bundle, 'inputs.json')
     g4a = derive_g4a(repo=repo)

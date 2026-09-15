@@ -1,21 +1,16 @@
 """Copy metadata for ten closed runs out of the private research workspace.
 
 This is an evidence-preparation step, not an experiment: it reads `result.json`
-and its paired `run.json`, hashes both, keeps every measured record and
+and its paired `run.json`, keeps every measured record and
 recomputes the median from the raw durations.  It imports no array, model or
 device library, copies no weights or logs, and serialises workspace-relative
 paths only.
 """
 
 import argparse
-import hashlib
 import json
 import statistics
 from pathlib import Path
-
-
-def sha(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def load(root, rel):
@@ -41,8 +36,7 @@ HARDWARE_SOURCE = ('results/g1-int8-control-20260910/before/TOOLING.md; '
                    'results/g1-int8-control-20260910/data/manifest.json')
 ADMISSION_FIELDS = ('numerical_passed', 'every_control_has_ANE', 'all_convs_preferred_ANE',
                     'memory_gate_passed', 'repeat_hashes_passed', 'child_returncode')
-RECORD_FIELDS = ('index', 'phase', 'start_epoch_ns', 'end_epoch_ns', 'duration_ns',
-                 'output_sha256')
+RECORD_FIELDS = ('index', 'phase', 'start_epoch_ns', 'end_epoch_ns', 'duration_ns')
 
 
 def main():
@@ -73,9 +67,7 @@ def main():
             'label': label,
             'historical_import': True,
             'result_source': str(result_path.relative_to(root)),
-            'result_sha256': sha(result_path),
             'run_source': str(run_path.relative_to(root)) if run_path.exists() else None,
-            'run_sha256': sha(run_path) if run_path.exists() else None,
             'hardware_version': HARDWARE,
             'hardware_source': HARDWARE_SOURCE,
             'shape': [1, 512, 64, 64],
@@ -83,7 +75,6 @@ def main():
             'control_admission': {k: run.get(k, result.get(k)) for k in ADMISSION_FIELDS},
             'admission_source': (str(admission_path.relative_to(root))
                                  if admission_path.exists() else None),
-            'admission_sha256': sha(admission_path) if admission_path.exists() else None,
             'benchmark_admitted': admission.get('benchmark_admitted'),
             'record_count_measured': len(measured),
             'duration_ms_all_measured': durations,

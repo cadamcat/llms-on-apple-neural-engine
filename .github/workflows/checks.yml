@@ -44,11 +44,17 @@ jobs:
       - name: Recompute G6 decode query width, W4 and the G4 A repeat
         run: python scripts/verify_g6.py
 
+      - name: Recompute G7 Core ML and Core AI on the same E4B codes
+        run: python scripts/verify_g7.py
+
       - name: Recompute the disk space held by ANECompilerService
         run: python scripts/verify_ane_compiler_disk.py
 
       - name: Recheck the recorded QDQ multiply outputs
         run: python findings/coreai-qdq-multiply-scale/repro/verify.py
+
+      - name: Recheck the Core ML QDQ multiply outputs and placement
+        run: python findings/coreai-qdq-multiply-scale/repro/coreml/verify.py
 
       - name: Recheck the recorded short decode query outcomes
         run: python findings/ane-short-decode-query/repro/verify.py
@@ -68,10 +74,5 @@ jobs:
       - name: Recompute the published tables and quoted numbers
         run: python scripts/summarize.py
 
-      - name: Check figure, source and generator identity
-        run: python scripts/render_figures.py --check
-
       - name: Figures regenerate byte-identically
-        run: |
-          python scripts/render_figures.py --write
-          git diff --exit-code -- docs/figures
+        run: python scripts/render_figures.py --check

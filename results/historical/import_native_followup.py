@@ -4,7 +4,6 @@ Only scalar timings, memory checkpoints and source identities travel with this
 record. No model, weight, activation or device library is loaded.
 """
 import argparse
-import hashlib
 import json
 from pathlib import Path
 
@@ -12,12 +11,12 @@ BASE = 'results/g1-tile-20260910'
 
 
 def build(root):
-    sources = {}
+    sources = set()
 
     def read(rel):
         path = BASE + '/' + rel
         raw = (root / path).read_bytes()
-        sources[path] = hashlib.sha256(raw).hexdigest()
+        sources.add(path)
         return json.loads(raw)
 
     review = read('review/verification.json')
@@ -53,7 +52,7 @@ def build(root):
         }
     return {
         'schema_version': 1, 'historical_import': True,
-        'scope': 'Later G1-TILE native Swift four-stage first-layer MLP with a Python '
+        'scope': 'Later native Swift four-stage first-layer MLP with a Python '
                  'controller and fixed receive buffers. C is W4A16; G is MLX W4A16. '
                  'Positions are component workload, not full-model tokens.',
         'relationship_to_prefill': 'A separate later configuration and process set. '
@@ -61,8 +60,6 @@ def build(root):
         'toolchain': {k: prepared['observations'][k]['stdout'].strip()
                       for k in ('xcode', 'swift', 'system')},
         'sdk': 'macOS 27.0',
-        'host_identity': {k: prepared[k] for k in (
-            'binary_sha256', 'worker_sha256', 'wire_sha256', 'GPU_source_sha256')},
         'timing_arms': arms, 'memory': memory,
         'resources': {k: resources[k] for k in (
             'owned_rss_peak_bytes', 'free_min_percent_during_experiments',
@@ -72,7 +69,7 @@ def build(root):
         'formal_three_process_acceptance': review['formal_three_process_acceptance'],
         'long_term_residency_proven': False,
         'power_thermal_coexistence_measured': False,
-        'sources': sources,
+        'sources': sorted(sources),
     }
 
 

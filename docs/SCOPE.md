@@ -26,7 +26,7 @@ comparison** is a third thing again: an imported first observation from one
 timed process per path, on a Python, 64-position chunked implementation, whose
 1024- and 4096-position cases loop saved activations rather than running an
 end-to-end prefill. A later [native MLP follow-up](../results/historical/native-mlp-followup.json)
-adds separate HOST / PIO / TILE observations, including bounded C64/C256 memory
+adds separate native-host and tiled-asset observations, including bounded C64/C256 memory
 passes. Historical Python and native timing rounds are not pooled. None of these
 experiments validates the others.
 
@@ -93,6 +93,7 @@ These limits distinguish the evidence sets rather than assigning one protocol to
    | Historical quantization matrix | 26A5425a | — | coreai-torch 0.4.1 and 0.4.2 |
    | G1-W quantized speed and QDQ probes | 26A428 | 27.0 (27A266a) | coreai-torch 0.4.1, Torch 2.11.0 |
    | G5 weight-free attention | not recorded | not recorded | coreai-torch 0.4.2, Torch 2.9.0 |
+   | G7 Core ML / Core AI same codes and the Core ML QDQ probe | 26A428 | 27.0 | coremltools 9.0, coreai-torch 0.4.1, coreai-core 1.0.0b2, Torch 2.11.0 |
 
    G2's versions come from same-day preflight records and a post-run statement
    that no software changed that day. Version and source identities belong to
@@ -251,3 +252,15 @@ G1-W measures quantized speed on synthetic 1×1 convolution chains and on the fi
 G1-W times awaited `function.run` calls from a native Swift host. G5 times resident operations, including host output handling and, for the streamed path, K/V and mask copies between calls. The rounds use two or three fresh processes per arm; ranges are process medians, not confidence intervals. An A8 graph that is faster is not evidence of a physical INT8 datapath. ANE request logs show participation per call, not per-operation placement. The E4B stack repeats one real layer eight times behind a shared RMS norm, and its inputs are synthetic control rows. Relative L2 there, and in G5, compares a device output with its own CPU or FP64 reference: it is implementation error, not model quality.
 
 G5's inputs are synthetic uniform, random and small-constant attention; the complete-model G3 path was not re-evaluated against it. Its relative L2 values are imported scalars, while its timings, like all G1-W timings, are recomputed from per-call records. The model checkpoint, activations and FP16 attention arrays are not distributed. [Speed conditions](../findings/quantized-speedup-conditions/) · [QDQ multiply](../findings/coreai-qdq-multiply-scale/) · [Attention precision](../findings/attention-product-precision/).
+
+## G7 Core ML and Core AI on the same codes
+
+G7 builds the first Gemma 4 E4B mobile QAT gate projection and MLP from the checkpoint's four-bit codes and per-output-channel scales, with coremltools and with coreai-torch, as FP16 decoded from the codes, W4A16 (four-bit indices into an INT8 palette), W8A8 on the same codes, and A8W4 with the checkpoint's static activation scales. Both runtimes prefer the Neural Engine. Inputs are seeded RMS-normalized activations at 64 and 1024 positions, not text, and the MLP has no attention, residual or normalization. Its results are component speeds and energies, not model throughput or quality.
+
+Every timed configuration had passed a relative-L2 screen against an independent CPU reference (0.005 for FP16 and W4A16 and 0.05 for the A8 graphs; 0.01 for the two-layer and 0.05 for the 128-layer synthetic chain) and made a successful ANE request in each control call before it was timed; Core ML's compute plan also had to prefer the Neural Engine for each projection convolution. Every other non-constant Core ML operation preferred it too, which the verifier checks separately. These screens are implementation checks. The <!-- claim:g7.mlp.a8.configs@g7-074 -->8<!-- /claim --> MLP A8 configurations failed and were not timed. Each timed configuration ran in <!-- claim:g7.rounds@g7-075 -->3<!-- /claim --> new hosts, runtimes and representations alternating in a fixed order reversed in the middle round, for 120 s after a warmup and a quiet period; ranges are those three rounds, not confidence intervals. Speed is completed positions over each block's wall clock with synchronous Core ML prediction or awaited Core AI `run`, which includes framework and scheduling time.
+
+Energy is the CPU + GPU + ANE software counters integrated over each block, admitted with the G4 A response, coverage and interior rules and not idle-subtracted; all <!-- claim:g7.blocks@g7-076 -->78<!-- /claim --> blocks passed. A block that passes placement shows ANE participation, not exclusive ANE execution of every operation, and a faster A8 graph is not evidence of a physical INT8 datapath.
+
+The Core ML QDQ probe is a separate numerical run: the model-free multiply graph at 1,024 × 1,024 through a native Core ML host, on the Neural Engine and on the CPU, without timing.
+
+[Measurements](MEASUREMENTS.md#g7-core-ml-and-core-ai-on-the-same-e4b-codes) · [Method](METHODS.md#g7-same-codes-in-two-runtimes) · [Bundle](../results/historical/g7-coreml-coreai/)

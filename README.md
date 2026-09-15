@@ -54,9 +54,10 @@ Every round records the versions it ran with; [SCOPE.md](docs/SCOPE.md) lists th
 | **Grouped 4-bit through Core AI's native LUT path** | Accepted, shows real ANE activity, and [returns the wrong answer](findings/coreai-flattened-scale/) — 1921 of 4096 values, predictably |
 | **W4A16 served from the native ANE host** | [About a quarter of the GPU's speed](findings/w4a16-service-tradeoffs/). At equal load the fans stay at idle on both engines; a matrix foreground shows a smaller tail penalty beside ANE inference. Energy undetermined |
 | **Resident execution** | The historical Python gate retained 1,966,080 bytes per call. Two native G2 hosts ran 33,728 stage calls each and ended 60–62 MiB smaller; [indefinite residency is untested](findings/iosurface-per-call-growth/) |
-| **W4A16 versus A8W4** | Historical 4K pair: [A8W4 at 1.013× W4A16 speed](findings/ane-vs-gpu-prefill/), without an established A8 speed benefit. G2 tests W4A16 only |
-| **The tested W8A8 synthetic control** | Accelerates — Core AI is **1.86–1.87×** over its FP16 baseline on the controlled 128-layer chain. [The gain needs depth and depends on the weights](findings/quantized-speedup-conditions/): A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-001 -->0.86×<!-- /claim --> W4A16 speed as one layer and <!-- claim:g1w.depth.both-128.speed@g1w-002 -->1.33×<!-- /claim --> as 128; exact zero weights make FP16 itself <!-- claim:g1w.density.old.speed@g1w-003 -->1.88×<!-- /claim --> faster |
-| **Gemma 4 E4B mobile QAT A8W4** through Core AI, first MLP | [Wrong, and not faster](findings/quantized-speedup-conditions/#a-released-qat-checkpoint). A QDQ multiply [uses another QDQ's scale](findings/coreai-qdq-multiply-scale/): <!-- claim:g1w.e4b.1.native.l2@g1w-004 -->339%<!-- /claim --> off in one MLP. With a product clamp, eight repeated MLPs are <!-- claim:g1w.e4b.8.clip-product.l2@g1w-005 -->21.6%<!-- /claim --> off and run at <!-- claim:g1w.e4b.clip-product.speed@g1w-006 -->0.976×<!-- /claim --> W4A16 speed |
+| **W4A16 versus A8W4** | Depends on positions per call. One real E4B gate through Core AI runs A8W4 at <!-- claim:g7.coreai.gate.64.a8w4-over-w4a16.speed@g7-101 -->0.976–0.990×<!-- /claim --> W4A16 speed at 64 positions and [<!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-102 -->1.359–1.360×<!-- /claim --> at 1024](findings/quantized-speedup-conditions/#positions-per-call-on-a-real-projection). The historical 4K pair, looped over 64-position calls, [ran at 1.013×](findings/ane-vs-gpu-prefill/) |
+| **The tested W8A8 synthetic control** | Accelerates — Core AI is **1.86–1.87×** over its FP16 baseline on the controlled 128-layer chain. [The gain depends on work per call and on the weights](findings/quantized-speedup-conditions/): A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-001 -->0.86×<!-- /claim --> W4A16 speed as one layer and <!-- claim:g1w.depth.both-128.speed@g1w-002 -->1.33×<!-- /claim --> as 128; exact zero weights make FP16 itself <!-- claim:g1w.density.old.speed@g1w-003 -->1.88×<!-- /claim --> faster |
+| **Gemma 4 E4B mobile QAT A8W4**, first MLP | [Wrong, and not faster](findings/quantized-speedup-conditions/#a-released-qat-checkpoint). A QDQ multiply on the Neural Engine [uses another QDQ's scale](findings/coreai-qdq-multiply-scale/), through Core ML as well as Core AI: <!-- claim:g1w.e4b.1.native.l2@g1w-004 -->339%<!-- /claim --> off in one MLP. With a product clamp, eight repeated MLPs are <!-- claim:g1w.e4b.8.clip-product.l2@g1w-005 -->21.6%<!-- /claim --> off and run at <!-- claim:g1w.e4b.clip-product.speed@g1w-006 -->0.976×<!-- /claim --> W4A16 speed |
+| **Core ML instead of Core AI**, same E4B codes on ANE | [Equal speed for FP16 and W8A8](findings/coreml-coreai-same-codes/) (<!-- claim:g7.ml-over-ai.fp16.speed@g7-103 -->0.979–0.998×<!-- /claim --> and <!-- claim:g7.ml-over-ai.w8a8.speed@g7-104 -->0.962–0.967×<!-- /claim --> of Core AI). Core ML's four-bit palette graphs run at <!-- claim:g7.ml-over-ai.four-bit.speed@g7-105 -->0.065–0.280×<!-- /claim --> Core AI's speed, slower than Core ML's own FP16 |
 
 Earlier rounds stay separate records. The historical Python MLP measured the GPU **2.87×**
 faster at 64 positions, **5.09×** at 1024 and **4.41×** at 4096, with one timed process per
@@ -74,8 +75,8 @@ The complete-model comparison and the component experiments have separate eviden
 |---|---|
 | 🔧 **Four things that do work** | The rewrite that gets grouped 4-bit onto the accelerator at all, the graph expressions that fix a QDQ multiply, the quantization scheme that accelerates on a deep enough chain, and reclaiming disk space the ANE compiler service keeps — each with its price and its boundary written down. [workarounds/](workarounds/) |
 | 📊 **Complete-model measurements** | [G4 A](findings/qwen3-4b-graph-capacity/) measures Qwen3-4B FP16 prefill, decode and component energy with an ANE graph sized to each of six inputs, and G6 repeats every arm and halves the decode query width; [G3](findings/qwen3-4b-prefill-decode/) measures the same model on a 256 / 2K / 32K graph ladder. |
-| 📊 **Component comparisons** | [G2](findings/w4a16-service-tradeoffs/) measures seven-size native W4A16 speed, native host memory, equal-rate and saturated temperature and fan response, and GPU foreground tails. The [earlier A8W4/W4A16/GPU comparison](findings/ane-vs-gpu-prefill/) retains its numerical controls, per-PID evidence and early stop. Separate rounds, not pooled estimates. |
-| 🐛 **Reproducible defects** | Three toolchain failures with minimal reproductions, expected wrong outputs and matched negative controls, including a QDQ multiply that takes another QDQ's scale; a compile failure that silently moves a whole graph to the GPU; one memory leak with four failed mitigations and an external corroboration; a system compiler service that keeps deleted compile inputs open; a decode query shape that ANE rejects at one and two positions; a palettized 4-bit preset whose ANE compile fails without an error to the host; one structural cost measured in three paired process rounds. [findings/](findings/) |
+| 📊 **Component comparisons** | [G2](findings/w4a16-service-tradeoffs/) measures seven-size native W4A16 speed, native host memory, equal-rate and saturated temperature and fan response, and GPU foreground tails. The [earlier A8W4/W4A16/GPU comparison](findings/ane-vs-gpu-prefill/) retains its numerical controls, per-PID evidence and early stop. [G7](findings/coreml-coreai-same-codes/) runs the same E4B codes through Core ML and Core AI. Separate rounds, not pooled estimates. |
+| 🐛 **Reproducible defects** | Three toolchain failures with minimal reproductions, expected wrong outputs and matched negative controls, including a QDQ multiply that takes another QDQ's scale on the Neural Engine in both Core AI and Core ML; a compile failure that silently moves a whole graph to the GPU; one memory leak with four failed mitigations and an external corroboration; a system compiler service that keeps deleted compile inputs open; a decode query shape that ANE rejects at one and two positions; a palettized 4-bit preset whose ANE compile fails without an error to the host; one structural cost measured in three paired process rounds. [findings/](findings/) |
 | 🔬 **An arithmetic model** | A candidate arithmetic model checked against 7,163,904 final Q8 gate outputs from two real models, with 13 Q8 mismatches — and one localized 32-term dot product it cannot explain, checkable from published scalars with no Apple hardware. [The model](findings/execution-model/) · [the residual](findings/fp16-dot-residual/) |
 
 ## Who this is for
@@ -151,17 +152,18 @@ has **not** been isolated:
 3. **Decomposition has a measured cost.** In a separate synthetic K512 ablation, sixteen
    K32 convolutions plus reduction take about four times as long. Similarity to the MLP
    gap does not establish a shared cause. [→](findings/split-decomposition-cost/)
-4. **A8 did not show a stable speed advantage.** The historical 4K A8W4 path runs at
-   1.013× W4A16 speed; the later native run is a separate observation, not a pooled estimate. [→](findings/ane-vs-gpu-prefill/)
-   Eight repeated Gemma 4 E4B QAT MLPs run at <!-- claim:g1w.e4b.native.speed@g1w-007 -->0.977×<!-- /claim --> W4A16 speed, while synthetic chains need
-   depth for any gain: <!-- claim:g1w.depth.both-1.speed@g1w-008 -->0.86×<!-- /claim --> at one layer, <!-- claim:g1w.depth.both-128.speed@g1w-009 -->1.33×<!-- /claim --> at 128. [→](findings/quantized-speedup-conditions/)
+4. **A8's speed gain depends on the work in each call.** The historical 4K A8W4 path, looped over
+   64-position calls, runs at 1.013× W4A16 speed; the later native run is a separate observation, not a pooled estimate. [→](findings/ane-vs-gpu-prefill/)
+   Eight repeated Gemma 4 E4B QAT MLPs run at <!-- claim:g1w.e4b.native.speed@g1w-007 -->0.977×<!-- /claim --> W4A16 speed, and synthetic chains gain
+   only with depth: <!-- claim:g1w.depth.both-1.speed@g1w-008 -->0.86×<!-- /claim --> at one layer, <!-- claim:g1w.depth.both-128.speed@g1w-009 -->1.33×<!-- /claim --> at 128. One real E4B gate through Core AI gains
+   at 1024 positions, <!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-106 -->1.359–1.360×<!-- /claim -->, and not at 64. [→](findings/quantized-speedup-conditions/)
 5. **A candidate arithmetic model leaves residuals.** It misses 13 final Q8 outputs,
    with more differences before QDQ. One localized dot lies outside the binary16
    neighbours of its exact value: changing only the final rounding cannot explain it.
    Intermediate multiplication and accumulation remain unobserved. [→](findings/fp16-dot-residual/)
-6. **A QDQ multiply dequantizes with another QDQ's scale.** A model-free probe returns 2, 4
-   and 8 where the answer is 1, and a released QAT MLP is <!-- claim:g1w.e4b.1.native.l2@g1w-010 -->339%<!-- /claim --> off. A product clamp that leaves
-   the true value unchanged avoids it. [→](findings/coreai-qdq-multiply-scale/)
+6. **A QDQ multiply on the Neural Engine dequantizes with another QDQ's scale.** A model-free probe returns 2, 4
+   and 8 where the answer is 1, through Core AI and through Core ML, and a released QAT MLP is <!-- claim:g1w.e4b.1.native.l2@g1w-010 -->339%<!-- /claim --> off. A product clamp that leaves
+   the true value unchanged avoids it. On the CPU, Core ML returns the right values. [→](findings/coreai-qdq-multiply-scale/)
 
 ## Quick start
 
@@ -201,6 +203,7 @@ python results/historical/tests/verify_arithmetic.py  # the execution model and 
 python results/historical/tests/verify_historical.py  # imported timing records
 python scripts/verify_g4a.py                         # G4 A matched-graph speed and component energy
 python scripts/verify_g6.py                          # G6 decode query width, W4 and the G4 A repeat
+python scripts/verify_g7.py                          # G7 Core ML and Core AI on the same E4B codes
 python scripts/verify_ane_compiler_disk.py           # disk space held by the ANE compiler service
 python findings/ane-short-decode-query/repro/verify.py  # one- and two-position decode queries
 python findings/coreai-palettized-weights-gpu/repro/verify.py  # palettized preset placement
@@ -209,25 +212,17 @@ python scripts/verify_g2.py                          # G2 event, thermal and res
 python scripts/verify_g1w.py                         # quantized speed conditions and the E4B QAT MLP
 python scripts/verify_g5.py                          # attention precision and chunking timings
 python findings/coreai-qdq-multiply-scale/repro/verify.py  # the QDQ multiply outputs
+python findings/coreai-qdq-multiply-scale/repro/coreml/verify.py  # the same probe through Core ML
 python scripts/check_source_identity.py --check       # current source versus run identity
 python scripts/summarize.py                           # registered tables and prose claims
-python scripts/render_figures.py --check              # figure, source and generator identity
+python scripts/render_figures.py --check              # figures regenerate byte-identically
 python -m unittest discover -s tests -v               # rounding, saturation, tampered evidence
 ```
 
 Standard library plus NumPy, on any platform. `summarize.py` checks each named numeric
 reference and its unit in both README openings, along with other registered values.
-Unregistered prose remains outside these checks. These commands do not execute a device.
-
-CI runs the checks above and also verifies figure regeneration:
-
-```sh
-python scripts/render_figures.py --write
-git diff --exit-code -- docs/figures
-```
-
-The Git comparison requires tracked figure files. For an uncommitted draft, compare the
-complete SVG inventory and bytes against a copy saved before editing.
+Unregistered prose remains outside these checks. These commands do not execute a device,
+and CI runs all of them.
 
 ## Repository map
 
@@ -235,7 +230,7 @@ complete SVG inventory and bytes against a copy saved before editing.
 |---|---|
 | `workarounds/` | The four things that do work, with their price and their boundary |
 | `findings/` | One directory per finding: symptom, repro, evidence, and what is still a hypothesis |
-| `results/historical/` | Imported records — historical comparisons, arithmetic evidence and separate G2 service / G3, G4 A and G6 complete-model bundles |
+| `results/historical/` | Imported records — historical comparisons, arithmetic evidence and separate G2 service / G3, G4 A and G6 complete-model / G7 runtime bundles |
 | `results/fresh/` | Every measured call from the three device suites in this package |
 | `src/ane_scope/_coreml.py`, `_coreai.py` | Export adapters and persisted graph/weight audits |
 | `src/ane_scope/references/` | Deterministic fixtures and explicit arithmetic references |
@@ -248,6 +243,14 @@ complete SVG inventory and bytes against a copy saved before editing.
 
 ## Corrections
 
+- **(2026-09-15) The QDQ multiply defect was attributed to Core AI.** The finding was titled
+  "A Core AI QDQ multiply dequantizes with another QDQ's scale". The same graph built with
+  coremltools returns the same wrong values through Core ML on the Neural Engine and correct
+  values on the CPU, so the [finding](findings/coreai-qdq-multiply-scale/) now names the Neural Engine path.
+- **(2026-09-15) A single gate was called the wrong place to look for an A8 gain.** The
+  quantized speed-up finding said so from a 512-channel synthetic chain and named depth in its
+  title. A real E4B gate at 1024 positions gains; the [finding](findings/quantized-speedup-conditions/)
+  now names work per call.
 - **(2026-09-11) The first G2 write-up said the ANE ran with lower fan speeds.**
   That held only at full load, where the GPU completed about 3.7 times the work. At equal
   load, the fans stayed at idle on both engines.
@@ -280,7 +283,7 @@ complete SVG inventory and bytes against a copy saved before editing.
 
 ## What would change the answer
 
-G4 A answered the question G3 left open: a graph sized to the input removes most of ANE's long-input penalty, but not the GPU's lead. G6 then changed one thing at a time on the same graphs. A four-position decode query instead of eight ran at <!-- claim:g6.q4-q8-speed@g6-010 -->1.001–1.008×<!-- /claim --> the speed, so narrowing the logical query brought little speed benefit on these graphs; the cost of compiled padding and the benefit of narrower queries remain unmeasured; a one- or two-position query [does not execute](findings/ane-short-decode-query/). The upstream iOS 4-bit palettized preset ran entirely on the GPU, at <!-- claim:g6.w4.decode.1024.rate@g6-011 -->2.87 token/s<!-- /claim --> for <!-- claim:g6.n.1024@g6-012 -->1K<!-- /claim --> decode, so decode with 4-bit weights on ANE is still unmeasured. The GPU energy on the ANE path stays at <!-- claim:g6.decode-gpu-energy@g6-013 -->0.257–0.265 J/token<!-- /claim --> with either query width; its source is open. Replication on a second Apple chip, hours of residency in one host and a broader quality evaluation would test whether the result transfers and lasts.
+G4 A answered the question G3 left open: a graph sized to the input removes most of ANE's long-input penalty, but not the GPU's lead. G6 then changed one thing at a time on the same graphs. A four-position decode query instead of eight ran at <!-- claim:g6.q4-q8-speed@g6-010 -->1.001–1.008×<!-- /claim --> the speed, so narrowing the logical query brought little speed benefit on these graphs; the cost of compiled padding and the benefit of narrower queries remain unmeasured; a one- or two-position query [does not execute](findings/ane-short-decode-query/). The upstream iOS 4-bit palettized preset ran entirely on the GPU, at <!-- claim:g6.w4.decode.1024.rate@g6-011 -->2.87 token/s<!-- /claim --> for <!-- claim:g6.n.1024@g6-012 -->1K<!-- /claim --> decode, so decode with 4-bit weights on ANE is still unmeasured; on one E4B projection and MLP, Core AI's four-bit palette weights on ANE ran [<!-- claim:g7.coreai.w4a16-over-fp16@g7-107 -->1.465–3.175×<!-- /claim --> faster than FP16](findings/coreml-coreai-same-codes/). The GPU energy on the ANE path stays at <!-- claim:g6.decode-gpu-energy@g6-013 -->0.257–0.265 J/token<!-- /claim --> with either query width; its source is open. Replication on a second Apple chip, hours of residency in one host and a broader quality evaluation would test whether the result transfers and lasts.
 
 Further service experiments can test where the GPU's fans start rising between 4.9 and
 23.7 requests/s, first covering 4.9 to about 6.4 requests/s, and whether the matrix-foreground

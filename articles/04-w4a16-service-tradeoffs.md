@@ -4,7 +4,7 @@ English | [中文](zh/04-W4A16留在ANE上值得吗.md)
 
 Complete-model prefill, decode and component energy are measured separately in [article 05: Qwen3-4B FP16](05-qwen3-4b-prefill-decode-energy.md). This article covers the G2 W4A16 component run.
 
-Article draft · 2026-09-11 · [Series index](README.md)
+2026-09-11 · [Series index](README.md)
 
 ## Abstract
 

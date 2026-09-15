@@ -1,5 +1,4 @@
 {
-  "status": "本轮已关闭；设备核查、图表及最终清理完成，功率／能耗未判定。",
   "P2_process_medians": [
     {
       "positions": 64,
@@ -591,7 +590,6 @@
   "environment_followup": {
     "scope": "Post-run annotation of r4 device-phase ps snapshots only; not all eight hours and not per-process GPU utilization.",
     "source": "results/g2-w4a16-night-20260910/night-20260911-r4/telemetry/system.jsonl",
-    "source_sha256": "6fa702a7cd8bca0686949f2d361007dc9b4b2066306cbfae41d7309129b10558",
     "background_snapshots": 775,
     "Ventura_present": 775,
     "Ventura_pids": [

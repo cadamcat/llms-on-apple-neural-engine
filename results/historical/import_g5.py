@@ -1,6 +1,6 @@
 """Import the G5 weight-free attention precision and chunking evidence.
 
-Relative L2 results are copied as scalar fields with their source hashes; the
+Relative L2 results are copied as scalar fields with their source paths; the
 FP16 inputs and device outputs stay in the workspace. Per-operation timings
 travel with the bundle so the speed comparisons can be recomputed. No array,
 model or device library is imported, and no absolute path is serialised.
@@ -8,7 +8,6 @@ model or device library is imported, and no absolute path is serialised.
 
 import argparse
 import gzip
-import hashlib
 import json
 from pathlib import Path
 
@@ -18,11 +17,11 @@ REVIEW = 'workplans/g5-independent-review-20260912'
 
 class Reader:
     def __init__(self, root):
-        self.root, self.sources = Path(root), {}
+        self.root, self.sources = Path(root), set()
 
     def json(self, path):
         data = (self.root / path).read_bytes()
-        self.sources[path] = hashlib.sha256(data).hexdigest()
+        self.sources.add(path)
         return json.loads(data)
 
 
@@ -147,12 +146,9 @@ def main():
     write(args.output / 'evidence.json', json.dumps(evidence, indent=2) + '\n')
     with gzip.GzipFile(args.output / 'timings.json.gz', 'xb', mtime=0) as handle:
         handle.write(json.dumps(timings(read), separators=(',', ':')).encode())
-    products = {name: hashlib.sha256((args.output / name).read_bytes()).hexdigest()
-                for name in ('evidence.json', 'timings.json.gz')}
     provenance = {
         'importer': 'results/historical/import_g5.py',
-        'sources': dict(sorted(read.sources.items())),
-        'products': products,
+        'sources': sorted(read.sources),
         'transformations': [
             'relative L2, row maximum and maximum absolute error copied per case; arrays omitted',
             'replayed rows collapsed after checking that they agree',

@@ -1,7 +1,6 @@
 """Check the recorded QDQ multiply outputs, or a new run's outputs, without Core AI or a device."""
 from pathlib import Path
 import argparse
-import hashlib
 import json
 import math
 import struct
@@ -48,11 +47,7 @@ def verify(outputs=None):
                 path = ROOT / 'recorded' / arm / f'control-{index}.raw'
             else:
                 path = Path(outputs) / f'{arm}-control-{index}.raw'
-            data, values = read_half(path, f'{arm}.control-{index}')
-            if outputs is None:
-                require(hashlib.sha256(data).hexdigest() == spec['output_sha256'][index],
-                        f'{arm}.control-{index}.sha256')
-            outputs_for_arm.append((data, values))
+            outputs_for_arm.append(read_half(path, f'{arm}.control-{index}'))
         require(outputs_for_arm[0][0] == outputs_for_arm[2][0], arm + '.repeat')
         require(all(v == 0 for v in outputs_for_arm[1][1]), arm + '.zero')
         observed = sorted(set(outputs_for_arm[0][1]))

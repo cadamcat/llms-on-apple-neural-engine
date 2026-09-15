@@ -33,10 +33,10 @@ at 4096 positions A8W4 runs at 1.013× W4A16 speed.
 **[The historical Python gate grew by one output-sized increment per call](iosurface-per-call-growth/)**
 — 1,966,080 bytes, exactly the gate output size, through four different
 mitigations. That round's sustained-energy and GPU-coexistence runs were skipped.
-Later native HOST / PIO / TILE work passed bounded C64/C256 memory checks, with C256
+Later native host and tiled-asset rounds passed bounded C64/C256 memory checks, with C256
 at 582.19 ms versus its same-round GPU 152.25 ms for 4K, and two native G2 hosts ran
 33,728 stage calls each without the growth. [Follow-up](../results/historical/native-mlp-followup.json).
-The HOST / PIO / TILE results are separate, single-process observations.
+The native results are separate, single-process observations.
 
 ## Constraints, and the links still to test
 
@@ -54,9 +54,11 @@ value, with a matched negative control.
 
 **[Core AI runs the iOS 4-bit palettized Qwen3-4B preset on the GPU](coreai-palettized-weights-gpu/)** — with ANE preferred, the bundle passes ANE validation, its ANE compile fails, and it runs on the GPU with correct outputs and no error to the host. A matched FP16 bundle compiles and makes ANE requests; the palettized one makes none. On the complete model, FP16 on ANE decodes <!-- claim:g6.w4.fp16-faster-decode@g6-003 -->5.1–8.1×<!-- /claim --> faster.
 
-**[A QDQ multiply dequantizes with another QDQ's scale](coreai-qdq-multiply-scale/)** — a model-free probe returns 2, 4 and 8 where the answer is 1, matching one scale-substitution rule that also predicts the older exact-grid probe. The first MLP of a released Gemma 4 E4B QAT checkpoint is <!-- claim:g1w.e4b.1.native.l2@g1w-001 -->339%<!-- /claim --> off; a product clamp avoids the gross error. The same page records a compile failure that moves a whole graph to the GPU, and a GELU that is nonzero at zero.
+**[A QDQ multiply on the Neural Engine dequantizes with another QDQ's scale](coreai-qdq-multiply-scale/)** — a model-free probe returns 2, 4 and 8 where the answer is 1, matching one scale-substitution rule that also predicts the older exact-grid probe. Core ML returns the same values on the Neural Engine and correct values on the CPU; this entry was titled as a Core AI defect until 2026-09-15. The first MLP of a released Gemma 4 E4B QAT checkpoint is <!-- claim:g1w.e4b.1.native.l2@g1w-001 -->339%<!-- /claim --> off; a product clamp avoids the gross error. The same page records a compile failure that moves a whole graph to the GPU, and a GELU that is nonzero at zero.
 
-**[A8 speed-ups need depth and depend on the weights](quantized-speedup-conditions/)** — A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-002 -->0.86×<!-- /claim --> W4A16 speed as one layer and <!-- claim:g1w.depth.both-128.speed@g1w-003 -->1.33×<!-- /claim --> as 128. Exact zero weights make FP16 itself <!-- claim:g1w.density.old.speed@g1w-004 -->1.88×<!-- /claim --> faster, which shrinks a quantized ratio measured against it. Eight repeated E4B QAT MLPs gain nothing: <!-- claim:g1w.e4b.native.speed@g1w-005 -->0.977×<!-- /claim -->.
+**[A8 speed-ups depend on work per call and on the weights](quantized-speedup-conditions/)** — A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-002 -->0.86×<!-- /claim --> W4A16 speed as one layer and <!-- claim:g1w.depth.both-128.speed@g1w-003 -->1.33×<!-- /claim --> as 128. Exact zero weights make FP16 itself <!-- claim:g1w.density.old.speed@g1w-004 -->1.88×<!-- /claim --> faster, which shrinks a quantized ratio measured against it. Eight repeated E4B QAT MLPs gain nothing: <!-- claim:g1w.e4b.native.speed@g1w-005 -->0.977×<!-- /claim -->. One real E4B gate through Core AI runs A8W4 at <!-- claim:g7.coreai.gate.64.a8w4-over-w4a16.speed@g7-069 -->0.976–0.990×<!-- /claim --> W4A16 speed at 64 positions and <!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-070 -->1.359–1.360×<!-- /claim --> at 1024.
+
+**[Core ML and Core AI run the same codes at the same speed, except as a four-bit palette](coreml-coreai-same-codes/)** — on the same E4B gate and MLP codes, Core ML runs FP16 at <!-- claim:g7.ml-over-ai.fp16.speed@g7-071 -->0.979–0.998×<!-- /claim --> and W8A8 at <!-- claim:g7.ml-over-ai.w8a8.speed@g7-072 -->0.962–0.967×<!-- /claim --> Core AI's speed, but its four-bit palette graphs at <!-- claim:g7.ml-over-ai.four-bit.speed@g7-073 -->0.065–0.280×<!-- /claim -->, slower than its own FP16. The A8 graphs of the full MLP fail the reference in both runtimes.
 
 ## What a candidate arithmetic model predicts
 
@@ -95,8 +97,9 @@ from 32 published scalars, with no Apple hardware.
 | [Dot product outside the bracket](fp16-dot-residual/) | Localized; mechanism unproven | Yes — 32 published terms |
 | [Short decode queries](ane-short-decode-query/) | Reproduced in 36 and 1 layers; failing operator not located; width 3 untested | Recorded outcomes yes; a device run needs the model source and exporter |
 | [Palettized preset on the GPU](coreai-palettized-weights-gpu/) | One preset, one-layer matched pair plus the complete model at two inputs; rejected operation unknown | Recorded logs and G6 blocks yes; a device run needs the model source |
-| [QDQ multiply scale](coreai-qdq-multiply-scale/) | Reproduced model-free; substitution rule predicts both probes; mechanism unobserved | Yes — raw probe outputs; a device run needs no model |
-| [Quantized speed-up conditions](quantized-speedup-conditions/) | Measured on synthetic chains and one repeated E4B MLP; causes not isolated | Yes — recompute from stored per-call timings |
+| [QDQ multiply scale](coreai-qdq-multiply-scale/) | Reproduced model-free in Core AI and Core ML; substitution rule predicts both Core AI probes and a new Core ML input; mechanism unobserved | Yes — raw probe outputs; a device run needs no model |
+| [Quantized speed-up conditions](quantized-speedup-conditions/) | Measured on synthetic chains, one repeated E4B MLP and one real E4B gate at two sizes; causes not isolated | Yes — recompute from stored per-call timings and G7 blocks |
+| [Core ML and Core AI on the same codes](coreml-coreai-same-codes/) | One Core ML four-bit representation; where Core ML's four-bit time goes is not located | Yes — recompute from G7 blocks and power frames; a device run needs the checkpoint codes |
 | [Attention product precision](attention-product-precision/) | Localized to `P @ V`; synthetic inputs only | Timings yes; relative L2 values are imported scalars |
 
 ## What is not claimed

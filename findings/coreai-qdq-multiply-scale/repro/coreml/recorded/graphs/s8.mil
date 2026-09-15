@@ -1,0 +1,13 @@
+
+main[CoreML8](%x: (1, 1024, 1, 1024, fp16)(Tensor)) {
+  block17() {
+    %slice_by_index_0: (1, 512, 1, 1024, fp16)(Tensor) = slice_by_index(x=%x, begin=[0, 0, 0, 0], end=[1, 512, 1, 1024], name="slice_by_index_0")
+    %slice_by_index_1: (1, 512, 1, 1024, fp16)(Tensor) = slice_by_index(x=%x, begin=[0, 512, 0, 0], end=[1, 1024, 1, 1024], name="slice_by_index_1")
+    %quantize_2: (1, 512, 1, 1024, int8)(Tensor) = quantize(input=%slice_by_index_1, scale=0.0625, output_dtype="int8", name="quantize_2")
+    %dequantize_2: (1, 512, 1, 1024, fp16)(Tensor) = dequantize(input=%quantize_2, scale=0.0625, name="dequantize_2")
+    %mul_0: (1, 512, 1, 1024, fp16)(Tensor) = mul(x=%slice_by_index_0, y=%dequantize_2, name="mul_0")
+    %quantize_3: (1, 512, 1, 1024, int8)(Tensor) = quantize(input=%mul_0, scale=0.125, output_dtype="int8", name="quantize_3")
+    %dequantize_3: (1, 512, 1, 1024, fp16)(Tensor) = dequantize(input=%quantize_3, scale=0.125, name="dequantize_3")
+    %y: (1, 512, 1, 1024, fp16)(Tensor) = identity(x=%dequantize_3, name="y")
+  } -> (%y)
+}

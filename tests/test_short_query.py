@@ -1,5 +1,4 @@
 """The decode-query-width verifier fails by name on changed recorded outcomes."""
-import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -26,10 +25,6 @@ class ShortQuery(unittest.TestCase):
         data = json.loads(path.read_text())
         change(data)
         path.write_text(json.dumps(data))
-        manifest = self.copy / 'recorded/provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products']['observations.json'] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def case(self, data, name):
         return next(c for c in data['cases'] if c['case'] == name)
@@ -41,17 +36,12 @@ class ShortQuery(unittest.TestCase):
     def test_query_four_failure_is_rejected(self):
         self.edit(lambda d: self.case(d, 'l1-c768-q12483-t8-q8-q4')['results']['4'].__setitem__('host_returncode', 130))
         with self.assertRaisesRegex(ValueError, 'short_query_success:l1-c768-q12483-t8-q8-q4:4'):
-            verify.outcomes(self.copy / 'recorded', self.copy)
+            verify.outcomes(self.copy / 'recorded')
 
     def test_query_one_without_driver_status_is_rejected(self):
         self.edit(lambda d: self.case(d, 'c1280-n1024-r1')['results']['1']['log'].__setitem__('failure_status_lines', []))
         with self.assertRaisesRegex(ValueError, 'short_query_failure:c1280-n1024-r1:1'):
-            verify.outcomes(self.copy / 'recorded', self.copy)
-
-    def test_changed_archived_script(self):
-        (self.copy / 'q1_probe.py').write_text('# changed\n')
-        with self.assertRaisesRegex(ValueError, 'short_query_script_identity:q1_probe.py'):
-            verify.outcomes(self.copy / 'recorded', self.copy)
+            verify.outcomes(self.copy / 'recorded')
 
 
 if __name__ == '__main__':

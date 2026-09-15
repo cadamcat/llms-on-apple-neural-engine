@@ -3,9 +3,7 @@
     "label": "coreai_w8a8_128",
     "historical_import": true,
     "result_source": "results/g1-int8-control-20260910/runs/coreai-heldout-w8a8-128/result.json",
-    "result_sha256": "c2405a15c6abb8717826a03daf1707b4befcf049905b763bd13c3571cf3805e2",
     "run_source": "results/g1-int8-control-20260910/runs/coreai-heldout-w8a8-128/run.json",
-    "run_sha256": "1a2ff15650fe5fa319f3b4996ffd1f7154211dffc651d2c15703f512314d1cf1",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -29,7 +27,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-int8-control-20260910/runs/coreai-heldout-w8a8-128/admission.json",
-    "admission_sha256": "c2f47812f200d1bc3f7b872b0ebbb9427b7a69359b0a877e3e1ec32abdd8c98e",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -70,240 +67,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789047939866683904,
         "end_epoch_ns": 1789047939874605056,
-        "duration_ns": 7920916,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7920916
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789047939882832896,
         "end_epoch_ns": 1789047939890747136,
-        "duration_ns": 7913209,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7913209
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789047939897942016,
         "end_epoch_ns": 1789047939905857024,
-        "duration_ns": 7914875,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7914875
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789047939913058048,
         "end_epoch_ns": 1789047939920968960,
-        "duration_ns": 7910333,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7910333
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789047939928331008,
         "end_epoch_ns": 1789047939936220160,
-        "duration_ns": 7888916,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7888916
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789047939943550976,
         "end_epoch_ns": 1789047939951454208,
-        "duration_ns": 7901875,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7901875
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789047939958642944,
         "end_epoch_ns": 1789047939966516992,
-        "duration_ns": 7874167,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7874167
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789047939973880064,
         "end_epoch_ns": 1789047939981822976,
-        "duration_ns": 7942291,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7942291
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789047939988905984,
         "end_epoch_ns": 1789047939996820992,
-        "duration_ns": 7914166,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7914166
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789047940004268288,
         "end_epoch_ns": 1789047940012249856,
-        "duration_ns": 7980833,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7980833
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789047940019607040,
         "end_epoch_ns": 1789047940027541248,
-        "duration_ns": 7934000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7934000
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789047940034932224,
         "end_epoch_ns": 1789047940042881024,
-        "duration_ns": 7947625,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7947625
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789047940050230016,
         "end_epoch_ns": 1789047940058160896,
-        "duration_ns": 7930583,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7930583
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789047940065548032,
         "end_epoch_ns": 1789047940073484032,
-        "duration_ns": 7935250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7935250
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789047940080580864,
         "end_epoch_ns": 1789047940088531968,
-        "duration_ns": 7949959,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7949959
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789047940095686912,
         "end_epoch_ns": 1789047940103572736,
-        "duration_ns": 7885875,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7885875
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789047940110836992,
         "end_epoch_ns": 1789047940118729984,
-        "duration_ns": 7892000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7892000
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789047940126089984,
         "end_epoch_ns": 1789047940134006016,
-        "duration_ns": 7915916,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7915916
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789047940141287936,
         "end_epoch_ns": 1789047940149204992,
-        "duration_ns": 7917292,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7917292
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789047940156609024,
         "end_epoch_ns": 1789047940164527872,
-        "duration_ns": 7918167,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7918167
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789047940171708160,
         "end_epoch_ns": 1789047940179644160,
-        "duration_ns": 7935084,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7935084
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789047940187064064,
         "end_epoch_ns": 1789047940194968064,
-        "duration_ns": 7902667,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7902667
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789047940202211840,
         "end_epoch_ns": 1789047940210090240,
-        "duration_ns": 7877041,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7877041
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789047940217441024,
         "end_epoch_ns": 1789047940225379072,
-        "duration_ns": 7936750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7936750
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789047940232670976,
         "end_epoch_ns": 1789047940240613888,
-        "duration_ns": 7942334,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7942334
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789047940248024064,
         "end_epoch_ns": 1789047940255938048,
-        "duration_ns": 7913792,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7913792
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789047940263414016,
         "end_epoch_ns": 1789047940271348992,
-        "duration_ns": 7934000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7934000
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789047940278770944,
         "end_epoch_ns": 1789047940286652928,
-        "duration_ns": 7881708,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7881708
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789047940293892864,
         "end_epoch_ns": 1789047940301789952,
-        "duration_ns": 7896625,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7896625
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789047940309211136,
         "end_epoch_ns": 1789047940317111040,
-        "duration_ns": 7899250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7899250
       }
     ],
     "reported_p50_ms": 7.915395500000001,
@@ -320,9 +287,7 @@
     "label": "coreml_w8a8_128_1",
     "historical_import": true,
     "result_source": "results/g1-int8-control-20260910/runs/heldout-w8a8-128-1/result.json",
-    "result_sha256": "01ee5cbb9ebcc04f9650deadc5669a565c9270805041502a9e7b3937d6d13c90",
     "run_source": "results/g1-int8-control-20260910/runs/heldout-w8a8-128-1/run.json",
-    "run_sha256": "3ec3b312d7222f984f71ea35e1ccf0e63268a6041ca3c9a483bc5c1fdf33d20c",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -346,7 +311,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-int8-control-20260910/runs/heldout-w8a8-128-1/admission.json",
-    "admission_sha256": "67694908675f125dd71efba3aaa2cf165cc178a27ef3ebfb24517bb2299f04a1",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -387,240 +351,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789047480780351232,
         "end_epoch_ns": 1789047480788375808,
-        "duration_ns": 8024500,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8024500
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789047480792734976,
         "end_epoch_ns": 1789047480800785152,
-        "duration_ns": 8048917,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8048917
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789047480804099072,
         "end_epoch_ns": 1789047480812057088,
-        "duration_ns": 7957667,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7957667
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789047480815607040,
         "end_epoch_ns": 1789047480823665152,
-        "duration_ns": 8057750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8057750
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789047480826980096,
         "end_epoch_ns": 1789047480835001088,
-        "duration_ns": 8019750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8019750
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789047480838392064,
         "end_epoch_ns": 1789047480846415872,
-        "duration_ns": 8023458,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8023458
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789047480850019072,
         "end_epoch_ns": 1789047480858018816,
-        "duration_ns": 7998667,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7998667
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789047480861315072,
         "end_epoch_ns": 1789047480869315072,
-        "duration_ns": 7999458,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7999458
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789047480872847104,
         "end_epoch_ns": 1789047480881016064,
-        "duration_ns": 8168292,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8168292
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789047480884673024,
         "end_epoch_ns": 1789047480892667136,
-        "duration_ns": 7992916,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7992916
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789047480895979776,
         "end_epoch_ns": 1789047480903998976,
-        "duration_ns": 8017834,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8017834
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789047480907567872,
         "end_epoch_ns": 1789047480915611904,
-        "duration_ns": 8042958,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8042958
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789047480919142912,
         "end_epoch_ns": 1789047480927164928,
-        "duration_ns": 8021041,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8021041
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789047480930532864,
         "end_epoch_ns": 1789047480938551040,
-        "duration_ns": 8016833,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8016833
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789047480942096896,
         "end_epoch_ns": 1789047480950129152,
-        "duration_ns": 8031542,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8031542
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789047480953552896,
         "end_epoch_ns": 1789047480961599744,
-        "duration_ns": 8046250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8046250
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789047480965244160,
         "end_epoch_ns": 1789047480973260032,
-        "duration_ns": 8015084,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8015084
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789047480976634880,
         "end_epoch_ns": 1789047480984617984,
-        "duration_ns": 7982042,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7982042
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789047480988071936,
         "end_epoch_ns": 1789047480996160000,
-        "duration_ns": 8086917,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8086917
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789047480999751168,
         "end_epoch_ns": 1789047481007790080,
-        "duration_ns": 8038375,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8038375
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789047481011248128,
         "end_epoch_ns": 1789047481019292928,
-        "duration_ns": 8044125,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8044125
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789047481022896896,
         "end_epoch_ns": 1789047481030952960,
-        "duration_ns": 8055166,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8055166
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789047481034513920,
         "end_epoch_ns": 1789047481042487040,
-        "duration_ns": 7971042,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7971042
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789047481045861888,
         "end_epoch_ns": 1789047481053864960,
-        "duration_ns": 8001916,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8001916
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789047481057422080,
         "end_epoch_ns": 1789047481065464064,
-        "duration_ns": 8040458,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8040458
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789047481068907008,
         "end_epoch_ns": 1789047481076915968,
-        "duration_ns": 8008291,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8008291
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789047481080481024,
         "end_epoch_ns": 1789047481088451840,
-        "duration_ns": 7970459,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7970459
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789047481092064000,
         "end_epoch_ns": 1789047481100070912,
-        "duration_ns": 8006000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8006000
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789047481103590912,
         "end_epoch_ns": 1789047481111671040,
-        "duration_ns": 8079250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8079250
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789047481115367936,
         "end_epoch_ns": 1789047481123420928,
-        "duration_ns": 8051834,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8051834
       }
     ],
     "reported_p50_ms": 8.022249500000001,
@@ -637,9 +571,7 @@
     "label": "coreml_w8a8_128_2",
     "historical_import": true,
     "result_source": "results/g1-int8-control-20260910/runs/heldout-w8a8-128-2/result.json",
-    "result_sha256": "8003bfe01e32aadb7a3695369d6dbf8ec066ebf98ea3a834ecfe7286fe7ce8d4",
     "run_source": "results/g1-int8-control-20260910/runs/heldout-w8a8-128-2/run.json",
-    "run_sha256": "83cceded275eac9ab06e99a66a0ac2169a19eb5c0dfa502fedce0a06f6017456",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -663,7 +595,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-int8-control-20260910/runs/heldout-w8a8-128-2/admission.json",
-    "admission_sha256": "67694908675f125dd71efba3aaa2cf165cc178a27ef3ebfb24517bb2299f04a1",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -704,240 +635,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789047488238684160,
         "end_epoch_ns": 1789047488246829056,
-        "duration_ns": 8144709,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8144709
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789047488251524096,
         "end_epoch_ns": 1789047488259546880,
-        "duration_ns": 8021417,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8021417
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789047488263173120,
         "end_epoch_ns": 1789047488271350016,
-        "duration_ns": 8176459,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8176459
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789047488274856960,
         "end_epoch_ns": 1789047488282897920,
-        "duration_ns": 8040000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8040000
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789047488286362112,
         "end_epoch_ns": 1789047488294386944,
-        "duration_ns": 8023250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8023250
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789047488298355200,
         "end_epoch_ns": 1789047488306496256,
-        "duration_ns": 8140333,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8140333
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789047488310047232,
         "end_epoch_ns": 1789047488318073088,
-        "duration_ns": 8025208,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8025208
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789047488321625856,
         "end_epoch_ns": 1789047488329704960,
-        "duration_ns": 8078000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8078000
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789047488333317120,
         "end_epoch_ns": 1789047488341330944,
-        "duration_ns": 8013291,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8013291
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789047488344881152,
         "end_epoch_ns": 1789047488352894976,
-        "duration_ns": 8012500,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8012500
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789047488356549888,
         "end_epoch_ns": 1789047488364573952,
-        "duration_ns": 8022625,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8022625
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789047488367995904,
         "end_epoch_ns": 1789047488376013056,
-        "duration_ns": 8016208,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8016208
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789047488379917056,
         "end_epoch_ns": 1789047488387954944,
-        "duration_ns": 8036375,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8036375
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789047488391458048,
         "end_epoch_ns": 1789047488399459840,
-        "duration_ns": 8001417,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8001417
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789047488402841088,
         "end_epoch_ns": 1789047488410869248,
-        "duration_ns": 8026958,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8026958
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789047488414288896,
         "end_epoch_ns": 1789047488422314240,
-        "duration_ns": 8024083,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8024083
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789047488425786880,
         "end_epoch_ns": 1789047488433788928,
-        "duration_ns": 8000875,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8000875
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789047488437131776,
         "end_epoch_ns": 1789047488445143040,
-        "duration_ns": 8011000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8011000
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789047488448763904,
         "end_epoch_ns": 1789047488456792832,
-        "duration_ns": 8028542,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8028542
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789047488460289024,
         "end_epoch_ns": 1789047488468337920,
-        "duration_ns": 8049042,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8049042
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789047488471756032,
         "end_epoch_ns": 1789047488479879936,
-        "duration_ns": 8123125,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8123125
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789047488483798016,
         "end_epoch_ns": 1789047488491791104,
-        "duration_ns": 7991375,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7991375
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789047488495228928,
         "end_epoch_ns": 1789047488503336960,
-        "duration_ns": 8106792,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8106792
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789047488507160064,
         "end_epoch_ns": 1789047488515205888,
-        "duration_ns": 8044833,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8044833
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789047488518714880,
         "end_epoch_ns": 1789047488526750208,
-        "duration_ns": 8034000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8034000
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789047488530204928,
         "end_epoch_ns": 1789047488538249984,
-        "duration_ns": 8043458,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8043458
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789047488541906944,
         "end_epoch_ns": 1789047488549923840,
-        "duration_ns": 8015542,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8015542
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789047488553550848,
         "end_epoch_ns": 1789047488561646848,
-        "duration_ns": 8095250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8095250
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789047488565440256,
         "end_epoch_ns": 1789047488573442048,
-        "duration_ns": 8000541,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8000541
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789047488576930048,
         "end_epoch_ns": 1789047488584921856,
-        "duration_ns": 7991041,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7991041
       }
     ],
     "reported_p50_ms": 8.026083,
@@ -954,9 +855,7 @@
     "label": "coreai_fp16_128",
     "historical_import": true,
     "result_source": "results/g1-int8-control-20260910/runs/coreai-heldout-fp16-128/result.json",
-    "result_sha256": "dc16357b975cc2c932997d005f9abb7cf8775bbf10e1bf425dbd17ac12c562fe",
     "run_source": "results/g1-int8-control-20260910/runs/coreai-heldout-fp16-128/run.json",
-    "run_sha256": "2830a6fe17add4fa3c29cf1749c6f84a141cd51ae91d5406b7ee350e3ad5a2fc",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -980,7 +879,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-int8-control-20260910/runs/coreai-heldout-fp16-128/admission.json",
-    "admission_sha256": "c2f47812f200d1bc3f7b872b0ebbb9427b7a69359b0a877e3e1ec32abdd8c98e",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -1021,240 +919,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789047929945393152,
         "end_epoch_ns": 1789047929960371968,
-        "duration_ns": 14978333,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14978333
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789047929971613952,
         "end_epoch_ns": 1789047929986806016,
-        "duration_ns": 15190750,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15190750
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789047929994242048,
         "end_epoch_ns": 1789047930009189120,
-        "duration_ns": 14945250,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14945250
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789047930016766976,
         "end_epoch_ns": 1789047930031710208,
-        "duration_ns": 14942708,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14942708
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789047930039166976,
         "end_epoch_ns": 1789047930054141952,
-        "duration_ns": 14973500,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14973500
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789047930061539072,
         "end_epoch_ns": 1789047930076431872,
-        "duration_ns": 14892209,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14892209
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789047930084034048,
         "end_epoch_ns": 1789047930098932992,
-        "duration_ns": 14897250,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14897250
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789047930106246912,
         "end_epoch_ns": 1789047930121218048,
-        "duration_ns": 14970792,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14970792
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789047930128603904,
         "end_epoch_ns": 1789047930143515136,
-        "duration_ns": 14910167,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14910167
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789047930151160064,
         "end_epoch_ns": 1789047930166081792,
-        "duration_ns": 14920500,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14920500
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789047930173691904,
         "end_epoch_ns": 1789047930188622848,
-        "duration_ns": 14930541,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14930541
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789047930196230912,
         "end_epoch_ns": 1789047930211137024,
-        "duration_ns": 14904541,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14904541
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789047930218776064,
         "end_epoch_ns": 1789047930233703168,
-        "duration_ns": 14926375,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14926375
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789047930241192960,
         "end_epoch_ns": 1789047930256157952,
-        "duration_ns": 14964209,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14964209
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789047930263653120,
         "end_epoch_ns": 1789047930278573056,
-        "duration_ns": 14918833,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14918833
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789047930286532864,
         "end_epoch_ns": 1789047930301472000,
-        "duration_ns": 14938208,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14938208
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789047930308923904,
         "end_epoch_ns": 1789047930323821056,
-        "duration_ns": 14896333,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14896333
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789047930331454976,
         "end_epoch_ns": 1789047930346405888,
-        "duration_ns": 14949750,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14949750
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789047930353880832,
         "end_epoch_ns": 1789047930368803072,
-        "duration_ns": 14921000,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14921000
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789047930376431872,
         "end_epoch_ns": 1789047930391340032,
-        "duration_ns": 14908167,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14908167
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789047930398812160,
         "end_epoch_ns": 1789047930413725952,
-        "duration_ns": 14913042,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14913042
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789047930421170944,
         "end_epoch_ns": 1789047930436048128,
-        "duration_ns": 14875834,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14875834
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789047930443612928,
         "end_epoch_ns": 1789047930458528000,
-        "duration_ns": 14913958,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14913958
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789047930466137856,
         "end_epoch_ns": 1789047930481094912,
-        "duration_ns": 14955750,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14955750
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789047930488597760,
         "end_epoch_ns": 1789047930503570176,
-        "duration_ns": 14971792,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14971792
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789047930511197184,
         "end_epoch_ns": 1789047930526087936,
-        "duration_ns": 14890333,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14890333
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789047930533731072,
         "end_epoch_ns": 1789047930548610048,
-        "duration_ns": 14877959,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14877959
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789047930556300288,
         "end_epoch_ns": 1789047930571265024,
-        "duration_ns": 14964791,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14964791
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789047930578844160,
         "end_epoch_ns": 1789047930593708032,
-        "duration_ns": 14863083,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14863083
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789047930601218048,
         "end_epoch_ns": 1789047930616129792,
-        "duration_ns": 14911000,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14911000
       }
     ],
     "reported_p50_ms": 14.92075,
@@ -1271,9 +1139,7 @@
     "label": "coreml_fp16_128_1",
     "historical_import": true,
     "result_source": "results/g1-int8-control-20260910/runs/heldout-fp16-128-1/result.json",
-    "result_sha256": "8ce706866bb7c7336c7c2629332b9c9ce6b1e7c44b95a1195dba51b947f59c38",
     "run_source": "results/g1-int8-control-20260910/runs/heldout-fp16-128-1/run.json",
-    "run_sha256": "bf7f5f056a7b679dc9e801955c4715958c66bf5a932ff04febf663cb86ed5f06",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -1297,7 +1163,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-int8-control-20260910/runs/heldout-fp16-128-1/admission.json",
-    "admission_sha256": "67694908675f125dd71efba3aaa2cf165cc178a27ef3ebfb24517bb2299f04a1",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -1338,240 +1203,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789047473768013056,
         "end_epoch_ns": 1789047473783045120,
-        "duration_ns": 15031000,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15031000
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789047473787558912,
         "end_epoch_ns": 1789047473802593024,
-        "duration_ns": 15032500,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15032500
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789047473805968128,
         "end_epoch_ns": 1789047473820993792,
-        "duration_ns": 15023958,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15023958
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789047473824538880,
         "end_epoch_ns": 1789047473839565056,
-        "duration_ns": 15025750,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15025750
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789047473842936064,
         "end_epoch_ns": 1789047473857923072,
-        "duration_ns": 14986167,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14986167
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789047473861364736,
         "end_epoch_ns": 1789047473876333056,
-        "duration_ns": 14967292,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14967292
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789047473879739904,
         "end_epoch_ns": 1789047473894713856,
-        "duration_ns": 14972875,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14972875
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789047473898316800,
         "end_epoch_ns": 1789047473913288192,
-        "duration_ns": 14969833,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14969833
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789047473916847104,
         "end_epoch_ns": 1789047473931856128,
-        "duration_ns": 15007667,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15007667
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789047473935196928,
         "end_epoch_ns": 1789047473950168064,
-        "duration_ns": 14969208,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14969208
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789047473953539840,
         "end_epoch_ns": 1789047473968483840,
-        "duration_ns": 14942958,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14942958
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789047473971982848,
         "end_epoch_ns": 1789047473987049216,
-        "duration_ns": 15064416,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15064416
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789047473990787072,
         "end_epoch_ns": 1789047474005802240,
-        "duration_ns": 15013583,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15013583
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789047474009388800,
         "end_epoch_ns": 1789047474024386816,
-        "duration_ns": 14997042,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14997042
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789047474027768064,
         "end_epoch_ns": 1789047474042719744,
-        "duration_ns": 14951084,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14951084
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789047474046014976,
         "end_epoch_ns": 1789047474060972032,
-        "duration_ns": 14955875,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14955875
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789047474064708096,
         "end_epoch_ns": 1789047474079694080,
-        "duration_ns": 14985125,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14985125
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789047474083513088,
         "end_epoch_ns": 1789047474098518784,
-        "duration_ns": 15004875,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15004875
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789047474101946880,
         "end_epoch_ns": 1789047474116919040,
-        "duration_ns": 14971500,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14971500
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789047474120569856,
         "end_epoch_ns": 1789047474135566080,
-        "duration_ns": 14994917,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14994917
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789047474138968064,
         "end_epoch_ns": 1789047474153975040,
-        "duration_ns": 15005875,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15005875
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789047474157586176,
         "end_epoch_ns": 1789047474172588800,
-        "duration_ns": 15002208,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15002208
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789047474176236032,
         "end_epoch_ns": 1789047474191206912,
-        "duration_ns": 14969250,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14969250
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789047474194934784,
         "end_epoch_ns": 1789047474209923072,
-        "duration_ns": 14986541,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14986541
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789047474213440768,
         "end_epoch_ns": 1789047474228443136,
-        "duration_ns": 15001458,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15001458
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789047474232083968,
         "end_epoch_ns": 1789047474247072000,
-        "duration_ns": 14986958,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14986958
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789047474250711808,
         "end_epoch_ns": 1789047474265709824,
-        "duration_ns": 14996833,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14996833
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789047474269183232,
         "end_epoch_ns": 1789047474284146944,
-        "duration_ns": 14962875,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14962875
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789047474287668992,
         "end_epoch_ns": 1789047474302681856,
-        "duration_ns": 15011916,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15011916
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789047474306637056,
         "end_epoch_ns": 1789047474321639168,
-        "duration_ns": 15001208,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15001208
       }
     ],
     "reported_p50_ms": 14.995875,
@@ -1588,9 +1423,7 @@
     "label": "coreml_fp16_128_2",
     "historical_import": true,
     "result_source": "results/g1-int8-control-20260910/runs/heldout-fp16-128-2/result.json",
-    "result_sha256": "13f28e717c617711b214b70719fa5d3456337d62f241df36f0b626d7b673653c",
     "run_source": "results/g1-int8-control-20260910/runs/heldout-fp16-128-2/run.json",
-    "run_sha256": "32cacc6a34dcd5ac8416dd1c7f574879a003b6ff1a0ddc6453dc4f1b39ae66df",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -1614,7 +1447,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-int8-control-20260910/runs/heldout-fp16-128-2/admission.json",
-    "admission_sha256": "67694908675f125dd71efba3aaa2cf165cc178a27ef3ebfb24517bb2299f04a1",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -1655,240 +1487,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789047497518248192,
         "end_epoch_ns": 1789047497533266176,
-        "duration_ns": 15016458,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15016458
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789047497537990144,
         "end_epoch_ns": 1789047497553039104,
-        "duration_ns": 15048083,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15048083
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789047497556733184,
         "end_epoch_ns": 1789047497571738112,
-        "duration_ns": 15004000,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15004000
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789047497575251200,
         "end_epoch_ns": 1789047497590217216,
-        "duration_ns": 14965250,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14965250
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789047497593641984,
         "end_epoch_ns": 1789047497608624896,
-        "duration_ns": 14981834,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14981834
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789047497612081920,
         "end_epoch_ns": 1789047497627060992,
-        "duration_ns": 14977333,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14977333
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789047497630781184,
         "end_epoch_ns": 1789047497645956096,
-        "duration_ns": 15174625,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15174625
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789047497649412096,
         "end_epoch_ns": 1789047497664397056,
-        "duration_ns": 14983833,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14983833
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789047497667766016,
         "end_epoch_ns": 1789047497682737920,
-        "duration_ns": 14972167,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14972167
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789047497686095872,
         "end_epoch_ns": 1789047497701074176,
-        "duration_ns": 14977084,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14977084
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789047497704491264,
         "end_epoch_ns": 1789047497719529216,
-        "duration_ns": 15036500,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15036500
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789047497723022080,
         "end_epoch_ns": 1789047497737989888,
-        "duration_ns": 14966709,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14966709
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789047497741579008,
         "end_epoch_ns": 1789047497756575232,
-        "duration_ns": 14994625,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14994625
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789047497759988992,
         "end_epoch_ns": 1789047497774947072,
-        "duration_ns": 14957166,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14957166
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789047497778380800,
         "end_epoch_ns": 1789047497793366784,
-        "duration_ns": 14985458,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14985458
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789047497796784896,
         "end_epoch_ns": 1789047497811821824,
-        "duration_ns": 15035375,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15035375
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789047497815382016,
         "end_epoch_ns": 1789047497830339072,
-        "duration_ns": 14956375,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14956375
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789047497833859840,
         "end_epoch_ns": 1789047497848836864,
-        "duration_ns": 14975458,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14975458
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789047497852193792,
         "end_epoch_ns": 1789047497867155968,
-        "duration_ns": 14961541,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14961541
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789047497870550272,
         "end_epoch_ns": 1789047497885604864,
-        "duration_ns": 15053875,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15053875
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789047497889009920,
         "end_epoch_ns": 1789047497904032000,
-        "duration_ns": 15021583,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15021583
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789047497907630080,
         "end_epoch_ns": 1789047497922590976,
-        "duration_ns": 14960417,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14960417
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789047497926262016,
         "end_epoch_ns": 1789047497941244160,
-        "duration_ns": 14980875,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14980875
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789047497944738816,
         "end_epoch_ns": 1789047497959710208,
-        "duration_ns": 14970458,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14970458
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789047497963244032,
         "end_epoch_ns": 1789047497978208000,
-        "duration_ns": 14962708,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14962708
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789047497981862912,
         "end_epoch_ns": 1789047497996816128,
-        "duration_ns": 14951917,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14951917
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789047498000587008,
         "end_epoch_ns": 1789047498015561984,
-        "duration_ns": 14974333,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14974333
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789047498019053056,
         "end_epoch_ns": 1789047498034030080,
-        "duration_ns": 14975792,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14975792
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789047498037855232,
         "end_epoch_ns": 1789047498052863232,
-        "duration_ns": 15007541,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 15007541
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789047498056561920,
         "end_epoch_ns": 1789047498071499776,
-        "duration_ns": 14937208,
-        "output_sha256": "c045b7364fd72189ca4b0bb1032ed0b71641d918d6b9620a663a5c7065adab83"
+        "duration_ns": 14937208
       }
     ],
     "reported_p50_ms": 14.9772085,
@@ -1905,9 +1707,7 @@
     "label": "wide_a8w4_128_1",
     "historical_import": true,
     "result_source": "results/g1-w4-bridge-20260910/runs/a8w4-128-1/result.json",
-    "result_sha256": "8d257b2fe1678b052bf67131be70c3b02480f52fd88f18dd46d5710759567124",
     "run_source": "results/g1-w4-bridge-20260910/runs/a8w4-128-1/run.json",
-    "run_sha256": "8a8da9d969fd9279152542a22d6f7d1eb72f0ceeb4a7394e4d936569610305f7",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -1931,7 +1731,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-w4-bridge-20260910/runs/a8w4-128-1/admission.json",
-    "admission_sha256": "c2f47812f200d1bc3f7b872b0ebbb9427b7a69359b0a877e3e1ec32abdd8c98e",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -1972,240 +1771,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789049368798241024,
         "end_epoch_ns": 1789049368807942912,
-        "duration_ns": 9701834,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 9701834
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789049368817095936,
         "end_epoch_ns": 1789049368826471936,
-        "duration_ns": 9375875,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 9375875
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789049368834671104,
         "end_epoch_ns": 1789049368843919104,
-        "duration_ns": 9247459,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 9247459
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789049368852322048,
         "end_epoch_ns": 1789049368861256192,
-        "duration_ns": 8933458,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8933458
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789049368868780032,
         "end_epoch_ns": 1789049368877125888,
-        "duration_ns": 8345000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8345000
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789049368884285952,
         "end_epoch_ns": 1789049368892083200,
-        "duration_ns": 7796959,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7796959
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789049368899065856,
         "end_epoch_ns": 1789049368906873856,
-        "duration_ns": 7807542,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7807542
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789049368913818880,
         "end_epoch_ns": 1789049368921748992,
-        "duration_ns": 7929416,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7929416
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789049368928740096,
         "end_epoch_ns": 1789049368936633088,
-        "duration_ns": 7892208,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7892208
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789049368943781888,
         "end_epoch_ns": 1789049368951656960,
-        "duration_ns": 7874458,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7874458
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789049368958636032,
         "end_epoch_ns": 1789049368966403840,
-        "duration_ns": 7767125,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7767125
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789049368973427968,
         "end_epoch_ns": 1789049368981355008,
-        "duration_ns": 7926250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7926250
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789049368988421888,
         "end_epoch_ns": 1789049368996299008,
-        "duration_ns": 7876834,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7876834
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789049369003445248,
         "end_epoch_ns": 1789049369011291904,
-        "duration_ns": 7840750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7840750
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789049369018403072,
         "end_epoch_ns": 1789049369026339072,
-        "duration_ns": 7935792,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7935792
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789049369033259008,
         "end_epoch_ns": 1789049369041115136,
-        "duration_ns": 7855541,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7855541
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789049369048183808,
         "end_epoch_ns": 1789049369056098816,
-        "duration_ns": 7914042,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7914042
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789049369063220992,
         "end_epoch_ns": 1789049369071162112,
-        "duration_ns": 7940791,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7940791
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789049369078364928,
         "end_epoch_ns": 1789049369086268928,
-        "duration_ns": 7903125,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7903125
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789049369093274112,
         "end_epoch_ns": 1789049369101086976,
-        "duration_ns": 7811708,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7811708
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789049369108210944,
         "end_epoch_ns": 1789049369116036864,
-        "duration_ns": 7825625,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7825625
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789049369123190016,
         "end_epoch_ns": 1789049369131077888,
-        "duration_ns": 7886541,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7886541
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789049369138324992,
         "end_epoch_ns": 1789049369146141952,
-        "duration_ns": 7815917,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7815917
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789049369153337856,
         "end_epoch_ns": 1789049369161190144,
-        "duration_ns": 7851709,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7851709
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789049369168351232,
         "end_epoch_ns": 1789049369176145152,
-        "duration_ns": 7793166,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7793166
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789049369183158784,
         "end_epoch_ns": 1789049369191111936,
-        "duration_ns": 7951791,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7951791
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789049369198256128,
         "end_epoch_ns": 1789049369206089984,
-        "duration_ns": 7833542,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7833542
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789049369213070848,
         "end_epoch_ns": 1789049369220934912,
-        "duration_ns": 7862667,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7862667
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789049369228056064,
         "end_epoch_ns": 1789049369235947008,
-        "duration_ns": 7890458,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7890458
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789049369243091968,
         "end_epoch_ns": 1789049369250892288,
-        "duration_ns": 7800000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7800000
       }
     ],
     "reported_p50_ms": 7.8816875,
@@ -2222,9 +1991,7 @@
     "label": "wide_a8w4_128_2",
     "historical_import": true,
     "result_source": "results/g1-w4-bridge-20260910/runs/a8w4-128-2/result.json",
-    "result_sha256": "67a888463cd27443815be814e93e1c4f0d40f623621d9846a5fe853dbb336117",
     "run_source": "results/g1-w4-bridge-20260910/runs/a8w4-128-2/run.json",
-    "run_sha256": "b4719edd7ea265d0dcd3c36bc667879b9a8d3eeb6e3b0f731a53a6369059949c",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -2248,7 +2015,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-w4-bridge-20260910/runs/a8w4-128-2/admission.json",
-    "admission_sha256": "c2f47812f200d1bc3f7b872b0ebbb9427b7a69359b0a877e3e1ec32abdd8c98e",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -2289,240 +2055,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789049371075511808,
         "end_epoch_ns": 1789049371083569920,
-        "duration_ns": 8057459,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8057459
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789049371091533056,
         "end_epoch_ns": 1789049371099422976,
-        "duration_ns": 7889583,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7889583
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789049371106500096,
         "end_epoch_ns": 1789049371114434048,
-        "duration_ns": 7933000,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7933000
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789049371121543936,
         "end_epoch_ns": 1789049371129428736,
-        "duration_ns": 7884875,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7884875
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789049371136537088,
         "end_epoch_ns": 1789049371144466944,
-        "duration_ns": 7928375,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7928375
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789049371151490048,
         "end_epoch_ns": 1789049371159363072,
-        "duration_ns": 7872292,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7872292
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789049371166406144,
         "end_epoch_ns": 1789049371174182912,
-        "duration_ns": 7776791,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7776791
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789049371181201920,
         "end_epoch_ns": 1789049371189070080,
-        "duration_ns": 7867500,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7867500
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789049371196260096,
         "end_epoch_ns": 1789049371204206080,
-        "duration_ns": 7944917,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7944917
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789049371211276032,
         "end_epoch_ns": 1789049371219123968,
-        "duration_ns": 7847542,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7847542
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789049371226307840,
         "end_epoch_ns": 1789049371234180096,
-        "duration_ns": 7870750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7870750
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789049371241369856,
         "end_epoch_ns": 1789049371249175040,
-        "duration_ns": 7804750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7804750
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789049371256280832,
         "end_epoch_ns": 1789049371264233984,
-        "duration_ns": 7952709,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7952709
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789049371271500032,
         "end_epoch_ns": 1789049371279393024,
-        "duration_ns": 7892500,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7892500
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789049371286702080,
         "end_epoch_ns": 1789049371294588160,
-        "duration_ns": 7886083,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7886083
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789049371301587200,
         "end_epoch_ns": 1789049371309392896,
-        "duration_ns": 7805958,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7805958
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789049371316504064,
         "end_epoch_ns": 1789049371324434944,
-        "duration_ns": 7928916,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7928916
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789049371331590144,
         "end_epoch_ns": 1789049371339468032,
-        "duration_ns": 7877583,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7877583
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789049371346674944,
         "end_epoch_ns": 1789049371354504960,
-        "duration_ns": 7828541,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7828541
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789049371361791232,
         "end_epoch_ns": 1789049371369614080,
-        "duration_ns": 7822125,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7822125
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789049371376743936,
         "end_epoch_ns": 1789049371384588032,
-        "duration_ns": 7843959,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7843959
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789049371391820800,
         "end_epoch_ns": 1789049371399702016,
-        "duration_ns": 7880125,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7880125
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789049371406946048,
         "end_epoch_ns": 1789049371414808064,
-        "duration_ns": 7861917,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7861917
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789049371422014976,
         "end_epoch_ns": 1789049371429865728,
-        "duration_ns": 7850125,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7850125
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789049371437104896,
         "end_epoch_ns": 1789049371445064192,
-        "duration_ns": 7957917,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7957917
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789049371452210944,
         "end_epoch_ns": 1789049371460086784,
-        "duration_ns": 7875542,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7875542
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789049371467331840,
         "end_epoch_ns": 1789049371475091968,
-        "duration_ns": 7758750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7758750
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789049371482352896,
         "end_epoch_ns": 1789049371490357760,
-        "duration_ns": 8004250,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 8004250
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789049371497501952,
         "end_epoch_ns": 1789049371505367040,
-        "duration_ns": 7865084,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7865084
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789049371512628992,
         "end_epoch_ns": 1789049371520435968,
-        "duration_ns": 7805750,
-        "output_sha256": "124d16a9ff510985a62463e7d392629811f215d57120962ec60248bf7e8e0440"
+        "duration_ns": 7805750
       }
     ],
     "reported_p50_ms": 7.8739170000000005,
@@ -2539,9 +2275,7 @@
     "label": "wide_a8w4_2",
     "historical_import": true,
     "result_source": "results/g1-w4-bridge-20260910/runs/a8w4-2-bench/result.json",
-    "result_sha256": "6285fe35ca48ef843d3bf997dbfe7fd14c52c0815eddba337009171022399b92",
     "run_source": "results/g1-w4-bridge-20260910/runs/a8w4-2-bench/run.json",
-    "run_sha256": "cbe433b1c7cbaa00f80e3cf02ae3ea1221af3a436abae6d2dda22ac100bc915a",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -2565,7 +2299,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-w4-bridge-20260910/runs/a8w4-2-bench/admission.json",
-    "admission_sha256": "e13410336beb4d955e671483dd387a208fd78854c752cd110ae2f1fda72641ff",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -2606,240 +2339,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789049680637555968,
         "end_epoch_ns": 1789049680637989120,
-        "duration_ns": 432833,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 432833
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789049680645690880,
         "end_epoch_ns": 1789049680646080000,
-        "duration_ns": 388750,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 388750
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789049680652809984,
         "end_epoch_ns": 1789049680653174784,
-        "duration_ns": 364833,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 364833
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789049680659899904,
         "end_epoch_ns": 1789049680660302080,
-        "duration_ns": 401708,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 401708
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789049680667188224,
         "end_epoch_ns": 1789049680667585792,
-        "duration_ns": 397750,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 397750
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789049680674250240,
         "end_epoch_ns": 1789049680674676992,
-        "duration_ns": 426958,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 426958
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789049680681377024,
         "end_epoch_ns": 1789049680681812992,
-        "duration_ns": 435583,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 435583
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789049680688400896,
         "end_epoch_ns": 1789049680688829952,
-        "duration_ns": 428834,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 428834
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789049680695480832,
         "end_epoch_ns": 1789049680695878144,
-        "duration_ns": 396583,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 396583
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789049680702402048,
         "end_epoch_ns": 1789049680702788864,
-        "duration_ns": 387292,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 387292
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789049680709350144,
         "end_epoch_ns": 1789049680709763072,
-        "duration_ns": 412875,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 412875
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789049680716433920,
         "end_epoch_ns": 1789049680716838912,
-        "duration_ns": 405709,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 405709
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789049680723298048,
         "end_epoch_ns": 1789049680723675136,
-        "duration_ns": 377041,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 377041
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789049680730156032,
         "end_epoch_ns": 1789049680730558976,
-        "duration_ns": 402792,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 402792
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789049680737041920,
         "end_epoch_ns": 1789049680737424896,
-        "duration_ns": 382750,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 382750
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789049680744139008,
         "end_epoch_ns": 1789049680744562176,
-        "duration_ns": 422083,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 422083
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789049680751090176,
         "end_epoch_ns": 1789049680751478016,
-        "duration_ns": 388375,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 388375
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789049680758147840,
         "end_epoch_ns": 1789049680758566912,
-        "duration_ns": 418417,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 418417
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789049680765090048,
         "end_epoch_ns": 1789049680765476096,
-        "duration_ns": 385625,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 385625
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789049680772041984,
         "end_epoch_ns": 1789049680772428032,
-        "duration_ns": 386042,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 386042
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789049680778956800,
         "end_epoch_ns": 1789049680779355136,
-        "duration_ns": 397667,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 397667
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789049680786008832,
         "end_epoch_ns": 1789049680786412032,
-        "duration_ns": 402833,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 402833
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789049680793139968,
         "end_epoch_ns": 1789049680793543936,
-        "duration_ns": 403458,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 403458
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789049680800219136,
         "end_epoch_ns": 1789049680800623872,
-        "duration_ns": 404583,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 404583
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789049680807287040,
         "end_epoch_ns": 1789049680807700992,
-        "duration_ns": 413625,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 413625
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789049680814307072,
         "end_epoch_ns": 1789049680814697984,
-        "duration_ns": 391292,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 391292
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789049680821250816,
         "end_epoch_ns": 1789049680821646080,
-        "duration_ns": 395042,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 395042
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789049680828297216,
         "end_epoch_ns": 1789049680828683776,
-        "duration_ns": 386125,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 386125
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789049680835255040,
         "end_epoch_ns": 1789049680835633152,
-        "duration_ns": 378208,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 378208
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789049680842351872,
         "end_epoch_ns": 1789049680842764800,
-        "duration_ns": 412333,
-        "output_sha256": "ee9c3e2b8026e63ddc4480a2d10b7f82e99f6dfff3bf08c83ae22de6d07ed4bf"
+        "duration_ns": 412333
       }
     ],
     "reported_p50_ms": 0.399729,
@@ -2856,9 +2559,7 @@
     "label": "split_a8w4_2",
     "historical_import": true,
     "result_source": "results/g1-w4-bridge-20260910/runs/split32-2-bench/result.json",
-    "result_sha256": "8750a0381054195081304d7cf1c4e9d463c04da4c6e0760129b3c8772672a9a5",
     "run_source": "results/g1-w4-bridge-20260910/runs/split32-2-bench/run.json",
-    "run_sha256": "0f48ec68f7d2ec1605f2ab5115bd255c99649b0e9f545e577428df71db3b351c",
     "hardware_version": "Apple M5 Pro / Mac17,8; macOS 27.0 build 26A428 (as recorded by source workspace tooling/manifest)",
     "hardware_source": "results/g1-int8-control-20260910/before/TOOLING.md; results/g1-int8-control-20260910/data/manifest.json",
     "shape": [
@@ -2882,7 +2583,6 @@
       "child_returncode": 0
     },
     "admission_source": "results/g1-w4-bridge-20260910/runs/split32-2-bench/admission.json",
-    "admission_sha256": "541c6ecc3bd1c3abd4c42cf89067519f8c2c0a94b3edacb99785c146c1932f93",
     "benchmark_admitted": true,
     "record_count_measured": 30,
     "duration_ms_all_measured": [
@@ -2923,240 +2623,210 @@
         "phase": "measured",
         "start_epoch_ns": 1789049688082944768,
         "end_epoch_ns": 1789049688085115904,
-        "duration_ns": 2171125,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 2171125
       },
       {
         "index": 1,
         "phase": "measured",
         "start_epoch_ns": 1789049688093328896,
         "end_epoch_ns": 1789049688095633152,
-        "duration_ns": 2304458,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 2304458
       },
       {
         "index": 2,
         "phase": "measured",
         "start_epoch_ns": 1789049688102846208,
         "end_epoch_ns": 1789049688105138944,
-        "duration_ns": 2293334,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 2293334
       },
       {
         "index": 3,
         "phase": "measured",
         "start_epoch_ns": 1789049688112393984,
         "end_epoch_ns": 1789049688114519040,
-        "duration_ns": 2124458,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 2124458
       },
       {
         "index": 4,
         "phase": "measured",
         "start_epoch_ns": 1789049688121844992,
         "end_epoch_ns": 1789049688123622912,
-        "duration_ns": 1778167,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1778167
       },
       {
         "index": 5,
         "phase": "measured",
         "start_epoch_ns": 1789049688130723072,
         "end_epoch_ns": 1789049688132492032,
-        "duration_ns": 1768792,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1768792
       },
       {
         "index": 6,
         "phase": "measured",
         "start_epoch_ns": 1789049688139263232,
         "end_epoch_ns": 1789049688141006080,
-        "duration_ns": 1743334,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1743334
       },
       {
         "index": 7,
         "phase": "measured",
         "start_epoch_ns": 1789049688147808000,
         "end_epoch_ns": 1789049688149639168,
-        "duration_ns": 1831292,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1831292
       },
       {
         "index": 8,
         "phase": "measured",
         "start_epoch_ns": 1789049688156615936,
         "end_epoch_ns": 1789049688158513152,
-        "duration_ns": 1896584,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1896584
       },
       {
         "index": 9,
         "phase": "measured",
         "start_epoch_ns": 1789049688165158912,
         "end_epoch_ns": 1789049688166921984,
-        "duration_ns": 1762458,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1762458
       },
       {
         "index": 10,
         "phase": "measured",
         "start_epoch_ns": 1789049688173513984,
         "end_epoch_ns": 1789049688175277824,
-        "duration_ns": 1763875,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1763875
       },
       {
         "index": 11,
         "phase": "measured",
         "start_epoch_ns": 1789049688181849856,
         "end_epoch_ns": 1789049688183650048,
-        "duration_ns": 1799542,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1799542
       },
       {
         "index": 12,
         "phase": "measured",
         "start_epoch_ns": 1789049688190249984,
         "end_epoch_ns": 1789049688192069120,
-        "duration_ns": 1818333,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1818333
       },
       {
         "index": 13,
         "phase": "measured",
         "start_epoch_ns": 1789049688198753792,
         "end_epoch_ns": 1789049688200569088,
-        "duration_ns": 1814834,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1814834
       },
       {
         "index": 14,
         "phase": "measured",
         "start_epoch_ns": 1789049688207090944,
         "end_epoch_ns": 1789049688208859904,
-        "duration_ns": 1768333,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1768333
       },
       {
         "index": 15,
         "phase": "measured",
         "start_epoch_ns": 1789049688215396864,
         "end_epoch_ns": 1789049688217117952,
-        "duration_ns": 1720458,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1720458
       },
       {
         "index": 16,
         "phase": "measured",
         "start_epoch_ns": 1789049688223724800,
         "end_epoch_ns": 1789049688225483776,
-        "duration_ns": 1758042,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1758042
       },
       {
         "index": 17,
         "phase": "measured",
         "start_epoch_ns": 1789049688232013824,
         "end_epoch_ns": 1789049688233826048,
-        "duration_ns": 1811584,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1811584
       },
       {
         "index": 18,
         "phase": "measured",
         "start_epoch_ns": 1789049688240535040,
         "end_epoch_ns": 1789049688242333952,
-        "duration_ns": 1798250,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1798250
       },
       {
         "index": 19,
         "phase": "measured",
         "start_epoch_ns": 1789049688248871936,
         "end_epoch_ns": 1789049688250679040,
-        "duration_ns": 1806833,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1806833
       },
       {
         "index": 20,
         "phase": "measured",
         "start_epoch_ns": 1789049688257272832,
         "end_epoch_ns": 1789049688259013120,
-        "duration_ns": 1739875,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1739875
       },
       {
         "index": 21,
         "phase": "measured",
         "start_epoch_ns": 1789049688265746176,
         "end_epoch_ns": 1789049688267516160,
-        "duration_ns": 1770000,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1770000
       },
       {
         "index": 22,
         "phase": "measured",
         "start_epoch_ns": 1789049688274125056,
         "end_epoch_ns": 1789049688275895040,
-        "duration_ns": 1770208,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1770208
       },
       {
         "index": 23,
         "phase": "measured",
         "start_epoch_ns": 1789049688282629120,
         "end_epoch_ns": 1789049688284330752,
-        "duration_ns": 1701166,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1701166
       },
       {
         "index": 24,
         "phase": "measured",
         "start_epoch_ns": 1789049688291046144,
         "end_epoch_ns": 1789049688292780032,
-        "duration_ns": 1733375,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1733375
       },
       {
         "index": 25,
         "phase": "measured",
         "start_epoch_ns": 1789049688299442176,
         "end_epoch_ns": 1789049688301239040,
-        "duration_ns": 1796750,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1796750
       },
       {
         "index": 26,
         "phase": "measured",
         "start_epoch_ns": 1789049688307902976,
         "end_epoch_ns": 1789049688309629952,
-        "duration_ns": 1726250,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1726250
       },
       {
         "index": 27,
         "phase": "measured",
         "start_epoch_ns": 1789049688316221952,
         "end_epoch_ns": 1789049688317989888,
-        "duration_ns": 1767583,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1767583
       },
       {
         "index": 28,
         "phase": "measured",
         "start_epoch_ns": 1789049688324548864,
         "end_epoch_ns": 1789049688326324992,
-        "duration_ns": 1776250,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1776250
       },
       {
         "index": 29,
         "phase": "measured",
         "start_epoch_ns": 1789049688333050112,
         "end_epoch_ns": 1789049688334782976,
-        "duration_ns": 1733291,
-        "output_sha256": "3227b7a44a998c6014a91920fc9c55331f53efdfd3daf074a6be81ef8ccd5988"
+        "duration_ns": 1733291
       }
     ],
     "reported_p50_ms": 1.7732290000000002,

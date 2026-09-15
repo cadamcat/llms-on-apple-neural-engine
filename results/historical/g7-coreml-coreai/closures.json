@@ -1,0 +1,15 @@
+{
+  "run": {
+    "status": "closed",
+    "cancelled_assets": [],
+    "unrun": [],
+    "started_at": 1789427732.104579,
+    "finished_at": 1789440473.0348601
+  },
+  "processes": {
+    "recorded_pids_checked": 267,
+    "ownership_receipts_checked": 85,
+    "still_present": [],
+    "samplers_reaped": 17
+  }
+}

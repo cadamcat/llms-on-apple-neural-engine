@@ -1,34 +1,13 @@
 {
   "importer": "results/historical/import_palettized_placement.py",
-  "sources": {
-    "workplans/g6-night-20260913/w4-placement/assets/l1-c1280-fp16/G6-Q1-EXPORT.json": {
-      "bytes": 4314,
-      "sha256": "a001dff0c294b9e515a58b4311b6638bac04f2f58b35254c51914fe9a11616bc"
-    },
-    "workplans/g6-night-20260913/w4-placement/l1-c1280-fp16-r1/PROBE.json": {
-      "bytes": 2427,
-      "sha256": "e3f18960b43ec5e06da7fbaa6482de5559163911827a6588d5abb95b4cac8e4c"
-    },
-    "workplans/g6-night-20260913/w4-placement/fp16-load-log.ndjson": {
-      "bytes": 464290,
-      "sha256": "6fecb01f7c319bfb6ef474dfc9f3b86841781ef947c108e3fc1e7569989c1bbd"
-    },
-    "workplans/g6-night-20260913/w4-placement/assets/l1-c1280-w4/G6-Q1-EXPORT.json": {
-      "bytes": 4340,
-      "sha256": "ad60e224bd5838865d7038aeba13ebf27fd6970556e4670734e265158976b3c9"
-    },
-    "workplans/g6-night-20260913/w4-placement/l1-c1280-w4-r1/PROBE.json": {
-      "bytes": 2424,
-      "sha256": "e8a382a7328f1768eb082feec73114900376fce22a1df3698085e089aefbdb60"
-    },
-    "workplans/g6-night-20260913/w4-placement/w4-load-log.ndjson": {
-      "bytes": 343715,
-      "sha256": "2e3c4c9496422ef8e0c8984ae11a758333679b03bbc8144bc09d06a3ed167a84"
-    }
-  },
-  "products": {
-    "observations.json": "6438f300e6e3f88417ccb225c70f8c0c627dce3c8a3fb1985fb6282cc7a214fa"
-  },
+  "sources": [
+    "workplans/g6-night-20260913/w4-placement/assets/l1-c1280-fp16/G6-Q1-EXPORT.json",
+    "workplans/g6-night-20260913/w4-placement/assets/l1-c1280-w4/G6-Q1-EXPORT.json",
+    "workplans/g6-night-20260913/w4-placement/fp16-load-log.ndjson",
+    "workplans/g6-night-20260913/w4-placement/l1-c1280-fp16-r1/PROBE.json",
+    "workplans/g6-night-20260913/w4-placement/l1-c1280-w4-r1/PROBE.json",
+    "workplans/g6-night-20260913/w4-placement/w4-load-log.ndjson"
+  ],
   "transformations": [
     "Keep each bundle export record and probe query result; drop logits paths and host argv.",
     "Count direct ANE request successes and Metal shader compilations in each process-name log stream.",

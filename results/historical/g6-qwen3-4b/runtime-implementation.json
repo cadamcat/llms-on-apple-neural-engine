@@ -1,21 +1,16 @@
 {
-  "g6_query_host_sha256": "08efde0e2de3668d35183af9ab91c84d87fbd526d09c6213841dc7ccde1d6ab3",
   "g4a_host_sha256": {
     "ane": "63f8a2c3c36bf604365467f11120b36250007fb2681b1b50895bfb6d7fc9d40e",
     "gpu": "63f8a2c3c36bf604365467f11120b36250007fb2681b1b50895bfb6d7fc9d40e"
   },
   "changes_from_g4a_host": {
     "swift/Sources/Tools/g3-flow-host/G3Host.swift": {
-      "g6_sha256": "dadb613e0ea7e9da62e5999bc1c2cbfdfccf7442c87729f38102a9917517f905",
-      "g4a_sha256": "c2ef74ace686849efe1809d37c2c799632f2e1db66463497b7500500a27c5ba7",
       "diff": [
         "-                [1,8].contains(command.decode_query ?? 0),",
         "+                [1,2,4,8].contains(command.decode_query ?? 0),"
       ]
     },
     "swift/Sources/CoreAILanguageModels/InferenceEngines/CoreAIStaticShapeEngine.swift": {
-      "g6_sha256": "a16f260fcf51e028bf4559baf3c281c611c5f2781d3abce3a6e777aeea16e4fa",
-      "g4a_sha256": "81ab8167dcb8fb78bd3e635c26f706248d6bb60150684e9d46a673f2248af23c",
       "diff": [
         "-        guard [1,8].contains(decodeQuery), capacity <= config.maxContextLength else {",
         "+        guard [1,2,4,8].contains(decodeQuery), capacity <= config.maxContextLength else {"

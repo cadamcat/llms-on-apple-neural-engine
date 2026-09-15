@@ -12,7 +12,6 @@ with the numbers rather than being smoothed away.
 """
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 
@@ -24,10 +23,6 @@ ENGINES = {
     'C': 'Neural Engine, W4A16',
     'G': 'GPU through MLX 0.32.2, Q4 weights with FP16 activations',
 }
-
-
-def sha(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def load(root, rel):
@@ -81,12 +76,12 @@ def build(root):
         'gate_growth_equals_output_bytes': review['checks'][
             'gate_IOSurface_growth_equals_output_bytes'],
         'external_sources': external['sources'],
-        'sources': {rel: sha(root / rel) for rel in (
+        'sources': sorted((
             PREFILL + '/review/verification.json',
             PREFILL + '/external-sources.json',
             PREFILL + '/PERF-PROTOCOL.json',
             PREFILL + '/placement-ANE.json',
-        )},
+        )),
     }
 
 

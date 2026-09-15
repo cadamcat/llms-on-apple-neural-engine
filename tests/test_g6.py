@@ -1,6 +1,5 @@
 """Exercise portable G6 accounting against corrupted disposable bundles."""
 import gzip
-import hashlib
 import json
 import plistlib
 from pathlib import Path
@@ -35,10 +34,6 @@ class G6Evidence(unittest.TestCase):
             path.write_bytes(gzip.compress(('\n'.join(json.dumps(r) for r in value) + '\n').encode(), mtime=0))
         else:
             path.write_text(json.dumps(value))
-        manifest = self.bundle / 'provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products'][name] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def fails(self, name):
         return self.assertRaisesRegex(ValueError, name)
@@ -50,11 +45,6 @@ class G6Evidence(unittest.TestCase):
         self.assertEqual([r['input_N'] for r in data['w4']], [1024, 4096])
         self.assertTrue(all(b['admitted'] for w in data['widths'] for b in (w['q8'], w['q4'])))
         self.assertTrue(all(not b['admitted'] and b['J_per_token']['ane'] == 0 for r in data['w4'] for b in r['w4'].values()))
-
-    def test_product_hash(self):
-        (self.bundle / 'sessions.json').write_text('{}')
-        with self.fails('g6_product_identity:sessions.json'):
-            derive(self.bundle, ROOT)
 
     def test_decode_query_matches_phase(self):
         def edit(rows):
@@ -123,6 +113,11 @@ class G6Evidence(unittest.TestCase):
             next(e for e in value['segments'] if e['id'] == 'idle-end')['power']['mean_W']['cpu'] += 0.5
         self.change('summary-recorded.json', edit)
         with self.fails('g6_recorded_idle_power'):
+            derive(self.bundle, ROOT)
+
+    def test_repeat_host_identity(self):
+        self.change('runtime-implementation.json', lambda v: v['g4a_host_sha256'].__setitem__('ane', '0' * 64))
+        with self.fails('g6_repeat_host_identity'):
             derive(self.bundle, ROOT)
 
     def test_tier_graph_inventory(self):

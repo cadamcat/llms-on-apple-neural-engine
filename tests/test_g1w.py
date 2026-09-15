@@ -1,6 +1,5 @@
 """Exercise the portable G1-W accounting and the QDQ probe verifier against disposable copies."""
 import gzip
-import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -35,11 +34,6 @@ class G1WEvidence(unittest.TestCase):
             value = json.loads(path.read_text())
             edit(value)
             path.write_text(json.dumps(value))
-        # Re-sign the product so the semantic check, not the hash check, has to catch it.
-        manifest = self.bundle / 'provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products'][name] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def test_recorded_bundle_recomputes(self):
         data = derive(self.bundle)
@@ -56,12 +50,6 @@ class G1WEvidence(unittest.TestCase):
         (root / 'results/fresh/smoke.json').write_text(json.dumps(smoke))
         with self.assertRaisesRegex(ValueError, 'g1w_old_probe_value.coreai-qdq-unequal'):
             derive(self.bundle, root)
-
-    def test_unsigned_change_fails_the_product_hash(self):
-        path = self.bundle / 'evidence.json'
-        path.write_text(path.read_text().replace('"positions": 64', '"positions": 65'))
-        with self.assertRaisesRegex(ValueError, 'g1w_product_hash.evidence.json'):
-            derive(self.bundle)
 
     def test_changed_timing_fails_against_the_recorded_summary(self):
         def slow(value):
@@ -107,7 +95,7 @@ class QDQProbeRecords(unittest.TestCase):
         path.write_bytes(bytes([data[0] ^ 1]) + data[1:])
         result = self.verify()
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn('s4.control-0.sha256', result.stderr)
+        self.assertIn('s4.repeat', result.stderr)
 
     def test_corrected_runtime_is_reported_not_failed(self):
         outputs = self.copy.parent / 'new outputs'

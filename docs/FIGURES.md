@@ -12,7 +12,7 @@ Colours are declared as CSS classes with a `prefers-color-scheme` override, so
 one asset stays legible on a light or a dark document background, and a
 renderer that ignores the media query gets the light palette.
 [manifest.json](figures/manifest.json) records each figure's source paths and
-hashes, generator hashes, and the exact plotted values or semantic scope.
+the exact plotted values or semantic scope.
 
 ## The comparison
 
@@ -112,15 +112,13 @@ python scripts/render_figures.py --check
 python scripts/render_figures.py --write
 ```
 
-`--check` validates the figure inventory, SVG structure and accessibility,
-figure hashes, source hashes and generator hashes. It detects a stale or
-hand-edited asset; it does not rerun
-the device. A change to a source document needs review even when it moves no
-plotted value.
+`--check` regenerates every figure and the manifest in a temporary directory,
+compares them byte for byte with the published files, and validates the figure
+inventory, SVG structure and accessibility. It detects a stale or hand-edited
+asset; it does not rerun the device.
 
 `--write` is deterministic: the same repository state produces byte-identical
-files, which is why CI can regenerate and compare rather than trusting a
-recorded hash alone. Generation imports no plotting stack, no benchmark runtime
+files. Generation imports no plotting stack, no benchmark runtime
 module and no device API, reads only the small bundled evidence bundles, and
 performs no installation or network access.
 
@@ -148,7 +146,7 @@ percentages to GPU overhead or temperature to energy.
 
 ## G3 complete-model figures
 
-The G3 figures use the same Canvas, ANE teal and GPU blue as the component plots. Each point is rebuilt from the [portable G3 request and power fields](../results/historical/g3-qwen3-4b/); the manifest lists the exact source hashes and plotted values.
+The G3 figures use the same Canvas, ANE teal and GPU blue as the component plots. Each point is rebuilt from the [portable G3 request and power fields](../results/historical/g3-qwen3-4b/); the manifest lists the exact sources and plotted values.
 
 | Figure | What it shows |
 |---|---|

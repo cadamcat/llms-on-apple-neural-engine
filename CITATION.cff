@@ -4,7 +4,8 @@ title: "LLMs on Apple Neural Engine"
 version: "0.1.0.dev0"
 type: software
 authors:
-  - name: "LLMs on Apple Neural Engine contributors"
+  - family-names: "Xu"
+    given-names: "Yao"
 license: MIT
 abstract: "Benchmarks and defect reproductions for group-quantized LLM components on the Apple Neural Engine: ANE-versus-GPU speed, memory and thermal measurements, reproducible Core ML and Core AI toolchain defects, and a candidate arithmetic model of quantized execution, with offline checks against bundled records."
 keywords:

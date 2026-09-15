@@ -1,8 +1,8 @@
 LLMs on Apple Neural Engine
-Copyright (c) 2026 LLMs on Apple Neural Engine contributors
+Copyright (c) 2026 Yao Xu
 
 Original project code and generated experiment records are provided under the MIT
-license in LICENSE. Adapted local research scripts are listed, with source hashes,
+license in LICENSE. Adapted local research scripts are listed by origin
 in docs/code-origins.json. This repository publishes selected reproducible recipes,
 not the complete research workspace or its model data.
 

@@ -1,6 +1,5 @@
 """Import the one-layer FP16/W4 load-time placement pair into the finding's recorded evidence; no device."""
 import argparse
-import hashlib
 import importlib.util
 import json
 import re
@@ -60,9 +59,8 @@ def extract(workspace, output):
                      'steps with query 8, then query 4, capturing logits.',
         'scope': 'One M5 Pro, macOS 27.0 (26A428), coreai-models 7304c47, coreai-torch 0.4.2. Log lines are filtered to compile, '
                  'load, validation and delegate messages; pointer values and build paths are removed.'})
-    products = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(Path(output).iterdir())}
-    writer.dump('provenance.json', {'importer': 'results/historical/import_palettized_placement.py', 'sources': reader.sources,
-                                    'products': products, 'transformations': [
+    writer.dump('provenance.json', {'importer': 'results/historical/import_palettized_placement.py', 'sources': sorted(reader.sources),
+                                    'transformations': [
         'Keep each bundle export record and probe query result; drop logits paths and host argv.',
         'Count direct ANE request successes and Metal shader compilations in each process-name log stream.',
         'Keep validation, compile, load, ANE-compilation-failure and delegate-option lines with pointers and build paths removed.']})

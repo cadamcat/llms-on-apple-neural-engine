@@ -6,7 +6,6 @@ the published scalar accounting. Only the standard library is imported.
 """
 from collections import Counter
 import gzip
-import hashlib
 import json
 import math
 from pathlib import Path
@@ -176,13 +175,8 @@ def platform(slot, sensors, thermal):
     return 'approximate_platform' if stable else 'not_platform'
 
 
-def derive(bundle=BUNDLE, verify=True):
+def derive(bundle=BUNDLE):
     protocol = load(bundle / 'protocol.json'); expected = load(bundle / 'expected-summary.json')
-    if verify:
-        provenance = load(bundle / 'provenance.json')
-        for name, record in provenance['products'].items():
-            raw = (bundle / name).read_bytes()
-            require(len(raw) == record['bytes'] and hashlib.sha256(raw).hexdigest() == record['sha256'], 'bundle identity: ' + name)
     p2 = list(rows(bundle / 'p2.jsonl.gz'))
     require(len(p2) == 45 and len({r['host_id'] for r in p2}) == 6, 'P2 cells or hosts missing')
     for cell in p2:
@@ -237,11 +231,9 @@ def derive(bundle=BUNDLE, verify=True):
                 require(meta['input_index']==event['index']%3 and meta['numerical_passed'] and meta['positions']==1024,
                         'inference identity/numerical status')
                 inputs.append([event['id'],event['index'],meta['input_index'],meta['input_file_sha256']])
-            identity = hashlib.sha256(json.dumps(inputs,separators=(',',':')).encode()).hexdigest()
-            require(identity==slot['completed_input_identity'], 'completed input identity')
+            slot['completed_inputs'] = inputs
             if config['mode']!='saturated':
-                arrival_hash = hashlib.sha256(json.dumps(offsets[name,'inference'],separators=(',',':')).encode()).hexdigest()
-                require(arrival_hash==slot['inference_arrival_identity'], 'arrival identity')
+                slot['inference_offsets'] = offsets[name,'inference']
     sensors = list(rows(bundle/'sensors.jsonl.gz')); thermal = list(rows(bundle/'thermal.jsonl.gz'))
     resources = list(rows(bundle/'resources.jsonl.gz'))
     for series, clock in ((sensors,'sample_monotonic_ns'),(thermal,'sample_monotonic_ns'),(resources,'monotonic_ns')):
@@ -274,8 +266,8 @@ def derive(bundle=BUNDLE, verify=True):
         by = {slots[n]['config']['engine']:slots[n] for n in group['members']}
         for field, key in zip(FIELDS[:2],('cpu_mean_G_minus_C','gpu_mean_G_minus_C')):
             equal(by['G']['sensor_means'][field]-by['C']['sensor_means'][field],pair[key],'matched rate temperature')
-        require(by['C']['completed_input_identity']==by['G']['completed_input_identity'] and
-                by['C']['inference_arrival_identity']==by['G']['inference_arrival_identity'], 'P3 unequal work')
+        require(by['C']['completed_inputs']==by['G']['completed_inputs'] and
+                by['C']['inference_offsets']==by['G']['inference_offsets'], 'P3 unequal work')
         p3_fans.append({'group': pair['group'], **{f'{e}_{field}': by[e]['sensor_means'][field]
                                                    for e in ('C', 'G') for field in FIELDS[2:]}})
     metrics = ('component_rss_bytes','component_footprint_bytes','foreground_rss_bytes','foreground_footprint_bytes','all_owned_rss_bytes')

@@ -1,10 +1,21 @@
 """Import the closed G3 runs into a portable bundle; never execute a device."""
 import argparse
 import gzip
-import hashlib
 import json
 from pathlib import Path
 import plistlib
+import re
+
+
+HASH_KEY = re.compile(r'(sha256|_hash$|^hash$|hashes$)')
+
+
+def without_hashes(value):
+    if isinstance(value, dict):
+        return {k: without_hashes(v) for k, v in value.items() if not HASH_KEY.search(k)}
+    if isinstance(value, list):
+        return [without_hashes(v) for v in value]
+    return value
 
 
 def extract(workspace, output):
@@ -18,8 +29,7 @@ def extract(workspace, output):
         if not path.is_absolute():
             path = workspace / path
         raw = path.read_bytes()
-        sources[path.relative_to(workspace).as_posix()] = {
-            'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
+        sources[path.relative_to(workspace).as_posix()] = len(raw)
         return raw
 
     def read(path):
@@ -58,7 +68,7 @@ def extract(workspace, output):
             length = int.from_bytes(stream.read(8), 'little')
             raw = stream.read(length)
         header = json.loads(raw)
-        headers[name] = {'header_bytes': length, 'header_sha256': hashlib.sha256(raw).hexdigest()}
+        headers[name] = {'header_bytes': length}
         tensors.update({key: {'shape': value['shape'], 'dtype': value['dtype']}
                         for key, value in header.items() if key != '__metadata__'})
     if set(tensors) != set(weight_index['weight_map']):
@@ -70,7 +80,7 @@ def extract(workspace, output):
     launch = read(prep / 'LAUNCH.json')
     env = read(prep / 'ENVIRONMENT.json')
     pins = read(prep / 'vendor/coreai-models/Package.resolved')
-    dump('asset-identity.json', read(prep / 'ASSET-IDENTITY.json'))
+    dump('asset-identity.json', without_hashes(read(prep / 'ASSET-IDENTITY.json')))
     host_path = prep / 'vendor/coreai-models/swift/Sources/Tools/g3-flow-host/G3Host.swift'
     host_source = source(host_path).decode()
     engine_begin = host_source.index('        let engine=try await EngineFactory.createEngine')
@@ -80,7 +90,6 @@ def extract(workspace, output):
         raise ValueError('host_engine_selection_changed')
     dump('runtime-implementation.json', {
         'source': host_path.relative_to(workspace).as_posix(),
-        'source_sha256': hashlib.sha256(host_source.encode()).hexdigest(),
         'engine_selection_excerpt': selection,
         'ane': 'Core AI StaticShapeEngine', 'gpu': 'Core AI CoreAISequentialEngine',
         'scope': 'Host engine selection, not exclusive per-operation device placement.'})
@@ -90,8 +99,8 @@ def extract(workspace, output):
     selected = {k: v for k, v in inputs.items() if k.startswith('reading_') or k == 'quality_short'}
     dump('inputs.json', selected)
     dump('input-identity.json', {'model': manifest['model'], 'revision': manifest['revision'],
-         'inputs': {k: v for k, v in manifest['inputs'].items() if k in selected},
-         'sources': manifest['sources'], 'source_text_in_bundle': False})
+         'inputs': without_hashes({k: v for k, v in manifest['inputs'].items() if k in selected}),
+         'sources': without_hashes(manifest['sources']), 'source_text_in_bundle': False})
     configurations, closures, blocks, records, quality = {}, {}, [], [], {}
     for run in ('r4', 'r5', 'r6'):
         root = workspace / f'results/g3-night-20260912-{run}'
@@ -141,7 +150,6 @@ def extract(workspace, output):
                 fields['processor']['invalid'] = processor['invalid']
             yield {'index': row['index'], 'receipt': row['receipt'],
                    'source': {k: row[k] for k in ('file', 'byte_start', 'byte_end')},
-                   'source_frame_sha256': hashlib.sha256(frame).hexdigest(),
                    'plist_fields': plistlib.dumps(fields, sort_keys=True).decode(),
                    'recorded_decoded': row['decoded']}
     compressed('power.jsonl.gz', frames())
@@ -168,18 +176,15 @@ def extract(workspace, output):
         'machine': {'chip': 'Apple M5 Pro', 'memory_GiB': 48},
         'runtimes': {'ane': 'Core AI StaticShapeEngine', 'gpu': 'Core AI CoreAISequentialEngine'},
         'environment': env, 'swift_dependencies': pins['pins'],
-        'host_sha256': launch['files']['bin/g3-flow-host'],
-        'runtime_sources': launch['files'],
         'scope': 'Two complete FP16 model implementations; host and framework work included. No exclusive per-operation placement or direct UMA bandwidth measurement.'})
-    products = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(output.iterdir())}
-    dump('provenance.json', {'sources': sources, 'products': products,
+    dump('provenance.json', {'sources': sorted(sources),
         'transformations': [
             'Strip the workspace prefix; omit model assets, logits arrays, machine name and process inventories.',
             'Retain complete request/command timing and graph records under separate run IDs.',
-            'Re-serialize only elapsed time, timestamp, thermal state, invalid flags and CPU/GPU/ANE power/energy fields from each original plist frame; retain original frame ranges and hashes.',
+            'Re-serialize only elapsed time, timestamp, thermal state, invalid flags and CPU/GPU/ANE power/energy fields from each original plist frame; retain original frame ranges.',
             'Retain receipt anchors and recorded decoded values so portable parsing can check every selected source field.',
             'Import source model configuration and tensor shapes/dtypes from safetensors headers; do not read tensor payloads for this metadata.',
-            'Input IDs are from this repository documentation; text snapshots remain identified by hash.']})
+            'Input IDs are from this repository documentation; the text snapshots are not bundled.']})
 
 
 if __name__ == '__main__':

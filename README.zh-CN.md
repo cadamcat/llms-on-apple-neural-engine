@@ -54,9 +54,10 @@
 | **分组 4-bit 走 Core AI 原生 LUT 路径** | 接受、确有 ANE 活动，[并且算错](findings/coreai-flattened-scale/)——4096 个值里错 1921 个，且可预测 |
 | **原生 ANE 宿主上的 W4A16 服务** | [约为 GPU 速度的四分之一](findings/w4a16-service-tradeoffs/)。相同负载下两侧风扇都在怠速；矩阵前台在 ANE 同跑时尾延迟代价更小。能耗未判定 |
 | **常驻执行** | 历史 Python gate 每调用保留 1,966,080 字节；两个原生 G2 宿主各做了 33,728 次 stage 调用，结束时小 60–62 MiB；[无限期常驻未测](findings/iosurface-per-call-growth/) |
-| **W4A16 对比 A8W4** | 历史 4K 配对中 [A8W4 速度为 W4A16 的 1.013×](findings/ane-vs-gpu-prefill/)，未建立 A8 速度收益；G2 只测试 W4A16 |
-| **测过的 W8A8 合成控制** | 可加速——Core AI 受控 128 层链相对自身 FP16 基线为 **1.86–1.87×**。[收益需要层数，也取决于权重](findings/quantized-speedup-conditions/)：A8W4 单层时速度为 W4A16 的 <!-- claim:g1w.depth.both-1.speed@g1w-001 -->0.86×<!-- /claim -->，128 层时 <!-- claim:g1w.depth.both-128.speed@g1w-002 -->1.33×<!-- /claim -->；精确零权重让 FP16 本身快 <!-- claim:g1w.density.old.speed@g1w-003 -->1.88×<!-- /claim --> |
-| **Gemma 4 E4B mobile QAT A8W4** 走 Core AI，首层 MLP | [算错，而且不更快](findings/quantized-speedup-conditions/#a-released-qat-checkpoint)。QDQ 乘法[用了另一个 QDQ 的 scale](findings/coreai-qdq-multiply-scale/)：单个 MLP 偏差 <!-- claim:g1w.e4b.1.native.l2@g1w-004 -->339%<!-- /claim -->。加乘积裁剪后，重复八个 MLP 仍偏差 <!-- claim:g1w.e4b.8.clip-product.l2@g1w-005 -->21.6%<!-- /claim -->，速度为 W4A16 的 <!-- claim:g1w.e4b.clip-product.speed@g1w-006 -->0.976×<!-- /claim --> |
+| **W4A16 对比 A8W4** | 取决于每次调用的位置数。一个真实 E4B gate 走 Core AI 时，A8W4 在 64 个位置下为 W4A16 速度的 <!-- claim:g7.coreai.gate.64.a8w4-over-w4a16.speed@g7-101 -->0.976–0.990×<!-- /claim -->，[在 1024 个位置下为 <!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-102 -->1.359–1.360×<!-- /claim -->](findings/quantized-speedup-conditions/#positions-per-call-on-a-real-projection)。历史 4K 配对循环调用 64 个位置的资产，[为 1.013×](findings/ane-vs-gpu-prefill/) |
+| **测过的 W8A8 合成控制** | 可加速——Core AI 受控 128 层链相对自身 FP16 基线为 **1.86–1.87×**。[收益取决于每次调用的工作量，也取决于权重](findings/quantized-speedup-conditions/)：A8W4 单层时速度为 W4A16 的 <!-- claim:g1w.depth.both-1.speed@g1w-001 -->0.86×<!-- /claim -->，128 层时 <!-- claim:g1w.depth.both-128.speed@g1w-002 -->1.33×<!-- /claim -->；精确零权重让 FP16 本身快 <!-- claim:g1w.density.old.speed@g1w-003 -->1.88×<!-- /claim --> |
+| **Gemma 4 E4B mobile QAT A8W4**，首层 MLP | [算错，而且不更快](findings/quantized-speedup-conditions/#a-released-qat-checkpoint)。ANE 上的 QDQ 乘法[用了另一个 QDQ 的 scale](findings/coreai-qdq-multiply-scale/)，走 Core ML 和走 Core AI 都一样：单个 MLP 偏差 <!-- claim:g1w.e4b.1.native.l2@g1w-004 -->339%<!-- /claim -->。加乘积裁剪后，重复八个 MLP 仍偏差 <!-- claim:g1w.e4b.8.clip-product.l2@g1w-005 -->21.6%<!-- /claim -->，速度为 W4A16 的 <!-- claim:g1w.e4b.clip-product.speed@g1w-006 -->0.976×<!-- /claim --> |
+| **用 Core ML 代替 Core AI**，同一份 E4B 码在 ANE 上 | [FP16 和 W8A8 速度相同](findings/coreml-coreai-same-codes/)（分别为 Core AI 的 <!-- claim:g7.ml-over-ai.fp16.speed@g7-103 -->0.979–0.998×<!-- /claim --> 和 <!-- claim:g7.ml-over-ai.w8a8.speed@g7-104 -->0.962–0.967×<!-- /claim -->）。Core ML 的 4-bit 查表图只有 Core AI 速度的 <!-- claim:g7.ml-over-ai.four-bit.speed@g7-105 -->0.065–0.280×<!-- /claim -->，比 Core ML 自己的 FP16 还慢 |
 
 早期轮次作为独立记录保留。历史 Python MLP 中，64 位置时 GPU 快 **2.87×**，1024 时 **5.09×**，
 4096 时 **4.41×**，每侧单进程且提前停止；之后原生 C256 在 4096 位置为 582.19 ms，同轮 GPU 为
@@ -72,8 +73,8 @@
 |---|---|
 | 🔧 **四件真正能用的事** | 让分组 4-bit 能上加速器的那个改写、修好 QDQ 乘法的图表达、链足够深时能加速的那种量化方案，以及回收 ANE 编译服务占住的磁盘空间——每一件都写清了代价和边界。[workarounds/](workarounds/) |
 | 📊 **完整模型测量** | [G4 A](findings/qwen3-4b-graph-capacity/)测量 Qwen3-4B FP16 在六档输入、各用匹配容量 ANE 图时的 prefill、decode 与组件能量，G6 重复全部测点并把 decode 查询宽度减半；[G3](findings/qwen3-4b-prefill-decode/)测量同一模型在 256 / 2K / 32K 三档图上的表现。 |
-| 📊 **组件对照** | [G2](findings/w4a16-service-tradeoffs/)补入原生 W4A16 七档速度、原生宿主内存、同率与满负载温度与风扇响应、GPU 前台尾延迟。[早期 A8W4/W4A16/GPU 对照](findings/ane-vs-gpu-prefill/)保留原数值控制、按 PID 证据和停止状态；不同轮次不合并。 |
-| 🐛 **可复现的缺陷** | 三个工具链失败，各有最小复现、预期错误输出和配对反向对照，其中一个是 QDQ 乘法取了另一个 QDQ 的 scale；一个让整图静默转到 GPU 的编译失败；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个一直开着已删除编译输入的系统编译服务；一个 ANE 在 1 和 2 个位置时拒绝的 decode 查询形状；一个 ANE 编译失败却不向宿主报错的 4-bit palettization 预设；一个结构性代价，三组配对进程测得。[findings/](findings/) |
+| 📊 **组件对照** | [G2](findings/w4a16-service-tradeoffs/)补入原生 W4A16 七档速度、原生宿主内存、同率与满负载温度与风扇响应、GPU 前台尾延迟。[早期 A8W4/W4A16/GPU 对照](findings/ane-vs-gpu-prefill/)保留原数值控制、按 PID 证据和停止状态；[G7](findings/coreml-coreai-same-codes/) 用同一份 E4B 码对比 Core ML 与 Core AI。不同轮次不合并。 |
+| 🐛 **可复现的缺陷** | 三个工具链失败，各有最小复现、预期错误输出和配对反向对照，其中一个是 ANE 上的 QDQ 乘法取了另一个 QDQ 的 scale，Core AI 和 Core ML 都会出现；一个让整图静默转到 GPU 的编译失败；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个一直开着已删除编译输入的系统编译服务；一个 ANE 在 1 和 2 个位置时拒绝的 decode 查询形状；一个 ANE 编译失败却不向宿主报错的 4-bit palettization 预设；一个结构性代价，三组配对进程测得。[findings/](findings/) |
 | 🔬 **一个算术模型** | 候选算术模型在两个真实模型的 7,163,904 个最终 Q8 gate 输出上留下 13 处差异——以及已经定位的一个 32 项点积，不需要任何 Apple 硬件即可从公开标量验证。[模型](findings/execution-model/) · [残差](findings/fp16-dot-residual/) |
 
 ## 这个仓库适合谁
@@ -135,15 +136,17 @@ G2 测量一个原生 W4A16 MLP，GPU 基线使用 MLX。下图的单位是组�
    这支持一个假说，不是内部执行追踪。[→](findings/coreai-flattened-scale/)
 3. **拆分确有成本。** 独立合成 K512 消融中，十六个 K32 卷积加归约慢约四倍。
    倍率与 MLP 差距相近，不证明原因相同。[→](findings/split-decomposition-cost/)
-4. **A8 尚未显示稳定速度优势。** 历史 4K 对照中 A8W4 速度为 W4A16 的 1.013×；后续原生轮次独立保留，
+4. **A8 的速度收益取决于每次调用的工作量。** 历史 4K 对照循环调用 64 个位置的资产，A8W4 速度为 W4A16 的 1.013×；后续原生轮次独立保留，
    不合并估计。[→](findings/ane-vs-gpu-prefill/)
    重复八个 Gemma 4 E4B QAT MLP 时速度为 W4A16 的 <!-- claim:g1w.e4b.native.speed@g1w-007 -->0.977×<!-- /claim -->；合成链要有层数才有收益：
-   单层 <!-- claim:g1w.depth.both-1.speed@g1w-008 -->0.86×<!-- /claim -->，128 层 <!-- claim:g1w.depth.both-128.speed@g1w-009 -->1.33×<!-- /claim -->。[→](findings/quantized-speedup-conditions/)
+   单层 <!-- claim:g1w.depth.both-1.speed@g1w-008 -->0.86×<!-- /claim -->，128 层 <!-- claim:g1w.depth.both-128.speed@g1w-009 -->1.33×<!-- /claim -->。一个真实 E4B gate 走 Core AI，在 1024 个位置下有收益，
+   为 <!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-106 -->1.359–1.360×<!-- /claim -->，64 个位置下没有。[→](findings/quantized-speedup-conditions/)
 5. **候选算术模型仍有残差。** 最终 Q8 有 13 处，QDQ 前更多。一个已定位点积落在
    精确值的两个 binary16 邻居之外，仅改变最终舍入无法解释；中间乘法与累加仍未观测。
    [→](findings/fp16-dot-residual/)
-6. **QDQ 乘法用了另一个 QDQ 的 scale 反量化。** 无模型探针在正确答案为 1 时返回 2、4、8，
-   一个已发布的 QAT MLP 偏差 <!-- claim:g1w.e4b.1.native.l2@g1w-010 -->339%<!-- /claim -->。加一个不改变真值的乘积裁剪即可避开。
+6. **ANE 上的 QDQ 乘法用了另一个 QDQ 的 scale 反量化。** 无模型探针在正确答案为 1 时返回 2、4、8，
+   走 Core AI 和走 Core ML 都一样；一个已发布的 QAT MLP 偏差 <!-- claim:g1w.e4b.1.native.l2@g1w-010 -->339%<!-- /claim -->。加一个不改变真值的乘积裁剪即可避开。
+   在 CPU 上 Core ML 算得正确。
    [→](findings/coreai-qdq-multiply-scale/)
 
 ## 快速开始
@@ -181,6 +184,7 @@ python results/historical/tests/verify_arithmetic.py  # 执行模型与那个点
 python results/historical/tests/verify_historical.py  # 导入的计时记录
 python scripts/verify_g4a.py                         # G4 A 匹配容量图的速度与组件能量
 python scripts/verify_g6.py                          # G6 decode 查询宽度、W4 与 G4 A 重复
+python scripts/verify_g7.py                          # G7 同一份 E4B 码上的 Core ML 与 Core AI
 python scripts/verify_ane_compiler_disk.py           # ANE 编译服务占住的磁盘空间
 python findings/ane-short-decode-query/repro/verify.py  # 1 和 2 个位置的 decode 查询
 python findings/coreai-palettized-weights-gpu/repro/verify.py  # palettization 预设的执行设备
@@ -189,23 +193,15 @@ python scripts/verify_g2.py                          # G2 请求、温度与资�
 python scripts/verify_g1w.py                         # 量化加速条件与 E4B QAT MLP
 python scripts/verify_g5.py                          # 注意力精度与分块计时
 python findings/coreai-qdq-multiply-scale/repro/verify.py  # QDQ 乘法输出
+python findings/coreai-qdq-multiply-scale/repro/coreml/verify.py  # 同一探针走 Core ML
 python scripts/check_source_identity.py --check       # 当前源码与运行时身份
 python scripts/summarize.py                           # 已注册表格与文字数字
-python scripts/render_figures.py --check              # 图、来源与生成器身份
+python scripts/render_figures.py --check              # 图可逐字节重新生成
 python -m unittest discover -s tests -v               # 舍入、饱和、被篡改的证据
 ```
 
 只需标准库加 NumPy，可在任意平台运行。`summarize.py` 逐处检查中英 README 首屏的具名数值引用及单位，
-并检查其他已注册数字；未注册的正文仍不在检查范围内。以上命令均不运行设备。
-
-CI 执行以上检查，还验证图的重新生成：
-
-```sh
-python scripts/render_figures.py --write
-git diff --exit-code -- docs/figures
-```
-
-Git 比较要求图文件已被跟踪；尚未提交的草稿应与修改前保存的完整 SVG 文件集逐字节比较。
+并检查其他已注册数字；未注册的正文仍不在检查范围内。以上命令均不运行设备，CI 会全部执行。
 
 ## 仓库结构
 
@@ -213,7 +209,7 @@ Git 比较要求图文件已被跟踪；尚未提交的草稿应与修改前保�
 |---|---|
 | `workarounds/` | 四件真正能用的事，含各自的代价与边界 |
 | `findings/` | 每个发现一个目录：症状、复现、证据，以及哪些仍是假说 |
-| `results/historical/` | 导入记录——历史对照、算术证据，以及独立的 G2 服务、G3、G4 A 与 G6 完整模型数据包 |
+| `results/historical/` | 导入记录——历史对照、算术证据，以及独立的 G2 服务、G3、G4 A 与 G6 完整模型、G7 运行时对照数据包 |
 | `results/fresh/` | 本包三个设备套件的每一次测量调用 |
 | `src/ane_scope/_coreml.py`、`_coreai.py` | 导出适配器与持久化图/权重审计 |
 | `src/ane_scope/references/` | 确定性 fixture 与显式算术参考 |
@@ -226,6 +222,12 @@ Git 比较要求图文件已被跟踪；尚未提交的草稿应与修改前保�
 
 ## 更正记录
 
+- **（2026-09-15）QDQ 乘法缺陷曾被归到 Core AI。** 该 finding 原标题为"A Core AI QDQ multiply
+  dequantizes with another QDQ's scale"。用 coremltools 构造同一张图，Core ML 在 ANE 上返回同样的错误值，
+  在 CPU 上返回正确值，所以[该 finding](findings/coreai-qdq-multiply-scale/) 现在指向 ANE 这条路径。
+- **（2026-09-15）曾写单个 gate 不是寻找 A8 收益的地方。** 量化加速条件 finding 依据 512 通道合成链这样写，
+  标题也写的是层数。真实 E4B gate 在 1024 个位置下有收益，[该 finding](findings/quantized-speedup-conditions/)
+  现在写的是每次调用的工作量。
 - **（2026-09-11）G2 的第一版总结写过 ANE 运行时风扇转速较低。** 这只在满负载时成立，而那时 GPU
   完成的工作量约为 ANE 的 3.7 倍。相同负载下，两侧风扇都停在怠速。
 - **G2 的功率采集失败。** 接收器触及 1 GiB 上限，数据流也没有通过时钟对齐规则，六组同工作量
@@ -249,7 +251,7 @@ Git 比较要求图文件已被跟踪；尚未提交的草稿应与修改前保�
 
 ## 什么会改变这个答案
 
-G4 A 回答了 G3 留下的问题：与输入匹配的图消除了 ANE 在长输入上的大部分劣势，但 GPU 仍然领先。G6 在同一组图上每次只改一处。decode 查询从 8 个位置减到 4 个，速度为原来的 <!-- claim:g6.q4-q8-speed@g6-010 -->1.001–1.008×<!-- /claim -->，在这组图上缩窄逻辑查询未带来明显速度收益；编译后填充工作的成本及更窄查询的收益仍未确定；1 或 2 个位置的查询[无法执行](findings/ane-short-decode-query/)。上游 iOS 4-bit palettization 预设整图在 GPU 上执行，<!-- claim:g6.n.1024@g6-011 -->1K<!-- /claim --> decode 为 <!-- claim:g6.w4.decode.1024.rate@g6-012 -->2.87 token/s<!-- /claim -->，ANE 上的 4-bit 权重 decode 仍未测到。ANE 路径上的 GPU 能量在两种查询宽度下都是 <!-- claim:g6.decode-gpu-energy@g6-013 -->0.257–0.265 J/token<!-- /claim -->，来源仍待查明。在第二颗 Apple 芯片上复现、在同一宿主中常驻数小时，以及更广的质量评测，可以检验结果能否迁移和持续。
+G4 A 回答了 G3 留下的问题：与输入匹配的图消除了 ANE 在长输入上的大部分劣势，但 GPU 仍然领先。G6 在同一组图上每次只改一处。decode 查询从 8 个位置减到 4 个，速度为原来的 <!-- claim:g6.q4-q8-speed@g6-010 -->1.001–1.008×<!-- /claim -->，在这组图上缩窄逻辑查询未带来明显速度收益；编译后填充工作的成本及更窄查询的收益仍未确定；1 或 2 个位置的查询[无法执行](findings/ane-short-decode-query/)。上游 iOS 4-bit palettization 预设整图在 GPU 上执行，<!-- claim:g6.n.1024@g6-011 -->1K<!-- /claim --> decode 为 <!-- claim:g6.w4.decode.1024.rate@g6-012 -->2.87 token/s<!-- /claim -->，ANE 上的 4-bit 权重 decode 仍未测到；在一个 E4B 投影和 MLP 上，Core AI 的 4-bit 查表权重在 ANE 上[比 FP16 快 <!-- claim:g7.coreai.w4a16-over-fp16@g7-107 -->1.465–3.175×<!-- /claim -->](findings/coreml-coreai-same-codes/)。ANE 路径上的 GPU 能量在两种查询宽度下都是 <!-- claim:g6.decode-gpu-energy@g6-013 -->0.257–0.265 J/token<!-- /claim -->，来源仍待查明。在第二颗 Apple 芯片上复现、在同一宿主中常驻数小时，以及更广的质量评测，可以检验结果能否迁移和持续。
 
 后续服务实验再测 GPU 风扇在 4.9 到 23.7 请求/s 之间从哪里开始升高，先覆盖 4.9 到约 6.4 请求/s；以及矩阵前台的尾延迟优势在关闭动画、匹配热起始并加入只占 CPU 的忙等基线后是否仍然存在。[RESEARCH.md](docs/RESEARCH.md) · [RELATED_WORK.md](docs/RELATED_WORK.md)
 

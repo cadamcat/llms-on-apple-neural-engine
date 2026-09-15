@@ -4,7 +4,6 @@
   "inputs": {
     "reading_500": {
       "tokens": 500,
-      "sha256_int32_le": "248c7f2872085523b64e52f7bb9b67365be32e2db0f0823442d0b82366c30ff1",
       "prompt_text": "reading_500.txt",
       "corpus_prefix_tokens": 443,
       "family": "reading",
@@ -13,7 +12,6 @@
     },
     "reading_1024": {
       "tokens": 1024,
-      "sha256_int32_le": "fb0eab74bf7640c7db3aa5454301a76e0ad11afe1ef4ec9e8b498f67b365b6ce",
       "prompt_text": "reading_1024.txt",
       "corpus_prefix_tokens": 967,
       "family": "reading",
@@ -22,7 +20,6 @@
     },
     "reading_2048": {
       "tokens": 2048,
-      "sha256_int32_le": "98688306312b04ec84a497934c96d8169942edeac32f8167cd70749780aa3cf7",
       "prompt_text": "reading_2048.txt",
       "corpus_prefix_tokens": 1992,
       "family": "reading",
@@ -31,7 +28,6 @@
     },
     "reading_4096": {
       "tokens": 4096,
-      "sha256_int32_le": "467b999dced6916899d5f367807f9e4f7aaff5f2a992d64704803a89665b63d0",
       "prompt_text": "reading_4096.txt",
       "corpus_prefix_tokens": 4040,
       "family": "reading",
@@ -40,7 +36,6 @@
     },
     "reading_8192": {
       "tokens": 8192,
-      "sha256_int32_le": "59667567f46f14f631349304a2ce7a94de93f5db7af22e4ed3c2533133f5209b",
       "prompt_text": "reading_8192.txt",
       "corpus_prefix_tokens": 8135,
       "family": "reading",
@@ -49,7 +44,6 @@
     },
     "reading_16384": {
       "tokens": 16384,
-      "sha256_int32_le": "3f053118d17c4c166f36f39c75cd75141f9e1b4da5ad2eff6a10428abdbad57e",
       "prompt_text": "reading_16384.txt",
       "corpus_prefix_tokens": 16328,
       "family": "reading",
@@ -59,67 +53,54 @@
   },
   "sources": {
     "articles/01-measuring-ane-performance.md": {
-      "sha256": "e4222e4ef6531a6894f6d60b559f3f436ed895f5c83eccab349782d105574b08",
       "bytes": 10813,
       "snapshot": "sources/00-01-measuring-ane-performance.md"
     },
     "articles/02-group-quantization-and-split.md": {
-      "sha256": "d8e1e2951c0c886dd6a072fb4941f1fcfe5fc82e8a0d294136661ac7cf60ce10",
       "bytes": 10246,
       "snapshot": "sources/01-02-group-quantization-and-split.md"
     },
     "articles/03-arithmetic-compatibility.md": {
-      "sha256": "1da218175b2713ab37e77381eb3e87ae82e5f4c65904c77e4cf35d62b6379a64",
       "bytes": 12264,
       "snapshot": "sources/02-03-arithmetic-compatibility.md"
     },
     "articles/04-w4a16-service-tradeoffs.md": {
-      "sha256": "2d020967c613a30095020aebf016dfc7c57079cdf7093b50a170d552af907596",
       "bytes": 14014,
       "snapshot": "sources/03-04-w4a16-service-tradeoffs.md"
     },
     "docs/SCOPE.md": {
-      "sha256": "46ab53140a316002ee90fd5a066be0ef2d2625f48f97faa53c0504ba4aaa8ad6",
       "bytes": 11191,
       "snapshot": "sources/04-SCOPE.md"
     },
     "docs/METHODS.md": {
-      "sha256": "10689532c79a874b3e4284d3c50dad88acaeb48a506068c306e050d5b27fc505",
       "bytes": 9442,
       "snapshot": "sources/05-METHODS.md"
     },
     "docs/MEASUREMENTS.md": {
-      "sha256": "6c5310474bd764acbae39763d39cba0e4565e89770aaecb509141c90e62ccef5",
       "bytes": 6970,
       "snapshot": "sources/06-MEASUREMENTS.md"
     },
     "docs/REPRODUCING.md": {
-      "sha256": "4b733bec1da573f8a79845d44ef8eab9c49a4c895c83a1d5894b51ad7a8571d3",
       "bytes": 11052,
       "snapshot": "sources/07-REPRODUCING.md"
     },
     "docs/PROVENANCE.md": {
-      "sha256": "c9d6a6f3ccdaa165e17eea1cf1a061b72df1253e551aac5ac019b0de72cc6bb2",
       "bytes": 9677,
       "snapshot": "sources/08-PROVENANCE.md"
     },
     "docs/VALIDATION.md": {
-      "sha256": "3eb81b2d09e3ff15c75f8da487440e53eb67da9722d1a678d64955c331bb8385",
       "bytes": 9060,
       "snapshot": "sources/09-VALIDATION.md"
     },
     "docs/HISTORICAL.md": {
-      "sha256": "862b0a6af4ecf66c3a4c1d3cab667f423e4cadee3957f3e9f4fb331f1fe067ea",
       "bytes": 5398,
       "snapshot": "sources/10-HISTORICAL.md"
     },
     "docs/RESEARCH.md": {
-      "sha256": "0d8fcd9ad3f63caeed0fda23864b2ccede1403b6d01581f008b6e7656c798726",
       "bytes": 7982,
       "snapshot": "sources/11-RESEARCH.md"
     },
     "docs/RELATED_WORK.md": {
-      "sha256": "f780164420bab7bbc5cf64ddb06ac1c30757b86e34c69f9f58fbf9b6165e8b7e",
       "bytes": 3353,
       "snapshot": "sources/12-RELATED_WORK.md"
     }

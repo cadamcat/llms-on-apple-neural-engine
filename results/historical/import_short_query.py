@@ -1,7 +1,6 @@
 """Import the decode-query-width diagnosis (Q1/Q2/Q4/Q8 on ANE) into the finding's recorded evidence; no device."""
 import argparse
 import difflib
-import hashlib
 import importlib.util
 import json
 import re
@@ -90,18 +89,15 @@ def extract(workspace, output):
         new = reader.raw(diagnosis / 'host-src' / relative).decode().splitlines()
         old = reader.raw(Path(G4_TIERS) / 'vendor/coreai-models' / relative).decode().splitlines()
         changes[relative] = [l for l in difflib.unified_diff(old, new, lineterm='', n=0) if l[:1] in '+-' and not l.startswith(('+++', '---'))]
-    scripts = {name: hashlib.sha256(reader.raw(diagnosis / name)).hexdigest() for name in ('export_small.py', 'q1_probe.py')}
     writer.dump('observations.json', {
         'cases': cases,
         'trace_query_1_export': {'command_options': '--queries 1 8 64 --trace-query 1 --layers 1 --capacities 768',
                                  'torch_export_error': violation[0]},
         'host_query_allow_list_diff': changes,
-        'scripts_sha256_at_import': scripts,
         'upstream_default_query_lengths': [8, 16, 64],
         'scope': 'One M5 Pro, macOS 27.0 (26A428), coreai-models 7304c47, coreai-torch 0.4.2. Unified-log rows are filtered to each host PID after the host reported ready; only counts, status lines and loaded function names are kept.'})
-    products = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(Path(output).iterdir())}
-    writer.dump('provenance.json', {'importer': 'results/historical/import_short_query.py', 'sources': reader.sources,
-                                    'products': products, 'transformations': [
+    writer.dump('provenance.json', {'importer': 'results/historical/import_short_query.py', 'sources': sorted(reader.sources),
+                                    'transformations': [
         'Keep each probe query result, host return code and same-history comparison; drop logits paths and the host argv.',
         'Reduce each host unified log to direct ANE request successes, failure status lines and loaded function names.',
         'Parse the MPSGraph assertion error code, inference count and failure count from each host stderr.',

@@ -1,7 +1,6 @@
 """Import the closed G6 night run into a portable bundle; never execute a device."""
 import argparse
 import difflib
-import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -26,9 +25,8 @@ METAL = 'Metal Compiling Shader'
 
 class Writer(g4a.Writer):
     def provenance(self, transformations):
-        products = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(self.output.iterdir())}
-        self.dump('provenance.json', {'importer': 'results/historical/import_g6.py', 'sources': self.reader.sources,
-                                      'products': products, 'transformations': transformations})
+        self.dump('provenance.json', {'importer': 'results/historical/import_g6.py', 'sources': sorted(self.reader.sources),
+                                      'transformations': transformations})
 
 
 def log_counts(reader, path):
@@ -101,11 +99,10 @@ def extract(workspace, output):
             tier = reader.json(base / 'TIER.json')
             if tier['capacity'] != int(capacity):
                 raise ValueError('tier_capacity:' + base.name)
-            tiers.append({'weights': weights, 'capacity': int(capacity), 'tier': tier,
+            g4a.launch_hash(launch, reader, (base / 'metadata.json').as_posix())
+            g4a.launch_hash(launch, reader, (model / 'main.hash').as_posix())
+            tiers.append({'weights': weights, 'capacity': int(capacity), 'tier': {k: v for k, v in tier.items() if k != 'source_main_hash'},
                           'metadata': reader.json(base / 'metadata.json'),
-                          'metadata_sha256': g4a.launch_hash(launch, reader, (base / 'metadata.json').as_posix()),
-                          'main_hash': reader.raw(model / 'main.hash').hex(),
-                          'main_hash_file_sha256': g4a.launch_hash(launch, reader, (model / 'main.hash').as_posix()),
                           'main_mlirb_bytes': launch['asset_stats'][str(reader.workspace / model / 'main.mlirb')][0]})
     codes = Path(config['w4_codes']).resolve().relative_to(reader.workspace)
     inventory = reader.json(codes / 'INVENTORY.json')
@@ -137,19 +134,18 @@ def extract(workspace, output):
         'w4_reference': reference,
         'fp16_canonical_metadata': retired['qwen3-4b-fp16-ane-g6-q4-canonical']['metadata'],
         'admissions': admissions,
-        'scope': 'Asset identity by recorded hashes, graph inventories and W4 code shapes; model payloads, codes and logs are not bundled. '
+        'scope': 'Asset identity by graph inventories and W4 code shapes, with launch-frozen files checked at import; model payloads, codes and logs are not bundled. '
                  'Placement is counted from unified-log rows filtered to each admission host PID after the host reported ready.'})
 
     changes = {}
     for relative in (HOST_SWIFT, ENGINE_SWIFT):
         new = reader.raw(plan / 'q1-diagnosis/host-src' / relative).decode().splitlines()
         old = reader.raw(Path(G4_TIERS) / 'vendor/coreai-models' / relative).decode().splitlines()
-        changes[relative] = {'g6_sha256': g4a.launch_hash(launch, reader, f'{PLAN}/q1-diagnosis/host-src/{relative}'),
-                             'g4a_sha256': g4a.launch_hash(launch, reader, f'{G4_TIERS}/vendor/coreai-models/{relative}'),
-                             'diff': [l for l in difflib.unified_diff(old, new, lineterm='', n=0)
+        g4a.launch_hash(launch, reader, f'{PLAN}/q1-diagnosis/host-src/{relative}')
+        g4a.launch_hash(launch, reader, f'{G4_TIERS}/vendor/coreai-models/{relative}')
+        changes[relative] = {'diff': [l for l in difflib.unified_diff(old, new, lineterm='', n=0)
                                       if l[:1] in '+-' and not l.startswith(('+++', '---'))]}
     writer.dump('runtime-implementation.json', {
-        'g6_query_host_sha256': g4a.launch_hash(launch, reader, reader.relative(config['g6_host'])),
         'g4a_host_sha256': {arm: g4a.launch_hash(launch, reader, reader.relative(path)) for arm, path in g4_config['hosts'].items()},
         'changes_from_g4a_host': changes,
         'scope': 'Query sessions use the G4 A host rebuilt with a wider decode-query allow-list; the repeat arms use the G4 A binaries.'})
@@ -262,14 +258,13 @@ def extract(workspace, output):
         'repeat_decode_query': 8, 'gpu_capacity': 32768,
         'inputs_source': {'path': reader.relative(g4_config['inputs']), **reader.sources[reader.relative(g4_config['inputs'])]},
         'machine': {'chip': 'Apple M5 Pro', 'memory_GiB': 48},
-        'runtime_sources': {reader.relative(k): v for k, v in launch['files'].items()},
         'scope': 'One night: FP16 decode with query 8 and 4 on six matched graphs in one host session each; the upstream iOS 4-bit '
                  'palettized preset at 1K and 4K; a repeat of the G4 A arms with the arm order reversed; idle captures. '
                  'Per-block component energy admission; no exclusive per-operation placement.'})
     writer.provenance([
         'Strip the workspace prefix; refuse any remaining personal or temporary-directory path.',
         'Retain every boundary, full and prefill request result with its command for query sessions and repeat arms; drop input_ids after checking them; no logits.',
-        'Retain tier graph inventories, recorded asset hashes, the W4 code shapes and the dequantized-reference summary; no model payloads or codes.',
+        'Retain tier graph inventories, the W4 code shapes and inventory hash, and the dequantized-reference summary; no model payloads or codes.',
         'Count ANE direct-request, request-failure and Metal shader-compile rows in each admission log; the logs are not bundled.',
         'Re-serialize CPU/GPU/ANE power fields from each plist frame of the four captures, as the G4 A importer does, tagged by capture.',
         'Retain the recorded summary so recomputation can be compared with what the run wrote.',

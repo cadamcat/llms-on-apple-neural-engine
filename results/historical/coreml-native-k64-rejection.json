@@ -2,7 +2,6 @@
   "historical_import": true,
   "case": "g1-group-coreml coreml-native64",
   "source": "results/g1-group-coreml-20260910/review/coreml-native64-diagnostics.json",
-  "source_sha256": "448ed7dfe8f9539c6abeb85fdcc1fb294c14959f76d8d06c79121d3d8b312342",
   "diagnostics": [
     {
       "timestamp": "2026-09-10 17:36:47.549697+0200",

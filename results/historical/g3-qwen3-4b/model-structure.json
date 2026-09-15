@@ -2676,16 +2676,13 @@
   },
   "source_headers": {
     "model-00001-of-00003.safetensors": {
-      "header_bytes": 20000,
-      "header_sha256": "a8f45f72beda0f33ad73b7c94747c4c5bace94e3770a90810e9a23ec0a6a6abd"
+      "header_bytes": 20000
     },
     "model-00002-of-00003.safetensors": {
-      "header_bytes": 25232,
-      "header_sha256": "55d8e8decb2976c9758e922be1274c003bf57dd8ac5f7c4a74dd91ee39fc0351"
+      "header_bytes": 25232
     },
     "model-00003-of-00003.safetensors": {
-      "header_bytes": 552,
-      "header_sha256": "19f753c0ae5015a4f6110a351070e77ff01c59ec37dd2c12fbae4f3c7eb1a0d1"
+      "header_bytes": 552
     }
   },
   "source_total_bytes": 8044936192,

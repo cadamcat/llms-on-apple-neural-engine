@@ -470,3 +470,120 @@ Same assets, hosts and protocol as G4 A in new host sessions, arm order reversed
 |---|---:|---:|---:|---:|---:|
 | idle-start | 600 | 0.796 | 0.075 | 0.000 | 0.871 |
 | idle-end | 600 | 0.314 | 0.001 | 0.000 | 0.315 |
+
+## G7: Core ML and Core AI on the same E4B codes
+
+The first E4B mobile QAT gate projection and MLP from the same four-bit codes and scales, four representations, both runtimes on the ANE, 64 and 1024 positions, three independent host rounds of 120 s each. Medians across rounds; ranges are the three paired rounds. Software component energy (CPU + GPU + ANE counters, no idle subtraction). [Scope](SCOPE.md#g7-core-ml-and-core-ai-on-the-same-codes) · [Source bundle](../results/historical/g7-coreml-coreai/).
+
+### Speed and component energy
+
+| Work | Positions | Representation | Core ML positions/s | Core AI positions/s | Core ML / Core AI speed | Core ML mJ/position | Core AI mJ/position | Core ML ANE W | Core AI ANE W |
+|---|---:|---|---:|---:|---:|---:|---:|---:|---:|
+| gate | 64 | A8W4 | 57,797 | 212,866 | 0.271–0.273× | 0.1114 | 0.0369 | 5.40 | 4.94 |
+| gate | 64 | FP16 from the codes | 135,464 | 138,305 | 0.979–0.980× | 0.0514 | 0.0487 | 5.05 | 5.14 |
+| gate | 64 | W4A16 | 60,226 | 216,303 | 0.278–0.280× | 0.1104 | 0.0477 | 5.69 | 7.35 |
+| gate | 64 | W8A8, same codes | 205,756 | 213,932 | 0.962–0.967× | 0.0394 | 0.0371 | 4.84 | 4.99 |
+| gate | 1,024 | A8W4 | 47,980 | 515,465 | 0.093–0.093× | 0.0758 | 0.0222 | 3.25 | 10.68 |
+| gate | 1,024 | FP16 from the codes | 253,802 | 258,787 | 0.980–0.981× | 0.0385 | 0.0376 | 9.11 | 9.26 |
+| gate | 1,024 | W4A16 | 24,569 | 379,220 | 0.065–0.065× | 0.1276 | 0.0343 | 2.85 | 12.42 |
+| gate | 1,024 | W8A8, same codes | 452,439 | 468,405 | 0.966–0.966× | 0.0232 | 0.0225 | 9.53 | 9.87 |
+| mlp | 64 | FP16 from the codes | 55,889 | 56,333 | 0.991–0.993× | 0.1266 | 0.1246 | 6.09 | 6.13 |
+| mlp | 64 | W4A16 | 22,062 | 99,236 | 0.222–0.222× | 0.3034 | 0.1136 | 6.17 | 9.90 |
+| mlp | 1,024 | FP16 from the codes | 35,448 | 35,549 | 0.997–0.998× | 0.1488 | 0.1492 | 4.96 | 4.97 |
+| mlp | 1,024 | W4A16 | 8,218 | 112,847 | 0.073–0.073× | 0.3710 | 0.1041 | 2.79 | 11.38 |
+
+### Within each runtime
+
+| Work | Positions | Runtime | Ratio | Speed | Component energy |
+|---|---:|---|---|---:|---:|
+| gate | 64 | coreai | A8W4 / FP16 from the codes | 1.532–1.542× | 0.750–0.760× |
+| gate | 64 | coreai | A8W4 / W4A16 | 0.976–0.990× | 0.768–0.778× |
+| gate | 64 | coreai | W4A16 / FP16 from the codes | 1.557–1.569× | 0.976–0.980× |
+| gate | 64 | coreai | W8A8, same codes / FP16 from the codes | 1.542–1.549× | 0.760–0.764× |
+| gate | 64 | coreai | W8A8, same codes / W4A16 | 0.987–0.990× | 0.779–0.781× |
+| gate | 64 | coreml | A8W4 / FP16 from the codes | 0.426–0.427× | 2.157–2.193× |
+| gate | 64 | coreml | A8W4 / W4A16 | 0.959–0.960× | 0.987–1.031× |
+| gate | 64 | coreml | W4A16 / FP16 from the codes | 0.444–0.445× | 2.128–2.185× |
+| gate | 64 | coreml | W8A8, same codes / FP16 from the codes | 1.519–1.521× | 0.760–0.778× |
+| gate | 64 | coreml | W8A8, same codes / W4A16 | 3.416–3.422× | 0.356–0.357× |
+| gate | 1,024 | coreai | A8W4 / FP16 from the codes | 1.991–1.993× | 0.586–0.590× |
+| gate | 1,024 | coreai | A8W4 / W4A16 | 1.359–1.360× | 0.642–0.647× |
+| gate | 1,024 | coreai | W4A16 / FP16 from the codes | 1.465–1.465× | 0.911–0.913× |
+| gate | 1,024 | coreai | W8A8, same codes / FP16 from the codes | 1.809–1.810× | 0.598–0.600× |
+| gate | 1,024 | coreai | W8A8, same codes / W4A16 | 1.235–1.235× | 0.655–0.658× |
+| gate | 1,024 | coreml | A8W4 / FP16 from the codes | 0.189–0.189× | 1.950–2.034× |
+| gate | 1,024 | coreml | A8W4 / W4A16 | 1.951–1.953× | 0.589–0.614× |
+| gate | 1,024 | coreml | W4A16 / FP16 from the codes | 0.097–0.097× | 3.311–3.335× |
+| gate | 1,024 | coreml | W8A8, same codes / FP16 from the codes | 1.782–1.783× | 0.603–0.607× |
+| gate | 1,024 | coreml | W8A8, same codes / W4A16 | 18.411–18.421× | 0.182–0.182× |
+| mlp | 64 | coreai | W4A16 / FP16 from the codes | 1.761–1.763× | 0.911–0.919× |
+| mlp | 64 | coreml | W4A16 / FP16 from the codes | 0.395–0.395× | 2.380–2.408× |
+| mlp | 1,024 | coreai | W4A16 / FP16 from the codes | 3.174–3.175× | 0.697–0.707× |
+| mlp | 1,024 | coreml | W4A16 / FP16 from the codes | 0.232–0.232× | 2.486–2.494× |
+
+### Admission
+
+Relative L2 on ordinary rows of the original control; placement is one successful ANE request in every control call and, for Core ML, every projection convolution preferring the Neural Engine. Configurations that fail are not timed.
+
+| Configuration | Relative L2 | Limit | Numeric | ANE | Timed |
+|---|---:|---:|---|---|---|
+| gate-n64-coreml-fp16_from_w4_codes | 0.0003222 | 0.005 | pass | pass | yes |
+| gate-n64-coreml-w4a16 | 0.0003222 | 0.005 | pass | pass | yes |
+| gate-n64-coreml-w8a8_same_codes | 0.009019 | 0.05 | pass | pass | yes |
+| gate-n64-coreml-a8w4_int8_lut | 0.009624 | 0.05 | pass | pass | yes |
+| gate-n64-coreai-fp16_from_w4_codes | 0.0003222 | 0.005 | pass | pass | yes |
+| gate-n64-coreai-w4a16 | 0.0003621 | 0.005 | pass | pass | yes |
+| gate-n64-coreai-w8a8_same_codes | 0.009019 | 0.05 | pass | pass | yes |
+| gate-n64-coreai-a8w4_int8_lut | 0.009019 | 0.05 | pass | pass | yes |
+| gate-n1024-coreml-fp16_from_w4_codes | 0.0003227 | 0.005 | pass | pass | yes |
+| gate-n1024-coreml-w4a16 | 0.0003227 | 0.005 | pass | pass | yes |
+| gate-n1024-coreml-w8a8_same_codes | 0.008817 | 0.05 | pass | pass | yes |
+| gate-n1024-coreml-a8w4_int8_lut | 0.009497 | 0.05 | pass | pass | yes |
+| gate-n1024-coreai-fp16_from_w4_codes | 0.0003227 | 0.005 | pass | pass | yes |
+| gate-n1024-coreai-w4a16 | 0.0003626 | 0.005 | pass | pass | yes |
+| gate-n1024-coreai-w8a8_same_codes | 0.008817 | 0.05 | pass | pass | yes |
+| gate-n1024-coreai-a8w4_int8_lut | 0.008817 | 0.05 | pass | pass | yes |
+| mlp-n64-coreml-fp16_from_w4_codes | 0.002116 | 0.005 | pass | pass | yes |
+| mlp-n64-coreml-w4a16 | 0.002116 | 0.005 | pass | pass | yes |
+| mlp-n64-coreml-w8a8_same_codes | 3.387 | 0.05 | fail | pass | no |
+| mlp-n64-coreml-a8w4_int8_lut | 3.39 | 0.05 | fail | pass | no |
+| mlp-n64-coreai-fp16_from_w4_codes | 0.002116 | 0.005 | pass | pass | yes |
+| mlp-n64-coreai-w4a16 | 0.002059 | 0.005 | pass | pass | yes |
+| mlp-n64-coreai-w8a8_same_codes | 3.387 | 0.05 | fail | pass | no |
+| mlp-n64-coreai-a8w4_int8_lut | 3.387 | 0.05 | fail | pass | no |
+| mlp-n1024-coreml-fp16_from_w4_codes | 0.002143 | 0.005 | pass | pass | yes |
+| mlp-n1024-coreml-w4a16 | 0.002143 | 0.005 | pass | pass | yes |
+| mlp-n1024-coreml-w8a8_same_codes | 3.379 | 0.05 | fail | pass | no |
+| mlp-n1024-coreml-a8w4_int8_lut | 3.382 | 0.05 | fail | pass | no |
+| mlp-n1024-coreai-fp16_from_w4_codes | 0.002143 | 0.005 | pass | pass | yes |
+| mlp-n1024-coreai-w4a16 | 0.002085 | 0.005 | pass | pass | yes |
+| mlp-n1024-coreai-w8a8_same_codes | 3.379 | 0.05 | fail | pass | no |
+| mlp-n1024-coreai-a8w4_int8_lut | 3.379 | 0.05 | fail | pass | no |
+| synthetic-d2-coreml-fp16_from_w4_codes | 0.0002607 | 0.01 | pass | pass | no |
+| synthetic-d2-coreml-w8a8_same_codes | 0.0001403 | 0.01 | pass | pass | no |
+| synthetic-d2-coreml-a8w4_int8_lut | 0.001443 | 0.01 | pass | pass | no |
+| synthetic-d128-coreml-fp16_from_w4_codes | 0.004013 | 0.05 | pass | pass | yes |
+| synthetic-d128-coreml-w8a8_same_codes | 0.0001086 | 0.05 | pass | pass | yes |
+| synthetic-d128-coreml-a8w4_int8_lut | 0.794 | 0.05 | fail | pass | no |
+| mlp-n64-coreml-w8a8_same_codes-clip | 0.05644 | 0.05 | fail | pass | no |
+| mlp-n64-coreml-a8w4_int8_lut-clip | 0.05829 | 0.05 | fail | pass | no |
+| mlp-n64-coreai-w8a8_same_codes-clip | 0.05644 | 0.05 | fail | pass | no |
+| mlp-n64-coreai-a8w4_int8_lut-clip | 0.05644 | 0.05 | fail | pass | no |
+
+Core ML and Core AI original-control outputs are byte-identical for: gate-n64-fp16_from_w4_codes, gate-n64-w8a8_same_codes, gate-n1024-fp16_from_w4_codes, gate-n1024-w8a8_same_codes, mlp-n64-fp16_from_w4_codes, mlp-n64-w8a8_same_codes, mlp-n1024-fp16_from_w4_codes, mlp-n1024-w8a8_same_codes, mlp-n64-w8a8_same_codes-clip.
+
+### Core ML synthetic chain
+
+| Representation | Median API p50 (ms) | Median positions/s |
+|---|---:|---:|
+| FP16 from the codes | 14.154 | 288,611 |
+| W8A8, same codes | 7.505 | 542,300 |
+
+W8A8 / FP16 speed by round: 1.879–1.885×.
+
+### Idle captures
+
+| Capture | CPU W | GPU W | ANE W | Components W |
+|---|---:|---:|---:|---:|
+| idle-start | 0.223 | 0.053 | 0.000 | 0.276 |
+| idle-end | 0.090 | 0.001 | 0.000 | 0.091 |

@@ -73,7 +73,8 @@ carry different scales — relative L2 **0.75**, maximum absolute error **12**, 
 target of 16. Merely reversing the order in which the two branches are built
 changes the error to 3.0. All of these show ANE participation in every control.
 The wrong values fit [one rule](../findings/coreai-qdq-multiply-scale/): a branch is
-dequantized with another QDQ's scale.
+dequantized with another QDQ's scale. Core ML returns the same wrong values when it runs
+the graph on the Neural Engine, so the rewrites below apply to both runtimes.
 
 **The cheaper rewrite: clamp the product.** When the product feeds another QDQ, clamp it
 to that QDQ's representable range before quantizing:
@@ -84,7 +85,7 @@ return qdq(p, s_out)
 ```
 
 Quantization saturates at those bounds anyway, so the clamp never changes the QDQ's output. It restored the correct output
-in all four arms of the model-free probe, kept one ANE request per call, and cost no
+in all four arms of the model-free probe, through Core AI and through Core ML, kept one ANE request per call, and cost no
 measurable time in an eight-MLP stack (<!-- claim:g1w.e4b.clip-product.speed@g1w-001 -->0.976×<!-- /claim --> against <!-- claim:g1w.e4b.native.speed@g1w-002 -->0.977×<!-- /claim --> without it). On a real
 Gemma 4 E4B QAT MLP it removed the gross error but left <!-- claim:g1w.e4b.1.clip-product.l2@g1w-003 -->6.31%<!-- /claim --> for one layer and <!-- claim:g1w.e4b.8.clip-product.l2@g1w-004 -->21.6%<!-- /claim -->
 for eight repeated layers, so it is not a complete fix there.
@@ -133,9 +134,10 @@ this accelerator at all". It does. The problem is that it is not the format your
 quality question this repository has not answered, and cannot answer with
 model-free fixtures.
 
-**The boundary.** The gain [depends on the chain and its weights](../findings/quantized-speedup-conditions/).
-A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-005 -->0.86×<!-- /claim --> W4A16 speed as a single layer and <!-- claim:g1w.depth.both-128.speed@g1w-006 -->1.33×<!-- /claim --> at 128 layers, so time a
-deep enough graph before concluding anything. Exact zero weights make the FP16
+**The boundary.** The gain [depends on the work in each call and on the weights](../findings/quantized-speedup-conditions/).
+A8W4 runs at <!-- claim:g1w.depth.both-1.speed@g1w-005 -->0.86×<!-- /claim --> W4A16 speed as a single layer and <!-- claim:g1w.depth.both-128.speed@g1w-006 -->1.33×<!-- /claim --> at 128 layers; a real E4B gate
+runs it at <!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-001 -->1.359–1.360×<!-- /claim --> at 1024 positions and gains nothing at 64. Time the call size you will serve
+before concluding anything. Exact zero weights make the FP16
 baseline itself <!-- claim:g1w.density.old.speed@g1w-007 -->1.88×<!-- /claim --> faster. A released per-channel A8W4 checkpoint, eight repeated
 Gemma 4 E4B QAT MLPs, gained nothing (<!-- claim:g1w.e4b.native.speed@g1w-008 -->0.977×<!-- /claim -->).
 
@@ -226,7 +228,7 @@ The *method* transfers, though. For any operation you suspect:
 
 - **Long-term residency remains unverified.** The historical Python path grew by
   [1,966,080 attributed bytes per gate call](../findings/iosurface-per-call-growth/).
-  Later native HOST / PIO / TILE work passed bounded C64/C256 checks; the old SDK
+  Later native host and tiled-asset rounds passed bounded C64/C256 checks; the old SDK
   blocker no longer describes current progress. [Follow-up](../results/historical/native-mlp-followup.json).
 - **The GPU gap remains.** Historical Python ratios are separate from the later
   native C256 result: 582.19 ms versus its same-round GPU 152.25 ms at 4K.

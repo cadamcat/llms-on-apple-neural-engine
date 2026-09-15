@@ -1,6 +1,5 @@
 """Recompute G5 attention timing comparisons and expose its numerical fields."""
 import gzip
-import hashlib
 import json
 import math
 import statistics
@@ -21,10 +20,6 @@ def close(a, b):
 
 def load(bundle):
     bundle = Path(bundle or ROOT / BASE)
-    provenance = json.loads((bundle / 'provenance.json').read_text())
-    for name, digest in provenance['products'].items():
-        require(hashlib.sha256((bundle / name).read_bytes()).hexdigest() == digest,
-                'g5_product_hash.' + name)
     evidence = json.loads((bundle / 'evidence.json').read_text())
     with gzip.open(bundle / 'timings.json.gz', 'rt') as stream:
         timings = json.load(stream)

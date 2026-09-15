@@ -58,6 +58,7 @@ Choose the command for the result you want to inspect:
 |---|---|---|
 | G4 A complete Qwen3-4B with matched ANE graphs | `python scripts/verify_g4a.py` | Recompute bundled request, power and disk fields; no device |
 | G6 decode query width, W4 palettization and the G4 A repeat | `python scripts/verify_g6.py` | Recompute bundled request and power fields and admission-log counts; no device |
+| G7 Core ML and Core AI on the same E4B codes | `python scripts/verify_g7.py` | Re-admit recorded controls; recompute block speed and power fields; no device |
 | Disk space held by the ANE compiler service | `python scripts/verify_ane_compiler_disk.py` | Recompute redacted observations; no device |
 | G3 complete Qwen3-4B speed and component energy | `python scripts/verify_g3.py` | Recompute bundled raw request and power fields; no device |
 | G2 native W4A16 speed, memory, temperature and fans | `python scripts/verify_g2.py` | Recompute bundled observations; no device |
@@ -157,6 +158,8 @@ python scripts/verify_g5.py
 python findings/coreai-qdq-multiply-scale/repro/verify.py
 python findings/ane-short-decode-query/repro/verify.py
 python findings/coreai-palettized-weights-gpu/repro/verify.py
+python scripts/verify_g7.py
+python findings/coreai-qdq-multiply-scale/repro/coreml/verify.py
 python scripts/check_source_identity.py --check
 python scripts/summarize.py
 python scripts/render_figures.py --check
@@ -169,16 +172,8 @@ references: each marked occurrence checks its value and unit against its
 evidence source. Other registered values use numeric boundaries within the
 document. Unregistered prose remains outside these checks.
 
-CI runs the commands above and also checks deterministic figure regeneration:
-
-```sh
-python scripts/render_figures.py --write
-git diff --exit-code -- docs/figures
-```
-
-The Git comparison requires tracked figure files. In an uncommitted draft,
-compare the complete SVG inventory and bytes against a saved copy instead.
-These checks do not execute a device. The workflow supports push, pull requests
+CI runs the commands above; `render_figures.py --check` regenerates the figures
+and compares their bytes. These checks do not execute a device. The workflow supports push, pull requests
 and manual dispatch.
 
 ## Version-specific interfaces
@@ -216,8 +211,7 @@ No command here launches a model, changes system settings or requests power priv
 
 With the closed workspace available, `results/historical/import_g2.py` accepts
 explicit `--workspace` and `--output` paths; the latter must be a new directory.
-It extracts scalar fields only. A hash of an unavailable source identifies that
-source, but does not make the source independently inspectable.
+It extracts scalar fields only; the sources it names are not independently inspectable.
 
 A future device replay should freeze its own display conditions and verify
 what happens after the screen has been idle. Normal system background is not a
@@ -283,6 +277,26 @@ Device replay needs the G6 FP16 and W4 tiers and the W4 codes identified in asse
 
 The short decode query outcomes are checked with `python findings/ane-short-decode-query/repro/verify.py`; the device steps and archived scripts are in [its reproduction](../findings/ane-short-decode-query/repro/README.md). Rebuild the recorded outcomes from a research workspace with `python results/historical/import_short_query.py --workspace /path/to/research-workspace --output /path/to/new-recorded`. The palettized placement pair is checked with `python findings/coreai-palettized-weights-gpu/repro/verify.py` and rebuilt with `python results/historical/import_palettized_placement.py`; its device steps are in [that reproduction](../findings/coreai-palettized-weights-gpu/repro/README.md).
 
+## G7 recomputation
+
+```sh
+python scripts/verify_g7.py
+python findings/coreai-qdq-multiply-scale/repro/coreml/verify.py
+python scripts/summarize.py
+```
+
+The first re-applies every admission rule to the recorded controls and recomputes every block's speed and component energy against the recorded measurement; the second checks the Core ML QDQ probe's outputs, graphs and placement. Neither needs a device.
+
+To rebuild from a research workspace containing the closed run and the probe runs:
+
+```sh
+python results/historical/import_g7.py --workspace /path/to/research-workspace --output /path/to/new-g7
+python scripts/verify_g7.py --bundle /path/to/new-g7
+python results/historical/import_qdq_coreml.py --workspace /path/to/research-workspace --output /path/to/new-coreml-recorded
+```
+
+Device replay needs the E4B codes and scales, both exporters, the host and a sudo-authenticated power capture; a portable launcher is not included. The Core ML probe needs no model: see [its reproduction](../findings/coreai-qdq-multiply-scale/repro/README.md#core-ml).
+
 ## G1-W and G5 recomputation
 
 ```sh
@@ -291,7 +305,7 @@ python scripts/verify_g5.py
 python findings/coreai-qdq-multiply-scale/repro/verify.py
 ```
 
-The first two recompute every timing, paired speed and fitted line from the bundled calls and check them against the summaries recorded when each round closed; relative L2 values are imported scalars. The third checks the QDQ probe's raw outputs against its hashes, controls and the scale-substitution rule. None needs a device or third-party package.
+The first two recompute every timing, paired speed and fitted line from the bundled calls and check them against the summaries recorded when each round closed; relative L2 values are imported scalars. The third checks the QDQ probe's raw outputs, controls and the scale-substitution rule. None needs a device or third-party package.
 
 The QDQ probe runs on a Mac without a model: see [its reproduction](../findings/coreai-qdq-multiply-scale/repro/README.md). The E4B graphs need the fixed checkpoint revision and the research workspace's exporters, and G5 needs its FP16 attention inputs; neither is in this repository. To rebuild the bundles from a workspace, write new directories:
 

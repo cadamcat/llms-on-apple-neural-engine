@@ -3,7 +3,7 @@
 Six experiments contribute per-call timing records: exact-zero FP16 weights,
 chain depth, weight codebook, scale granularity, and the Gemma 4 E4B mobile
 QAT MLP stack. Numerical results are copied as scalar fields with their source
-hashes; the model-free QDQ multiply probe also writes its raw outputs for the
+paths; the model-free QDQ multiply probe also writes its raw outputs for the
 finding's standalone verifier. No weight tensor, activation array, model file
 or absolute path is serialised, and no array, model or device library is
 imported.
@@ -11,7 +11,6 @@ imported.
 
 import argparse
 import gzip
-import hashlib
 import json
 import re
 from pathlib import Path
@@ -36,12 +35,12 @@ LOG_PATH = re.compile(r'^/\S+?\.mm:\d+: ')
 
 class Reader:
     def __init__(self, root):
-        self.root, self.sources = Path(root), {}
+        self.root, self.sources = Path(root), set()
 
     def raw(self, rel):
         path = BASE + '/' + rel
         data = (self.root / path).read_bytes()
-        self.sources[path] = hashlib.sha256(data).hexdigest()
+        self.sources.add(path)
         return data
 
     def json(self, rel):
@@ -173,26 +172,20 @@ def probe(read, destination):
     requests = {}
     for row in trace['requests_per_call']:
         requests.setdefault(row['arm'], []).append(row['requests'])
-    executed = read.json('numerics-r1/commands/export-portable-r2/source-hashes.json')
-    prefix = BASE + '/numerics-r1/reproducer/'
     record = {'environment': read.json('numerics-r1/AUDIT.json')['environment'],
-              'executed_package_sha256': {k.removeprefix(prefix): v for k, v in executed.items()
-                                          if k.startswith(prefix)},
               'input': 'all-ones FP16, shape [1,32,1,64]; a = channels 0-15, b = channels 16-31',
               'controls': ['original', 'zero', 'original repeated'],
               'input_scale': 1 / 16, 'arms': {}}
     for arm in PROBE_ARMS:
         folder = destination / arm
         folder.mkdir(parents=True)
-        outputs = []
         for index in range(3):
             data = read.raw(f'numerics-r1/portable-r2/host-output/{arm}-control-{index}.raw')
             (folder / f'control-{index}.raw').write_bytes(data)
-            outputs.append(hashlib.sha256(data).hexdigest())
         (folder / 'graph.mlir').write_bytes(read.raw(f'numerics-r1/portable-r2/{arm}/graph.mlir'))
         denominator = int(arm.split('_')[0][1:])
         record['arms'][arm] = {'output_scale': 1 / denominator, 'product_clamp': arm.endswith('_clip'),
-                               'output_sha256': outputs, 'ane_requests_per_call': requests[arm]}
+                               'ane_requests_per_call': requests[arm]}
     assert trace['all_calls_have_ane'] and trace['successful_ane_requests'] == 24
     (destination / 'results.json').write_text(json.dumps(record, indent=2) + '\n')
 
@@ -224,13 +217,10 @@ def main():
     with gzip.GzipFile(args.output / 'timings.json.gz', 'xb', mtime=0) as handle:
         handle.write(json.dumps(timings(read), separators=(',', ':')).encode())
     probe(read, args.probe_output)
-    products = {name: hashlib.sha256((args.output / name).read_bytes()).hexdigest()
-                for name in ('evidence.json', 'timings.json.gz')}
     provenance = {
         'importer': 'results/historical/import_g1w.py',
         'environment': read.json('numerics-r1/AUDIT.json')['environment'],
-        'sources': dict(sorted(read.sources.items())),
-        'products': products,
+        'sources': sorted(read.sources),
         'transformations': [
             'per-call measured durations only; warmup, control and output hashes omitted',
             'E4B stack timings grouped by process, arm and pair; run_ns is the full pipeline',

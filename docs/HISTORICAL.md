@@ -21,8 +21,8 @@ ratio of **4.44×**. That is a structural cost for this synthetic bridge. It is
 not a claim that slicing, narrow convolution, reduction or fusion alone caused
 it.
 
-Both are preserved with every measured timing row, output hash, process
-identity, control-admission field, source hash and epoch range in
+Both are preserved with every measured timing row, process
+identity, control-admission field, source path and epoch range in
 [`selected-evidence.json`](../results/historical/selected-evidence.json),
 including the same-round FP16 baselines and both wide A8W4 processes, so each
 speed-up pairs within its own round. Every headline recomputes from those rows
@@ -42,7 +42,7 @@ unexplained residual — are imported separately and written up in
 The initial Python MLP comparison and its IOSurface growth are preserved in
 [ane-vs-gpu-prefill.json](../results/historical/ane-vs-gpu-prefill.json). They are
 followed by [native-mlp-followup.json](../results/historical/native-mlp-followup.json):
-G1-HOST / PIO / TILE host and pipeline progress, separate timing rounds, and
+native host and pipeline progress, separate timing rounds, and
 bounded C64/C256 memory passes. The later observations do not rewrite the old
 failure or establish indefinite stability. No cross-round ratio is formed by
 mixing an old ANE measurement with a new GPU denominator.
@@ -51,9 +51,9 @@ mixing an old ANE measurement with a new GPU denominator.
 
 A standard-library extractor
 ([extract.py](../results/historical/extract.py)) reads each run's `result.json`
-and its paired `run.json`, hashes both files, keeps every `phase == measured`
+and its paired `run.json`, keeps every `phase == measured`
 record and recomputes the median from `duration_ns`. Each record keeps its
-start and end epoch nanoseconds, duration, measured index and output SHA-256;
+start and end epoch nanoseconds, duration and measured index;
 process identity comes from the paired run metadata. Control admission is
 retained exactly as recorded: numerical pass, ANE control participation,
 preferred-device evidence, memory gate, repeat hashes and child return code.
@@ -75,14 +75,14 @@ workspace-relative paths only.
 `result.json.records` is the source for every retained timing row; the paired
 `run.json` supplies process PID, reported p50 and p95, projected ops,
 runtime and format, and the run-level gates. The optional per-run
-`admission.json` hash and `benchmark_admitted` field are recorded where present.
+`admission.json` path and `benchmark_admitted` field are recorded where present.
 
 The median is recomputed from the measured `duration_ns` rather than copied.
 Reported throughput stays a run summary, because it depends on that run's
 `projection_ops` and timing summary — but with the full 30-row record list the
 headline can be recalculated independently.
 
-The hardware string comes from the original workspace's `before/TOOLING.md`
+The hardware string comes from the source run's tooling record
 and macOS manifest, not inferred from a benchmark number. The fixed shape comes
 from the corresponding protocols and reports. These are provenance fields: they
 describe the machine that produced the imported records, and say nothing about
@@ -109,4 +109,8 @@ The [G4 A bundle](../results/historical/g4a-qwen3-4b/) holds one run of the comp
 ## Query width, W4 and repeat (G6)
 
 The [G6 bundle](../results/historical/g6-qwen3-4b/) holds one night: FP16 decode with two query widths on six matched graphs, the upstream iOS 4-bit palettized preset at two inputs, a repeat of every G4 A arm and two idle captures, with request results, boundary graph events, selected power fields of four captures, admission-log placement counts, the recorded summary and disk readings. [Provenance](PROVENANCE.md#g6-import) · [Scope](SCOPE.md#g6-decode-query-w4-and-repeat) · [Recompute](REPRODUCING.md#g6-recomputation).
+
+## Core ML and Core AI on the same codes (G7)
+
+The [G7 bundle](../results/historical/g7-coreml-coreai/) holds one run: the first E4B gate and MLP from the same codes in Core ML and Core AI, four representations, 64 and 1024 positions, three rounds, with every prepared configuration's admission and output hashes, block clocks reduced to latency summaries, selected power fields of seventeen captures and the recorded measurements. The Core ML QDQ probe records sit with [their finding](../findings/coreai-qdq-multiply-scale/repro/coreml/recorded/). [Provenance](PROVENANCE.md#g7-and-the-core-ml-qdq-probe) · [Scope](SCOPE.md#g7-core-ml-and-core-ai-on-the-same-codes) · [Recompute](REPRODUCING.md#g7-recomputation).
 

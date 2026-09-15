@@ -108,6 +108,6 @@ replication available.
 ## Evidence
 
 - [dot-localization.json](../../results/historical/dot-localization.json) — the
-  bisection ladder, the 32 terms, the counterfactual trace, source hashes
+  bisection ladder, the 32 terms, the counterfactual trace, source paths
 - [verify_arithmetic.py](../../results/historical/tests/verify_arithmetic.py)
 - [The model this residual breaks](../execution-model/)

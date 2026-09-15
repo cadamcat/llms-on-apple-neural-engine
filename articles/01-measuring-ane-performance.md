@@ -2,7 +2,7 @@
 
 English | [中文](zh/01-如何验证ANE的量化加速.md)
 
-Article draft · 2026-09-10 · [Series index](README.md)
+2026-09-10 · [Series index](README.md)
 
 ## Abstract
 

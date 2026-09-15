@@ -1,6 +1,5 @@
 """Exercise the portable G5 timing accounting against disposable bundles."""
 import gzip
-import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -31,10 +30,6 @@ class G5Evidence(unittest.TestCase):
             value = json.loads(path.read_text())
             edit(value)
             path.write_text(json.dumps(value))
-        manifest = self.bundle / 'provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products'][name] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def test_recorded_bundle_recomputes(self):
         data = derive(self.bundle)

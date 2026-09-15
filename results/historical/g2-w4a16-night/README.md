@@ -17,7 +17,7 @@ the results; [scope](../../../docs/SCOPE.md#g2-service-observations) defines the
 | `power-status.json` | Original failed strict acceptance and source identities; not the complete power byte stream |
 | `environment.json` | Post-run screensaver report and descriptive process-presence evidence; no per-process GPU attribution |
 | `expected-summary.json` | Workspace scalar expectations; `scripts/g2/evidence.py` compares its recomputation against them |
-| `provenance.json` | Every read source and emitted data file, extraction rules and hashes |
+| `provenance.json` | Every read source, extraction rules and limits |
 
 JSONL gzip streams contain one JSON object per line and have a fixed gzip
 mtime. For example, `gzip -dc p2.jsonl.gz` displays the stored cells. No weight
@@ -38,5 +38,5 @@ from the original log streams. Those remain imported audit evidence.
 The source extractor requires an explicit closed-workspace path and a new
 output directory. It never loads a model or launches a device. The thermal-start
 classifier in `scripts/g2/thermal.py` is copied from the recorded workspace
-`g2_thermal.py`; its origin hash is in `provenance.json`. The portable service
+`g2_thermal.py`, listed in `provenance.json`. The portable service
 accounting and plotting modules are separate implementations over selected rows.

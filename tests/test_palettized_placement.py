@@ -1,5 +1,4 @@
 """The palettized-placement verifier fails by name on changed recorded logs."""
-import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -26,10 +25,6 @@ class PalettizedPlacement(unittest.TestCase):
         data = json.loads(path.read_text())
         change(data['pair'])
         path.write_text(json.dumps(data))
-        manifest = self.copy / 'provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products']['observations.json'] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def test_recorded_pair(self):
         rows = verify.placement()

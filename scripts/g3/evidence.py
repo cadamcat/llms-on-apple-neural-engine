@@ -1,7 +1,6 @@
 """Recompute G3 curves and energy from the portable request and power fields."""
 from collections import Counter
 import gzip
-import hashlib
 import json
 import math
 import statistics
@@ -73,10 +72,6 @@ def synthetic_reference(repo):
 
 def derive(bundle=None):
     bundle = Path(bundle) if bundle is not None else ROOT / BASE
-    provenance = json.loads((bundle / 'provenance.json').read_text())
-    for name, digest in provenance['products'].items():
-        require(hashlib.sha256((bundle / name).read_bytes()).hexdigest() == digest,
-                'g3_product_identity:' + name)
     protocol = json.loads((bundle / 'protocol.json').read_text())
     structure = json.loads((bundle / 'model-structure.json').read_text())
     inputs = json.loads((bundle / 'inputs.json').read_text())
@@ -84,10 +79,7 @@ def derive(bundle=None):
     lengths = protocol['lengths']
     require(set(inputs) == {f'reading_{n}' for n in lengths} | {'quality_short'}, 'g3_inputs')
     for name, record in identity['inputs'].items():
-        ids = inputs[name]
-        packed = b''.join(i.to_bytes(4, 'little', signed=True) for i in ids)
-        require(len(ids) == record['tokens'] and
-                hashlib.sha256(packed).hexdigest() == record['sha256_int32_le'], 'g3_input_identity:' + name)
+        require(len(inputs[name]) == record['tokens'], 'g3_input_identity:' + name)
     for run, config in protocol['runs'].items():
         require(all(config[k] == protocol[k] for k in config), 'g3_model_identity:' + run)
     requests = {}

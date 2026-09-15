@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "historical_import": true,
-  "scope": "Later G1-TILE native Swift four-stage first-layer MLP with a Python controller and fixed receive buffers. C is W4A16; G is MLX W4A16. Positions are component workload, not full-model tokens.",
+  "scope": "Later native Swift four-stage first-layer MLP with a Python controller and fixed receive buffers. C is W4A16; G is MLX W4A16. Positions are component workload, not full-model tokens.",
   "relationship_to_prefill": "A separate later configuration and process set. Does not complete the older 3-of-9 Python-era protocol or replace its numbers.",
   "toolchain": {
     "xcode": "Xcode 27.0\nBuild version 27A266a",
@@ -9,12 +9,6 @@
     "system": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A428"
   },
   "sdk": "macOS 27.0",
-  "host_identity": {
-    "binary_sha256": "afe367daf02d2b12910727ea949cd7e69bdfad77f038066ab267e95f12ce54b7",
-    "worker_sha256": "f6f805abd519395b6305065dd9ed7596977eaa16c092eab1a38489dfd31e1310",
-    "wire_sha256": "d7a3cdab57fd8e1e1fd19f6e097b25b91ed98e0e092cff5ed610c1b2d2d651ee",
-    "GPU_source_sha256": "40e07b5de436a022cab82e8b0cdc98483712b6341247cbecdd485121f855d11d"
-  },
   "timing_arms": {
     "C-64": {
       "independent_processes": 1,
@@ -2683,16 +2677,16 @@
   "formal_three_process_acceptance": false,
   "long_term_residency_proven": false,
   "power_thermal_coexistence_measured": false,
-  "sources": {
-    "results/g1-tile-20260910/review/verification.json": "ab9fa3d19fdba78f9111b445f69dd0fd677fad75db55cfdd8361a194eec3d39d",
-    "results/g1-tile-20260910/BENCH-PROTOCOL.json": "0d9d8d0dbd6ae8c14d8f1b283dc19acca47df400c8c99f9b37c23f8281171b6d",
-    "results/g1-tile-20260910/prepared.json": "cd9e42ea841d6b69810728b6d6319e6dec782a714d36ed2108275da2742ea67b",
-    "results/g1-tile-20260910/resource-closure.json": "346af042864a9831f5482d5d22ec37560832a6cc5624da90ad13e6f4de9f3a3d",
-    "results/g1-tile-20260910/throughput/C-64/calls.json": "7fbff0ed18757f213702df7e01b38a5e78f90a60942695376887469fe6818c18",
-    "results/g1-tile-20260910/throughput/C-256/calls.json": "d4f52a042217ac145e1df903b32c667271e219ae6d9ffa7a56731d877318380e",
-    "results/g1-tile-20260910/throughput/G-0/calls.json": "172cd4f60d1dd22dae524460ee6603ace4510fb0f8df75606cd37d2f88e26646",
-    "results/g1-tile-20260910/memory/C-64/verification.json": "246d62db7fdd7307c192ad93ca149fa7acb795adb21f06a9cc316ec308acbbf0",
-    "results/g1-tile-20260910/memory/C-256/verification.json": "4abf32f3b8c86452e732f109d4710f43b4f97b954351f068a363d75505bee959",
-    "results/g1-tile-20260910/memory/A-256/verification.json": "94d4f95bd7ef8f2944a8ef6dca1beacc3a5425740aa1c58fb2856aa335dfe997"
-  }
+  "sources": [
+    "results/g1-tile-20260910/BENCH-PROTOCOL.json",
+    "results/g1-tile-20260910/memory/A-256/verification.json",
+    "results/g1-tile-20260910/memory/C-256/verification.json",
+    "results/g1-tile-20260910/memory/C-64/verification.json",
+    "results/g1-tile-20260910/prepared.json",
+    "results/g1-tile-20260910/resource-closure.json",
+    "results/g1-tile-20260910/review/verification.json",
+    "results/g1-tile-20260910/throughput/C-256/calls.json",
+    "results/g1-tile-20260910/throughput/C-64/calls.json",
+    "results/g1-tile-20260910/throughput/G-0/calls.json"
+  ]
 }

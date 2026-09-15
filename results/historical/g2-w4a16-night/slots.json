@@ -68,8 +68,6 @@
       }
     },
     "batch_end_ns": 68010658814708,
-    "completed_input_identity": null,
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 67710653809625,
     "window_start_ns": 67740653809625,
     "window_end_ns": 67770653809625,
@@ -213,8 +211,6 @@
       }
     },
     "batch_end_ns": 68370791714000,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 68070653809625,
     "window_start_ns": 68100653809625,
     "window_end_ns": 68130653809625,
@@ -337,8 +333,6 @@
       }
     },
     "batch_end_ns": 68730688153250,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 68430653809625,
     "window_start_ns": 68460653809625,
     "window_end_ns": 68490653809625,
@@ -417,8 +411,6 @@
       }
     },
     "batch_end_ns": 69210655063291,
-    "completed_input_identity": null,
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 68910653809625,
     "window_start_ns": 68940653809625,
     "window_end_ns": 68970653809625,
@@ -562,8 +554,6 @@
       }
     },
     "batch_end_ns": 69570785706250,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 69270653809625,
     "window_start_ns": 69300653809625,
     "window_end_ns": 69330653809625,
@@ -686,8 +676,6 @@
       }
     },
     "batch_end_ns": 69930690065541,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 69630653809625,
     "window_start_ns": 69660653809625,
     "window_end_ns": 69690653809625,
@@ -766,8 +754,6 @@
       }
     },
     "batch_end_ns": 70410655120000,
-    "completed_input_identity": null,
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 70110653809625,
     "window_start_ns": 70140653809625,
     "window_end_ns": 70170653809625,
@@ -911,8 +897,6 @@
       }
     },
     "batch_end_ns": 70770782890250,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 70470653809625,
     "window_start_ns": 70500653809625,
     "window_end_ns": 70530653809625,
@@ -1035,8 +1019,6 @@
       }
     },
     "batch_end_ns": 71130676759583,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 70830653809625,
     "window_start_ns": 70860653809625,
     "window_end_ns": 70890653809625,
@@ -1159,8 +1141,6 @@
       }
     },
     "batch_end_ns": 71610677141416,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 71310653809625,
     "window_start_ns": 71340653809625,
     "window_end_ns": 71370653809625,
@@ -1304,8 +1284,6 @@
       }
     },
     "batch_end_ns": 71970784918000,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 71670653809625,
     "window_start_ns": 71700653809625,
     "window_end_ns": 71730653809625,
@@ -1384,8 +1362,6 @@
       }
     },
     "batch_end_ns": 72330654900083,
-    "completed_input_identity": null,
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 72030653809625,
     "window_start_ns": 72060653809625,
     "window_end_ns": 72090653809625,
@@ -1508,8 +1484,6 @@
       }
     },
     "batch_end_ns": 72810693579166,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 72510653809625,
     "window_start_ns": 72540653809625,
     "window_end_ns": 72570653809625,
@@ -1653,8 +1627,6 @@
       }
     },
     "batch_end_ns": 73170785397708,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 72870653809625,
     "window_start_ns": 72900653809625,
     "window_end_ns": 72930653809625,
@@ -1733,8 +1705,6 @@
       }
     },
     "batch_end_ns": 73530653809625,
-    "completed_input_identity": null,
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 73230653809625,
     "window_start_ns": 73260653809625,
     "window_end_ns": 73290653809625,
@@ -1857,8 +1827,6 @@
       }
     },
     "batch_end_ns": 74010695504166,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 73710653809625,
     "window_start_ns": 73740653809625,
     "window_end_ns": 73770653809625,
@@ -2002,8 +1970,6 @@
       }
     },
     "batch_end_ns": 74370792040333,
-    "completed_input_identity": "078b2928a54a5abc7cf9356eba1ace7a62818c38aa3f7d7f193435cd943c0f33",
-    "inference_arrival_identity": "565f99c79722fc767247dfe4a106ea6fb9cc8d8531d427268f6fd3b4e52c245b",
     "scheduled_start_ns": 74070653809625,
     "window_start_ns": 74100653809625,
     "window_end_ns": 74130653809625,
@@ -2082,8 +2048,6 @@
       }
     },
     "batch_end_ns": 74730653809625,
-    "completed_input_identity": null,
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 74430653809625,
     "window_start_ns": 74460653809625,
     "window_end_ns": 74490653809625,
@@ -2183,8 +2147,6 @@
       }
     },
     "batch_end_ns": 78090653809625,
-    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
-    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
     "scheduled_start_ns": 77610653809625,
     "window_start_ns": 77700653809625,
     "window_end_ns": 77730653809625,
@@ -2263,8 +2225,6 @@
       }
     },
     "batch_end_ns": 78690653809625,
-    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
-    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
     "scheduled_start_ns": 78210653809625,
     "window_start_ns": 78300653809625,
     "window_end_ns": 78330653809625,
@@ -2364,8 +2324,6 @@
       }
     },
     "batch_end_ns": 79290653809625,
-    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
-    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
     "scheduled_start_ns": 78810653809625,
     "window_start_ns": 78900653809625,
     "window_end_ns": 78930653809625,
@@ -2444,8 +2402,6 @@
       }
     },
     "batch_end_ns": 79890653809625,
-    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
-    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
     "scheduled_start_ns": 79410653809625,
     "window_start_ns": 79500653809625,
     "window_end_ns": 79530653809625,
@@ -2545,8 +2501,6 @@
       }
     },
     "batch_end_ns": 80490653809625,
-    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
-    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
     "scheduled_start_ns": 80010653809625,
     "window_start_ns": 80100653809625,
     "window_end_ns": 80130653809625,
@@ -2625,8 +2579,6 @@
       }
     },
     "batch_end_ns": 81090653809625,
-    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
-    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
     "scheduled_start_ns": 80610653809625,
     "window_start_ns": 80700653809625,
     "window_end_ns": 80730653809625,
@@ -2705,8 +2657,6 @@
       }
     },
     "batch_end_ns": 81690653809625,
-    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
-    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
     "scheduled_start_ns": 81210653809625,
     "window_start_ns": 81300653809625,
     "window_end_ns": 81330653809625,
@@ -2806,8 +2756,6 @@
       }
     },
     "batch_end_ns": 82290653809625,
-    "completed_input_identity": "9d011424b07d79ea3ceb79f57496314f851bfab76b60d2a9d1f82ec257e3bd5d",
-    "inference_arrival_identity": "9c906415a9fd98f55a52bd504760a24c5943dea78bd6bf2ae0d75aa95cc3ab3a",
     "scheduled_start_ns": 81810653809625,
     "window_start_ns": 81900653809625,
     "window_end_ns": 81930653809625,
@@ -2886,8 +2834,6 @@
       }
     },
     "batch_end_ns": 82890653809625,
-    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
-    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
     "scheduled_start_ns": 82410653809625,
     "window_start_ns": 82500653809625,
     "window_end_ns": 82530653809625,
@@ -2987,8 +2933,6 @@
       }
     },
     "batch_end_ns": 83490653809625,
-    "completed_input_identity": "0e49cb922678c38f10895e2c4475a07bf07df6ad7d7f79024ad744ef8e3453c3",
-    "inference_arrival_identity": "5e1b1e3c12583f2d66d5af8130a75b760e917a0d4e405f190b3f6628cb9514b6",
     "scheduled_start_ns": 83010653809625,
     "window_start_ns": 83100653809625,
     "window_end_ns": 83130653809625,
@@ -3067,8 +3011,6 @@
       }
     },
     "batch_end_ns": 84090653809625,
-    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
-    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
     "scheduled_start_ns": 83610653809625,
     "window_start_ns": 83700653809625,
     "window_end_ns": 83730653809625,
@@ -3168,8 +3110,6 @@
       }
     },
     "batch_end_ns": 84690653809625,
-    "completed_input_identity": "d83f8669d24e093d943f7dc5a18a9d0b78f92a8a64c9fcc024a91f3fe216bf01",
-    "inference_arrival_identity": "04fa57d14af2598f3d9f3d9e786d6b65da41db0073bba6a0a5e537f91c2a00de",
     "scheduled_start_ns": 84210653809625,
     "window_start_ns": 84300653809625,
     "window_end_ns": 84330653809625,
@@ -3322,8 +3262,6 @@
       }
     },
     "batch_end_ns": 85890712781583,
-    "completed_input_identity": "fd7c86d94c94dba09f0851f2b6f164c219f96ecfda32d3ab79265c03909fae5b",
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 84810653809625,
     "window_start_ns": 84900653809625,
     "window_end_ns": 84930653809625,
@@ -3455,8 +3393,6 @@
       }
     },
     "batch_end_ns": 87090654303125,
-    "completed_input_identity": "078deac48afa915d3dc6bba2b1f26504a1a140cd108572c0971061ca465397fc",
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 86010653809625,
     "window_start_ns": 86100653809625,
     "window_end_ns": 86130653809625,
@@ -3588,8 +3524,6 @@
       }
     },
     "batch_end_ns": 88290673655666,
-    "completed_input_identity": "4060de35512d0452c681bf06351e325552690d4f432161dcaa8b75d82a4f7640",
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 87210653809625,
     "window_start_ns": 87300653809625,
     "window_end_ns": 87330653809625,
@@ -3742,8 +3676,6 @@
       }
     },
     "batch_end_ns": 89490702344791,
-    "completed_input_identity": "5dc350cf43b5d4bab099df80fbee39a0e0792af761c09faa3fd01a6944abd240",
-    "inference_arrival_identity": null,
     "scheduled_start_ns": 88410653809625,
     "window_start_ns": 88500653809625,
     "window_end_ns": 88530653809625,

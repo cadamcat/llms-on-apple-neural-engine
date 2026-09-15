@@ -2,7 +2,7 @@
 
 English | [中文](zh/03-ANE算术兼容性.md)
 
-Article draft · 2026-09-10 · [Series index](README.md)
+2026-09-10 · [Series index](README.md)
 
 **Numerical validation on ANE starts with an explicit reference.** Our experiments encountered two distinct kinds of discrepancy: one explained by a specific rounding rule, and another present even on exact-grid inputs with no rounding ambiguity. Calling both “A8 precision loss” obscures what needs fixing and how to test it.
 
@@ -86,7 +86,7 @@ The fresh suite runs original, zero, negative and repeat controls for each expre
 
 The results narrow the discrepancy to particular expressions and execution paths. Q8 midpoint rounding cannot explain it. Sensitivity to branch construction order motivates investigating compiler transformations and scale handling, but without an internal trace we cannot identify a specific implementation that reused the wrong parameter.
 
-A later probe gives the error a value-level rule. The `unequal` and `reverse_order` outputs are all-equal arrays whose recorded hashes identify them as 4 and 64. Each equals the two codes, both 4, dequantized with a single branch's scale: 0.5 when `g` is built first, 2 when `u` is. A second model-free probe computes `Q_out(a × Q_1/16(b))` on an all-ones input and returns 1, 2, 4 and 8 as the output scale rises from 1/16 to 1/2, which is `b`'s code dequantized with the output scale. Clamping the product to the output QDQ's range restores 1 in every arm. One substitution, a branch dequantized with another QDQ's scale, predicts every wrong value in both probes. It is still inferred from outputs. [The finding](../findings/coreai-qdq-multiply-scale/) adds a released QAT checkpoint that triggers it, and the limits of both rewrites.
+A later probe gives the error a value-level rule. The `unequal` and `reverse_order` outputs are all-equal arrays whose recorded hashes identify them as 4 and 64. Each equals the two codes, both 4, dequantized with a single branch's scale: 0.5 when `g` is built first, 2 when `u` is. A second model-free probe computes `Q_out(a × Q_1/16(b))` on an all-ones input and returns 1, 2, 4 and 8 as the output scale rises from 1/16 to 1/2, which is `b`'s code dequantized with the output scale. Clamping the product to the output QDQ's range restores 1 in every arm. One substitution, a branch dequantized with another QDQ's scale, predicts every wrong value in both probes. It is still inferred from outputs. [The finding](../findings/coreai-qdq-multiply-scale/) adds a released QAT checkpoint that triggers it, the limits of both rewrites, and a Core ML run of the second probe that returns the same values on the Neural Engine and correct values on the CPU (added 2026-09-15).
 
 ANE requests establish participation in these calls, not which physical unit produced the error. Historical isolated 0.4.1/0.4.2 comparisons are in the [version matrix](../results/historical/quantization-expected-results.json) and [provenance](../results/historical/quantization-provenance.json). The fresh suite tested only 0.4.1.
 

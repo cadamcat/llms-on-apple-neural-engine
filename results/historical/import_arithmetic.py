@@ -12,7 +12,6 @@ nothing.
 """
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 
@@ -26,17 +25,13 @@ MODEL_FIELDS = ('real_values', 'pre_numeric_mismatches', 'q8_numeric_mismatches'
 LADDER_FIELDS = ('pred_left', 'pred_right', 'pred_parent', 'parent', 'left', 'right', 'add')
 
 
-def sha(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
 def load(root, rel):
     return json.loads((root / rel).read_text())
 
 
 def sources(root, *rels):
-    """Record every file this import read, by workspace-relative path and hash."""
-    return {rel: sha(root / rel) for rel in rels}
+    """Record every file this import read, by workspace-relative path."""
+    return sorted(rels)
 
 
 def cross_model(root):

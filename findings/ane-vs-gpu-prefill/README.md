@@ -57,8 +57,8 @@ reproducible from this repository alone.
 
 **It is not a statement about what the hardware can do.** These are historical
 Python, 64-position-chunked measurements. The SDK limitation recorded then was
-subsequently overcome. G1-HOST introduced a native Swift host, PIO refined the
-persistent pipeline, and G1-TILE measured C64/C256 with bounded memory checks.
+subsequently overcome. A native Swift host replaced the Python path, a persistent
+pipeline followed, and a tiled-asset round measured C64/C256 with bounded memory checks.
 The [follow-up record](../../results/historical/native-mlp-followup.json) keeps that progression:
 C256 at 4096 positions takes **582.19 ms**, against its own round's GPU
 **152.25 ms**. Both are complete external-interface timings; the rounds are not
@@ -100,7 +100,7 @@ measured cost.
 ## Evidence
 
 - [ane-vs-gpu-prefill.json](../../results/historical/ane-vs-gpu-prefill.json) —
-  percentiles, ratios, footprints, gates and source hashes
+  percentiles, ratios, footprints, gates and source paths
 - [verify_prefill.py](../../results/historical/tests/verify_prefill.py)
 - Numerical controls: all three weight tensors, 176,947,200 values, decoded on
   CPU and cross-checked against the MLX dequantization with zero numeric

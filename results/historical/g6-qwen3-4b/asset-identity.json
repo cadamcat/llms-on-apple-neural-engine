@@ -6,7 +6,6 @@
       "tier": {
         "capacity": 768,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
-        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
         "kept_graphs_unchanged_before_serialization": [
           "extend_768_4",
           "extend_768_64",
@@ -260,9 +259,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "9dd59a9c193068aa91bcfb04e85a02a09ea9548bac7159dd37899fc16810e408",
-      "main_hash": "326a82845644c36443b328440aee2ac07368cc9e6991c8e6b762b66730727c1f",
-      "main_hash_file_sha256": "9b14ddac9a4cc8e4a0748e12808991107b5f533a06e41a274e55740dd8770f6f",
       "main_mlirb_bytes": 8065519675
     },
     {
@@ -271,7 +267,6 @@
       "tier": {
         "capacity": 1280,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
-        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
         "kept_graphs_unchanged_before_serialization": [
           "extend_1280_4",
           "extend_1280_64",
@@ -525,9 +520,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "8c85f520046c9c579055f2292e6c3dbe75f599c5cbafea4357f33af745b39ac6",
-      "main_hash": "47192ab6436f11d4c17c7a4f9d10feacb74c692aea6738e40d64bd39c9fc3e41",
-      "main_hash_file_sha256": "570f145a377f012bc66a6b3f62759e9f258ed987de5d9bdce5584d12f1648fd3",
       "main_mlirb_bytes": 8065500559
     },
     {
@@ -536,7 +528,6 @@
       "tier": {
         "capacity": 2304,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
-        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
         "kept_graphs_unchanged_before_serialization": [
           "extend_2304_4",
           "extend_2304_64",
@@ -790,9 +781,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "ef725c89d842841f353bcf83663d384944dc996f69faee545dcbd1643ba04618",
-      "main_hash": "8880156c3ffa359bec16ca5530bd83d718b3a1402b88756c55e2cfa71b8e6add",
-      "main_hash_file_sha256": "c7feab3e0aeaf1943daec6ee119481bb91abfad603bd002038cf51c308cf4fc3",
       "main_mlirb_bytes": 8065517663
     },
     {
@@ -801,7 +789,6 @@
       "tier": {
         "capacity": 4352,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
-        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
         "kept_graphs_unchanged_before_serialization": [
           "extend_4352_4",
           "extend_4352_64",
@@ -1055,9 +1042,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "bad0b99d120b683ff873f1c6dee28f2a5c4e0dc110156a40adbcec49644e295a",
-      "main_hash": "7483bcfc2f7c22e038ead3acb6d1a225a0c9bcc9ff3806a11f039b1c543b99e4",
-      "main_hash_file_sha256": "a173404f7afd07d07f5a9fac985de40d5bbe1a2f9b4ed5d1fd8afcba8f6c0371",
       "main_mlirb_bytes": 8065520063
     },
     {
@@ -1066,7 +1050,6 @@
       "tier": {
         "capacity": 8448,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
-        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
         "kept_graphs_unchanged_before_serialization": [
           "extend_8448_4",
           "extend_8448_64",
@@ -1320,9 +1303,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "8ac39415b3ef74262cad407710e0da66f14725b0cf06f70e352f1dcc2903270b",
-      "main_hash": "d2f3a1d86c58d94e5748991766f4b76c302d2c994f07ca042519c8534e51c0e7",
-      "main_hash_file_sha256": "0dd051af6f5034b4f4865b01fed1d8e280043dd33f75048079ba0dcd1be2d64a",
       "main_mlirb_bytes": 8065520287
     },
     {
@@ -1331,7 +1311,6 @@
       "tier": {
         "capacity": 16640,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-fp16-ane-g6-q4-canonical/qwen3-4b-fp16-ane-g6-q4-canonical.aimodel",
-        "source_main_hash": "4a8b4e1b278030b83b852e658c1067aae0f4862cd9d91f6fadccf5dd8d2ac586",
         "kept_graphs_unchanged_before_serialization": [
           "extend_16640_4",
           "extend_16640_64",
@@ -1585,9 +1564,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "97f4decbd5152be2336febe6fe0e5964ba3df30778029b7245ba50c4dcfd4a31",
-      "main_hash": "47940f884903f017bec62fb553bae6c972171a2a7fb01a139a3d2d381c3901bc",
-      "main_hash_file_sha256": "98048bddf2858be6eef147b5c16290b85b77218b5da44aa6b938d76d223e175c",
       "main_mlirb_bytes": 8065518595
     },
     {
@@ -1597,7 +1573,6 @@
         "capacity": 1280,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-w4g32-ane-g6-canonical/qwen3-4b-w4g32-ane-g6-canonical.aimodel",
         "family": "w4",
-        "source_main_hash": "8cf3948340798f9ba60bc856fa99696f84789872602937fe82d1ca56dd4b1b5f",
         "kept_graphs_unchanged_before_serialization": [
           "extend_1280_4",
           "extend_1280_64",
@@ -1835,9 +1810,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "e7635d207b7f8bf412f07b6eefd705c54b6ffaa902059aa7a43bce6ce9a1dc67",
-      "main_hash": "c4f9c22b1c47693c626a51124aadc772b8661e16f746dd15ed05eabc91c07700",
-      "main_hash_file_sha256": "9cbaffd4c8b736bcc70a598d97a617a4986b5e8e3dc4152ceb31415d72911fe0",
       "main_mlirb_bytes": 2616739131
     },
     {
@@ -1847,7 +1819,6 @@
         "capacity": 4352,
         "source_asset": "workplans/g6-night-20260913/assets/qwen3-4b-w4g32-ane-g6-canonical/qwen3-4b-w4g32-ane-g6-canonical.aimodel",
         "family": "w4",
-        "source_main_hash": "8cf3948340798f9ba60bc856fa99696f84789872602937fe82d1ca56dd4b1b5f",
         "kept_graphs_unchanged_before_serialization": [
           "extend_4352_4",
           "extend_4352_64",
@@ -2085,9 +2056,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "d5cdc0e48b144f64d55b6bd5e595dadd0be31a9e4fe0e9ec6252e4cd3d853359",
-      "main_hash": "8330b8c297316a0c66bb6af61c873beefbe4f1d5e9e778eec3e92c65b1a59e3d",
-      "main_hash_file_sha256": "a1982f20210120c8d3aa8ad06c76161142f7cc88ebe79e85e7923bcd95fa14f9",
       "main_mlirb_bytes": 2616746971
     }
   ],
@@ -7900,5 +7868,5 @@
       }
     }
   },
-  "scope": "Asset identity by recorded hashes, graph inventories and W4 code shapes; model payloads, codes and logs are not bundled. Placement is counted from unified-log rows filtered to each admission host PID after the host reported ready."
+  "scope": "Asset identity by graph inventories and W4 code shapes, with launch-frozen files checked at import; model payloads, codes and logs are not bundled. Placement is counted from unified-log rows filtered to each admission host PID after the host reported ready."
 }

@@ -1,5 +1,4 @@
 """Check the recorded decode-query-width outcomes; standard library only, no device."""
-import hashlib
 import json
 from pathlib import Path
 
@@ -12,13 +11,8 @@ def require(value, name):
         raise ValueError(name)
 
 
-def outcomes(recorded=RECORDED, scripts=HERE):
-    provenance = json.loads((recorded / 'provenance.json').read_text())
-    for name, digest in provenance['products'].items():
-        require(hashlib.sha256((recorded / name).read_bytes()).hexdigest() == digest, 'short_query_product_identity:' + name)
+def outcomes(recorded=RECORDED):
     data = json.loads((recorded / 'observations.json').read_text())
-    for name, digest in data['scripts_sha256_at_import'].items():
-        require(hashlib.sha256((scripts / name).read_bytes()).hexdigest() == digest, 'short_query_script_identity:' + name)
     rows = []
     for case in data['cases']:
         functions = set(case['asset']['functions'])

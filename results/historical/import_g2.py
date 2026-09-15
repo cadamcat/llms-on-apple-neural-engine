@@ -5,10 +5,11 @@ system process listings are copied. Every read source is identified in provenanc
 """
 import argparse
 import gzip
-import hashlib
 import json
 from pathlib import Path
+import re
 
+HASH_KEY = re.compile(r'(sha256|_hash$|^hash$|hashes$)')
 BASE = Path('results/g2-w4a16-night-20260910')
 ANALYSIS = BASE / 'analysis-20260911-r4'
 RUN = BASE / 'night-20260911-r4'
@@ -27,7 +28,7 @@ def extract(workspace, output):
         if path.is_absolute():
             path = path.relative_to(workspace)
         raw = (workspace / path).read_bytes()
-        sources[path.as_posix()] = {'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
+        sources[path.as_posix()] = len(raw)
         return raw
 
     def read(path):
@@ -49,6 +50,13 @@ def extract(workspace, output):
             if '/Users/' in text:
                 raise ValueError('Unexpected personal path in selected evidence')
             return text
+        return obj
+
+    def without_hashes(obj):
+        if isinstance(obj, dict):
+            return {k: without_hashes(v) for k, v in obj.items() if not HASH_KEY.search(k)}
+        if isinstance(obj, list):
+            return [without_hashes(v) for v in obj]
         return obj
 
     def dump(name, obj):
@@ -95,6 +103,10 @@ def extract(workspace, output):
         compressed(slot['events_file'], events())
     compressed('arrivals.jsonl.gz', ({'slot_id': name, 'stream': stream, 'offsets_ns': values}
         for name, slot in slots.items() for stream, values in slot.pop('offsets', {}).items()))
+    for slot in slots.values():
+        # The verifier compares the completed inputs and arrival offsets themselves, not their digests.
+        slot.pop('completed_input_identity', None)
+        slot.pop('inference_arrival_identity', None)
     dump('slots.json', slots)
     telemetry = read(ANALYSIS / 'device-audit-v2/telemetry.json')
     sensor_fields = ('sample_monotonic_ns', 'macmon_cpu_sensor_mean_c',
@@ -122,19 +134,18 @@ def extract(workspace, output):
     summary['background'] = {k: v for k, v in summary['background'].items() if k != 'top5_appearance_counts'}
     summary['environment_followup'] = {k: v for k, v in summary['environment_followup'].items()
                                        if k != 'owner_report'} | {'post_run_report': display}
-    dump('expected-summary.json', summary)
-    dump('environment.json', {k: v for k, v in env.items() if k not in ('snapshots', 'owner_report')}
+    dump('expected-summary.json', without_hashes({k: v for k, v in summary.items() if k != 'status'}))
+    dump('environment.json', without_hashes({k: v for k, v in env.items() if k not in ('snapshots', 'owner_report')})
          | {'post_run_report': display})
     power = read(ANALYSIS / 'power-audit-v1/power-audit.json')
-    dump('power-status.json', {k: power[k] for k in ('status', 'scope', 'capture', 'source_identity',
-         'alignment', 'epoch_monotonic_offset_bounds_seconds', 'matched_energy_pairs')})
+    dump('power-status.json', without_hashes({k: power[k] for k in ('status', 'scope', 'capture', 'source_identity',
+         'alignment', 'epoch_monotonic_offset_bounds_seconds', 'matched_energy_pairs')}))
     prepared = read(BASE / 'preflight/implementation-20260911/bundle/prepared.json')
     packages = read(BASE / 'preflight/relocation/post-repair-verification.json')
     assert packages['distribution_metadata_unchanged_since_snapshot'] is True
     xcode = read(BASE / 'preflight/swift-recheck/recheck.json')['toolchain_now']
     system = read(BASE / 'night-20260911-r3/environment.json')
     client_raw = source('scripts/g2_client.py')
-    assert hashlib.sha256(client_raw).hexdigest() == manifest['source_hashes'][str(workspace / 'scripts/g2_client.py')]
     assert "performance/.venv/bin/python'), '-B', str(ROOT/'scripts/g2_gpu.py')" in client_raw.decode()
     source(ANALYSIS / 'REPORT.md')
     source('scripts/g2_thermal.py')
@@ -149,7 +160,7 @@ def extract(workspace, output):
             'python_environments': [{'venv': e['venv'], 'python': '.'.join(map(str, e['version'])),
                                      'packages': {k: v for k, v in e['packages'].items() if v is not None}}
                                     for e in packages['environments']],
-            'gpu_host_environment': 'performance/.venv: scripts/g2_client.py (frozen source hash) launches scripts/g2_gpu.py with it',
+            'gpu_host_environment': 'performance/.venv: scripts/g2_client.py (frozen source) launches scripts/g2_gpu.py with it',
             'recorded_by': 'Same-day preflight package verification and Xcode recheck; OS build from the r3 attempt. The r4 run itself recorded no versions.',
             'post_run_report': {'date': '2026-09-11',
                                 'source': 'Statement recorded after G2 completion; not contemporaneous telemetry.',
@@ -158,8 +169,7 @@ def extract(workspace, output):
         'unit': 'MLP positions/s, not tokens/s or complete-model context',
         'origin_monotonic_ns': run['phases'][0]['start_ns'], 'phases': run['phases'],
         'groups': manifest['groups'], 'criteria': criteria,
-        'source_hashes': manifest['source_hashes'], 'binary_hashes': manifest['binary_hashes'],
-        'asset_and_reference_identity': prepared,
+        'asset_and_reference_identity': without_hashes(prepared),
         'imported_audit': {'checks': len(audit['checks']), 'passed': True,
                            'scope': 'Original closed-workspace audit; not rerun by the portable verifier.'},
         'closure': {'passed': True, 'lifecycle': closure['lifecycle']},
@@ -169,16 +179,14 @@ def extract(workspace, output):
         'prior_attempts': 'r4 reuses the original completed 20-minute baseline only; earlier device results are not pooled.',
         'thermal_platform': 'Last five minutes: both temperature OLS slopes <=0.2 C/min in magnitude, completion range/mean <=5%, no adjacent thermal upgrade; coverage checked.',
     })
-    products = {p.name: {'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
-                for p in sorted(output.iterdir())}
+    products = sorted(output.iterdir())
     dump('provenance.json', {'historical_import': True, 'schema_version': 1,
-         'sources': sources, 'products': products,
-         'extractor_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+         'sources': sorted(sources),
          'selection': 'All r4 P2 control/warmup/measured records; every P1/P3/SAT arrival or completion with selected scalar fields; all audited r4 temperature, fan, thermal-state and resource samples; P0 natural checkpoints. No weights, activations, system process lists or original power byte stream.',
          'transformations': 'Whitespace compacted in deterministic gzip JSONL; absolute workspace prefixes removed from metadata paths; post-run statements reduced to their display and software-change content; background process rankings omitted. Numeric times and values unchanged; no averaging, downsampling, interpolation or outlier removal.',
-         'limits': 'Hashes identify unavailable original files; they do not allow a reader without those files to rerun the original 87-check device audit.'})
+         'limits': 'The original files are not bundled; a reader without them cannot rerun the original 87-check device audit.'})
     print(json.dumps({'output': str(output), 'files': len(products) + 1,
-                      'bytes': sum(v['bytes'] for v in products.values()), 'sources': len(sources)}))
+                      'bytes': sum(p.stat().st_size for p in products), 'sources': len(sources)}))
 
 
 if __name__ == '__main__':

@@ -1,7 +1,6 @@
 {
   "historical_import": true,
   "source": "results/g1-v/repro-package/expected-results.json",
-  "source_sha256": "d2aa8c05e14b9ddc0ea3c84463cc4e5a40ae26807f28264fc17b3c3b05d7be61",
   "copied_as": "quantization-expected-results.json",
   "converter_versions": ["coreai-torch 0.4.1", "coreai-torch 0.4.2"],
   "scope": "Model-free quantization compatibility matrix; no model weights or compiled assets",

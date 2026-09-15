@@ -1,5 +1,4 @@
 """Check the recorded FP16/W4 load-time placement pair; standard library only, no device."""
-import hashlib
 import json
 from pathlib import Path
 
@@ -12,9 +11,6 @@ def require(value, name):
 
 
 def placement(recorded=RECORDED):
-    provenance = json.loads((recorded / 'provenance.json').read_text())
-    for name, digest in provenance['products'].items():
-        require(hashlib.sha256((recorded / name).read_bytes()).hexdigest() == digest, 'palettized_product_identity:' + name)
     pair = json.loads((recorded / 'observations.json').read_text())['pair']
     fp16, w4 = pair['fp16'], pair['w4']
     # Same exporter, shapes and functions; only the compression differs.

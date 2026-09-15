@@ -2,7 +2,7 @@
 
 [English](../01-measuring-ane-performance.md) | 中文
 
-研究文章初稿 · 2026-09-10 · [系列索引](README.md)
+2026-09-10 · [系列索引](README.md)
 
 ## 摘要
 

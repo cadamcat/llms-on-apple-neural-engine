@@ -15,20 +15,16 @@
   },
   "source_identity": {
     "capture.json": {
-      "bytes": 329,
-      "sha256": "d6fcb3cfe172ac48212dadea99cc26a2b56f599752bfb4c42b16a757d86c72ca"
+      "bytes": 329
     },
     "power.plist": {
-      "bytes": 1073742184,
-      "sha256": "a220c8ba224cae9d6b09a9ad10c78793e8ce0c0b81376df17cee2150df5b9538"
+      "bytes": 1073742184
     },
     "records.jsonl": {
-      "bytes": 2791715,
-      "sha256": "124bd5c664b6bca85ad167ba18dd4e8bb006c22daab66268d8b0fae2ac20eb66"
+      "bytes": 2791715
     },
     "clock.jsonl": {
-      "bytes": 1333266,
-      "sha256": "bd3124cf074bc416330600b45f1b96ba63001b9da7ad646fca171426dd21c926"
+      "bytes": 1333266
     }
   },
   "alignment": {

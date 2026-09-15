@@ -1,0 +1,2416 @@
+{
+  "environment": {
+    "chip": "Apple M5 Pro",
+    "macOS": "27.0",
+    "build": "26A428",
+    "xcode": "27.0",
+    "coremltools": "9.0"
+  },
+  "graph": "y = Q_out(a \u00d7 Q_1/16(b)); a and b are the two halves of the input channels; signed INT8, zero point 0",
+  "input_scale": 0.0625,
+  "shape": [
+    1,
+    1024,
+    1,
+    1024
+  ],
+  "output_shape": [
+    1,
+    512,
+    1,
+    1024
+  ],
+  "inputs": {
+    "control": "all-ones FP16 [1,1024,1,1024]; a = first 512 channels, b = last 512",
+    "benchmark": "a = 1, b = 0.5",
+    "negative": "the control with every sign bit flipped",
+    "zero": "all zeros"
+  },
+  "phases": [
+    "original",
+    "zero",
+    "negative",
+    "repeat",
+    "benchmark",
+    "benchmark_repeat"
+  ],
+  "arms": {
+    "s16": {
+      "output_scale": 0.0625,
+      "product_clamp": false,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.0625
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    },
+    "s16_clip": {
+      "output_scale": 0.0625,
+      "product_clamp": true,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "clip": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.0625
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    },
+    "s8": {
+      "output_scale": 0.125,
+      "product_clamp": false,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.125
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    },
+    "s8_clip": {
+      "output_scale": 0.125,
+      "product_clamp": true,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "clip": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.125
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    },
+    "s4": {
+      "output_scale": 0.25,
+      "product_clamp": false,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.25
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    },
+    "s4_clip": {
+      "output_scale": 0.25,
+      "product_clamp": true,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "clip": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.25
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    },
+    "s2": {
+      "output_scale": 0.5,
+      "product_clamp": false,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.5
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    },
+    "s2_clip": {
+      "output_scale": 0.5,
+      "product_clamp": true,
+      "audit": {
+        "op_counts": {
+          "slice_by_index": 2,
+          "quantize": 2,
+          "dequantize": 2,
+          "mul": 1,
+          "clip": 1,
+          "identity": 1
+        },
+        "quantize_scales": [
+          0.0625,
+          0.5
+        ],
+        "dequantize_follows_quantize_with_same_scale": true,
+        "passed": true
+      }
+    }
+  },
+  "runs": [
+    {
+      "arm": "s16",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s16",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    },
+    {
+      "arm": "s16_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.clip:clip_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s16_clip",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    },
+    {
+      "arm": "s8",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s8",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    },
+    {
+      "arm": "s8_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.clip:clip_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s8_clip",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    },
+    {
+      "arm": "s4",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s4",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    },
+    {
+      "arm": "s4_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.clip:clip_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s4_clip",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    },
+    {
+      "arm": "s2",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s2",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    },
+    {
+      "arm": "s2_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLNeuralEngineComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLNeuralEngineComputeDevice",
+        "ios18.mul:mul_0": "MLNeuralEngineComputeDevice",
+        "ios18.clip:clip_0": "MLNeuralEngineComputeDevice",
+        "ios18.quantize:quantize_3": "MLNeuralEngineComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLNeuralEngineComputeDevice",
+        "identity:y": "MLNeuralEngineComputeDevice"
+      }
+    },
+    {
+      "arm": "s2_clip",
+      "compute_units": "cpuOnly",
+      "host_returncode": 0,
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ane_failure_rows": 0,
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      }
+    }
+  ],
+  "small_graph_placement": [
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s16",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s16",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s16_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s16_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s8",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s8",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s8_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s8_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s4",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s4",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s4_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s4_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s2",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s2",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s2_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "none",
+      "arm": "s2_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s16",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s16",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s16_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s16_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s8",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s8",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s8_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s8_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s4",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s4",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s4_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s4_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s2",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s2",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s2_clip",
+      "compute_units": "cpuAndNeuralEngine",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    },
+    {
+      "shape": [
+        1,
+        32,
+        1,
+        64
+      ],
+      "anchor": "identity 1\u00d71 convolution at the input",
+      "arm": "s2_clip",
+      "compute_units": "cpuOnly",
+      "ane_requests_per_control": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "preferred": {
+        "ios18.conv:anchor_in": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_0": "MLCPUComputeDevice",
+        "ios18.slice_by_index:slice_by_index_1": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_2": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_2": "MLCPUComputeDevice",
+        "ios18.mul:mul_0": "MLCPUComputeDevice",
+        "ios18.clip:clip_0": "MLCPUComputeDevice",
+        "ios18.quantize:quantize_3": "MLCPUComputeDevice",
+        "ios18.dequantize:dequantize_3": "MLCPUComputeDevice",
+        "identity:y": "MLCPUComputeDevice"
+      },
+      "observed": {
+        "original": [
+          1.0
+        ],
+        "zero": [
+          0.0
+        ],
+        "negative": [
+          1.0
+        ],
+        "repeat": [
+          1.0
+        ],
+        "benchmark": [
+          0.5
+        ],
+        "benchmark_repeat": [
+          0.5
+        ]
+      },
+      "reference": {
+        "original": 1.0,
+        "zero": 0.0,
+        "negative": 1.0,
+        "benchmark": 0.5
+      },
+      "matches_reference": true
+    }
+  ],
+  "placement_method": "Core ML compute plan preferred device per operation; successful direct ANE requests counted from the host-PID unified log inside each control call window."
+}

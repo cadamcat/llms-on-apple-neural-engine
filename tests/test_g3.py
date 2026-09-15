@@ -1,6 +1,5 @@
 """Exercise portable G3 accounting against corrupted disposable bundles."""
 import gzip
-import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -30,11 +29,6 @@ class G3Evidence(unittest.TestCase):
             path.write_bytes(gzip.compress(('\n'.join(json.dumps(r) for r in value)+'\n').encode(), mtime=0))
         else:
             path.write_text(json.dumps(value))
-        # Re-sign the container to exercise semantic accounting, beyond its hash check.
-        manifest = self.bundle / 'provenance.json'
-        record = json.loads(manifest.read_text())
-        record['products'][name] = hashlib.sha256(path.read_bytes()).hexdigest()
-        manifest.write_text(json.dumps(record))
 
     def test_complete_bundle_and_equal_work(self):
         data = derive(self.bundle)

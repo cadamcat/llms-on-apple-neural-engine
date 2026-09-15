@@ -1,0 +1,34 @@
+{
+  "idle-start": {
+    "window_ns": [
+      406967811256666,
+      407267816295333
+    ],
+    "recorded": {
+      "seconds": 300.005038667,
+      "mean_W": {
+        "cpu": 0.2233466477501095,
+        "gpu": 0.05253560199787739,
+        "ane": 0.0,
+        "components": 0.27588224974798675
+      },
+      "timing_coverage_passed": true
+    }
+  },
+  "idle-end": {
+    "window_ns": [
+      419381335793833,
+      419681345868083
+    ],
+    "recorded": {
+      "seconds": 300.01007425,
+      "mean_W": {
+        "cpu": 0.09022199158090426,
+        "gpu": 0.000703309715606992,
+        "ane": 0.0,
+        "components": 0.09092530129651126
+      },
+      "timing_coverage_passed": true
+    }
+  }
+}

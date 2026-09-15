@@ -9,7 +9,6 @@ device API or a plotting stack.
 
 from __future__ import annotations
 
-import hashlib
 import json
 import math
 import re
@@ -41,7 +40,7 @@ def _load(repo: Path, name: str):
         if not math.isclose(tops, run['source_equivalent_Tops'], rel_tol=1e-12):
             raise ValueError('Stored throughput conflicts with source_ops / p50')
         rows[(run['case_id'], process)] = (i, run)
-    return path.as_posix(), hashlib.sha256(raw).hexdigest(), rows
+    return path.as_posix(), rows
 
 
 def _point(source: str, entry, process: int) -> dict:
@@ -149,7 +148,6 @@ def rounding(c: Canvas, rows, source):
             'reference': name, 'field': f'/runs/{index}/{key}/comparisons/{ci}/relative_L2',
             'relative_L2': entry['relative_L2'], 'output_sha256': entry['output_sha256'],
             'output_sha256_field': f'/runs/{index}/{key}/comparisons/{ci}/output_sha256',
-            'reference_sha256': run[key]['reference_sha256'],
         })
     if len({x['output_sha256'] for x in comparisons}) != 1:
         raise ValueError('Reference residuals do not compare the same recorded output')
@@ -248,7 +246,7 @@ def generate(repo: Path, out: Path) -> list[dict]:
     out.mkdir(parents=True, exist_ok=True)
     metadata = []
 
-    source, digest, rows = _load(repo, 'throughput')
+    source, rows = _load(repo, 'throughput')
     title = 'FP16 against two quantized paths on a synthetic 128-layer chain'
     desc = ('Five configurations, each measured in three independent processes. Bars show the '
             'median process rate and labels give the full range across the three. Quantized '
@@ -263,11 +261,11 @@ def generate(repo: Path, out: Path) -> list[dict]:
     points, ratios = throughput(c, rows, source)
     (out / 'throughput-by-process.svg').write_text(c.finish(), encoding='utf-8')
     metadata.append({'filename': 'throughput-by-process.svg', 'title': title, 'description': desc,
-                     'source': source, 'source_sha256': digest,
+                     'source': source,
                      'formula': 'source_ops / (p50_ms * 1e9)',
                      'points': points, 'paired_ratios': ratios})
 
-    source, digest, rows = _load(repo, 'split')
+    source, rows = _load(repo, 'split')
     title = 'Splitting the same K512 weights into sixteen K32 convolutions'
     desc = ('Three paired rounds of a two-layer Core AI A8W4 graph. The wide path takes about '
             '0.43 to 0.45 milliseconds and the split path about 1.76 to 1.77, a ratio near four. '
@@ -279,10 +277,10 @@ def generate(repo: Path, out: Path) -> list[dict]:
     points, ratios = split(c, rows, source)
     (out / 'split-latency.svg').write_text(c.finish(), encoding='utf-8')
     metadata.append({'filename': 'split-latency.svg', 'title': title, 'description': desc,
-                     'source': source, 'source_sha256': digest,
+                     'source': source,
                      'points': points, 'paired_ratios': ratios})
 
-    source, digest, rows = _load(repo, 'throughput')
+    source, rows = _load(repo, 'throughput')
     title = 'One recorded output, two arithmetic references'
     desc = ('The same Core AI W8A8 output has a relative L2 of about 0.000109 against the '
             'reference selected before the run, which rounds Q8 midpoints away from zero, and '
@@ -295,7 +293,7 @@ def generate(repo: Path, out: Path) -> list[dict]:
     comparisons = rounding(c, rows, source)
     (out / 'rounding-reference.svg').write_text(c.finish(), encoding='utf-8')
     metadata.append({'filename': 'rounding-reference.svg', 'title': title, 'description': desc,
-                     'source': source, 'source_sha256': digest,
+                     'source': source,
                      'run': rows[('coreai-w8a8-128', 1)][1]['run'],
                      'case_id': 'coreai-w8a8-128', 'comparisons': comparisons})
 

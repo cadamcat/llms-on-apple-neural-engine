@@ -27,4 +27,4 @@ The last command fails in `torch.export`. The host is the coreai-models `g3-flow
 
 ## Files
 
-`export_small.py` and `q1_probe.py` are the research-workspace scripts at import time, unchanged; their hashes are in `recorded/observations.json`. They import the workspace's host driver and expect its directory layout. The earlier cases ran with earlier revisions of `q1_probe.py` that differ only in added options (`--host`, `--tier-asset`, `--same-host`, `--reference-dir`) and in using full mode for truncated bundles. `recorded/` is written by `results/historical/import_short_query.py`. Source and records are provided under the MIT license in this directory.
+`export_small.py` and `q1_probe.py` are the research-workspace scripts at import time, unchanged. They import the workspace's host driver and expect its directory layout. The earlier cases ran with earlier revisions of `q1_probe.py` that differ only in added options (`--host`, `--tier-asset`, `--same-host`, `--reference-dir`) and in using full mode for truncated bundles. `recorded/` is written by `results/historical/import_short_query.py`. Source and records are provided under the MIT license in this directory.

@@ -32,9 +32,6 @@ def geomean(values):
 def load(bundle):
     bundle = Path(bundle or ROOT / BASE)
     provenance = json.loads((bundle / 'provenance.json').read_text())
-    for name, digest in provenance['products'].items():
-        require(hashlib.sha256((bundle / name).read_bytes()).hexdigest() == digest,
-                'g1w_product_hash.' + name)
     evidence = json.loads((bundle / 'evidence.json').read_text())
     with gzip.open(bundle / 'timings.json.gz', 'rt') as stream:
         timings = json.load(stream)

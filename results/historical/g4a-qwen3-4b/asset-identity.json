@@ -33,16 +33,13 @@
     },
     "source_headers": {
       "model-00001-of-00003.safetensors": {
-        "header_bytes": 20000,
-        "header_sha256": "a8f45f72beda0f33ad73b7c94747c4c5bace94e3770a90810e9a23ec0a6a6abd"
+        "header_bytes": 20000
       },
       "model-00002-of-00003.safetensors": {
-        "header_bytes": 25232,
-        "header_sha256": "55d8e8decb2976c9758e922be1274c003bf57dd8ac5f7c4a74dd91ee39fc0351"
+        "header_bytes": 25232
       },
       "model-00003-of-00003.safetensors": {
-        "header_bytes": 552,
-        "header_sha256": "19f753c0ae5015a4f6110a351070e77ff01c59ec37dd2c12fbae4f3c7eb1a0d1"
+        "header_bytes": 552
       }
     },
     "source_check": {
@@ -70,7 +67,6 @@
       "tier": {
         "capacity": 768,
         "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
-        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
         "kept_graphs_unchanged_before_serialization": [
           "extend_768_1",
           "extend_768_64",
@@ -320,9 +316,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "23f2a64cc426aa5c920825f9b77a8345717117b38742e267c340ebb4d095a7d6",
-      "main_hash": "24a138760a1b2e9145c94e609f50ccb96b88af48b4f006b4f441dc8f92faefa9",
-      "main_hash_file_sha256": "799d3151b13d996c9e43dcb2efe65848f138331ecd0835db4a7acdc05275fe59",
       "main_mlirb_bytes": 8065771929,
       "compile_receipt": {
         "complete": true,
@@ -346,7 +339,6 @@
       "tier": {
         "capacity": 1280,
         "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
-        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
         "kept_graphs_unchanged_before_serialization": [
           "extend_1280_1",
           "extend_1280_64",
@@ -596,9 +588,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "0e78e8cb0b32844880fd86b5a508d718a4e0f22f681e749725bd0066ac12f08f",
-      "main_hash": "be59307b3994a6c81140a6ef3b7708eefa9f105af948a6266d8e56a3e16f7993",
-      "main_hash_file_sha256": "aba10c0088e95bf85e0ceb73b828bc5fd9f407f954014fb440e88760e56d8c17",
       "main_mlirb_bytes": 8065763485,
       "compile_receipt": {
         "complete": true,
@@ -622,7 +611,6 @@
       "tier": {
         "capacity": 2304,
         "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
-        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
         "kept_graphs_unchanged_before_serialization": [
           "extend_2304_1",
           "extend_2304_64",
@@ -872,9 +860,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "e1234aa24b2994ec3627a0ee1411b9d569489fcd7afc3e1a4563dad25ea8569c",
-      "main_hash": "7222e6bcbc6d26555d208e81a8d178e8113a3e906fa41881e27e9d38ffd24baf",
-      "main_hash_file_sha256": "05df47595e4c5dac88d8949568124b7466dde6d3f0cb7f134a827e35366bc8f5",
       "main_mlirb_bytes": 8065771549,
       "compile_receipt": {
         "complete": true,
@@ -898,7 +883,6 @@
       "tier": {
         "capacity": 4352,
         "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
-        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
         "kept_graphs_unchanged_before_serialization": [
           "extend_4352_1",
           "extend_4352_64",
@@ -1148,9 +1132,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "b00d6af084c198b31bf63bb857bba74cd833509ed4996757c8acea86703cb9f0",
-      "main_hash": "c111814646ee9695fedc7a13e34e5265de4083e0262c5e12b70bdb27ba255b95",
-      "main_hash_file_sha256": "4c33998a3beafda064fdb402700b7d18ec39621e7ec3254a917000f87712b1c4",
       "main_mlirb_bytes": 8065772685,
       "compile_receipt": {
         "complete": true,
@@ -1174,7 +1155,6 @@
       "tier": {
         "capacity": 8448,
         "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
-        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
         "kept_graphs_unchanged_before_serialization": [
           "extend_8448_1",
           "extend_8448_64",
@@ -1424,9 +1404,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "0a5184c5c252e3971b69f4685a030d336d9a06caa216cd8a157afedcfb360baa",
-      "main_hash": "a0e2ab2b8431c05585e874d2cb449c31e78d80781bfbeda33983c78f257e400d",
-      "main_hash_file_sha256": "8befece51aec958d86367fce4fb1061d7c1b10336efbef23965cd2578a16ab91",
       "main_mlirb_bytes": 8065822445,
       "compile_receipt": {
         "complete": true,
@@ -1450,7 +1427,6 @@
       "tier": {
         "capacity": 16640,
         "source_asset": "workplans/g4-cplus256-20260912/assets/qwen3-4b-fp16-ane-c33024-g4-plus256/qwen3-4b-fp16-ane-c33024-g4-plus256.aimodel",
-        "source_main_hash": "2d81e87089aeec05080db5dd5f748a8b40cde930139855c7555b4cac31676bca",
         "kept_graphs_unchanged_before_serialization": [
           "extend_16640_1",
           "extend_16640_64",
@@ -1700,9 +1676,6 @@
           "targets": []
         }
       },
-      "metadata_sha256": "4c2161312178846ae0836378f97258c1d33a64266595ea72ab8e97f3198c3ca4",
-      "main_hash": "3f15e6d0632f6b4eb4bb0e2dc99cc4bd246d8b532d8c38188da7e9377e24426e",
-      "main_hash_file_sha256": "8c821f25c4dc0f689beabf39c91595e18c1a72ac0ffeb767afac564f29f35785",
       "main_mlirb_bytes": 8065770897,
       "compile_receipt": {
         "complete": true,
@@ -1733,73 +1706,61 @@
           {
             "name": "LICENSE",
             "bytes": 11343,
-            "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/LICENSE"
           },
           {
             "name": "README.md",
             "bytes": 16857,
-            "sha256": "71add1cd091c309b1cb1a6b943f2476eb2b004124b3bd1d32dcd0b24cc1abc47",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/README.md"
           },
           {
             "name": "config.json",
             "bytes": 726,
-            "sha256": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/config.json"
           },
           {
             "name": "generation_config.json",
             "bytes": 239,
-            "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json"
           },
           {
             "name": "merges.txt",
             "bytes": 1671853,
-            "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/merges.txt"
           },
           {
             "name": "model-00001-of-00003.safetensors",
             "bytes": 3957900840,
-            "sha256": "328a91d3122359d5547f9d79521205bc0a46e1f79a792dfe650e99fc2d651223",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model-00001-of-00003.safetensors"
           },
           {
             "name": "model-00002-of-00003.safetensors",
             "bytes": 3987450520,
-            "sha256": "6cd087b316306a68c562436b5492edbcf6e16c6dba3a1308279caa5a58e21ca5",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model-00002-of-00003.safetensors"
           },
           {
             "name": "model-00003-of-00003.safetensors",
             "bytes": 99630640,
-            "sha256": "e4bf436957184f4eeb86a80e9db394503f1f56446b2e6b7edeac5b81470f4ca1",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model-00003-of-00003.safetensors"
           },
           {
             "name": "model.safetensors.index.json",
             "bytes": 32819,
-            "sha256": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json"
           },
           {
             "name": "tokenizer.json",
             "bytes": 11422654,
-            "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer.json"
           },
           {
             "name": "tokenizer_config.json",
             "bytes": 9732,
-            "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json"
           },
           {
             "name": "vocab.json",
             "bytes": 2776833,
-            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
             "url": "https://huggingface.co/Qwen/Qwen3-4B/resolve/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json"
           }
         ],
@@ -1811,9 +1772,7 @@
       "layers": 36,
       "max_context_length": 32768,
       "device_run": false
-    },
-    "export_sha256": "e6f9bbef1205c61804a95dc46f6c0d0b1a3b93a9954a1fa8b971b64bad9eb414",
-    "main_hash": "7826911e3321489557b34cfdda681543fbfbd5907cc777ed850729f08fda36c9"
+    }
   },
   "flow_admissions": {
     "workplans/g4-cplus256-20260912/flow-checks/q8-short-c768-20260913/FLOW-CHECK.json": {
@@ -2002,5 +1961,5 @@
       "load_seconds": 45.43624316700152
     }
   },
-  "scope": "Asset identity by recorded hashes and graph inventories; bytecode payloads were not rehashed at launch and are not bundled."
+  "scope": "Asset identity by graph inventories and compile receipts, with launch-frozen files checked at import; bytecode payloads are not bundled."
 }
