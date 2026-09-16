@@ -587,3 +587,118 @@ W8A8 / FP16 speed by round: 1.879–1.885×.
 |---|---:|---:|---:|---:|
 | idle-start | 0.223 | 0.053 | 0.000 | 0.276 |
 | idle-end | 0.090 | 0.001 | 0.000 | 0.091 |
+
+## G8: four-bit representations of the same E4B codes
+
+The G7 gate projection and MLP from the same four-bit codes and scales, stored four ways in Core ML with Core AI's palette as a control; 64 and 1024 positions, FP16 activations, three independent host rounds of 120 s each. Medians across rounds; ranges are the three paired rounds. Phase O is the original run; phase F is the follow-up that timed the nine blocks the original rejected before timing. Software component energy (CPU + GPU + ANE counters, no idle subtraction). [Scope](SCOPE.md#g8-four-bit-representations-of-the-same-codes) · [Source bundle](../results/historical/g8-coreml-four-bit/).
+
+### Speed and component energy
+
+| Work | Positions | Representation | Phase | Positions/s | mJ/position | CPU W | ANE W | API p50 ms |
+|---|---:|---|---|---:|---:|---:|---:|---:|
+| gate | 64 | Core ML FP16 | O | 135,086 | 0.0511 | 1.856 | 5.044 | 0.472 |
+| gate | 64 | Core ML INT8 palette | O | 60,192 | 0.1117 | 1.039 | 5.686 | 1.061 |
+| gate | 64 | Core ML FP16 palette | O | 60,165 | 0.1111 | 1.004 | 5.680 | 1.062 |
+| gate | 64 | Core ML direct INT4 | O | 208,706 | 0.0501 | 3.312 | 7.140 | 0.307 |
+| gate | 64 | Core AI INT8 palette | O | 216,296 | 0.0478 | 2.976 | 7.355 | 0.296 |
+| gate | 1,024 | Core ML FP16 | O | 253,816 | 0.0390 | 0.795 | 9.092 | 4.030 |
+| gate | 1,024 | Core ML INT8 palette | O | 24,569 | 0.1287 | 0.306 | 2.853 | 41.648 |
+| gate | 1,024 | Core ML FP16 palette | O | 24,567 | 0.1289 | 0.319 | 2.853 | 41.650 |
+| gate | 1,024 | Core ML direct INT4 | O | 368,359 | 0.0353 | 0.932 | 12.093 | 2.772 |
+| gate | 1,024 | Core AI INT8 palette | O | 379,146 | 0.0344 | 0.596 | 12.431 | 2.696 |
+| mlp | 64 | Core ML FP16 | O | 55,831 | 0.1270 | 1.012 | 6.075 | 1.144 |
+| mlp | 64 | Core ML INT8 palette | O | 22,055 | 0.3059 | 0.576 | 6.167 | 2.895 |
+| mlp | 64 | Core ML FP16 palette | O | 22,054 | 0.3172 | 0.817 | 6.167 | 2.896 |
+| mlp | 64 | Core ML direct INT4 | O | 97,713 | 0.1158 | 1.536 | 9.782 | 0.654 |
+| mlp | 64 | Core AI INT8 palette | O | 99,361 | 0.1141 | 1.410 | 9.907 | 0.644 |
+| mlp | 1,024 | Core ML FP16 | F | 35,442 | 0.1487 | 0.318 | 4.953 | 28.869 |
+| mlp | 1,024 | Core ML INT8 palette | O | 8,217 | 0.3768 | 0.302 | 2.793 | 124.530 |
+| mlp | 1,024 | Core ML FP16 palette | F | 8,217 | 0.3855 | 0.373 | 2.794 | 124.533 |
+| mlp | 1,024 | Core ML direct INT4 | F | 107,942 | 0.1054 | 0.444 | 10.936 | 9.473 |
+| mlp | 1,024 | Core AI INT8 palette | O | 112,861 | 0.1043 | 0.378 | 11.385 | 9.061 |
+
+### Paired ratios
+
+Rows marked across phases compare blocks from different capture periods.
+
+| Work | Positions | Representation / baseline | Speed | Component energy | Phases |
+|---|---:|---|---:|---:|---|
+| gate | 64 | Core ML INT8 palette / Core ML FP16 | 0.440–0.446× | 2.158–2.206× | same phase |
+| gate | 64 | Core ML direct INT4 / Core ML FP16 | 1.543–1.581× | 0.973–0.989× | same phase |
+| gate | 64 | Core ML FP16 palette / Core ML FP16 | 0.439–0.446× | 2.169–2.371× | same phase |
+| gate | 64 | Core ML FP16 / Core AI INT8 palette | 0.602–0.627× | 1.060–1.101× | same phase |
+| gate | 64 | Core ML INT8 palette / Core AI INT8 palette | 0.265–0.279× | 2.317–2.425× | same phase |
+| gate | 64 | Core ML direct INT4 / Core AI INT8 palette | 0.952–0.967× | 1.048–1.071× | same phase |
+| gate | 64 | Core ML FP16 palette / Core AI INT8 palette | 0.264–0.279× | 2.326–2.609× | same phase |
+| gate | 64 | Core ML direct INT4 / Core ML INT8 palette | 3.465–3.595× | 0.442–0.452× | same phase |
+| gate | 64 | Core ML direct INT4 / Core ML FP16 palette | 3.465–3.603× | 0.410–0.451× | same phase |
+| gate | 64 | Core ML FP16 palette / Core ML INT8 palette | 0.998–1.000× | 0.994–1.076× | same phase |
+| gate | 1,024 | Core ML INT8 palette / Core ML FP16 | 0.097–0.097× | 3.303–3.318× | same phase |
+| gate | 1,024 | Core ML direct INT4 / Core ML FP16 | 1.451–1.452× | 0.898–0.923× | same phase |
+| gate | 1,024 | Core ML FP16 palette / Core ML FP16 | 0.097–0.097× | 3.277–3.380× | same phase |
+| gate | 1,024 | Core ML FP16 / Core AI INT8 palette | 0.669–0.670× | 1.120–1.147× | same phase |
+| gate | 1,024 | Core ML INT8 palette / Core AI INT8 palette | 0.065–0.065× | 3.710–3.806× | same phase |
+| gate | 1,024 | Core ML direct INT4 / Core AI INT8 palette | 0.971–0.972× | 1.028–1.034× | same phase |
+| gate | 1,024 | Core ML FP16 palette / Core AI INT8 palette | 0.065–0.065× | 3.745–3.831× | same phase |
+| gate | 1,024 | Core ML direct INT4 / Core ML INT8 palette | 14.990–15.011× | 0.271–0.279× | same phase |
+| gate | 1,024 | Core ML direct INT4 / Core ML FP16 palette | 14.991–15.007× | 0.268–0.276× | same phase |
+| gate | 1,024 | Core ML FP16 palette / Core ML INT8 palette | 1.000–1.000× | 0.988–1.023× | same phase |
+| mlp | 64 | Core ML INT8 palette / Core ML FP16 | 0.394–0.395× | 2.405–2.428× | same phase |
+| mlp | 64 | Core ML direct INT4 / Core ML FP16 | 1.749–1.751× | 0.909–0.915× | same phase |
+| mlp | 64 | Core ML FP16 palette / Core ML FP16 | 0.394–0.395× | 2.407–2.506× | same phase |
+| mlp | 64 | Core ML FP16 / Core AI INT8 palette | 0.561–0.563× | 1.110–1.119× | same phase |
+| mlp | 64 | Core ML INT8 palette / Core AI INT8 palette | 0.221–0.222× | 2.669–2.696× | same phase |
+| mlp | 64 | Core ML direct INT4 / Core AI INT8 palette | 0.982–0.985× | 1.013–1.018× | same phase |
+| mlp | 64 | Core ML FP16 palette / Core AI INT8 palette | 0.222–0.222× | 2.693–2.781× | same phase |
+| mlp | 64 | Core ML direct INT4 / Core ML INT8 palette | 4.429–4.446× | 0.376–0.381× | same phase |
+| mlp | 64 | Core ML direct INT4 / Core ML FP16 palette | 4.428–4.445× | 0.364–0.378× | same phase |
+| mlp | 64 | Core ML FP16 palette / Core ML INT8 palette | 0.997–1.004× | 1.000–1.042× | same phase |
+| mlp | 1,024 | Core ML INT8 palette / Core ML FP16 | 0.232–0.232× | 2.523–2.611× | across phases |
+| mlp | 1,024 | Core ML direct INT4 / Core ML FP16 | 3.045–3.047× | 0.704–0.712× | same phase |
+| mlp | 1,024 | Core ML FP16 palette / Core ML FP16 | 0.232–0.232× | 2.498–2.632× | same phase |
+| mlp | 1,024 | Core ML FP16 / Core AI INT8 palette | 0.314–0.314× | 1.422–1.427× | across phases |
+| mlp | 1,024 | Core ML INT8 palette / Core AI INT8 palette | 0.073–0.073× | 3.587–3.725× | same phase |
+| mlp | 1,024 | Core ML direct INT4 / Core AI INT8 palette | 0.956–0.957× | 1.000–1.015× | across phases |
+| mlp | 1,024 | Core ML FP16 palette / Core AI INT8 palette | 0.073–0.073× | 3.551–3.755× | across phases |
+| mlp | 1,024 | Core ML direct INT4 / Core ML INT8 palette | 13.136–13.144× | 0.272–0.280× | across phases |
+| mlp | 1,024 | Core ML direct INT4 / Core ML FP16 palette | 13.137–13.141× | 0.270–0.282× | same phase |
+| mlp | 1,024 | Core ML FP16 palette / Core ML INT8 palette | 1.000–1.000× | 0.990–1.023× | across phases |
+
+### Byte-identical outputs
+
+Labels whose outputs are byte-identical for every control input of a workload and size.
+
+| Work | Positions | Output classes |
+|---|---:|---|
+| gate | 64 | {Core AI INT8 palette, Core ML direct INT4} · {Core ML FP16, Core ML FP16 palette, Core ML INT8 palette} |
+| gate | 1,024 | {Core AI INT8 palette, Core ML direct INT4} · {Core ML FP16, Core ML FP16 palette, Core ML INT8 palette} |
+| mlp | 64 | {Core AI INT8 palette, Core ML direct INT4} · {Core ML FP16, Core ML FP16 palette, Core ML INT8 palette} |
+| mlp | 1,024 | {Core AI INT8 palette, Core ML direct INT4} · {Core ML FP16, Core ML FP16 palette, Core ML INT8 palette} |
+
+### Agreement with G7
+
+Median speed of the configurations G7 also measured.
+
+| Work | Positions | Representation | G8 phase | G7 positions/s | G8 positions/s | G8 / G7 |
+|---|---:|---|---|---:|---:|---:|
+| gate | 64 | Core AI INT8 palette | O | 216,303 | 216,296 | 1.000 |
+| gate | 64 | Core ML FP16 | O | 135,464 | 135,086 | 0.997 |
+| gate | 64 | Core ML INT8 palette | O | 60,226 | 60,192 | 0.999 |
+| gate | 1,024 | Core AI INT8 palette | O | 379,220 | 379,146 | 1.000 |
+| gate | 1,024 | Core ML FP16 | O | 253,802 | 253,816 | 1.000 |
+| gate | 1,024 | Core ML INT8 palette | O | 24,569 | 24,569 | 1.000 |
+| mlp | 64 | Core AI INT8 palette | O | 99,236 | 99,361 | 1.001 |
+| mlp | 64 | Core ML FP16 | O | 55,889 | 55,831 | 0.999 |
+| mlp | 64 | Core ML INT8 palette | O | 22,062 | 22,055 | 1.000 |
+| mlp | 1,024 | Core AI INT8 palette | O | 112,847 | 112,861 | 1.000 |
+| mlp | 1,024 | Core ML FP16 | F | 35,448 | 35,442 | 1.000 |
+| mlp | 1,024 | Core ML INT8 palette | O | 8,218 | 8,217 | 1.000 |
+
+### Idle captures
+
+| Capture | CPU W | GPU W | ANE W | Components W |
+|---|---:|---:|---:|---:|
+| original/idle-start | 0.156 | 0.001 | 0.000 | 0.157 |
+| original/idle-end | 0.096 | 0.001 | 0.000 | 0.097 |
+| follow-up/idle-start | 0.402 | 0.256 | 0.000 | 0.658 |
+| follow-up/idle-end | 0.073 | 0.001 | 0.000 | 0.073 |

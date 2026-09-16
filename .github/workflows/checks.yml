@@ -47,6 +47,9 @@ jobs:
       - name: Recompute G7 Core ML and Core AI on the same E4B codes
         run: python scripts/verify_g7.py
 
+      - name: Recompute G8 four-bit representations of the same E4B codes
+        run: python scripts/verify_g8.py
+
       - name: Recompute the disk space held by ANECompilerService
         run: python scripts/verify_ane_compiler_disk.py
 

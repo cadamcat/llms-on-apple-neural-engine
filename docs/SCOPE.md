@@ -94,6 +94,7 @@ These limits distinguish the evidence sets rather than assigning one protocol to
    | G1-W quantized speed and QDQ probes | 26A428 | 27.0 (27A266a) | coreai-torch 0.4.1, Torch 2.11.0 |
    | G5 weight-free attention | not recorded | not recorded | coreai-torch 0.4.2, Torch 2.9.0 |
    | G7 Core ML / Core AI same codes and the Core ML QDQ probe | 26A428 | 27.0 | coremltools 9.0, coreai-torch 0.4.1, coreai-core 1.0.0b2, Torch 2.11.0 |
+   | G8 Core ML four-bit representations | 26A428 | 27.0 | coremltools 9.0, coreai-torch 0.4.1, coreai-core 1.0.0b2, Torch 2.11.0 |
 
    G2's versions come from same-day preflight records and a post-run statement
    that no software changed that day. Version and source identities belong to
@@ -264,3 +265,13 @@ Energy is the CPU + GPU + ANE software counters integrated over each block, admi
 The Core ML QDQ probe is a separate numerical run: the model-free multiply graph at 1,024 × 1,024 through a native Core ML host, on the Neural Engine and on the CPU, without timing.
 
 [Measurements](MEASUREMENTS.md#g7-core-ml-and-core-ai-on-the-same-e4b-codes) · [Method](METHODS.md#g7-same-codes-in-two-runtimes) · [Bundle](../results/historical/g7-coreml-coreai/)
+
+## G8 four-bit representations of the same codes
+
+G8 stores G7's gate projection and MLP codes and per-output-channel scales four ways in Core ML — FP16 decoded from the codes, a palette built from INT8 and the scale (G7's W4A16), a palette with the scale already applied in FP16, and direct signed INT4 — and repeats G7's Core AI palette. The saved constants of the four Core ML forms decode to the same FP16 weights, so they differ in how the weights are stored, not in their values. Activations are FP16; inputs, references and the 0.005 relative-L2 screen are G7's. Its results are component speeds and energies, not model throughput or quality.
+
+Admission, timing and energy follow G7: all <!-- claim:g8.configs@g8-061 -->20<!-- /claim --> configurations passed before timing, each ran in <!-- claim:g8.rounds@g8-062 -->3<!-- /claim --> new hosts, and all <!-- claim:g8.blocks@g8-063 -->60<!-- /claim --> blocks passed energy admission. The run has two phases. The original run's placement check rejected the first round of <!-- claim:g8.rejected@g8-064 -->3<!-- /claim --> configurations before timing and cancelled their later rounds; a follow-up timed only those blocks, with the same check mapped through Mach clocks instead of log wall time. A ratio across the phases pairs blocks from different capture periods, and the follow-up began with a higher idle power, so its energy is less comparable than its speed.
+
+Byte-identical outputs across representations show the same arithmetic result, not the same kernel or placement, and a faster direct-INT4 graph is not evidence of a four-bit datapath.
+
+[Measurements](MEASUREMENTS.md#g8-four-bit-representations-of-the-same-e4b-codes) · [Method](METHODS.md#g8-four-bit-representations-and-the-placement-clock) · [Bundle](../results/historical/g8-coreml-four-bit/)

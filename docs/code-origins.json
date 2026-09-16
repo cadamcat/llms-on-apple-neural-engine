@@ -110,5 +110,13 @@
   {
     "origin": "workplans/g7-coreml-qdq-probe-20260915/host.swift",
     "origin_scope": "G7 same-code host with a compute-unit field; copied unchanged"
+  },
+  {
+    "origin": "workplans/g8-four-bit-representations-20260915/export.py",
+    "origin_scope": "G8 Core ML representation exporter; saved-operator and decoded-weight audit adapted to recorded asset audits"
+  },
+  {
+    "origin": "workplans/g8-clock-recovery-20260916/clocks.py",
+    "origin_scope": "G8 follow-up Mach-clock placement mapping; bridge bounds and window rule adapted to the importer's recount"
   }
 ]

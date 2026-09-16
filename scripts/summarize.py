@@ -326,9 +326,11 @@ def main():
     g6 = derive_g6()
     from g7.evidence import derive as derive_g7, measurements as g7_measurements
     g7 = derive_g7()
+    from g8.evidence import derive as derive_g8, measurements as g8_measurements
+    g8 = derive_g8()
     text = (measurements() + '\n' + g2_measurements(g2) + '\n' + g3_measurements(g3) + '\n'
             + g1w_measurements(g1w) + '\n' + g5_measurements(g5) + '\n' + g4a_measurements(g4a) + '\n' + g6_measurements(g6)
-            + '\n' + g7_measurements(g7))
+            + '\n' + g7_measurements(g7) + '\n' + g8_measurements(g8, g7))
     if args.write:
         MEASUREMENTS.write_text(text)
         print(f'wrote {MEASUREMENTS.relative_to(ROOT)}')
@@ -341,11 +343,13 @@ def main():
     from g5.claims import quantities as g5_quantities
     from g6.claims import quantities as g6_quantities
     from g7.claims import quantities as g7_quantities
+    from g8.claims import quantities as g8_quantities
     problems = (check_local_quotes(ROOT, g2) + check_g3_quotes(ROOT, g3) + check_g4a_quotes(ROOT, g4a)
                 + check_component_quotes(ROOT, 'g1w', g1w_quantities(g1w))
                 + check_component_quotes(ROOT, 'g5', g5_quantities(g5))
                 + check_component_quotes(ROOT, 'g6', g6_quantities(g6))
-                + check_component_quotes(ROOT, 'g7', g7_quantities(g7)))
+                + check_component_quotes(ROOT, 'g7', g7_quantities(g7))
+                + check_component_quotes(ROOT, 'g8', g8_quantities(g8, g7)))
     if MEASUREMENTS.read_text() != text:
         problems.append('docs/MEASUREMENTS.md differs from the bundled records; '
                         'rerun with --write')

@@ -1,0 +1,38 @@
+{
+  "original": {
+    "run": {
+      "status": "closed",
+      "cancelled_assets": [
+        "mlp-n1024-coreml-fp16",
+        "mlp-n1024-coreml-fp16_lut",
+        "mlp-n1024-coreml-int4"
+      ],
+      "unrun": [],
+      "started_at": 1789514383.997969,
+      "finished_at": 1789523232.617453
+    },
+    "processes": {
+      "recorded_pids_checked": 209,
+      "native_hosts_checked": 54,
+      "ownership_receipts_checked": 70,
+      "still_present": [],
+      "samplers_reaped": 14
+    }
+  },
+  "follow-up": {
+    "run": {
+      "status": "closed",
+      "cancelled_assets": [],
+      "unrun": [],
+      "started_at": 1789539576.2977412,
+      "finished_at": 1789541701.945549
+    },
+    "processes": {
+      "recorded_pids_checked": 65,
+      "native_hosts_checked": 9,
+      "ownership_receipts_checked": 25,
+      "still_present": [],
+      "samplers_reaped": 5
+    }
+  }
+}

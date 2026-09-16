@@ -57,7 +57,7 @@
 | **W4A16 对比 A8W4** | 取决于每次调用的位置数。一个真实 E4B gate 走 Core AI 时，A8W4 在 64 个位置下为 W4A16 速度的 <!-- claim:g7.coreai.gate.64.a8w4-over-w4a16.speed@g7-101 -->0.976–0.990×<!-- /claim -->，[在 1024 个位置下为 <!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-102 -->1.359–1.360×<!-- /claim -->](findings/quantized-speedup-conditions/#positions-per-call-on-a-real-projection)。历史 4K 配对循环调用 64 个位置的资产，[为 1.013×](findings/ane-vs-gpu-prefill/) |
 | **测过的 W8A8 合成控制** | 可加速——Core AI 受控 128 层链相对自身 FP16 基线为 **1.86–1.87×**。[收益取决于每次调用的工作量，也取决于权重](findings/quantized-speedup-conditions/)：A8W4 单层时速度为 W4A16 的 <!-- claim:g1w.depth.both-1.speed@g1w-001 -->0.86×<!-- /claim -->，128 层时 <!-- claim:g1w.depth.both-128.speed@g1w-002 -->1.33×<!-- /claim -->；精确零权重让 FP16 本身快 <!-- claim:g1w.density.old.speed@g1w-003 -->1.88×<!-- /claim --> |
 | **Gemma 4 E4B mobile QAT A8W4**，首层 MLP | [算错，而且不更快](findings/quantized-speedup-conditions/#a-released-qat-checkpoint)。ANE 上的 QDQ 乘法[用了另一个 QDQ 的 scale](findings/coreai-qdq-multiply-scale/)，走 Core ML 和走 Core AI 都一样：单个 MLP 偏差 <!-- claim:g1w.e4b.1.native.l2@g1w-004 -->339%<!-- /claim -->。加乘积裁剪后，重复八个 MLP 仍偏差 <!-- claim:g1w.e4b.8.clip-product.l2@g1w-005 -->21.6%<!-- /claim -->，速度为 W4A16 的 <!-- claim:g1w.e4b.clip-product.speed@g1w-006 -->0.976×<!-- /claim --> |
-| **用 Core ML 代替 Core AI**，同一份 E4B 码在 ANE 上 | [FP16 与 gate 的 W8A8 速度接近](findings/coreml-coreai-same-codes/)（分别为 Core AI 的 <!-- claim:g7.ml-over-ai.fp16.speed@g7-103 -->0.979–0.998×<!-- /claim --> 和 <!-- claim:g7.ml-over-ai.w8a8.speed@g7-104 -->0.962–0.967×<!-- /claim -->）。Core ML 的 4-bit 查表图只有 Core AI 速度的 <!-- claim:g7.ml-over-ai.four-bit.speed@g7-105 -->0.065–0.280×<!-- /claim -->，比 Core ML 自己的 FP16 还慢 |
+| **用 Core ML 代替 Core AI**，同一份 E4B 码在 ANE 上 | [FP16 与 gate 的 W8A8 速度接近](findings/coreml-coreai-same-codes/)（分别为 Core AI 的 <!-- claim:g7.ml-over-ai.fp16.speed@g7-103 -->0.979–0.998×<!-- /claim --> 和 <!-- claim:g7.ml-over-ai.w8a8.speed@g7-104 -->0.962–0.967×<!-- /claim -->）。Core ML 的 4-bit 查表图只有 Core AI 速度的 <!-- claim:g7.ml-over-ai.four-bit.speed@g7-105 -->0.065–0.280×<!-- /claim -->，比 Core ML 自己的 FP16 还慢。[改存为直接 INT4](findings/coreml-direct-int4/) 后，同一份码的速度为 Core AI 4-bit 的 <!-- claim:g8.int4-over-coreai.same-phase.speed@g8-101 -->0.952–0.985×<!-- /claim --> |
 
 早期轮次作为独立记录保留。历史 Python MLP 中，64 位置时 GPU 快 **2.87×**，1024 时 **5.09×**，
 4096 时 **4.41×**，每侧单进程且提前停止；之后原生 C256 在 4096 位置为 582.19 ms，同轮 GPU 为
@@ -73,7 +73,7 @@
 |---|---|
 | 🔧 **四件真正能用的事** | 让分组 4-bit 能上加速器的那个改写、修好 QDQ 乘法的图表达、链足够深时能加速的那种量化方案，以及回收 ANE 编译服务占住的磁盘空间——每一件都写清了代价和边界。[workarounds/](workarounds/) |
 | 📊 **完整模型测量** | [G4 A](findings/qwen3-4b-graph-capacity/)测量 Qwen3-4B FP16 在六档输入、各用匹配容量 ANE 图时的 prefill、decode 与组件能量，G6 重复全部测点并把 decode 查询宽度减半；[G3](findings/qwen3-4b-prefill-decode/)测量同一模型在 256 / 2K / 32K 三档图上的表现。 |
-| 📊 **组件对照** | [G2](findings/w4a16-service-tradeoffs/)补入原生 W4A16 七档速度、原生宿主内存、同率与满负载温度与风扇响应、GPU 前台尾延迟。[早期 A8W4/W4A16/GPU 对照](findings/ane-vs-gpu-prefill/)保留原数值控制、按 PID 证据和停止状态；[G7](findings/coreml-coreai-same-codes/) 用同一份 E4B 码对比 Core ML 与 Core AI。不同轮次不合并。 |
+| 📊 **组件对照** | [G2](findings/w4a16-service-tradeoffs/)补入原生 W4A16 七档速度、原生宿主内存、同率与满负载温度与风扇响应、GPU 前台尾延迟。[早期 A8W4/W4A16/GPU 对照](findings/ane-vs-gpu-prefill/)保留原数值控制、按 PID 证据和停止状态；[G7](findings/coreml-coreai-same-codes/) 用同一份 E4B 码对比 Core ML 与 Core AI，[G8](findings/coreml-direct-int4/) 在 Core ML 中把它存成四种形式。不同轮次不合并。 |
 | 🐛 **可复现的缺陷** | 三个工具链失败，各有最小复现、预期错误输出和配对反向对照，其中一个是 ANE 上的 QDQ 乘法取了另一个 QDQ 的 scale，Core AI 和 Core ML 都会出现；一个让整图静默转到 GPU 的编译失败；一个内存泄漏，含四种无效的缓解尝试与外部佐证；一个一直开着已删除编译输入的系统编译服务；一个 ANE 在 1 和 2 个位置时拒绝的 decode 查询形状；一个 ANE 编译失败却不向宿主报错的 4-bit palettization 预设；一个结构性代价，三组配对进程测得。[findings/](findings/) |
 | 🔬 **一个算术模型** | 候选算术模型在两个真实模型的 7,163,904 个最终 Q8 gate 输出上留下 13 处差异——以及已经定位的一个 32 项点积，不需要任何 Apple 硬件即可从公开标量验证。[模型](findings/execution-model/) · [残差](findings/fp16-dot-residual/) |
 
@@ -185,6 +185,7 @@ python results/historical/tests/verify_historical.py  # 导入的计时记录
 python scripts/verify_g4a.py                         # G4 A 匹配容量图的速度与组件能量
 python scripts/verify_g6.py                          # G6 decode 查询宽度、W4 与 G4 A 重复
 python scripts/verify_g7.py                          # G7 同一份 E4B 码上的 Core ML 与 Core AI
+python scripts/verify_g8.py                          # G8 同一份 E4B 码的四位表示
 python scripts/verify_ane_compiler_disk.py           # ANE 编译服务占住的磁盘空间
 python findings/ane-short-decode-query/repro/verify.py  # 1 和 2 个位置的 decode 查询
 python findings/coreai-palettized-weights-gpu/repro/verify.py  # palettization 预设的执行设备
@@ -209,7 +210,7 @@ python -m unittest discover -s tests -v               # 舍入、饱和、被篡
 |---|---|
 | `workarounds/` | 四件真正能用的事，含各自的代价与边界 |
 | `findings/` | 每个发现一个目录：症状、复现、证据，以及哪些仍是假说 |
-| `results/historical/` | 导入记录——历史对照、算术证据，以及独立的 G2 服务、G3、G4 A 与 G6 完整模型、G7 运行时对照数据包 |
+| `results/historical/` | 导入记录——历史对照、算术证据，以及独立的 G2 服务、G3、G4 A 与 G6 完整模型、G7、G8 运行时对照数据包 |
 | `results/fresh/` | 本包三个设备套件的每一次测量调用 |
 | `src/ane_scope/_coreml.py`、`_coreai.py` | 导出适配器与持久化图/权重审计 |
 | `src/ane_scope/references/` | 确定性 fixture 与显式算术参考 |

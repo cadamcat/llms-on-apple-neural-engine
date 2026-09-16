@@ -1,0 +1,90 @@
+{
+  "README.md": {
+    "g8-101": "g8.int4-over-coreai.same-phase.speed"
+  },
+  "README.zh-CN.md": {
+    "g8-101": "g8.int4-over-coreai.same-phase.speed"
+  },
+  "docs/RESEARCH.md": {
+    "g8-102": "g8.int4-over-coreai.same-phase.speed"
+  },
+  "docs/SCOPE.md": {
+    "g8-061": "g8.configs",
+    "g8-062": "g8.rounds",
+    "g8-063": "g8.blocks",
+    "g8-064": "g8.rejected"
+  },
+  "docs/VALIDATION.md": {
+    "g8-065": "g8.configs",
+    "g8-066": "g8.rejected",
+    "g8-067": "g8.blocks",
+    "g8-068": "g8.power-samples",
+    "g8-069": "g8.max-relative-l2"
+  },
+  "findings/README.md": {
+    "g8-057": "g8.int4-over-coreai.same-phase.speed",
+    "g8-058": "g8.int4-over-fp16.other.speed",
+    "g8-059": "g8.fp16-lut-over-int8-lut.speed",
+    "g8-060": "g8.palettes-over-fp16.gate.1024.speed"
+  },
+  "findings/coreml-coreai-same-codes/README.md": {
+    "g8-056": "g8.int4-over-coreai.same-phase.speed"
+  },
+  "findings/coreml-direct-int4/README.md": {
+    "g8-001": "g8.positions-64",
+    "g8-002": "g8.positions-1024",
+    "g8-003": "g8.rounds",
+    "g8-004": "g8.rate.gate.64.fp16",
+    "g8-005": "g8.rate.gate.64.int8-lut",
+    "g8-006": "g8.rate.gate.64.fp16-lut",
+    "g8-007": "g8.rate.gate.64.int4",
+    "g8-008": "g8.rate.gate.64.coreai",
+    "g8-009": "g8.rate.gate.1024.fp16",
+    "g8-010": "g8.rate.gate.1024.int8-lut",
+    "g8-011": "g8.rate.gate.1024.fp16-lut",
+    "g8-012": "g8.rate.gate.1024.int4",
+    "g8-013": "g8.rate.gate.1024.coreai",
+    "g8-014": "g8.rate.mlp.64.fp16",
+    "g8-015": "g8.rate.mlp.64.int8-lut",
+    "g8-016": "g8.rate.mlp.64.fp16-lut",
+    "g8-017": "g8.rate.mlp.64.int4",
+    "g8-018": "g8.rate.mlp.64.coreai",
+    "g8-019": "g8.rate.mlp.1024.fp16",
+    "g8-020": "g8.rate.mlp.1024.int8-lut",
+    "g8-021": "g8.rate.mlp.1024.fp16-lut",
+    "g8-022": "g8.rate.mlp.1024.int4",
+    "g8-023": "g8.rate.mlp.1024.coreai",
+    "g8-024": "g8.int4-over-coreai.same-phase.speed",
+    "g8-025": "g8.int4-over-coreai.mlp.1024.speed",
+    "g8-026": "g8.int4-over-fp16.other.speed",
+    "g8-027": "g8.int4-over-fp16.mlp.1024.speed",
+    "g8-028": "g8.api.mlp.1024.fp16",
+    "g8-029": "g8.api.mlp-over-gate.1024.fp16",
+    "g8-030": "g8.api.gate.1024.fp16",
+    "g8-031": "g8.api.mlp.1024.int4",
+    "g8-032": "g8.api.mlp-over-gate.1024.int4",
+    "g8-033": "g8.g7.rate.mlp.1024.coreai.fp16",
+    "g8-034": "g8.fp16-lut-over-int8-lut.speed",
+    "g8-035": "g8.palettes-over-fp16.gate.1024.speed",
+    "g8-036": "g8.ane-power.gate.1024.int8-lut",
+    "g8-037": "g8.ane-power.gate.1024.fp16",
+    "g8-038": "g8.ane-power.gate.1024.int4",
+    "g8-039": "g8.ane-power.gate.1024.coreai",
+    "g8-040": "g8.int4-over-fp16.gate.1024.energy",
+    "g8-041": "g8.int4-over-fp16.mlp.1024.energy",
+    "g8-042": "g8.int4-over-int8-lut.gate.1024.energy",
+    "g8-043": "g8.blocks.follow-up",
+    "g8-044": "g8.blocks.original",
+    "g8-045": "g8.blocks",
+    "g8-046": "g8.g7-agreement.count",
+    "g8-047": "g8.g7-agreement",
+    "g8-048": "g8.g7-agreement.mlp.1024.fp16",
+    "g8-049": "g8.idle.follow-up.start",
+    "g8-050": "g8.idle.original.start",
+    "g8-051": "g8.blocks",
+    "g8-052": "g8.calls",
+    "g8-053": "g8.power-samples",
+    "g8-054": "g8.captures",
+    "g8-055": "g8.rate.mlp.1024.int8-lut"
+  }
+}

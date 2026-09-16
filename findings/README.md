@@ -60,6 +60,8 @@ value, with a matched negative control.
 
 **[Core ML and Core AI run the same codes at similar speeds, except as a four-bit palette](coreml-coreai-same-codes/)** — on the same E4B gate and MLP codes, Core ML runs FP16 at <!-- claim:g7.ml-over-ai.fp16.speed@g7-071 -->0.979–0.998×<!-- /claim --> and the gate's W8A8 at <!-- claim:g7.ml-over-ai.w8a8.speed@g7-072 -->0.962–0.967×<!-- /claim --> Core AI's speed, but its four-bit palette graphs at <!-- claim:g7.ml-over-ai.four-bit.speed@g7-073 -->0.065–0.280×<!-- /claim -->, slower than its own FP16. The A8 graphs of the full MLP fail the reference in both runtimes.
 
+**[Core ML runs direct INT4 near Core AI's four-bit speed; its palette forms stay slow](coreml-direct-int4/)** — the same E4B codes and scales saved as direct signed INT4 run at <!-- claim:g8.int4-over-coreai.same-phase.speed@g8-057 -->0.952–0.985×<!-- /claim --> Core AI's palette speed and <!-- claim:g8.int4-over-fp16.other.speed@g8-058 -->1.451–1.751×<!-- /claim --> Core ML FP16's speed for the gate and the 64-position MLP. A palette with the scale already applied runs at <!-- claim:g8.fp16-lut-over-int8-lut.speed@g8-059 -->0.997–1.004×<!-- /claim --> the INT8 palette's speed, <!-- claim:g8.palettes-over-fp16.gate.1024.speed@g8-060 -->0.097×<!-- /claim --> FP16's on the 1024-position gate.
+
 ## What a candidate arithmetic model predicts
 
 **[An execution model for group-quantized matmul](execution-model/)** — a
@@ -99,7 +101,8 @@ from 32 published scalars, with no Apple hardware.
 | [Palettized preset on the GPU](coreai-palettized-weights-gpu/) | One preset, one-layer matched pair plus the complete model at two inputs; rejected operation unknown | Recorded logs and G6 blocks yes; a device run needs the model source |
 | [QDQ multiply scale](coreai-qdq-multiply-scale/) | Reproduced model-free in Core AI and Core ML; substitution rule predicts both Core AI probes and a new Core ML input; mechanism unobserved | Yes — raw probe outputs; a device run needs no model |
 | [Quantized speed-up conditions](quantized-speedup-conditions/) | Measured on synthetic chains, one repeated E4B MLP and one real E4B gate at two sizes; causes not isolated | Yes — recompute from stored per-call timings and G7 blocks |
-| [Core ML and Core AI on the same codes](coreml-coreai-same-codes/) | One Core ML four-bit representation; where Core ML's four-bit time goes is not located | Yes — recompute from G7 blocks and power frames; a device run needs the checkpoint codes |
+| [Core ML and Core AI on the same codes](coreml-coreai-same-codes/) | G7 tested one Core ML four-bit representation; where Core ML's four-bit time goes is not located | Yes — recompute from G7 blocks and power frames; a device run needs the checkpoint codes |
+| [Core ML direct INT4](coreml-direct-int4/) | Two palette forms and direct INT4, per-output-channel scales; where the palette time goes is not located; one 1024-position MLP comparison spans two phases | Yes — recompute from G8 blocks and power frames; a device run needs the checkpoint codes |
 | [Attention product precision](attention-product-precision/) | Localized to `P @ V`; synthetic inputs only | Timings yes; relative L2 values are imported scalars |
 
 ## What is not claimed

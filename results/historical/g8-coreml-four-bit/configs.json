@@ -1,0 +1,3194 @@
+{
+  "gate-n1024-coreml-fp16": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 1024,
+      "representation": "fp16",
+      "format": "fp16_from_w4_codes",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 6,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.00031863723007228667,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473869
+            },
+            "ordinary": {
+              "relative_l2": 0.00032272048054967923,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424257
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.00031863723007228667,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473869
+            },
+            "ordinary": {
+              "relative_l2": 0.00032272048054967923,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424257
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00032296042655027417,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10485703
+            },
+            "ordinary": {
+              "relative_l2": 0.00032295239745554075,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424264
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "beb93eec3507e23ef6c6b8da1b2f60fc5dbcb7deabbee90f8c65febf9a91050b",
+        "zero": "cd52d81e25f372e6fa4db2c0dfceb59862c1969cab17096da352b34950c973cc",
+        "negative": "b07af9fbd1d6457a049ff02777db93498e481836e795cf5726d9da97b496e578",
+        "repeat": "beb93eec3507e23ef6c6b8da1b2f60fc5dbcb7deabbee90f8c65febf9a91050b",
+        "benchmark": "881f0e0cc28bcf9233435814b8d4095668a5696116de089fd82496b2774b2eb2",
+        "benchmark_repeat": "881f0e0cc28bcf9233435814b8d4095668a5696116de089fd82496b2774b2eb2"
+      }
+    }
+  },
+  "gate-n1024-coreml-int8_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 1024,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 8,
+          "constexpr_blockwise_shift_scale": 1,
+          "constexpr_lut_to_dense": 1,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.00031863723007228667,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473869
+            },
+            "ordinary": {
+              "relative_l2": 0.00032272048054967923,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424257
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.00031863723007228667,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473869
+            },
+            "ordinary": {
+              "relative_l2": 0.00032272048054967923,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424257
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00032296042655027417,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10485703
+            },
+            "ordinary": {
+              "relative_l2": 0.00032295239745554075,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424264
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "beb93eec3507e23ef6c6b8da1b2f60fc5dbcb7deabbee90f8c65febf9a91050b",
+        "zero": "cd52d81e25f372e6fa4db2c0dfceb59862c1969cab17096da352b34950c973cc",
+        "negative": "b07af9fbd1d6457a049ff02777db93498e481836e795cf5726d9da97b496e578",
+        "repeat": "beb93eec3507e23ef6c6b8da1b2f60fc5dbcb7deabbee90f8c65febf9a91050b",
+        "benchmark": "881f0e0cc28bcf9233435814b8d4095668a5696116de089fd82496b2774b2eb2",
+        "benchmark_repeat": "881f0e0cc28bcf9233435814b8d4095668a5696116de089fd82496b2774b2eb2"
+      }
+    }
+  },
+  "gate-n1024-coreml-int4": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 1024,
+      "representation": "int4",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 7,
+          "constexpr_blockwise_shift_scale": 1,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0003624053088214719,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473904
+            },
+            "ordinary": {
+              "relative_l2": 0.00036255684673743845,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424291
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0003624053088214719,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473904
+            },
+            "ordinary": {
+              "relative_l2": 0.00036255684673743845,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424291
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.000362760157806139,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10485733
+            },
+            "ordinary": {
+              "relative_l2": 0.0003627680697999188,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424293
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "854b170160d306b1dd441b8c2a2622087179d755e9b6068109798de3382862da",
+        "zero": "cd52d81e25f372e6fa4db2c0dfceb59862c1969cab17096da352b34950c973cc",
+        "negative": "3d3b666064e909a7441f7158f9f26257cb818d10fbe10fd7f7cf8af994139e21",
+        "repeat": "854b170160d306b1dd441b8c2a2622087179d755e9b6068109798de3382862da",
+        "benchmark": "b17e8cfa78338a62dcbd8add3223153745cbaa58eb99685b1c6e2ebc2fe02bde",
+        "benchmark_repeat": "b17e8cfa78338a62dcbd8add3223153745cbaa58eb99685b1c6e2ebc2fe02bde"
+      }
+    }
+  },
+  "gate-n1024-coreml-fp16_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 1024,
+      "representation": "fp16_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 7,
+          "constexpr_lut_to_dense": 1,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.00031863723007228667,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473869
+            },
+            "ordinary": {
+              "relative_l2": 0.00032272048054967923,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424257
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.00031863723007228667,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473869
+            },
+            "ordinary": {
+              "relative_l2": 0.00032272048054967923,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424257
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00032296042655027417,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10485703
+            },
+            "ordinary": {
+              "relative_l2": 0.00032295239745554075,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424264
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "beb93eec3507e23ef6c6b8da1b2f60fc5dbcb7deabbee90f8c65febf9a91050b",
+        "zero": "cd52d81e25f372e6fa4db2c0dfceb59862c1969cab17096da352b34950c973cc",
+        "negative": "b07af9fbd1d6457a049ff02777db93498e481836e795cf5726d9da97b496e578",
+        "repeat": "beb93eec3507e23ef6c6b8da1b2f60fc5dbcb7deabbee90f8c65febf9a91050b",
+        "benchmark": "881f0e0cc28bcf9233435814b8d4095668a5696116de089fd82496b2774b2eb2",
+        "benchmark_repeat": "881f0e0cc28bcf9233435814b8d4095668a5696116de089fd82496b2774b2eb2"
+      }
+    }
+  },
+  "gate-n1024-coreai-int8_lut": {
+    "asset": {
+      "runtime": "coreai",
+      "workload": "gate",
+      "positions": 1024,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        1024
+      ],
+      "entrypoint": "g7_main",
+      "audit": {
+        "counts": {
+          "coreai.lut_to_dense": 1,
+          "coreai.blockwise_shift_scale": 1,
+          "coreai.conv2d": 1
+        },
+        "weights": [
+          "gate_proj"
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0003624053088214719,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473904
+            },
+            "ordinary": {
+              "relative_l2": 0.00036255684673743845,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424291
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0003624053088214719,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 10473904
+            },
+            "ordinary": {
+              "relative_l2": 0.00036255684673743845,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424291
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.000362760157806139,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10485733
+            },
+            "ordinary": {
+              "relative_l2": 0.0003627680697999188,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 10424293
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": {
+          "per_operator_mapping": "unavailable",
+          "preferred": "neuralEngine"
+        }
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "854b170160d306b1dd441b8c2a2622087179d755e9b6068109798de3382862da",
+        "zero": "cd52d81e25f372e6fa4db2c0dfceb59862c1969cab17096da352b34950c973cc",
+        "negative": "3d3b666064e909a7441f7158f9f26257cb818d10fbe10fd7f7cf8af994139e21",
+        "repeat": "854b170160d306b1dd441b8c2a2622087179d755e9b6068109798de3382862da",
+        "benchmark": "b17e8cfa78338a62dcbd8add3223153745cbaa58eb99685b1c6e2ebc2fe02bde",
+        "benchmark_repeat": "b17e8cfa78338a62dcbd8add3223153745cbaa58eb99685b1c6e2ebc2fe02bde"
+      }
+    }
+  },
+  "gate-n64-coreml-fp16": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 64,
+      "representation": "fp16",
+      "format": "fp16_from_w4_codes",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 6,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0002727864366962864,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643526
+            },
+            "ordinary": {
+              "relative_l2": 0.0003221720509731364,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593914
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0002727864366962864,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643526
+            },
+            "ordinary": {
+              "relative_l2": 0.0003221720509731364,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593914
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00032320118538894,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 655356
+            },
+            "ordinary": {
+              "relative_l2": 0.0003230854295768198,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593917
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "faa3c9c62fc6bc257a100847b9d87f550b3940948e6da9c757c16f486024d441",
+        "zero": "439292e489a0a35e4a3a0fe304ea1a680337243fa53b135aa9310881e1d7e078",
+        "negative": "d0771cdedc2cca8d015bfdcc58d12c5a22fd25bb7219517c98425daf20937792",
+        "repeat": "faa3c9c62fc6bc257a100847b9d87f550b3940948e6da9c757c16f486024d441",
+        "benchmark": "2b554d9817ffddffc483f0231cd57a3a614844c1c7cf98a819d4d2576a8ab99f",
+        "benchmark_repeat": "2b554d9817ffddffc483f0231cd57a3a614844c1c7cf98a819d4d2576a8ab99f"
+      }
+    }
+  },
+  "gate-n64-coreml-int8_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 64,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 8,
+          "constexpr_blockwise_shift_scale": 1,
+          "constexpr_lut_to_dense": 1,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0002727864366962864,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643526
+            },
+            "ordinary": {
+              "relative_l2": 0.0003221720509731364,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593914
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0002727864366962864,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643526
+            },
+            "ordinary": {
+              "relative_l2": 0.0003221720509731364,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593914
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00032320118538894,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 655356
+            },
+            "ordinary": {
+              "relative_l2": 0.0003230854295768198,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593917
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "faa3c9c62fc6bc257a100847b9d87f550b3940948e6da9c757c16f486024d441",
+        "zero": "439292e489a0a35e4a3a0fe304ea1a680337243fa53b135aa9310881e1d7e078",
+        "negative": "d0771cdedc2cca8d015bfdcc58d12c5a22fd25bb7219517c98425daf20937792",
+        "repeat": "faa3c9c62fc6bc257a100847b9d87f550b3940948e6da9c757c16f486024d441",
+        "benchmark": "2b554d9817ffddffc483f0231cd57a3a614844c1c7cf98a819d4d2576a8ab99f",
+        "benchmark_repeat": "2b554d9817ffddffc483f0231cd57a3a614844c1c7cf98a819d4d2576a8ab99f"
+      }
+    }
+  },
+  "gate-n64-coreml-int4": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 64,
+      "representation": "int4",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 7,
+          "constexpr_blockwise_shift_scale": 1,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0003605682088792063,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643529
+            },
+            "ordinary": {
+              "relative_l2": 0.00036211364202839953,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593916
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0003605682088792063,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643529
+            },
+            "ordinary": {
+              "relative_l2": 0.00036211364202839953,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593916
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00036295463491154654,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 655355
+            },
+            "ordinary": {
+              "relative_l2": 0.00036311276423763223,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593915
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "a5f04e75ce2cbc0187c3c45c4e8d09045748c70a8e61fef4c95ad59c970de276",
+        "zero": "439292e489a0a35e4a3a0fe304ea1a680337243fa53b135aa9310881e1d7e078",
+        "negative": "84987aa644077d16a88ee6cee5840a64b13c10e867fb040ee8d2da4422134e68",
+        "repeat": "a5f04e75ce2cbc0187c3c45c4e8d09045748c70a8e61fef4c95ad59c970de276",
+        "benchmark": "dcfb7585e9f45582e866ab5ff2c2ddc145dac2c5b5bc56105d6be47c79ebefcb",
+        "benchmark_repeat": "dcfb7585e9f45582e866ab5ff2c2ddc145dac2c5b5bc56105d6be47c79ebefcb"
+      }
+    }
+  },
+  "gate-n64-coreml-fp16_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "gate",
+      "positions": 64,
+      "representation": "fp16_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 7,
+          "constexpr_lut_to_dense": 1,
+          "conv": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0002727864366962864,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643526
+            },
+            "ordinary": {
+              "relative_l2": 0.0003221720509731364,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593914
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0002727864366962864,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643526
+            },
+            "ordinary": {
+              "relative_l2": 0.0003221720509731364,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593914
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00032320118538894,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 655356
+            },
+            "ordinary": {
+              "relative_l2": 0.0003230854295768198,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593917
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "faa3c9c62fc6bc257a100847b9d87f550b3940948e6da9c757c16f486024d441",
+        "zero": "439292e489a0a35e4a3a0fe304ea1a680337243fa53b135aa9310881e1d7e078",
+        "negative": "d0771cdedc2cca8d015bfdcc58d12c5a22fd25bb7219517c98425daf20937792",
+        "repeat": "faa3c9c62fc6bc257a100847b9d87f550b3940948e6da9c757c16f486024d441",
+        "benchmark": "2b554d9817ffddffc483f0231cd57a3a614844c1c7cf98a819d4d2576a8ab99f",
+        "benchmark_repeat": "2b554d9817ffddffc483f0231cd57a3a614844c1c7cf98a819d4d2576a8ab99f"
+      }
+    }
+  },
+  "gate-n64-coreai-int8_lut": {
+    "asset": {
+      "runtime": "coreai",
+      "workload": "gate",
+      "positions": 64,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        10240,
+        1,
+        64
+      ],
+      "entrypoint": "g7_main",
+      "audit": {
+        "counts": {
+          "coreai.lut_to_dense": 1,
+          "coreai.blockwise_shift_scale": 1,
+          "coreai.conv2d": 1
+        },
+        "weights": [
+          "gate_proj"
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0003605682088792063,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643529
+            },
+            "ordinary": {
+              "relative_l2": 0.00036211364202839953,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593916
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0003605682088792063,
+              "max_abs": 0.0078125,
+              "finite": true,
+              "nonzero": 643529
+            },
+            "ordinary": {
+              "relative_l2": 0.00036211364202839953,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593916
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.00036295463491154654,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 655355
+            },
+            "ordinary": {
+              "relative_l2": 0.00036311276423763223,
+              "max_abs": 0.00390625,
+              "finite": true,
+              "nonzero": 593915
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": {
+          "per_operator_mapping": "unavailable",
+          "preferred": "neuralEngine"
+        }
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "a5f04e75ce2cbc0187c3c45c4e8d09045748c70a8e61fef4c95ad59c970de276",
+        "zero": "439292e489a0a35e4a3a0fe304ea1a680337243fa53b135aa9310881e1d7e078",
+        "negative": "84987aa644077d16a88ee6cee5840a64b13c10e867fb040ee8d2da4422134e68",
+        "repeat": "a5f04e75ce2cbc0187c3c45c4e8d09045748c70a8e61fef4c95ad59c970de276",
+        "benchmark": "dcfb7585e9f45582e866ab5ff2c2ddc145dac2c5b5bc56105d6be47c79ebefcb",
+        "benchmark_repeat": "dcfb7585e9f45582e866ab5ff2c2ddc145dac2c5b5bc56105d6be47c79ebefcb"
+      }
+    }
+  },
+  "mlp-n64-coreml-fp16": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 64,
+      "representation": "fp16",
+      "format": "fp16_from_w4_codes",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 19,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0007467594285141244,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 160788
+            },
+            "ordinary": {
+              "relative_l2": 0.002116128184060131,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148476
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0007113079950341094,
+              "max_abs": 0.03125,
+              "finite": true,
+              "nonzero": 160954
+            },
+            "ordinary": {
+              "relative_l2": 0.002182163442145916,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148478
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.002139237880173247,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 163840
+            },
+            "ordinary": {
+              "relative_l2": 0.0021316952191215194,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148480
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "5b3b1be7787227ca7e26c82022a464de00c3158cea896b66ddb671fa57e1bbc5",
+        "zero": "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d",
+        "negative": "893540a067f0e968f12aed7f8057b90483b8ba99c802847765c0faeaa05955ab",
+        "repeat": "5b3b1be7787227ca7e26c82022a464de00c3158cea896b66ddb671fa57e1bbc5",
+        "benchmark": "996ba3e730c48fe5f85321477582d055b8e9846a77098e4de76e48f3f69af202",
+        "benchmark_repeat": "996ba3e730c48fe5f85321477582d055b8e9846a77098e4de76e48f3f69af202"
+      }
+    }
+  },
+  "mlp-n64-coreml-int8_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 64,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 25,
+          "constexpr_blockwise_shift_scale": 3,
+          "constexpr_lut_to_dense": 3,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0007467594285141244,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 160788
+            },
+            "ordinary": {
+              "relative_l2": 0.002116128184060131,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148476
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0007113079950341094,
+              "max_abs": 0.03125,
+              "finite": true,
+              "nonzero": 160954
+            },
+            "ordinary": {
+              "relative_l2": 0.002182163442145916,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148478
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.002139237880173247,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 163840
+            },
+            "ordinary": {
+              "relative_l2": 0.0021316952191215194,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148480
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_3",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_3",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_4",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_4",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_5",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_5",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "5b3b1be7787227ca7e26c82022a464de00c3158cea896b66ddb671fa57e1bbc5",
+        "zero": "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d",
+        "negative": "893540a067f0e968f12aed7f8057b90483b8ba99c802847765c0faeaa05955ab",
+        "repeat": "5b3b1be7787227ca7e26c82022a464de00c3158cea896b66ddb671fa57e1bbc5",
+        "benchmark": "996ba3e730c48fe5f85321477582d055b8e9846a77098e4de76e48f3f69af202",
+        "benchmark_repeat": "996ba3e730c48fe5f85321477582d055b8e9846a77098e4de76e48f3f69af202"
+      }
+    }
+  },
+  "mlp-n64-coreml-int4": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 64,
+      "representation": "int4",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 22,
+          "constexpr_blockwise_shift_scale": 3,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0008661822083940542,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 161265
+            },
+            "ordinary": {
+              "relative_l2": 0.002059303564017369,
+              "max_abs": 0.013671875,
+              "finite": true,
+              "nonzero": 148480
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0008544418638677593,
+              "max_abs": 0.125,
+              "finite": true,
+              "nonzero": 161260
+            },
+            "ordinary": {
+              "relative_l2": 0.0021270182778945065,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148480
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.0020846339188520828,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 163840
+            },
+            "ordinary": {
+              "relative_l2": 0.002076960340010725,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148480
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_2",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "3e9d62f6a4761e326eef53d5ecf4a5db96d24faa008c66b07bf003c21e1b3294",
+        "zero": "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d",
+        "negative": "d4df4fece9497c7f2e0424f937d4195c903e00494766c84177f72617355eb6df",
+        "repeat": "3e9d62f6a4761e326eef53d5ecf4a5db96d24faa008c66b07bf003c21e1b3294",
+        "benchmark": "da184177e6e9cc0cf0e1725e29eda098bfb33ba6d5f0d6854ddce55a45d41673",
+        "benchmark_repeat": "da184177e6e9cc0cf0e1725e29eda098bfb33ba6d5f0d6854ddce55a45d41673"
+      }
+    }
+  },
+  "mlp-n64-coreml-fp16_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 64,
+      "representation": "fp16_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 22,
+          "constexpr_lut_to_dense": 3,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0007467594285141244,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 160788
+            },
+            "ordinary": {
+              "relative_l2": 0.002116128184060131,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148476
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0007113079950341094,
+              "max_abs": 0.03125,
+              "finite": true,
+              "nonzero": 160954
+            },
+            "ordinary": {
+              "relative_l2": 0.002182163442145916,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148478
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.002139237880173247,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 163840
+            },
+            "ordinary": {
+              "relative_l2": 0.0021316952191215194,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148480
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_2",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "5b3b1be7787227ca7e26c82022a464de00c3158cea896b66ddb671fa57e1bbc5",
+        "zero": "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d",
+        "negative": "893540a067f0e968f12aed7f8057b90483b8ba99c802847765c0faeaa05955ab",
+        "repeat": "5b3b1be7787227ca7e26c82022a464de00c3158cea896b66ddb671fa57e1bbc5",
+        "benchmark": "996ba3e730c48fe5f85321477582d055b8e9846a77098e4de76e48f3f69af202",
+        "benchmark_repeat": "996ba3e730c48fe5f85321477582d055b8e9846a77098e4de76e48f3f69af202"
+      }
+    }
+  },
+  "mlp-n64-coreai-int8_lut": {
+    "asset": {
+      "runtime": "coreai",
+      "workload": "mlp",
+      "positions": 64,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        64
+      ],
+      "entrypoint": "g7_main",
+      "audit": {
+        "counts": {
+          "coreai.lut_to_dense": 3,
+          "coreai.blockwise_shift_scale": 3,
+          "coreai.conv2d": 3,
+          "coreai.gelu": 1,
+          "coreai.decomposable.broadcasting_mul": 1
+        },
+        "weights": [
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0008661822083940542,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 161265
+            },
+            "ordinary": {
+              "relative_l2": 0.002059303564017369,
+              "max_abs": 0.013671875,
+              "finite": true,
+              "nonzero": 148480
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0008544418638677593,
+              "max_abs": 0.125,
+              "finite": true,
+              "nonzero": 161260
+            },
+            "ordinary": {
+              "relative_l2": 0.0021270182778945065,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148480
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.0020846339188520828,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 163840
+            },
+            "ordinary": {
+              "relative_l2": 0.002076960340010725,
+              "max_abs": 0.015625,
+              "finite": true,
+              "nonzero": 148480
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": {
+          "per_operator_mapping": "unavailable",
+          "preferred": "neuralEngine"
+        }
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "3e9d62f6a4761e326eef53d5ecf4a5db96d24faa008c66b07bf003c21e1b3294",
+        "zero": "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d",
+        "negative": "d4df4fece9497c7f2e0424f937d4195c903e00494766c84177f72617355eb6df",
+        "repeat": "3e9d62f6a4761e326eef53d5ecf4a5db96d24faa008c66b07bf003c21e1b3294",
+        "benchmark": "da184177e6e9cc0cf0e1725e29eda098bfb33ba6d5f0d6854ddce55a45d41673",
+        "benchmark_repeat": "da184177e6e9cc0cf0e1725e29eda098bfb33ba6d5f0d6854ddce55a45d41673"
+      }
+    }
+  },
+  "mlp-n1024-coreml-fp16": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 1024,
+      "representation": "fp16",
+      "format": "fp16_from_w4_codes",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 19,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0017054074182287415,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 2618369
+            },
+            "ordinary": {
+              "relative_l2": 0.0021429821507160016,
+              "max_abs": 0.01708984375,
+              "finite": true,
+              "nonzero": 2606057
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0016584823283556812,
+              "max_abs": 0.03125,
+              "finite": true,
+              "nonzero": 2618524
+            },
+            "ordinary": {
+              "relative_l2": 0.0021298328493822983,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2606048
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.002137234568547374,
+              "max_abs": 0.017578125,
+              "finite": true,
+              "nonzero": 2621417
+            },
+            "ordinary": {
+              "relative_l2": 0.0021367939131051055,
+              "max_abs": 0.017578125,
+              "finite": true,
+              "nonzero": 2606057
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+        "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+        "negative": "ec7becb904ebb0b15798caaacf11e8391d56659562d195f1c31e0eb2bf18fb53",
+        "repeat": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+        "benchmark": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08",
+        "benchmark_repeat": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08"
+      }
+    }
+  },
+  "mlp-n1024-coreml-int8_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 1024,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 25,
+          "constexpr_blockwise_shift_scale": 3,
+          "constexpr_lut_to_dense": 3,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0017054074182287415,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 2618369
+            },
+            "ordinary": {
+              "relative_l2": 0.0021429821507160016,
+              "max_abs": 0.01708984375,
+              "finite": true,
+              "nonzero": 2606057
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0016584823283556812,
+              "max_abs": 0.03125,
+              "finite": true,
+              "nonzero": 2618524
+            },
+            "ordinary": {
+              "relative_l2": 0.0021298328493822983,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2606048
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.002137234568547374,
+              "max_abs": 0.017578125,
+              "finite": true,
+              "nonzero": 2621417
+            },
+            "ordinary": {
+              "relative_l2": 0.0021367939131051055,
+              "max_abs": 0.017578125,
+              "finite": true,
+              "nonzero": 2606057
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_3",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_3",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_4",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_4",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_5",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_5",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+        "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+        "negative": "ec7becb904ebb0b15798caaacf11e8391d56659562d195f1c31e0eb2bf18fb53",
+        "repeat": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+        "benchmark": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08",
+        "benchmark_repeat": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08"
+      }
+    }
+  },
+  "mlp-n1024-coreml-int4": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 1024,
+      "representation": "int4",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 22,
+          "constexpr_blockwise_shift_scale": 3,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0016867876795030683,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 2618863
+            },
+            "ordinary": {
+              "relative_l2": 0.0020846544295228192,
+              "max_abs": 0.01953125,
+              "finite": true,
+              "nonzero": 2606078
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.001646954967240278,
+              "max_abs": 0.125,
+              "finite": true,
+              "nonzero": 2618857
+            },
+            "ordinary": {
+              "relative_l2": 0.002071574605537683,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2606077
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.0020783528924647257,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2621435
+            },
+            "ordinary": {
+              "relative_l2": 0.0020778798826290978,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2606075
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_blockwise_shift_scale",
+            "output": "constexpr_blockwise_shift_scale_2",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "d0f72b0163440128c25402479f01b7a6eb56fcf107423a966b32ca51ca4f679b",
+        "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+        "negative": "bf7ccb53c245d8389b0944ffccb3dc8f884a97a481d0f6359a20a17e7136268d",
+        "repeat": "d0f72b0163440128c25402479f01b7a6eb56fcf107423a966b32ca51ca4f679b",
+        "benchmark": "ec62fbbd7e65920ad351280047059cad2d62410b87c6d7e2f237cd97c2397803",
+        "benchmark_repeat": "ec62fbbd7e65920ad351280047059cad2d62410b87c6d7e2f237cd97c2397803"
+      }
+    }
+  },
+  "mlp-n1024-coreml-fp16_lut": {
+    "asset": {
+      "runtime": "coreml",
+      "workload": "mlp",
+      "positions": 1024,
+      "representation": "fp16_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "entrypoint": "main",
+      "audit": {
+        "counts": {
+          "const": 22,
+          "constexpr_lut_to_dense": 3,
+          "conv": 3,
+          "gelu": 1,
+          "mul": 1,
+          "identity": 1
+        },
+        "weights": [
+          {
+            "name": "gate_proj",
+            "codes_sha256": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+            "decoded_fp16_sha256": "d09b30e9b7e8cfeaf662f8fda0c7fe4c180a238472c5a049c435989e529cd45a"
+          },
+          {
+            "name": "up_proj",
+            "codes_sha256": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+            "decoded_fp16_sha256": "6b4d76c6b259da6d8da262fb0656611714c6f4ad23dd2f9c4bec872634a1c899"
+          },
+          {
+            "name": "down_proj",
+            "codes_sha256": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147",
+            "decoded_fp16_sha256": "e1a727267753c711e37bf8dfe89556d91494980323ebf213cbad5cabc74028f1"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0017054074182287415,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 2618369
+            },
+            "ordinary": {
+              "relative_l2": 0.0021429821507160016,
+              "max_abs": 0.01708984375,
+              "finite": true,
+              "nonzero": 2606057
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.0016584823283556812,
+              "max_abs": 0.03125,
+              "finite": true,
+              "nonzero": 2618524
+            },
+            "ordinary": {
+              "relative_l2": 0.0021298328493822983,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2606048
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.002137234568547374,
+              "max_abs": 0.017578125,
+              "finite": true,
+              "nonzero": 2621417
+            },
+            "ordinary": {
+              "relative_l2": 0.0021367939131051055,
+              "max_abs": 0.017578125,
+              "finite": true,
+              "nonzero": 2606057
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": [
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_0",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "gate_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_1",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "up_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.gelu",
+            "output": "gelu_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.mul",
+            "output": "mul_0",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "ios18.constexpr_lut_to_dense",
+            "output": "constexpr_lut_to_dense_2",
+            "preferred": "unknown"
+          },
+          {
+            "operator": "ios18.conv",
+            "output": "down_proj",
+            "preferred": "MLNeuralEngineComputeDevice"
+          },
+          {
+            "operator": "identity",
+            "output": "y",
+            "preferred": "MLNeuralEngineComputeDevice"
+          }
+        ]
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+        "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+        "negative": "ec7becb904ebb0b15798caaacf11e8391d56659562d195f1c31e0eb2bf18fb53",
+        "repeat": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+        "benchmark": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08",
+        "benchmark_repeat": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08"
+      }
+    }
+  },
+  "mlp-n1024-coreai-int8_lut": {
+    "asset": {
+      "runtime": "coreai",
+      "workload": "mlp",
+      "positions": 1024,
+      "representation": "int8_lut",
+      "format": "w4a16",
+      "shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "output_shape": [
+        1,
+        2560,
+        1,
+        1024
+      ],
+      "entrypoint": "g7_main",
+      "audit": {
+        "counts": {
+          "coreai.lut_to_dense": 3,
+          "coreai.blockwise_shift_scale": 3,
+          "coreai.conv2d": 3,
+          "coreai.gelu": 1,
+          "coreai.decomposable.broadcasting_mul": 1
+        },
+        "weights": [
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ]
+      }
+    },
+    "admission": {
+      "passed": true,
+      "numeric": {
+        "passed": true,
+        "reasons": [],
+        "limit": 0.005,
+        "comparisons": {
+          "original": {
+            "all": {
+              "relative_l2": 0.0016867876795030683,
+              "max_abs": 0.0625,
+              "finite": true,
+              "nonzero": 2618863
+            },
+            "ordinary": {
+              "relative_l2": 0.0020846544295228192,
+              "max_abs": 0.01953125,
+              "finite": true,
+              "nonzero": 2606078
+            }
+          },
+          "negative": {
+            "all": {
+              "relative_l2": 0.001646954967240278,
+              "max_abs": 0.125,
+              "finite": true,
+              "nonzero": 2618857
+            },
+            "ordinary": {
+              "relative_l2": 0.002071574605537683,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2606077
+            }
+          },
+          "benchmark": {
+            "all": {
+              "relative_l2": 0.0020783528924647257,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2621435
+            },
+            "ordinary": {
+              "relative_l2": 0.0020778798826290978,
+              "max_abs": 0.0166015625,
+              "finite": true,
+              "nonzero": 2606075
+            }
+          }
+        }
+      },
+      "placement": {
+        "passed": true,
+        "reasons": [],
+        "requests_per_control": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "failures": [],
+        "clock_mapping": "wall",
+        "compute_plan": {
+          "per_operator_mapping": "unavailable",
+          "preferred": "neuralEngine"
+        }
+      },
+      "requests_per_control_by_mapping": {
+        "wall": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "mach": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "control_output_sha256": {
+        "original": "d0f72b0163440128c25402479f01b7a6eb56fcf107423a966b32ca51ca4f679b",
+        "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+        "negative": "bf7ccb53c245d8389b0944ffccb3dc8f884a97a481d0f6359a20a17e7136268d",
+        "repeat": "d0f72b0163440128c25402479f01b7a6eb56fcf107423a966b32ca51ca4f679b",
+        "benchmark": "ec62fbbd7e65920ad351280047059cad2d62410b87c6d7e2f237cd97c2397803",
+        "benchmark_repeat": "ec62fbbd7e65920ad351280047059cad2d62410b87c6d7e2f237cd97c2397803"
+      }
+    }
+  }
+}

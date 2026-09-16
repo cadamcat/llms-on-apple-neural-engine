@@ -147,3 +147,16 @@ reads a quarter of Core AI's power; whether another Core ML four-bit form avoids
 it; a correct A8 MLP, which needs a multiply that both frontends compile correctly
 or a clamp that meets the screen; how the A8 gain grows between 64 and 1024
 positions; and why Core ML's 128-layer A8W4 chain misses its reference.
+
+## What G8 changes
+
+G8 stored G7's codes four ways in Core ML. Core ML's four-bit slowdown belongs to its
+palette forms: [saved as direct INT4](../findings/coreml-direct-int4/), the same codes run
+at <!-- claim:g8.int4-over-coreai.same-phase.speed@g8-102 -->0.952–0.985×<!-- /claim --> Core AI's four-bit speed, while a palette with the scale already
+applied is as slow as the INT8 palette. The Core ML direct-INT4 outputs are
+byte-identical to Core AI's, and both Core ML palettes' outputs to Core ML FP16's.
+
+Open: what Core ML's palette forms spend their time on, which a small
+`constexpr_lut_to_dense` against `constexpr_blockwise_shift_scale` comparison could
+report upstream; whether direct INT4 keeps this speed in a complete
+model; and why the 1024-position MLP runs so slowly as FP16 in both runtimes.

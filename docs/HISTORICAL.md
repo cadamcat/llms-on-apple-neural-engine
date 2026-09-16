@@ -114,3 +114,7 @@ The [G6 bundle](../results/historical/g6-qwen3-4b/) holds one night: FP16 decode
 
 The [G7 bundle](../results/historical/g7-coreml-coreai/) holds one run: the first E4B gate and MLP from the same codes in Core ML and Core AI, four representations, 64 and 1024 positions, three rounds, with every prepared configuration's admission and output hashes, block clocks reduced to latency summaries, selected power fields of seventeen captures and the recorded measurements. The Core ML QDQ probe records sit with [their finding](../findings/coreai-qdq-multiply-scale/repro/coreml/recorded/). [Provenance](PROVENANCE.md#g7-and-the-core-ml-qdq-probe) · [Scope](SCOPE.md#g7-core-ml-and-core-ai-on-the-same-codes) · [Recompute](REPRODUCING.md#g7-recomputation).
 
+## Four-bit representations of the same codes (G8)
+
+The [G8 bundle](../results/historical/g8-coreml-four-bit/) holds one run in two phases: G7's gate and MLP codes stored four ways in Core ML with G7's Core AI palette as a control, 64 and 1024 positions, three rounds, with every prepared configuration's asset audit, admission and output hashes, the three admissions the original phase rejected, block clocks reduced to latency summaries, selected power fields of nineteen captures and the recorded measurements. [Provenance](PROVENANCE.md#g8-four-bit-representations) · [Scope](SCOPE.md#g8-four-bit-representations-of-the-same-codes) · [Recompute](REPRODUCING.md#g8-recomputation).
+

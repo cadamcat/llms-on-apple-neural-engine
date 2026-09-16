@@ -1,0 +1,442 @@
+{
+  "rejected_first_round": [
+    {
+      "id": "r0-mlp-n1024-coreml-fp16",
+      "config": "mlp-n1024-coreml-fp16",
+      "round": 0,
+      "seed": 2026091401,
+      "admission": {
+        "passed": false,
+        "numeric": {
+          "passed": true,
+          "reasons": [],
+          "limit": 0.005,
+          "comparisons": {
+            "original": {
+              "all": {
+                "relative_l2": 0.0017054074182287415,
+                "max_abs": 0.0625,
+                "finite": true,
+                "nonzero": 2618369
+              },
+              "ordinary": {
+                "relative_l2": 0.0021429821507160016,
+                "max_abs": 0.01708984375,
+                "finite": true,
+                "nonzero": 2606057
+              }
+            },
+            "negative": {
+              "all": {
+                "relative_l2": 0.0016584823283556812,
+                "max_abs": 0.03125,
+                "finite": true,
+                "nonzero": 2618524
+              },
+              "ordinary": {
+                "relative_l2": 0.0021298328493822983,
+                "max_abs": 0.0166015625,
+                "finite": true,
+                "nonzero": 2606048
+              }
+            },
+            "benchmark": {
+              "all": {
+                "relative_l2": 0.002137234568547374,
+                "max_abs": 0.017578125,
+                "finite": true,
+                "nonzero": 2621417
+              },
+              "ordinary": {
+                "relative_l2": 0.0021367939131051055,
+                "max_abs": 0.017578125,
+                "finite": true,
+                "nonzero": 2606057
+              }
+            }
+          }
+        },
+        "placement": {
+          "passed": false,
+          "reasons": [
+            "missing_ane_control_request"
+          ],
+          "requests_per_control": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "failures": [],
+          "clock_mapping": "wall",
+          "compute_plan": [
+            {
+              "operator": "ios18.conv",
+              "output": "gate_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "up_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.gelu",
+              "output": "gelu_0",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.mul",
+              "output": "mul_0",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "down_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "identity",
+              "output": "y",
+              "preferred": "MLNeuralEngineComputeDevice"
+            }
+          ]
+        },
+        "requests_per_control_by_mapping": {
+          "wall": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "mach": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "control_output_sha256": {
+          "original": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+          "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+          "negative": "ec7becb904ebb0b15798caaacf11e8391d56659562d195f1c31e0eb2bf18fb53",
+          "repeat": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+          "benchmark": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08",
+          "benchmark_repeat": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08"
+        }
+      }
+    },
+    {
+      "id": "r0-mlp-n1024-coreml-fp16_lut",
+      "config": "mlp-n1024-coreml-fp16_lut",
+      "round": 0,
+      "seed": 2026091401,
+      "admission": {
+        "passed": false,
+        "numeric": {
+          "passed": true,
+          "reasons": [],
+          "limit": 0.005,
+          "comparisons": {
+            "original": {
+              "all": {
+                "relative_l2": 0.0017054074182287415,
+                "max_abs": 0.0625,
+                "finite": true,
+                "nonzero": 2618369
+              },
+              "ordinary": {
+                "relative_l2": 0.0021429821507160016,
+                "max_abs": 0.01708984375,
+                "finite": true,
+                "nonzero": 2606057
+              }
+            },
+            "negative": {
+              "all": {
+                "relative_l2": 0.0016584823283556812,
+                "max_abs": 0.03125,
+                "finite": true,
+                "nonzero": 2618524
+              },
+              "ordinary": {
+                "relative_l2": 0.0021298328493822983,
+                "max_abs": 0.0166015625,
+                "finite": true,
+                "nonzero": 2606048
+              }
+            },
+            "benchmark": {
+              "all": {
+                "relative_l2": 0.002137234568547374,
+                "max_abs": 0.017578125,
+                "finite": true,
+                "nonzero": 2621417
+              },
+              "ordinary": {
+                "relative_l2": 0.0021367939131051055,
+                "max_abs": 0.017578125,
+                "finite": true,
+                "nonzero": 2606057
+              }
+            }
+          }
+        },
+        "placement": {
+          "passed": false,
+          "reasons": [
+            "missing_ane_control_request"
+          ],
+          "requests_per_control": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "failures": [],
+          "clock_mapping": "wall",
+          "compute_plan": [
+            {
+              "operator": "ios18.constexpr_lut_to_dense",
+              "output": "constexpr_lut_to_dense_0",
+              "preferred": "unknown"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "gate_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.constexpr_lut_to_dense",
+              "output": "constexpr_lut_to_dense_1",
+              "preferred": "unknown"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "up_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.gelu",
+              "output": "gelu_0",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.mul",
+              "output": "mul_0",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.constexpr_lut_to_dense",
+              "output": "constexpr_lut_to_dense_2",
+              "preferred": "unknown"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "down_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "identity",
+              "output": "y",
+              "preferred": "MLNeuralEngineComputeDevice"
+            }
+          ]
+        },
+        "requests_per_control_by_mapping": {
+          "wall": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "mach": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "control_output_sha256": {
+          "original": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+          "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+          "negative": "ec7becb904ebb0b15798caaacf11e8391d56659562d195f1c31e0eb2bf18fb53",
+          "repeat": "1db3b3568ce38935c4afae677d272f3e6354e7c4c51a40fa37dd1e48c77fc900",
+          "benchmark": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08",
+          "benchmark_repeat": "ae573e6c1428497e1b9b0cb96222cfc9cddf7fa833bf4744f609277d2496fe08"
+        }
+      }
+    },
+    {
+      "id": "r0-mlp-n1024-coreml-int4",
+      "config": "mlp-n1024-coreml-int4",
+      "round": 0,
+      "seed": 2026091401,
+      "admission": {
+        "passed": false,
+        "numeric": {
+          "passed": true,
+          "reasons": [],
+          "limit": 0.005,
+          "comparisons": {
+            "original": {
+              "all": {
+                "relative_l2": 0.0016867876795030683,
+                "max_abs": 0.0625,
+                "finite": true,
+                "nonzero": 2618863
+              },
+              "ordinary": {
+                "relative_l2": 0.0020846544295228192,
+                "max_abs": 0.01953125,
+                "finite": true,
+                "nonzero": 2606078
+              }
+            },
+            "negative": {
+              "all": {
+                "relative_l2": 0.001646954967240278,
+                "max_abs": 0.125,
+                "finite": true,
+                "nonzero": 2618857
+              },
+              "ordinary": {
+                "relative_l2": 0.002071574605537683,
+                "max_abs": 0.0166015625,
+                "finite": true,
+                "nonzero": 2606077
+              }
+            },
+            "benchmark": {
+              "all": {
+                "relative_l2": 0.0020783528924647257,
+                "max_abs": 0.0166015625,
+                "finite": true,
+                "nonzero": 2621435
+              },
+              "ordinary": {
+                "relative_l2": 0.0020778798826290978,
+                "max_abs": 0.0166015625,
+                "finite": true,
+                "nonzero": 2606075
+              }
+            }
+          }
+        },
+        "placement": {
+          "passed": false,
+          "reasons": [
+            "missing_ane_control_request"
+          ],
+          "requests_per_control": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "failures": [],
+          "clock_mapping": "wall",
+          "compute_plan": [
+            {
+              "operator": "ios18.constexpr_blockwise_shift_scale",
+              "output": "constexpr_blockwise_shift_scale_0",
+              "preferred": "unknown"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "gate_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.constexpr_blockwise_shift_scale",
+              "output": "constexpr_blockwise_shift_scale_1",
+              "preferred": "unknown"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "up_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.gelu",
+              "output": "gelu_0",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.mul",
+              "output": "mul_0",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "ios18.constexpr_blockwise_shift_scale",
+              "output": "constexpr_blockwise_shift_scale_2",
+              "preferred": "unknown"
+            },
+            {
+              "operator": "ios18.conv",
+              "output": "down_proj",
+              "preferred": "MLNeuralEngineComputeDevice"
+            },
+            {
+              "operator": "identity",
+              "output": "y",
+              "preferred": "MLNeuralEngineComputeDevice"
+            }
+          ]
+        },
+        "requests_per_control_by_mapping": {
+          "wall": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "mach": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "control_output_sha256": {
+          "original": "d0f72b0163440128c25402479f01b7a6eb56fcf107423a966b32ca51ca4f679b",
+          "zero": "c036cbb7553a909f8b8877d4461924307f27ecb66cff928eeeafd569c3887e29",
+          "negative": "bf7ccb53c245d8389b0944ffccb3dc8f884a97a481d0f6359a20a17e7136268d",
+          "repeat": "d0f72b0163440128c25402479f01b7a6eb56fcf107423a966b32ca51ca4f679b",
+          "benchmark": "ec62fbbd7e65920ad351280047059cad2d62410b87c6d7e2f237cd97c2397803",
+          "benchmark_repeat": "ec62fbbd7e65920ad351280047059cad2d62410b87c6d7e2f237cd97c2397803"
+        }
+      }
+    }
+  ],
+  "cancelled_later_rounds": [
+    "r1-mlp-n1024-coreml-fp16",
+    "r1-mlp-n1024-coreml-fp16_lut",
+    "r1-mlp-n1024-coreml-int4",
+    "r2-mlp-n1024-coreml-fp16",
+    "r2-mlp-n1024-coreml-fp16_lut",
+    "r2-mlp-n1024-coreml-int4"
+  ],
+  "retrospective_bridge_offset_ticks": [
+    193428286914,
+    193428286918
+  ]
+}

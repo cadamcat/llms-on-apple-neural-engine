@@ -1,0 +1,151 @@
+{
+  "historical_import": true,
+  "date": "2026-09-16",
+  "machine": {
+    "chip": "Apple M5 Pro",
+    "memory_GiB": 48
+  },
+  "model": "google/gemma-4-E4B-it-qat-mobile-ct",
+  "revision": "3624117cf04528e099519f93839f0f0b7a18913d",
+  "weights": {
+    "gate_proj": {
+      "shape": [
+        10240,
+        2560
+      ],
+      "parameters": 26214400,
+      "scale_shape": [
+        10240,
+        1
+      ],
+      "scale_dtype": "<f4"
+    },
+    "up_proj": {
+      "shape": [
+        10240,
+        2560
+      ],
+      "parameters": 26214400,
+      "scale_shape": [
+        10240,
+        1
+      ],
+      "scale_dtype": "<f4"
+    },
+    "down_proj": {
+      "shape": [
+        2560,
+        10240
+      ],
+      "parameters": 26214400,
+      "scale_shape": [
+        2560,
+        1
+      ],
+      "scale_dtype": "<f4"
+    }
+  },
+  "software": {
+    "numpy": "2.3.5",
+    "torch": "2.11.0",
+    "coremltools": "9.0",
+    "coreai-torch": "0.4.1",
+    "coreai-core": "1.0.0b2",
+    "macOS": "27.0 (26A428)",
+    "xcode": "27.0"
+  },
+  "representations": {
+    "fp16": "Core ML: the four-bit codes times the FP16 per-output-channel scale, stored as FP16 constants",
+    "int8_lut": "Core ML: four-bit indices into a 16-entry palette built from INT8 −8…7 by constexpr_blockwise_shift_scale with the per-output-channel scale, then constexpr_lut_to_dense; the G7 W4A16 form",
+    "int4": "Core ML: the codes stored as signed INT4 with the per-output-channel scale, constexpr_blockwise_shift_scale only",
+    "fp16_lut": "Core ML: four-bit indices into a per-output-channel FP16 palette with the scale already applied, constexpr_lut_to_dense only",
+    "coreai_int8_lut": "Core AI: the G7 W4A16 export, coreai.lut_to_dense and coreai.blockwise_shift_scale"
+  },
+  "activations": "FP16",
+  "workloads": {
+    "gate": "gate_proj as a 1×1 convolution, 2560 → 10240",
+    "mlp": "down(gelu_tanh(gate(x)) * up(x)), no attention, residual or normalization"
+  },
+  "references": {
+    "n64": {
+      "positions": 64,
+      "seeds": [
+        2026091401,
+        2026091402,
+        2026091403
+      ],
+      "source_codes": {
+        "gate_proj": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+        "up_proj": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+        "down_proj": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147"
+      },
+      "matmul": "FP16 decoded weights, FP32 GEMM, FP16 output",
+      "qdq": "exact ratio of FP16 value and scale; nearest ties away, signed int8 saturation",
+      "gelu": "float32 tanh approximation, then FP16",
+      "scope": "synthetic controls and independently generated RMS-1 benchmark inputs, not text activations"
+    },
+    "n1024": {
+      "positions": 1024,
+      "seeds": [
+        2026091401,
+        2026091402,
+        2026091403
+      ],
+      "source_codes": {
+        "gate_proj": "c751db02c7db79d68d7e6b8e04bbbb8fb39b960faba1db49500683226d869269",
+        "up_proj": "413bfbd487142810ea6406363fd206de7a55db9f83dab8d45c57aa5fe892600b",
+        "down_proj": "744ada2bad8622b5dd1af37e8b6958d2924894588f074ae9f6b3dcce67eef147"
+      },
+      "matmul": "FP16 decoded weights, FP32 GEMM, FP16 output",
+      "qdq": "exact ratio of FP16 value and scale; nearest ties away, signed int8 saturation",
+      "gelu": "float32 tanh approximation, then FP16",
+      "scope": "synthetic controls and independently generated RMS-1 benchmark inputs, not text activations"
+    }
+  },
+  "numeric_relative_L2_limit": 0.005,
+  "ordinary_rows": "rows 6 onward; rows 0-5 are the boundary controls",
+  "rounds": 3,
+  "benchmark_seeds": [
+    2026091401,
+    2026091402,
+    2026091403
+  ],
+  "block_seconds": 120,
+  "warm_seconds": 5,
+  "minimum_warm_calls": 10,
+  "quiet_seconds": 25,
+  "order": "per round sorted by workload, positions, representation and runtime; the middle round reversed; one new host per block",
+  "phases": {
+    "original": "all 20 configurations; the first round of three 1024-position Core ML MLP configurations was rejected by the placement clock check before timing, and their later rounds were cancelled",
+    "follow-up": "only those nine untimed blocks, same assets, inputs, host, timing and energy rules, with a Mach-clock placement check; no completed block repeated"
+  },
+  "placement_clock": {
+    "tolerance_ns": 100000,
+    "wall": "original phase: log wall time with microsecond resolution mapped through an epoch/monotonic pair taken at host start",
+    "mach": "follow-up phase: log Mach continuous ticks mapped to host absolute time through continuous/absolute bridges read before and after the controls; the mapped interval must lie inside the window"
+  },
+  "energy": {
+    "lags_ns": [
+      0,
+      1000000000,
+      2000000000,
+      5000000000
+    ],
+    "primary_lag": "2",
+    "interior_margin_seconds": 15,
+    "response_arm": "ane",
+    "power_domains": [
+      "cpu",
+      "gpu",
+      "ane"
+    ],
+    "idle_baseline_subtracted": false
+  },
+  "host": {
+    "source": "workplans/g7-coreml-a8w4-20260914/host.swift",
+    "coreml_compute_units": "cpuAndNeuralEngine",
+    "coreai_preferred_compute_unit": "neuralEngine",
+    "timing": "synchronous MLModel.prediction or awaited function.run per call; API start and end clocks"
+  },
+  "scope": "Real E4B weights with seeded RMS-normalized synthetic activations. Per-block wall-clock speed and software component energy; no model quality, attention, KV cache, A8 or exclusive per-operation placement."
+}

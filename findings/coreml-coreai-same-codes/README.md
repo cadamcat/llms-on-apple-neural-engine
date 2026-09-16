@@ -50,6 +50,7 @@ This re-applies each admission rule to the recorded controls, recomputes every b
 ## What this does not show
 
 - **One Core ML four-bit representation.** Direct signed INT4 with a blockwise scale and other palettization forms were not tested; another may run at Core AI's speed.
+  **Updated 2026-09-16.** G8 stored the same codes as direct INT4 and as a pre-scaled FP16 palette: [direct INT4 runs at <!-- claim:g8.int4-over-coreai.same-phase.speed@g8-056 -->0.952–0.985×<!-- /claim --> Core AI's four-bit speed, and the FP16 palette is as slow as the INT8 palette](../coreml-direct-int4/).
 - **Not a model.** A gate and an MLP with synthetic activations; no attention, KV cache, text or quality evaluation.
 - **Not exclusive device time.** Speed is completed positions over each block's wall clock, with synchronous `prediction` or awaited `run`. Placement comes from the compute plan and ANE request counts, not per-operation traces; physical INT8 execution is not shown.
 - **One machine and toolchain.** M5 Pro, macOS 27.0 (26A428), coremltools 9.0, coreai-torch 0.4.1, coreai-core 1.0.0b2.

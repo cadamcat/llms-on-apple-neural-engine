@@ -59,6 +59,7 @@ Choose the command for the result you want to inspect:
 | G4 A complete Qwen3-4B with matched ANE graphs | `python scripts/verify_g4a.py` | Recompute bundled request, power and disk fields; no device |
 | G6 decode query width, W4 palettization and the G4 A repeat | `python scripts/verify_g6.py` | Recompute bundled request and power fields and admission-log counts; no device |
 | G7 Core ML and Core AI on the same E4B codes | `python scripts/verify_g7.py` | Re-admit recorded controls; recompute block speed and power fields; no device |
+| G8 four-bit representations of the same E4B codes | `python scripts/verify_g8.py` | Check asset audits; re-admit recorded controls; recompute block speed and power fields; no device |
 | Disk space held by the ANE compiler service | `python scripts/verify_ane_compiler_disk.py` | Recompute redacted observations; no device |
 | G3 complete Qwen3-4B speed and component energy | `python scripts/verify_g3.py` | Recompute bundled raw request and power fields; no device |
 | G2 native W4A16 speed, memory, temperature and fans | `python scripts/verify_g2.py` | Recompute bundled observations; no device |
@@ -159,6 +160,7 @@ python findings/coreai-qdq-multiply-scale/repro/verify.py
 python findings/ane-short-decode-query/repro/verify.py
 python findings/coreai-palettized-weights-gpu/repro/verify.py
 python scripts/verify_g7.py
+python scripts/verify_g8.py
 python findings/coreai-qdq-multiply-scale/repro/coreml/verify.py
 python scripts/check_source_identity.py --check
 python scripts/summarize.py
@@ -296,6 +298,24 @@ python results/historical/import_qdq_coreml.py --workspace /path/to/research-wor
 ```
 
 Device replay needs the E4B codes and scales, both exporters, the host and a sudo-authenticated power capture; a portable launcher is not included. The Core ML probe needs no model: see [its reproduction](../findings/coreai-qdq-multiply-scale/repro/README.md#core-ml).
+
+## G8 recomputation
+
+```sh
+python scripts/verify_g8.py
+python scripts/summarize.py
+```
+
+The first checks every saved representation's operators, codes and decoded-weight identity, re-applies the admission rules to the recorded controls under each phase's clock mapping and to the rejected admissions, and recomputes every block's speed and component energy against the recorded measurement. `summarize.py` regenerates the G8 tables, including the comparison with the G7 bundle. Neither needs a device.
+
+To rebuild from a research workspace containing both closed phases:
+
+```sh
+python results/historical/import_g8.py --workspace /path/to/research-workspace --output /path/to/new-g8
+python scripts/verify_g8.py --bundle /path/to/new-g8
+```
+
+Device replay needs the E4B codes and scales, the Core ML exporter, G7's Core AI export and host, and a sudo-authenticated power capture; a portable launcher is not included.
 
 ## G1-W and G5 recomputation
 
