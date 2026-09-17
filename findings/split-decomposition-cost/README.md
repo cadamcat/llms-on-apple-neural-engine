@@ -5,7 +5,7 @@
 A tested workaround for [Core ML's direct grouped-scale constraint](../coreml-grouped-scale-cpu/)
 is decomposition. Here a separate Core AI synthetic ablation rewrites one K512 convolution as
 sixteen contiguous K32 convolutions, each with a single per-output-channel
-scale, and add the partials back with a balanced FP16 tree.
+scale, and adds the partials back with a balanced FP16 tree.
 
 In exact real arithmetic that is the same function. On the device it runs at
 about a quarter of the speed.

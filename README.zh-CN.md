@@ -52,8 +52,8 @@
 | **测过的 Core ML direct signed-INT4 K64 图**，每行两个 K32 scale | 数值正确、选择 CPU。相关历史图报告 `ANE only support per-cout/per-tensor quantization`，不是所有 Q4 格式或表示的测试 |
 | **K32 拆分**为按输出通道的 scale | Core AI 小型兼容探针通过；独立合成消融[慢约 4 倍](findings/split-decomposition-cost/)，不是通用代价 |
 | **分组 4-bit 走 Core AI 原生 LUT 路径** | 接受、确有 ANE 活动，[并且算错](findings/coreai-flattened-scale/)——4096 个值里错 1921 个，且可预测 |
-| **原生 ANE 宿主上的 W4A16 服务** | [约为 GPU 速度的四分之一](findings/w4a16-service-tradeoffs/)。相同负载下两侧风扇都在怠速；矩阵前台在 ANE 同跑时尾延迟代价更小。能耗未判定 |
-| **常驻执行** | 历史 Python gate 每调用保留 1,966,080 字节；两个原生 G2 宿主各做了 33,728 次 stage 调用，结束时小 60–62 MiB；[无限期常驻未测](findings/iosurface-per-call-growth/) |
+| **原生 ANE 宿主上的 W4A16 服务** | [约为 GPU 速度的四分之一](findings/w4a16-service-tradeoffs/)。相同负载下两侧风扇都在怠速；前台矩阵计算任务在 ANE 同跑时尾延迟代价更小。能耗未判定 |
+| **常驻执行** | 历史 Python gate 每调用保留 1,966,080 字节；两个原生 G2 宿主各做了 33,728 次 stage 调用，结束时的内存 footprint 比开始时低 60–62 MiB；[无限期常驻未测](findings/iosurface-per-call-growth/) |
 | **W4A16 对比 A8W4** | 取决于每次调用的位置数。一个真实 E4B gate 走 Core AI 时，A8W4 在 64 个位置下为 W4A16 速度的 <!-- claim:g7.coreai.gate.64.a8w4-over-w4a16.speed@g7-101 -->0.976–0.990×<!-- /claim -->，[在 1024 个位置下为 <!-- claim:g7.coreai.gate.1024.a8w4-over-w4a16.speed@g7-102 -->1.359–1.360×<!-- /claim -->](findings/quantized-speedup-conditions/#positions-per-call-on-a-real-projection)。历史 4K 配对循环调用 64 个位置的资产，[为 1.013×](findings/ane-vs-gpu-prefill/) |
 | **测过的 W8A8 合成控制** | 可加速——Core AI 受控 128 层链相对自身 FP16 基线为 **1.86–1.87×**。[收益取决于每次调用的工作量，也取决于权重](findings/quantized-speedup-conditions/)：A8W4 单层时速度为 W4A16 的 <!-- claim:g1w.depth.both-1.speed@g1w-001 -->0.86×<!-- /claim -->，128 层时 <!-- claim:g1w.depth.both-128.speed@g1w-002 -->1.33×<!-- /claim -->；精确零权重让 FP16 本身快 <!-- claim:g1w.density.old.speed@g1w-003 -->1.88×<!-- /claim --> |
 | **Gemma 4 E4B mobile QAT A8W4**，首层 MLP | [算错，而且不更快](findings/quantized-speedup-conditions/#a-released-qat-checkpoint)。ANE 上的 QDQ 乘法[用了另一个 QDQ 的 scale](findings/coreai-qdq-multiply-scale/)，走 Core ML 和走 Core AI 都一样：单个 MLP 偏差 <!-- claim:g1w.e4b.1.native.l2@g1w-004 -->339%<!-- /claim -->。加乘积裁剪后，重复八个 MLP 仍偏差 <!-- claim:g1w.e4b.8.clip-product.l2@g1w-005 -->21.6%<!-- /claim -->，速度为 W4A16 的 <!-- claim:g1w.e4b.clip-product.speed@g1w-006 -->0.976×<!-- /claim --> |
@@ -96,7 +96,7 @@
   已注册陈述可从随仓库记录离线核对；历史完整数组重放仍需原资产。
 
 **状态。** 研究产物，不是受支持的产品。尚无外部复现；G6 在同一台机器的新宿主会话中重复了 G4 A 的全部测点。G3、G4 A 与 G6 已有完整模型速度与软件组件能量，广泛的模型质量评测仍待完成。G2 有三个
-限定条件：运行中有意外加载的动态屏保（收尾后才发现）；六个共存组中五组热起始不匹配；功率采集
+限定条件：运行中有意外加载的动态屏保（收尾后才发现）；六个共存组中五组的初始温度和风扇状态不匹配；功率采集
 失败，能耗未判定。[G2 边界](docs/SCOPE.md#g2-service-observations) · [RESEARCH.md](docs/RESEARCH.md)
 
 ## 早期组件测量（G2）
@@ -106,7 +106,7 @@ G2 测量一个原生 W4A16 MLP，GPU 基线使用 MLX。下图的单位是组�
 <table>
 <tr>
 <td><b><!-- claim:g2.ane-share@speed-card -->0.248×<!-- /claim --></b><br><sub>ANE / GPU 速度，1024 位置，各三个宿主</sub></td>
-<td><b><!-- claim:g2.native-calls@calls-card -->33,728 次调用<!-- /claim --></b><br><sub>每个原生 ANE 宿主，结束时小 <!-- claim:g2.native-shrink@memory-card -->60–62 MiB<!-- /claim --></sub></td>
+<td><b><!-- claim:g2.native-calls@calls-card -->33,728 次调用<!-- /claim --></b><br><sub>每个原生 ANE 宿主的内存 footprint，结束时比开始时低 <!-- claim:g2.native-shrink@memory-card -->60–62 MiB<!-- /claim --></sub></td>
 <td><b><!-- claim:g2.temperature-gap@temperature-card -->1.3–3.3 °C<!-- /claim --></b><br><sub>相同负载下 GPU 推理时 GPU 传感器更高；两侧风扇都在怠速</sub></td>
 <td><b><!-- claim:arithmetic.q8-summary@arithmetic-card -->13 / 7,163,904<!-- /claim --></b><br><sub>候选算术模型未匹配的最终 Q8 输出</sub></td>
 </tr>
@@ -254,7 +254,7 @@ python -m unittest discover -s tests -v               # 舍入、饱和、被篡
 
 G4 A 回答了 G3 留下的问题：与输入匹配的图消除了 ANE 在长输入上的大部分劣势，但 GPU 仍然领先。G6 在同一组图上每次只改一处。decode 查询从 8 个位置减到 4 个，速度为原来的 <!-- claim:g6.q4-q8-speed@g6-010 -->1.001–1.008×<!-- /claim -->，在这组图上缩窄逻辑查询未带来明显速度收益；编译后填充工作的成本及更窄查询的收益仍未确定；1 或 2 个位置的查询[无法执行](findings/ane-short-decode-query/)。上游 iOS 4-bit palettization 预设整图在 GPU 上执行，<!-- claim:g6.n.1024@g6-011 -->1K<!-- /claim --> decode 为 <!-- claim:g6.w4.decode.1024.rate@g6-012 -->2.87 token/s<!-- /claim -->，ANE 上的 4-bit 权重 decode 仍未测到；在一个 E4B 投影和 MLP 上，Core AI 的 4-bit 查表权重在 ANE 上[比 FP16 快 <!-- claim:g7.coreai.w4a16-over-fp16@g7-107 -->1.465–3.175×<!-- /claim -->](findings/coreml-coreai-same-codes/)。ANE 路径上的 GPU 能量在两种查询宽度下都是 <!-- claim:g6.decode-gpu-energy@g6-013 -->0.257–0.265 J/token<!-- /claim -->，来源仍待查明。在第二颗 Apple 芯片上复现、在同一宿主中常驻数小时，以及更广的质量评测，可以检验结果能否迁移和持续。
 
-后续服务实验再测 GPU 风扇在 4.9 到 23.7 请求/s 之间从哪里开始升高，先覆盖 4.9 到约 6.4 请求/s；以及矩阵前台的尾延迟优势在关闭动画、匹配热起始并加入只占 CPU 的忙等基线后是否仍然存在。[RESEARCH.md](docs/RESEARCH.md) · [RELATED_WORK.md](docs/RELATED_WORK.md)
+后续服务实验再测 GPU 风扇在 4.9 到 23.7 请求/s 之间从哪里开始升高，先覆盖 4.9 到约 6.4 请求/s；以及前台矩阵计算任务的尾延迟优势在关闭动画、匹配初始温度和风扇状态并加入只占 CPU 的忙等基线后是否仍然存在。[RESEARCH.md](docs/RESEARCH.md) · [RELATED_WORK.md](docs/RELATED_WORK.md)
 
 ## 贡献与许可
 
