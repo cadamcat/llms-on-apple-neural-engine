@@ -29,7 +29,7 @@ The token rates can be expressed as model work. Each prefill token passes <!-- c
 
 Across G4 A and G6, <!-- claim:g6.short-contexts@g6-005 -->500–2K<!-- /claim --> prefill on ANE uses <!-- claim:g6.two-run.short-prefill-energy-x@g6-006 -->0.68–0.81×<!-- /claim --> the GPU's component energy per input token; <!-- claim:g6.long-contexts@g6-007 -->4K–16K<!-- /claim --> prefill spans <!-- claim:g6.two-run.long-prefill-energy-x@g6-008 -->0.90–1.33×<!-- /claim --> and decode <!-- claim:g6.two-run.decode-energy-x@g6-009 -->0.86–1.18×<!-- /claim -->. These ranges combine the tested input lengths and two runs; the chart shows G4 A. [Paired results](findings/qwen3-4b-graph-capacity/#repeat-and-decode-query-width) show the change at each input.
 
-In the plotted G4 A run, during ANE-path decode, <!-- claim:g4a.ane-arm-gpu-decode-share@g4a-046 -->32–58%<!-- /claim --> of the component energy is recorded by the system GPU counter; its process and operation sources are unassigned. These are CPU + GPU + ANE software energy estimates without idle subtraction, admitted block by block; the CPU counter was raised by other activity during the ANE <!-- claim:g4a.n.4096@g4a-047 -->4K<!-- /claim --> blocks. The † marks elevated CPU power relative to neighbouring inputs. Whiskers describe sample-timing bounds, not sensor accuracy; these are not wall-power measurements.
+In the plotted G4 A run, during ANE-path decode, <!-- claim:g4a.ane-arm-gpu-decode-share@g4a-046 -->32–58%<!-- /claim --> of the component energy is recorded by the system GPU counter; its process and operation sources are unassigned. These are CPU + GPU + ANE software energy estimates, without idle subtraction, and each block passed its own energy checks. The CPU counter was raised by other activity during the ANE <!-- claim:g4a.n.4096@g4a-047 -->4K<!-- /claim --> blocks. The † marks elevated CPU power relative to neighbouring inputs. Whiskers describe sample-timing bounds, not sensor accuracy; these are not wall-power measurements.
 
 [Method and scope](docs/SCOPE.md#g4-a-matched-graph-observations) · [Repeat and query width](findings/qwen3-4b-graph-capacity/#repeat-and-decode-query-width) · [Detailed article](articles/06-qwen3-4b-matched-graphs.md) · [The earlier 256 / 2K / 32K results](findings/qwen3-4b-prefill-decode/)
 
@@ -116,7 +116,7 @@ G2 measures one native W4A16 MLP, with MLX as its GPU baseline. Its figures belo
 <table>
 <tr>
 <td><b><!-- claim:g2.ane-share@speed-card -->0.248×<!-- /claim --></b><br><sub>ANE / GPU speed at 1024 positions; three hosts each</sub></td>
-<td><b><!-- claim:g2.native-calls@calls-card -->33,728 calls<!-- /claim --></b><br><sub>per native ANE host, ending <!-- claim:g2.native-shrink@memory-card -->60–62 MiB<!-- /claim --> smaller</sub></td>
+<td><b><!-- claim:g2.native-calls@calls-card -->33,728 calls<!-- /claim --></b><br><sub>each native ANE host's process footprint ended <!-- claim:g2.native-shrink@memory-card -->60–62 MiB<!-- /claim --> smaller</sub></td>
 <td><b><!-- claim:g2.temperature-gap@temperature-card -->1.3–3.3 °C<!-- /claim --></b><br><sub>warmer GPU sensor under GPU inference at equal load; fans idle on both</sub></td>
 <td><b><!-- claim:arithmetic.q8-summary@arithmetic-card -->13 / 7,163,904<!-- /claim --></b><br><sub>final Q8 outputs a candidate arithmetic model does not match</sub></td>
 </tr>

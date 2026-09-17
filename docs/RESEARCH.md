@@ -21,8 +21,8 @@ throughput.
 The historical Python entry point showed output-sized IOSurface growth. Later
 native work replaced the host and the persistent pipeline;
 C64/C256 passed bounded memory checks. For C256, the natural 16→32 window of 4K
-requests grew by 16,384 Swift bytes and 114,688 Python-controller bytes. That
-advances the entry point, not the long-term claim. The later
+requests grew by 16,384 Swift bytes and 114,688 Python-controller bytes. The native hosts passed
+these bounded-memory checks; long-term residency is still untested. The later
 [G2 run](../findings/w4a16-service-tradeoffs/) completed finite memory and service
 blocks and measured thermal response and coexistence; its two native ANE hosts ran
 33,728 stage calls each without the Python per-call growth. Energy remains
