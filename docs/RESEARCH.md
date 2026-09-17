@@ -4,12 +4,33 @@ The [findings](../findings/) measure a component gap and identify constraints;
 they do not yet connect those constraints into a causal explanation. In the historical
 Python MLP comparison, the GPU was 2.9–5.1× faster. Later native C256 measured 582.19 ms
 against its same-round GPU 152.25 ms at 4K. Those earlier rounds each have one timed process per
-path; they are not pooled. G2 now adds a separate three-host, seven-size
+path; they are not pooled. G2 adds a separate three-host, seven-size
 comparison and finite thermal/coexistence observations. [Native follow-up](../results/historical/native-mlp-followup.json).
 
-G3 now adds complete Qwen3-4B FP16 speed and software component energy. ANE saves component energy on short prefill, while the current larger-context path is slower and uses more energy per token. The next questions concern graph shape, broader quality and application behaviour. [G3 results](../findings/qwen3-4b-prefill-decode/).
+G3 adds complete Qwen3-4B FP16 speed and software component energy. ANE saves component energy on short prefill, while the current larger-context path is slower and uses more energy per token. The next questions concern graph shape, broader quality and application behaviour. [G3 results](../findings/qwen3-4b-prefill-decode/).
 
 ![Runtime compatibility, deviation from FP16 and model quality need three separate comparisons.](figures/arithmetic-levels.svg)
+
+## Where the work stands
+
+Measured, with records anyone can recompute:
+
+- Complete-model speed and component energy on one M5 Pro, ANE against GPU, over the tested inputs, with an ANE graph sized to each input ([graph capacity](../findings/qwen3-4b-graph-capacity/), [prefill and decode](../findings/qwen3-4b-prefill-decode/)).
+- A resident W4A16 component service: speed, thermal response at equal load and foreground coexistence. Its energy is undetermined ([service tradeoffs](../findings/w4a16-service-tradeoffs/)).
+- Which quantized representations run, and which run fast: a QDQ multiply that dequantizes with another QDQ's scale on the Neural Engine ([QDQ multiply](../findings/coreai-qdq-multiply-scale/)), K-grouped scales that Core ML sends to the CPU ([grouped scales](../findings/coreml-grouped-scale-cpu/)), an upstream palettized preset whose ANE compile fails so the model runs on the GPU ([palettized preset](../findings/coreai-palettized-weights-gpu/)), and the one four-bit form Core ML runs near Core AI's speed ([direct INT4](../findings/coreml-direct-int4/)).
+- What an A8 speed-up depends on: work per call, chain depth and exact-zero weights ([speed-up conditions](../findings/quantized-speedup-conditions/)).
+- An operating cost of running ANE models: the compiler service holding deleted compile inputs until it exits ([compiler disk](../findings/ane-compiler-service-disk/)).
+
+Open, in the order a next run would take them:
+
+- Where ANE's time goes as context grows. Attention compute, fixed-graph work and host overhead are not separated, and the system GPU counter records a large share of ANE-path decode energy with unassigned process and operation sources.
+- Whether a complete model keeps direct INT4's four-bit speed, which needs its own numeric and device admission.
+- What Core ML's palette path spends its time on; a small comparison of the two saved forms would make it reportable upstream.
+- A correct A8 MLP, which needs a multiply both frontends compile correctly or a clamp that meets the numeric screen.
+- The quality of generated text, which nothing here evaluates.
+- Full-model residency, equal-rate service and foreground coexistence beyond the component run.
+
+The sections below record what each round changed, in the order the rounds ran.
 
 ## The engineering position
 

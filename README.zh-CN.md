@@ -2,7 +2,13 @@
 
 [English](README.md) | 中文
 
-**完整 LLM 在 Apple Neural Engine 上能跑多快，完成同样的工作需要多少能量？在一台 M5 Pro 上，Qwen3-4B FP16 通过 Core AI 分别运行于 ANE 和 GPU，ANE 为每档输入使用容量匹配的固定图。<!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim --> 的每档输入都是 GPU 更快：decode 快 <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim -->，prefill 快 <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim -->。<!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill 时，两次运行中 ANE 每输入 token 的组件能量为 GPU 的 <!-- claim:g6.two-run.short-prefill-energy-x@g6-001 -->0.68–0.81×<!-- /claim -->；decode 为 <!-- claim:g6.two-run.decode-energy-x@g6-002 -->0.86–1.18×<!-- /claim -->。长输入下 ANE 还能用，靠的是图容量与输入匹配：与此前 256 / 2K / 32K 三档图相比，从 <!-- claim:g4a.n.2048@g4a-007 -->2K<!-- /claim --> 起 ANE decode 快 <!-- claim:g4a.vs-g3.long-decode-speed@g4a-008 -->1.80–4.40×<!-- /claim -->，从 <!-- claim:g4a.n.4096@g4a-009 -->4K<!-- /claim --> 起 prefill 快 <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-010 -->2.76–6.40×<!-- /claim -->。**
+**完整 LLM 在 Apple Neural Engine 上能跑多快，完成同样的工作需要多少能量？**
+
+在一台 M5 Pro 上，Qwen3-4B FP16 通过 Core AI 分别运行于 ANE 和 GPU，ANE 为每档输入使用容量匹配的固定图。<!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim --> 的每档输入都是 GPU 更快：decode 快 <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim -->，prefill 快 <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim -->。
+
+能量不跟着速度走。<!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill 时，两次运行中 ANE 每输入 token 的组件能量为 GPU 的 <!-- claim:g6.two-run.short-prefill-energy-x@g6-001 -->0.68–0.81×<!-- /claim -->；decode 为 <!-- claim:g6.two-run.decode-energy-x@g6-002 -->0.86–1.18×<!-- /claim -->。
+
+长输入下 ANE 还能用，靠的是图容量与输入匹配：与此前 256 / 2K / 32K 三档图相比，从 <!-- claim:g4a.n.2048@g4a-007 -->2K<!-- /claim --> 起 ANE decode 快 <!-- claim:g4a.vs-g3.long-decode-speed@g4a-008 -->1.80–4.40×<!-- /claim -->，从 <!-- claim:g4a.n.4096@g4a-009 -->4K<!-- /claim --> 起 prefill 快 <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-010 -->2.76–6.40×<!-- /claim -->。
 
 <table>
 <tr>

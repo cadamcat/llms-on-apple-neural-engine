@@ -2,7 +2,13 @@
 
 English | [中文](README.zh-CN.md)
 
-**How fast can a complete LLM run on the Apple Neural Engine, and what does it cost in energy? On one M5 Pro, Qwen3-4B FP16 runs on both ANE and GPU through Core AI, with an ANE graph sized to each input. The GPU is faster at every tested input from <!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim -->: <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim --> in decode and <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim --> in prefill. For <!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill, ANE uses <!-- claim:g6.two-run.short-prefill-energy-x@g6-001 -->0.68–0.81×<!-- /claim --> the GPU's component energy per input token across two runs; in decode it uses <!-- claim:g6.two-run.decode-energy-x@g6-002 -->0.86–1.18×<!-- /claim --> as much. Sizing the graph to the input is what keeps ANE usable on long inputs: against the earlier 256 / 2K / 32K graphs, ANE decode is <!-- claim:g4a.vs-g3.long-decode-speed@g4a-007 -->1.80–4.40×<!-- /claim --> faster from <!-- claim:g4a.n.2048@g4a-008 -->2K<!-- /claim --> and prefill <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-009 -->2.76–6.40×<!-- /claim --> faster from <!-- claim:g4a.n.4096@g4a-010 -->4K<!-- /claim -->.**
+**How fast can a complete LLM run on the Apple Neural Engine, and what does it cost in energy?**
+
+On one M5 Pro, Qwen3-4B FP16 runs on both ANE and GPU through Core AI, with an ANE graph sized to each input. The GPU is faster at every tested input from <!-- claim:g4a.all-contexts@g4a-001 -->500–16K<!-- /claim -->: <!-- claim:g4a.decode-gpu-faster@g4a-002 -->2.0–3.9×<!-- /claim --> in decode and <!-- claim:g4a.prefill-gpu-faster@g4a-003 -->2.9–15.9×<!-- /claim --> in prefill.
+
+Energy does not follow speed. For <!-- claim:g4a.short-contexts@g4a-004 -->500–2K<!-- /claim --> prefill, ANE uses <!-- claim:g6.two-run.short-prefill-energy-x@g6-001 -->0.68–0.81×<!-- /claim --> the GPU's component energy per input token across two runs; in decode it uses <!-- claim:g6.two-run.decode-energy-x@g6-002 -->0.86–1.18×<!-- /claim --> as much.
+
+Sizing the graph to the input is what keeps ANE usable on long inputs: against the earlier 256 / 2K / 32K graphs, ANE decode is <!-- claim:g4a.vs-g3.long-decode-speed@g4a-007 -->1.80–4.40×<!-- /claim --> faster from <!-- claim:g4a.n.2048@g4a-008 -->2K<!-- /claim --> and prefill <!-- claim:g4a.vs-g3.long-prefill-speed@g4a-009 -->2.76–6.40×<!-- /claim --> faster from <!-- claim:g4a.n.4096@g4a-010 -->4K<!-- /claim -->.
 
 <table>
 <tr>
